@@ -1,0 +1,54 @@
+<!--meta {
+  "path": "/loja",
+  "nav": "loja",
+  "title": "Loja · Drop 01",
+  "description": "Drop 01 da Brazilian Bayle: camisetas, shorts, moda de festa e acessórios com a cara da pista brasileira. Entre na lista de espera e compre primeiro."
+} -->
+
+<section class="drop-hero" aria-labelledby="t-loja">
+  <div class="drop-bg" aria-hidden="true" style="background-image:url(/assets/real-galera-800.webp)"></div>
+  <div class="wrap drop-grid">
+    <div class="drop-copy">
+      <p class="mono y">Loja BR Bayle · lista de espera</p>
+      <h1 class="display" id="t-loja">Drop <em>01</em></h1>
+      <p class="lead">A primeira coleção da Brazilian Bayle: roupa de pista feita para durar a noite inteira. Quem estiver na lista recebe o acesso antes e o preço de lançamento.</p>
+      <ul class="drop-tags">
+        <li>Camisetas oversized</li><li>Shorts</li><li>Moda feminina de festa</li><li>Óculos</li><li>Leques</li><li>Chinelos</li>
+      </ul>
+    </div>
+
+    <form class="drop-form" id="dropForm" novalidate>
+      <p class="mono">Entrar na lista</p>
+      <div class="field">
+        <label for="dEmail" class="mono">E-mail</label>
+        <input id="dEmail" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="edEmail">
+        <p class="ferr" id="edEmail"></p>
+      </div>
+      <div class="field">
+        <label for="dSize" class="mono">Seu tamanho <span class="opt">(opcional)</span></label>
+        <select id="dSize" name="tamanho"><option value="">Prefiro não dizer</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
+      </div>
+      <fieldset class="field">
+        <legend class="mono">Me interessa <span class="opt">(opcional)</span></legend>
+        <div class="pick">
+          <label><input type="checkbox" name="int" value="Camisetas"> Camisetas</label>
+          <label><input type="checkbox" name="int" value="Shorts"> Shorts</label>
+          <label><input type="checkbox" name="int" value="Moda feminina"> Moda feminina</label>
+          <label><input type="checkbox" name="int" value="Acessórios"> Acessórios</label>
+        </div>
+      </fieldset>
+      <label class="check"><input type="checkbox" id="dConsent" aria-describedby="edConsent"> Aceito receber o aviso do drop e a <a href="/privacidade" target="_blank">política de privacidade</a>.</label>
+      <p class="ferr" id="edConsent"></p>
+      <button class="btn btn-k" type="submit" id="dropBtn">Quero entrar na lista</button>
+      <div class="form-msg" id="dropMsg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<section class="sec dark" aria-labelledby="t-mascote">
+  <div class="wrap drop-info">
+    <div><p class="mono y">Lançamento</p><p>Data e preços saem primeiro para a lista e depois no @brazilianbayle.</p></div>
+    <div><p class="mono y">Envio</p><p>Para todo o Brasil, com código de rastreio por e-mail.</p></div>
+    <div><p class="mono y" id="t-mascote">Mascote</p><p>O papagaio é a cara da marca e assina as peças do drop.</p></div>
+  </div>
+</section>

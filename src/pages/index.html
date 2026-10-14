@@ -1,0 +1,187 @@
+<!--meta {
+  "path": "/",
+  "nav": "home",
+  "title": "Brazilian Bayle · O campeonato brasileiro de DJs",
+  "description": "A pista dá a nota. A comunidade avalia os DJs brasileiros festa a festa, e os 5 melhores do ano tocam juntos no Carnaval. Conheça o ranking e o clube BRB Clubbers.",
+  "preload": "<link rel=\"preload\" as=\"image\" href=\"/assets/hero-dj-poster-800.webp\" fetchpriority=\"high\">",
+  "jsonld": [{
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "After do Solomun · Brazilian Bayle",
+    "description": "After fechado para o network BRB Clubbers depois da apresentação do Solomun. Entrada somente após seleção.",
+    "startDate": "2026-10-31T23:00:00-03:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": { "@type": "Place", "name": "Local privado, revelado aos aprovados", "address": { "@type": "PostalAddress", "addressCountry": "BR" } },
+    "image": ["https://brazilian-bayle.vercel.app/assets/og.jpg"],
+    "organizer": { "@type": "Organization", "name": "Brazilian Bayle", "url": "https://brazilian-bayle.vercel.app" }
+  }]
+} -->
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-media">
+    <img class="hero-video hero-poster" src="/assets/hero-dj-poster-800.webp" alt="" fetchpriority="high" width="720" height="1280">
+    <video class="hero-video" id="heroVideo" src="/assets/hero-dj.mp4" poster="/assets/hero-dj-poster-800.webp" autoplay muted loop playsinline preload="metadata" aria-label="DJ com a camisa amarela do Brasil tocando para a pista"></video>
+    <button class="media-pause" id="heroPause" aria-label="Pausar vídeo" aria-pressed="false"><span aria-hidden="true">❚❚</span></button>
+    <a href="#after" class="hero-date">
+      <b>31.10</b>
+      <span class="mono">Próximo<br>After do Solomun</span>
+    </a>
+  </div>
+  <div class="hero-copy">
+    <p class="mono eyebrow"><span class="live" aria-hidden="true"></span>Temporada 2026 · Carnaval a Carnaval</p>
+    <h1 class="display hero-title">O campeonato brasileiro de <em>DJs.</em></h1>
+    <p class="hero-sub">A pista dá a nota. Os 5 melhores DJs brasileiros do ano tocam juntos no Carnaval.</p>
+    <div class="cta-row">
+      <a href="/ranking#votar" class="btn btn-k">Votar num DJ</a>
+      <a href="/clube" class="btn btn-line">Quero ser BRB Clubber</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO PRINCIPAL -->
+<section class="main-photo" aria-labelledby="t-galera">
+  <div class="mp-bg" aria-hidden="true" style="background-image:url(/assets/real-logo-galera-800.webp)"></div>
+  <img class="mp-img" src="/assets/real-logo-galera-1600.webp" srcset="/assets/real-logo-galera-800.webp 800w, /assets/real-logo-galera-1600.webp 1005w" sizes="(min-width:1024px) 60vh, 100vw" alt="A galera da Brazilian Bayle reunida na frente do palco, com o logo BR Bayle no céu" width="1005" height="1200" loading="lazy">
+  <div class="mp-txt">
+    <p class="mono y">Essa é a galera</p>
+    <h2 class="display" id="t-galera">A Brazilian <em>Bayle</em></h2>
+    <p>Amigos de Curitiba e Balneário Camboriú que vivem a pista e decidiram mostrar para o Brasil como é o baile daqui.</p>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="sec dark" id="after" aria-labelledby="t-agenda">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display" id="t-agenda">Agenda</h2>
+      <p class="mono dim">Eventos fechados para o network</p>
+    </div>
+    <article class="event">
+      <div class="event-art">
+        <img src="/assets/real-after-4-1600.webp" srcset="/assets/real-after-4-800.webp 800w, /assets/real-after-4-1600.webp 1600w" sizes="(min-width:1024px) 40vw, 100vw" alt="Duas convidadas posando no último after da Brazilian Bayle" loading="lazy" width="1600" height="1066">
+      </div>
+      <div class="event-body">
+        <p class="event-date"><b>31.10</b><span>.2026</span></p>
+        <p class="mono gold">Sábado · After · Primeira meta da Brazilian Bayle</p>
+        <h3 class="display event-title">After do <em>Solomun</em></h3>
+        <p class="dim">Depois da apresentação do Solomun, a noite continua num after fechado para o network. Entram os BRB Clubbers e convidados aprovados na seleção.</p>
+        <ul class="event-facts">
+          <li><span class="mono">Local</span>Revelado aos aprovados 48h antes</li>
+          <li><span class="mono">Entrada</span>Só com seleção prévia</li>
+          <li><span class="mono">Convidado</span>Ingresso avulso liberado após a aprovação</li>
+        </ul>
+        <div class="countdown" role="timer" aria-label="Contagem regressiva para o After do Solomun">
+          <div><b id="cdD">--</b><span>dias</span></div><div><b id="cdH">--</b><span>horas</span></div><div><b id="cdM">--</b><span>min</span></div><div><b id="cdS">--</b><span>seg</span></div>
+        </div>
+        <a href="/clube#candidatura" class="btn btn-y">Quero entrar</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- TOP 5 -->
+<section class="sec board-sec" aria-labelledby="t-top5">
+  <div class="board-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="mono y">Zona da Final · Top 5</p>
+        <h2 class="display" id="t-top5">Brasileirão dos <em>DJs</em></h2>
+      </div>
+      <a href="/ranking" class="link-arrow mono">Ver tabela completa →</a>
+    </div>
+    <div class="preseason" role="note">
+      <span class="ps-tag mono">Pré-temporada</span>
+      <p>Notas de demonstração. O ranking oficial abre com os primeiros votos.</p>
+    </div>
+    <div class="board-stage" data-board data-limit="5"></div>
+    <div class="cta-row center">
+      <a href="/ranking#votar" class="btn btn-y">Avaliar a performance de um DJ</a>
+    </div>
+  </div>
+</section>
+
+<!-- A FINAL -->
+<section class="final" aria-labelledby="t-final">
+  <img class="final-bg" src="/assets/real-festival-800.webp" alt="" loading="lazy" width="800" height="1066">
+  <svg class="beams" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="lz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD400" stop-opacity=".85"/><stop offset="1" stop-color="#FFD400" stop-opacity="0"/></linearGradient></defs>
+    <g stroke="url(#lz)" stroke-width="2"><line x1="600" y1="0" x2="80" y2="600"/><line x1="600" y1="0" x2="300" y2="600"/><line x1="600" y1="0" x2="520" y2="600"/><line x1="600" y1="0" x2="700" y2="600"/><line x1="600" y1="0" x2="920" y2="600"/><line x1="600" y1="0" x2="1140" y2="600"/></g>
+  </svg>
+  <div class="wrap final-in">
+    <p class="mono y">Endgame · Carnaval</p>
+    <h2 class="display final-title" id="t-final">A Final no <em>estádio.</em></h2>
+    <p>Os 5 primeiros da tabela no mesmo palco, numa noite só. O sonho: Maracanã ou Nubank Parque.</p>
+  </div>
+</section>
+
+<!-- CLUBE -->
+<section class="sec dark club-teaser" aria-labelledby="t-clube">
+  <div class="wrap club-grid">
+    <div>
+      <p class="mono gold">BRB Clubbers · R$15/mês</p>
+      <h2 class="display" id="t-clube">Um clube para <em>poucos</em></h2>
+      <p class="dim">O network da Brazilian Bayle: afters fechados, experiências privadas, voto com peso 3 no ranking e uma coluna no Portal dos Críticos. Todo candidato passa por seleção.</p>
+      <a href="/clube" class="btn btn-gold">Conhecer o clube</a>
+    </div>
+    <div class="club-card-wrap">
+      <div class="club-card" data-tilt>
+        <img src="/assets/brb-clubbers.jpg" alt="Cartão de membro BRB Clubbers, preto com o papagaio dourado" width="512" height="286" loading="lazy">
+        <span class="cc-chip" aria-hidden="true"></span>
+        <span class="mono cc-m" aria-hidden="true">Member</span>
+        <span class="mono cc-n" aria-hidden="true">Nº 0001</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRÍTICOS -->
+<section class="sec paper" aria-labelledby="t-crit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="mono g">Portal dos Críticos</p>
+        <h2 class="display" id="t-crit">Os sommeliers da <em>pista</em></h2>
+      </div>
+      <a href="/criticos" class="link-arrow mono">Ver o portal →</a>
+    </div>
+    <p class="example-note mono">Exemplos de resenha · o portal abre com os primeiros BRB Clubbers</p>
+    <div class="reviews" data-reviews data-limit="3"></div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="sec dark gal-sec" id="galera" aria-labelledby="t-gal">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="display" id="t-gal">A pista é <em>nossa</em></h2>
+      <p class="mono dim">#brazilianbayle · fotos da comunidade</p>
+    </div>
+  </div>
+  <div class="slides full" data-auto="3800" role="region" aria-roledescription="carrossel" aria-label="Fotos da comunidade">
+    <div class="slide"><div class="sl-bg" style="background-image:url(/assets/real-galera-800.webp)"></div><img src="/assets/real-galera-1600.webp" alt="Galera grande posando junta na pista, todos de óculos escuros" loading="lazy" width="1600" height="1066"></div>
+    <div class="slide"><div class="sl-bg" style="background-image:url(/assets/real-palco-800.webp)"></div><img src="/assets/real-palco-800.webp" alt="Quatro amigos abraçados na frente de um palco de festival" loading="lazy" width="800" height="1422"></div>
+    <div class="slide"><div class="sl-bg" style="background-image:url(/assets/real-selfie-800.webp)"></div><img src="/assets/real-selfie-800.webp" alt="Selfie de um grupo de amigos sorrindo na pista" loading="lazy" width="800" height="601"></div>
+    <div class="slide"><div class="sl-bg" style="background-image:url(/assets/real-festival-800.webp)"></div><img src="/assets/real-festival-1600.webp" alt="Rapaz de costas olhando um festival lotado com o palco iluminado de rosa" loading="lazy" width="1086" height="1448"></div>
+    <div class="slide"><div class="sl-bg" style="background-image:url(/assets/real-prece-800.webp)"></div><img src="/assets/real-prece-1600.webp" alt="Dois amigos de óculos fazendo pose na festa" loading="lazy" width="1600" height="1067"></div>
+    <div class="slide"><div class="sl-bg" style="background-image:url(/assets/real-after-1-800.webp)"></div><img src="/assets/real-after-1-1600.webp" alt="Turma reunida no terraço de um after" loading="lazy" width="1600" height="1066"></div>
+  </div>
+  <div class="wrap">
+    <div class="gallery-cta">
+      <p class="send">Quer aparecer aqui? Mande seu vídeo para <a href="mailto:brazilianbaile@gmail.com">brazilianbaile@gmail.com</a></p>
+      <a href="https://instagram.com/brazilianbayle" target="_blank" rel="noopener" class="btn btn-line-light">Seguir @brazilianbayle</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOJA -->
+<section class="drop-teaser" aria-labelledby="t-drop">
+  <div class="wrap drop-in">
+    <p class="mono">Loja BR Bayle</p>
+    <h2 class="display" id="t-drop">Drop <em>01</em></h2>
+    <p>Camisetas, shorts, moda de festa e acessórios com a cara da pista brasileira. Quem estiver na lista compra primeiro.</p>
+    <a href="/loja" class="btn btn-k">Entrar na lista de espera</a>
+  </div>
+</section>

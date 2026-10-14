@@ -1,0 +1,108 @@
+<!--meta {
+  "path": "/ranking",
+  "nav": "ranking",
+  "title": "Ranking · Brasileirão dos DJs",
+  "description": "A tabela do campeonato brasileiro de DJs: notas da comunidade em qualidade do som, harmonia do set, energia e vibe, sofisticação e inovação. Avalie a performance dos DJs."
+} -->
+
+<section class="sec board-sec page-head" aria-labelledby="t-rank">
+  <div class="board-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="mono y">Temporada 2026 · Carnaval a Carnaval</p>
+        <h1 class="display" id="t-rank">Brasileirão dos <em>DJs</em></h1>
+      </div>
+      <a href="#votar" class="btn btn-y">Avaliar um DJ</a>
+    </div>
+
+    <div class="preseason" role="note">
+      <span class="ps-tag mono">Pré-temporada</span>
+      <p>Notas e votos de demonstração. O ranking oficial abre com os primeiros votos.</p>
+    </div>
+
+    <div class="podium" data-podium aria-label="Os três primeiros da tabela"></div>
+
+    <div class="chips" data-filters role="group" aria-label="Filtrar por estilo"></div>
+    <div class="board-stage" data-board data-sortable></div>
+
+    <ul class="rules">
+      <li><span class="zone-dot" aria-hidden="true"></span><b>Zona da Final</b> Os 5 primeiros ao fim da temporada tocam juntos no Carnaval.</li>
+      <li><b>Peso 3</b> O voto de um BRB Clubber conta três vezes.</li>
+      <li><b>Mínimo de 30 votos</b> para o DJ entrar na tabela oficial.</li>
+      <li><b>Só DJs brasileiros</b> entram no ranking.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- AVALIAR -->
+<section class="sec paper" id="votar" aria-labelledby="t-votar">
+  <div class="wrap">
+    <div class="vote-head">
+      <p class="mono g">Como votar</p>
+      <h2 class="display" id="t-votar">Avalie a performance dos <em>DJs</em></h2>
+    </div>
+  </div>
+  <div class="wrap vote-grid">
+    <div class="vote-intro">
+      <p>Escolha a festa em que você esteve, o DJ brasileiro que tocou e dê sua nota nos 4 critérios.</p>
+      <dl class="crit-list">
+        <div><dt>Qualidade do som</dt><dd>Mixagem limpa, volume equilibrado, graves bem resolvidos.</dd></div>
+        <div><dt>Harmonia do set</dt><dd>Transições, escolha das faixas e a história do começo ao fim.</dd></div>
+        <div><dt>Energia e vibe</dt><dd>A leitura da pista e o quanto ninguém quis ir embora.</dd></div>
+        <div><dt>Sofisticação e inovação</dt><dd>Repertório, identidade e ousadia.</dd></div>
+      </dl>
+      <p class="fair"><b>Voto limpo:</b> um voto por @ em cada apresentação. Votos repetidos ou de perfis inexistentes são descartados na apuração.</p>
+    </div>
+
+    <form class="vote-card" id="voteForm" novalidate aria-describedby="voteHelp">
+      <p class="mono demo-tag" id="voteHelp">Pré-temporada · festas de demonstração</p>
+
+      <div class="field">
+        <label for="vParty" class="mono">01 · Festa</label>
+        <select id="vParty" name="festa" required aria-describedby="eParty"></select>
+        <p class="ferr" id="eParty"></p>
+      </div>
+
+      <fieldset class="field">
+        <legend class="mono">02 · DJ brasileiro do line-up</legend>
+        <div class="lineup" id="vLineup"></div>
+        <p class="ferr" id="eDj"></p>
+      </fieldset>
+
+      <div class="field two">
+        <div>
+          <label for="vName" class="mono">03 · Nome</label>
+          <input id="vName" name="nome" autocomplete="name" required aria-describedby="eName">
+          <p class="ferr" id="eName"></p>
+        </div>
+        <div>
+          <label for="vIg" class="mono">@ do Instagram</label>
+          <input id="vIg" name="instagram" autocomplete="username" autocapitalize="none" spellcheck="false" inputmode="text" placeholder="@seu.perfil" required aria-describedby="eIg">
+          <p class="ferr" id="eIg"></p>
+        </div>
+      </div>
+
+      <fieldset class="field">
+        <legend class="mono">04 · Sua nota de 0 a 10 em cada critério</legend>
+        <div class="sliders" id="vSliders"></div>
+        <p class="ferr" id="eNotas"></p>
+      </fieldset>
+
+      <div class="field">
+        <label for="vComment" class="mono">05 · Conte como foi <span class="opt">(opcional)</span></label>
+        <textarea id="vComment" name="comentario" rows="3"></textarea>
+      </div>
+
+      <label class="check"><input type="checkbox" id="vClubber"> Sou BRB Clubber (voto com peso 3)</label>
+      <label class="check"><input type="checkbox" id="vConsent" aria-describedby="eConsent"> Li e aceito a <a href="/privacidade" target="_blank">política de privacidade</a>.</label>
+      <p class="ferr" id="eConsent"></p>
+
+      <div class="vote-actions">
+        <div class="vote-avg"><span class="mono">Sua nota</span><b id="vAvg">—</b></div>
+        <button class="btn btn-y" type="submit" id="voteBtn">Registrar voto</button>
+      </div>
+      <div class="form-msg" id="voteMsg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>

@@ -1,6 +1,7 @@
 {
   "framework": null,
-  "buildCommand": "",
   "installCommand": "",
-  "outputDirectory": "."
+  "buildCommand": "node _local/build.js",
+  "outputDirectory": "dist",
+  "cleanUrls": true
 }

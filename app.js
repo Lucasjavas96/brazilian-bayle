@@ -1,240 +1,344 @@
-/* Brazilian Bayle · release 1
-   Tudo aqui roda no navegador com dados de demonstração.
-   Na próxima etapa, votos, candidaturas e sacola passam a ir para um banco de dados. */
+/* Brazilian Bayle · release 2
+   Pré-temporada: ranking, festas e resenhas são de demonstração e aparecem rotulados assim.
+   Votos, candidaturas e lista de espera ficam só no navegador (localStorage) até existir um backend. */
 
-const $ = s => document.querySelector(s);
-const fmt = n => n.toFixed(2).replace(".", ",");
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const fmt2 = n => n.toFixed(2).replace(".", ",");
 const fmt1 = n => n.toFixed(1).replace(".", ",");
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const store = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch {} }
 };
 function rnd(seed) { return () => (seed = (seed * 16807) % 2147483647, (seed - 1) / 2147483646) }
+const wait = ms => new Promise(r => setTimeout(r, ms));
+let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textContent = t; el.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => el.classList.remove("on"), 3400) }
+
+/* ---------- menu lateral (gaveta no celular) ---------- */
+(() => {
+  const btn = $("#burger"), side = $("#side"), scrim = $("#scrim");
+  if (!btn) return;
+  const set = open => {
+    btn.setAttribute("aria-expanded", open); btn.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    side.classList.toggle("open", open); scrim.hidden = !open;
+    if (open) $(".side-nav a", side)?.focus();
+  };
+  btn.onclick = () => set(btn.getAttribute("aria-expanded") !== "true");
+  scrim.onclick = () => set(false);
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && side.classList.contains("open")) { set(false); btn.focus() } });
+  $$("a", side).forEach(a => a.addEventListener("click", () => set(false)));
+})();
 
 /* ---------- faixa ---------- */
-const tick = ["After do Solomun · 31.10 · local privado", "BRB Clubbers · R$15/mês", "Temporada 2026 · Carnaval a Carnaval",
-  "Só DJs brasileiros", "Os 5 melhores tocam na Final", "Vote e comente a sua festa", "É baile fio"];
-$("#ticker").innerHTML = [...tick, ...tick].map(t => `<span>${t}</span>`).join("");
+(() => {
+  const el = $("#ticker"); if (!el) return;
+  const t = ["After do Solomun · 31.10", "BRB Clubbers · R$15/mês", "Temporada 2026 · Carnaval a Carnaval", "Só DJs brasileiros",
+    "Os 5 melhores tocam na Final", "Avalie a performance dos DJs", "A pista é nossa"];
+  el.innerHTML = [...t, ...t].map(x => `<span>${x}</span>`).join("");
+})();
 
-/* ---------- menu mobile ---------- */
-$("#burger").onclick = () => { $("#burger").classList.toggle("on"); $("#navLinks").classList.toggle("on") };
-document.querySelectorAll("#navLinks a").forEach(a => a.onclick = () => { $("#burger").classList.remove("on"); $("#navLinks").classList.remove("on") });
+/* ---------- vídeo do topo ---------- */
+(() => {
+  const v = $("#heroVideo"), b = $("#heroPause"); if (!v) return;
+  if (reduced) { v.removeAttribute("autoplay"); v.pause(); b.setAttribute("aria-pressed", "true"); b.setAttribute("aria-label", "Tocar vídeo") }
+  b.onclick = () => {
+    const paused = !v.paused; paused ? v.pause() : v.play();
+    b.setAttribute("aria-pressed", paused); b.setAttribute("aria-label", paused ? "Tocar vídeo" : "Pausar vídeo");
+  };
+})();
 
 /* ---------- contagem regressiva ---------- */
-const AFTER = new Date("2026-10-31T23:00:00-03:00").getTime();
-function countdown() {
-  let s = Math.max(0, Math.floor((AFTER - Date.now()) / 1000));
-  const d = Math.floor(s / 86400); s -= d * 86400;
-  const h = Math.floor(s / 3600); s -= h * 3600;
-  const m = Math.floor(s / 60); s -= m * 60;
-  [["#cdD", d], ["#cdH", h], ["#cdM", m], ["#cdS", s]].forEach(([id, v]) => $(id).textContent = String(v).padStart(2, "0"));
-}
-countdown(); setInterval(countdown, 1000);
+(() => {
+  if (!$("#cdD")) return;
+  const AFTER = new Date("2026-10-31T23:00:00-03:00").getTime();
+  const tick = () => {
+    let s = Math.max(0, Math.floor((AFTER - Date.now()) / 1000));
+    const d = Math.floor(s / 86400); s -= d * 86400; const h = Math.floor(s / 3600); s -= h * 3600; const m = Math.floor(s / 60); s -= m * 60;
+    [["#cdD", d], ["#cdH", h], ["#cdM", m], ["#cdS", s]].forEach(([id, n]) => $(id).textContent = String(n).padStart(2, "0"));
+  };
+  tick(); setInterval(tick, 1000);
+})();
 
-/* ---------- DJs e ranking ---------- */
-const CRIT = [["som", "Som"], ["harmonia", "Harmonia"], ["energia", "Energia"], ["sofisticacao", "Sofisticação"]];
+/* ---------- critérios e dados de demonstração ---------- */
+const CRIT = [
+  ["som", "Qualidade do som"],
+  ["harmonia", "Harmonia do set"],
+  ["energia", "Energia e vibe"],
+  ["sofisticacao", "Sofisticação e inovação"],
+];
 const DJS = [["Alok","House"],["Vintage Culture","House"],["Mochakk","Tech house"],["ANNA","Techno"],["Liu","Bass house"],
   ["Cat Dealers","Brazilian bass"],["Dubdogz","Brazilian bass"],["KVSH","Brazilian bass"],["Bhaskar","House"],["Chemical Surf","Brazilian bass"],
   ["Zerb","Afro house"],["Öwnboss","Bass house"],["RUBACK","Tech house"],["Victor Ruiz","Techno"],["Gui Boratto","Techno"],
   ["Illusionize","Tech house"],["Beltran","Tech house"],["Mojjo","House"],["Classmatic","Tech house"],["GREG","House"]];
-
-// base de demonstração: soma ponderada por critério + peso total
-const r = rnd(42);
-let base = 9.24;
-const seed = DJS.map(([name, style]) => {
-  const n = base; base -= .05 + r() * .07;
-  const votos = Math.floor((6 + r() * 12) * (55 + r() * 45));
-  const w = votos * 1.4; // parte dos votos é de Clubbers (peso 3)
-  const sums = {}; CRIT.forEach(([k]) => sums[k] = Math.min(9.9, n + (r() - .5) * .7) * w);
-  return { name, style, votos, w, sums };
-});
-
+const SEED = (() => {
+  const r = rnd(42); let base = 9.24;
+  return DJS.map(([name, style]) => {
+    const n = base; base -= .05 + r() * .07;
+    const votos = Math.floor((6 + r() * 12) * (55 + r() * 45)), w = votos * 1.4, sums = {};
+    CRIT.forEach(([k]) => sums[k] = Math.min(9.9, n + (r() - .5) * .7) * w);
+    return { name, style, votos, w, sums };
+  });
+})();
 function table() {
-  const extra = store.get("bb_votes", []);
-  const rows = seed.map(d => ({ ...d, sums: { ...d.sums } }));
-  extra.forEach(v => {
+  const rows = SEED.map(d => ({ ...d, sums: { ...d.sums } }));
+  store.get("bb_votes", []).forEach(v => {
     const d = rows.find(x => x.name === v.dj); if (!d) return;
-    const w = v.clubber ? 3 : 1;
-    d.votos++; d.w += w; CRIT.forEach(([k]) => d.sums[k] += v.notas[k] * w);
+    const w = v.clubber ? 3 : 1; d.votos++; d.w += w; CRIT.forEach(([k]) => d.sums[k] += v.notas[k] * w);
   });
   rows.forEach(d => { CRIT.forEach(([k]) => d[k] = d.sums[k] / d.w); d.nota = CRIT.reduce((a, [k]) => a + d[k], 0) / 4 });
   rows.sort((a, b) => b.nota - a.nota).forEach((d, i) => d.pos = i + 1);
   return rows;
 }
+const meter = v => { const full = Math.floor(v), half = v - full >= .5; return `<span class="meter" aria-hidden="true">${Array.from({ length: 10 }, (_, i) => `<i class="${i < full ? "on" : i === full && half ? "half" : ""}"></i>`).join("")}</span>` };
+const pad = n => String(n).padStart(2, "0");
 
-let sortKey = "nota", styleFilter = "Todos", lastPos = {}, flashName = null;
-const styles = ["Todos", ...new Set(DJS.map(d => d[1]))];
-$("#rankFilters").innerHTML = styles.map(s => `<button class="chip${s === "Todos" ? " on" : ""}" data-s="${s}">${s}</button>`).join("");
-$("#rankFilters").onclick = e => { const b = e.target.closest(".chip"); if (!b) return;
-  styleFilter = b.dataset.s; document.querySelectorAll("#rankFilters .chip").forEach(c => c.classList.toggle("on", c === b)); renderRank() };
-document.querySelectorAll("#rankTable th.sortable").forEach(th => th.onclick = () => {
-  sortKey = th.dataset.sort; document.querySelectorAll("#rankTable th").forEach(t => t.classList.toggle("on", t === th)); renderRank() });
-
-function renderRank() {
-  const rows = table();
-  let list = rows.filter(d => styleFilter === "Todos" || d.style === styleFilter);
-  if (sortKey !== "nota") list = [...list].sort((a, b) => b[sortKey] - a[sortKey]);
-  $("#rankTable tbody").innerHTML = list.map(d => {
-    const prev = lastPos[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up">▲${prev - d.pos}</span>` : `<span class="mv dn">▼${d.pos - prev}</span>`) : "";
-    return `<tr class="${d.pos <= 5 ? "top" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flashName ? " flash" : ""}">
-      <td class="pos">${String(d.pos).padStart(2, "0")}</td><td class="l dj">${d.name}${mv}</td><td class="l st hide-m">${d.style}</td>
-      <td class="pt">${fmt(d.nota)}</td>${CRIT.map(([k]) => `<td class="hide-m">${fmt1(d[k])}</td>`).join("")}<td>${d.votos.toLocaleString("pt-BR")}</td></tr>`;
-  }).join("");
-  rows.forEach(d => lastPos[d.name] = d.pos); flashName = null;
+/* ---------- pódio ---------- */
+function renderPodium() {
+  const el = $("[data-podium]"); if (!el) return;
+  el.innerHTML = table().slice(0, 3).map(d => `
+    <div class="pod p${d.pos}">
+      <p class="pod-name">${d.name}</p><p class="pod-style mono">${d.style}</p>
+      <p class="led" aria-label="nota ${fmt2(d.nota)}">${fmt2(d.nota)}</p>
+      <div class="pod-block"><div class="top" aria-hidden="true"></div><div class="face"><span class="num3d" aria-label="${d.pos}º lugar">${pad(d.pos)}</span></div></div>
+    </div>`).join("");
 }
-renderRank();
 
-/* ---------- votação ---------- */
-const PARTIES = [
-  { id: "gv-0709", label: "Green Valley · 07/09", dj: ["Alok", "Mochakk", "Classmatic"] },
-  { id: "sr-1409", label: "Surreal · 14/09", dj: ["Vintage Culture", "Liu", "Öwnboss"] },
-  { id: "wr-2109", label: "Warung · 21/09", dj: ["ANNA", "Victor Ruiz", "Gui Boratto"] },
-  { id: "lr-2809", label: "Laroc · 28/09", dj: ["Cat Dealers", "Dubdogz", "KVSH"] },
-  { id: "gv-1210", label: "Green Valley · 12/10", dj: ["Zerb", "Mojjo", "Beltran", "Illusionize"] },
-];
-let pickedDJ = null;
-$("#vParty").innerHTML = `<option value="">Escolha a festa (demonstração)</option>` + PARTIES.map(p => `<option value="${p.id}">${p.label}</option>`).join("");
-$("#vParty").onchange = () => { pickedDJ = null; renderLineup() };
-function renderLineup() {
-  const p = PARTIES.find(x => x.id === $("#vParty").value);
-  $("#vLineup").innerHTML = p ? p.dj.map(n => `<button type="button" data-dj="${n}" class="${n === pickedDJ ? "on" : ""}">${n}</button>`).join("")
-    : `<span class="mono dim">Escolha a festa primeiro</span>`;
+/* ---------- tabela ---------- */
+const boards = [];
+function mountBoard(stage) {
+  const limit = +stage.dataset.limit || 0, sortable = stage.hasAttribute("data-sortable");
+  const st = { sort: "nota", style: "Todos", last: {}, flash: null };
+  const head = [["nota", "Nota"], ...CRIT, ["votos", "Votos"]];
+  stage.innerHTML = `<table class="board">
+    <caption class="sr-only">Brasileirão dos DJs, pré-temporada com notas de demonstração${limit ? `, ${limit} primeiros` : ""}</caption>
+    <thead><tr><th scope="col">#</th><th scope="col" class="l">DJ</th>${head.map(([k, l]) => `<th scope="col"${k === "nota" ? ' aria-sort="descending"' : ""} data-k="${k}">${sortable ? `<button type="button" data-sort="${k}">${l}</button>` : l}</th>`).join("")}</tr></thead>
+    <tbody></tbody></table>`;
+  const filters = sortable && $("[data-filters]");
+  if (filters) {
+    const styles = ["Todos", ...new Set(DJS.map(d => d[1]))];
+    filters.innerHTML = styles.map(s => `<button class="chip" type="button" aria-pressed="${s === "Todos"}" data-s="${s}">${s}</button>`).join("");
+    filters.onclick = e => { const b = e.target.closest(".chip"); if (!b) return; st.style = b.dataset.s; $$(".chip", filters).forEach(c => c.setAttribute("aria-pressed", c === b)); render() };
+  }
+  if (sortable) $("thead", stage).onclick = e => {
+    const b = e.target.closest("button[data-sort]"); if (!b) return; st.sort = b.dataset.sort;
+    $$("th[data-k]", stage).forEach(th => th.dataset.k === st.sort ? th.setAttribute("aria-sort", "descending") : th.removeAttribute("aria-sort")); render();
+  };
+  function render() {
+    const rows = table();
+    let list = rows.filter(d => st.style === "Todos" || d.style === st.style);
+    if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
+    if (limit) list = list.slice(0, limit);
+    $("tbody", stage).innerHTML = list.map(d => {
+      const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
+      return `<tr class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
+        <td class="b-pos"><span class="num3d">${pad(d.pos)}</span></td>
+        <td class="b-dj l"><b>${d.name}</b>${mv}<span class="mono">${d.style}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
+        <td class="b-score"><span class="led">${fmt2(d.nota)}</span></td>
+        ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
+        <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
+    }).join("");
+    rows.forEach(d => st.last[d.name] = d.pos); st.flash = null;
+  }
+  render();
+  boards.push({ render, flash: n => { st.flash = n; render() } });
 }
-$("#vLineup").onclick = e => { const b = e.target.closest("button"); if (!b) return; pickedDJ = b.dataset.dj; renderLineup() };
-renderLineup();
+$$("[data-board]").forEach(mountBoard);
+renderPodium();
 
-$("#vSliders").innerHTML = CRIT.map(([k, l]) => `<div class="sl"><span>${l}</span><input type="range" min="0" max="10" step="0.5" value="7.5" id="s_${k}" aria-label="${l}"><output id="o_${k}">7,5</output></div>`).join("");
-function sliders() {
-  let t = 0; CRIT.forEach(([k]) => { const el = $("#s_" + k), v = +el.value; t += v;
-    $("#o_" + k).textContent = fmt1(v); el.style.setProperty("--p", v * 10 + "%") });
-  $("#vAvg").textContent = fmt1(t / 4);
-}
-$("#vSliders").oninput = sliders; sliders();
+/* ---------- avaliar ---------- */
+(() => {
+  const form = $("#voteForm"); if (!form) return;
+  const PARTIES = [
+    { id: "gv-0709", label: "Green Valley · 07/09 (demonstração)", dj: ["Alok", "Mochakk", "Classmatic"] },
+    { id: "sr-1409", label: "Surreal · 14/09 (demonstração)", dj: ["Vintage Culture", "Liu", "Öwnboss"] },
+    { id: "wr-2109", label: "Warung · 21/09 (demonstração)", dj: ["ANNA", "Victor Ruiz", "Gui Boratto"] },
+    { id: "lr-2809", label: "Laroc · 28/09 (demonstração)", dj: ["Cat Dealers", "Dubdogz", "KVSH"] },
+    { id: "gv-1210", label: "Green Valley · 12/10 (demonstração)", dj: ["Zerb", "Mojjo", "Beltran", "Illusionize"] },
+  ];
+  let dj = null; const touched = new Set();
+  const party = $("#vParty"), lineup = $("#vLineup");
+  party.innerHTML = `<option value="">Escolha a festa</option>` + PARTIES.map(p => `<option value="${p.id}">${p.label}</option>`).join("");
+  const renderLineup = () => {
+    const p = PARTIES.find(x => x.id === party.value);
+    lineup.innerHTML = p ? p.dj.map(n => `<button type="button" aria-pressed="${n === dj}" data-dj="${n}">${n}</button>`).join("") : `<span class="hint">Escolha a festa primeiro.</span>`;
+  };
+  party.onchange = () => { dj = null; renderLineup(); err("eParty", "") };
+  lineup.onclick = e => { const b = e.target.closest("button"); if (!b) return; dj = b.dataset.dj; renderLineup(); err("eDj", ""); $(`[data-dj="${dj}"]`, lineup)?.focus() };
+  renderLineup();
 
-function msg(el, text, ok) { el.textContent = text; el.className = "form-msg " + (ok ? "ok" : "err") }
-$("#voteForm").onsubmit = e => {
-  e.preventDefault();
-  const m = $("#voteMsg"), party = $("#vParty").value, name = $("#vName").value.trim();
-  let ig = $("#vIg").value.trim().toLowerCase().replace(/^@?/, "@");
-  if (!party) return msg(m, "Escolha a festa.");
-  if (!pickedDJ) return msg(m, "Escolha o DJ que você quer avaliar.");
-  if (!name) return msg(m, "Coloque seu nome.");
-  if (!/^@[a-z0-9._]{2,30}$/.test(ig)) return msg(m, "Confira o @ do Instagram.");
-  const votes = store.get("bb_votes", []);
-  if (votes.some(v => v.party === party && v.dj === pickedDJ && v.ig === ig)) return msg(m, `${ig} já votou em ${pickedDJ} nessa festa. É um voto por @.`);
-  const notas = {}; CRIT.forEach(([k]) => notas[k] = +$("#s_" + k).value);
-  votes.push({ party, dj: pickedDJ, ig, name, notas, clubber: $("#vClubber").checked, comment: $("#vComment").value.trim(), at: Date.now() });
-  store.set("bb_votes", votes);
-  flashName = pickedDJ; renderRank();
-  msg(m, `Voto registrado para ${pickedDJ}${$("#vClubber").checked ? " com peso 3" : ""}. Veja a tabela.`, true);
-  toast("Voto registrado. A tabela foi atualizada.");
-  $("#vComment").value = "";
-};
+  $("#vSliders").innerHTML = CRIT.map(([k, l]) => `<div class="sl unset" id="row_${k}">
+    <label for="s_${k}">${l}</label>
+    <input type="range" min="0" max="10" step="0.5" value="5" id="s_${k}" aria-describedby="o_${k}" aria-valuetext="Não avaliado">
+    <output id="o_${k}" for="s_${k}">—</output></div>`).join("");
+  const updateAvg = () => {
+    let t = 0;
+    CRIT.forEach(([k]) => {
+      const el = $("#s_" + k), v = +el.value, ok = touched.has(k);
+      $("#row_" + k).classList.toggle("unset", !ok);
+      $("#o_" + k).textContent = ok ? fmt1(v) : "—";
+      el.setAttribute("aria-valuetext", ok ? `${fmt1(v)} de 10` : "Não avaliado");
+      el.style.setProperty("--p", ok ? v * 10 + "%" : "0%"); t += v;
+    });
+    $("#vAvg").textContent = touched.size === 4 ? fmt1(t / 4) : "—";
+  };
+  CRIT.forEach(([k]) => {
+    const el = $("#s_" + k);
+    const mark = () => { touched.add(k); updateAvg(); if (touched.size === 4) err("eNotas", "") };
+    el.addEventListener("input", mark); el.addEventListener("change", mark);
+    el.addEventListener("pointerdown", () => setTimeout(mark, 0));
+  });
+  updateAvg();
 
-/* ---------- cartão BRB ---------- */
-const card = $("#clubCard");
-card.parentElement.addEventListener("mousemove", e => {
-  const b = card.getBoundingClientRect(), x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
-  card.style.transform = `rotateY(${x * 22}deg) rotateX(${-y * 16}deg)`;
+  function err(id, text) { const p = $("#" + id); if (!p) return; p.textContent = text; const f = p.id && $(`[aria-describedby~="${p.id}"]`); if (f && f.matches("input,select")) f.setAttribute("aria-invalid", !!text) }
+  const say = (cls, html) => { const m = $("#voteMsg"); m.className = "form-msg " + cls; m.innerHTML = html };
+  $("#vIg").addEventListener("blur", e => { const v = e.target.value.trim(); if (v && !v.startsWith("@")) e.target.value = "@" + v });
+
+  form.onsubmit = async e => {
+    e.preventDefault(); say("", "");
+    const name = $("#vName").value.trim(), ig = $("#vIg").value.trim().toLowerCase().replace(/^@?/, "@");
+    let first = null; const bad = (id, t, el) => { err(id, t); if (t && !first) first = el };
+    bad("eParty", party.value ? "" : "Escolha a festa em que você esteve.", party);
+    bad("eDj", dj || !party.value ? "" : "Escolha o DJ que você quer avaliar.", lineup.querySelector("button"));
+    bad("eName", name.length >= 2 ? "" : "Escreva seu nome.", $("#vName"));
+    bad("eIg", /^@[a-z0-9._]{2,30}$/.test(ig) ? "" : "Use o formato @seu.perfil, só com letras, números, ponto e _.", $("#vIg"));
+    bad("eNotas", touched.size === 4 ? "" : `Dê nota nos 4 critérios. Faltam ${4 - touched.size}.`, $(`#s_${CRIT.find(([k]) => !touched.has(k))?.[0] || "som"}`));
+    bad("eConsent", $("#vConsent").checked ? "" : "Para votar, aceite a política de privacidade.", $("#vConsent"));
+    if (first) { say("err", "Confira os campos marcados acima."); first.focus(); return }
+    const votes = store.get("bb_votes", []);
+    if (votes.some(v => v.party === party.value && v.dj === dj && v.ig === ig)) { say("err", `${ig} já avaliou ${dj} nessa festa. É um voto por @ em cada apresentação.`); return }
+    const btn = $("#voteBtn"); btn.classList.add("loading"); btn.setAttribute("aria-busy", "true");
+    await wait(600);
+    const notas = {}; CRIT.forEach(([k]) => notas[k] = +$("#s_" + k).value);
+    votes.push({ party: party.value, dj, ig, name, notas, clubber: $("#vClubber").checked, comment: $("#vComment").value.trim(), at: Date.now() });
+    store.set("bb_votes", votes);
+    btn.classList.remove("loading"); btn.removeAttribute("aria-busy");
+    say("ok", `<b>Voto registrado.</b> Sua avaliação de ${dj}${$("#vClubber").checked ? " (peso 3)" : ""} entrou na tabela de demonstração. Na pré-temporada, ela fica salva só neste navegador.`);
+    boards.forEach(b => b.flash(dj)); renderPodium();
+    toast("Voto registrado. A tabela foi atualizada.");
+    $("#vComment").value = "";
+  };
+})();
+
+/* ---------- cartão do clube ---------- */
+$$("[data-tilt]").forEach(card => {
+  if (reduced) return;
+  const wrap = card.parentElement;
+  wrap.addEventListener("mousemove", e => { const b = card.getBoundingClientRect(), x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5; card.style.transform = `rotateY(${x * 22}deg) rotateX(${-y * 16}deg)` });
+  wrap.addEventListener("mouseleave", () => card.style.transform = "");
 });
-card.parentElement.addEventListener("mouseleave", () => card.style.transform = "");
-$("#aIg").oninput = e => $("#ccIg").textContent = e.target.value ? "@" + e.target.value.replace(/^@/, "").toUpperCase() : "@SEU.INSTAGRAM";
 
-$("#applyForm").onsubmit = e => {
-  e.preventDefault();
-  const m = $("#applyMsg");
-  if (!$("#aName").value.trim()) return msg(m, "Coloque seu nome.");
-  if ($("#aIg").value.trim().replace(/^@/, "").length < 2) return msg(m, "Coloque o @ do seu Instagram.");
-  const apps = store.get("bb_apps", []); apps.push({ name: $("#aName").value.trim(), ig: $("#aIg").value.trim(), city: $("#aCity").value, plan: $("#aPlan").value, why: $("#aWhy").value.trim(), at: Date.now() });
-  store.set("bb_apps", apps);
-  msg(m, "Candidatura recebida (demonstração). Na versão final, ela chega para os Sócios Fundadores avaliarem.", true);
-  e.target.reset(); $("#ccIg").textContent = "@SEU.INSTAGRAM";
-};
-
-/* ---------- críticos ---------- */
-const REV = [
-  { i: "MC", n: "Crítico BRB", f: 23, t: "Green Valley, 07/09:", e: "o fechamento que ninguém esperava", p: "Começou contido, segurou a pista por uma hora e virou o jogo no último terço. Graves impecáveis e uma leitura de público rara.", s: [9, 8, 10, 9] },
-  { i: "AL", n: "Crítica BRB", f: 17, t: "Warung, 21/09:", e: "techno de templo", p: "Set longo, sem pressa, com transições que você só percebe depois. O tipo de noite que justifica a estrada até Itajaí.", s: [10, 9, 8, 10] },
-  { i: "RP", n: "Crítico BRB", f: 31, t: "Surreal, 14/09:", e: "energia do começo ao fim", p: "Não deu respiro. Faltou um pouco de variação no meio, mas a pista não parou um minuto e o som da casa ajudou muito.", s: [8, 7, 10, 7] },
-];
-$("#reviews").innerHTML = REV.map((v, ix) => {
-  const rr = rnd(5 + ix * 7);
-  const bars = Array.from({ length: 64 }, (_, i) => { const x = i / 64, env = .35 + .65 * Math.abs(Math.sin(x * Math.PI * 3)); return `<i style="height:${Math.max(3, 40 * env * (.35 + .65 * rr()))}px"></i>` }).join("");
-  return `<article class="rev rv"><div class="rev-top"><span class="av">${v.i}</span><div><b>${v.n}</b><span class="mono">BRB Clubber · ${v.f} festas</span></div></div>
-    <h4>${v.t} <em>${v.e}</em></h4><div class="wave">${bars}</div><p>${v.p}</p>
-    <div class="scores">${CRIT.map(([, l], j) => `<span>${l.toUpperCase()} ${v.s[j]}</span>`).join("")}</div></article>`;
-}).join("");
-
-/* ---------- loja ---------- */
-const TEE = c => `<svg class="tee" viewBox="0 0 200 210"><path d="M66 10 22 30 6 74l30 12 6-18v134h116V68l6 18 30-12-16-44-44-20c-4 12-18 20-34 20S70 22 66 10z" fill="${c}" stroke="rgba(0,0,0,.08)"/></svg>`;
-const SOLO = {
-  shorts: `<svg class="solo" viewBox="0 0 120 110"><path d="M14 8h92l8 96H72L60 44 48 104H6z" fill="#009C3B"/><path d="M14 18h92" stroke="#FFD400" stroke-width="5"/><path d="M60 8v20" stroke="#00391C" stroke-width="2"/></svg>`,
-  leque: `<svg class="solo" viewBox="0 0 120 90"><path d="M60 86 6 34a76 76 0 0 1 108 0z" fill="#FFD400" stroke="#00391C" stroke-width="3"/><g stroke="#00391C" stroke-width="2"><path d="M60 86 22 22M60 86 40 14M60 86V10M60 86l20-72M60 86l38-64"/></g><circle cx="60" cy="84" r="5" fill="#002776"/></svg>`,
-  oculos: `<svg class="solo" viewBox="0 0 130 60"><rect x="6" y="14" width="50" height="32" rx="13" fill="#0A0B0A"/><rect x="74" y="14" width="50" height="32" rx="13" fill="#0A0B0A"/><path d="M56 26c4-5 14-5 18 0" stroke="#0A0B0A" stroke-width="5" fill="none"/><path d="M16 22l14 14M84 22l14 14" stroke="#FFD400" stroke-width="3"/></svg>`,
-  chinelo: `<svg class="solo" viewBox="0 0 120 120"><ellipse cx="44" cy="62" rx="22" ry="48" fill="#002776"/><ellipse cx="80" cy="58" rx="22" ry="48" fill="#002776"/><path d="M44 32 28 62M44 32l16 30M80 28 64 58M80 28l16 30" stroke="#FFD400" stroke-width="6" stroke-linecap="round"/></svg>`,
-};
-const PRODUCTS = [
-  { n: "Camiseta Logo BR Bayle", c: "Camisetas", d: "Preta · oversized", img: TEE("#111") + `<img class="print" src="assets/logo.webp" alt="">`, tag: "Lançamento" },
-  { n: "Camiseta BR Bayle Off-white", c: "Camisetas", d: "Off-white · oversized", img: TEE("#F4F1E8") + `<img class="print" src="assets/logo.webp" alt="">`, tag: "Clássica", y: 1 },
-  { n: "Camiseta BR Bayle Branca", c: "Camisetas", d: "Branca · oversized", img: TEE("#ffffff") + `<img class="print" src="assets/logo.webp" alt="">` },
-  { n: "Camiseta BR Bayle Amarela", c: "Camisetas", d: "Amarela · oversized", img: TEE("#FFD400") + `<img class="print" src="assets/logo.webp" alt="">` },
-  { n: "Shorts BR Bayle", c: "Shorts", d: "Verde · tactel", img: SOLO.shorts },
-  { n: "Leque BR Bayle", c: "Acessórios", d: "Amarelo", img: SOLO.leque, tag: "Pista", y: 1 },
-  { n: "Óculos BR Bayle", c: "Acessórios", d: "Preto", img: SOLO.oculos },
-  { n: "Chinelo BR Bayle", c: "Acessórios", d: "Azul", img: SOLO.chinelo },
-];
-const cats = ["Todas", ...new Set(PRODUCTS.map(p => p.c))];
-let cat = "Todas";
-$("#shopFilters").innerHTML = cats.map(c => `<button class="chip${c === "Todas" ? " on" : ""}" data-c="${c}">${c}</button>`).join("");
-$("#shopFilters").onclick = e => { const b = e.target.closest(".chip"); if (!b) return; cat = b.dataset.c;
-  document.querySelectorAll("#shopFilters .chip").forEach(x => x.classList.toggle("on", x === b)); renderShop() };
-function renderShop() {
-  $("#products").innerHTML = PRODUCTS.filter(p => cat === "Todas" || p.c === cat).map((p, i) => `
-    <div class="prod"><div class="prod-img">${p.tag ? `<span class="prod-tag${p.y ? " y" : ""}">${p.tag}</span>` : ""}${p.img}
-      <button class="prod-add" data-i="${PRODUCTS.indexOf(p)}">Quero essa</button></div>
-      <h4>${p.n}</h4><div class="mono">${p.d}</div><div class="pr">Em breve</div></div>`).join("");
+/* ---------- formulários simples (candidatura e lista de espera) ---------- */
+function simpleForm({ form, btn, msg, key, checks, done }) {
+  const f = $(form); if (!f) return;
+  const setErr = (id, t) => { const p = $("#" + id); p.textContent = t; const field = $(`[aria-describedby~="${id}"]`); if (field && field.matches("input,select")) field.setAttribute("aria-invalid", !!t) };
+  f.onsubmit = async e => {
+    e.preventDefault(); const m = $(msg); m.className = "form-msg"; m.textContent = "";
+    let first = null;
+    for (const [id, test, text, el] of checks()) { const ok = test(); setErr(id, ok ? "" : text); if (!ok && !first) first = $(el) }
+    if (first) { m.className = "form-msg err"; m.textContent = "Confira os campos marcados."; first.focus(); return }
+    const b = $(btn); b.classList.add("loading"); b.setAttribute("aria-busy", "true");
+    await wait(600);
+    const data = Object.fromEntries(new FormData(f).entries()); data.at = Date.now();
+    const list = store.get(key, []); list.push(data); store.set(key, list);
+    b.classList.remove("loading"); b.removeAttribute("aria-busy");
+    m.className = "form-msg ok"; m.innerHTML = done(data); f.reset(); f.dispatchEvent(new Event("input"));
+  };
 }
-renderShop();
-let bag = store.get("bb_bag", []);
-$("#bagCount").textContent = bag.length;
-$("#products").onclick = e => { const b = e.target.closest(".prod-add"); if (!b) return;
-  bag.push(PRODUCTS[b.dataset.i].n); store.set("bb_bag", bag); $("#bagCount").textContent = bag.length;
-  $("#bagBtn").classList.remove("bump"); void $("#bagBtn").offsetWidth; $("#bagBtn").classList.add("bump");
-  toast(`${PRODUCTS[b.dataset.i].n} na sua lista. Avisamos quando a loja abrir.`) };
-$("#bagBtn").onclick = () => toast(bag.length ? `Sua lista: ${bag.length} peça(s). A loja abre em breve.` : "Sua sacola está vazia.");
+const igOk = v => /^@?[a-z0-9._]{2,30}$/i.test(v.trim());
+const mailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+simpleForm({
+  form: "#applyForm", btn: "#applyBtn", msg: "#applyMsg", key: "bb_apps",
+  checks: () => [
+    ["eaName", () => $("#aName").value.trim().length >= 2, "Escreva seu nome.", "#aName"],
+    ["eaIg", () => igOk($("#aIg").value), "Use o formato @seu.perfil.", "#aIg"],
+    ["eaEmail", () => mailOk($("#aEmail").value), "Confira o e-mail.", "#aEmail"],
+    ["eaConsent", () => $("#aConsent").checked, "Confirme que tem 18 anos ou mais e aceite os termos.", "#aConsent"],
+  ],
+  done: () => "<b>Candidatura recebida.</b> Na pré-temporada ela fica salva só neste navegador. Para garantir sua vaga na seleção do 31.10, mande também um direct para o @brazilianbayle.",
+});
+simpleForm({
+  form: "#dropForm", btn: "#dropBtn", msg: "#dropMsg", key: "bb_drop",
+  checks: () => [
+    ["edEmail", () => mailOk($("#dEmail").value), "Confira o e-mail.", "#dEmail"],
+    ["edConsent", () => $("#dConsent").checked, "Para entrar na lista, aceite receber o aviso.", "#dConsent"],
+  ],
+  done: () => "<b>Você está na lista.</b> Na pré-temporada a inscrição fica salva só neste navegador; o aviso oficial do drop sai no @brazilianbayle.",
+});
+(() => { const ig = $("#aIg"), cc = $("#ccIg"); if (!ig || !cc) return; ig.addEventListener("input", () => cc.textContent = ig.value ? "@" + ig.value.replace(/^@/, "").toUpperCase() : "@SEU.PERFIL") })();
 
-/* ---------- toast ---------- */
-let tt; function toast(t) { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => el.classList.remove("on"), 3200) }
+/* ---------- resenhas (exemplos) ---------- */
+(() => {
+  const REV = [
+    { i: "EX", n: "Exemplo de crítico", f: 23, t: "Green Valley, 07/09:", e: "o fechamento que ninguém esperava", p: "Começou contido, segurou a pista por uma hora e virou o jogo no último terço. Graves impecáveis e uma leitura de público rara.", s: [9, 8, 10, 9] },
+    { i: "EX", n: "Exemplo de crítica", f: 17, t: "Warung, 21/09:", e: "techno de templo", p: "Set longo, sem pressa, com transições que você só percebe depois. O tipo de noite que justifica a estrada até Itajaí.", s: [10, 9, 8, 10] },
+    { i: "EX", n: "Exemplo de crítico", f: 31, t: "Surreal, 14/09:", e: "energia do começo ao fim", p: "Não deu respiro. Faltou variação no meio, mas a pista não parou um minuto e o som da casa ajudou muito.", s: [8, 7, 10, 7] },
+  ];
+  $$("[data-reviews]").forEach(el => {
+    const lim = +el.dataset.limit || REV.length;
+    el.innerHTML = REV.slice(0, lim).map((v, ix) => {
+      const r = rnd(5 + ix * 7);
+      const bars = Array.from({ length: 56 }, (_, i) => { const x = i / 56, env = .35 + .65 * Math.abs(Math.sin(x * Math.PI * 3)); return `<i style="height:${Math.max(3, 36 * env * (.35 + .65 * r()))}px"></i>` }).join("");
+      return `<article class="rev"><div class="rev-top"><span class="av" aria-hidden="true">${v.i}</span><div><b>${v.n}</b><span class="mono">BRB Clubber · ${v.f} festas · exemplo</span></div></div>
+        <h3>${v.t} <em>${v.e}</em></h3><div class="wave" aria-hidden="true">${bars}</div><p>${v.p}</p>
+        <div class="scores">${CRIT.map(([, l], j) => `<span>${l} <b>${v.s[j]}</b></span>`).join("")}</div></article>`;
+    }).join("");
+  });
+})();
 
-/* ---------- animação ao rolar ---------- */
-document.querySelectorAll(".sec-head, .event, .table-wrap, .vote-card, .plan, .apply-form, .prod, .about-photo, .final-in").forEach(el => el.classList.add("rv"));
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .04, rootMargin: "0px 0px -40px 0px" });
-document.querySelectorAll(".rv").forEach(el => io.observe(el));
+/* ---------- fundos desfocados: só baixam quando vão aparecer ---------- */
+function showBg(el) { if (el && el.dataset.bg) { el.style.backgroundImage = `url(${el.dataset.bg})`; delete el.dataset.bg } }
+(() => {
+  const els = $$(".mp-bg[data-bg]"); if (!els.length) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { showBg(e.target); io.unobserve(e.target) } }), { rootMargin: "50% 0px" });
+  els.forEach(el => io.observe(el));
+})();
 
-
-/* ---------- carrosséis automáticos ---------- */
-document.querySelectorAll(".slides").forEach(box => {
-  const items = [...box.querySelectorAll(".slide")], ms = +box.dataset.auto || 4000;
-  let i = 0, timer;
+/* ---------- carrosséis ---------- */
+$$(".slides").forEach(box => {
+  const items = $$(".slide", box), ms = +box.dataset.auto || 4000;
+  let i = 0, timer, paused = reduced;
+  items.forEach((s, k) => { s.setAttribute("role", "group"); s.setAttribute("aria-roledescription", "slide"); s.setAttribute("aria-label", `${k + 1} de ${items.length}`) });
   const ui = document.createElement("div"); ui.className = "sl-ui";
-  ui.innerHTML = `<button class="sl-prev" aria-label="Anterior">‹</button><div class="sl-dots">${items.map((_, k) => `<button aria-label="Foto ${k + 1}"></button>`).join("")}</div><span class="sl-count mono"></span><button class="sl-next" aria-label="Próxima">›</button>`;
+  ui.innerHTML = `<button class="sl-prev" type="button" aria-label="Foto anterior">‹</button>
+    <button class="sl-play" type="button" aria-label="${paused ? "Retomar" : "Pausar"} troca automática">${paused ? "▶" : "❚❚"}</button>
+    <div class="sl-dots">${items.map((_, k) => `<button type="button" aria-label="Ir para a foto ${k + 1}"></button>`).join("")}</div>
+    <span class="sl-count mono" aria-hidden="true"></span>
+    <button class="sl-next" type="button" aria-label="Próxima foto">›</button>`;
   const bar = document.createElement("div"); bar.className = "sl-bar"; bar.style.setProperty("--ms", ms + "ms");
   box.append(ui, bar);
-  const dots = [...ui.querySelectorAll(".sl-dots button")];
+  const dots = $$(".sl-dots button", ui), play = $(".sl-play", ui);
+  const schedule = () => { clearTimeout(timer); bar.classList.remove("run"); if (paused) return; void bar.offsetWidth; bar.classList.add("run"); timer = setTimeout(() => go(i + 1), ms) };
   function go(n) {
     i = (n + items.length) % items.length;
-    items.forEach((s, k) => s.classList.toggle("on", k === i));
-    dots.forEach((d, k) => d.classList.toggle("on", k === i));
-    ui.querySelector(".sl-count").textContent = String(i + 1).padStart(2, "0") + " / " + String(items.length).padStart(2, "0");
-    bar.classList.remove("run"); void bar.offsetWidth; bar.classList.add("run");
-    const nx = items[(i + 1) % items.length].querySelector("img"); if (nx) nx.loading = "eager";
-    clearTimeout(timer); timer = setTimeout(() => go(i + 1), ms);
+    items.forEach((s, k) => { s.classList.toggle("on", k === i); s.setAttribute("aria-hidden", k !== i) });
+    dots.forEach((d, k) => d.setAttribute("aria-current", k === i));
+    $(".sl-count", ui).textContent = pad(i + 1) + " / " + pad(items.length);
+    [items[i], items[(i + 1) % items.length]].forEach(s => { const img = $("img", s); if (img) img.loading = "eager"; showBg($(".sl-bg", s)) });
+    schedule();
   }
-  ui.querySelector(".sl-prev").onclick = () => go(i - 1);
-  ui.querySelector(".sl-next").onclick = () => go(i + 1);
+  const setPaused = p => { paused = p; box.classList.toggle("paused", p); play.textContent = p ? "▶" : "❚❚"; play.setAttribute("aria-label", `${p ? "Retomar" : "Pausar"} troca automática`); schedule() };
+  play.onclick = () => setPaused(!paused);
+  $(".sl-prev", ui).onclick = () => go(i - 1);
+  $(".sl-next", ui).onclick = () => go(i + 1);
   dots.forEach((d, k) => d.onclick = () => go(k));
+  box.addEventListener("focusin", () => { clearTimeout(timer); bar.classList.remove("run") });
+  box.addEventListener("focusout", () => schedule());
   let x0 = null;
   box.addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
   box.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); x0 = null });
+  // só roda quando está visível
+  new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) schedule(); else { clearTimeout(timer); bar.classList.remove("run") } })).observe(box);
+  if (paused) box.classList.add("paused");
   go(0);
 });
+
+/* ---------- entrada suave (dispara antes de aparecer na tela) ---------- */
+(() => {
+  if (reduced || !("IntersectionObserver" in window)) return;
+  const els = $$(".sec-head, .event, .board-stage, .podium, .vote-card, .plan, .apply-form, .rev, .drop-form, .how li");
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { rootMargin: "0px 0px 20% 0px" });
+  els.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight * 1.2) return; el.classList.add("rv"); io.observe(el) });
+  // ao entrar por âncora, mostra tudo o que está acima
+  addEventListener("hashchange", () => $$(".rv:not(.in)").forEach(el => { if (el.getBoundingClientRect().top < innerHeight * 1.5) el.classList.add("in") }));
+})();
