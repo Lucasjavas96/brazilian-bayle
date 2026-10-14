@@ -155,13 +155,14 @@ ${body.trim()}
 `;
 }
 
-// imagens: srcset 800/1600 automático e fundos (style background) só quando aparecem
+// imagens: srcset 800/1600 automático e fundos desfocados leves
 function optimize(html) {
   html = html.replace(/<img([^>]*?) src="\/assets\/([\w-]+)-1600\.webp"(?![^>]*srcset)([^>]*)>/g, (m, a, name, z) =>
     fs.existsSync(path.join(ROOT, "assets", name + "-800.webp"))
       ? `<img${a} src="/assets/${name}-1600.webp" srcset="/assets/${name}-800.webp 800w, /assets/${name}-1600.webp 1600w" sizes="(min-width:1024px) calc(100vw - 260px), 100vw"${z}>`
       : m);
-  html = html.replace(/class="(sl-bg|mp-bg)"( aria-hidden="true")? style="background-image:url\(([^)]+)\)"/g, (m, c, h, u) => `class="${c}"${h || ""} data-bg="${u}"`);
+  // fundos desfocados: usa a miniatura de 48px já desfocada (≈350 bytes) em vez de desfocar no navegador
+  html = html.replace(/(class="(?:sl-bg|mp-bg|drop-bg)"(?: aria-hidden="true")? style="background-image:url\(\/assets\/[\w-]+?)-(?:800|1600)\.webp\)"/g, '$1-blur.webp)"');
   return html;
 }
 

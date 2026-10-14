@@ -32,7 +32,7 @@ let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textCont
 
 /* ---------- faixa ---------- */
 (() => {
-  const el = $("#ticker"); if (!el) return;
+  const el = $("#ticker"); if (!el || !matchMedia("(min-width:1024px)").matches) return;
   const t = ["After do Solomun · 31.10", "BRB Clubbers · R$15/mês", "Temporada 2026 · Carnaval a Carnaval", "Só DJs brasileiros",
     "Os 5 melhores tocam na Final", "Avalie a performance dos DJs", "A pista é nossa"];
   el.innerHTML = [...t, ...t].map(x => `<span>${x}</span>`).join("");
@@ -333,12 +333,14 @@ $$(".slides").forEach(box => {
   go(0);
 });
 
-/* ---------- entrada suave (dispara antes de aparecer na tela) ---------- */
+/* ---------- entrada suave (sem medir a página antes: só esconde o que o observador diz estar fora da tela) ---------- */
 (() => {
   if (reduced || !("IntersectionObserver" in window)) return;
-  const els = $$(".sec-head, .event, .board-stage, .podium, .vote-card, .plan, .apply-form, .rev, .drop-form, .how li");
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { rootMargin: "0px 0px 20% 0px" });
-  els.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight * 1.2) return; el.classList.add("rv"); io.observe(el) });
-  // ao entrar por âncora, mostra tudo o que está acima
-  addEventListener("hashchange", () => $$(".rv:not(.in)").forEach(el => { if (el.getBoundingClientRect().top < innerHeight * 1.5) el.classList.add("in") }));
+  const els = $(".sec-head, .event, .board-stage, .vote-card, .plan, .apply-form, .rev, .drop-form, .how li");
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) }
+    else if (e.boundingClientRect.top > 0 && !e.target.classList.contains("rv")) e.target.classList.add("rv");
+  }), { rootMargin: "0px 0px 20% 0px" });
+  els.forEach(el => io.observe(el));
+  addEventListener("hashchange", () => $(".rv:not(.in)").forEach(el => el.classList.add("in")));
 })();
