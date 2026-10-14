@@ -336,11 +336,11 @@ $$(".slides").forEach(box => {
 /* ---------- entrada suave (sem medir a página antes: só esconde o que o observador diz estar fora da tela) ---------- */
 (() => {
   if (reduced || !("IntersectionObserver" in window)) return;
-  const els = $(".sec-head, .event, .board-stage, .vote-card, .plan, .apply-form, .rev, .drop-form, .how li");
+  const els = $$(".sec-head, .event, .board-stage, .vote-card, .plan, .apply-form, .rev, .drop-form, .how li");
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) }
     else if (e.boundingClientRect.top > 0 && !e.target.classList.contains("rv")) e.target.classList.add("rv");
   }), { rootMargin: "0px 0px 20% 0px" });
   els.forEach(el => io.observe(el));
-  addEventListener("hashchange", () => $(".rv:not(.in)").forEach(el => el.classList.add("in")));
+  addEventListener("hashchange", () => $$(".rv:not(.in)").forEach(el => el.classList.add("in")));
 })();
