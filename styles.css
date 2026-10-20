@@ -807,3 +807,21 @@ button:active,.btn:active{transform:scale(.98)}
 @media(prefers-reduced-motion:reduce){:is(.btn,button:not(.burger)):after{animation:none;transform:none;opacity:.25}}
 .mbar-logo img{content:normal}
 .mbar .burger{background-image:url('/assets/menu-penas-refletivas.png');background-size:contain}
+
+/* Reflexo luminoso contínuo sobre todos os botões. */
+:is(.btn,button:not(.burger)){isolation:isolate;overflow:hidden}
+:is(.btn,button:not(.burger)):after{
+  content:"";position:absolute;inset:-90% -100%;z-index:1;pointer-events:none;
+  background:linear-gradient(112deg,transparent 38%,rgba(255,255,255,.08) 43%,rgba(255,255,255,.72) 48%,rgba(255,255,255,.95) 50%,rgba(255,255,255,.22) 54%,transparent 60%);
+  mix-blend-mode:screen;filter:blur(.5px);
+  animation:button-light-sweep 3.8s cubic-bezier(.25,.5,.5,1) infinite;
+}
+.btn{box-shadow:inset 0 2px 2px rgba(255,255,255,.65),inset 0 -1px 2px rgba(255,255,255,.2),0 0 12px rgba(255,255,255,.1),0 8px 24px rgba(0,0,0,.24)}
+:is(.btn,button:not(.burger)):hover:after{animation-duration:2.4s}
+@keyframes button-light-sweep{
+  0%,12%{transform:translateX(-48%);opacity:0}
+  20%{opacity:.9}
+  63%{opacity:.9}
+  75%,100%{transform:translateX(48%);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){:is(.btn,button:not(.burger)):after{animation:none;transform:none;opacity:.2}}
