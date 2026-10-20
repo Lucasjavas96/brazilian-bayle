@@ -23,7 +23,6 @@
   <div class="hero-media">
     <img class="hero-video hero-poster" src="/assets/hero-dj-poster-800.webp" alt="" fetchpriority="high" width="720" height="1280">
     <video class="hero-video" id="heroVideo" src="/assets/hero-dj.mp4" poster="/assets/hero-dj-poster-800.webp" autoplay muted loop playsinline preload="metadata" aria-label="DJ com a camisa amarela do Brasil tocando para a pista"></video>
-    <button class="media-pause" id="heroPause" aria-label="Pausar vídeo" aria-pressed="false"><span aria-hidden="true">❚❚</span></button>
     <a href="#after" class="hero-date">
       <b>31.10</b>
       <span class="mono">Próximo<br>After do Solomun</span>
@@ -119,12 +118,18 @@
 
 <!-- CLUBE -->
 <section class="sec dark club-teaser" aria-labelledby="t-clube">
+  <div class="club-scenes" aria-hidden="true">
+    <img src="/assets/real-after-1-1600.webp" alt="" loading="lazy">
+    <img src="/assets/real-after-5-1600.webp" alt="" loading="lazy">
+    <img src="/assets/real-galera-1600.webp" alt="" loading="lazy">
+  </div>
+  <button class="media-pause club-motion" aria-label="Pausar imagens do clube" aria-pressed="false"><span aria-hidden="true">❚❚</span></button>
   <div class="wrap club-grid">
     <div>
       <p class="mono gold">BRB Clubbers · R$15/mês</p>
       <h2 class="display" id="t-clube">Um clube para <em>poucos</em></h2>
       <p class="dim">O network da Brazilian Bayle: afters fechados, experiências privadas, voto com peso 3 no ranking e uma coluna no Portal dos Críticos. Todo candidato passa por seleção.</p>
-      <a href="/clube" class="btn btn-gold">Conhecer o clube</a>
+      <a href="/clube#experiencias" class="btn btn-gold">Conhecer o clube</a>
     </div>
     <div class="club-card-wrap">
       <div class="club-card" data-tilt>

@@ -80,9 +80,9 @@ ${jsonld}
 
 <!-- barra do celular -->
 <div class="mbar">
+  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
   <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/logo.webp" alt="" width="66" height="44"></a>
   <p class="mbar-tag">A pista é <em>nossa.</em></p>
-  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
 </div>
 
 <!-- menu lateral fixo -->

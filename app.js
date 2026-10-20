@@ -32,7 +32,7 @@ let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textCont
 
 /* ---------- faixa ---------- */
 (() => {
-  const el = $("#ticker"); if (!el || !matchMedia("(min-width:1024px)").matches) return;
+  const el = $("#ticker"); if (!el) return;
   const t = ["After do Solomun · 31.10", "BRB Clubbers · R$15/mês", "Temporada 2026 · Carnaval a Carnaval", "Só DJs brasileiros",
     "Os 5 melhores tocam na Final", "Avalie a performance dos DJs", "A pista é nossa"];
   el.innerHTML = [...t, ...t].map(x => `<span>${x}</span>`).join("");
@@ -40,15 +40,25 @@ let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textCont
 
 /* ---------- vídeo do topo ---------- */
 (() => {
-  const v = $("#heroVideo"), b = $("#heroPause"); if (!v) return;
-  if (reduced) { v.removeAttribute("autoplay"); v.pause(); b.setAttribute("aria-pressed", "true"); b.setAttribute("aria-label", "Tocar vídeo") }
-  b.onclick = () => {
-    const paused = !v.paused; paused ? v.pause() : v.play();
-    b.setAttribute("aria-pressed", paused); b.setAttribute("aria-label", paused ? "Tocar vídeo" : "Pausar vídeo");
-  };
+  const v = $("#heroVideo"); if (!v) return;
+  v.muted = true; v.defaultMuted = true; v.loop = true; v.controls = false;
+  v.disablePictureInPicture = true;
+  v.play().catch(() => {});
 })();
 
 /* ---------- contagem regressiva ---------- */
+document.querySelectorAll('.club-motion').forEach(button => {
+  const section = button.closest('.club-teaser');
+  const setPaused = paused => {
+    section.classList.toggle('paused', paused);
+    button.setAttribute('aria-pressed', String(paused));
+    button.setAttribute('aria-label', paused ? 'Reproduzir imagens do clube' : 'Pausar imagens do clube');
+  };
+  setPaused(reduced);
+  button.hidden = reduced;
+  button.addEventListener('click', () => setPaused(!section.classList.contains('paused')));
+});
+
 (() => {
   if (!$("#cdD")) return;
   const AFTER = new Date("2026-10-31T23:00:00-03:00").getTime();
@@ -343,4 +353,37 @@ $$(".slides").forEach(box => {
   }), { rootMargin: "0px 0px 20% 0px" });
   els.forEach(el => io.observe(el));
   addEventListener("hashchange", () => $$(".rv:not(.in)").forEach(el => el.classList.add("in")));
+})();
+
+/* Revelação progressiva em todas as páginas; mantém em e links dos títulos. */
+(() => {
+  if (reduced || !('IntersectionObserver' in window)) return;
+  const headings = [...document.querySelectorAll('main h1, main h2, main h3, .foot-title')];
+  headings.forEach(heading => {
+    const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+    const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+    let index = 0;
+    nodes.forEach(node => {
+      const fragment = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(part => {
+        if (!part.trim()) { fragment.append(document.createTextNode(part)); return; }
+        const word = document.createElement('span');
+        word.className = 'reveal-word'; word.textContent = part;
+        word.style.setProperty('--word-delay', `${index++ * 85}ms`);
+        fragment.append(word);
+      });
+      node.replaceWith(fragment);
+    });
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add(entry.target.matches('section') ? 'section-visible' : 'words-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -35px 0px' });
+  document.querySelectorAll('main > section:not(:first-child)').forEach(section => {
+    section.classList.add('section-reveal'); observer.observe(section);
+  });
+  headings.forEach(heading => observer.observe(heading));
 })();
