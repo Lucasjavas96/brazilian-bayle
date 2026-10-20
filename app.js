@@ -104,10 +104,19 @@ const meter = v => { const full = Math.floor(v), half = v - full >= .5; return `
 const pad = n => String(n).padStart(2, "0");
 
 /* ---------- pódio ---------- */
+function rankAward(position) {
+  if (position > 3) return '';
+  const label = position === 1 ? 'Coroa do primeiro colocado' : `Medalha de ${position === 2 ? 'prata' : 'bronze'}`;
+  const shape = position === 1
+    ? '<path d="M3 7l5 4 4-7 4 7 5-4-2 12H5L3 7z"/><path d="M6 22h12" fill="none" stroke="currentColor" stroke-width="2"/>'
+    : '<path d="M6 2h5l2 7-5 2-2-9zm12 0h-5l-2 7 5 2 2-9z" opacity=".65"/><circle cx="12" cy="15" r="7"/><circle cx="12" cy="15" r="5" fill="none" stroke="#000" stroke-opacity=".3"/><text x="12" y="18" text-anchor="middle" fill="#141414" font-size="9" font-family="sans-serif" font-weight="700">' + position + '</text>';
+  return `<svg class="rank-award" viewBox="0 0 24 24" role="img" aria-label="${label}" fill="currentColor">${shape}</svg>`;
+}
 function renderPodium() {
   const el = $("[data-podium]"); if (!el) return;
   el.innerHTML = table().slice(0, 3).map(d => `
     <div class="pod p${d.pos}">
+      ${rankAward(d.pos)}
       <p class="pod-name">${d.name}</p><p class="pod-style mono">${d.style}</p>
       <p class="led" aria-label="nota ${fmt2(d.nota)}">${fmt2(d.nota)}</p>
       <div class="pod-block"><div class="top" aria-hidden="true"></div><div class="face"><span class="num3d" aria-label="${d.pos}º lugar">${pad(d.pos)}</span></div></div>
@@ -142,7 +151,7 @@ function mountBoard(stage) {
     $("tbody", stage).innerHTML = list.map(d => {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
-        <td class="b-pos"><span class="num3d">${pad(d.pos)}</span></td>
+        <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
         <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}<b>${d.name}</b>${mv}<span class="mono">${d.style}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
         <td class="b-score"><span class="led">${fmt2(d.nota)}</span></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}

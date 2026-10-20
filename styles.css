@@ -965,3 +965,33 @@ button:active,.btn:active{transform:scale(.98)}
 .club-card-motion img{display:block;width:100%;height:auto;object-fit:contain}
 .club-card-wrap:has(.club-card-motion){perspective:none;padding:0;min-width:0}
 .board tr:is([data-rank="1"],[data-rank="2"],[data-rank="3"]) .b-dj b{font-size:17px;font-weight:700}
+.mbar .mbar-logo{display:flex;align-items:center;justify-content:center;width:58px;height:58px}
+.mbar .mbar-logo img{content:normal;width:42px;height:56px;object-fit:contain;object-position:center}
+
+/* Insígnias e luz percorrendo apenas a borda do top 3. */
+@property --medal-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+.rank-award{display:block;width:24px;height:24px;color:var(--metal,#d7b76a);margin:0 auto 7px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.pod>.rank-award{width:28px;height:28px;margin-bottom:12px}
+.board tbody tr:is([data-rank="1"],[data-rank="2"],[data-rank="3"]),.pod{position:relative}
+.board tbody tr:is([data-rank="1"],[data-rank="2"],[data-rank="3"]):before,.pod:before{
+  content:'';position:absolute;inset:0;z-index:2;padding:1.5px;border-radius:12px;pointer-events:none;
+  background:conic-gradient(from var(--medal-angle),transparent 0deg,transparent 230deg,var(--metal) 275deg,#fff 286deg,var(--metal) 297deg,transparent 330deg);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;
+  animation:medal-border-orbit 4s linear infinite;
+}
+.board tbody tr[data-rank="2"]:before,.pod.p2:before{animation-delay:-1.3s}
+.board tbody tr[data-rank="3"]:before,.pod.p3:before{animation-delay:-2.6s}
+@keyframes medal-border-orbit{to{--medal-angle:360deg}}
+.club-card-motion{max-width:360px}
+@media(max-width:600px){.club-card-motion{max-width:300px}}
+@media(prefers-reduced-motion:reduce){.board tbody tr:before,.pod:before{animation:none!important}}
+
+/* Penas brancas no menu sobre a barra preta. */
+.mbar .burger{filter:brightness(0) invert(1)}
+
+/* Penas brancas peroladas com os reflexos originais da imagem. */
+.mbar .burger{background-image:url('/assets/menu-penas-brancas-refletivas.png');background-size:contain;background-position:center;background-repeat:no-repeat;filter:none}
+
+/* Três penas finas no mesmo espaço do menu anterior (58 × 48 px). */
+.mbar .burger{background-image:url('/assets/menu-tres-penas-brancas.png');background-size:contain;filter:none}

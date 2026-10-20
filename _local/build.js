@@ -81,7 +81,7 @@ ${jsonld}
 <!-- barra do celular -->
 <div class="mbar">
   <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
-  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/logo-original-transparente.png" alt="" width="78" height="52"></a>
+  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
   <p class="mbar-tag">A pista é <em>nossa.</em></p>
 </div>
 
