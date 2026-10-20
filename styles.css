@@ -995,3 +995,33 @@ button:active,.btn:active{transform:scale(.98)}
 
 /* Três penas finas no mesmo espaço do menu anterior (58 × 48 px). */
 .mbar .burger{background-image:url('/assets/menu-tres-penas-brancas.png');background-size:contain;filter:none}
+
+/* Manifesto / galeria em arco, adaptada ao site estático. */
+.manifesto-arc{background:#000;color:#fff;padding:30px 0 clamp(64px,8vw,110px);overflow:hidden}
+.memory-arc{position:relative;width:min(100%,1160px);height:500px;margin:0 auto;isolation:isolate}
+.memory-card{position:absolute;left:calc(50% + var(--memory-x,0px));bottom:var(--memory-y,0px);width:var(--memory-width,240px);transform:translate(-50%,50%);text-decoration:none;z-index:var(--memory-layer,1);outline-offset:6px}
+.memory-card figure{background:#151515;border:1px solid rgba(255,255,255,.2);padding:7px;border-radius:16px;box-shadow:0 16px 45px rgba(0,0,0,.45);transform:rotate(var(--memory-rotation,0deg));transition:transform .35s ease,border-color .35s ease}
+.memory-card img{display:block;width:100%;height:auto;border-radius:10px;object-fit:contain}
+.memory-card figcaption{padding:10px 3px 4px;font-size:10px;line-height:1.5;color:#b2b2ad;text-align:center;font-family:'Inter Tight',sans-serif}
+.memory-card:hover figure,.memory-card:focus-visible figure{transform:rotate(0deg) translateY(-8px) scale(1.04);border-color:rgba(255,212,0,.5)}
+.memory-card:hover,.memory-card:focus-visible{z-index:5}
+.memory-arc[data-ready="true"] .memory-card{opacity:0;transform:translate(-50%,calc(50% + 22px));transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--memory-delay,0ms)}
+.memory-arc.is-visible .memory-card{opacity:1;transform:translate(-50%,50%)}
+.manifesto-copy{width:min(100% - 40px,720px);margin:8px auto 0;text-align:center;container-type:inline-size}
+.manifesto-copy .manifesto-eyebrow{color:var(--gold);font-size:10px;letter-spacing:.12em;line-height:1.7;margin-bottom:20px}
+.manifesto-copy h2.display{font-size:clamp(30px,6.2vw,66px);line-height:1.1;letter-spacing:-.035em;margin-bottom:28px;text-wrap:balance}
+.manifesto-copy h2 em{color:var(--y)}
+.manifesto-copy>p:not(.mono){font-size:clamp(16px,1.3vw,18px);line-height:1.85;color:#bdbdb7;max-width:590px;margin:0 auto 20px}
+.manifesto-copy>p.manifesto-signature{color:#fff;font-weight:600;margin-top:26px}
+.manifesto-link{display:inline-flex;gap:22px;align-items:center;font-size:12px;text-decoration:none;color:var(--y);padding:10px 0;border-bottom:1px solid rgba(255,212,0,.4);margin-top:12px}
+.manifesto-link:hover{border-color:var(--y)}
+@media(max-width:600px){
+  .manifesto-arc{padding-top:24px}
+  .memory-card figure{padding:4px;border-radius:10px}
+  .memory-card img{border-radius:6px}
+  .memory-card figcaption{display:none}
+  .manifesto-copy{margin-top:24px}
+  .manifesto-copy h2.display{font-size:clamp(28px,7.8vw,42px);margin-bottom:24px}
+  .manifesto-copy .manifesto-eyebrow{font-size:9px;letter-spacing:.06em;max-width:280px;margin:0 auto 18px}
+}
+@media(prefers-reduced-motion:reduce){.memory-arc[data-ready="true"] .memory-card{opacity:1;transform:translate(-50%,50%);transition:none}.memory-card figure{transition:none}}

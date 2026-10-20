@@ -417,3 +417,31 @@ $$(".slides").forEach(box => {
   document.querySelector('[data-campaign-prev]')?.addEventListener('click',()=>show(-1));
   document.querySelector('[data-campaign-next]')?.addEventListener('click',()=>show(1));
 })();
+
+/* Géométrie responsive de l'arc: mêmes photos, sans dépendance React. */
+(() => {
+  const arc=document.querySelector('[data-memory-arc]');if(!arc)return;
+  const cards=[...arc.querySelectorAll('.memory-card')];let previousWidth=0;
+  const layout=()=>{
+    const width=arc.clientWidth;if(width===previousWidth)return;previousWidth=width;
+    const small=width<600;
+    const radius=Math.min(350,width*.32);
+    const cardWidth=Math.min(310,width*(small?.34:.29));
+    const portraitWidth=cardWidth*.82;
+    arc.style.height=`${Math.ceil(radius+portraitWidth*1.2*.55+38)}px`;
+    cards.forEach((card,i)=>{
+      const angle=(145-(110/(Math.max(cards.length,2)-1))*i)*Math.PI/180;
+      card.style.setProperty('--memory-x',`${Math.cos(angle)*radius}px`);
+      card.style.setProperty('--memory-y',`${Math.sin(angle)*radius}px`);
+      card.style.setProperty('--memory-width',`${card.classList.contains('memory-portrait')?portraitWidth:cardWidth}px`);
+      card.style.setProperty('--memory-rotation',`${(i-1)*11}deg`);
+      card.style.setProperty('--memory-delay',`${i*140}ms`);
+      card.style.setProperty('--memory-layer',String(i===1?3:1));
+    });
+  };
+  layout();if('ResizeObserver' in window)new ResizeObserver(layout).observe(arc);else addEventListener('resize',layout);
+  if(!reduced&&'IntersectionObserver' in window){
+    arc.dataset.ready='true';
+    const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){arc.classList.add('is-visible');io.disconnect()}},{threshold:.1});io.observe(arc);
+  }else arc.classList.add('is-visible');
+})();
