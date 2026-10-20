@@ -52,9 +52,9 @@ function layout(meta, body) {
 <link rel="canonical" href="${url}">
 ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <meta name="theme-color" content="#FFD400">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand-icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/brand-icon-192.png">
+<link rel="apple-touch-icon" href="/assets/brand-icon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Brazilian Bayle">
 <meta property="og:locale" content="pt_BR">
@@ -81,7 +81,7 @@ ${jsonld}
 <!-- barra do celular -->
 <div class="mbar">
   <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
-  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/logo.webp" alt="" width="66" height="44"></a>
+  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/logo-original-transparente.png" alt="" width="78" height="52"></a>
   <p class="mbar-tag">A pista é <em>nossa.</em></p>
 </div>
 

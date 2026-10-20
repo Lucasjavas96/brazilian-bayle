@@ -387,3 +387,24 @@ $$(".slides").forEach(box => {
   });
   headings.forEach(heading => observer.observe(heading));
 })();
+
+/* Busca, categorias e ordenação do catálogo. */
+(() => {
+  const grid=document.querySelector('.shop-products'); if(!grid)return;
+  const products=[...grid.querySelectorAll('.shop-product')];
+  const search=document.querySelector('#shopSearch'), sort=document.querySelector('#shopSort');
+  let category='Todos';
+  const update=()=>{
+    const query=search.value.trim().toLocaleLowerCase('pt-BR');
+    const ordered=[...products].sort((a,b)=>sort.value==='low'?Number(a.dataset.price)-Number(b.dataset.price):sort.value==='high'?Number(b.dataset.price)-Number(a.dataset.price):sort.value==='name'?a.dataset.name.localeCompare(b.dataset.name,'pt-BR'):products.indexOf(a)-products.indexOf(b));
+    let count=0; ordered.forEach(product=>{product.hidden=!((category==='Todos'||product.dataset.category===category)&&product.dataset.name.includes(query));if(!product.hidden)count++;grid.append(product)});
+    document.querySelector('#shopCount').textContent=`${count} ${count===1?'peça':'peças'}`;
+    document.querySelector('.shop-empty').hidden=count!==0;
+  };
+  search.addEventListener('input',update);sort.addEventListener('change',update);
+  document.querySelectorAll('[data-shop-category]').forEach(link=>link.addEventListener('click',()=>{category=link.dataset.shopCategory;document.querySelectorAll('[data-shop-category]').forEach(a=>a.removeAttribute('aria-current'));link.setAttribute('aria-current','true');update()}));
+  const slides=[...document.querySelectorAll('.shop-campaign-slide')];let index=0;
+  const show=offset=>{index=(index+offset+slides.length)%slides.length;slides.forEach((slide,i)=>slide.hidden=i!==index);document.querySelector('[data-campaign-count]').textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`};
+  document.querySelector('[data-campaign-prev]')?.addEventListener('click',()=>show(-1));
+  document.querySelector('[data-campaign-next]')?.addEventListener('click',()=>show(1));
+})();
