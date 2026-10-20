@@ -445,3 +445,40 @@ $$(".slides").forEach(box => {
     const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){arc.classList.add('is-visible');io.disconnect()}},{threshold:.1});io.observe(arc);
   }else arc.classList.add('is-visible');
 })();
+
+/* Galeria 3D: movimento por frame, com amortecimento curto e transforms. */
+(() => {
+  const gallery=document.querySelector('[data-unfurl-gallery]');if(!gallery)return;
+  const pin=gallery.querySelector('.unfurl-pin'),panel=gallery.querySelector('.unfurl-window'),matrix=gallery.querySelector('.unfurl-matrix'),columns=[...gallery.querySelectorAll('.unfurl-column')],hint=gallery.querySelector('.unfurl-hint');
+  let frame=0,lastTime=0,current=null,top=64,travel=1,measurePending=true;
+  const clamp=n=>Math.max(0,Math.min(1,n));
+  gallery.classList.add('unfurl-active');
+  const paint=p=>{
+    const opening=clamp(p/.18);
+    panel.style.transform='translateZ(0) scale('+(0.94+opening*.06)+','+(0.9+opening*.1)+')';
+    panel.style.borderRadius=(24*(1-opening))+'px';
+    matrix.style.transform='translate3d(0,0,'+(-380*(1-p))+'px) rotateX('+(16-12*p)+'deg) rotateY('+(-30+24*p)+'deg) rotateZ('+(9-7*p)+'deg)';
+    columns.forEach((column,i)=>{const from=[0,-24,0,-20][i],to=[-26,2,-26,5][i];column.style.transform='translate3d(0,'+(from+(to-from)*p)+'%,0)'});
+    hint.style.opacity=String(1-clamp(p/.1));
+  };
+  const tick=time=>{
+    frame=0;
+    if(measurePending){top=parseFloat(getComputedStyle(pin).top)||64;travel=Math.max(1,gallery.offsetHeight-pin.offsetHeight);measurePending=false}
+    const rect=gallery.getBoundingClientRect();
+    const target=clamp((top-rect.top)/travel);
+    const dt=lastTime?Math.min((time-lastTime)/1000,.05):1/60;
+    if(current===null||Math.abs(target-current)>.45)current=target;
+    else current+=(target-current)*(1-Math.exp(-24*dt));
+    lastTime=time;
+    if(Math.abs(target-current)<.00015)current=target;
+    paint(current);
+    if(current!==target)frame=requestAnimationFrame(tick);else lastTime=0;
+  };
+  const schedule=()=>{if(!frame)frame=requestAnimationFrame(tick)};
+  const resize=()=>{measurePending=true;schedule()};
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',resize,{passive:true});
+  addEventListener('hashchange',resize);
+  if('ResizeObserver' in window)new ResizeObserver(resize).observe(gallery);
+  schedule();
+})();
