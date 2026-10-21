@@ -15,9 +15,11 @@ const YEAR = 2026;
 const NAV = [
   ["ranking", "/ranking", "Ranking"],
   ["votar", "/ranking#votar", "Avaliar DJs"],
+  ["djpedia", "/djpedia", "DJpedia"],
+  ["agenda", "/agenda", "Agenda"],
   ["clube", "/clube", "BRB Clubbers"],
   ["criticos", "/criticos", "Críticos"],
-  ["galeria", "/#galera", "Galeria"],
+  ["galeria", "/galeria", "Galeria"],
   ["loja", "/loja", "Loja"],
 ];
 
@@ -195,6 +197,90 @@ for (const f of pages) {
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, html);
   if (!meta.noindex) urls.push(meta.path);
+}
+
+/* ---------- DJpedia: índice A–Z e um verbete por DJ (dados em src/data) ---------- */
+const slugify = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const ini = s => s.replace(/[^A-Za-zÀ-ÿ ]/g, "").split(/\s+/).filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+const DJLIST = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/djs.json"), "utf8"));
+const PROFILES = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/djpedia.json"), "utf8")).map(p => [p.slug, p]));
+const writePage = (rel, meta, body) => {
+  const out = path.join(OUT, rel + ".html");
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, optimize(layout(meta, body)));
+  if (!meta.noindex) urls.push(meta.path);
+};
+{
+  fs.rmSync(path.join(OUT, "djpedia"), { recursive: true, force: true });
+  const sorted = [...DJLIST].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
+  const letterOf = n => n.normalize("NFD").replace(/[̀-ͯ]/g, "")[0].toUpperCase();
+  const groups = {};
+  sorted.forEach(d => (groups[letterOf(d.nome)] ||= []).push(d));
+  const letters = Object.keys(groups);
+  const done = sorted.filter(d => PROFILES[slugify(d.nome)]).length;
+  writePage("djpedia", {
+    path: "/djpedia", nav: "djpedia", title: "DJpedia · Conheça os DJs",
+    description: "A enciclopédia dos DJs brasileiros do ranking da Brazilian Bayle: história, origem, estilo e referências musicais de cada artista, em ordem alfabética.",
+  }, `
+<section class="sec dark page-head wiki" aria-labelledby="t-wiki">
+  <div class="wrap">
+    <p class="mono y">DJpedia · ${sorted.length} DJs · ${done} verbetes publicados</p>
+    <h1 class="display" id="t-wiki">Conheça os <em>DJs</em></h1>
+    <p class="lead dim">A enciclopédia da pista brasileira. De onde cada DJ veio, como começou, o que toca e quem influenciou o som. Toque no nome para abrir o verbete.</p>
+    <nav class="az" aria-label="Letras">${letters.map(l => `<a href="#letra-${l}">${l}</a>`).join("")}</nav>
+    <div class="wiki-list">
+      ${letters.map(l => `<section class="wiki-letter" id="letra-${l}" aria-labelledby="h-${l}">
+        <h2 class="wiki-l" id="h-${l}">${l}</h2>
+        <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s];
+          return `<li id="${s}">${p ? `<a class="wiki-item" href="/djpedia/${s}">` : `<div class="wiki-item is-soon">`}
+            <span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>
+            <span class="wiki-name">${d.nome}</span>
+            <span class="wiki-meta">${p ? (p.origem ? p.origem + " · " : "") : ""}${d.estilo}</span>
+            <span class="wiki-status mono">${p ? "Ler verbete →" : "Verbete em breve"}</span>
+          ${p ? "</a>" : "</div>"}</li>` }).join("")}</ul>
+      </section>`).join("")}
+    </div>
+    <p class="example-note mono">Os verbetes são escritos a partir de fontes públicas, listadas no fim de cada página.</p>
+  </div>
+</section>`);
+
+  const list = arr => (arr || []).filter(Boolean);
+  for (const d of sorted) {
+    const s = slugify(d.nome), p = PROFILES[s]; if (!p) continue;
+    const box = [["Nome", p.nome_civil], ["Nascimento", p.nascimento], ["Origem", p.origem], ["Estilos", list(p.estilos).join(", ")],
+      ["Em atividade", p.ativo_desde ? `desde ${p.ativo_desde}` : ""], ["Selos", list(p.gravadoras).join(", ")]].filter(([, v]) => v);
+    const sec = (id, title, html) => html ? `<section class="wiki-sec" aria-labelledby="${id}"><h2 id="${id}">${title}</h2>${html}</section>` : "";
+    const ul = arr => list(arr).length ? `<ul>${list(arr).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
+    writePage(`djpedia/${s}`, {
+      path: `/djpedia/${s}`, nav: "djpedia", title: `${p.nome} · DJpedia`,
+      description: (p.resumo || `${p.nome}, DJ brasileiro de ${d.estilo}.`).slice(0, 158),
+      jsonld: [{ "@context": "https://schema.org", "@type": "Person", name: p.nome, alternateName: p.nome_civil || undefined, jobTitle: "DJ e produtor musical", nationality: "Brasil", genre: list(p.estilos), sameAs: list((p.fontes || []).map(f => f.url)).slice(0, 3) }],
+    }, `
+<article class="sec paper page-head wiki-article" aria-labelledby="t-dj">
+  <div class="wrap">
+    <nav class="crumbs mono" aria-label="Você está em"><a href="/djpedia">DJpedia</a> <span aria-hidden="true">›</span> ${esc(p.nome)}</nav>
+    <div class="wiki-grid">
+      <div class="wiki-main">
+        <p class="mono g">Verbete · ${esc(d.estilo)}</p>
+        <h1 class="display" id="t-dj">${esc(p.nome)}</h1>
+        <p class="lead">${esc(p.resumo || "")}</p>
+        ${sec("h-hist", "História", list(p.historia).map(x => `<p>${esc(x)}</p>`).join(""))}
+        ${sec("h-ref", "Referências musicais", ul(p.referencias_musicais))}
+        ${sec("h-faixas", "Faixas marcantes", ul(p.faixas_marcantes))}
+        ${sec("h-marcos", "Marcos da carreira", ul(p.marcos))}
+        ${sec("h-fontes", "Fontes", list(p.fontes).length ? `<ol class="wiki-src">${p.fontes.map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.titulo)}</a></li>`).join("")}</ol>` : "")}
+        <p class="example-note mono">Verbete de demonstração da DJpedia · última revisão: outubro de 2026</p>
+      </div>
+      <aside class="wiki-box" aria-label="Ficha de ${esc(p.nome)}">
+        <div class="wiki-box-head"><span class="ge-badge" aria-hidden="true">${ini(p.nome)}</span><b>${esc(p.nome)}</b></div>
+        <dl>${box.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+        <a class="btn btn-k" href="/ranking#votar">Avaliar ${esc(p.nome)}</a>
+        <a class="link-arrow mono" href="/ranking">Ver no ranking →</a>
+      </aside>
+    </div>
+  </div>
+</article>`);
+  }
 }
 
 copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));

@@ -596,36 +596,92 @@ $$(".slides").forEach(box => {
   }else arc.classList.add('is-visible');
 })();
 
-/* Fotos com swipe nativo: não captura nem prende a rolagem da página. */
+/* Galeria radial: a roda de fotos gira com o arraste para os lados (dedo, mouse ou trackpad).
+   A rolagem vertical da página fica livre. */
 (() => {
-  const gallery = document.querySelector('[data-radial-gallery]'); if (!gallery) return;
-  const track = gallery.querySelector('.radial-wheel'), items = [...track.children];
-  track.tabIndex = 0;
-  track.setAttribute('aria-label', 'Fotos da comunidade. Deslize para os lados ou use as setas.');
-  const controls = document.createElement('div'); controls.className = 'gallery-controls';
-  controls.innerHTML = '<button type="button" class="btn btn-line" data-gallery-prev aria-label="Foto anterior">←</button><span class="mono" data-gallery-count aria-live="polite"></span><button type="button" class="btn btn-line" data-gallery-next aria-label="Próxima foto">→</button>';
+  const gallery = document.querySelector("[data-radial-gallery]"); if (!gallery) return;
+  const win = gallery.querySelector(".radial-window"), wheel = gallery.querySelector(".radial-wheel"), items = [...wheel.children];
+  const n = items.length, step = 360 / n;
+  gallery.classList.add("radial-active");
+  win.tabIndex = 0;
+  win.setAttribute("role", "region");
+  win.setAttribute("aria-roledescription", "galeria em roda");
+  win.setAttribute("aria-label", "Fotos da comunidade. Arraste para os lados ou use as setas do teclado para girar.");
+  const controls = document.createElement("div"); controls.className = "gallery-controls";
+  controls.innerHTML = '<button type="button" class="btn btn-line-light" data-g-prev aria-label="Foto anterior">←</button><span class="mono" data-g-count aria-live="polite"></span><button type="button" class="btn btn-line-light" data-g-next aria-label="Próxima foto">→</button>';
   gallery.append(controls);
-  const prev = controls.querySelector('[data-gallery-prev]'), next = controls.querySelector('[data-gallery-next]');
-  let index = 0, frame = 0;
-  const update = () => {
-    frame = 0;
-    index = items.reduce((best, item, i) => Math.abs(item.offsetLeft - items[0].offsetLeft - track.scrollLeft) < Math.abs(items[best].offsetLeft - items[0].offsetLeft - track.scrollLeft) ? i : best, 0);
-    controls.querySelector('[data-gallery-count]').textContent = `${String(index + 1).padStart(2,'0')} / ${String(items.length).padStart(2,'0')}`;
-    prev.disabled = track.scrollLeft < 2;
-    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+  const count = controls.querySelector("[data-g-count]");
+  let radius = 550, rot = 0, target = 0, frame = 0, last = 0, front = -1;
+  const render = () => {
+    wheel.style.transform = `translateX(-50%) rotate(${rot}deg)`;
+    const k = ((Math.round(-rot / step) % n) + n) % n;
+    if (k !== front) {
+      front = k;
+      items.forEach((it, i) => it.classList.toggle("is-front", i === k));
+      count.textContent = `${String(k + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}`;
+    }
   };
-  const move = direction => {
-    const target = items[Math.max(0,Math.min(items.length - 1,index + direction))];
-    track.scrollTo({left:target.offsetLeft-items[0].offsetLeft,behavior:reduced?'instant':'smooth'});
+  const layout = () => {
+    radius = innerWidth < 768 ? 300 : 550;
+    wheel.style.setProperty("--radius", radius + "px");
+    items.forEach((item, i) => {
+      const a = i / n * Math.PI * 2 - Math.PI / 2;
+      item.style.transform = `translate(-50%,-50%) translate(${Math.cos(a) * radius}px,${Math.sin(a) * radius}px) rotate(${a * 180 / Math.PI + 90}deg)`;
+    });
+    render();
   };
-  prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
-  track.addEventListener('keydown',event=>{
-    if(event.target!==track || !['ArrowLeft','ArrowRight'].includes(event.key))return;
-    event.preventDefault();move(event.key==='ArrowRight'?1:-1);
+  const tick = t => {
+    const dt = last ? Math.min((t - last) / 1000, .05) : 1 / 60; last = t;
+    rot += (target - rot) * (1 - Math.exp(-10 * dt));
+    if (Math.abs(target - rot) < .02) rot = target;
+    render();
+    if (rot !== target) frame = requestAnimationFrame(tick); else { frame = 0; last = 0 }
+  };
+  const go = () => { if (reduced) { rot = target; render(); return } if (!frame) frame = requestAnimationFrame(tick) };
+  const snap = () => { target = Math.round(target / step) * step; go() };
+  const turn = dir => { target = Math.round(target / step) * step - dir * step; go() };
+  controls.querySelector("[data-g-prev]").onclick = () => turn(-1);
+  controls.querySelector("[data-g-next]").onclick = () => turn(1);
+  win.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") { e.preventDefault(); turn(1) }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); turn(-1) }
   });
-  track.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(update)},{passive:true});
-  if('ResizeObserver' in window)new ResizeObserver(update).observe(track);
-  update();
+
+  // arraste: touch-action pan-y deixa a rolagem vertical com o navegador
+  let down = null, moved = 0, vx = 0, lx = 0, lt = 0;
+  const degPerPx = () => 180 / (Math.PI * radius) * 1.1;
+  win.addEventListener("pointerdown", e => {
+    if (e.button !== 0) return;
+    down = { x: e.clientX, rot: target }; moved = 0; vx = 0; lx = e.clientX; lt = performance.now();
+    win.classList.add("is-dragging");
+  });
+  win.addEventListener("pointermove", e => {
+    if (!down) return;
+    const dx = e.clientX - down.x; moved = Math.max(moved, Math.abs(dx));
+    if (moved > 4 && !win.hasPointerCapture(e.pointerId)) win.setPointerCapture(e.pointerId);
+    const now = performance.now(); vx = (e.clientX - lx) / Math.max(1, now - lt); lx = e.clientX; lt = now;
+    target = down.rot + dx * degPerPx(); go();
+  });
+  const end = () => {
+    if (!down) return; down = null; win.classList.remove("is-dragging");
+    target += vx * 220 * degPerPx(); // impulso do gesto
+    snap();
+  };
+  win.addEventListener("pointerup", end);
+  win.addEventListener("pointercancel", end);
+  win.addEventListener("lostpointercapture", end);
+  // arrastar não abre a foto; um toque simples abre
+  win.addEventListener("click", e => { if (moved > 6) { e.preventDefault(); e.stopPropagation() } }, true);
+  win.addEventListener("dragstart", e => e.preventDefault());
+  // trackpad ou roda lateral do mouse
+  let wt = 0;
+  win.addEventListener("wheel", e => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; // gesto vertical: rolagem normal
+    e.preventDefault(); target -= e.deltaX * degPerPx() * .9; go();
+    clearTimeout(wt); wt = setTimeout(snap, 140);
+  }, { passive: false });
+  addEventListener("resize", layout, { passive: true });
+  layout();
 })();
 
 /* Les deux faces du Clubber entrent séparément. */
@@ -637,3 +693,63 @@ $$(".slides").forEach(box => {
   }),{threshold:.15});
   cards.forEach((card,i)=>{card.classList.add('card-enter');card.style.setProperty('--card-delay',`${i%2*450}ms`);observer.observe(card)});
 })();
+
+/* ---------- tabela no formato do Brasileirão (referência: ge.globo) ---------- */
+const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const initials = s => s.replace(/[^A-Za-zÀ-ÿ ]/g, "").split(/\s+/).filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+const GE_EXTRA = (() => { const r = rnd(7); return Object.fromEntries(DJS.map(([n]) => [n, { festas: 6 + Math.floor(r() * 12), last: Array.from({ length: 5 }, () => r()) }])) })();
+const DJPEDIA = new Set(["vintage-culture", "alok", "mochakk", "anna"]);
+function mountGe(el) {
+  const sortable = el.hasAttribute("data-sortable");
+  const st = { sort: "nota", style: "Todos", last: {} };
+  const cols = [["nota", "Nota", "Nota geral"], ["votos", "Vot", "Votos"], ["festas", "Fes", "Festas avaliadas"],
+    ["som", "Som", "Qualidade do som"], ["harmonia", "Har", "Harmonia do set"], ["energia", "Ene", "Energia e vibe"], ["sofisticacao", "Sof", "Sofisticação e inovação"]];
+  el.innerHTML = `<div class="ge-card">
+    <div class="ge-scroll" tabindex="0" role="region" aria-label="Tabela de classificação, deslize para ver todas as colunas">
+    <table class="ge">
+      <caption class="sr-only">Brasileirão dos DJs, classificação da pré-temporada com notas de demonstração</caption>
+      <thead><tr>
+        <th scope="col" class="ge-c-pos" colspan="2">Classificação</th>
+        ${cols.map(([k, ab, full]) => `<th scope="col" data-k="${k}" title="${full}"${k === "nota" ? ' aria-sort="descending"' : ""}>${sortable ? `<button type="button" data-sort="${k}"><abbr title="${full}">${ab}</abbr></button>` : `<abbr title="${full}">${ab}</abbr>`}</th>`).join("")}
+        <th scope="col" class="ge-c-last">Últimas 5</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="ge-legend">
+      <span><i class="ge-zone"></i>Zona da Final · 1º ao 5º</span>
+      <span class="ge-dots-legend"><i class="d-up"></i>acima da média <i class="d-eq"></i>na média <i class="d-dn"></i>abaixo</span>
+      <span class="ge-abbr">Vot = votos · Fes = festas avaliadas · Som = qualidade do som · Har = harmonia do set · Ene = energia e vibe · Sof = sofisticação e inovação</span>
+    </div></div>`;
+  const filters = sortable && $("[data-filters]");
+  if (filters) {
+    const styles = ["Todos", ...new Set(DJS.map(d => d[1]))];
+    filters.innerHTML = styles.map(s => `<button class="chip" type="button" aria-pressed="${s === "Todos"}" data-s="${s}">${s}</button>`).join("");
+    filters.onclick = e => { const b = e.target.closest(".chip"); if (!b) return; st.style = b.dataset.s; $$(".chip", filters).forEach(c => c.setAttribute("aria-pressed", c === b)); render() };
+  }
+  if (sortable) $("thead", el).onclick = e => {
+    const b = e.target.closest("button[data-sort]"); if (!b) return; st.sort = b.dataset.sort;
+    $$("th[data-k]", el).forEach(th => th.dataset.k === st.sort ? th.setAttribute("aria-sort", "descending") : th.removeAttribute("aria-sort")); render();
+  };
+  function render(flash) {
+    const rows = table().map(d => ({ ...d, ...GE_EXTRA[d.name] }));
+    let list = rows.filter(d => st.style === "Todos" || d.style === st.style);
+    if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
+    $("tbody", el).innerHTML = list.map(d => {
+      const prev = st.last[d.name];
+      const mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="ge-mv up" aria-label="subiu ${prev - d.pos}">▲</span>` : `<span class="ge-mv dn" aria-label="caiu ${d.pos - prev}">▼</span>`) : `<span class="ge-mv" aria-hidden="true">•</span>`;
+      const s = slug(d.name), href = DJPEDIA.has(s) ? `/djpedia/${s}` : `/djpedia#${s}`;
+      const dots = d.last.map((v, i) => { const c = v > .62 ? "d-up" : v > .3 ? "d-eq" : "d-dn"; return `<i class="${c}" title="Festa ${i + 1}: ${c === "d-up" ? "acima" : c === "d-eq" ? "na" : "abaixo"} da média"></i>` }).join("");
+      return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
+        <td class="ge-pos"><b>${d.pos}</b>${mv}</td>
+        <th scope="row" class="ge-dj"><a href="${href}"><span class="ge-badge" aria-hidden="true">${initials(d.name)}</span><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
+        <td class="ge-nota">${fmt2(d.nota)}</td>
+        <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
+        ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}
+        <td class="ge-last"><span class="ge-dots">${dots}</span></td></tr>`;
+    }).join("");
+    rows.forEach(d => st.last[d.name] = d.pos);
+  }
+  render();
+  boards.push({ render: () => render(), flash: n => render(n) });
+}
+$$("[data-ge-table]").forEach(mountGe);

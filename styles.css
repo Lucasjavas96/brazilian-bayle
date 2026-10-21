@@ -1348,3 +1348,118 @@ button:active,.btn:active{transform:scale(.98)}
 .gallery-controls button:disabled{opacity:.3;cursor:default}
 .gallery-controls .mono{font-size:11px;color:#dac188}
 @media(max-width:767px){.radial-wheel{gap:14px;padding-inline:20px;scroll-padding-inline:20px}.radial-instruction{line-height:1.7}}
+
+/* ===== Tabela do Brasileirão dos DJs (estrutura da tabela do ge, identidade Brazilian Bayle) ===== */
+.ge-card{background:#121312;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.ge-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--y) transparent}
+.ge-scroll:focus-visible{outline:3px solid var(--y);outline-offset:-3px}
+table.ge{width:100%;min-width:760px;border-collapse:collapse;font-variant-numeric:tabular-nums;color:#fff}
+.ge th,.ge td{padding:0 10px;height:52px;text-align:center;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px;white-space:nowrap}
+.ge thead th{height:44px;font-family:'JetBrains Mono','JetBrains Mono Fallback',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.66);border-bottom:2px solid rgba(255,255,255,.18);background:#0E0F0E}
+.ge thead th.ge-c-pos{text-align:left;padding-left:16px}
+.ge abbr{text-decoration:none;cursor:help}
+.ge th button{all:unset;cursor:pointer;padding:6px 4px}
+.ge th button:focus-visible{outline:2px solid var(--y);outline-offset:2px}
+.ge th[aria-sort]{color:var(--y)}
+.ge th[aria-sort] button:after{content:" ▾"}
+.ge tbody tr{transition:background .15s}
+.ge tbody tr:hover{background:rgba(255,255,255,.045)}
+.ge tbody tr:last-child td,.ge tbody tr:last-child th{border-bottom:0}
+.ge tr.cut td,.ge tr.cut th{border-bottom:2px solid rgba(255,212,0,.55)}
+.ge tr.flash{animation:flash 1.8s}
+/* posição com a faixa da zona, como no ge */
+.ge-pos{width:58px;text-align:left!important;padding-left:16px!important;box-shadow:inset 4px 0 0 transparent}
+.ge-pos b{font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;font-size:16px;display:inline-block;min-width:22px}
+.ge tr.zf .ge-pos{box-shadow:inset 4px 0 0 var(--y)}
+.ge tr.zf .ge-pos b{color:var(--y)}
+.ge-mv{font-size:9px;margin-left:4px;color:rgba(255,255,255,.35);vertical-align:middle}
+.ge-mv.up{color:#3ddc84}.ge-mv.dn{color:#ff6b5f}
+/* DJ: escudo + nome */
+.ge-dj{text-align:left!important;font-weight:400;min-width:220px}
+.ge-dj a{display:grid;grid-template-columns:32px auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-decoration:none;color:#fff}
+.ge-badge{grid-row:1/3;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:var(--y);background:radial-gradient(circle at 30% 25%,#2b2c2b,#141514);border:1px solid rgba(255,212,0,.45)}
+.ge tr.zf .ge-badge{background:var(--y);color:var(--k0);border-color:var(--y)}
+.ge-name{font-weight:700;font-size:15px;line-height:1.15}
+.ge-style{font-size:12px;color:rgba(255,255,255,.58);line-height:1.2}
+.ge-dj a:hover .ge-name{color:var(--y);text-decoration:underline;text-underline-offset:3px}
+/* nota em destaque (equivale à coluna de pontos) */
+.ge-nota{font-family:'JetBrains Mono','JetBrains Mono Fallback',monospace;font-weight:700;font-size:16px!important;color:var(--y);background:rgba(255,212,0,.06)}
+.ge thead th[data-k="nota"]{background:rgba(255,212,0,.08)}
+/* últimas 5 */
+.ge-dots{display:inline-flex;gap:5px;vertical-align:middle}
+.ge-dots i,.ge-dots-legend i{display:inline-block;width:11px;height:11px;border-radius:50%}
+.d-up{background:#2fbf71}.d-eq{background:#8b8f8b}.d-dn{background:#e5483d}
+/* legenda */
+.ge-legend{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;padding:14px 16px;border-top:1px solid rgba(255,255,255,.1);background:#0E0F0E;font-size:13px;color:rgba(255,255,255,.72)}
+.ge-zone{display:inline-block;width:12px;height:12px;background:var(--y);border-radius:2px;margin-right:8px;vertical-align:-1px}
+.ge-dots-legend{display:inline-flex;align-items:center;gap:6px}
+.ge-dots-legend i{margin-left:6px}
+.ge-abbr{flex-basis:100%;font-size:12px;color:rgba(255,255,255,.58)}
+/* celular: classificação fixa, números deslizam (como no app do ge) */
+@media (max-width:820px){
+  .ge-pos{position:sticky;left:0;z-index:2;background:#121312;width:50px;padding-left:12px!important}
+  .ge-dj{position:sticky;left:50px;z-index:2;background:#121312;min-width:0;max-width:44vw;box-shadow:8px 0 12px -10px rgba(0,0,0,.9)}
+  .ge thead th.ge-c-pos{position:sticky;left:0;z-index:3}
+  .ge tbody tr:hover .ge-pos,.ge tbody tr:hover .ge-dj{background:#1a1b1a}
+  .ge-style{display:none}
+  .ge-dj a{grid-template-columns:28px minmax(0,1fr)}
+  .ge-badge{width:28px;height:28px;font-size:10px;grid-row:1}
+  .ge-name{white-space:normal;font-size:14px}
+  .ge th,.ge td{padding:0 8px;height:50px}
+}
+.ge-sec .preseason small{display:block;margin-top:4px;font-weight:500;color:rgba(255,255,255,.7)}
+
+/* ===== DJpedia ===== */
+.az{display:flex;flex-wrap:wrap;gap:6px;margin:26px 0 30px}
+.az a{min-width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,212,0,.5);color:var(--y);text-decoration:none;font-family:'Syne','Syne Fallback',sans-serif;font-weight:800}
+.az a:hover{background:var(--y);color:var(--k0)}
+.wiki-list{display:grid;gap:26px}
+.wiki-letter{display:grid;grid-template-columns:70px minmax(0,1fr);gap:16px;border-top:1px solid rgba(255,255,255,.14);padding-top:16px;scroll-margin-top:90px}
+.wiki-l{font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;font-size:40px;line-height:1;color:var(--y)}
+.wiki-letter ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.wiki-item{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:12px;row-gap:2px;align-items:center;padding:14px;border:1px solid rgba(255,255,255,.12);background:#141514;border-radius:10px;text-decoration:none;color:#fff;height:100%;transition:border-color .2s,transform .2s}
+.wiki-item .ge-badge{grid-row:1/4}
+a.wiki-item:hover{border-color:var(--y);transform:translateY(-2px)}
+.wiki-name{font-weight:800;font-size:17px}
+.wiki-meta{font-size:13px;color:rgba(255,255,255,.66)}
+.wiki-status{font-size:11px;color:var(--y)}
+.is-soon{opacity:.7}.is-soon .wiki-status{color:rgba(255,255,255,.6)}
+.crumbs{margin-bottom:18px;color:var(--muted)}
+.crumbs a{color:var(--b)}
+.wiki-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(26px,4vw,56px);align-items:start}
+.wiki-main h1{margin:10px 0 4px}
+.wiki-sec{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.wiki-sec h2{font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;text-transform:uppercase;font-size:20px;margin-bottom:10px;color:var(--ink)}
+.wiki-sec p,.wiki-sec li{font-size:17px;line-height:1.65;color:var(--muted);margin-bottom:10px}
+.wiki-sec ul{list-style:disc;padding-left:22px}
+.wiki-src{list-style:decimal;padding-left:22px}
+.wiki-src a{color:var(--b);overflow-wrap:anywhere}
+.wiki-box{position:sticky;top:24px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--y);padding:20px;display:grid;gap:14px}
+.wiki-box-head{display:flex;align-items:center;gap:10px;font-size:18px}
+.wiki-box-head .ge-badge{background:var(--k0)}
+.wiki-box dl div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.wiki-box dt{font-family:'JetBrains Mono','JetBrains Mono Fallback',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--g-txt);padding-top:2px}
+.wiki-box dd{color:var(--ink)}
+.wiki-box .btn{width:100%}
+@media (max-width:1023px){.wiki-grid{grid-template-columns:minmax(0,1fr)}.wiki-box{position:static;order:-1}}
+@media (max-width:600px){.wiki-letter{grid-template-columns:minmax(0,1fr)}.wiki-l{font-size:30px}}
+@media (max-width:400px){.manifesto-primary{font-size:clamp(24px,8.2vw,32px)!important}}
+
+/* Galeria radial com giro lateral (arraste/swipe), sem prender a rolagem da página */
+.radial-active{height:auto;padding:0 0 28px}
+.radial-active .radial-pin{position:relative;overflow:hidden;height:clamp(520px,84svh,860px);min-height:0}
+.radial-active .radial-window{position:absolute;inset:64px 0 0;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;mask-image:linear-gradient(#000 70%,transparent);-webkit-mask-image:linear-gradient(#000 70%,transparent)}
+.radial-active .radial-window.is-dragging{cursor:grabbing}
+.radial-active .radial-window:focus-visible{outline:2px solid var(--y);outline-offset:-6px}
+.radial-active .radial-wheel{display:block;position:absolute;left:50%;top:clamp(250px,42svh,400px);width:calc(var(--radius)*2);height:calc(var(--radius)*2);margin:0;padding:0;overflow:visible;scroll-snap-type:none;transform:translateX(-50%);will-change:transform;gap:0}
+.radial-active .radial-wheel li{position:absolute;left:50%;top:50%;width:220px;flex:none}
+.radial-active .radial-wheel a{aspect-ratio:3/4;transition:box-shadow .35s;-webkit-user-drag:none}
+.radial-active .radial-wheel li.is-front a{box-shadow:0 0 0 2px #edd389,0 0 40px #c9a45c88}
+.radial-active .radial-wheel img{pointer-events:none}
+.radial-active .radial-instruction{position:relative;z-index:2}
+@media(max-width:767px){
+  .radial-active .radial-pin{height:clamp(440px,74svh,620px)}
+  .radial-active .radial-wheel{top:clamp(200px,34svh,280px)}
+  .radial-active .radial-wheel li{width:150px}
+}
+.is-soon{opacity:1}.is-soon .wiki-name{color:rgba(255,255,255,.82)}.is-soon .ge-badge{opacity:.6}.is-soon .wiki-status{color:rgba(255,255,255,.72)}
