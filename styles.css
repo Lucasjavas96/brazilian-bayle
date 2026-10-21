@@ -1150,3 +1150,20 @@ button:active,.btn:active{transform:scale(.98)}
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   filter:none!important;transform:none!important;
 }
+
+/* Celular: memórias em composição única, sem empilhar as três fotos. */
+@media(max-width:760px){
+  .memory-arc{display:block;position:relative;width:calc(100% - 24px);max-width:600px;height:clamp(265px,78vw,440px)!important;padding:0;margin:16px auto 10px}
+  .memory-arc .memory-card,.memory-arc .memory-portrait{position:absolute;width:55%;left:0;bottom:20px;transform:none;z-index:2}
+  .memory-arc .memory-card:nth-child(2){width:39%;left:30.5%;bottom:31%;z-index:1}
+  .memory-arc .memory-card:nth-child(3){left:45%;bottom:4px;z-index:3}
+  .memory-arc .memory-card:first-child figure{transform:rotate(-7deg)}
+  .memory-arc .memory-card:nth-child(3) figure{transform:rotate(7deg)}
+  .memory-card figure{padding:4px;border-radius:12px}
+  .memory-card figcaption{display:none}
+  .memory-card:hover figure,.memory-card:focus-visible figure{transform:rotate(0deg)}
+  #after .sec-head{display:block}
+  #after #t-agenda{font-size:clamp(28px,8vw,48px)!important;line-height:1.15;max-width:100%;letter-spacing:-.025em;padding-bottom:4px}
+  #after #t-agenda .title-accent,#after #t-agenda .reveal-word{max-width:100%;overflow-wrap:normal}
+  #after .sec-head>p{margin-top:16px;font-size:10px;letter-spacing:.1em}
+}
