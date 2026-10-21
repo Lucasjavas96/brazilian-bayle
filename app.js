@@ -596,37 +596,36 @@ $$(".slides").forEach(box => {
   }else arc.classList.add('is-visible');
 })();
 
-/* Galeria radial do briefing, adaptada ao site estático. */
+/* Fotos com swipe nativo: não captura nem prende a rolagem da página. */
 (() => {
-  const gallery = document.querySelector('[data-radial-gallery]'); if (!gallery || reduced) return;
-  const pin = gallery.querySelector('.radial-pin'), wheel = gallery.querySelector('.radial-wheel');
-  const items = [...wheel.children]; let frame = 0, current = null, previous = 0;
-  gallery.classList.add('radial-active');
-  const layout = () => {
-    const mobile = innerWidth < 768, radius = mobile ? 300 : 550;
-    wheel.style.setProperty('--radius', radius + 'px');
-    items.forEach((item, i) => {
-      const angle = i / items.length * Math.PI * 2 - Math.PI / 2;
-      item.style.transform = `translate(-50%,-50%) translate(${Math.cos(angle)*radius}px,${Math.sin(angle)*radius}px) rotate(${angle*180/Math.PI+90}deg)`;
-    });
-    schedule();
-  };
-  const tick = time => {
+  const gallery = document.querySelector('[data-radial-gallery]'); if (!gallery) return;
+  const track = gallery.querySelector('.radial-wheel'), items = [...track.children];
+  track.tabIndex = 0;
+  track.setAttribute('aria-label', 'Fotos da comunidade. Deslize para os lados ou use as setas.');
+  const controls = document.createElement('div'); controls.className = 'gallery-controls';
+  controls.innerHTML = '<button type="button" class="btn btn-line" data-gallery-prev aria-label="Foto anterior">←</button><span class="mono" data-gallery-count aria-live="polite"></span><button type="button" class="btn btn-line" data-gallery-next aria-label="Próxima foto">→</button>';
+  gallery.append(controls);
+  const prev = controls.querySelector('[data-gallery-prev]'), next = controls.querySelector('[data-gallery-next]');
+  let index = 0, frame = 0;
+  const update = () => {
     frame = 0;
-    const top = parseFloat(getComputedStyle(pin).top) || 64;
-    const travel = Math.max(1, gallery.offsetHeight - pin.offsetHeight);
-    const target = Math.max(0,Math.min(1,(top-gallery.getBoundingClientRect().top)/travel));
-    const dt = previous ? Math.min((time-previous)/1000,.05) : 1/60;
-    current = current === null ? target : current + (target-current)*(1-Math.exp(-12*dt));
-    if(Math.abs(target-current)<.0001) current=target;
-    wheel.style.transform = `translateX(-50%) rotate(${current*360}deg)`;
-    previous=time;
-    if(current!==target)frame=requestAnimationFrame(tick);else previous=0;
+    index = items.reduce((best, item, i) => Math.abs(item.offsetLeft - items[0].offsetLeft - track.scrollLeft) < Math.abs(items[best].offsetLeft - items[0].offsetLeft - track.scrollLeft) ? i : best, 0);
+    controls.querySelector('[data-gallery-count]').textContent = `${String(index + 1).padStart(2,'0')} / ${String(items.length).padStart(2,'0')}`;
+    prev.disabled = track.scrollLeft < 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
   };
-  function schedule(){if(!frame)frame=requestAnimationFrame(tick)}
-  addEventListener('scroll',schedule,{passive:true}); addEventListener('resize',layout,{passive:true});
-  if('ResizeObserver' in window)new ResizeObserver(schedule).observe(document.querySelector('main'));
-  layout();
+  const move = direction => {
+    const target = items[Math.max(0,Math.min(items.length - 1,index + direction))];
+    track.scrollTo({left:target.offsetLeft-items[0].offsetLeft,behavior:reduced?'instant':'smooth'});
+  };
+  prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+  track.addEventListener('keydown',event=>{
+    if(event.target!==track || !['ArrowLeft','ArrowRight'].includes(event.key))return;
+    event.preventDefault();move(event.key==='ArrowRight'?1:-1);
+  });
+  track.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(update)},{passive:true});
+  if('ResizeObserver' in window)new ResizeObserver(update).observe(track);
+  update();
 })();
 
 /* Les deux faces du Clubber entrent séparément. */

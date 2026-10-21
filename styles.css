@@ -1289,11 +1289,6 @@ button:active,.btn:active{transform:scale(.98)}
 .radial-wheel img{width:100%;height:100%;object-fit:cover}
 .radial-wheel a>span{position:absolute;bottom:0;left:0;right:0;padding:35px 14px 15px;background:linear-gradient(transparent,#000e);color:#f0d58b;font-size:11px}
 .radial-wheel a:hover,.radial-wheel a:focus-visible{transform:translateY(-16px) scale(1.08);box-shadow:0 0 30px #c9a45c55;outline:2px solid #edd389;outline-offset:4px}
-.radial-active{height:calc(100svh + 2400px);padding:0}
-.radial-active .radial-pin{position:sticky;top:64px;height:calc(100svh - 64px);min-height:480px}
-.radial-active .radial-window{position:absolute;inset:70px 0 0;overflow:hidden;mask-image:linear-gradient(#000 72%,transparent);-webkit-mask-image:linear-gradient(#000 72%,transparent)}
-.radial-active .radial-wheel{display:block;position:absolute;padding:0;left:50%;top:clamp(230px,40svh,390px);width:calc(var(--radius)*2);height:calc(var(--radius)*2);transform:translateX(-50%);will-change:transform}
-.radial-active .radial-wheel li{position:absolute;left:50%;top:50%;width:220px}
 .club-identity figure{position:relative;isolation:isolate;overflow:hidden;border-radius:15px}
 .club-identity figure::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,#fff7 47%,#ffebae88 50%,transparent 66%);transform:translateX(-150%);animation:club-reflection 6s ease-in-out infinite;mix-blend-mode:screen}
 .club-identity .identity-back::after{animation-delay:1.2s}
@@ -1325,8 +1320,6 @@ button:active,.btn:active{transform:scale(.98)}
 .page-loja .shop-newsletter>div>p:last-child{color:#bdb4a2}
 .page-loja .shop-catalog h1 .title-accent,.page-loja .shop-newsletter h2 .title-accent{color:#e5c77f}
 @media(max-width:767px){
- .radial-active .radial-wheel li{width:155px}.radial-active .radial-wheel{top:190px}
- .radial-active .radial-pin{min-height:450px}.radial-wheel{grid-template-columns:repeat(2,minmax(0,1fr))}
  .manifesto-photo{width:calc(100% - 40px);max-width:470px}
  .hero .cta-row .btn{font-size:13px;letter-spacing:.075em}
  .drop-teaser .display{font-size:clamp(22px,6.3vw,45px)!important;line-height:1.2}
@@ -1339,3 +1332,19 @@ button:active,.btn:active{transform:scale(.98)}
 
 .page-loja .shop-catalog .display,.page-loja .shop-newsletter .display{font-size:clamp(22px,3.2vw,42px);line-height:1.2}
 @media(max-width:767px){.page-loja .shop-catalog .display,.page-loja .shop-newsletter .display{font-size:clamp(20px,5.5vw,30px)}}
+
+/* Swipe horizontal com encaixe suave e rolagem vertical livre. */
+.radial-gallery{height:auto;padding:8px 0 24px}
+.radial-pin{position:relative;overflow:visible;height:auto;min-height:0}
+.radial-window{position:relative;overflow:visible;mask-image:none}
+.radial-wheel{position:relative;display:flex;gap:22px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:24px;padding:16px 24px 28px;margin:0;width:100%;height:auto;scrollbar-width:thin;scrollbar-color:#aa8741 #111;-webkit-overflow-scrolling:touch}
+.radial-wheel li{position:relative;flex:0 0 min(76vw,420px);scroll-snap-align:start;min-width:0}
+.radial-wheel a{aspect-ratio:4/5;transform:none}
+.radial-wheel a:hover,.radial-wheel a:focus-visible{transform:none;box-shadow:0 0 24px #c9a45c44}
+.radial-wheel:focus-visible{outline:1px solid #d7b65f;outline-offset:-2px}
+.radial-wheel img{-webkit-user-drag:none;user-select:none}
+.gallery-controls{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:18px}
+.gallery-controls .btn{padding:10px 18px;min-width:48px}
+.gallery-controls button:disabled{opacity:.3;cursor:default}
+.gallery-controls .mono{font-size:11px;color:#dac188}
+@media(max-width:767px){.radial-wheel{gap:14px;padding-inline:20px;scroll-padding-inline:20px}.radial-instruction{line-height:1.7}}
