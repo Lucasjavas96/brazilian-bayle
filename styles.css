@@ -1167,3 +1167,22 @@ button:active,.btn:active{transform:scale(.98)}
   #after #t-agenda .title-accent,#after #t-agenda .reveal-word{max-width:100%;overflow-wrap:normal}
   #after .sec-head>p{margin-top:16px;font-size:10px;letter-spacing:.1em}
 }
+
+/* Consistência entre abas: contornos premium e contraste de títulos. */
+.rev,.plan,.vote-card,.apply-form,.drop-form{border:1px solid rgba(201,164,92,.6)}
+.rev,.plan,.vote-card,.apply-form{background-color:#090909}
+.paper .display :is(em,.title-accent) .reveal-word,.drop-teaser .display em .reveal-word{color:#806012;background-image:var(--title-reflection)}
+.prose h1.display{font-size:clamp(27px,4.6vw,52px)!important;line-height:1.18;overflow-wrap:anywhere}
+.prose h1.display .reveal-word{max-width:100%;overflow-wrap:anywhere}
+.prose .display em{font-size:1em;line-height:1.18}
+.prose h2{line-height:1.4;overflow-wrap:anywhere}
+.page-404 .display{line-height:1.15;max-width:760px}
+.shop-catalog h1 .title-accent,.shop-newsletter h2 .title-accent{color:#806012}
+:where(.btn,.chip,.side-nav a):focus-visible{outline:2px solid #c9a45c;outline-offset:4px}
+@media(max-width:600px){
+ .club-hero h1.display,.page-head h1.display{font-size:clamp(26px,7vw,38px)!important;line-height:1.18}
+ .page-head .lead{font-size:16px;line-height:1.7}
+ .plan{padding:20px}
+ .rev{padding:22px}
+ .foot-cols{gap:24px}
+}
