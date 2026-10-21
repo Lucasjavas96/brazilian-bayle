@@ -1071,3 +1071,72 @@ button:active,.btn:active{transform:scale(.98)}
 .unfurl-active .unfurl-window{width:100%;height:100%;border:0;will-change:transform,border-radius;transform-origin:center}
 .unfurl-active .unfurl-matrix,.unfurl-active .unfurl-column{backface-visibility:hidden}
 .unfurl-active .unfurl-photo img{transform:translateZ(0)}
+
+/* Direção visual: títulos amarelos, superfícies pretas, contornos dourados. */
+:root{--premium-edge:#a98a4c;--premium-gold:#c9a45c}
+.display .title-accent,.display em{color:var(--y)}
+.paper .display .title-accent,.paper .display em,.drop-teaser .display em{color:#806012}
+.hero .title-accent{color:var(--y)}
+.manifesto-heading{margin:26px auto 24px;max-width:900px}
+.manifesto-heading .manifesto-eyebrow{font-size:9px;color:#a59b80;letter-spacing:.12em;margin-bottom:12px}
+.manifesto-heading h2.display{font-size:inherit!important;line-height:1.2}
+.manifesto-primary{display:block;font-family:'Syne',sans-serif;font-size:clamp(36px,6.6vw,76px);font-weight:800;letter-spacing:-.035em;line-height:1.08;text-transform:uppercase;text-shadow:0 1px 12px rgba(255,212,0,.12)}
+.manifesto-secondary{display:block;font-family:'Inter Tight',sans-serif;font-weight:400;font-size:clamp(16px,2.1vw,24px);line-height:1.4;text-transform:none;letter-spacing:0;color:#ddd;margin-top:12px}
+.manifesto-copy{margin-top:28px}
+.memory-arc{height:auto!important;display:grid;grid-template-columns:1fr .85fr 1fr;align-items:center;gap:22px;width:min(100% - 64px,1240px);padding:24px 0}
+.memory-arc .memory-card{position:relative;left:auto;bottom:auto;width:100%;transform:none;opacity:1;z-index:auto}
+.memory-arc[data-ready="true"] .memory-card,.memory-arc.is-visible .memory-card{transform:none;opacity:1;transition:none}
+.memory-card figure{transform:rotate(0);padding:6px;border-radius:16px;border-color:rgba(201,164,92,.45)}
+.memory-card img{width:100%;height:auto}
+.memory-card:hover figure,.memory-card:focus-visible figure{transform:translateY(-4px)}
+.event{border:1.5px solid var(--premium-edge);background:#080808;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,225,160,.18),0 18px 50px rgba(0,0,0,.3)}
+.event-body{background:linear-gradient(150deg,rgba(201,164,92,.06),transparent 60%),#080808}
+.event-date b{color:var(--y)}
+.event-art{border-radius:0}
+.club-identity{width:100%;max-width:460px;margin:auto;display:grid;gap:20px;padding:12px 0}
+.club-identity figure{margin:0;width:92%}
+.club-identity .identity-back{justify-self:end}
+.club-identity img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.club-identity figcaption{font-size:11px;color:#a69979;margin-top:8px;letter-spacing:.02em}
+.side{background:linear-gradient(145deg,#1a1a17 0%,#090909 52%,#12110e 100%);color:#eee;border:1px solid var(--premium-edge);border-left:0;box-shadow:12px 0 40px rgba(0,0,0,.45)}
+.side:before{display:none}
+.side-tag{border-color:rgba(201,164,92,.55)}
+.side-tag-1,.side-tag-1 em{color:var(--y)}
+.side-tag-2{color:#b9b6ae}
+.side-nav a{border-color:rgba(201,164,92,.2);color:#eee}
+.side-nav a .mono,.side-foot .mono{color:#c9a45c}
+.side-nav a:hover{color:var(--y)}
+.side-nav a[aria-current="page"]{background:rgba(201,164,92,.1);color:var(--y);box-shadow:inset 2px 0 #c9a45c}
+.side .side-cta{border-color:#c9a45c;color:#e8cf95;background:rgba(201,164,92,.08)}
+.side-foot a:hover{color:#fff}
+@media(max-width:760px){
+ .memory-arc{grid-template-columns:1fr;width:calc(100% - 40px);max-width:540px;gap:22px;padding:16px 0}
+ .memory-arc .memory-portrait{width:min(82%,360px);justify-self:center}
+ .memory-card figcaption{display:block;font-size:11px;padding:10px 4px 5px}
+ .manifesto-primary{font-size:clamp(32px,8.4vw,55px)}
+ .manifesto-secondary{font-size:18px;margin-top:10px}
+ .manifesto-copy>p:not(.mono){font-size:16px;line-height:1.7}
+ .manifesto-copy>p.manifesto-intro{font-size:21px}
+ .club-identity{max-width:360px;gap:18px}
+ .club-identity figure{width:94%}
+}
+/* Ênfase tipográfica consistente nas seções escuras. */
+.dark .display em,.board-sec .display em,.final .display em,.gal-sec .display em,.club-hero .display em,.club-teaser .display em,.apply-sec .display em,.how-sec .display em,.exp-sec .display em{color:var(--y)}
+
+/* Ênfases com acabamento dourado refletivo estático. */
+.display .title-accent,.display em,
+.dark .display em,.board-sec .display em,.final .display em,
+.gal-sec .display em,.club-hero .display em,.club-teaser .display em,
+.apply-sec .display em,.how-sec .display em,.exp-sec .display em,
+.manifesto-heading .manifesto-primary{
+  color:#FFD400;
+  background-image:linear-gradient(165deg,#fff4b8 0%,#ffe86b 14%,#c69712 30%,#fff1a1 43%,#ffd400 51%,#a9770c 66%,#f5ce39 79%,#fff0a0 90%,#c69712 100%);
+  background-size:100% 100%;background-repeat:no-repeat;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:none;
+}
+/* Tons mais profundos garantem leitura nas superfícies claras. */
+.paper .display em,.paper .display .title-accent,.drop-teaser .display em{
+  background-image:linear-gradient(165deg,#71500c 0%,#aa7a12 25%,#604008 48%,#b48417 70%,#78520c 100%);
+}
