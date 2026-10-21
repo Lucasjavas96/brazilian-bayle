@@ -1140,3 +1140,13 @@ button:active,.btn:active{transform:scale(.98)}
 .paper .display em,.paper .display .title-accent,.drop-teaser .display em{
   background-image:linear-gradient(165deg,#71500c 0%,#aa7a12 25%,#604008 48%,#b48417 70%,#78520c 100%);
 }
+
+/* Safari: pintar o reflexo no próprio texto animado, não no ancestral. */
+.display :is(.title-accent,em){--title-reflection:linear-gradient(165deg,#fff4b8 0%,#ffe86b 14%,#c69712 30%,#fff1a1 43%,#ffd400 51%,#a9770c 66%,#f5ce39 79%,#fff0a0 90%,#c69712 100%)}
+.paper .display :is(.title-accent,em),.drop-teaser .display em{--title-reflection:linear-gradient(165deg,#71500c,#aa7a12 25%,#604008 48%,#b48417 70%,#78520c)}
+.display :is(.title-accent,em):has(.reveal-word){background:none;-webkit-text-fill-color:currentColor}
+.display :is(.title-accent,em) .reveal-word{
+  color:#FFD400;background-image:var(--title-reflection);background-size:100% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:none!important;transform:none!important;
+}
