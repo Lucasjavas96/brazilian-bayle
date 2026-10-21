@@ -127,12 +127,22 @@ function renderPodium() {
 const boards = [];
 function mountBoard(stage) {
   const limit = +stage.dataset.limit || 0, sortable = stage.hasAttribute("data-sortable");
-  const st = { sort: "nota", style: "Todos", last: {}, flash: null };
+  const st = { sort: "nota", style: "Todos", last: {}, flash: null, expanded: false };
+  stage.classList.add('board-summary');
   const head = [["nota", "Nota"], ...CRIT, ["votos", "Votos"]];
   stage.innerHTML = `<table class="board">
     <caption class="sr-only">Brasileirão dos DJs, pré-temporada com notas de demonstração${limit ? `, ${limit} primeiros` : ""}</caption>
     <thead><tr><th scope="col">#</th><th scope="col" class="l">DJ</th>${head.map(([k, l]) => `<th scope="col"${k === "nota" ? ' aria-sort="descending"' : ""} data-k="${k}">${sortable ? `<button type="button" data-sort="${k}">${l}</button>` : l}</th>`).join("")}</tr></thead>
     <tbody></tbody></table>`;
+  const more = document.createElement('button'); more.type = 'button'; more.className = 'btn btn-line-light board-more';
+  more.setAttribute('aria-expanded', 'false');
+  if (sortable) stage.append(more);
+  more.onclick = () => { st.expanded = !st.expanded; render(); };
+  stage.addEventListener('click', e => {
+    const button = e.target.closest('[data-dj-details]'); if (!button) return;
+    const row = button.closest('tr'), open = row.classList.toggle('details-open');
+    button.setAttribute('aria-expanded', String(open)); button.textContent = open ? 'Fechar detalhes −' : 'Ver detalhes +';
+  });
   const filters = sortable && $("[data-filters]");
   if (filters) {
     const styles = ["Todos", ...new Set(DJS.map(d => d[1]))];
@@ -148,12 +158,17 @@ function mountBoard(stage) {
     let list = rows.filter(d => st.style === "Todos" || d.style === st.style);
     if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
     if (limit) list = list.slice(0, limit);
+    const total = list.length;
+    if (sortable && !st.expanded) list = list.slice(0, 5);
+    more.hidden = total <= 5;
+    more.textContent = st.expanded ? 'Mostrar apenas Top 5' : `Ver ranking completo · ${total} DJs`;
+    more.setAttribute('aria-expanded', String(st.expanded));
     $("tbody", stage).innerHTML = list.map(d => {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
         <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}<b>${d.name}</b>${mv}<span class="mono">${d.style}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
-        <td class="b-score"><span class="led">${fmt2(d.nota)}</span></td>
+        <td class="b-score"><span class="led">${fmt2(d.nota)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
     }).join("");
@@ -213,8 +228,70 @@ renderPodium();
   const say = (cls, html) => { const m = $("#voteMsg"); m.className = "form-msg " + cls; m.innerHTML = html };
   $("#vIg").addEventListener("blur", e => { const v = e.target.value.trim(); if (v && !v.startsWith("@")) e.target.value = "@" + v });
 
+  // Reutiliza os campos e a validação existentes em quatro etapas.
+  const groups = [
+    [party.closest('.field')],
+    [lineup.closest('fieldset')],
+    [$('#vSliders').closest('fieldset'), $('#vComment').closest('.field')],
+    [$('#vName').closest('.field.two'), $('#vClubber').closest('label'), $('#vConsent').closest('label'), $('#eConsent'), $('.vote-actions', form)]
+  ];
+  const titles = ['Em qual festa você esteve?', 'Quem você quer avaliar?', 'Como foi o set?', 'Confira e registre sua avaliação'];
+  const progress = document.createElement('div'); progress.className = 'vote-progress';
+  progress.innerHTML = '<p class="vote-step-count" aria-live="polite"></p><div class="vote-step-track" aria-hidden="true"><span></span></div><h3 class="vote-step-title" tabindex="-1"></h3><p class="vote-step-summary"></p>';
+  $('#voteHelp').after(progress);
+  const panels = groups.map((nodes, index) => {
+    const panel = document.createElement('div'); panel.className = 'vote-step'; panel.dataset.step = index;
+    nodes.forEach(node => panel.append(node)); form.insertBefore(panel, $('#voteMsg')); return panel;
+  });
+  const nav = document.createElement('div'); nav.className = 'vote-step-nav';
+  nav.innerHTML = '<button type="button" class="btn btn-line-light" data-vote-back>Voltar</button><button type="button" class="btn btn-y" data-vote-next>Continuar →</button>';
+  form.insertBefore(nav, $('#voteMsg'));
+  let step = 0, criterion = 0;
+  const criterionTips = ['Mixagem limpa, volume equilibrado e graves bem resolvidos.', 'Transições, escolha de faixas e a história do set.', 'Leitura da pista e conexão com o público.', 'Identidade, repertório e ousadia.'];
+  const noteProgress = document.createElement('p'); noteProgress.className = 'note-progress'; $('#vSliders').before(noteProgress);
+  CRIT.forEach(([key], index) => {
+    const row = $('#row_' + key), range = $('#s_' + key);
+    const tip = document.createElement('p'); tip.className = 'criterion-tip'; tip.textContent = criterionTips[index]; range.before(tip);
+    const choices = document.createElement('div'); choices.className = 'note-choices';
+    for (let n = 0; n <= 10; n++) {
+      const choice = document.createElement('button'); choice.type = 'button'; choice.textContent = n; choice.setAttribute('aria-pressed', 'false');
+      choice.onclick = () => { range.value = n; touched.add(key); updateAvg(); err('eNotas', ''); [...choices.children].forEach(b => b.setAttribute('aria-pressed', String(b === choice))); };
+      choices.append(choice);
+    }
+    range.hidden = true; row.append(choices);
+  });
+  const showCriterion = () => {
+    CRIT.forEach(([key], index) => $('#row_' + key).hidden = index !== criterion);
+    noteProgress.textContent = `Critério ${criterion + 1} de 4`;
+    $('#vComment').closest('.field').hidden = criterion !== 3;
+  };
+  const showStep = (index, focus = true) => {
+    step = index; panels.forEach((panel, i) => panel.hidden = i !== step);
+    if (step === 2) showCriterion();
+    $('.vote-step-count', progress).textContent = `Etapa ${step + 1} de 4`;
+    $('.vote-step-track span', progress).style.width = `${(step + 1) * 25}%`;
+    $('.vote-step-title', progress).textContent = titles[step];
+    $('.vote-step-summary', progress).textContent = step > 1 ? `${PARTIES.find(p => p.id === party.value)?.label || ''} · ${dj || ''}${step === 3 ? ' · Nota ' + $('#vAvg').textContent : ''}` : '';
+    $('[data-vote-back]', nav).hidden = step === 0; $('[data-vote-next]', nav).hidden = step === 3;
+    $('#voteMsg').textContent = ''; $('#voteMsg').className = 'form-msg';
+    if (focus) $('.vote-step-title', progress).focus({preventScroll:true});
+  };
+  const nextStep = () => {
+    if (step === 0 && !party.value) { err('eParty', 'Escolha a festa em que você esteve.'); party.focus(); return; }
+    if (step === 1 && !dj) { err('eDj', 'Escolha um DJ para continuar.'); lineup.querySelector('button')?.focus(); return; }
+    if (step === 2) {
+      if (!touched.has(CRIT[criterion][0])) { err('eNotas', 'Escolha uma nota para continuar.'); $('.note-choices button', $('#row_' + CRIT[criterion][0])).focus(); return; }
+      if (criterion < 3) { criterion++; showCriterion(); return; }
+    }
+    if (step < 3) showStep(step + 1);
+  };
+  $('[data-vote-back]', nav).onclick = () => { if (step === 2 && criterion > 0) { criterion--; showCriterion(); } else showStep(step - 1); };
+  $('[data-vote-next]', nav).onclick = nextStep;
+  form.classList.add('vote-wizard'); showStep(0, false);
+
   form.onsubmit = async e => {
     e.preventDefault(); say("", "");
+    if (step < 3) { nextStep(); return; }
     const name = $("#vName").value.trim(), ig = $("#vIg").value.trim().toLowerCase().replace(/^@?/, "@");
     let first = null; const bad = (id, t, el) => { err(id, t); if (t && !first) first = el };
     bad("eParty", party.value ? "" : "Escolha a festa em que você esteve.", party);
@@ -236,6 +313,11 @@ renderPodium();
     boards.forEach(b => b.flash(dj)); renderPodium();
     toast("Voto registrado. A tabela foi atualizada.");
     $("#vComment").value = "";
+    const follow = document.createElement('div'); follow.className = 'vote-followup';
+    const another = document.createElement('button'); another.type = 'button'; another.className = 'btn btn-line-light'; another.textContent = 'Avaliar outro DJ';
+    another.onclick = () => { dj = null; touched.clear(); criterion = 0; renderLineup(); updateAvg(); $$('.note-choices button', form).forEach(b => b.setAttribute('aria-pressed', 'false')); showStep(0); };
+    const rankingLink = document.createElement('a'); rankingLink.href = '#t-rank'; rankingLink.textContent = 'Voltar ao ranking'; rankingLink.className = 'link-arrow';
+    follow.append(another, rankingLink); $('#voteMsg').append(follow);
   };
 })();
 
@@ -296,11 +378,16 @@ simpleForm({
   $$("[data-reviews]").forEach(el => {
     const lim = +el.dataset.limit || REV.length;
     el.innerHTML = REV.slice(0, lim).map((v, ix) => {
-      const r = rnd(5 + ix * 7);
-      const bars = Array.from({ length: 56 }, (_, i) => { const x = i / 56, env = .35 + .65 * Math.abs(Math.sin(x * Math.PI * 3)); return `<i style="height:${Math.max(3, 36 * env * (.35 + .65 * r()))}px"></i>` }).join("");
-      return `<article class="rev"><div class="rev-top"><span class="av" aria-hidden="true">${v.i}</span><div><b>${v.n}</b><span class="mono">BRB Clubber · ${v.f} festas · exemplo</span></div></div>
-        <h3>${v.t} <em>${v.e}</em></h3><div class="wave" aria-hidden="true">${bars}</div><p>${v.p}</p>
-        <div class="scores">${CRIT.map(([, l], j) => `<span>${l} <b>${v.s[j]}</b></span>`).join("")}</div></article>`;
+      const average = fmt1(v.s.reduce((sum, n) => sum + n, 0) / v.s.length);
+      return `<article class="rev" aria-labelledby="review-${ix}-${lim}">
+        <div class="review-heading"><span class="review-category">Resenha de pista</span><span class="review-example">Demonstração</span></div>
+        <p class="review-venue">${v.t.replace(/:$/, '')}</p>
+        <h3 id="review-${ix}-${lim}">${v.e}</h3>
+        <p class="review-copy">${v.p}</p>
+        <div class="review-rating"><span>Nota do set<small>Média dos quatro critérios</small></span><strong>${average}<small>/10</small></strong></div>
+        <div class="scores">${CRIT.map(([, l], j) => `<span><span>${l}</span><b>${v.s[j]}</b></span>`).join("")}</div>
+        <div class="rev-top"><span class="av" aria-hidden="true">${v.i}</span><div><b>${v.n}</b><span class="mono">BRB Clubber · ${v.f} festas · exemplo</span></div></div>
+      </article>`;
     }).join("");
   });
 })();
@@ -378,7 +465,7 @@ $$(".slides").forEach(box => {
         if (!part.trim()) { fragment.append(document.createTextNode(part)); return; }
         const word = document.createElement('span');
         word.className = 'reveal-word'; word.textContent = part;
-        word.style.setProperty('--word-delay', `${index++ * 85}ms`);
+        word.style.setProperty('--word-delay', `${250 + index++ * 240}ms`);
         fragment.append(word);
       });
       node.replaceWith(fragment);
