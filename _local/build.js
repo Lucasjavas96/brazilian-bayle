@@ -112,9 +112,6 @@ ${body.trim()}
   </main>
 
   <footer class="foot">
-    <div class="foot-flag">
-      <img src="/assets/bandeira-hd-1600.webp" srcset="/assets/bandeira-hd-800.webp 800w, /assets/bandeira-hd-1600.webp 1600w" sizes="(min-width:1024px) calc(100vw - 260px), 100vw" alt="Bandeira amarela com o logo BR Bayle e o papagaio" loading="lazy" width="1094" height="913">
-    </div>
     <div class="wrap foot-join">
       <h2 class="display foot-title">Faça parte de tudo <em>isso.</em></h2>
       <div class="foot-cta">
