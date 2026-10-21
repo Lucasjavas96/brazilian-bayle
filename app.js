@@ -356,8 +356,68 @@ simpleForm({
     ["eaEmail", () => mailOk($("#aEmail").value), "Confira o e-mail.", "#aEmail"],
     ["eaConsent", () => $("#aConsent").checked, "Confirme que tem 18 anos ou mais e aceite os termos.", "#aConsent"],
   ],
-  done: () => "<b>Candidatura recebida.</b> Na pré-temporada ela fica salva só neste navegador. Para garantir sua vaga na seleção do 31.10, mande também um direct para o @brazilianbayle.",
+  done: () => "<b>Interesse salvo neste navegador.</b> Este formulário ainda não envia os dados à equipe. Para conversar sobre a seleção, mande um direct para o @brazilianbayle.",
 });
+/* Candidatura guiada: mantém os campos e a validação do formulário original. */
+(() => {
+  const form = $('#applyForm'); if (!form) return;
+  const submit = form.onsubmit, button = $('#applyBtn');
+  const definitions = [
+    ['aName', 'Como você se chama?', () => $('#aName').value.trim().length >= 2, 'Escreva seu nome.'],
+    ['aIg', 'Qual é o seu Instagram?', () => igOk($('#aIg').value), 'Use o formato @seu.perfil.'],
+    ['aEmail', 'Qual é o seu e-mail?', () => mailOk($('#aEmail').value), 'Confira o e-mail.'],
+    ['aCity', 'De onde você vem?'],
+    ['aPlan', 'Como quer fazer parte?'],
+    ['aWhy', 'Por que quer viver esse baile com a gente?'],
+    ['aConsent', 'Podemos concluir?', () => $('#aConsent').checked, 'Confirme que tem 18 anos ou mais e aceite os termos.']
+  ];
+  const progress = document.createElement('div'); progress.className = 'vote-progress';
+  progress.innerHTML = '<p class="vote-step-count" aria-live="polite"></p><div class="vote-step-track" aria-hidden="true"><span></span></div><h3 class="vote-step-title" tabindex="-1"></h3>';
+  form.prepend(progress);
+  const panels = definitions.map(([id]) => {
+    const panel = document.createElement('div'); panel.className = 'apply-step';
+    const input = $('#' + id), field = input.closest('.field, .check');
+    form.insertBefore(panel, field); panel.append(field);
+    if (id === 'aConsent') panel.append($('#eaConsent'));
+    if (id === 'aWhy') {
+      const note = document.createElement('p'); note.className = 'dim'; note.textContent = 'Opcional. Se preferir, pode continuar sem responder.'; panel.prepend(note);
+    }
+    return panel;
+  });
+  const nav = document.createElement('div'); nav.className = 'vote-step-nav';
+  nav.innerHTML = '<button class="btn btn-line" type="button" data-apply-back>Voltar</button><button class="btn btn-gold" type="button" data-apply-next>Continuar</button>';
+  form.insertBefore(nav, button); nav.append(button);
+  const back = $('[data-apply-back]', nav), next = $('[data-apply-next]', nav);
+  let step = 0;
+  const show = (index, focus = true) => {
+    step = index;
+    panels.forEach((panel, i) => { panel.hidden = i !== step; });
+    $('.vote-step-count', progress).textContent = `Pergunta ${step + 1} de ${panels.length}`;
+    $('.vote-step-track span', progress).style.width = `${(step + 1) / panels.length * 100}%`;
+    $('.vote-step-title', progress).textContent = definitions[step][1];
+    back.hidden = step === 0; next.hidden = step === panels.length - 1; button.hidden = step !== panels.length - 1;
+    if (focus) $('.vote-step-title', progress).focus({preventScroll:true});
+  };
+  const valid = () => {
+    const [id, , test, message] = definitions[step];
+    const input = $('#' + id), error = input.getAttribute('aria-describedby');
+    const ok = !test || test();
+    if (error) $('#' + error).textContent = ok ? '' : message;
+    input.setAttribute('aria-invalid', String(!ok));
+    if (!ok) input.focus();
+    return ok;
+  };
+  const advance = () => { if (valid() && step < panels.length - 1) show(step + 1); };
+  next.addEventListener('click', advance);
+  back.addEventListener('click', () => show(Math.max(0, step - 1)));
+  form.onsubmit = e => {
+    e.preventDefault();
+    if (step < panels.length - 1) { advance(); return; }
+    if (valid()) return submit.call(form, e);
+  };
+  form.addEventListener('reset', () => setTimeout(() => show(0, false), 0));
+  form.classList.add('apply-wizard'); show(0, false);
+})();
 simpleForm({
   form: "#dropForm", btn: "#dropBtn", msg: "#dropMsg", key: "bb_drop",
   checks: () => [
@@ -439,19 +499,7 @@ $$(".slides").forEach(box => {
   go(0);
 });
 
-/* ---------- entrada suave (sem medir a página antes: só esconde o que o observador diz estar fora da tela) ---------- */
-(() => {
-  if (reduced || !("IntersectionObserver" in window)) return;
-  const els = $$(".sec-head, .event, .board-stage, .vote-card, .plan, .apply-form, .rev, .drop-form, .how li");
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) }
-    else if (e.boundingClientRect.top > 0 && !e.target.classList.contains("rv")) e.target.classList.add("rv");
-  }), { rootMargin: "0px 0px 20% 0px" });
-  els.forEach(el => io.observe(el));
-  addEventListener("hashchange", () => $$(".rv:not(.in)").forEach(el => el.classList.add("in")));
-})();
-
-/* Revelação progressiva em todas as páginas; mantém em e links dos títulos. */
+/* Entradas coordenadas: cada bloco e sua legenda seguem a ordem da seção. */
 (() => {
   if (reduced || !('IntersectionObserver' in window)) return;
   const headings = [...document.querySelectorAll('main h1, main h2, main h3, .foot-title')];
@@ -465,23 +513,38 @@ $$(".slides").forEach(box => {
         if (!part.trim()) { fragment.append(document.createTextNode(part)); return; }
         const word = document.createElement('span');
         word.className = 'reveal-word'; word.textContent = part;
-        word.style.setProperty('--word-delay', `${250 + index++ * 240}ms`);
+        word.style.setProperty('--word-delay', `${index++ * 170}ms`);
         fragment.append(word);
       });
       node.replaceWith(fragment);
     });
   });
+  // Animate complete interactive cards, without staggering hidden form controls.
+  const blocks = '.event, .board-stage, .vote-card, .plan, .apply-form, .rev, .drop-form, .how li, .memory-arc, .club-identity, .shop-product';
+  const selector = `${blocks}, main h1, main h2, main h3, main p, main figcaption, main .cta-row, main .btn, main .link-arrow, main .manifesto-link, .foot-title`;
+  const items = [...document.querySelectorAll(selector)].filter(el =>
+    !el.closest('[aria-hidden="true"], .gal-stage, .gal-track, .vote-panel') &&
+    !el.parentElement.closest(blocks) &&
+    !(el.matches('.btn') && el.closest('.cta-row'))
+  );
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add(entry.target.matches('section') ? 'section-visible' : 'words-visible');
-      observer.unobserve(entry.target);
+    const visible = entries.filter(entry => entry.isIntersecting)
+      .sort((a, b) => items.indexOf(a.target) - items.indexOf(b.target));
+    const sectionDelays = new Map();
+    visible.forEach(entry => {
+      const el = entry.target;
+      const section = el.closest('section') || el.closest('main') || el.parentElement;
+      const delay = sectionDelays.get(section) || 0;
+      el.style.setProperty('--entrance-delay', `${delay}ms`);
+      sectionDelays.set(section, Math.min(delay + (el.matches('h1,h2,h3') ? 650 : 340), 1800));
+      el.classList.add('entrance-visible', 'words-visible');
+      observer.unobserve(el);
     });
-  }, { threshold: 0, rootMargin: '0px 0px -35px 0px' });
-  document.querySelectorAll('main > section:not(:first-child)').forEach(section => {
-    section.classList.add('section-reveal'); observer.observe(section);
+  }, { threshold: 0, rootMargin: '0px 0px -24px 0px' });
+  items.forEach(el => { el.classList.add('entrance-item'); observer.observe(el); });
+  headings.forEach(heading => {
+    if (!heading.closest('.entrance-item')) heading.classList.add('words-visible');
   });
-  headings.forEach(heading => observer.observe(heading));
 })();
 
 /* Busca, categorias e ordenação do catálogo. */
