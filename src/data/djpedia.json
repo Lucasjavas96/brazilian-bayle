@@ -5,17 +5,44 @@
     "nome_civil": "Lukas Rafael Hespanhol Ruiz",
     "nascimento": "7 de julho de 1993, Mundo Novo (MS)",
     "origem": "Mundo Novo, Mato Grosso do Sul",
-    "estilos": ["House", "Deep house", "Tech house", "Progressive house", "Electronica"],
+    "estilos": [
+      "House",
+      "Deep house",
+      "Tech house",
+      "Progressive house",
+      "Electronica"
+    ],
     "ativo_desde": "2011",
-    "gravadoras": ["Só Track Boa", "Spinnin' Records", "Ultra Music", "Sony Music"],
+    "gravadoras": [
+      "Só Track Boa",
+      "Spinnin' Records",
+      "Ultra Music",
+      "Sony Music"
+    ],
     "resumo": "Vintage Culture é o nome artístico de Lukas Ruiz, DJ, produtor musical e empresário brasileiro nascido em Mundo Novo (MS). É cofundador da Só Track Boa, marca que reúne gravadora, linha de roupas e festival. Aparece no Top 100 DJs da DJ Mag desde 2016 e ficou em 11º lugar na edição de 2025.",
     "historia": [
       "Em 2012, Lukas Ruiz publicou no SoundCloud um remix de \"Blue Monday\", do New Order. Adotou o nome Vintage Culture para não ser confundido com o DJ Victor Ruiz. No mesmo ano, fundou a Só Track Boa com Henrique Vaz.",
       "Em 2013, lançou o primeiro single, \"What U Want\", e em 2014 o remix de \"Bete Balanço\", de Cazuza, ampliou seu público no deep house. Em 2015 estreou no Lollapalooza Brasil e no Rock in Rio e fez a primeira turnê internacional. Em 2016, \"Wild Kidz\" (Spinnin' Records) e o remix de \"Drinkee\", da Sofi Tukker, feito com Slow Motion, deram projeção fora do país.",
       "Entrou no Top 100 da DJ Mag em 2016, na 54ª posição, e chegou ao top 10 em 2023 (10º) e 2024 (9º). Em 2024 lançou o álbum de estúdio \"Promised Land\". Em 2025 ficou em 11º lugar no ranking da DJ Mag."
     ],
-    "referencias_musicais": ["Frankie Knuckles", "Karmon", "Depeche Mode", "The Cure", "New Order", "Pet Shop Boys", "Duran Duran", "Cazuza"],
-    "faixas_marcantes": ["What U Want (2013)", "Bete Balanço, remix (2014)", "Wild Kidz (2016)", "Drinkee, remix com Slow Motion (2016)", "It Is What It Is, com Elise LeGrow (2020)", "Free, com Fancy Inc e Roland Clark (2021)"],
+    "referencias_musicais": [
+      "Frankie Knuckles",
+      "Karmon",
+      "Depeche Mode",
+      "The Cure",
+      "New Order",
+      "Pet Shop Boys",
+      "Duran Duran",
+      "Cazuza"
+    ],
+    "faixas_marcantes": [
+      "What U Want (2013)",
+      "Bete Balanço, remix (2014)",
+      "Wild Kidz (2016)",
+      "Drinkee, remix com Slow Motion (2016)",
+      "It Is What It Is, com Elise LeGrow (2020)",
+      "Free, com Fancy Inc e Roland Clark (2021)"
+    ],
     "marcos": [
       "Cofundou a Só Track Boa em 2012",
       "Melhor DJ Big Room no Rio Music Conference de 2015",
@@ -27,10 +54,20 @@
       "11º no DJ Mag Top 100 de 2025"
     ],
     "fontes": [
-      {"titulo": "Vintage Culture, Wikipédia em português", "url": "https://pt.wikipedia.org/wiki/Vintage_Culture"},
-      {"titulo": "Vintage Culture, Wikipedia em inglês", "url": "https://en.wikipedia.org/wiki/Vintage_Culture"},
-      {"titulo": "Quatro DJs brasileiros estão entre os 100 melhores do mundo, Jovem Pan", "url": "https://jovempan.com.br/entretenimento/musica/quatro-djs-brasileiros-estao-entre-os-100-melhores-do-mundo/"}
-    ]
+      {
+        "titulo": "Vintage Culture, Wikipédia em português",
+        "url": "https://pt.wikipedia.org/wiki/Vintage_Culture"
+      },
+      {
+        "titulo": "Vintage Culture, Wikipedia em inglês",
+        "url": "https://en.wikipedia.org/wiki/Vintage_Culture"
+      },
+      {
+        "titulo": "Quatro DJs brasileiros estão entre os 100 melhores do mundo, Jovem Pan",
+        "url": "https://jovempan.com.br/entretenimento/musica/quatro-djs-brasileiros-estao-entre-os-100-melhores-do-mundo/"
+      }
+    ],
+    "foto": null
   },
   {
     "slug": "alok",
@@ -38,17 +75,50 @@
     "nome_civil": "Alok Achkar Peres Petrillo",
     "nascimento": "26 de agosto de 1991, Goiânia (GO)",
     "origem": "Goiânia, Goiás",
-    "estilos": ["House", "EDM", "Slap house", "Deep house", "Brazilian bass", "Psytrance (início da carreira)"],
+    "estilos": [
+      "House",
+      "EDM",
+      "Slap house",
+      "Deep house",
+      "Brazilian bass",
+      "Psytrance (início da carreira)"
+    ],
     "ativo_desde": "2004",
-    "gravadoras": ["Controversia", "Up Club Records", "Spinnin' Records", "Casablanca Records", "Altafonte"],
+    "gravadoras": [
+      "Controversia",
+      "Up Club Records",
+      "Spinnin' Records",
+      "Casablanca Records",
+      "Altafonte"
+    ],
     "resumo": "Alok é um DJ e produtor musical brasileiro nascido em Goiânia (GO). Começou no psytrance com o projeto Lógica, ao lado do irmão gêmeo Bhaskar, e migrou para o house em 2010. No Top 100 DJs da DJ Mag de 2025 ficou em 3º lugar, sua melhor colocação desde a estreia na lista, em 2015.",
     "historia": [
       "Em 2004, aos 12 anos, formou com o irmão gêmeo Bhaskar o projeto de psytrance Lógica. Em 2010 a dupla se separou e Alok iniciou a carreira solo no house. Em junho de 2013 lançou \"We Are Underground\" no SoundCloud.",
       "Em 2014 foi eleito melhor DJ do Brasil pela House Mag, e em 2015 fundou o selo Up Club Records e estreou no Top 100 da DJ Mag, em 44º. Em 2016 assinou com a Spinnin' Records e lançou \"Hear Me Now\", com Bruno Martini e Zeeba. Em 2019 criou a Controversia, subselo da Spinnin'.",
       "Em 2020 tornou-se o primeiro brasileiro no top 5 da DJ Mag e criou o Instituto Alok. Em 2023 fez um show em Copacabana para cerca de 1 milhão de pessoas, e em 2024 lançou o álbum \"O Futuro é Ancestral\" e recebeu duas indicações ao Grammy Latino. Em 2025 estreou no Coachella, entrou na lista TIME100 Climate e ficou em 3º no ranking da DJ Mag."
     ],
-    "referencias_musicais": ["Daft Punk", "Gorillaz", "The Chemical Brothers", "The Prodigy", "Skrillex", "Diplo", "Criolo", "Emicida", "Arnaldo Antunes", "Natiruts", "Racionais MC's", "GOG", "Burn in Noise (fase Lógica)"],
-    "faixas_marcantes": ["We Are Underground (2013)", "Hear Me Now, com Bruno Martini e Zeeba (2016)", "Deep Down, com Ella Eyre, Kenny Dope e Never Dull (2022)", "Pedju Kunumigwe (2024)", "Drum Machine (2024)"],
+    "referencias_musicais": [
+      "Daft Punk",
+      "Gorillaz",
+      "The Chemical Brothers",
+      "The Prodigy",
+      "Skrillex",
+      "Diplo",
+      "Criolo",
+      "Emicida",
+      "Arnaldo Antunes",
+      "Natiruts",
+      "Racionais MC's",
+      "GOG",
+      "Burn in Noise (fase Lógica)"
+    ],
+    "faixas_marcantes": [
+      "We Are Underground (2013)",
+      "Hear Me Now, com Bruno Martini e Zeeba (2016)",
+      "Deep Down, com Ella Eyre, Kenny Dope e Never Dull (2022)",
+      "Pedju Kunumigwe (2024)",
+      "Drum Machine (2024)"
+    ],
     "marcos": [
       "Melhor DJ do Brasil pela House Mag em 2014",
       "Estreia no DJ Mag Top 100 em 2015 (44º)",
@@ -61,10 +131,25 @@
       "3º no DJ Mag Top 100 de 2025"
     ],
     "fontes": [
-      {"titulo": "Alok, Wikipédia em português", "url": "https://pt.wikipedia.org/wiki/Alok"},
-      {"titulo": "Quatro DJs brasileiros estão entre os 100 melhores do mundo, Jovem Pan", "url": "https://jovempan.com.br/entretenimento/musica/quatro-djs-brasileiros-estao-entre-os-100-melhores-do-mundo/"},
-      {"titulo": "DJ Mag Top 100 DJs Award Results of 2025 Revealed, EDMTunes", "url": "https://www.edmtunes.com/2025/10/01/dj-mag-top-100-djs-award-results-of-2025-revealed/"}
-    ]
+      {
+        "titulo": "Alok, Wikipédia em português",
+        "url": "https://pt.wikipedia.org/wiki/Alok"
+      },
+      {
+        "titulo": "Quatro DJs brasileiros estão entre os 100 melhores do mundo, Jovem Pan",
+        "url": "https://jovempan.com.br/entretenimento/musica/quatro-djs-brasileiros-estao-entre-os-100-melhores-do-mundo/"
+      },
+      {
+        "titulo": "DJ Mag Top 100 DJs Award Results of 2025 Revealed, EDMTunes",
+        "url": "https://www.edmtunes.com/2025/10/01/dj-mag-top-100-djs-award-results-of-2025-revealed/"
+      }
+    ],
+    "foto": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/19_03_2024_-_Anivers%C3%A1rio_de_Bras%C3%ADlia_ter%C3%A1_mega_show_do_DJ_Alok_na_Esplanada_dos_Minist%C3%A9rios_%2853596862497%29_%28cropped%29.jpg/960px-19_03_2024_-_Anivers%C3%A1rio_de_Bras%C3%ADlia_ter%C3%A1_mega_show_do_DJ_Alok_na_Esplanada_dos_Minist%C3%A9rios_%2853596862497%29_%28cropped%29.jpg",
+      "credito": "Renato Alves / Agência Brasília, via Wikimedia Commons",
+      "licenca": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:19_03_2024_-_Anivers%C3%A1rio_de_Bras%C3%ADlia_ter%C3%A1_mega_show_do_DJ_Alok_na_Esplanada_dos_Minist%C3%A9rios_(53596862497)_(cropped).jpg"
+    }
   },
   {
     "slug": "mochakk",
@@ -72,17 +157,37 @@
     "nome_civil": "Pedro Luis Nunes Maia",
     "nascimento": "21 de setembro de 1999, Sorocaba (SP)",
     "origem": "Sorocaba, São Paulo",
-    "estilos": ["House", "Tech house", "Techno"],
+    "estilos": [
+      "House",
+      "Tech house",
+      "Techno"
+    ],
     "ativo_desde": "2014",
-    "gravadoras": ["MOTRAXX", "Circoloco Records", "Defected Records", "Cercle Records"],
+    "gravadoras": [
+      "MOTRAXX",
+      "Circoloco Records",
+      "Defected Records",
+      "Cercle Records"
+    ],
     "resumo": "Mochakk é o nome artístico de Pedro Luis Nunes Maia, DJ e produtor brasileiro nascido em Sorocaba (SP). Ganhou projeção internacional em 2022 e tornou-se presença frequente nas festas Circoloco, em Ibiza. Ficou em 56º lugar no Top 100 DJs da DJ Mag de 2025.",
     "historia": [
       "Começou a tocar como DJ em 2014, aos 15 anos, em São Paulo. Em 2020 lançou \"Caribbean Queen\", com Haas, e em 2021 \"Inflación\".",
       "Em 2022, um vídeo viral no TikTok com a faixa \"Roll Play\", de PAWSA, ampliou seu alcance internacional. No mesmo ano estreou no DC-10, em Ibiza, com a Circoloco, e lançou o selo MOTRAXX. Em 2023 lançou \"Jealous\" pela Circoloco Records, criou a série de eventos \"Mochakk Calling\" e tocou em festivais como Coachella, Time Warp, Primavera Sound e Sónar.",
       "Em 2024 lançou o EP \"Locomotiva Ibiza 2099\", em duas partes, pela Circoloco Records, e abriu o clube OBLIQO em Sorocaba. Estreou no Top 100 da DJ Mag em 2024, em 61º. Em 2025 subiu para o 56º lugar."
     ],
-    "referencias_musicais": ["Funk e disco (gosto da mãe)", "Rock e blues (gosto do pai)", "Hip-hop e rap, gêneros com que começou a produzir beats aos 13 anos"],
-    "faixas_marcantes": ["Caribbean Queen, com Haas (2020)", "Da Fonk, com Joni (2022)", "False Need (2022)", "Jealous (2023)", "NO8DO, com Fernando Ouro (2023)", "Locomotiva Ibiza 2099, EP (2024)"],
+    "referencias_musicais": [
+      "Funk e disco (gosto da mãe)",
+      "Rock e blues (gosto do pai)",
+      "Hip-hop e rap, gêneros com que começou a produzir beats aos 13 anos"
+    ],
+    "faixas_marcantes": [
+      "Caribbean Queen, com Haas (2020)",
+      "Da Fonk, com Joni (2022)",
+      "False Need (2022)",
+      "Jealous (2023)",
+      "NO8DO, com Fernando Ouro (2023)",
+      "Locomotiva Ibiza 2099, EP (2024)"
+    ],
     "marcos": [
       "Estreia no DC-10, em Ibiza, com a Circoloco em 2022",
       "Lançou o selo MOTRAXX em 2022",
@@ -93,28 +198,61 @@
       "56º no DJ Mag Top 100 de 2025"
     ],
     "fontes": [
-      {"titulo": "Mochakk, Wikipedia em inglês", "url": "https://en.wikipedia.org/wiki/Mochakk"},
-      {"titulo": "Mochakk, Wikipédia em português", "url": "https://pt.wikipedia.org/wiki/Mochakk"},
-      {"titulo": "Quatro DJs brasileiros estão entre os 100 melhores do mundo, Jovem Pan", "url": "https://jovempan.com.br/entretenimento/musica/quatro-djs-brasileiros-estao-entre-os-100-melhores-do-mundo/"}
-    ]
+      {
+        "titulo": "Mochakk, Wikipedia em inglês",
+        "url": "https://en.wikipedia.org/wiki/Mochakk"
+      },
+      {
+        "titulo": "Mochakk, Wikipédia em português",
+        "url": "https://pt.wikipedia.org/wiki/Mochakk"
+      },
+      {
+        "titulo": "Quatro DJs brasileiros estão entre os 100 melhores do mundo, Jovem Pan",
+        "url": "https://jovempan.com.br/entretenimento/musica/quatro-djs-brasileiros-estao-entre-os-100-melhores-do-mundo/"
+      }
+    ],
+    "foto": null
   },
   {
     "slug": "anna",
     "nome": "ANNA",
     "nome_civil": "Ana Miranda",
-    "nascimento": "",
+    "nascimento": "Amparo (SP)",
     "origem": "Amparo, São Paulo",
-    "estilos": ["Techno", "Ambient"],
+    "estilos": [
+      "Techno",
+      "Ambient"
+    ],
     "ativo_desde": "",
-    "gravadoras": ["Kompakt", "Drumcode", "Afterlife", "Mute / NovaMute", "Diynamic", "Tronic", "Mercury KX", "Cercle Records"],
+    "gravadoras": [
+      "Kompakt",
+      "Drumcode",
+      "Afterlife",
+      "Mute / NovaMute",
+      "Diynamic",
+      "Tronic",
+      "Mercury KX",
+      "Cercle Records"
+    ],
     "resumo": "ANNA é o nome artístico de Ana Miranda, DJ e produtora brasileira de techno criada em Amparo (SP). Tem lançamentos em selos como Kompakt, Drumcode, Afterlife e Mute, e em 2023 lançou o álbum de ambient \"Intentions\" pela Mercury KX. Vive em Lisboa.",
     "historia": [
       "Começou a tocar aos 14 anos no Six, clube de seu pai, Ubirajara Miranda, em Amparo (SP), quando assumiu a cabine após a saída do DJ residente. No início tocava música brasileira. Aos 20 anos mudou-se para São Paulo.",
       "Mudou-se para a Europa, passou cerca de um ano na República Tcheca e depois se estabeleceu em Barcelona. Teve lançamentos iniciais na Tronic, e \"Odd Concept\", lançado pela Diynamic em 2016, foi seu primeiro destaque. Em janeiro de 2018 estreou na série Speicher, da Kompakt, com \"Hidden Beauties\" e \"The Dansant\", e em 2019 lançou pela primeira vez na Drumcode.",
       "Em janeiro de 2022 lançou o EP \"Journey to the Underworld\" pela Afterlife. Em maio de 2023 lançou \"Intentions\", seu álbum de estreia, de ambient, pela Mercury KX, com participação de Laraaji. Em 2026 lançou \"Bloom\", com Freedom Fighters, pela Cercle Records."
     ],
-    "referencias_musicais": ["DJ Marky", "Laurent Garnier", "Josh Wink, New Order e Todd Terry (discos da coleção do pai)"],
-    "faixas_marcantes": ["Odd Concept (2016)", "Haze Moon, EP (2017)", "Hidden Beauties (2018)", "Journey to the Underworld, EP (2022)", "Receiving, com Laraaji (2023)", "Bloom, com Freedom Fighters (2026)"],
+    "referencias_musicais": [
+      "DJ Marky",
+      "Laurent Garnier",
+      "Josh Wink, New Order e Todd Terry (discos da coleção do pai)"
+    ],
+    "faixas_marcantes": [
+      "Odd Concept (2016)",
+      "Haze Moon, EP (2017)",
+      "Hidden Beauties (2018)",
+      "Journey to the Underworld, EP (2022)",
+      "Receiving, com Laraaji (2023)",
+      "Bloom, com Freedom Fighters (2026)"
+    ],
     "marcos": [
       "\"Odd Concept\" pela Diynamic em 2016",
       "Estreia na série Speicher, da Kompakt, em janeiro de 2018",
@@ -125,11 +263,450 @@
       "Single \"Bloom\", com Freedom Fighters, pela Cercle Records em 2026"
     ],
     "fontes": [
-      {"titulo": "Anna: Born & Raised, Mixmag", "url": "https://mixmag.net/feature/anna-born-raised"},
-      {"titulo": "Artist of the Month: ANNA, Beatportal", "url": "https://www.beatportal.com/features/artist-of-the-month-anna/"},
-      {"titulo": "The 10 best Kompakt releases, according to ANNA, DMY", "url": "https://dmy.co/10-best/the-10-best-kompakt-releases-according-to-anna/"},
-      {"titulo": "ANNA shares 'Intentions', her debut ambient electronic studio album, We Rave You", "url": "https://weraveyou.com/2023/05/anna-debut-ambient-album-intentions/"},
-      {"titulo": "ANNA expands her Sonic Identity with 'Bloom', Beatportal", "url": "https://www.beatportal.com/articles/1409491-anna-expands-her-sonic-identity-with-bloom-a-new-collaboration-with-freedom-fighters-on-cercle-records"}
-    ]
+      {
+        "titulo": "Anna: Born & Raised, Mixmag",
+        "url": "https://mixmag.net/feature/anna-born-raised"
+      },
+      {
+        "titulo": "Artist of the Month: ANNA, Beatportal",
+        "url": "https://www.beatportal.com/features/artist-of-the-month-anna/"
+      },
+      {
+        "titulo": "The 10 best Kompakt releases, according to ANNA, DMY",
+        "url": "https://dmy.co/10-best/the-10-best-kompakt-releases-according-to-anna/"
+      },
+      {
+        "titulo": "ANNA shares 'Intentions', her debut ambient electronic studio album, We Rave You",
+        "url": "https://weraveyou.com/2023/05/anna-debut-ambient-album-intentions/"
+      },
+      {
+        "titulo": "ANNA expands her Sonic Identity with 'Bloom', Beatportal",
+        "url": "https://www.beatportal.com/articles/1409491-anna-expands-her-sonic-identity-with-bloom-a-new-collaboration-with-freedom-fighters-on-cercle-records"
+      }
+    ],
+    "foto": null
+  },
+  {
+    "slug": "liu",
+    "nome": "Liu",
+    "nome_civil": "Christian Liu de Almeida",
+    "nascimento": "2 de fevereiro de 1997, Santana de Parnaíba (SP)",
+    "origem": "Santana de Parnaíba, São Paulo (região metropolitana de São Paulo)",
+    "estilos": [
+      "Brazilian bass",
+      "future house",
+      "deep house",
+      "tech house"
+    ],
+    "ativo_desde": "2015",
+    "gravadoras": [
+      "Universal Music Brasil",
+      "Chinatown (selo próprio)",
+      "Armada Deep (Armada Music)",
+      "Spinnin' Records",
+      "Sony Music Brasil"
+    ],
+    "resumo": "Liu é o nome artístico de Christian Liu de Almeida, DJ e produtor paulista de ascendência brasileira e chinesa. Ligado à geração do Brazilian bass, teve Alok como mentor no início da carreira e entrou no ranking Top 100 DJs da DJ Mag em 2023, figurando na lista também em 2024, 2025 e 2026.",
+    "historia": [
+      "Christian Liu de Almeida nasceu em 1997 em Santana de Parnaíba, na Grande São Paulo, em uma família com ligação com a música: a mãe tocava piano e o pai, violão, instrumento que ensinou ao filho por volta dos nove anos. O interesse pela música eletrônica surgiu depois de ouvir um remix de Benny Benassi, e a produção foi aprendida de forma autodidata, com o programa FL Studio e tutoriais em vídeo. Em 2015 ele chegou a ingressar no curso de engenharia de produção da Universidade Federal de Santa Catarina, que deixou depois para se dedicar à carreira.",
+      "Os primeiros lançamentos saíram em 2015, entre eles \"Don't Look Back\", parceria com Vokker que chamou a atenção de Alok. A partir daí Alok passou a atuar como seu mentor, e Liu lançou \"All I Want\" com ele e Stonefox pelo selo Armada Deep, além de participar da coletânea \"Alok Presents Brazilian Bass\", da Spinnin' Records. Em 2017 entrou para a Artist Factory, agência ligada a Alok, e no ano seguinte lançou \"Nave Espacial\", com vocal de Samantha Machado.",
+      "Em março de 2019 fundou o selo Chinatown e, em agosto do mesmo ano, assinou com a Universal Music Brasil, por onde saiu o single \"Me Cura\". Vieram depois a faixa \"Fica Bem\" (2021), com Malifoo e Gabriel Porto, que entrou no Top 100 Brasil, e os EPs \"Dial\" (2021) e \"Be Everyday\" (2022). Em abril de 2023 passou a ser agenciado pela Entourage.",
+      "No ranking anual da DJ Mag, Liu estreou na 98ª posição em 2023, subiu para a 79ª em 2024, chegou à 71ª em 2025 e ficou em 69º lugar em 2026. Em julho de 2024 fez sua primeira apresentação no Tomorrowland, na Bélgica."
+    ],
+    "referencias_musicais": [],
+    "faixas_marcantes": [
+      "Don't Look Back (2015)",
+      "All I Want (2016)",
+      "Nave Espacial (2018)",
+      "Me Cura (2019)",
+      "Fica Bem (2021)"
+    ],
+    "marcos": [
+      "2015: primeiros lançamentos e aproximação com Alok, que se tornou seu mentor",
+      "2017: entrada na agência Artist Factory",
+      "2019: criação do selo Chinatown e contrato com a Universal Music Brasil",
+      "2023: estreia no Top 100 DJs da DJ Mag (98º lugar)",
+      "2024: 79º lugar na DJ Mag e primeira apresentação no Tomorrowland Bélgica",
+      "2025: 71º lugar na DJ Mag",
+      "2026: 69º lugar na DJ Mag"
+    ],
+    "fontes": [
+      {
+        "titulo": "Liu (DJ) - Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/Liu_(DJ)"
+      },
+      {
+        "titulo": "DJ Mag Top 100 DJs 2026 - Liu (69)",
+        "url": "https://djmag.com/top100djs/2026/69/liu"
+      },
+      {
+        "titulo": "DJ Mag Top 100 DJs 2024 - Liu (79)",
+        "url": "https://djmag.com/top100djs/2024/79/liu"
+      },
+      {
+        "titulo": "DJ Mag Top 100 DJs 2023 - Liu (98)",
+        "url": "https://djmag.com/top100djs/2023/98/liu"
+      },
+      {
+        "titulo": "Billboard Brasil - Alok é eleito terceiro maior DJ do mundo (Top 100 DJs 2025)",
+        "url": "https://billboard.com.br/alok-top-100-djs-2025/"
+      }
+    ],
+    "foto": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Liu_%2836736299093%29_2.jpg",
+      "credito": "Pablo Diego (Pará de Minas, MG), via Wikimedia Commons",
+      "licenca": "CC BY-SA 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Liu_(36736299093)_2.jpg"
+    }
+  },
+  {
+    "slug": "cat-dealers",
+    "nome": "Cat Dealers",
+    "nome_civil": "Luiz Guilherme Cardoso (Lugui) e Pedro Henrique Cardoso (Pedrão)",
+    "nascimento": "não informado",
+    "origem": "Rio de Janeiro, Rio de Janeiro",
+    "estilos": [
+      "house",
+      "Brazilian bass",
+      "electro house"
+    ],
+    "ativo_desde": "2016 (algumas fontes contam a carreira a partir de 2015)",
+    "gravadoras": [
+      "Sony Music (lançamentos no Brasil)",
+      "Armada Music (lançamentos internacionais, desde 2020)"
+    ],
+    "resumo": "Cat Dealers é a dupla carioca formada pelos irmãos Lugui e Pedrão, que produzem e tocam juntos desde a adolescência. O projeto entrou no Top 100 DJs da DJ Mag em 2017, um ano depois de ser lançado, e em 2025 celebrou dez anos de carreira com o primeiro álbum, \"Loop Theory\".",
+    "historia": [
+      "Os irmãos Luiz Guilherme Cardoso, o Lugui, e Pedro Henrique Cardoso, o Pedrão, cresceram no Rio de Janeiro e começaram a fazer música eletrônica ainda adolescentes. O projeto Cat Dealers ganhou projeção a partir de 2016, quando a faixa \"Your Body\" circulou fora do país e abriu espaço para lançamentos como \"Gravity\" e \"Sunshine\", ambos de 2017.",
+      "A ascensão foi rápida: em 2017 a dupla estreou no ranking Top 100 DJs da DJ Mag, apenas um ano após o início do projeto, e em 2018 apareceu na 48ª posição. No mesmo ano foi incluída na lista Forbes Under 30 do Brasil. Ainda em 2018 lançou \"Keep On Lovin'\" pela Sony Music, gravadora que concentra os lançamentos da dupla no mercado brasileiro. O remix de \"Ai Ai Ai\", de Vanessa da Mata, feito em parceria com Felguk, levou o nome da dupla a um público além da cena eletrônica.",
+      "Em 2020 os irmãos assinaram com a holandesa Armada Music para os lançamentos internacionais e terminaram o ano em 52º lugar na DJ Mag, a quarta participação seguida na lista. Voltaram ao ranking em 2024, na 77ª posição. Segundo a Wikipédia, a dupla acumula discos de platina e de ouro certificados pela Pro-Música Brasil.",
+      "Em 2025, ano em que completou uma década de estrada, a dupla lançou o primeiro álbum, \"Loop Theory\", com dez faixas, e se apresentou no palco principal do Tomorrowland Brasil."
+    ],
+    "referencias_musicais": [],
+    "faixas_marcantes": [
+      "Your Body (2016)",
+      "Gravity (2017)",
+      "Sunshine (2017)",
+      "Keep On Lovin' (2018)",
+      "Ai Ai Ai (remix com Felguk)",
+      "Loop Theory (álbum, 2025)"
+    ],
+    "marcos": [
+      "2017: estreia no Top 100 DJs da DJ Mag",
+      "2018: 48º lugar na DJ Mag e inclusão na lista Forbes Under 30 Brasil",
+      "2020: contrato com a Armada Music e 52º lugar na DJ Mag",
+      "2024: 77º lugar na DJ Mag",
+      "2025: primeiro álbum, \"Loop Theory\", e apresentação no Mainstage do Tomorrowland Brasil"
+    ],
+    "fontes": [
+      {
+        "titulo": "Cat Dealers - Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/Cat_Dealers"
+      },
+      {
+        "titulo": "Billboard Brasil - Cat Dealers lança primeiro álbum da carreira",
+        "url": "https://billboard.com.br/cat-dealers-loop-theory/"
+      },
+      {
+        "titulo": "Billboard Brasil - Cat Dealers exaltam recepção no exterior",
+        "url": "https://billboard.com.br/cat-dealers-carreira-brasil/"
+      },
+      {
+        "titulo": "Bandsintown - biografia Cat Dealers",
+        "url": "https://www.bandsintown.com/a/12657634"
+      },
+      {
+        "titulo": "Insomniac - Cat Dealers",
+        "url": "https://www.insomniac.com/?p=137315"
+      },
+      {
+        "titulo": "EDM.com - entrevista Cat Dealers (2018)",
+        "url": "https://edm.com/interviews/cat-dealers-interview"
+      },
+      {
+        "titulo": "Billboard Brasil - Alok e Vintage Culture entre os 10 melhores DJs do mundo (Top 100 2024)",
+        "url": "https://billboard.com.br/lista-melhores-djs-do-mundo-brasileiros/"
+      },
+      {
+        "titulo": "MusicBrainz - Cat Dealers (discografia)",
+        "url": "https://musicbrainz.org/artist/48214678-e785-4337-a6c5-3000a366bc91"
+      }
+    ],
+    "foto": null
+  },
+  {
+    "slug": "kvsh",
+    "nome": "KVSH",
+    "nome_civil": "Luciano Rodrigues de Carvalho Ferreira",
+    "nascimento": "14 de novembro de 1993, Nova Lima (MG)",
+    "origem": "Nova Lima, Minas Gerais (região metropolitana de Belo Horizonte)",
+    "estilos": [
+      "house",
+      "future house",
+      "tropical house",
+      "Brazilian bass"
+    ],
+    "ativo_desde": "2014",
+    "gravadoras": [
+      "Lemon Drops (selo próprio)",
+      "Hub Records (Sony Music Brasil)",
+      "STMPD RCRDS"
+    ],
+    "resumo": "KVSH é o nome artístico do mineiro Luciano Rodrigues de Carvalho Ferreira, DJ, produtor e empresário da música eletrônica. Ganhou projeção em 2016 com \"Potter\" e, em 2018, assinou com Vintage Culture e Breno Miranda \"Cante por Nós\", certificada com disco de diamante.",
+    "historia": [
+      "Luciano Rodrigues de Carvalho Ferreira nasceu em Nova Lima, na região metropolitana de Belo Horizonte, em 1993. Em 2014, enquanto cursava arquitetura na PUC Minas, começou a tocar em festas universitárias e a fazer remixes de forma improvisada, usando o dinheiro dos primeiros cachês para comprar equipamento. O nome KVSH veio do apelido que usava no jogo Counter-Strike, \"KUSH\", com o \"U\" trocado por \"V\".",
+      "A virada veio em 2016 com \"Potter\", faixa construída sobre um tema da trilha de Harry Potter e publicada no SoundCloud, que chegou ao topo das paradas virais do Spotify no Brasil, na Colômbia e no México. Em 2018 lançou \"Cante por Nós\", com Vintage Culture e Breno Miranda, que recebeu disco de diamante da Pro-Música Brasil, e em 2019 \"Can't Get Over You\", com The Otherz e FRÖEDE, certificada com platina.",
+      "Em 2019 assinou com a Hub Records, ligada à Sony Music Brasil, e no ano seguinte fundou o selo Lemon Drops. Também criou a festa Krush e a escola de DJs Lemon Club. Em 2020 apareceu na 133ª posição da lista complementar (Next 50) do ranking da DJ Mag. Em 2021 lançou \"Sicko Drop\", com Schillist, pela STMPD RCRDS, selo de Martin Garrix, faixa que estreou na 35ª posição da parada Dance/Electronic Songs da Billboard.",
+      "KVSH foi incluído na lista Forbes Under 30 e já se apresentou em festivais como Rock in Rio e Lollapalooza Brasil."
+    ],
+    "referencias_musicais": [],
+    "faixas_marcantes": [
+      "Potter (2016)",
+      "Sede Pra Te Ver (2017)",
+      "Cante por Nós (2018)",
+      "Can't Get Over You (2019)",
+      "Terrified (2020)",
+      "Sicko Drop (2021)"
+    ],
+    "marcos": [
+      "2016: \"Potter\" chega ao 1º lugar das paradas virais do Spotify no Brasil, Colômbia e México",
+      "2018: \"Cante por Nós\" recebe disco de diamante da Pro-Música Brasil",
+      "2019: contrato com a Hub Records (Sony Music Brasil)",
+      "2020: fundação do selo Lemon Drops; 133º lugar na lista Next 50 da DJ Mag",
+      "2021: \"Sicko Drop\" (STMPD RCRDS) estreia no 35º lugar da parada Dance/Electronic Songs da Billboard",
+      "Inclusão na lista Forbes Under 30 (ano não informado)"
+    ],
+    "fontes": [
+      {
+        "titulo": "KVSH - Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/KVSH"
+      },
+      {
+        "titulo": "Volumo - KVSH",
+        "url": "https://volumo.com/artist/22691-kvsh"
+      },
+      {
+        "titulo": "DJ Mag - Top 100 DJs 2020: Next 50",
+        "url": "https://djmag.com/longreads/dj-mag-top-100-djs-2020-next-50"
+      }
+    ],
+    "foto": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/KVSH_2019-11-08.jpg",
+      "credito": "UB Tutorials - Academia da Música Eletrônica (frame de vídeo do YouTube), via Wikimedia Commons",
+      "licenca": "CC BY 3.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:KVSH_2019-11-08.jpg"
+    }
+  },
+  {
+    "slug": "bhaskar",
+    "nome": "Bhaskar",
+    "nome_civil": "Bhaskar Achkar Peres Petrillo",
+    "nascimento": "26 de agosto de 1991, Goiânia (GO)",
+    "origem": "Goiânia, Goiás; cresceu entre Brasília (DF), Amsterdã e Alto Paraíso de Goiás (GO)",
+    "estilos": [
+      "house",
+      "Brazilian bass",
+      "techno",
+      "psytrance (início da carreira)"
+    ],
+    "ativo_desde": "2004",
+    "gravadoras": [
+      "Spinnin' Records",
+      "Up Club Records",
+      "Vagalume Records (projeto Lógica)",
+      "Liquid Records (projeto Lógica)"
+    ],
+    "resumo": "Bhaskar é o nome artístico de Bhaskar Achkar Peres Petrillo, DJ e produtor goiano e irmão gêmeo de Alok. Começou ainda criança no psytrance, ao lado do irmão, e lançou carreira solo em 2016, com destaque para \"Fuego\" e \"Infinity\".",
+    "historia": [
+      "Bhaskar Achkar Peres Petrillo nasceu em Goiânia em 1991, filho de Swarup e Ekanta, pioneiros do psytrance no Brasil e criadores do festival Universo Paralello, na Bahia. É irmão gêmeo de Alok. Passou a primeira infância em Brasília, morou depois em Amsterdã com a mãe e em Alto Paraíso de Goiás, e se fixou em Águas Claras, no Distrito Federal, na adolescência.",
+      "Por volta dos 12 anos, em 2004, formou com o irmão o projeto de trance ao vivo Lógica, que estreou na festa Psycholand, em Brasília, e tocou no Universo Paralello no mesmo ano. Entre os 15 e os 17 anos a dupla já produzia as próprias faixas e excursionou por cerca de 19 países, com lançamentos pelos selos Vagalume Records e Liquid Records. Os irmãos seguiram caminhos separados em 2010. Antes da carreira solo, Bhaskar integrou ainda os projetos Second (2012) e Blue Rose (2015).",
+      "Em 2016 anunciou o trabalho solo. O primeiro single, \"Feeling So High\", com Sevenn e Blue Rose, foi usado em uma ação da Skol Beats ligada ao Tomorrowland Brasil. No mesmo ano disponibilizou \"Fuego\", parceria com Alok, que depois saiu pela Spinnin' Records. Seguiram-se faixas como \"Bella Ciao\" (2018), com Alok, Jetlag Music e André Sarate, e \"Rascunho\" (2019), com 3030 e Dubdogz.",
+      "A parceria com a dupla Dubdogz rendeu também \"Infinity\" (2020), uma das faixas de maior audiência de sua carreira, com dezenas de milhões de reproduções nas plataformas digitais."
+    ],
+    "referencias_musicais": [],
+    "faixas_marcantes": [
+      "Feeling So High (2016)",
+      "Fuego (2016)",
+      "Bella Ciao (2018)",
+      "Rascunho (2019)",
+      "Infinity (2020)"
+    ],
+    "marcos": [
+      "2004: estreia com o irmão Alok no projeto Lógica e primeira apresentação no Universo Paralello",
+      "2010: fim da parceria regular com Alok",
+      "2016: início da carreira solo com \"Feeling So High\" e lançamento de \"Fuego\"",
+      "2020: \"Infinity\", com Dubdogz"
+    ],
+    "fontes": [
+      {
+        "titulo": "Bhaskar (DJ) - Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/Bhaskar_(DJ)"
+      },
+      {
+        "titulo": "Billboard Brasil - Os irmãos Bhaskar e Alok começaram a tocar ainda crianças",
+        "url": "https://billboard.com.br/os-irmaos-bhaskar-e-alok-comecaram-a-tocar-ainda-criancas-era-um-tipo-um-videogame/"
+      },
+      {
+        "titulo": "Billboard Brasil - As latidas certeiras do Dubdogz",
+        "url": "https://billboard.com.br/dubdogz-carreira-internacional-e-projeto-social/"
+      },
+      {
+        "titulo": "Volumo - Bhaskar",
+        "url": "https://volumo.com/artist/66223-bhaskar"
+      }
+    ],
+    "foto": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Bhaskar_Petrillo.jpg",
+      "credito": "Pablodiego15 (Pablo Diego), via Wikimedia Commons",
+      "licenca": "CC BY-SA 4.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Bhaskar_Petrillo.jpg"
+    }
+  },
+  {
+    "slug": "dubdogz",
+    "nome": "Dubdogz",
+    "nome_civil": "Marcos Ruback Schmidt e Lucas Ruback Schmidt (o sobrenome aparece também como Schmitz em algumas fontes)",
+    "nascimento": "27 de dezembro de 1993, Juiz de Fora (MG)",
+    "origem": "Juiz de Fora, Minas Gerais",
+    "estilos": [
+      "deep house",
+      "nu disco",
+      "slap house",
+      "progressive house"
+    ],
+    "ativo_desde": "2016 (algumas fontes indicam 2015)",
+    "gravadoras": [
+      "Spinnin' Records",
+      "Chorou Records (selo próprio, desde 2021)",
+      "Controversia"
+    ],
+    "resumo": "Dubdogz é a dupla dos irmãos gêmeos Marcos e Lucas Ruback, de Juiz de Fora (MG), conhecida pelo house de linha melódica e por remixes de clássicos do pop e do rock nacional. Entrou no Top 100 DJs da DJ Mag em 2022 e, em 2024, criou uma escola de música gratuita em sua cidade natal.",
+    "historia": [
+      "Os gêmeos Marcos e Lucas Ruback nasceram em Juiz de Fora, Minas Gerais. O interesse pela música eletrônica veio de um tio que ouvia psytrance, e os primeiros sets aconteceram nos intervalos da escola, com equipamento emprestado. Em 2011 formaram o duo de trance Wega, com o qual fizeram turnê internacional ainda adolescentes, e depois mantiveram o projeto Ruback, voltado ao progressive trance.",
+      "O Dubdogz foi lançado em meados da década de 2010, com foco em deep house e nu disco. A dupla ganhou espaço com remixes de artistas brasileiros e estrangeiros, como \"Alors on Danse\", de Stromae, \"Algo Parecido\" e \"Ainda Gosto Dela\", do Skank, e \"Dias Melhores\", do Jota Quest, e com parcerias com Bhaskar, entre elas \"Rascunho\" (2019) e \"Infinity\" (2020), a faixa mais ouvida da dupla. Em 2019 recebeu o título de cidadãos beneméritos de Juiz de Fora e realizou a primeira edição da festa Dog Party.",
+      "Em 2020 a dupla lançou pela Spinnin' Records os EPs \"Day\" e \"Night\" e, em 2021, criou o selo Chorou Records, inaugurado com \"Everybody Wants to Party\". No ranking da DJ Mag, apareceu na lista complementar em 2021, estreou no Top 100 em 2022, na 93ª posição, subiu para a 64ª em 2023 e ficou em 62º lugar em 2024.",
+      "A dupla se apresentou em festivais como Tomorrowland, Rock in Rio, Lollapalooza Brasil e EDC. Em 2024 fundou em Juiz de Fora a Escola de Música Dubdogz, que oferece aulas gratuitas a crianças e adolescentes de 7 a 17 anos."
+    ],
+    "referencias_musicais": [],
+    "faixas_marcantes": [
+      "Alors on Danse (remix, 2019)",
+      "Rascunho (2019)",
+      "Infinity (2020)",
+      "Free My Mind (2020)",
+      "Everybody Wants to Party (2021)"
+    ],
+    "marcos": [
+      "2011: formação do duo de trance Wega, projeto anterior dos irmãos",
+      "2019: título de cidadãos beneméritos de Juiz de Fora e primeira Dog Party",
+      "2020: EPs \"Day\" e \"Night\" pela Spinnin' Records",
+      "2021: criação do selo Chorou Records",
+      "2022: estreia no Top 100 DJs da DJ Mag (93º lugar)",
+      "2023: 64º lugar na DJ Mag",
+      "2024: 62º lugar na DJ Mag e fundação da Escola de Música Dubdogz"
+    ],
+    "fontes": [
+      {
+        "titulo": "Dubdogz - Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/Dubdogz"
+      },
+      {
+        "titulo": "Forbes Brasil - Dubdogz: a trajetória da dupla eletrônica de Minas Gerais",
+        "url": "https://forbes.com.br/forbes-life/2026/02/dubdogz-a-trajetoria-da-dupla-eletronica-de-minas-gerais/"
+      },
+      {
+        "titulo": "Billboard Brasil - As latidas certeiras do Dubdogz",
+        "url": "https://billboard.com.br/dubdogz-carreira-internacional-e-projeto-social/"
+      },
+      {
+        "titulo": "Tribuna de Minas - Dubdogz fecha 2022 entre os melhores DJs do mundo",
+        "url": "https://tribunademinas.com.br/noticias/cultura/13-01-2023/dubdogz-fecha-2022-entre-os-melhor-djs-do-mundo.html"
+      },
+      {
+        "titulo": "DJ Mag Top 100 DJs 2022 - Dubdogz (93)",
+        "url": "https://djmag.com/top100djs/2022/93/dubdogz"
+      },
+      {
+        "titulo": "DJ Mag Top 100 DJs 2023 - Dubdogz (64)",
+        "url": "https://djmag.com/top100djs/2023/64/Dubdogz"
+      },
+      {
+        "titulo": "Billboard Brasil - Alok e Vintage Culture entre os 10 melhores DJs do mundo (Top 100 2024)",
+        "url": "https://billboard.com.br/lista-melhores-djs-do-mundo-brasileiros/"
+      }
+    ],
+    "foto": null
+  },
+  {
+    "slug": "chemical-surf",
+    "nome": "Chemical Surf",
+    "nome_civil": "Hugo Sanches e Lucas Sanches (nomes completos não informados)",
+    "nascimento": "não informado",
+    "origem": "Maringá, Paraná (radicados em Santa Catarina desde 2014)",
+    "estilos": [
+      "tech house",
+      "progressive house",
+      "electronica"
+    ],
+    "ativo_desde": "2005 (segundo a Wikipédia; outras fontes indicam datas diferentes)",
+    "gravadoras": [
+      "Spinnin' Records",
+      "STMPD RCRDS",
+      "Musical Freedom",
+      "Dim Mak",
+      "Armada Music",
+      "Sony Music",
+      "Smash The House",
+      "R.I.P. Genres Records (selo próprio)"
+    ],
+    "resumo": "Chemical Surf é a dupla dos irmãos Hugo e Lucas Sanches, natural de Maringá (PR) e radicada em Santa Catarina. Conhecida por não se prender a um gênero, tem em \"Hey Hey Hey\" seu maior sucesso e lançamentos por selos como Spinnin' Records e STMPD RCRDS.",
+    "historia": [
+      "Os irmãos Hugo e Lucas Sanches são naturais de Maringá, no Paraná, e se mudaram para Santa Catarina em 2014. A Wikipédia registra o início das atividades da dupla em 2005; reportagens publicadas em 2022 falam em quase 20 anos de carreira.",
+      "O nome da dupla ganhou alcance internacional com \"Hey Hey Hey\" (2017), que passou de 100 milhões de reproduções somadas nas plataformas digitais. No mesmo período vieram \"Feeling Good\", com Vintage Culture, e \"I Wanna Do\" (2019), com Dubdisko. A dupla lançou faixas por selos como Spinnin' Records e STMPD RCRDS, de Martin Garrix, que contratou os irmãos depois de incluir músicas deles em seus sets.",
+      "Entre 2020 e 2021 vieram o EP \"Terremoto\", \"Pow Pow Pow\", com Kaskade, e \"Siliwa Hay\", com Steve Aoki, além de uma parceria com Gabriel O Pensador. Em julho de 2021 a dupla passou a ser representada pela agência norte-americana CAA. Os irmãos também fundaram o selo R.I.P. Genres Records, cujo nome resume a proposta de liberdade criativa sem rótulos de gênero.",
+      "Em 2022 a dupla tocou pela quarta vez como atração do palco Perry's no Lollapalooza Brasil, estreou no Tomorrowland, na Bélgica, a convite de Dimitri Vegas & Like Mike, e se apresentou no Rock in Rio. Também passou por eventos como Creamfields Chile, Ultra Brasil e EDC Brasil."
+    ],
+    "referencias_musicais": [],
+    "faixas_marcantes": [
+      "Hey Hey Hey (2017)",
+      "Feeling Good (com Vintage Culture, 2017)",
+      "I Wanna Do (2019)",
+      "Terremoto (2020)",
+      "Pow Pow Pow (2020)",
+      "Siliwa Hay (2021)"
+    ],
+    "marcos": [
+      "2014: mudança de Maringá para Santa Catarina",
+      "2017: lançamento de \"Hey Hey Hey\", maior sucesso da dupla",
+      "2021: contratação pela agência CAA",
+      "2022: quarta participação no Lollapalooza Brasil, Tomorrowland Bélgica e Rock in Rio",
+      "Fundação do selo R.I.P. Genres Records (ano não informado)"
+    ],
+    "fontes": [
+      {
+        "titulo": "Chemical Surf - Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/Chemical_Surf"
+      },
+      {
+        "titulo": "Chemical Surf - Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/Chemical_Surf"
+      },
+      {
+        "titulo": "A Gazeta - Chemical Surf volta à estrada com direito a turnê nos EUA",
+        "url": "https://www.agazeta.com.br/hz/cultura/chemical-surf-volta-a-estrada-com-direito-a-turne-nos-eua-1021"
+      },
+      {
+        "titulo": "A Gazeta - Atração no Lollapalooza, Chemical Surf garante mais dois grandes festivais em 2022",
+        "url": "https://www.agazeta.com.br/hz/cultura/atracao-no-lollapalooza-chemical-surf-garante-mais-dois-grandes-festivais-em-2022-0322"
+      },
+      {
+        "titulo": "Jornal de Brasília - Chemical Surf chega com novo single pela R.I.P. Genres Records",
+        "url": "https://jornaldebrasilia.com.br/blogs-e-colunas/analice-nicolau/chemical-surf-chega-com-novo-single-pela-r-i-p-genres-records-em-parceria-com-ghabe-e-mevil-confira-without-you/"
+      },
+      {
+        "titulo": "NSC Total - Uma entrevista exclusiva com a dupla Chemical Surf",
+        "url": "https://www.nsctotal.com.br/?p=5569146"
+      }
+    ],
+    "foto": null
   }
 ]

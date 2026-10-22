@@ -1,4 +1,4 @@
-/* Brazilian Bayle · release 2
+/* Brazilian Baile · release 2
    Pré-temporada: ranking, festas e resenhas são de demonstração e aparecem rotulados assim.
    Votos, candidaturas e lista de espera ficam só no navegador (localStorage) até existir um backend. */
 
@@ -12,6 +12,8 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch {} }
 };
 function rnd(seed) { return () => (seed = (seed * 16807) % 2147483647, (seed - 1) / 2147483646) }
+const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const initials = s => s.replace(/[^A-Za-zÀ-ÿ ]/g, "").split(/\s+/).filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
 const wait = ms => new Promise(r => setTimeout(r, ms));
 let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textContent = t; el.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => el.classList.remove("on"), 3400) }
 
@@ -117,7 +119,7 @@ function renderPodium() {
   el.innerHTML = table().slice(0, 3).map(d => `
     <div class="pod p${d.pos}">
       ${rankAward(d.pos)}
-      <p class="pod-name">${d.name}</p><p class="pod-style mono">${d.style}</p>
+      <p class="pod-name"><a href="/djpedia/${slug(d.name)}">${d.name}</a></p><p class="pod-style mono">${d.style}</p>
       <p class="led" aria-label="nota ${fmt2(d.nota)}">${fmt2(d.nota)}</p>
       <div class="pod-block"><div class="top" aria-hidden="true"></div><div class="face"><span class="num3d" aria-label="${d.pos}º lugar">${pad(d.pos)}</span></div></div>
     </div>`).join("");
@@ -127,7 +129,7 @@ function renderPodium() {
 const boards = [];
 function mountBoard(stage) {
   const limit = +stage.dataset.limit || 0, sortable = stage.hasAttribute("data-sortable");
-  const st = { sort: "nota", style: "Todos", last: {}, flash: null, expanded: false };
+  const st = { sort: "nota", last: {}, flash: null, expanded: false };
   stage.classList.add('board-summary');
   const head = [["nota", "Nota"], ...CRIT, ["votos", "Votos"]];
   stage.innerHTML = `<table class="board">
@@ -143,19 +145,13 @@ function mountBoard(stage) {
     const row = button.closest('tr'), open = row.classList.toggle('details-open');
     button.setAttribute('aria-expanded', String(open)); button.textContent = open ? 'Fechar detalhes −' : 'Ver detalhes +';
   });
-  const filters = sortable && $("[data-filters]");
-  if (filters) {
-    const styles = ["Todos", ...new Set(DJS.map(d => d[1]))];
-    filters.innerHTML = styles.map(s => `<button class="chip" type="button" aria-pressed="${s === "Todos"}" data-s="${s}">${s}</button>`).join("");
-    filters.onclick = e => { const b = e.target.closest(".chip"); if (!b) return; st.style = b.dataset.s; $$(".chip", filters).forEach(c => c.setAttribute("aria-pressed", c === b)); render() };
-  }
   if (sortable) $("thead", stage).onclick = e => {
     const b = e.target.closest("button[data-sort]"); if (!b) return; st.sort = b.dataset.sort;
     $$("th[data-k]", stage).forEach(th => th.dataset.k === st.sort ? th.setAttribute("aria-sort", "descending") : th.removeAttribute("aria-sort")); render();
   };
   function render() {
     const rows = table();
-    let list = rows.filter(d => st.style === "Todos" || d.style === st.style);
+    let list = rows;
     if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
     if (limit) list = list.slice(0, limit);
     const total = list.length;
@@ -167,7 +163,7 @@ function mountBoard(stage) {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
-        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}<b>${d.name}</b>${mv}<span class="mono">${d.style}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
+        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>${mv}<span class="mono">${d.style}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
         <td class="b-score"><span class="led">${fmt2(d.nota)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
@@ -428,30 +424,6 @@ simpleForm({
 });
 (() => { const ig = $("#aIg"), cc = $("#ccIg"); if (!ig || !cc) return; ig.addEventListener("input", () => cc.textContent = ig.value ? "@" + ig.value.replace(/^@/, "").toUpperCase() : "@SEU.PERFIL") })();
 
-/* ---------- resenhas (exemplos) ---------- */
-(() => {
-  const REV = [
-    { i: "EX", n: "Exemplo de crítico", f: 23, t: "Green Valley, 07/09:", e: "o fechamento que ninguém esperava", p: "Começou contido, segurou a pista por uma hora e virou o jogo no último terço. Graves impecáveis e uma leitura de público rara.", s: [9, 8, 10, 9] },
-    { i: "EX", n: "Exemplo de crítica", f: 17, t: "Warung, 21/09:", e: "techno de templo", p: "Set longo, sem pressa, com transições que você só percebe depois. O tipo de noite que justifica a estrada até Itajaí.", s: [10, 9, 8, 10] },
-    { i: "EX", n: "Exemplo de crítico", f: 31, t: "Surreal, 14/09:", e: "energia do começo ao fim", p: "Não deu respiro. Faltou variação no meio, mas a pista não parou um minuto e o som da casa ajudou muito.", s: [8, 7, 10, 7] },
-  ];
-  $$("[data-reviews]").forEach(el => {
-    const lim = +el.dataset.limit || REV.length;
-    el.innerHTML = REV.slice(0, lim).map((v, ix) => {
-      const average = fmt1(v.s.reduce((sum, n) => sum + n, 0) / v.s.length);
-      return `<article class="rev" aria-labelledby="review-${ix}-${lim}">
-        <div class="review-heading"><span class="review-category"><span class="review-frequency" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Resenha de pista</span><span class="review-example">Demonstração</span></div>
-        <p class="review-venue">${v.t.replace(/:$/, '')}</p>
-        <h3 id="review-${ix}-${lim}">${v.e}</h3>
-        <p class="review-copy">${v.p}</p>
-        <div class="review-rating"><span>Nota do set<small>Média dos quatro critérios</small></span><strong>${average}<small>/10</small></strong></div>
-        <div class="scores">${CRIT.map(([, l], j) => `<span><span>${l}</span><b>${v.s[j]}</b></span>`).join("")}</div>
-        <div class="rev-top"><span class="av" aria-hidden="true">${v.i}</span><div><b>${v.n}</b><span class="mono">BRB Clubber · ${v.f} festas · exemplo</span></div></div>
-      </article>`;
-    }).join("");
-  });
-})();
-
 /* ---------- fundos desfocados: só baixam quando vão aparecer ---------- */
 function showBg(el) { if (el && el.dataset.bg) { el.style.backgroundImage = `url(${el.dataset.bg})`; delete el.dataset.bg } }
 (() => {
@@ -695,13 +667,10 @@ $$(".slides").forEach(box => {
 })();
 
 /* ---------- tabela no formato do Brasileirão (referência: ge.globo) ---------- */
-const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const initials = s => s.replace(/[^A-Za-zÀ-ÿ ]/g, "").split(/\s+/).filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
 const GE_EXTRA = (() => { const r = rnd(7); return Object.fromEntries(DJS.map(([n]) => [n, { festas: 6 + Math.floor(r() * 12), last: Array.from({ length: 5 }, () => r()) }])) })();
-const DJPEDIA = new Set(["vintage-culture", "alok", "mochakk", "anna"]);
 function mountGe(el) {
   const sortable = el.hasAttribute("data-sortable");
-  const st = { sort: "nota", style: "Todos", last: {} };
+  const st = { sort: "nota", last: {} };
   const cols = [["nota", "Nota", "Nota geral"], ["votos", "Vot", "Votos"], ["festas", "Fes", "Festas avaliadas"],
     ["som", "Som", "Qualidade do som"], ["harmonia", "Har", "Harmonia do set"], ["energia", "Ene", "Energia e vibe"], ["sofisticacao", "Sof", "Sofisticação e inovação"]];
   el.innerHTML = `<div class="ge-card">
@@ -720,24 +689,18 @@ function mountGe(el) {
       <span class="ge-dots-legend"><i class="d-up"></i>acima da média <i class="d-eq"></i>na média <i class="d-dn"></i>abaixo</span>
       <span class="ge-abbr">Vot = votos · Fes = festas avaliadas · Som = qualidade do som · Har = harmonia do set · Ene = energia e vibe · Sof = sofisticação e inovação</span>
     </div></div>`;
-  const filters = sortable && $("[data-filters]");
-  if (filters) {
-    const styles = ["Todos", ...new Set(DJS.map(d => d[1]))];
-    filters.innerHTML = styles.map(s => `<button class="chip" type="button" aria-pressed="${s === "Todos"}" data-s="${s}">${s}</button>`).join("");
-    filters.onclick = e => { const b = e.target.closest(".chip"); if (!b) return; st.style = b.dataset.s; $$(".chip", filters).forEach(c => c.setAttribute("aria-pressed", c === b)); render() };
-  }
   if (sortable) $("thead", el).onclick = e => {
     const b = e.target.closest("button[data-sort]"); if (!b) return; st.sort = b.dataset.sort;
     $$("th[data-k]", el).forEach(th => th.dataset.k === st.sort ? th.setAttribute("aria-sort", "descending") : th.removeAttribute("aria-sort")); render();
   };
   function render(flash) {
     const rows = table().map(d => ({ ...d, ...GE_EXTRA[d.name] }));
-    let list = rows.filter(d => st.style === "Todos" || d.style === st.style);
+    let list = rows;
     if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
     $("tbody", el).innerHTML = list.map(d => {
       const prev = st.last[d.name];
       const mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="ge-mv up" aria-label="subiu ${prev - d.pos}">▲</span>` : `<span class="ge-mv dn" aria-label="caiu ${d.pos - prev}">▼</span>`) : `<span class="ge-mv" aria-hidden="true">•</span>`;
-      const s = slug(d.name), href = DJPEDIA.has(s) ? `/djpedia/${s}` : `/djpedia#${s}`;
+      const s = slug(d.name), href = `/djpedia/${s}`;
       const dots = d.last.map((v, i) => { const c = v > .62 ? "d-up" : v > .3 ? "d-eq" : "d-dn"; return `<i class="${c}" title="Festa ${i + 1}: ${c === "d-up" ? "acima" : c === "d-eq" ? "na" : "abaixo"} da média"></i>` }).join("");
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${d.pos}</b>${mv}</td>
@@ -753,3 +716,10 @@ function mountGe(el) {
   boards.push({ render: () => render(), flash: n => render(n) });
 }
 $$("[data-ge-table]").forEach(mountGe);
+
+/* ---------- Manifesto: cada bloco aparece ao rolar ---------- */
+(() => {
+  const blocks = $$(".mf-b"); if (!blocks.length || reduced || !("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .25 });
+  blocks.forEach((b, i) => { if (i) { b.classList.add("rv"); io.observe(b) } });
+})();

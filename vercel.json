@@ -3,5 +3,17 @@
   "installCommand": "",
   "buildCommand": "node _local/build.js",
   "outputDirectory": "dist",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/criticos",
+      "destination": "/spotted",
+      "permanent": true
+    },
+    {
+      "source": "/criticos/:path*",
+      "destination": "/spotted",
+      "permanent": true
+    }
+  ]
 }
