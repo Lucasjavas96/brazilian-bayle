@@ -1,4 +1,4 @@
-/* Brazilian Baile · release 2
+/* Brazilian Bayle · release 2
    Papéis de tipografia: Syne = títulos · Inter Tight = texto · JetBrains Mono = rótulos curtos · serifa itálica = uma palavra de destaque por título (<em> dentro de .display) */
 
 :root{
@@ -1349,7 +1349,7 @@ button:active,.btn:active{transform:scale(.98)}
 .gallery-controls .mono{font-size:11px;color:#dac188}
 @media(max-width:767px){.radial-wheel{gap:14px;padding-inline:20px;scroll-padding-inline:20px}.radial-instruction{line-height:1.7}}
 
-/* ===== Tabela do Brasileirão dos DJs (estrutura da tabela do ge, identidade Brazilian Baile) ===== */
+/* ===== Tabela do Brasileirão dos DJs (estrutura da tabela do ge, identidade Brazilian Bayle) ===== */
 .ge-card{background:#121312;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
 .ge-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--y) transparent}
 .ge-scroll:focus-visible{outline:3px solid var(--y);outline-offset:-3px}
@@ -1468,7 +1468,7 @@ a.wiki-item:hover{border-color:var(--y);transform:translateY(-2px)}
 .b-name,.pod-name a{color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
 .b-name:hover,.pod-name a:hover,.b-name:focus-visible,.pod-name a:focus-visible{border-color:var(--y)}
 
-/* ---------- Baile Curitibano (home) ---------- */
+/* ---------- Bayle Curitibano (home) ---------- */
 .cwb-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:28px}
 .cwb-card{display:grid;gap:8px;color:#fff;text-decoration:none;padding:12px;border:1px solid rgba(255,255,255,.14);background:#141514;border-radius:14px;height:100%;transition:border-color .2s,transform .2s}
 .cwb-card:hover,.cwb-card:focus-visible{border-color:var(--y);transform:translateY(-3px)}
@@ -1600,3 +1600,90 @@ a.wiki-item:hover{border-color:var(--y);transform:translateY(-2px)}
 .wiki-box .wiki-photo figcaption a{color:var(--y)}
 .cwb-card .cwb-name{font-size:16px;overflow-wrap:anywhere;hyphens:auto}
 .mf .mf-y .display em,.mf .mf-y .display em *{-webkit-text-fill-color:var(--k0);color:var(--k0);background:none;text-shadow:none;filter:none}
+
+/* ---------- Brasileirão: sem reflexo sobre a tabela, critérios por extenso ---------- */
+.board tbody tr:before,.board tbody tr:after,.pod:before{content:none!important;animation:none!important;background:none!important}
+.ge th button:after,.board button:after,.board-stage button:after{animation:none!important;background:none!important;content:none}
+.ge th[aria-sort] button:after{content:" ▾"!important;position:static;inset:auto}
+.ge thead th{white-space:normal;line-height:1.2;max-width:118px;letter-spacing:.04em;font-size:10.5px;vertical-align:middle;padding:8px 8px}
+table.ge{min-width:860px}
+@media (max-width:760px){.ge thead th{max-width:96px;font-size:10px}table.ge{min-width:780px}}
+
+/* ---------- Briefing 6 ---------- */
+/* assinatura no topo: Brazilian Bayle em destaque e a frase menor embaixo */
+.mbar .mbar-tag{display:grid;justify-items:center;line-height:1.05;white-space:normal;text-align:center}
+.mbar .mbar-tag b{font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;text-transform:uppercase;font-size:14px;color:var(--y)}
+.mbar .mbar-tag b em{color:var(--y);font-size:1.15em}
+.mbar .mbar-tag span{font-family:'Inter Tight',sans-serif;font-weight:600;text-transform:none;font-size:10px;letter-spacing:.01em;color:#fff;margin-top:3px}
+@media (max-width:360px){.mbar .mbar-tag b{font-size:12px}.mbar .mbar-tag span{font-size:9px}}
+
+/* próximo capítulo: dois cards, a festa de 5/12 em destaque */
+.next-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0 22px}
+.next-card{position:relative;padding:22px;border:1px solid rgba(255,255,255,.2);border-radius:16px;background:rgba(26,27,26,.7);display:flex;flex-direction:column;gap:10px}
+.next-card .event-facts{margin:6px 0 10px}
+.next-card .btn{margin-top:auto}
+.next-date{display:flex;align-items:baseline;gap:10px}
+.next-date b{font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;font-size:34px;line-height:1;color:var(--y)}
+.next-date span{font-family:'JetBrains Mono','JetBrains Mono Fallback',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.next-title{font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;text-transform:uppercase;font-size:22px;line-height:1.05}
+.next-title em{font-family:'Cormorant Garamond','Cormorant Fallback',serif;font-style:italic;font-weight:500;text-transform:none;font-size:1.15em}
+.next-card.is-featured{background:var(--y);color:var(--k0);border:2px solid var(--y);box-shadow:0 0 0 4px rgba(255,212,0,.25),0 24px 60px -18px rgba(255,212,0,.55)}
+.next-card.is-featured .next-date b,.next-card.is-featured .next-date span,.next-card.is-featured .event-facts .mono,.next-card.is-featured .next-title em{color:var(--k0)}
+.next-card.is-featured .event-facts,.next-card.is-featured .event-facts li{border-color:rgba(0,0,0,.2)}
+.next-card.is-featured .next-title{font-size:26px}
+.next-apply{margin-top:4px}
+.agenda-festa{margin-top:22px}
+.page-agenda .cta-row{margin-top:22px}
+[data-link][aria-disabled=true]{opacity:.85}
+@media (max-width:760px){.next-cards{grid-template-columns:minmax(0,1fr)}.next-card .btn{width:100%}}
+
+/* candidatura: abertura */
+.apply-copy{font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:#fff;margin-top:14px;max-width:520px}
+.apply-note{margin-top:16px;font-size:13px}
+
+/* Bayle Curitibano em página própria: ocupa a tela inteira */
+.cwb-page{min-height:calc(100svh - 40px);display:flex;align-items:center}
+.cwb-page .wrap{width:100%}
+@media (max-width:1023px){.cwb-page{min-height:calc(100svh - var(--mbar) - 40px)}}
+.cwb-list{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.cwb-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* DJ Pédia por gênero */
+.az-genres a{width:auto;padding:0 12px}
+.wiki-genre{grid-template-columns:minmax(0,1fr)}
+.wiki-genre .wiki-l{font-size:clamp(26px,3vw,36px);display:flex;align-items:baseline;gap:12px;scroll-margin-top:90px}
+.wiki-genre .wiki-l small{font-size:11px;color:rgba(255,255,255,.6)}
+
+/* Manifesto: fonte menor */
+.mf-b .display{font-size:clamp(30px,5.2vw,64px);margin:12px 0 20px}
+.mf-t{font-size:clamp(16px,1.6vw,20px);line-height:1.6;max-width:680px}
+.mf-b{min-height:88svh;padding-top:64px;padding-bottom:64px}
+
+/* Spotted: carrossel de reações com setas */
+.sp-rxw{position:absolute;left:0;right:0;bottom:0;z-index:3;background:rgba(10,11,10,.92)}
+.sp-rxw .sp-rx{position:static;background:none;padding:12px 40px}
+.sp-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:34px;height:34px;border-radius:50%;border:0;background:var(--y);color:var(--k0);font:800 20px/1 'Inter Tight',sans-serif;cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.5)}
+.sp-arr[data-arr="-1"]{left:4px}.sp-arr[data-arr="1"]{right:4px}
+.sp-arr[hidden]{display:none}
+.sp-card .sp-arr::after,.sp-card .sp-arr::before{display:none}
+
+/* Spotted: ocultar meu nome */
+.sp-anon{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;cursor:pointer;user-select:none}
+.sp-anon input{position:absolute;opacity:0;width:1px;height:1px}
+.sp-sw{width:38px;height:22px;border-radius:999px;background:rgba(0,0,0,.25);position:relative;flex:none;transition:background .2s}
+.sp-sw:after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.sp-anon input:checked+.sp-sw{background:var(--k0)}
+.sp-anon input:checked+.sp-sw:after{transform:translateX(16px);background:var(--y)}
+.sp-anon input:focus-visible+.sp-sw{outline:3px solid var(--b);outline-offset:2px}
+.sp-anon-pub{color:#fff;margin:4px 0 12px}
+.sp-anon-pub .sp-sw{background:rgba(255,255,255,.25)}
+.sp-who{display:flex;flex-wrap:wrap;gap:6px;font-size:12px}
+.sp-who span{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:999px;padding:3px 9px}
+.sp-coms li b{font-weight:800;margin-right:4px}
+.sp-av.is-anon{background:#cfcfcf;color:#0a0b0a}
+.sp-rxw .sp-rx{scroll-padding-inline:40px}
+.sp-pub .sp-out{border-radius:0;box-shadow:none;background:none}
+.sp-pub .sp-out::after,.sp-pub .sp-out::before{display:none}
+@media (max-width:1199px){.cwb-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.cwb-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cwb-card .cwb-name{overflow-wrap:normal;word-break:normal;hyphens:manual}

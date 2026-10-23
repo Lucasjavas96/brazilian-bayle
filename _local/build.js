@@ -16,12 +16,11 @@ const NAV = [
   ["ranking", "/ranking", "Brasileirão dos DJs"],
   ["votar", "/ranking#votar", "Avaliar DJs"],
   ["djpedia", "/djpedia", "DJ Pédia"],
-  ["curitiba", "/#curitiba", "Baile Curitibano"],
+  ["curitiba", "/curitiba", "Bayle Curitibano"],
   ["spotted", "/spotted", "Spotted Bayle"],
   ["manifesto", "/manifesto", "Manifesto"],
   ["agenda", "/agenda", "Agenda"],
   ["clube", "/clube", "BRB Clubbers"],
-  ["galeria", "/galeria", "Galeria"],
   ["loja", "/loja", "Loja"],
 ];
 
@@ -30,7 +29,7 @@ const esc = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replac
 const ORG = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Brazilian Baile",
+  name: "Brazilian Bayle",
   url: SITE,
   logo: `${SITE}/assets/icon-512.png`,
   email: EMAIL,
@@ -41,7 +40,7 @@ const ORG = {
 
 function layout(meta, body) {
   const url = SITE + (meta.path === "/" ? "/" : meta.path);
-  const title = meta.path === "/" ? meta.title : `${meta.title} · Brazilian Baile`;
+  const title = meta.path === "/" ? meta.title : `${meta.title} · Brazilian Bayle`;
   const jsonld = [ORG, ...(meta.jsonld || [])].map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n");
   const navLinks = NAV.map(([k, href, label], i) =>
     `<li><a href="${href}"${meta.nav === k ? ' aria-current="page"' : ""}><span class="mono">${String(i + 1).padStart(2, "0")}</span>${label}</a></li>`).join("\n        ");
@@ -60,7 +59,7 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand-icon-192.png">
 <link rel="apple-touch-icon" href="/assets/brand-icon-180.png">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Brazilian Baile">
+<meta property="og:site_name" content="Brazilian Bayle">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(meta.description)}">
@@ -68,7 +67,7 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <meta property="og:image" content="${SITE}/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Brazilian Baile: o campeonato brasileiro de DJs">
+<meta property="og:image:alt" content="Brazilian Bayle: o campeonato brasileiro de DJs">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(meta.description)}">
@@ -85,14 +84,14 @@ ${jsonld}
 <!-- barra do celular -->
 <div class="mbar">
   <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
-  <a href="/" class="mbar-logo" aria-label="Brazilian Baile, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
-  <p class="mbar-tag">A pista é <em>nossa.</em></p>
+  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
+  <p class="mbar-tag"><b>Brazilian <em>Bayle</em></b><span>A pista é brasileira e sempre vai ser</span></p>
 </div>
 
 <!-- menu lateral fixo -->
 <header class="side" id="side">
-  <a href="/" class="side-logo" aria-label="Brazilian Baile, início"><img src="/assets/logo.webp" alt="Brazilian Baile" width="180" height="120"></a>
-  <p class="side-tag"><span class="side-tag-1">A pista é <em>nossa.</em></span><span class="side-tag-2">O baile é e sempre será brasileiro.</span></p>
+  <a href="/" class="side-logo" aria-label="Brazilian Bayle, início"><img src="/assets/logo.webp" alt="Brazilian Bayle" width="180" height="120"></a>
+  <p class="side-tag"><span class="side-tag-1">Brazilian <em>Bayle</em></span><span class="side-tag-2">A pista é brasileira e sempre vai ser</span></p>
   <nav aria-label="Principal">
     <ul class="side-nav">
         ${navLinks}
@@ -143,8 +142,8 @@ ${body.trim()}
       </div>
     </div>
     <div class="wrap foot-bar mono">
-      <span>© ${YEAR} Brazilian Baile · projeto independente, sem vínculo com os artistas e casas citados</span>
-      <span>A pista é nossa.</span>
+      <span>© ${YEAR} Brazilian Bayle · projeto independente, sem vínculo com os artistas e casas citados</span>
+      <span>A pista é brasileira e sempre vai ser.</span>
     </div>
   </footer>
 </div>
@@ -200,7 +199,7 @@ for (const f of pages) {
 }
 
 /* ---------- DJ Pédia: índice A–Z e um verbete por DJ (dados em src/data) ----------
-   Todo DJ do ranking e do Baile Curitibano tem página. Sem verbete pronto, a página sai com a ficha
+   Todo DJ do ranking e do Bayle Curitibano tem página. Sem verbete pronto, a página sai com a ficha
    e "não informado" nos campos, para nenhum link do ranking cair num beco. */
 const slugify = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const ini = s => s.replace(/[^A-Za-zÀ-ÿ ]/g, "").split(/\s+/).filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
@@ -208,6 +207,15 @@ const readJson = f => JSON.parse(fs.readFileSync(path.join(ROOT, "src/data", f),
 const DJLIST = [...readJson("djs.json"), ...readJson("curitiba.json").map(d => ({ ...d, curitiba: true }))];
 const PROFILES = Object.fromEntries(readJson("djpedia.json").map(p => [p.slug, p]));
 const NI = "não informado";
+function rankingOrder() {
+  try {
+    const src = fs.readFileSync(path.join(ROOT, "app.js"), "utf8");
+    const pick = re => (src.match(re) || [])[0] || "";
+    const code = [pick(/function rnd\(seed\)[^\n]*/), pick(/const CRIT = \[[\s\S]*?\];/), pick(/const DJS = \[[\s\S]*?\]\];/), pick(/const SEED = \(\(\) => \{[\s\S]*?\}\)\(\);/)].join("\n");
+    const seed = new Function(code + "\nreturn { SEED, CRIT };")();
+    return seed.SEED.map(d => ({ n: d.name, nota: seed.CRIT.reduce((a, [k]) => a + d.sums[k] / d.w, 0) })).sort((a, b) => b.nota - a.nota).map(d => d.n);
+  } catch { return readJson("djs.json").map(d => d.nome) } // sem o app.js, cai na ordem do djs.json
+}
 const writePage = (rel, meta, body) => {
   const out = path.join(OUT, rel + ".html");
   fs.mkdirSync(path.dirname(out), { recursive: true });
@@ -218,29 +226,38 @@ const djPhoto = s => ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => 
 {
   fs.rmSync(path.join(OUT, "djpedia"), { recursive: true, force: true });
   const sorted = [...DJLIST].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
-  const letterOf = n => n.normalize("NFD").replace(/[̀-ͯ]/g, "")[0].toUpperCase();
+  // gênero principal = o primeiro da ficha; dentro de cada gênero, a ordem do ranking (notas da pré-temporada do app.js)
+  const cap = g => g ? g[0].toUpperCase() + g.slice(1).toLowerCase() : "Outros";
+  const genreOf = d => d.curitiba ? "Bayle Curitibano" : cap((PROFILES[slugify(d.nome)]?.estilos || [])[0] || d.estilo);
+  const rank = rankingOrder();
+  const pos = d => d.curitiba ? 1000 + DJLIST.indexOf(d) : (rank.indexOf(d.nome) + 1 || 999);
   const groups = {};
-  sorted.forEach(d => (groups[letterOf(d.nome)] ||= []).push(d));
-  const letters = Object.keys(groups);
+  [...DJLIST].sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d));
+  const FIRST = ["House", "Techno"];
+  const letters = Object.keys(groups).sort((a, b) =>
+    (a === "Bayle Curitibano") - (b === "Bayle Curitibano") ||
+    ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
+    groups[b].length - groups[a].length || a.localeCompare(b, "pt-BR"));
+  const gid = g => slugify(g);
   const done = sorted.filter(d => PROFILES[slugify(d.nome)]?.historia?.length).length;
   writePage("djpedia", {
     path: "/djpedia", nav: "djpedia", title: "DJ Pédia · Conheça os DJs",
-    description: "A enciclopédia dos DJs do ranking da Brazilian Baile e da cena de Curitiba: origem, início de carreira, gêneros e trajetória de cada artista, em ordem alfabética.",
+    description: "A enciclopédia dos DJs do ranking da Brazilian Bayle e da cena de Curitiba, organizada por gênero: origem, início de carreira e trajetória de cada artista.",
   }, `
 <section class="sec dark page-head wiki" aria-labelledby="t-wiki">
   <div class="wrap">
     <p class="mono y">DJ Pédia · ${sorted.length} DJs · ${done} verbetes completos</p>
     <h1 class="display" id="t-wiki">Conheça os <em>DJs</em></h1>
-    <p class="lead dim">A enciclopédia da pista brasileira. De onde cada DJ veio, como começou, o que toca e a trajetória até aqui. Toque no nome para abrir o verbete.</p>
-    <nav class="az" aria-label="Letras">${letters.map(l => `<a href="#letra-${l}">${l}</a>`).join("")}</nav>
+    <p class="lead dim">A enciclopédia da pista brasileira, organizada por gênero. De onde cada DJ veio, como começou, o que toca e a trajetória até aqui. Toque no nome para abrir o verbete.</p>
+    <nav class="az az-genres" aria-label="Gêneros">${letters.map(l => `<a href="#genero-${gid(l)}">${l}</a>`).join("")}</nav>
     <div class="wiki-list">
-      ${letters.map(l => `<section class="wiki-letter" id="letra-${l}" aria-labelledby="h-${l}">
-        <h2 class="wiki-l" id="h-${l}">${l}</h2>
+      ${letters.map(l => `<section class="wiki-letter wiki-genre" id="genero-${gid(l)}" aria-labelledby="h-${gid(l)}">
+        <h2 class="wiki-l" id="h-${gid(l)}">${l}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
         <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.historia?.length;
           return `<li id="${s}"><a class="wiki-item${full ? "" : " is-soon"}" href="/djpedia/${s}">
             <span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>
             <span class="wiki-name">${esc(d.nome)}</span>
-            <span class="wiki-meta">${d.curitiba ? "Baile Curitibano" : (p?.origem && p.origem !== NI ? p.origem + " · " : "") + d.estilo}</span>
+            <span class="wiki-meta">${d.curitiba ? "Bayle Curitibano" : (p?.origem && p.origem !== NI ? p.origem + " · " : "") + d.estilo}</span>
             <span class="wiki-status mono">${full ? "Ler verbete →" : "Ficha em construção →"}</span>
           </a></li>` }).join("")}</ul>
       </section>`).join("")}
@@ -261,11 +278,11 @@ const djPhoto = s => ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => 
     const full = list(p.historia).length > 0;
     const hist = full ? p.historia.map(x => `<p>${esc(x)}</p>`).join("")
       : `<p>Ainda não reunimos fontes confiáveis sobre a trajetória de ${esc(p.nome)}. Este verbete está em construção, e os campos sem informação aparecem como "não informado".</p>`;
-    const kind = d.curitiba ? "Baile Curitibano" : `Brasileirão dos DJs · ${esc(d.estilo)}`;
+    const kind = d.curitiba ? "Bayle Curitibano" : `Brasileirão dos DJs · ${esc(d.estilo)}`;
     const credit = img && foto ? `${esc(foto.credito)} · ${foto.pagina ? `<a href="${esc(foto.pagina)}" target="_blank" rel="noopener">${esc(foto.licenca)}</a>` : esc(foto.licenca)}` : "";
     writePage(`djpedia/${s}`, {
       path: `/djpedia/${s}`, nav: "djpedia", title: `${p.nome} · DJ Pédia`,
-      description: (p.resumo || `${p.nome}, DJ ${d.curitiba ? "da cena de Curitiba" : "brasileiro"} na DJ Pédia da Brazilian Baile.`).slice(0, 158),
+      description: (p.resumo || `${p.nome}, DJ ${d.curitiba ? "da cena de Curitiba" : "brasileiro"} na DJ Pédia da Brazilian Bayle.`).slice(0, 158),
       noindex: !full,
       jsonld: [{ "@context": "https://schema.org", "@type": "Person", name: p.nome, alternateName: p.nome_civil && p.nome_civil !== NI ? p.nome_civil : undefined, jobTitle: "DJ", genre: list(p.estilos), image: img ? `${SITE}/${img}` : undefined, sameAs: list((p.fontes || []).map(f => f.url)).slice(0, 3) }],
     }, `

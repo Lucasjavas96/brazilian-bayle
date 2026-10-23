@@ -2,7 +2,7 @@
   "path": "/spotted",
   "nav": "spotted",
   "title": "Spotted Bayle · Momentos e resenhas das festas",
-  "description": "O mural da Brazilian Baile: foto crua, título e nickname. Poste o seu momento da festa, escreva a resenha e reaja aos posts da comunidade."
+  "description": "O mural da Brazilian Bayle: foto crua, título e nickname. Poste o seu momento da festa, escreva a resenha e reaja aos posts da comunidade."
 } -->
 
 <section class="sec dark page-head sp" aria-labelledby="t-sp">
@@ -33,7 +33,7 @@
         </div>
         <p class="ferr" id="spAuthErr" role="alert"></p>
         <button class="btn btn-y" type="submit" id="spAuthBtn">Criar conta e entrar</button>
-        <p class="sp-fine">Seu nickname aparece nos seus posts. Comentários e reações aparecem sem o seu nome.</p>
+        <p class="sp-fine">Seu nickname aparece nos seus posts. Comentários e reações mostram o seu @, a menos que você ative "Ocultar meu nome".</p>
       </form>
     </div>
 
@@ -70,6 +70,7 @@
           <textarea id="spText" rows="4" maxlength="500"></textarea>
           <p class="sp-count mono"><span id="spTextN">0</span>/500</p>
         </div>
+        <label class="sp-anon sp-anon-pub"><input type="checkbox" role="switch" id="spAnon"><span class="sp-sw" aria-hidden="true"></span>Ocultar meu nome (o post sai como Anônimo)</label>
         <p class="ferr" id="spErr" role="alert"></p>
         <div class="sp-actions">
           <button class="btn btn-y" type="submit" id="spSend">Publicar</button>

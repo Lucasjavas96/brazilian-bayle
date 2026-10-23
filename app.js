@@ -1,4 +1,4 @@
-/* Brazilian Baile · release 2
+/* Brazilian Bayle · release 2
    Pré-temporada: ranking, festas e resenhas são de demonstração e aparecem rotulados assim.
    Votos, candidaturas e lista de espera ficam só no navegador (localStorage) até existir um backend. */
 
@@ -35,8 +35,8 @@ let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textCont
 /* ---------- faixa ---------- */
 (() => {
   const el = $("#ticker"); if (!el) return;
-  const t = ["After do Solomun · 31.10", "BRB Clubbers · R$15/mês", "Temporada 2026 · Carnaval a Carnaval", "Só DJs brasileiros",
-    "Os 5 melhores tocam na Final", "Avalie a performance dos DJs", "A pista é nossa"];
+  const t = ["After do Solomun · 31.10", "BRB Clubbers", "Temporada 2026 · Carnaval a Carnaval", "Só DJs brasileiros",
+    "Os 5 melhores tocam na Final", "Avalie a performance dos DJs", "A pista é brasileira e sempre vai ser"];
   el.innerHTML = [...t, ...t].map(x => `<span>${x}</span>`).join("");
 })();
 
@@ -63,7 +63,7 @@ document.querySelectorAll('.club-motion').forEach(button => {
 
 (() => {
   if (!$("#cdD")) return;
-  const AFTER = new Date("2026-10-31T23:00:00-03:00").getTime();
+  const AFTER = new Date("2026-10-31T23:59:00-03:00").getTime();
   const tick = () => {
     let s = Math.max(0, Math.floor((AFTER - Date.now()) / 1000));
     const d = Math.floor(s / 86400); s -= d * 86400; const h = Math.floor(s / 3600); s -= h * 3600; const m = Math.floor(s / 60); s -= m * 60;
@@ -74,10 +74,10 @@ document.querySelectorAll('.club-motion').forEach(button => {
 
 /* ---------- critérios e dados de demonstração ---------- */
 const CRIT = [
-  ["som", "Qualidade do som"],
-  ["harmonia", "Harmonia do set"],
-  ["energia", "Energia e vibe"],
-  ["sofisticacao", "Sofisticação e inovação"],
+  ["som", "Qualidade do Som"],
+  ["harmonia", "Harmonia do Set"],
+  ["energia", "Energia e Vibe"],
+  ["sofisticacao", "Sofisticação e Inovação"],
 ];
 const DJS = [["Alok","House"],["Vintage Culture","House"],["Mochakk","Tech house"],["ANNA","Techno"],["Liu","Bass house"],
   ["Cat Dealers","Brazilian bass"],["Dubdogz","Brazilian bass"],["KVSH","Brazilian bass"],["Bhaskar","House"],["Chemical Surf","Brazilian bass"],
@@ -336,7 +336,7 @@ function simpleForm({ form, btn, msg, key, checks, done }) {
     if (first) { m.className = "form-msg err"; m.textContent = "Confira os campos marcados."; first.focus(); return }
     const b = $(btn); b.classList.add("loading"); b.setAttribute("aria-busy", "true");
     await wait(600);
-    const data = Object.fromEntries(new FormData(f).entries()); data.at = Date.now();
+    const data = {}; for (const [k, v] of new FormData(f)) data[k] = k in data ? [].concat(data[k], v) : v; data.at = Date.now();
     const list = store.get(key, []); list.push(data); store.set(key, list);
     b.classList.remove("loading"); b.removeAttribute("aria-busy");
     m.className = "form-msg ok"; m.innerHTML = done(data); f.reset(); f.dispatchEvent(new Event("input"));
@@ -363,8 +363,8 @@ simpleForm({
     ['aIg', 'Qual é o seu Instagram?', () => igOk($('#aIg').value), 'Use o formato @seu.perfil.'],
     ['aEmail', 'Qual é o seu e-mail?', () => mailOk($('#aEmail').value), 'Confira o e-mail.'],
     ['aCity', 'De onde você vem?'],
-    ['aPlan', 'Como quer fazer parte?'],
-    ['aWhy', 'Por que quer viver esse baile com a gente?'],
+    ['aPlan', 'Como quer fazer parte?', () => $$('#aPlan input:checked').length > 0, 'Marque pelo menos uma opção.'],
+    ['aWhy', 'Por que quer viver esse bayle com a gente?'],
     ['aConsent', 'Podemos concluir?', () => $('#aConsent').checked, 'Confirme que tem 18 anos ou mais e aceite os termos.']
   ];
   const progress = document.createElement('div'); progress.className = 'vote-progress';
@@ -400,7 +400,7 @@ simpleForm({
     const ok = !test || test();
     if (error) $('#' + error).textContent = ok ? '' : message;
     input.setAttribute('aria-invalid', String(!ok));
-    if (!ok) input.focus();
+    if (!ok) (input.matches('fieldset') ? $('input', input) : input).focus();
     return ok;
   };
   const advance = () => { if (valid() && step < panels.length - 1) show(step + 1); };
@@ -568,94 +568,6 @@ $$(".slides").forEach(box => {
   }else arc.classList.add('is-visible');
 })();
 
-/* Galeria radial: a roda de fotos gira com o arraste para os lados (dedo, mouse ou trackpad).
-   A rolagem vertical da página fica livre. */
-(() => {
-  const gallery = document.querySelector("[data-radial-gallery]"); if (!gallery) return;
-  const win = gallery.querySelector(".radial-window"), wheel = gallery.querySelector(".radial-wheel"), items = [...wheel.children];
-  const n = items.length, step = 360 / n;
-  gallery.classList.add("radial-active");
-  win.tabIndex = 0;
-  win.setAttribute("role", "region");
-  win.setAttribute("aria-roledescription", "galeria em roda");
-  win.setAttribute("aria-label", "Fotos da comunidade. Arraste para os lados ou use as setas do teclado para girar.");
-  const controls = document.createElement("div"); controls.className = "gallery-controls";
-  controls.innerHTML = '<button type="button" class="btn btn-line-light" data-g-prev aria-label="Foto anterior">←</button><span class="mono" data-g-count aria-live="polite"></span><button type="button" class="btn btn-line-light" data-g-next aria-label="Próxima foto">→</button>';
-  gallery.append(controls);
-  const count = controls.querySelector("[data-g-count]");
-  let radius = 550, rot = 0, target = 0, frame = 0, last = 0, front = -1;
-  const render = () => {
-    wheel.style.transform = `translateX(-50%) rotate(${rot}deg)`;
-    const k = ((Math.round(-rot / step) % n) + n) % n;
-    if (k !== front) {
-      front = k;
-      items.forEach((it, i) => it.classList.toggle("is-front", i === k));
-      count.textContent = `${String(k + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}`;
-    }
-  };
-  const layout = () => {
-    radius = innerWidth < 768 ? 300 : 550;
-    wheel.style.setProperty("--radius", radius + "px");
-    items.forEach((item, i) => {
-      const a = i / n * Math.PI * 2 - Math.PI / 2;
-      item.style.transform = `translate(-50%,-50%) translate(${Math.cos(a) * radius}px,${Math.sin(a) * radius}px) rotate(${a * 180 / Math.PI + 90}deg)`;
-    });
-    render();
-  };
-  const tick = t => {
-    const dt = last ? Math.min((t - last) / 1000, .05) : 1 / 60; last = t;
-    rot += (target - rot) * (1 - Math.exp(-10 * dt));
-    if (Math.abs(target - rot) < .02) rot = target;
-    render();
-    if (rot !== target) frame = requestAnimationFrame(tick); else { frame = 0; last = 0 }
-  };
-  const go = () => { if (reduced) { rot = target; render(); return } if (!frame) frame = requestAnimationFrame(tick) };
-  const snap = () => { target = Math.round(target / step) * step; go() };
-  const turn = dir => { target = Math.round(target / step) * step - dir * step; go() };
-  controls.querySelector("[data-g-prev]").onclick = () => turn(-1);
-  controls.querySelector("[data-g-next]").onclick = () => turn(1);
-  win.addEventListener("keydown", e => {
-    if (e.key === "ArrowRight") { e.preventDefault(); turn(1) }
-    else if (e.key === "ArrowLeft") { e.preventDefault(); turn(-1) }
-  });
-
-  // arraste: touch-action pan-y deixa a rolagem vertical com o navegador
-  let down = null, moved = 0, vx = 0, lx = 0, lt = 0;
-  const degPerPx = () => 180 / (Math.PI * radius) * 1.1;
-  win.addEventListener("pointerdown", e => {
-    if (e.button !== 0) return;
-    down = { x: e.clientX, rot: target }; moved = 0; vx = 0; lx = e.clientX; lt = performance.now();
-    win.classList.add("is-dragging");
-  });
-  win.addEventListener("pointermove", e => {
-    if (!down) return;
-    const dx = e.clientX - down.x; moved = Math.max(moved, Math.abs(dx));
-    if (moved > 4 && !win.hasPointerCapture(e.pointerId)) win.setPointerCapture(e.pointerId);
-    const now = performance.now(); vx = (e.clientX - lx) / Math.max(1, now - lt); lx = e.clientX; lt = now;
-    target = down.rot + dx * degPerPx(); go();
-  });
-  const end = () => {
-    if (!down) return; down = null; win.classList.remove("is-dragging");
-    target += vx * 220 * degPerPx(); // impulso do gesto
-    snap();
-  };
-  win.addEventListener("pointerup", end);
-  win.addEventListener("pointercancel", end);
-  win.addEventListener("lostpointercapture", end);
-  // arrastar não abre a foto; um toque simples abre
-  win.addEventListener("click", e => { if (moved > 6) { e.preventDefault(); e.stopPropagation() } }, true);
-  win.addEventListener("dragstart", e => e.preventDefault());
-  // trackpad ou roda lateral do mouse
-  let wt = 0;
-  win.addEventListener("wheel", e => {
-    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; // gesto vertical: rolagem normal
-    e.preventDefault(); target -= e.deltaX * degPerPx() * .9; go();
-    clearTimeout(wt); wt = setTimeout(snap, 140);
-  }, { passive: false });
-  addEventListener("resize", layout, { passive: true });
-  layout();
-})();
-
 /* Les deux faces du Clubber entrent séparément. */
 (() => {
   const cards = document.querySelectorAll('.club-identity figure');
@@ -667,27 +579,24 @@ $$(".slides").forEach(box => {
 })();
 
 /* ---------- tabela no formato do Brasileirão (referência: ge.globo) ---------- */
-const GE_EXTRA = (() => { const r = rnd(7); return Object.fromEntries(DJS.map(([n]) => [n, { festas: 6 + Math.floor(r() * 12), last: Array.from({ length: 5 }, () => r()) }])) })();
+const GE_EXTRA = (() => { const r = rnd(7); return Object.fromEntries(DJS.map(([n]) => [n, { festas: 6 + Math.floor(r() * 12) }])) })();
 function mountGe(el) {
   const sortable = el.hasAttribute("data-sortable");
   const st = { sort: "nota", last: {} };
-  const cols = [["nota", "Nota", "Nota geral"], ["votos", "Vot", "Votos"], ["festas", "Fes", "Festas avaliadas"],
-    ["som", "Som", "Qualidade do som"], ["harmonia", "Har", "Harmonia do set"], ["energia", "Ene", "Energia e vibe"], ["sofisticacao", "Sof", "Sofisticação e inovação"]];
+  const cols = [["nota", "Nota", "Nota geral"], ["votos", "Votos", "Votos"], ["festas", "Festas", "Festas avaliadas"],
+    ...CRIT.map(([k, l]) => [k, l, l])];
   el.innerHTML = `<div class="ge-card">
     <div class="ge-scroll" tabindex="0" role="region" aria-label="Tabela de classificação, deslize para ver todas as colunas">
     <table class="ge">
       <caption class="sr-only">Brasileirão dos DJs, classificação da pré-temporada com notas de demonstração</caption>
       <thead><tr>
         <th scope="col" class="ge-c-pos" colspan="2">Classificação</th>
-        ${cols.map(([k, ab, full]) => `<th scope="col" data-k="${k}" title="${full}"${k === "nota" ? ' aria-sort="descending"' : ""}>${sortable ? `<button type="button" data-sort="${k}"><abbr title="${full}">${ab}</abbr></button>` : `<abbr title="${full}">${ab}</abbr>`}</th>`).join("")}
-        <th scope="col" class="ge-c-last">Últimas 5</th>
-      </tr></thead>
+        ${cols.map(([k, ab, full]) => `<th scope="col" data-k="${k}" title="${full}"${k === "nota" ? ' aria-sort="descending"' : ""}>${sortable ? `<button type="button" data-sort="${k}">${ab}</button>` : ab}</th>`).join("")}
+              </tr></thead>
       <tbody></tbody>
     </table></div>
     <div class="ge-legend">
       <span><i class="ge-zone"></i>Zona da Final · 1º ao 5º</span>
-      <span class="ge-dots-legend"><i class="d-up"></i>acima da média <i class="d-eq"></i>na média <i class="d-dn"></i>abaixo</span>
-      <span class="ge-abbr">Vot = votos · Fes = festas avaliadas · Som = qualidade do som · Har = harmonia do set · Ene = energia e vibe · Sof = sofisticação e inovação</span>
     </div></div>`;
   if (sortable) $("thead", el).onclick = e => {
     const b = e.target.closest("button[data-sort]"); if (!b) return; st.sort = b.dataset.sort;
@@ -701,14 +610,12 @@ function mountGe(el) {
       const prev = st.last[d.name];
       const mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="ge-mv up" aria-label="subiu ${prev - d.pos}">▲</span>` : `<span class="ge-mv dn" aria-label="caiu ${d.pos - prev}">▼</span>`) : `<span class="ge-mv" aria-hidden="true">•</span>`;
       const s = slug(d.name), href = `/djpedia/${s}`;
-      const dots = d.last.map((v, i) => { const c = v > .62 ? "d-up" : v > .3 ? "d-eq" : "d-dn"; return `<i class="${c}" title="Festa ${i + 1}: ${c === "d-up" ? "acima" : c === "d-eq" ? "na" : "abaixo"} da média"></i>` }).join("");
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${d.pos}</b>${mv}</td>
         <th scope="row" class="ge-dj"><a href="${href}"><span class="ge-badge" aria-hidden="true">${initials(d.name)}</span><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
         <td class="ge-nota">${fmt2(d.nota)}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
-        ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}
-        <td class="ge-last"><span class="ge-dots">${dots}</span></td></tr>`;
+        ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
     }).join("");
     rows.forEach(d => st.last[d.name] = d.pos);
   }
@@ -723,3 +630,12 @@ $$("[data-ge-table]").forEach(mountGe);
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .25 });
   blocks.forEach((b, i) => { if (i) { b.classList.add("rv"); io.observe(b) } });
 })();
+
+/* ---------- links pendentes (ingresso do after e da festa): preencha quando chegarem ---------- */
+const LINKS = { afterGateway: "", festaGateway: "" };
+$$("[data-link]").forEach(a => {
+  const url = LINKS[a.dataset.link];
+  if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; return }
+  a.setAttribute("aria-disabled", "true");
+  a.addEventListener("click", e => { e.preventDefault(); toast("O link de ingresso sai em breve no @brazilianbayle.") });
+});

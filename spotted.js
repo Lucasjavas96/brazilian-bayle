@@ -1,13 +1,14 @@
 /* Spotted Bayle · mural da comunidade (demonstração)
    Contas, posts, reações e comentários ficam só neste navegador (localStorage) até existir um backend.
-   Reações e comentários aparecem sem autor, mas ficam ligados à conta logada: uma reação por pessoa por post,
-   limite de frequência e denúncia. Usa $, $$, store, initials e toast do app.js. */
+   Por padrão, posts, comentários e reações mostram o @ de quem fez; com "Ocultar meu nome" saem como Anônimo,
+   mas continuam ligados à conta (uma reação por pessoa por post, limite de frequência e denúncia).
+   Usa $, $$, store, initials e toast do app.js. */
 (() => {
   const feed = $("#spFeed"); if (!feed) return;
 
   // lista de reações: edite aqui (chave, emoji, texto)
   const REACTIONS = [
-    ["fino", "🥂", "Baile fino"], ["gusta", "💃", "Me gusta mucho"], ["queria", "🥺", "#queria"],
+    ["fino", "🥂", "Bayle fino"], ["gusta", "💃", "Me gusta mucho"], ["queria", "🥺", "#queria"],
     ["eita", "😳", "Eita"], ["tenebroso", "💀", "Tenebroso"], ["nefastos", "⛈️", "Tempos nefastos"],
     ["bicho", "🤨", "Que é isso, bicho?"], ["dormir", "😴", "House é pra dormir"], ["caneco", "🍺", "Meu caneco"],
     ["bailao", "🪩", "Bailão"], ["ousadia", "😈", "Ousadia"], ["abobora", "🎃", "Abóbora"],
@@ -24,9 +25,17 @@
     { id: "s3", nick: "sexta_sem_fim", title: "Resenha: o set que ninguém esperava", party: "Festa de exemplo · Curitiba", img: "", text: "Fui sem conhecer o line-up e saí fã. A pista demorou a esquentar, mas a última hora foi das melhores do ano. Som limpo, grave na medida e um público que sabia o que estava fazendo.", at: "2026-09-28", r: { fino: 11, gusta: 6, queria: 8 }, c: ["Faltou eu nessa", "Concordo com tudo"] },
     { id: "s4", nick: "lado_b", title: "Os três mosqueteiros", party: "After da rede (exemplo)", img: "/assets/real-trio-800.webp", text: "", at: "2026-09-21", r: { caneco: 12, bicho: 4, tomando: 5 }, c: [] },
     { id: "s5", nick: "mestre_do_passinho", title: "As meninas dominaram a pista", party: "After na cobertura (exemplo)", img: "/assets/manifesto/after-amigas.webp", text: "Brinde, óculos escuro e passinho. Melhor after do mês.", at: "2026-09-14", r: { fino: 9, passinho: 13, bailao: 7, abobora: 2 }, c: ["Rainhas 💛"] },
+    { id: "s6", nick: "lado_b", title: "A turma completa", party: "After da rede (exemplo)", img: "/assets/manifesto/after-irmaos.webp", text: "", at: "2026-09-07", r: { fino: 8, caneco: 6 }, c: ["Que time"] },
+    { id: "s7", nick: "graves_e_luzes", title: "Na frente do palco", party: "Festival de exemplo", img: "/assets/real-palco-800.webp", text: "", at: "2026-08-30", r: { bailao: 9, eita: 3 }, c: [] },
+    { id: "s8", nick: "pista_infinita", title: "Selfie obrigatória", party: "Festa de exemplo · Curitiba", img: "/assets/real-selfie-800.webp", text: "", at: "2026-08-23", r: { gusta: 7, queria: 4 }, c: [] },
   ];
 
-  const K = { users: "bb_sp_users", me: "bb_sp_me", posts: "bb_sp_posts", react: "bb_sp_react", com: "bb_sp_com", rep: "bb_sp_rep", last: "bb_sp_last" };
+  const K = { users: "bb_sp_users", me: "bb_sp_me", posts: "bb_sp_posts", react: "bb_sp_react", com: "bb_sp_com", rep: "bb_sp_rep", last: "bb_sp_last", anon: "bb_sp_anon" };
+  const ANON = "Anônimo";
+  const anonPref = () => !!me() && !!store.get(K.anon, {})[me().email];
+  const setAnon = v => { const a = store.get(K.anon, {}); a[me().email] = v; store.set(K.anon, a) };
+  const nickOf = email => (store.get(K.users, {})[email] || {}).nick;
+  const asReaction = v => typeof v === "string" ? { k: v, anon: true } : v; // reações antigas eram só a chave
   const me = () => { const e = store.get(K.me, null); return e && store.get(K.users, {})[e] ? { email: e, ...store.get(K.users, {})[e] } : null };
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const hue = s => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 360, 7);
@@ -72,7 +81,7 @@
 
   /* ---------- publicar ---------- */
   const form = $("#spForm");
-  const openCompose = () => { form.hidden = false; $("#spOpen").hidden = true; $("#spTitle").focus({ preventScroll: true }) };
+  const openCompose = () => { $("#spAnon").checked = anonPref(); form.hidden = false; $("#spOpen").hidden = true; $("#spTitle").focus({ preventScroll: true }) };
   $("#spOpen").onclick = openCompose;
   $("#spCancel").onclick = () => { form.reset(); photo = ""; $("#spPreview").hidden = true; form.hidden = true; $("#spOpen").hidden = false; syncMode() };
   const syncMode = () => { const foto = form.spMode.value === "foto"; $("#spPhotoField").hidden = !foto; $("#spTextOpt").textContent = foto ? "(opcional com foto)" : "(obrigatória)" };
@@ -99,7 +108,8 @@
     if (BLOCK.test(title + " " + party + " " + text)) return err.textContent = "Tire palavrões e links do post.";
     const wait = tooSoon("post"); if (wait) return err.textContent = `Espere ${wait}s para publicar de novo.`;
     const posts = store.get(K.posts, []);
-    posts.unshift({ id: "u" + Date.now(), owner: me().email, nick: me().nick, title, party, img: foto ? photo : "", text, at: new Date().toISOString().slice(0, 10), r: {}, c: [] });
+    const anon = $("#spAnon").checked; setAnon(anon);
+    posts.unshift({ id: "u" + Date.now(), owner: me().email, nick: me().nick, anon, title, party, img: foto ? photo : "", text, at: new Date().toISOString().slice(0, 10), r: {}, c: [] });
     try { localStorage.setItem(K.posts, JSON.stringify(posts)) } catch { return err.textContent = "O navegador ficou sem espaço para a foto. Tente uma imagem menor." }
     stamp("post"); $("#spCancel").click(); render(); toast("Publicado no Spotted Bayle.");
     $("#spFeedTop").scrollIntoView({ behavior: "smooth" });
@@ -109,14 +119,16 @@
   let filter = "";
   const all = () => [...store.get(K.posts, []), ...SEED];
   function counts(p) {
-    const c = { ...p.r }; Object.values(store.get(K.react, {})[p.id] || {}).forEach(k => c[k] = (c[k] || 0) + 1); return c;
+    const c = { ...p.r }; Object.values(store.get(K.react, {})[p.id] || {}).map(asReaction).forEach(({ k }) => c[k] = (c[k] || 0) + 1); return c;
   }
-  const comments = p => [...(store.get(K.com, {})[p.id] || []).map(x => x.t), ...p.c].slice().reverse();
+  const comments = p => [...(store.get(K.com, {})[p.id] || []).slice().reverse().map(x => ({ t: x.t, who: x.anon === false ? "@" + (nickOf(x.u) || "?") : ANON })), ...p.c.map(t => ({ t, who: ANON }))];
+  const reactors = p => Object.entries(store.get(K.react, {})[p.id] || {}).map(([u, v]) => { const r = asReaction(v); return { who: r.anon ? ANON : "@" + (nickOf(u) || "?"), k: r.k } });
+  const author = p => p.anon ? ANON : "@" + p.nick;
   const reports = () => store.get(K.rep, {});
   const hidden = p => { const r = reports()[p.id] || {}; return (me() && r[me().email]) || Object.keys(r).length >= HIDE_AT };
 
   function card(p) {
-    const u = me(), mine = u && u.email === p.owner, my = u && (store.get(K.react, {})[p.id] || {})[u.email];
+    const u = me(), mine = u && u.email === p.owner, myR = u && (store.get(K.react, {})[p.id] || {})[u.email], my = myR && asReaction(myR).k, rs = reactors(p), emo = Object.fromEntries(REACTIONS.map(([k, e]) => [k, e]));
     const cnt = counts(p), total = Object.values(cnt).reduce((a, b) => a + b, 0), cm = comments(p);
     const face = p.img
       ? `<img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy" decoding="async">`
@@ -124,10 +136,10 @@
     const side = p.img && (p.text || mine)
       ? `<button type="button" class="sp-tab mono" data-side aria-expanded="false">${p.text ? "Resenha" : "+ Resenha"}</button>
          <div class="sp-side" data-side-panel hidden>
-           <p class="mono">Resenha de @${esc(p.nick)}</p>
+           <p class="mono">Resenha de ${esc(author(p))}</p>
            ${p.text ? `<p class="sp-side-t">${esc(p.text)}</p>` : `<textarea maxlength="500" rows="5" aria-label="Escreva a resenha da festa" placeholder="Como foi a festa?"></textarea><button type="button" class="btn btn-y" data-save-text>Salvar resenha</button>`}
          </div>` : "";
-    return `<article class="sp-card${p.img ? "" : " is-text"}" data-id="${p.id}" aria-label="${esc(p.title)}, por @${esc(p.nick)}">
+    return `<article class="sp-card${p.img ? "" : " is-text"}" data-id="${p.id}" aria-label="${esc(p.title)}, por ${esc(author(p))}">
       <div class="sp-flip">
         <div class="sp-front">
           <button type="button" class="sp-hit" data-flip aria-label="Virar o card e ver reações e comentários"></button>
@@ -135,26 +147,42 @@
           <div class="sp-info">
             <span class="sp-party mono">${esc(p.party)}</span>
             <h3>${esc(p.title)}</h3>
-            <p class="sp-by">${av(p.nick)}<span>@${esc(p.nick)}</span><span class="sp-when mono">${when(p.at)}</span></p>
+            <p class="sp-by">${p.anon ? `<span class="sp-av is-anon" aria-hidden="true">?</span>` : av(p.nick)}<span>${esc(author(p))}</span><span class="sp-when mono">${when(p.at)}</span></p>
           </div>
           ${side}
-          <div class="sp-rx" role="group" aria-label="Reações">
-            ${REACTIONS.map(([k, e, l]) => `<button type="button" class="sp-pill" data-rx="${k}" aria-pressed="${my === k}"><span aria-hidden="true">${e}</span>${l}${cnt[k] ? `<b>${cnt[k]}</b>` : ""}</button>`).join("")}
+          <div class="sp-rxw">
+            <button type="button" class="sp-arr" data-arr="-1" aria-label="Reações anteriores" hidden>‹</button>
+            <div class="sp-rx" role="group" aria-label="Reações">
+              ${REACTIONS.map(([k, e, l]) => `<button type="button" class="sp-pill" data-rx="${k}" aria-pressed="${my === k}"><span aria-hidden="true">${e}</span>${l}${cnt[k] ? `<b>${cnt[k]}</b>` : ""}</button>`).join("")}
+            </div>
+            <button type="button" class="sp-arr" data-arr="1" aria-label="Mais reações">›</button>
           </div>
         </div>
         <div class="sp-back" aria-hidden="true" inert>
           <div class="sp-back-h"><span class="mono">Carimbos · ${total} reações · ${cm.length} comentários</span><button type="button" class="sp-close mono" data-flip>Voltar ↺</button></div>
           <div class="sp-stamps">${REACTIONS.filter(([k]) => cnt[k]).sort((a, b) => cnt[b[0]] - cnt[a[0]]).map(([k, e, l]) => `<span class="sp-stamp"><i aria-hidden="true">${e}</i>${l}<b>${cnt[k]}</b></span>`).join("") || `<span class="sp-empty">Nenhum carimbo ainda.</span>`}</div>
-          <ul class="sp-coms">${cm.map(t => `<li>${esc(t)}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
+          ${rs.length ? `<p class="sp-who">${rs.map(r => `<span>${emo[r.k] || ""} ${esc(r.who)}</span>`).join("")}</p>` : ""}
+          <label class="sp-anon"><input type="checkbox" role="switch" data-anon${anonPref() ? " checked" : ""}><span class="sp-sw" aria-hidden="true"></span>Ocultar meu nome</label>
+          <ul class="sp-coms">${cm.map(x => `<li><b>${esc(x.who)}</b> ${esc(x.t)}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
           <form class="sp-com" data-com>
             <div class="sp-emo" aria-label="Emojis">${EMOJIS.map(e => `<button type="button" data-emo="${e}" aria-label="Inserir ${e}">${e}</button>`).join("")}</div>
-            <div class="sp-com-row"><input maxlength="200" aria-label="Comentário anônimo" placeholder="Comente sem aparecer o seu nome"><button type="submit" class="btn btn-y">Enviar</button></div>
+            <div class="sp-com-row"><input maxlength="200" aria-label="Comentário" placeholder="Escreva um comentário"><button type="submit" class="btn btn-y">Enviar</button></div>
           </form>
           <button type="button" class="sp-report mono" data-report>Denunciar post</button>
         </div>
       </div>
     </article>`;
   }
+
+  function arrows(root = feed) {
+    $$(".sp-rxw", root).forEach(w => {
+      const r = $(".sp-rx", w), [prev, next] = $$(".sp-arr", w);
+      prev.hidden = r.scrollLeft < 4; next.hidden = r.scrollLeft + r.clientWidth >= r.scrollWidth - 4;
+    });
+  }
+  feed.addEventListener("scroll", e => { if (e.target.classList?.contains("sp-rx")) arrows(e.target.closest(".sp-card")) }, true);
+  addEventListener("resize", () => arrows());
+  new MutationObserver(() => arrows()).observe(feed, { childList: true });
 
   function render() {
     const list = all().filter(p => !hidden(p));
@@ -180,9 +208,11 @@
     if (rx) {
       if (!need()) return;
       const all = store.get(K.react, {}), mine = (all[c.dataset.id] ||= {}), k = rx.dataset.rx;
-      mine[me().email] === k ? delete mine[me().email] : mine[me().email] = k; // 1 reação por pessoa, dá para trocar
+      asReaction(mine[me().email] || { k: "" }).k === k ? delete mine[me().email] : mine[me().email] = { k, anon: anonPref() }; // 1 reação por pessoa, dá para trocar
       store.set(K.react, all); const x = $(".sp-rx", c).scrollLeft; c.outerHTML = card(post(rx)); $(`[data-id="${c.dataset.id}"] .sp-rx`, feed).scrollLeft = x; return;
     }
+    const arr = t.closest("[data-arr]");
+    if (arr) { const r = $(".sp-rx", c); r.scrollBy({ left: arr.dataset.arr * r.clientWidth * .7, behavior: reduced ? "auto" : "smooth" }); return }
     const tab = t.closest("[data-side]");
     if (tab) { const pnl = $("[data-side-panel]", c), open = pnl.hidden; pnl.hidden = !open; tab.setAttribute("aria-expanded", String(open)); return }
     if (t.closest("[data-save-text]")) {
@@ -199,13 +229,14 @@
       toast("Post denunciado. Ele saiu do seu feed e vai para revisão."); render();
     }
   });
+  feed.addEventListener("change", e => { if (e.target.matches("[data-anon]") && need()) { setAnon(e.target.checked); toast(e.target.checked ? "Seus próximos comentários e reações saem como Anônimo." : "Seus próximos comentários e reações mostram o seu @.") } });
   feed.addEventListener("submit", e => {
     const f = e.target.closest("[data-com]"); if (!f) return; e.preventDefault();
     if (!need()) return;
     const i = $("input", f), v = i.value.trim(), c = f.closest(".sp-card"); if (!v) return;
     if (BLOCK.test(v)) return toast("Comentário bloqueado: sem palavrões nem links.");
     const w = tooSoon("comment"); if (w) return toast(`Espere ${w}s para comentar de novo.`);
-    const all = store.get(K.com, {}); (all[c.dataset.id] ||= []).push({ t: v, u: me().email, at: Date.now() }); store.set(K.com, all);
+    const all = store.get(K.com, {}); (all[c.dataset.id] ||= []).push({ t: v, u: me().email, anon: anonPref(), at: Date.now() }); store.set(K.com, all);
     stamp("comment"); c.outerHTML = card(post(c)); const n = $(`[data-id="${c.dataset.id}"]`, feed); n.classList.add("flipped"); $(".sp-back", n).setAttribute("aria-hidden", "false"); $(".sp-front", n).inert = true;
   });
 
