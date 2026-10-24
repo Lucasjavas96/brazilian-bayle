@@ -1915,3 +1915,10 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .ab-page { scroll-margin-top: 70px; }
 @media (max-width: 1023px) { .ab-page { scroll-margin-top: 130px; } }
 .page-album .ab-modal .ab-small, .page-album .ab-deck-side .ab-small { color: rgba(255,255,255,.7); }
+
+/* topo: "Brazilian Bayle / A pista é brasileira" centralizado na página */
+.mbar .mbar-tag{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;pointer-events:none}
+@media (max-width:440px){.mbar .mbar-tag b{font-size:12px}.mbar .mbar-tag span{font-size:9px}.mbar .mbar-account{padding:10px 4px;font-size:11px}}
+@media (max-width:350px){.mbar .mbar-tag b{font-size:11px}.mbar .mbar-tag span{font-size:8px}}
+@media (max-width:440px){.mbar .mbar-tag{max-width:132px}.mbar .mbar-tag span{line-height:1.15}}
+@media (max-width:440px){.mbar .mbar-tag{max-width:112px}}
