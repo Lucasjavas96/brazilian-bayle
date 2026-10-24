@@ -151,3 +151,30 @@ python scripts/backend_smoke.py
   uma API que confie em pontuações fornecidas pelo navegador.
 - Somente arquivos da lista explícita do build vão a `dist`; SQL, scripts de
   manutenção e testes não são servidos como arquivos do site.
+
+
+## Álbum pessoal — Coleção 01
+
+- `brb_private.album_catalog`: catálogo autorizado de figurinhas e metadados,
+  iniciado com as mesmas 65 cartas prontas do site.
+- `album_accounts`: saldo de giros, um registro por `auth.users.id`.
+- `album_inventory`: quantidades de cada figurinha por usuário; repetidas são
+  quantidade menos um. A figurinha é salva no sorteio mesmo se a aba for fechada.
+- `album_draws`: histórico de sorteios e chave idempotente por usuário/pedido.
+- `album_spin_ledger`: concessão inicial única de 10 giros e débito de cada giro.
+- Todas as tabelas têm RLS, schema privado e acesso direto revogado. A RPC
+  `public.brb_album` identifica o usuário somente pelo JWT, exige segundo fator
+  para contas com MFA ativo, rejeita campos não permitidos e bloqueia acesso anônimo.
+- Sorteios e débito são atômicos, com trava por usuário, saldo não negativo e
+  intervalo mínimo de 2 segundos. Repetir o mesmo UUID não cobra novo giro.
+- O cliente apenas anima a roleta; `localStorage`, `#colar-todas` e os antigos
+  botões de teste não alteram a coleção real. Não importar saldos locais, pois
+  eram manipuláveis e não tinham autoria verificável.
+- Coleção usa os 253 espaços atuais; 65 têm figurinha pronta. Completar todo o
+  álbum ainda depende de catálogo futuro. Não há liberação automática de ingresso,
+  compra, transferência, pontos do Spotted ou renovação de giros nesta fase.
+- Novas cartas/regras de concessão precisam de migração revisável; alterações
+  visuais não modificam catálogo ou saldos. Preserve slugs de cartas já concedidas.
+- Teste SQL integrado: `supabase db query --linked --project-ref
+  bereyocdqacudfvazdpa --file tests/album_security.sql --output json`.
+  Fixtures e alterações são desfeitas no `rollback` final.

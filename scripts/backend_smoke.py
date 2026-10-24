@@ -27,6 +27,8 @@ def main():
         assert status>=400, 'Invalid consent accepted'
     status,_=rpc('brb_action',{'action':'post_create','payload':{'title':'Unauthorized CI check'}})
     assert status>=400, 'Anonymous write accepted'
+    status,_=rpc('brb_album',{'action':'state','payload':{}})
+    assert status>=400, 'Anonymous album access accepted'
     print('Live health, feed, anonymity, invalid consent and unauthorized writes: OK. No test records inserted.')
 
 if __name__=='__main__':main()

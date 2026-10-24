@@ -1,14 +1,10 @@
-/* Bayle All Stars Album (modo teste)
-   Jog wheel girada com o dedo ou o mouse sorteia uma das figurinhas prontas; ela voa e é colada no álbum.
-   Álbum, giros e repetidas ficam só neste navegador até o álbum ser ligado à conta do BRB Clubber.
-   Usa $, $$, store, reduced e toast do app.js. */
+/* Personal album: ownership, balances and draws are authoritative in Supabase. */
 (() => {
   const dataEl = $("#albumData"); if (!dataEl) return;
-  const DATA = JSON.parse(dataEl.textContent), CARDS = DATA.cards, POOL = Object.keys(CARDS);
-  const KEY = "bb_album_v1", GIROS_TESTE = 10;
-  const load = () => { const s = store.get(KEY, null); return s && s.coladas ? s : { giros: GIROS_TESTE, coladas: {} } };
-  let S = load();
-  const save = () => store.set(KEY, S);
+  const DATA = JSON.parse(dataEl.textContent), CARDS = DATA.cards;
+  let S = { giros: 0, coladas: {} }, userId = null, ready = false, epoch = 0, pendingId = null;
+  const albumMessage = text => { $("#abStatus").textContent = text; };
+  const albumError = error => /JWT|expired|session/i.test(error?.message || '') ? 'Sua sessão expirou. Entre novamente para continuar.' : error?.message || 'Não foi possível carregar seu álbum. Tente novamente.';
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const flag = f => f ? `/assets/flags/${f}.webp` : "";
 
@@ -80,8 +76,9 @@
     const got = Object.keys(S.coladas).length, reps = Object.values(S.coladas).reduce((a, n) => a + n - 1, 0);
     $("#abColadas").textContent = got; $("#abTotal").textContent = DATA.total; $("#abRep").textContent = reps;
     $("#abGiros").textContent = S.giros; $("#abGiros2").textContent = S.giros;
-    $("#abSpin").disabled = S.giros <= 0;
-    $("#abJogHint").textContent = S.giros > 0 ? "Arraste em círculo e solte com força, como quem faz scratch. Onde ela parar, sai a sua figurinha." : "Seus giros de teste acabaram. Use \"Recomeçar teste\" para ganhar 10 de novo.";
+    $("#abSpin").disabled = !ready || spinning || S.giros <= 0;
+    jog.setAttribute("aria-disabled", String(!ready || spinning || S.giros <= 0));
+    $("#abJogHint").textContent = !ready ? "Entre na sua conta para acessar seus giros e sua coleção." : S.giros > 0 ? "Gire para sortear uma figurinha. O resultado fica salvo automaticamente na sua conta." : "Você usou todos os giros disponíveis. Sua coleção continua salva.";
     DATA.pages.forEach(p => { const n = p.djs.filter(d => d.id && S.coladas[d.id]).length; $(`[data-count="${p.sigla}"]`).innerHTML = `<b>${n}</b>/${p.djs.length}`; });
     const repsEl = $("#abReps"); repsEl.hidden = !reps;
     $("#abRepsGrid").innerHTML = Object.entries(S.coladas).filter(([, n]) => n > 1).map(([s, n]) => `<div class="ab-slot filled">${mini(CARDS[s])}<span class="ab-x mono">×${n - 1}</span></div>`).join("");
@@ -94,8 +91,8 @@
   const angAt = e => { const [cx, cy] = center(); return Math.atan2(e.clientY - cy, e.clientX - cx) * 180 / Math.PI };
   const paint = () => plate.style.transform = `rotate(${angle}deg)`;
   jog.addEventListener("pointerdown", e => {
-    if (spinning) return;
-    if (S.giros <= 0) return toast("Seus giros de teste acabaram. Use Recomeçar teste.");
+    if (spinning || !ready) return;
+    if (S.giros <= 0) return toast("Você não tem giros disponíveis.");
     try { jog.setPointerCapture(e.pointerId) } catch {} jog.classList.add("grab");
     drag = { a: angAt(e), samples: [] };
   });
@@ -113,26 +110,44 @@
     spin(v);
   };
   jog.addEventListener("pointerup", release); jog.addEventListener("pointercancel", release);
-  const kick = () => { if (!spinning && S.giros > 0) spin((Math.random() < .5 ? -1 : 1) * (1.4 + Math.random() * .8)); else if (S.giros <= 0) toast("Seus giros de teste acabaram. Use Recomeçar teste.") };
+  const kick = () => { if (ready && !spinning && S.giros > 0) spin((Math.random() < .5 ? -1 : 1) * (1.4 + Math.random() * .8)); else if (S.giros <= 0) toast("Você não tem giros disponíveis.") };
   $("#abSpin").onclick = kick;
   jog.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); kick() } });
 
-  function spin(v) {
-    spinning = true; S.giros -= 1; save(); counts(); jog.classList.add("spinning");
-    // desaceleração exponencial calculada pelo tempo: o giro termina na hora certa mesmo se a tela engasgar
+  async function spin(v) {
+    if (!ready || spinning || S.giros <= 0) return;
+    const generation = epoch, owner = userId;
+    spinning = true; counts(); albumMessage('Sorteando sua figurinha…');
+    // Retry the same request after an uncertain network result; never debit twice.
+    pendingId ||= crypto.randomUUID();
+    let response;
+    try {
+      response = await BRB.album('spin', { request_id: pendingId });
+      if (generation !== epoch || owner !== userId) return;
+      pendingId = null; S = response;
+      if (response.draw.card) CARDS[response.draw.slug] = response.draw.card;
+    } catch (error) {
+      if (generation === epoch) { spinning = false; counts(); albumMessage(albumError(error)); }
+      return;
+    }
+    jog.classList.add('spinning');
     v = Math.sign(v) * Math.min(Math.abs(v), 3.2);
     const k = reduced ? .01 : .0025, T = Math.min(6000, Math.log(Math.abs(v) / .015) / k), a0 = angle, start = performance.now();
     const at = t => a0 + v / k * (1 - Math.exp(-k * t));
     let done = false;
-    const step = now => { if (done) return; angle = at(Math.min(T, now - start)); paint(); requestAnimationFrame(step) };
+    const step = now => { if (done || generation !== epoch) return; angle = at(Math.min(T, now - start)); paint(); requestAnimationFrame(step); };
     requestAnimationFrame(step);
-    setTimeout(() => { done = true; angle = at(T); paint(); jog.classList.remove("spinning"); spinning = false; draw() }, T);
+    setTimeout(() => {
+      if (generation !== epoch) return;
+      done = true; angle = at(T); paint(); jog.classList.remove('spinning'); spinning = false;
+      draw(response.draw); counts(); albumMessage('Figurinha salva na sua conta.');
+    }, T);
   }
 
   /* ---------- sorteio, revelação e colagem ---------- */
   let current = null;
-  function draw() {
-    const slug = POOL[Math.floor(Math.random() * POOL.length)], c = CARDS[slug], dup = !!S.coladas[slug];
+  function draw(result) {
+    const slug = result.slug, c = CARDS[slug], dup = result.duplicate;
     current = { slug, dup };
     $("#abRevealCard").innerHTML = bigCard(c);
     $("#abRevealRar").innerHTML = `<b class="rar-${c.cls}">${c.rar}</b>${dup ? " · repetida" : ""}`;
@@ -146,11 +161,12 @@
     const { slug, dup } = current, c = CARDS[slug], rv = $("#abReveal");
     const from = $(".djc", rv).getBoundingClientRect();
     rv.hidden = true; rv.className = "ab-reveal";
-    S.coladas[slug] = (S.coladas[slug] || 0) + 1; save();
+    const generation = epoch; // Already awarded atomically by the server.
     if (dup) { counts(); toast(`${c.nome} foi para as repetidas.`); $("#abReps").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" }); return }
     const target = $(`#slot-${slug}`);
     target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
     setTimeout(() => {
+      if (generation !== epoch) return;
       const to = target.getBoundingClientRect();
       const fly = document.createElement("div"); fly.className = "ab-fly"; fly.innerHTML = mini(c);
       Object.assign(fly.style, { left: to.left + "px", top: to.top + "px", width: to.width + "px", height: to.height + "px",
@@ -159,6 +175,7 @@
       requestAnimationFrame(() => requestAnimationFrame(() => { fly.classList.add("go"); fly.style.transform = "none" }));
       setTimeout(() => {
         fly.remove();
+        if (generation !== epoch) return;
         target.outerHTML = slot({ ...findDj(slug), page: true }, 0);
         const fresh = $(`#slot-${slug}`); fresh.classList.add("just");
         counts(); toast(`Figurinha ${c.num} colada!`);
@@ -178,11 +195,40 @@
   $("#abModal").addEventListener("click", e => { if (e.target.id === "abModal") closeModal() });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#abModal").hidden) closeModal() });
 
-  // modo teste: cola de uma vez todas as figurinhas prontas, para ver o álbum montado
-  $("#abAll").onclick = () => { POOL.forEach(s => { S.coladas[s] ||= 1 }); save(); renderAlbum(); toast(`${POOL.length} figurinhas coladas.`) };
-  $("#abReset").onclick = () => { if (!confirm("Zerar o álbum de teste e ganhar 10 giros de novo?")) return; S = { giros: GIROS_TESTE, coladas: {} }; save(); renderAlbum(); toast("Teste recomeçado: álbum vazio e 10 giros.") };
-
-  // link de teste: /album#colar-todas já abre com todas as figurinhas prontas coladas
-  if (location.hash === "#colar-todas") POOL.forEach(s => { S.coladas[s] ||= 1 });
-  renderAlbum(); save(); addEventListener("resize", () => { if (!$("#abReveal").hidden) fit($("#abReveal")); if (!$("#abModal").hidden) fit($("#abModal")) });
+  async function loadAlbum(session) {
+    const generation = ++epoch;
+    userId = session?.user?.id || null; ready = false; spinning = false; pendingId = null;
+    S = { giros: 0, coladas: {} }; current = null; drag = null;
+    $$('.ab-fly').forEach(node => node.remove()); jog.classList.remove('grab');
+    $("#abReveal").hidden = true; closeModal(); jog.classList.remove('spinning');
+    renderAlbum(); $("#abLogin").hidden = false;
+    if (!userId) { albumMessage('Entre para ter seu próprio álbum e continuar de onde parou em qualquer dispositivo.'); return; }
+    albumMessage('Carregando seu álbum…');
+    try {
+      const state = await BRB.album('state');
+      if (generation !== epoch) return;
+      S = state; ready = true; renderAlbum(); $("#abLogin").hidden = true;
+      albumMessage('Seu álbum está sincronizado com sua conta.');
+    } catch (error) { if (generation === epoch) albumMessage(albumError(error)); }
+  }
+  $("#abRefresh").onclick = async () => {
+    if (spinning) return;
+    const { data, error } = await BRB.auth.getSession();
+    if (error) { albumMessage(albumError(error)); return; }
+    await loadAlbum(data.session);
+  };
+  // Local prototype balances and #colar-todas are deliberately not imported.
+  renderAlbum();
+  (async () => {
+    try {
+      BRB.auth.onAuthStateChange((event, session) => {
+        if (!['SIGNED_IN','SIGNED_OUT','TOKEN_REFRESHED','USER_UPDATED'].includes(event)) return;
+        setTimeout(() => { if (session?.user?.id === userId && ready) return; loadAlbum(session); }, 0);
+      });
+      const { data, error } = await BRB.auth.getSession();
+      if (error) throw error;
+      await loadAlbum(data.session);
+    } catch (error) { albumMessage(albumError(error)); }
+  })();
+  addEventListener('resize', () => { if (!$("#abReveal").hidden) fit($("#abReveal")); if (!$("#abModal").hidden) fit($("#abModal")); });
 })();

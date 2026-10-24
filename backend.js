@@ -6,6 +6,11 @@
   });
   window.BRB = {
     auth: client.auth,
+    async album(action, payload = {}) {
+      const { data, error } = await client.rpc('brb_album', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível atualizar seu álbum.');
+      return data;
+    },
     async rpc(action, payload = {}) {
       const { data, error } = await client.rpc('brb_action', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível enviar. Tente novamente.');
