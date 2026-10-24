@@ -16,7 +16,7 @@
   const spotify = n => !n ? 60 : lerp([[4, 60], [4.48, 62], [5, 68], [5.48, 72], [6, 76], [6.48, 80], [7, 85], [7.48, 90], [8, 92]], Math.log10(n));
 
   function nota(d) {
-    const anos = 2026 - d.inicio;
+    const anos = d.inicio ? 2026 - d.inicio : 0; // sem ano de início conta zero (não pode virar NaN)
     const HYP = Math.max(djmag(d.djmag), spotify(d.ouvintes));
     const LEG = lerp([[0, 62], [5, 70], [10, 77], [20, 84], [30, 89], [40, 92]], anos) + (d.hino ? 4 : 0) + (d.selo ? 3 : 0) + (d.pioneiro ? 3 : 0);
     const SOM = (d.top1001 ? 96 - (d.top1001 - 1) * 14 / 100 : d.beatport === "geral" ? 80 : d.beatport === "genero" ? 76 : 70)

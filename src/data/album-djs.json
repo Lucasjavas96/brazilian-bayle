@@ -11,261 +11,1783 @@
     "mundo": "Relevancia internacional fora do Top 100 (underground, RA, Beatport, festivais)"
   },
   "djs": [
-    ["djmag", 1, "David Guetta", "França", "EDM / House"],
-    ["djmag", 2, "Martin Garrix", "Holanda", "Big Room / Progressive"],
-    ["djmag", 3, "Anyma", "Itália", "Melodic Techno"],
-    ["djmag", 4, "Alok", "Brasil", "Brazilian Bass / House"],
-    ["djmag", 5, "Dimitri Vegas & Like Mike", "Bélgica", "Big Room"],
-    ["djmag", 6, "Charlotte de Witte", "Bélgica", "Techno"],
-    ["djmag", 7, "Armin van Buuren", "Holanda", "Trance"],
-    ["djmag", 8, "Timmy Trumpet", "Austrália", "Big Room / Psy"],
-    ["djmag", 9, "FISHER", "Austrália", "Tech House"],
-    ["djmag", 10, "Vintage Culture", "Brasil", "House"],
-    ["djmag", 11, "Calvin Harris", "Escócia", "Dance / House"],
-    ["djmag", 12, "Don Diablo", "Holanda", "Future House"],
-    ["djmag", 13, "Peggy Gou", "Coreia do Sul", "House"],
-    ["djmag", 14, "Black Coffee", "África do Sul", "Afro House"],
-    ["djmag", 15, "Afrojack", "Holanda", "Electro House"],
-    ["djmag", 16, "Fred again..", "Inglaterra", "UK Garage / Electronic"],
-    ["djmag", 17, "Lost Frequencies", "Bélgica", "Deep House / Dance"],
-    ["djmag", 18, "Steve Aoki", "EUA", "Electro / EDM"],
-    ["djmag", 19, "KSHMR", "EUA", "Big Room"],
-    ["djmag", 20, "W&W", "Holanda", "Big Room / Hardstyle"],
-    ["djmag", 21, "Reinier Zonneveld", "Holanda", "Techno"],
-    ["djmag", 22, "Tiësto", "Holanda", "EDM / House"],
-    ["djmag", 23, "Carl Cox", "Inglaterra", "Techno / House"],
-    ["djmag", 24, "John Summit", "EUA", "Tech House"],
-    ["djmag", 25, "Skrillex", "EUA", "Dubstep / Bass"],
-    ["djmag", 26, "Indira Paganotto", "Espanha", "Psy Techno"],
-    ["djmag", 27, "Nicky Romero", "Holanda", "Progressive House"],
-    ["djmag", 28, "The Martinez Brothers", "EUA", "Tech House"],
-    ["djmag", 29, "Hardwell", "Holanda", "Big Room / Techno"],
-    ["djmag", 30, "Illenium", "EUA", "Melodic Bass"],
-    ["djmag", 31, "Keinemusik", "Alemanha", "Afro House"],
-    ["djmag", 32, "Alan Walker", "Noruega", "EDM"],
-    ["djmag", 33, "Jamie Jones", "País de Gales", "Tech House"],
-    ["djmag", 34, "Swedish House Mafia", "Suécia", "Progressive House"],
-    ["djmag", 35, "Paul van Dyk", "Alemanha", "Trance"],
-    ["djmag", 36, "Korolova", "Ucrânia", "Melodic Techno"],
-    ["djmag", 37, "Michael Bibi", "Inglaterra", "Tech House"],
-    ["djmag", 38, "Dom Dolla", "Austrália", "Tech House"],
-    ["djmag", 39, "Oliver Heldens", "Holanda", "Future House"],
-    ["djmag", 40, "Josh Baker", "Inglaterra", "Tech House"],
-    ["djmag", 41, "Solomun", "Bósnia / Alemanha", "Melodic House"],
-    ["djmag", 42, "Mahmut Orhan", "Turquia", "Deep House"],
-    ["djmag", 43, "Claptone", "Alemanha", "House"],
-    ["djmag", 44, "Joel Corry", "Inglaterra", "Dance / House"],
-    ["djmag", 45, "R3hab", "Holanda", "EDM"],
-    ["djmag", 46, "Mochakk", "Brasil", "Tech House"],
-    ["djmag", 47, "Amelie Lens", "Bélgica", "Techno"],
-    ["djmag", 48, "HUGEL", "França", "Afro / Latin House"],
-    ["djmag", 49, "Lilly Palmer", "Suíça", "Techno"],
-    ["djmag", 50, "GORDO", "EUA", "Tech House"],
-    ["djmag", 51, "James Hype", "Inglaterra", "House"],
-    ["djmag", 52, "Maddix", "Holanda", "Big Room / Techno"],
-    ["djmag", 53, "Marshmello", "EUA", "EDM / Future Bass"],
-    ["djmag", 54, "Zedd", "Alemanha / EUA", "Electro Pop"],
-    ["djmag", 55, "Mau P", "Holanda", "Tech House"],
-    ["djmag", 56, "Alesso", "Suécia", "Progressive House"],
-    ["djmag", 57, "Boris Brejcha", "Alemanha", "High-Tech Minimal"],
-    ["djmag", 58, "Bassjackers", "Holanda", "Big Room"],
-    ["djmag", 59, "Chris Stussy", "Holanda", "Minimal / House"],
-    ["djmag", 60, "DJ Snake", "França", "Trap / EDM"],
-    ["djmag", 61, "Miss Monique", "Ucrânia", "Progressive House"],
-    ["djmag", 62, "Eric Prydz", "Suécia", "Progressive House"],
-    ["djmag", 63, "ATB", "Alemanha", "Trance"],
-    ["djmag", 64, "Sara Landry", "EUA", "Hard Techno"],
-    ["djmag", 65, "Kölsch", "Dinamarca", "Melodic Techno"],
-    ["djmag", 66, "Ben Nicky", "Inglaterra", "Hard Dance / Trance"],
-    ["djmag", 67, "Sub Zero Project", "Holanda", "Hardstyle"],
-    ["djmag", 68, "Joseph Capriati", "Itália", "Techno"],
-    ["djmag", 69, "Liu", "Brasil", "Bass House"],
-    ["djmag", 70, "ARTBAT", "Ucrânia", "Melodic Techno"],
-    ["djmag", 71, "Vini Vici", "Israel", "Psytrance"],
-    ["djmag", 72, "Wade", "Espanha", "Tech House"],
-    ["djmag", 73, "Nora En Pure", "Suíça", "Deep House"],
-    ["djmag", 74, "B Jones", "França", "Techno / Big Room"],
-    ["djmag", 75, "Shimza", "África do Sul", "Afro Tech"],
-    ["djmag", 76, "Quintino", "Holanda", "Big Room"],
-    ["djmag", 77, "Lucas & Steve", "Holanda", "Future House"],
-    ["djmag", 78, "Giuseppe Ottaviani", "Itália", "Trance"],
-    ["djmag", 79, "Padre Guilherme", "Portugal", "Techno"],
-    ["djmag", 80, "Sonny Fodera", "Austrália", "House"],
-    ["djmag", 81, "Deborah De Luca", "Itália", "Techno"],
-    ["djmag", 82, "Nico Moreno", "França", "Hard Techno"],
-    ["djmag", 83, "Ferry Corsten", "Holanda", "Trance"],
-    ["djmag", 84, "Cloonee", "Inglaterra", "Tech House"],
-    ["djmag", 85, "Mosimann", "França", "House"],
-    ["djmag", 86, "PAWSA", "Inglaterra", "Tech House"],
-    ["djmag", 87, "Above & Beyond", "Inglaterra", "Trance / Progressive"],
-    ["djmag", 88, "Marnik", "Holanda", "Big Room"],
-    ["djmag", 89, "The Chainsmokers", "EUA", "EDM Pop"],
-    ["djmag", 90, "Plastik Funk", "Alemanha", "House"],
-    ["djmag", 91, "deadmau5", "Canadá", "Progressive House"],
-    ["djmag", 92, "MATTN", "Bélgica", "Big Room"],
-    ["djmag", 93, "Nils van Zandt", "Holanda", "Dance"],
-    ["djmag", 94, "Prospa", "Inglaterra", "Rave / House"],
-    ["djmag", 95, "¥ØU$UK€ ¥UK1MAT$U", "Japão", "Hard Techno"],
-    ["djmag", 96, "Cuebrick", "Holanda", "Big Room"],
-    ["djmag", 97, "Marlon Hoffstadt", "Alemanha", "House / Techno"],
-    ["djmag", 98, "Honey Dijon", "EUA", "House"],
-    ["djmag", 99, "DubVision", "Holanda", "Progressive House"],
-    ["djmag", 100, "KI/KI", "Holanda", "Hard Techno / Trance"],
-
-    ["brasil", null, "ANNA", "Brasil", "Techno"],
-    ["brasil", null, "Cat Dealers", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Dubdogz", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "KVSH", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Bhaskar", "Brasil", "House"],
-    ["brasil", null, "Chemical Surf", "Brasil", "Brazilian Bass / Tech House"],
-    ["brasil", null, "Zerb", "Brasil", "Afro House"],
-    ["brasil", null, "Öwnboss", "Brasil", "Bass House"],
-    ["brasil", null, "RUBACK", "Brasil", "Tech House"],
-    ["brasil", null, "Victor Ruiz", "Brasil", "Techno"],
-    ["brasil", null, "Gui Boratto", "Brasil", "Techno / Minimal"],
-    ["brasil", null, "Illusionize", "Brasil", "Tech House"],
-    ["brasil", null, "Beltran", "Brasil", "Tech House"],
-    ["brasil", null, "Mojjo", "Brasil", "House"],
-    ["brasil", null, "Classmatic", "Brasil", "Tech House"],
-    ["brasil", null, "GREG", "Brasil", "House"],
-    ["brasil", null, "Sevek", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Volkoder", "Brasil", "Bass House"],
-    ["brasil", null, "Fancy Inc", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Breaking Beattz", "Brasil", "Bass House"],
-    ["brasil", null, "Bruno Martini", "Brasil", "Dance Pop"],
-    ["brasil", null, "Dashdot", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Felguk", "Brasil", "Electro House"],
-    ["brasil", null, "Gabe", "Brasil", "Tech House"],
-    ["brasil", null, "Victor Lou", "Brasil", "Tech House"],
-    ["brasil", null, "Maz", "Brasil", "Afro House"],
-    ["brasil", null, "Antdot", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "JetLag Music", "Brasil", "House"],
-    ["brasil", null, "Pontifexx", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Malifoo", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Rooftime", "Brasil", "Tech House"],
-    ["brasil", null, "Shapeless", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Renato Ratier", "Brasil", "Techno / House"],
-    ["brasil", null, "Wehbba", "Brasil", "Techno"],
-    ["brasil", null, "Binaryh", "Brasil", "Melodic Techno"],
-    ["brasil", null, "Eli Iwasa", "Brasil", "House / Techno"],
-    ["brasil", null, "Mila Journée", "Brasil", "Melodic House"],
-    ["brasil", null, "Selvagem", "Brasil", "Disco / House"],
-    ["brasil", null, "Elekfantz", "Brasil", "Indie Dance"],
-    ["brasil", null, "Bruno Be", "Brasil", "House"],
-    ["brasil", null, "Ney Faustini", "Brasil", "Tech House"],
-    ["brasil", null, "Tropkillaz", "Brasil", "Trap / Bass"],
-    ["brasil", null, "L_cio", "Brasil", "Electronic / House"],
-    ["brasil", null, "Badsista", "Brasil", "Club / Baile Funk"],
-    ["brasil", null, "Vhoor", "Brasil", "Beats / Baile Funk"],
-    ["brasil", null, "DJ Marky", "Brasil", "Drum & Bass"],
-    ["brasil", null, "Patife", "Brasil", "Drum & Bass"],
-    ["brasil", null, "Mau Mau", "Brasil", "Techno / House"],
-    ["brasil", null, "Renato Cohen", "Brasil", "Techno"],
-    ["brasil", null, "Anderson Noise", "Brasil", "Techno"],
-    ["brasil", null, "Leo Janeiro", "Brasil", "House"],
-    ["brasil", null, "Ashibah", "Brasil", "Brazilian Bass"],
-    ["brasil", null, "Vinne", "Brasil", "Bass House"],
-    ["brasil", null, "Groove Delight", "Brasil", "Tech House"],
-
-    ["mundo", null, "Adam Beyer", "Suécia", "Techno"],
-    ["mundo", null, "Richie Hawtin", "Canadá", "Minimal Techno"],
-    ["mundo", null, "Nina Kraviz", "Rússia", "Techno"],
-    ["mundo", null, "Ben Klock", "Alemanha", "Techno"],
-    ["mundo", null, "Marcel Dettmann", "Alemanha", "Techno"],
-    ["mundo", null, "Sven Väth", "Alemanha", "Techno"],
-    ["mundo", null, "Jeff Mills", "EUA", "Detroit Techno"],
-    ["mundo", null, "Laurent Garnier", "França", "Techno / House"],
-    ["mundo", null, "Ricardo Villalobos", "Chile / Alemanha", "Minimal"],
-    ["mundo", null, "Dixon", "Alemanha", "Melodic House"],
-    ["mundo", null, "Âme", "Alemanha", "Melodic House"],
-    ["mundo", null, "Tale Of Us", "Itália", "Melodic Techno"],
-    ["mundo", null, "Maceo Plex", "EUA", "Techno"],
-    ["mundo", null, "Stephan Bodzin", "Alemanha", "Melodic Techno"],
-    ["mundo", null, "Adriatique", "Suíça", "Melodic House"],
-    ["mundo", null, "Mathame", "Itália", "Melodic Techno"],
-    ["mundo", null, "Innellea", "Alemanha", "Melodic Techno"],
-    ["mundo", null, "Kevin de Vries", "Alemanha", "Melodic Techno"],
-    ["mundo", null, "Massano", "Inglaterra", "Melodic Techno"],
-    ["mundo", null, "Argy", "Grécia", "Melodic Techno"],
-    ["mundo", null, "Enrico Sangiuliano", "Itália", "Techno"],
-    ["mundo", null, "Joris Voorn", "Holanda", "Techno / House"],
-    ["mundo", null, "Ben Böhmer", "Alemanha", "Melodic House"],
-    ["mundo", null, "Monolink", "Alemanha", "Melodic Techno (live)"],
-    ["mundo", null, "Hernán Cattáneo", "Argentina", "Progressive House"],
-    ["mundo", null, "Nicole Moudaber", "Líbano / Inglaterra", "Techno"],
-    ["mundo", null, "Loco Dice", "Alemanha", "Tech House"],
-    ["mundo", null, "Marco Carola", "Itália", "Minimal / Tech House"],
-    ["mundo", null, "Seth Troxler", "EUA", "House / Techno"],
-    ["mundo", null, "Patrick Topping", "Inglaterra", "Tech House"],
-    ["mundo", null, "Hot Since 82", "Inglaterra", "Deep / Tech House"],
-    ["mundo", null, "Chris Lake", "Inglaterra", "Tech House"],
-    ["mundo", null, "Chris Lorenzo", "Inglaterra", "Bass House"],
-    ["mundo", null, "Dubfire", "Irã / EUA", "Techno"],
-    ["mundo", null, "&ME", "Alemanha", "Afro House"],
-    ["mundo", null, "Rampa", "Alemanha", "Afro House"],
-    ["mundo", null, "Adam Port", "Alemanha", "Afro House"],
-    ["mundo", null, "Themba", "África do Sul", "Afro Tech"],
-    ["mundo", null, "Culoe De Song", "África do Sul", "Afro House"],
-    ["mundo", null, "Da Capo", "África do Sul", "Afro House"],
-    ["mundo", null, "Francis Mercier", "Haiti / EUA", "Afro House"],
-    ["mundo", null, "Four Tet", "Inglaterra", "Electronic"],
-    ["mundo", null, "Jamie xx", "Inglaterra", "Electronic / House"],
-    ["mundo", null, "Skream", "Inglaterra", "House / Dubstep"],
-    ["mundo", null, "Bicep", "Irlanda do Norte", "Electronic / Breaks"],
-    ["mundo", null, "Disclosure", "Inglaterra", "House / UK Garage"],
-    ["mundo", null, "Kaytranada", "Canadá", "House / R&B"],
-    ["mundo", null, "Purple Disco Machine", "Alemanha", "Nu Disco"],
-    ["mundo", null, "Diplo", "EUA", "Moombahton / EDM"],
-    ["mundo", null, "Kygo", "Noruega", "Tropical House"],
-    ["mundo", null, "Meduza", "Itália", "House"],
-    ["mundo", null, "Tchami", "França", "Future House"],
-    ["mundo", null, "Malaa", "França", "Bass House"],
-    ["mundo", null, "Kaskade", "EUA", "Progressive House"],
-    ["mundo", null, "Gorgon City", "Inglaterra", "House"],
-    ["mundo", null, "Duke Dumont", "Inglaterra", "House"],
-    ["mundo", null, "MK", "EUA", "House"],
-    ["mundo", null, "Sammy Virji", "Inglaterra", "UK Garage"],
-    ["mundo", null, "Barry Can't Swim", "Escócia", "Electronic / House"],
-    ["mundo", null, "Overmono", "País de Gales", "Breaks / Techno"],
-    ["mundo", null, "Mall Grab", "Austrália", "Lo-fi House / Techno"],
-    ["mundo", null, "Interplanetary Criminal", "Inglaterra", "UK Garage"],
-    ["mundo", null, "Joshwa", "Inglaterra", "Tech House"],
-    ["mundo", null, "Max Dean", "Inglaterra", "Tech House"],
-    ["mundo", null, "Kettama", "Irlanda", "House / Breaks"],
-    ["mundo", null, "I Hate Models", "França", "Hard Techno"],
-    ["mundo", null, "Kobosil", "Alemanha", "Techno"],
-    ["mundo", null, "FJAAK", "Alemanha", "Techno"],
-    ["mundo", null, "999999999", "Itália", "Acid Techno"],
-    ["mundo", null, "Klangkuenstler", "Alemanha", "Hard Techno"],
-    ["mundo", null, "Dax J", "Inglaterra", "Techno"],
-    ["mundo", null, "Funk Tribu", "Argentina", "Hard Techno"],
-    ["mundo", null, "Trym", "França", "Hard Techno"],
-    ["mundo", null, "VTSS", "Polônia", "Techno"],
-    ["mundo", null, "Héctor Oaks", "Espanha", "Techno"],
-    ["mundo", null, "Paula Temple", "Inglaterra", "Industrial Techno"],
-    ["mundo", null, "Ellen Allien", "Alemanha", "Techno"],
-    ["mundo", null, "Helena Hauff", "Alemanha", "Electro / Techno"],
-    ["mundo", null, "DJ Stingray 313", "EUA", "Electro"],
-    ["mundo", null, "Ben UFO", "Inglaterra", "Eclectic"],
-    ["mundo", null, "Objekt", "Alemanha", "Techno / Electro"],
-    ["mundo", null, "Avalon Emerson", "EUA", "Electronic"],
-    ["mundo", null, "Palms Trax", "Inglaterra", "House / Disco"],
-    ["mundo", null, "DJ Tennis", "Itália", "Electronic"],
-    ["mundo", null, "Job Jobse", "Holanda", "House / Techno"],
-    ["mundo", null, "Folamour", "França", "House / Disco"],
-    ["mundo", null, "DJ Seinfeld", "Suécia", "Lo-fi House"],
-    ["mundo", null, "Jayda G", "Canadá", "House / Disco"],
-    ["mundo", null, "Kerri Chandler", "EUA", "Deep House"],
-    ["mundo", null, "Louie Vega", "EUA", "House"],
-    ["mundo", null, "Moodymann", "EUA", "Deep House"],
-    ["mundo", null, "Lane 8", "EUA", "Melodic House"],
-    ["mundo", null, "Yotto", "Finlândia", "Progressive House"],
-    ["mundo", null, "Nicky Elisabeth", "Holanda", "Tech House"],
-    ["mundo", null, "Nia Archives", "Inglaterra", "Jungle / DnB"],
-    ["mundo", null, "Subtronics", "EUA", "Dubstep"],
-    ["mundo", null, "Excision", "Canadá", "Dubstep"],
-    ["mundo", null, "Rezz", "Canadá", "Bass / Midtempo"],
-    ["mundo", null, "Seven Lions", "EUA", "Melodic Bass"],
-    ["mundo", null, "Gryffin", "EUA", "Melodic House"]
+    [
+      "djmag",
+      1,
+      "David Guetta",
+      "França",
+      "EDM / House"
+    ],
+    [
+      "djmag",
+      2,
+      "Martin Garrix",
+      "Holanda",
+      "Big Room / Progressive"
+    ],
+    [
+      "djmag",
+      3,
+      "Anyma",
+      "Itália",
+      "Melodic Techno"
+    ],
+    [
+      "djmag",
+      4,
+      "Alok",
+      "Brasil",
+      "Brazilian Bass / House"
+    ],
+    [
+      "djmag",
+      5,
+      "Dimitri Vegas & Like Mike",
+      "Bélgica",
+      "Big Room"
+    ],
+    [
+      "djmag",
+      6,
+      "Charlotte de Witte",
+      "Bélgica",
+      "Techno"
+    ],
+    [
+      "djmag",
+      7,
+      "Armin van Buuren",
+      "Holanda",
+      "Trance"
+    ],
+    [
+      "djmag",
+      8,
+      "Timmy Trumpet",
+      "Austrália",
+      "Big Room / Psy"
+    ],
+    [
+      "djmag",
+      9,
+      "FISHER",
+      "Austrália",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      10,
+      "Vintage Culture",
+      "Brasil",
+      "House"
+    ],
+    [
+      "djmag",
+      11,
+      "Calvin Harris",
+      "Escócia",
+      "Dance / House"
+    ],
+    [
+      "djmag",
+      12,
+      "Don Diablo",
+      "Holanda",
+      "Future House"
+    ],
+    [
+      "djmag",
+      13,
+      "Peggy Gou",
+      "Coreia do Sul",
+      "House"
+    ],
+    [
+      "djmag",
+      14,
+      "Black Coffee",
+      "África do Sul",
+      "Afro House"
+    ],
+    [
+      "djmag",
+      15,
+      "Afrojack",
+      "Holanda",
+      "Electro House"
+    ],
+    [
+      "djmag",
+      16,
+      "Fred again..",
+      "Inglaterra",
+      "UK Garage / Electronic"
+    ],
+    [
+      "djmag",
+      17,
+      "Lost Frequencies",
+      "Bélgica",
+      "Deep House / Dance"
+    ],
+    [
+      "djmag",
+      18,
+      "Steve Aoki",
+      "EUA",
+      "Electro / EDM"
+    ],
+    [
+      "djmag",
+      19,
+      "KSHMR",
+      "EUA",
+      "Big Room"
+    ],
+    [
+      "djmag",
+      20,
+      "W&W",
+      "Holanda",
+      "Big Room / Hardstyle"
+    ],
+    [
+      "djmag",
+      21,
+      "Reinier Zonneveld",
+      "Holanda",
+      "Techno"
+    ],
+    [
+      "djmag",
+      22,
+      "Tiësto",
+      "Holanda",
+      "EDM / House"
+    ],
+    [
+      "djmag",
+      23,
+      "Carl Cox",
+      "Inglaterra",
+      "Techno / House"
+    ],
+    [
+      "djmag",
+      24,
+      "John Summit",
+      "EUA",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      25,
+      "Skrillex",
+      "EUA",
+      "Dubstep / Bass"
+    ],
+    [
+      "djmag",
+      26,
+      "Indira Paganotto",
+      "Espanha",
+      "Psy Techno"
+    ],
+    [
+      "djmag",
+      27,
+      "Nicky Romero",
+      "Holanda",
+      "Progressive House"
+    ],
+    [
+      "djmag",
+      28,
+      "The Martinez Brothers",
+      "EUA",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      29,
+      "Hardwell",
+      "Holanda",
+      "Big Room / Techno"
+    ],
+    [
+      "djmag",
+      30,
+      "Illenium",
+      "EUA",
+      "Melodic Bass"
+    ],
+    [
+      "djmag",
+      31,
+      "Keinemusik",
+      "Alemanha",
+      "Afro House"
+    ],
+    [
+      "djmag",
+      32,
+      "Alan Walker",
+      "Noruega",
+      "EDM"
+    ],
+    [
+      "djmag",
+      33,
+      "Jamie Jones",
+      "País de Gales",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      34,
+      "Swedish House Mafia",
+      "Suécia",
+      "Progressive House"
+    ],
+    [
+      "djmag",
+      35,
+      "Paul van Dyk",
+      "Alemanha",
+      "Trance"
+    ],
+    [
+      "djmag",
+      36,
+      "Korolova",
+      "Ucrânia",
+      "Melodic Techno"
+    ],
+    [
+      "djmag",
+      37,
+      "Michael Bibi",
+      "Inglaterra",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      38,
+      "Dom Dolla",
+      "Austrália",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      39,
+      "Oliver Heldens",
+      "Holanda",
+      "Future House"
+    ],
+    [
+      "djmag",
+      40,
+      "Josh Baker",
+      "Inglaterra",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      41,
+      "Solomun",
+      "Bósnia / Alemanha",
+      "Melodic House"
+    ],
+    [
+      "djmag",
+      42,
+      "Mahmut Orhan",
+      "Turquia",
+      "Deep House"
+    ],
+    [
+      "djmag",
+      43,
+      "Claptone",
+      "Alemanha",
+      "House"
+    ],
+    [
+      "djmag",
+      44,
+      "Joel Corry",
+      "Inglaterra",
+      "Dance / House"
+    ],
+    [
+      "djmag",
+      45,
+      "R3hab",
+      "Holanda",
+      "EDM"
+    ],
+    [
+      "djmag",
+      46,
+      "Mochakk",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      47,
+      "Amelie Lens",
+      "Bélgica",
+      "Techno"
+    ],
+    [
+      "djmag",
+      48,
+      "HUGEL",
+      "França",
+      "Afro / Latin House"
+    ],
+    [
+      "djmag",
+      49,
+      "Lilly Palmer",
+      "Suíça",
+      "Techno"
+    ],
+    [
+      "djmag",
+      50,
+      "GORDO",
+      "EUA",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      51,
+      "James Hype",
+      "Inglaterra",
+      "House"
+    ],
+    [
+      "djmag",
+      52,
+      "Maddix",
+      "Holanda",
+      "Big Room / Techno"
+    ],
+    [
+      "djmag",
+      53,
+      "Marshmello",
+      "EUA",
+      "EDM / Future Bass"
+    ],
+    [
+      "djmag",
+      54,
+      "Zedd",
+      "Alemanha / EUA",
+      "Electro Pop"
+    ],
+    [
+      "djmag",
+      55,
+      "Mau P",
+      "Holanda",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      56,
+      "Alesso",
+      "Suécia",
+      "Progressive House"
+    ],
+    [
+      "djmag",
+      57,
+      "Boris Brejcha",
+      "Alemanha",
+      "High-Tech Minimal"
+    ],
+    [
+      "djmag",
+      58,
+      "Bassjackers",
+      "Holanda",
+      "Big Room"
+    ],
+    [
+      "djmag",
+      59,
+      "Chris Stussy",
+      "Holanda",
+      "Minimal / House"
+    ],
+    [
+      "djmag",
+      60,
+      "DJ Snake",
+      "França",
+      "Trap / EDM"
+    ],
+    [
+      "djmag",
+      61,
+      "Miss Monique",
+      "Ucrânia",
+      "Progressive House"
+    ],
+    [
+      "djmag",
+      62,
+      "Eric Prydz",
+      "Suécia",
+      "Progressive House"
+    ],
+    [
+      "djmag",
+      63,
+      "ATB",
+      "Alemanha",
+      "Trance"
+    ],
+    [
+      "djmag",
+      64,
+      "Sara Landry",
+      "EUA",
+      "Hard Techno"
+    ],
+    [
+      "djmag",
+      65,
+      "Kölsch",
+      "Dinamarca",
+      "Melodic Techno"
+    ],
+    [
+      "djmag",
+      66,
+      "Ben Nicky",
+      "Inglaterra",
+      "Hard Dance / Trance"
+    ],
+    [
+      "djmag",
+      67,
+      "Sub Zero Project",
+      "Holanda",
+      "Hardstyle"
+    ],
+    [
+      "djmag",
+      68,
+      "Joseph Capriati",
+      "Itália",
+      "Techno"
+    ],
+    [
+      "djmag",
+      69,
+      "Liu",
+      "Brasil",
+      "Bass House"
+    ],
+    [
+      "djmag",
+      70,
+      "ARTBAT",
+      "Ucrânia",
+      "Melodic Techno"
+    ],
+    [
+      "djmag",
+      71,
+      "Vini Vici",
+      "Israel",
+      "Psytrance"
+    ],
+    [
+      "djmag",
+      72,
+      "Wade",
+      "Espanha",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      73,
+      "Nora En Pure",
+      "Suíça",
+      "Deep House"
+    ],
+    [
+      "djmag",
+      74,
+      "B Jones",
+      "França",
+      "Techno / Big Room"
+    ],
+    [
+      "djmag",
+      75,
+      "Shimza",
+      "África do Sul",
+      "Afro Tech"
+    ],
+    [
+      "djmag",
+      76,
+      "Quintino",
+      "Holanda",
+      "Big Room"
+    ],
+    [
+      "djmag",
+      77,
+      "Lucas & Steve",
+      "Holanda",
+      "Future House"
+    ],
+    [
+      "djmag",
+      78,
+      "Giuseppe Ottaviani",
+      "Itália",
+      "Trance"
+    ],
+    [
+      "djmag",
+      79,
+      "Padre Guilherme",
+      "Portugal",
+      "Techno"
+    ],
+    [
+      "djmag",
+      80,
+      "Sonny Fodera",
+      "Austrália",
+      "House"
+    ],
+    [
+      "djmag",
+      81,
+      "Deborah De Luca",
+      "Itália",
+      "Techno"
+    ],
+    [
+      "djmag",
+      82,
+      "Nico Moreno",
+      "França",
+      "Hard Techno"
+    ],
+    [
+      "djmag",
+      83,
+      "Ferry Corsten",
+      "Holanda",
+      "Trance"
+    ],
+    [
+      "djmag",
+      84,
+      "Cloonee",
+      "Inglaterra",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      85,
+      "Mosimann",
+      "França",
+      "House"
+    ],
+    [
+      "djmag",
+      86,
+      "PAWSA",
+      "Inglaterra",
+      "Tech House"
+    ],
+    [
+      "djmag",
+      87,
+      "Above & Beyond",
+      "Inglaterra",
+      "Trance / Progressive"
+    ],
+    [
+      "djmag",
+      88,
+      "Marnik",
+      "Holanda",
+      "Big Room"
+    ],
+    [
+      "djmag",
+      89,
+      "The Chainsmokers",
+      "EUA",
+      "EDM Pop"
+    ],
+    [
+      "djmag",
+      90,
+      "Plastik Funk",
+      "Alemanha",
+      "House"
+    ],
+    [
+      "djmag",
+      91,
+      "deadmau5",
+      "Canadá",
+      "Progressive House"
+    ],
+    [
+      "djmag",
+      92,
+      "MATTN",
+      "Bélgica",
+      "Big Room"
+    ],
+    [
+      "djmag",
+      93,
+      "Nils van Zandt",
+      "Holanda",
+      "Dance"
+    ],
+    [
+      "djmag",
+      94,
+      "Prospa",
+      "Inglaterra",
+      "Rave / House"
+    ],
+    [
+      "djmag",
+      95,
+      "¥ØU$UK€ ¥UK1MAT$U",
+      "Japão",
+      "Hard Techno"
+    ],
+    [
+      "djmag",
+      96,
+      "Cuebrick",
+      "Holanda",
+      "Big Room"
+    ],
+    [
+      "djmag",
+      97,
+      "Marlon Hoffstadt",
+      "Alemanha",
+      "House / Techno"
+    ],
+    [
+      "djmag",
+      98,
+      "Honey Dijon",
+      "EUA",
+      "House"
+    ],
+    [
+      "djmag",
+      99,
+      "DubVision",
+      "Holanda",
+      "Progressive House"
+    ],
+    [
+      "djmag",
+      100,
+      "KI/KI",
+      "Holanda",
+      "Hard Techno / Trance"
+    ],
+    [
+      "brasil",
+      null,
+      "ANNA",
+      "Brasil",
+      "Techno"
+    ],
+    [
+      "brasil",
+      null,
+      "Cat Dealers",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Dubdogz",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "KVSH",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Bhaskar",
+      "Brasil",
+      "House"
+    ],
+    [
+      "brasil",
+      null,
+      "Chemical Surf",
+      "Brasil",
+      "Brazilian Bass / Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "Zerb",
+      "Brasil",
+      "Afro House"
+    ],
+    [
+      "brasil",
+      null,
+      "Öwnboss",
+      "Brasil",
+      "Bass House"
+    ],
+    [
+      "brasil",
+      null,
+      "RUBACK",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "Victor Ruiz",
+      "Brasil",
+      "Techno"
+    ],
+    [
+      "brasil",
+      null,
+      "Gui Boratto",
+      "Brasil",
+      "Techno / Minimal"
+    ],
+    [
+      "brasil",
+      null,
+      "Illusionize",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "Beltran",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "Mojjo",
+      "Brasil",
+      "House"
+    ],
+    [
+      "brasil",
+      null,
+      "Classmatic",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "GREG",
+      "Brasil",
+      "House"
+    ],
+    [
+      "brasil",
+      null,
+      "Sevek",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Volkoder",
+      "Brasil",
+      "Bass House"
+    ],
+    [
+      "brasil",
+      null,
+      "Fancy Inc",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Breaking Beattz",
+      "Brasil",
+      "Bass House"
+    ],
+    [
+      "brasil",
+      null,
+      "Bruno Martini",
+      "Brasil",
+      "Dance Pop"
+    ],
+    [
+      "brasil",
+      null,
+      "Dashdot",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Felguk",
+      "Brasil",
+      "Electro House"
+    ],
+    [
+      "brasil",
+      null,
+      "Gabe",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "Victor Lou",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "Maz",
+      "Brasil",
+      "Afro House"
+    ],
+    [
+      "brasil",
+      null,
+      "Antdot",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "JetLag Music",
+      "Brasil",
+      "House"
+    ],
+    [
+      "brasil",
+      null,
+      "Pontifexx",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Malifoo",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Rooftime",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "Shapeless",
+      "Brasil",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Renato Ratier",
+      "Brasil",
+      "Techno / House"
+    ],
+    [
+      "brasil",
+      null,
+      "Wehbba",
+      "Brasil",
+      "Techno"
+    ],
+    [
+      "brasil",
+      null,
+      "Binaryh",
+      "Brasil",
+      "Melodic Techno"
+    ],
+    [
+      "brasil",
+      null,
+      "Eli Iwasa",
+      "Brasil",
+      "House / Techno"
+    ],
+    [
+      "brasil",
+      null,
+      "Mila Journée",
+      "Brasil",
+      "Melodic House"
+    ],
+    [
+      "brasil",
+      null,
+      "Selvagem",
+      "Brasil",
+      "Disco / House"
+    ],
+    [
+      "brasil",
+      null,
+      "Elekfantz",
+      "Brasil",
+      "Indie Dance"
+    ],
+    [
+      "brasil",
+      null,
+      "Bruno Be",
+      "Brasil",
+      "House"
+    ],
+    [
+      "brasil",
+      null,
+      "Ney Faustini",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "brasil",
+      null,
+      "Tropkillaz",
+      "Brasil",
+      "Trap / Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "L_cio",
+      "Brasil",
+      "Electronic / House"
+    ],
+    [
+      "brasil",
+      null,
+      "Badsista",
+      "Brasil",
+      "Club / Baile Funk"
+    ],
+    [
+      "brasil",
+      null,
+      "Vhoor",
+      "Brasil",
+      "Beats / Baile Funk"
+    ],
+    [
+      "brasil",
+      null,
+      "DJ Marky",
+      "Brasil",
+      "Drum & Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Patife",
+      "Brasil",
+      "Drum & Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Mau Mau",
+      "Brasil",
+      "Techno / House"
+    ],
+    [
+      "brasil",
+      null,
+      "Renato Cohen",
+      "Brasil",
+      "Techno"
+    ],
+    [
+      "brasil",
+      null,
+      "Anderson Noise",
+      "Brasil",
+      "Techno"
+    ],
+    [
+      "brasil",
+      null,
+      "Leo Janeiro",
+      "Brasil",
+      "House"
+    ],
+    [
+      "brasil",
+      null,
+      "Ashibah",
+      "Dinamarca",
+      "Brazilian Bass"
+    ],
+    [
+      "brasil",
+      null,
+      "Vinne",
+      "Brasil",
+      "Bass House"
+    ],
+    [
+      "brasil",
+      null,
+      "Groove Delight",
+      "Brasil",
+      "Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Adam Beyer",
+      "Suécia",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Richie Hawtin",
+      "Canadá",
+      "Minimal Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Nina Kraviz",
+      "Rússia",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Ben Klock",
+      "Alemanha",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Marcel Dettmann",
+      "Alemanha",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Sven Väth",
+      "Alemanha",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Jeff Mills",
+      "EUA",
+      "Detroit Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Laurent Garnier",
+      "França",
+      "Techno / House"
+    ],
+    [
+      "mundo",
+      null,
+      "Ricardo Villalobos",
+      "Chile / Alemanha",
+      "Minimal"
+    ],
+    [
+      "mundo",
+      null,
+      "Dixon",
+      "Alemanha",
+      "Melodic House"
+    ],
+    [
+      "mundo",
+      null,
+      "Âme",
+      "Alemanha",
+      "Melodic House"
+    ],
+    [
+      "mundo",
+      null,
+      "Tale Of Us",
+      "Itália",
+      "Melodic Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Maceo Plex",
+      "EUA",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Stephan Bodzin",
+      "Alemanha",
+      "Melodic Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Adriatique",
+      "Suíça",
+      "Melodic House"
+    ],
+    [
+      "mundo",
+      null,
+      "Mathame",
+      "Itália",
+      "Melodic Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Innellea",
+      "Alemanha",
+      "Melodic Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Kevin de Vries",
+      "Alemanha",
+      "Melodic Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Massano",
+      "Inglaterra",
+      "Melodic Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Argy",
+      "Grécia",
+      "Melodic Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Enrico Sangiuliano",
+      "Itália",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Joris Voorn",
+      "Holanda",
+      "Techno / House"
+    ],
+    [
+      "mundo",
+      null,
+      "Ben Böhmer",
+      "Alemanha",
+      "Melodic House"
+    ],
+    [
+      "mundo",
+      null,
+      "Monolink",
+      "Alemanha",
+      "Melodic Techno (live)"
+    ],
+    [
+      "mundo",
+      null,
+      "Hernán Cattáneo",
+      "Argentina",
+      "Progressive House"
+    ],
+    [
+      "mundo",
+      null,
+      "Nicole Moudaber",
+      "Líbano / Inglaterra",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Loco Dice",
+      "Alemanha",
+      "Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Marco Carola",
+      "Itália",
+      "Minimal / Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Seth Troxler",
+      "EUA",
+      "House / Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Patrick Topping",
+      "Inglaterra",
+      "Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Hot Since 82",
+      "Inglaterra",
+      "Deep / Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Chris Lake",
+      "Inglaterra",
+      "Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Chris Lorenzo",
+      "Inglaterra",
+      "Bass House"
+    ],
+    [
+      "mundo",
+      null,
+      "Dubfire",
+      "Irã / EUA",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "&ME",
+      "Alemanha",
+      "Afro House"
+    ],
+    [
+      "mundo",
+      null,
+      "Rampa",
+      "Alemanha",
+      "Afro House"
+    ],
+    [
+      "mundo",
+      null,
+      "Adam Port",
+      "Alemanha",
+      "Afro House"
+    ],
+    [
+      "mundo",
+      null,
+      "Themba",
+      "África do Sul",
+      "Afro Tech"
+    ],
+    [
+      "mundo",
+      null,
+      "Culoe De Song",
+      "África do Sul",
+      "Afro House"
+    ],
+    [
+      "mundo",
+      null,
+      "Da Capo",
+      "África do Sul",
+      "Afro House"
+    ],
+    [
+      "mundo",
+      null,
+      "Francis Mercier",
+      "Haiti / EUA",
+      "Afro House"
+    ],
+    [
+      "mundo",
+      null,
+      "Four Tet",
+      "Inglaterra",
+      "Electronic"
+    ],
+    [
+      "mundo",
+      null,
+      "Jamie xx",
+      "Inglaterra",
+      "Electronic / House"
+    ],
+    [
+      "mundo",
+      null,
+      "Skream",
+      "Inglaterra",
+      "House / Dubstep"
+    ],
+    [
+      "mundo",
+      null,
+      "Bicep",
+      "Irlanda do Norte",
+      "Electronic / Breaks"
+    ],
+    [
+      "mundo",
+      null,
+      "Disclosure",
+      "Inglaterra",
+      "House / UK Garage"
+    ],
+    [
+      "mundo",
+      null,
+      "Kaytranada",
+      "Canadá",
+      "House / R&B"
+    ],
+    [
+      "mundo",
+      null,
+      "Purple Disco Machine",
+      "Alemanha",
+      "Nu Disco"
+    ],
+    [
+      "mundo",
+      null,
+      "Diplo",
+      "EUA",
+      "Moombahton / EDM"
+    ],
+    [
+      "mundo",
+      null,
+      "Kygo",
+      "Noruega",
+      "Tropical House"
+    ],
+    [
+      "mundo",
+      null,
+      "Meduza",
+      "Itália",
+      "House"
+    ],
+    [
+      "mundo",
+      null,
+      "Tchami",
+      "França",
+      "Future House"
+    ],
+    [
+      "mundo",
+      null,
+      "Malaa",
+      "França",
+      "Bass House"
+    ],
+    [
+      "mundo",
+      null,
+      "Kaskade",
+      "EUA",
+      "Progressive House"
+    ],
+    [
+      "mundo",
+      null,
+      "Gorgon City",
+      "Inglaterra",
+      "House"
+    ],
+    [
+      "mundo",
+      null,
+      "Duke Dumont",
+      "Inglaterra",
+      "House"
+    ],
+    [
+      "mundo",
+      null,
+      "MK",
+      "EUA",
+      "House"
+    ],
+    [
+      "mundo",
+      null,
+      "Sammy Virji",
+      "Inglaterra",
+      "UK Garage"
+    ],
+    [
+      "mundo",
+      null,
+      "Barry Can't Swim",
+      "Escócia",
+      "Electronic / House"
+    ],
+    [
+      "mundo",
+      null,
+      "Overmono",
+      "País de Gales",
+      "Breaks / Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Mall Grab",
+      "Austrália",
+      "Lo-fi House / Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Interplanetary Criminal",
+      "Inglaterra",
+      "UK Garage"
+    ],
+    [
+      "mundo",
+      null,
+      "Joshwa",
+      "Inglaterra",
+      "Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Max Dean",
+      "Inglaterra",
+      "Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Kettama",
+      "Irlanda",
+      "House / Breaks"
+    ],
+    [
+      "mundo",
+      null,
+      "I Hate Models",
+      "França",
+      "Hard Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Kobosil",
+      "Alemanha",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "FJAAK",
+      "Alemanha",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "999999999",
+      "Itália",
+      "Acid Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Klangkuenstler",
+      "Alemanha",
+      "Hard Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Dax J",
+      "Inglaterra",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Funk Tribu",
+      "Argentina",
+      "Hard Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Trym",
+      "França",
+      "Hard Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "VTSS",
+      "Polônia",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Héctor Oaks",
+      "Espanha",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Paula Temple",
+      "Inglaterra",
+      "Industrial Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Ellen Allien",
+      "Alemanha",
+      "Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Helena Hauff",
+      "Alemanha",
+      "Electro / Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "DJ Stingray 313",
+      "EUA",
+      "Electro"
+    ],
+    [
+      "mundo",
+      null,
+      "Ben UFO",
+      "Inglaterra",
+      "Eclectic"
+    ],
+    [
+      "mundo",
+      null,
+      "Objekt",
+      "Alemanha",
+      "Techno / Electro"
+    ],
+    [
+      "mundo",
+      null,
+      "Avalon Emerson",
+      "EUA",
+      "Electronic"
+    ],
+    [
+      "mundo",
+      null,
+      "Palms Trax",
+      "Inglaterra",
+      "House / Disco"
+    ],
+    [
+      "mundo",
+      null,
+      "DJ Tennis",
+      "Itália",
+      "Electronic"
+    ],
+    [
+      "mundo",
+      null,
+      "Job Jobse",
+      "Holanda",
+      "House / Techno"
+    ],
+    [
+      "mundo",
+      null,
+      "Folamour",
+      "França",
+      "House / Disco"
+    ],
+    [
+      "mundo",
+      null,
+      "DJ Seinfeld",
+      "Suécia",
+      "Lo-fi House"
+    ],
+    [
+      "mundo",
+      null,
+      "Jayda G",
+      "Canadá",
+      "House / Disco"
+    ],
+    [
+      "mundo",
+      null,
+      "Kerri Chandler",
+      "EUA",
+      "Deep House"
+    ],
+    [
+      "mundo",
+      null,
+      "Louie Vega",
+      "EUA",
+      "House"
+    ],
+    [
+      "mundo",
+      null,
+      "Moodymann",
+      "EUA",
+      "Deep House"
+    ],
+    [
+      "mundo",
+      null,
+      "Lane 8",
+      "EUA",
+      "Melodic House"
+    ],
+    [
+      "mundo",
+      null,
+      "Yotto",
+      "Finlândia",
+      "Progressive House"
+    ],
+    [
+      "mundo",
+      null,
+      "Nicky Elisabeth",
+      "Holanda",
+      "Tech House"
+    ],
+    [
+      "mundo",
+      null,
+      "Nia Archives",
+      "Inglaterra",
+      "Jungle / DnB"
+    ],
+    [
+      "mundo",
+      null,
+      "Subtronics",
+      "EUA",
+      "Dubstep"
+    ],
+    [
+      "mundo",
+      null,
+      "Excision",
+      "Canadá",
+      "Dubstep"
+    ],
+    [
+      "mundo",
+      null,
+      "Rezz",
+      "Canadá",
+      "Bass / Midtempo"
+    ],
+    [
+      "mundo",
+      null,
+      "Seven Lions",
+      "EUA",
+      "Melodic Bass"
+    ],
+    [
+      "mundo",
+      null,
+      "Gryffin",
+      "EUA",
+      "Melodic House"
+    ]
   ]
 }
