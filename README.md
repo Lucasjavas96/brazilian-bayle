@@ -21,7 +21,9 @@ O site é estático (HTML, CSS e JavaScript, sem framework). Um script monta as 
 
 Páginas: `/` (início), `/ranking`, `/clube`, `/criticos`, `/loja`, `/termos`, `/privacidade` e a página de erro 404.
 
-**Pré-temporada:** notas, votos, festas e resenhas são de demonstração e aparecem rotulados assim. Votos, candidaturas e lista de espera ficam só no navegador de quem preenche (localStorage). O próximo passo técnico é ligar esses formulários a um banco de dados.
+**Pré-temporada:** a tabela do ranking e as festas de avaliação continuam demonstrativas. Avaliações, candidaturas e lista de espera são enviadas ao Supabase. O Spotted usa contas de Supabase Auth e publicações/interações compartilhadas; exemplos são rotulados como demonstração. A declaração de membro não concede peso adicional sem verificação da equipe.
+
+Configuração, tabelas, moderação e migrações: [supabase/README.md](supabase/README.md).
 
 ## Para editar com o Claude Code
 

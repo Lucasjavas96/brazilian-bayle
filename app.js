@@ -1,6 +1,6 @@
 /* Brazilian Bayle · release 2
    Pré-temporada: ranking, festas e resenhas são de demonstração e aparecem rotulados assim.
-   Votos, candidaturas e lista de espera ficam só no navegador (localStorage) até existir um backend. */
+   Votos, candidaturas e lista de espera são enviados ao Supabase. Ranking permanece demonstrativo. */
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -94,10 +94,6 @@ const SEED = (() => {
 })();
 function table() {
   const rows = SEED.map(d => ({ ...d, sums: { ...d.sums } }));
-  store.get("bb_votes", []).forEach(v => {
-    const d = rows.find(x => x.name === v.dj); if (!d) return;
-    const w = v.clubber ? 3 : 1; d.votos++; d.w += w; CRIT.forEach(([k]) => d.sums[k] += v.notas[k] * w);
-  });
   rows.forEach(d => { CRIT.forEach(([k]) => d[k] = d.sums[k] / d.w); d.nota = CRIT.reduce((a, [k]) => a + d[k], 0) / 4 });
   rows.sort((a, b) => b.nota - a.nota).forEach((d, i) => d.pos = i + 1);
   return rows;
@@ -297,17 +293,16 @@ renderPodium();
     bad("eNotas", touched.size === 4 ? "" : `Dê nota nos 4 critérios. Faltam ${4 - touched.size}.`, $(`#s_${CRIT.find(([k]) => !touched.has(k))?.[0] || "som"}`));
     bad("eConsent", $("#vConsent").checked ? "" : "Para votar, aceite a política de privacidade.", $("#vConsent"));
     if (first) { say("err", "Confira os campos marcados acima."); first.focus(); return }
-    const votes = store.get("bb_votes", []);
-    if (votes.some(v => v.party === party.value && v.dj === dj && v.ig === ig)) { say("err", `${ig} já avaliou ${dj} nessa festa. É um voto por @ em cada apresentação.`); return }
-    const btn = $("#voteBtn"); btn.classList.add("loading"); btn.setAttribute("aria-busy", "true");
-    await wait(600);
+    const btn = $("#voteBtn"); btn.disabled = true; btn.classList.add("loading"); btn.setAttribute("aria-busy", "true");
     const notas = {}; CRIT.forEach(([k]) => notas[k] = +$("#s_" + k).value);
-    votes.push({ party: party.value, dj, ig, name, notas, clubber: $("#vClubber").checked, comment: $("#vComment").value.trim(), at: Date.now() });
-    store.set("bb_votes", votes);
-    btn.classList.remove("loading"); btn.removeAttribute("aria-busy");
-    say("ok", `<b>Voto registrado.</b> Sua avaliação de ${dj}${$("#vClubber").checked ? " (peso 3)" : ""} entrou na tabela de demonstração. Na pré-temporada, ela fica salva só neste navegador.`);
-    boards.forEach(b => b.flash(dj)); renderPodium();
-    toast("Voto registrado. A tabela foi atualizada.");
+    try {
+      await BRB.rpc('vote', { party: party.value, dj, ig, name, notas, clubber: $('#vClubber').checked, comment: $('#vComment').value.trim(), consent: $('#vConsent').checked });
+    } catch (error) {
+      say('err', 'Não foi possível registrar: ' + error.message);
+      return;
+    } finally { btn.classList.remove('loading'); btn.removeAttribute('aria-busy'); btn.disabled = false; }
+    say('ok', '<b>Avaliação recebida.</b> Ela foi salva para análise. O ranking continua em demonstração; a declaração de membro não altera o peso automaticamente.');
+    toast('Avaliação enviada com sucesso.');
     $("#vComment").value = "";
     const follow = document.createElement('div'); follow.className = 'vote-followup';
     const another = document.createElement('button'); another.type = 'button'; another.className = 'btn btn-line-light'; another.textContent = 'Avaliar outro DJ';
@@ -335,11 +330,15 @@ function simpleForm({ form, btn, msg, key, checks, done }) {
     for (const [id, test, text, el] of checks()) { const ok = test(); setErr(id, ok ? "" : text); if (!ok && !first) first = $(el) }
     if (first) { m.className = "form-msg err"; m.textContent = "Confira os campos marcados."; first.focus(); return }
     const b = $(btn); b.classList.add("loading"); b.setAttribute("aria-busy", "true");
-    await wait(600);
-    const data = {}; for (const [k, v] of new FormData(f)) data[k] = k in data ? [].concat(data[k], v) : v; data.at = Date.now();
-    const list = store.get(key, []); list.push(data); store.set(key, list);
-    b.classList.remove("loading"); b.removeAttribute("aria-busy");
-    m.className = "form-msg ok"; m.innerHTML = done(data); f.reset(); f.dispatchEvent(new Event("input"));
+    b.disabled = true;
+    try {
+      const data = {}; for (const [k, v] of new FormData(f)) data[k] = k in data ? [].concat(data[k], v) : v;
+      data.consent = key === 'bb_apps' ? $('#aConsent').checked : $('#dConsent').checked;
+      await BRB.rpc(key === 'bb_apps' ? 'application' : 'waitlist', data);
+      m.className = 'form-msg ok'; m.innerHTML = done(data); f.reset(); f.dispatchEvent(new Event('input'));
+    } catch (error) { m.className = 'form-msg err'; m.textContent = 'Não foi possível enviar: ' + error.message; }
+    finally { b.disabled = false; b.classList.remove('loading'); b.removeAttribute('aria-busy'); }
+
   };
 }
 const igOk = v => /^@?[a-z0-9._]{2,30}$/i.test(v.trim());
@@ -352,7 +351,7 @@ simpleForm({
     ["eaEmail", () => mailOk($("#aEmail").value), "Confira o e-mail.", "#aEmail"],
     ["eaConsent", () => $("#aConsent").checked, "Confirme que tem 18 anos ou mais e aceite os termos.", "#aConsent"],
   ],
-  done: () => "<b>Interesse salvo neste navegador.</b> Este formulário ainda não envia os dados à equipe. Para conversar sobre a seleção, mande um direct para o @brazilianbayle.",
+  done: () => "<b>Candidatura recebida.</b> Seus dados foram enviados à equipe para análise. A seleção não garante aprovação automática.",
 });
 /* Candidatura guiada: mantém os campos e a validação do formulário original. */
 (() => {
@@ -420,7 +419,7 @@ simpleForm({
     ["edEmail", () => mailOk($("#dEmail").value), "Confira o e-mail.", "#dEmail"],
     ["edConsent", () => $("#dConsent").checked, "Para entrar na lista, aceite receber o aviso.", "#dConsent"],
   ],
-  done: () => "<b>Você está na lista.</b> Na pré-temporada a inscrição fica salva só neste navegador; o aviso oficial do drop sai no @brazilianbayle.",
+  done: () => "<b>Você está na lista.</b> Seu interesse foi enviado à equipe. Acompanhe também o @brazilianbayle para as novidades do drop.",
 });
 (() => { const ig = $("#aIg"), cc = $("#ccIg"); if (!ig || !cc) return; ig.addEventListener("input", () => cc.textContent = ig.value ? "@" + ig.value.replace(/^@/, "").toUpperCase() : "@SEU.PERFIL") })();
 

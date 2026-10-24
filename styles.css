@@ -1687,3 +1687,6 @@ table.ge{min-width:860px}
 @media (max-width:1199px){.cwb-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.cwb-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .cwb-card .cwb-name{overflow-wrap:normal;word-break:normal;hyphens:manual}
+
+/* Pena aprovada na Hostinger, aplicada ao menu da versão GitHub. */
+.mbar .burger{background-image:url('/assets/menu-duas-penas-metalicas.png');background-size:64px 64px;background-position:center;background-repeat:no-repeat;filter:none}
