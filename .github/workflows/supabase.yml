@@ -1,0 +1,63 @@
+name: Supabase backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/migrations/**'
+      - 'scripts/supabase_deploy.py'
+      - 'scripts/backend_smoke.py'
+      - 'tests/test_supabase_deploy.py'
+      - '.github/workflows/supabase.yml'
+  pull_request:
+    paths:
+      - 'supabase/migrations/**'
+      - 'scripts/supabase_deploy.py'
+      - 'scripts/backend_smoke.py'
+      - 'tests/test_supabase_deploy.py'
+      - '.github/workflows/supabase.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: supabase-brazilian-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/supabase_deploy.py --check-files
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node _local/build.js
+
+  migrate:
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply only pending migrations and verify history
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: python scripts/supabase_deploy.py
+      - name: Test live Supabase RPCs after deployment
+        run: python scripts/backend_smoke.py
