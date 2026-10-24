@@ -1,7 +1,7 @@
 /* One shared perimeter treatment. Separate overlay preserves each card's art,
    existing pseudo-elements, flips and interactive controls. */
 (() => {
- const selector = '.account-card,.account-callout,.event,.next-card,.plan,.vote-card,.apply-form,.drop-form,.rev,.shop-product,.cwb-card,.dp-card,.ge-card,.pod,.sp-front,.sp-back,.djc-face,.ab-stats>div';
+ const selector = '.account-card,.account-callout,.wiki-item,.vote-wizard,.preseason,.club-card,.shop-campaign,.memory-card,.event,.next-card,.plan,.vote-card,.apply-form,.drop-form,.rev,.shop-product,.cwb-card,.dp-card,.ge-card,.pod,.sp-front,.sp-back,.djc-face,.ab-stats>div';
  function decorate(root) {
   if (!(root instanceof Element)) return;
   const cards = [...root.querySelectorAll(selector)];

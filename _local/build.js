@@ -157,6 +157,7 @@ ${body.trim()}
 <script src="/assets/vendor/supabase-2.49.8.js" defer></script>
 <script src="/backend-config.js" defer></script>
 <script src="/backend.js" defer></script>
+<script src="/events-2026.js" defer></script>
 <script src="/app.js" defer></script>
 <script src="/media-guard.js" defer></script>
 <script src="/card-effects.js" defer></script>
@@ -222,6 +223,7 @@ const readJson = f => JSON.parse(fs.readFileSync(path.join(ROOT, "src/data", f),
 const DJLIST = [...readJson("djs.json"), ...readJson("curitiba.json").map(d => ({ ...d, curitiba: true }))];
 const PROFILES = Object.fromEntries(readJson("djpedia.json").map(p => [p.slug, p]));
 const NI = "não informado";
+const DJ_PHOTOS = readJson("dj-photos.json");
 function rankingOrder() {
   try {
     const src = fs.readFileSync(path.join(ROOT, "app.js"), "utf8");
@@ -237,7 +239,7 @@ const writePage = (rel, meta, body) => {
   fs.writeFileSync(out, optimize(layout(meta, body)));
   if (!meta.noindex) urls.push(meta.path);
 };
-const djPhoto = s => ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => fs.existsSync(path.join(ROOT, f)));
+const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => fs.existsSync(path.join(ROOT, f)));
 {
   fs.rmSync(path.join(OUT, "djpedia"), { recursive: true, force: true });
   const sorted = [...DJLIST].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
@@ -270,7 +272,7 @@ const djPhoto = s => ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => 
         <h2 class="wiki-l" id="h-${gid(l)}">${l}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
         <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.historia?.length;
           return `<li id="${s}"><a class="wiki-item${full ? "" : " is-soon"}" href="/djpedia/${s}">
-            <span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>
+            ${DJ_PHOTOS[s] ? `<img class="wiki-portrait" src="/${DJ_PHOTOS[s].thumb}" alt="${esc(d.nome)}" width="384" height="288" loading="lazy" decoding="async">` : `<span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>`}
             <span class="wiki-name">${esc(d.nome)}</span>
             <span class="wiki-meta">${d.curitiba ? "Bayle Curitibano" : (p?.origem && p.origem !== NI ? p.origem + " · " : "") + d.estilo}</span>
             <span class="wiki-status mono">${full ? "Ler verbete →" : "Ficha em construção →"}</span>
@@ -294,7 +296,7 @@ const djPhoto = s => ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => 
     const hist = full ? p.historia.map(x => `<p>${esc(x)}</p>`).join("")
       : `<p>Ainda não reunimos fontes confiáveis sobre a trajetória de ${esc(p.nome)}. Este verbete está em construção, e os campos sem informação aparecem como "não informado".</p>`;
     const kind = d.curitiba ? "Bayle Curitibano" : `Brasileirão dos DJs · ${esc(d.estilo)}`;
-    const credit = img && foto ? `${esc(foto.credito)} · ${foto.pagina ? `<a href="${esc(foto.pagina)}" target="_blank" rel="noopener">${esc(foto.licenca)}</a>` : esc(foto.licenca)}` : "";
+    const credit = DJ_PHOTOS[s]?.source.startsWith("https:") ? `<a href="${esc(DJ_PHOTOS[s].source)}" target="_blank" rel="noopener">Perfil público do artista</a>` : img && foto ? `${esc(foto.credito)} · ${foto.pagina ? `<a href="${esc(foto.pagina)}" target="_blank" rel="noopener">${esc(foto.licenca)}</a>` : esc(foto.licenca)}` : "";
     writePage(`djpedia/${s}`, {
       path: `/djpedia/${s}`, nav: "djpedia", title: `${p.nome} · DJ Pédia`,
       description: (p.resumo || `${p.nome}, DJ ${d.curitiba ? "da cena de Curitiba" : "brasileiro"} na DJ Pédia da Brazilian Bayle.`).slice(0, 158),
@@ -307,7 +309,7 @@ const djPhoto = s => ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => 
     <div class="wiki-grid">
       <aside class="wiki-box" aria-label="Ficha de ${esc(p.nome)}">
         <figure class="wiki-photo">${img
-          ? `<img src="/${img}" alt="${esc(p.nome)}" width="600" height="600" decoding="async">`
+          ? `<img src="/${img}" alt="${esc(p.nome)}" width="${DJ_PHOTOS[s]?.width || 600}" height="${DJ_PHOTOS[s]?.height || 600}" decoding="async">`
           : `<div class="wiki-ph" role="img" aria-label="Foto de ${esc(p.nome)} em breve"><span>${ini(p.nome)}</span><small class="mono">Foto em breve</small></div>`}
           ${credit ? `<figcaption class="mono">Foto: ${credit}</figcaption>` : ""}
         </figure>
@@ -344,4 +346,5 @@ fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="U
 ${urls.map(u => `  <url><loc>${SITE}${u}</loc></url>`).join("\n")}
 </urlset>
 `);
+fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";");
 console.log(`ok: ${pages.length} páginas em dist/`);

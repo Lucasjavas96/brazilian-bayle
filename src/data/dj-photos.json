@@ -1,0 +1,156 @@
+{
+  "oscar-albuquerque": {
+    "path": "assets/djs/oscar-albuquerque.webp",
+    "thumb": "assets/djs/thumbs/oscar-albuquerque.webp",
+    "source": "https://soundcloud.com/oscaralbuquerquedj",
+    "width": 500,
+    "height": 500
+  },
+  "benato": {
+    "path": "assets/djs/benato.webp",
+    "thumb": "assets/djs/thumbs/benato.webp",
+    "source": "https://soundcloud.com/matheus-benato",
+    "width": 500,
+    "height": 500
+  },
+  "alok": {
+    "path": "assets/djs/alok.webp",
+    "thumb": "assets/djs/thumbs/alok.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/alok.webp",
+    "width": 640,
+    "height": 640
+  },
+  "vintage-culture": {
+    "path": "assets/djs/vintage-culture.webp",
+    "thumb": "assets/djs/thumbs/vintage-culture.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/vintage-culture.webp",
+    "width": 512,
+    "height": 900
+  },
+  "mochakk": {
+    "path": "assets/djs/mochakk.webp",
+    "thumb": "assets/djs/thumbs/mochakk.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/mochakk.webp",
+    "width": 541,
+    "height": 640
+  },
+  "anna": {
+    "path": "assets/djs/anna.webp",
+    "thumb": "assets/djs/thumbs/anna.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/anna.webp",
+    "width": 531,
+    "height": 640
+  },
+  "liu": {
+    "path": "assets/djs/liu.webp",
+    "thumb": "assets/djs/thumbs/liu.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/liu.webp",
+    "width": 640,
+    "height": 640
+  },
+  "cat-dealers": {
+    "path": "assets/djs/cat-dealers.webp",
+    "thumb": "assets/djs/thumbs/cat-dealers.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/cat-dealers.webp",
+    "width": 640,
+    "height": 640
+  },
+  "dubdogz": {
+    "path": "assets/djs/dubdogz.webp",
+    "thumb": "assets/djs/thumbs/dubdogz.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/dubdogz.webp",
+    "width": 640,
+    "height": 640
+  },
+  "kvsh": {
+    "path": "assets/djs/kvsh.webp",
+    "thumb": "assets/djs/thumbs/kvsh.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/kvsh.webp",
+    "width": 640,
+    "height": 640
+  },
+  "bhaskar": {
+    "path": "assets/djs/bhaskar.webp",
+    "thumb": "assets/djs/thumbs/bhaskar.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/bhaskar.webp",
+    "width": 532,
+    "height": 640
+  },
+  "chemical-surf": {
+    "path": "assets/djs/chemical-surf.webp",
+    "thumb": "assets/djs/thumbs/chemical-surf.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/chemical-surf.webp",
+    "width": 640,
+    "height": 640
+  },
+  "zerb": {
+    "path": "assets/djs/zerb.webp",
+    "thumb": "assets/djs/thumbs/zerb.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/zerb.webp",
+    "width": 531,
+    "height": 640
+  },
+  "ownboss": {
+    "path": "assets/djs/ownboss.webp",
+    "thumb": "assets/djs/thumbs/ownboss.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/ownboss.webp",
+    "width": 531,
+    "height": 640
+  },
+  "ruback": {
+    "path": "assets/djs/ruback.webp",
+    "thumb": "assets/djs/thumbs/ruback.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/ruback.webp",
+    "width": 531,
+    "height": 640
+  },
+  "victor-ruiz": {
+    "path": "assets/djs/victor-ruiz.webp",
+    "thumb": "assets/djs/thumbs/victor-ruiz.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/victor-ruiz.webp",
+    "width": 536,
+    "height": 640
+  },
+  "gui-boratto": {
+    "path": "assets/djs/gui-boratto.webp",
+    "thumb": "assets/djs/thumbs/gui-boratto.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/gui-boratto.webp",
+    "width": 640,
+    "height": 640
+  },
+  "illusionize": {
+    "path": "assets/djs/illusionize.webp",
+    "thumb": "assets/djs/thumbs/illusionize.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/illusionize.webp",
+    "width": 720,
+    "height": 900
+  },
+  "beltran": {
+    "path": "assets/djs/beltran.webp",
+    "thumb": "assets/djs/thumbs/beltran.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/beltran.webp",
+    "width": 548,
+    "height": 640
+  },
+  "mojjo": {
+    "path": "assets/djs/mojjo.webp",
+    "thumb": "assets/djs/thumbs/mojjo.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/mojjo.webp",
+    "width": 619,
+    "height": 619
+  },
+  "classmatic": {
+    "path": "assets/djs/classmatic.webp",
+    "thumb": "assets/djs/thumbs/classmatic.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/classmatic.webp",
+    "width": 531,
+    "height": 640
+  },
+  "greg": {
+    "path": "assets/djs/greg.webp",
+    "thumb": "assets/djs/thumbs/greg.webp",
+    "source": "Acervo do projeto: /assets/album/fotos/greg.webp",
+    "width": 547,
+    "height": 640
+  }
+}

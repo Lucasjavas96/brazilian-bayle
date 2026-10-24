@@ -175,13 +175,8 @@ renderPodium();
 /* ---------- avaliar ---------- */
 (() => {
   const form = $("#voteForm"); if (!form) return;
-  const PARTIES = [
-    { id: "gv-0709", label: "Green Valley · 07/09 (demonstração)", dj: ["Alok", "Mochakk", "Classmatic"] },
-    { id: "sr-1409", label: "Surreal · 14/09 (demonstração)", dj: ["Vintage Culture", "Liu", "Öwnboss"] },
-    { id: "wr-2109", label: "Warung · 21/09 (demonstração)", dj: ["ANNA", "Victor Ruiz", "Gui Boratto"] },
-    { id: "lr-2809", label: "Laroc · 28/09 (demonstração)", dj: ["Cat Dealers", "Dubdogz", "KVSH"] },
-    { id: "gv-1210", label: "Green Valley · 12/10 (demonstração)", dj: ["Zerb", "Mojjo", "Beltran", "Illusionize"] },
-  ];
+  const NATIONAL = new Set(DJS.map(d => d[0]));
+  const PARTIES = (window.BRB_EVENTS || []).map(event => ({id:event.id,label:`${event.venue} · ${event.date.slice(8)}/${event.date.slice(5,7)}/${event.date.slice(0,4)} · ${event.name}`,dj:event.lineup.filter(name=>NATIONAL.has(name))})).filter(event=>event.dj.length);
   let dj = null; const touched = new Set();
   const party = $("#vParty"), lineup = $("#vLineup");
   party.innerHTML = `<option value="">Escolha a festa</option>` + PARTIES.map(p => `<option value="${p.id}">${p.label}</option>`).join("");
