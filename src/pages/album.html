@@ -1,0 +1,88 @@
+<!--meta {
+  "path": "/album",
+  "nav": "album",
+  "title": "Bayle All Stars Album · Global DJ Collection",
+  "description": "O álbum de figurinhas dos DJs da Brazilian Bayle: gire a jog wheel, ganhe figurinhas e complete as páginas de cada país.",
+  "noindex": true
+} -->
+
+<!-- CAPA -->
+<section class="ab-hero" aria-labelledby="t-album">
+  <div class="wrap ab-hero-grid">
+    <figure class="ab-cover"><img src="/assets/album/verso.webp" alt="Capa do Bayle All Stars Album: o papagaio da Brazilian Bayle diante de um globo espelhado" width="900" height="1350" fetchpriority="high"></figure>
+    <div class="ab-hero-copy">
+      <p class="mono ab-gold">Coleção 01 · Global DJ Collection</p>
+      <h1 class="display" id="t-album">Bayle All Stars <em>Album</em></h1>
+      <p class="lead dim">Gire a jog wheel, ganhe uma figurinha e cole no álbum. São DJs do mundo todo, separados por país, como na Copa. Quem completa a página, completa a seleção.</p>
+      <div class="ab-stats">
+        <div><b id="abColadas">0</b><span>de <i id="abTotal">254</i> coladas</span></div>
+        <div><b id="abGiros">10</b><span>giros de teste</span></div>
+        <div><b id="abRep">0</b><span>repetidas</span></div>
+      </div>
+      <div class="cta-row">
+        <a href="#roleta" class="btn btn-y">Girar a jog wheel</a>
+        <button type="button" class="ab-reset mono" id="abReset">Recomeçar teste</button>
+      </div>
+      <p class="ab-demo mono">Modo teste · o álbum fica salvo só neste navegador</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOG WHEEL -->
+<section class="ab-jog-sec" id="roleta" aria-labelledby="t-jog">
+  <div class="wrap">
+    <div class="ab-jog-head">
+      <h2 class="display" id="t-jog">Gire a <em>jog wheel</em></h2>
+      <p class="dim" id="abJogHint">Arraste em círculo e solte com força, como quem faz scratch. Onde ela parar, sai a sua figurinha.</p>
+    </div>
+    <div class="ab-deck">
+      <div class="ab-jog" id="abJog" role="button" tabindex="0" aria-label="Jog wheel: gire para ganhar uma figurinha">
+        <div class="ab-jog-ring"></div>
+        <div class="ab-jog-plate" id="abPlate">
+          <span class="ab-jog-mark"></span>
+          <div class="ab-jog-center"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="90" height="135"><b>BAYLE</b><small>ALL STARS</small></div>
+        </div>
+        <span class="ab-jog-needle" aria-hidden="true"></span>
+      </div>
+      <div class="ab-deck-side">
+        <div class="ab-led"><span class="mono">Giros</span><b id="abGiros2">10</b></div>
+        <button type="button" class="btn btn-y" id="abSpin">Girar</button>
+        <p class="mono ab-small">No celular, gire com o dedo. No computador, clique e arraste, ou use o botão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÁLBUM -->
+<section class="ab-album" id="album" aria-labelledby="t-paginas">
+  <div class="wrap">
+    <h2 class="display ab-album-title" id="t-paginas">O <em>álbum</em></h2>
+    <nav class="ab-nav" id="abNav" aria-label="Países do álbum"></nav>
+    <div id="abPages"></div>
+    <section class="ab-page ab-reps" id="abReps" aria-labelledby="t-reps" hidden>
+      <header class="ab-page-head"><div><p class="mono ab-gold">Para trocar depois</p><h3 id="t-reps">Repetidas</h3></div></header>
+      <div class="ab-grid" id="abRepsGrid"></div>
+    </section>
+  </div>
+</section>
+
+<!-- figurinha saindo -->
+<div class="ab-reveal" id="abReveal" hidden role="dialog" aria-modal="true" aria-labelledby="abRevealTitle">
+  <div class="ab-reveal-in">
+    <p class="mono ab-gold" id="abRevealTitle">Saiu a figurinha</p>
+    <div class="ab-reveal-card" id="abRevealCard"></div>
+    <p class="ab-reveal-rar" id="abRevealRar"></p>
+    <button type="button" class="btn btn-y" id="abStick">Colar no álbum</button>
+  </div>
+</div>
+
+<!-- figurinha grande -->
+<div class="ab-modal" id="abModal" hidden role="dialog" aria-modal="true" aria-label="Figurinha em destaque">
+  <div class="ab-modal-in">
+    <button type="button" class="ab-close" id="abClose" aria-label="Fechar">×</button>
+    <div id="abModalCard"></div>
+    <p class="mono ab-small">Toque na figurinha para virar</p>
+  </div>
+</div>
+
+<script type="application/json" id="albumData"><!--ALBUM_DATA--></script>

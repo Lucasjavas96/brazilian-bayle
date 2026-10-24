@@ -16,6 +16,7 @@ const NAV = [
   ["ranking", "/ranking", "Brasileirão dos DJs"],
   ["votar", "/ranking#votar", "Avaliar DJs"],
   ["djpedia", "/djpedia", "DJ Pédia"],
+  ["album", "/album", "Bayle All Stars Album"],
   ["curitiba", "/curitiba", "Bayle Curitibano"],
   ["spotted", "/spotted", "Spotted Bayle"],
   ["conta", "/conta", "Login / Cadastro"],
@@ -158,6 +159,7 @@ ${body.trim()}
 <script src="/media-guard.js" defer></script>
 ${meta.nav === "conta" ? '<script src="/account.js" defer></script>' : ""}
 ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
+${meta.nav === "album" ? '<script src="/album.js" defer></script>' : ""}
 </body>
 </html>
 `;
@@ -197,7 +199,10 @@ for (const f of pages) {
   const m = raw.match(/^<!--meta\s*([\s\S]*?)-->/);
   if (!m) throw new Error(`${f}: falta o comentário <!--meta {...} -->`);
   const meta = JSON.parse(m[1]);
-  const html = optimize(layout(meta, raw.slice(m[0].length)));
+  let body = raw.slice(m[0].length);
+  // álbum: dados montados no build (países, numeração e notas pela régua), sem script inline
+  if (body.includes("<!--ALBUM_DATA-->")) body = body.replace("<!--ALBUM_DATA-->", () => JSON.stringify(require("./album.js")(ROOT)).replace(/</g, "\\u003c"));
+  const html = optimize(layout(meta, body));
   const name = f.replace(/\.html$/, "");
   const out = path.join(OUT, `${name}.html`); // /ranking → ranking.html (cleanUrls no vercel.json)
   fs.mkdirSync(path.dirname(out), { recursive: true });
@@ -329,7 +334,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "album.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
