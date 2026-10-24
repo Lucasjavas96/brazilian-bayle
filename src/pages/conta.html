@@ -1,0 +1,46 @@
+<!--meta {"path":"/conta","nav":"conta","title":"Sua conta","description":"Entre na comunidade Brazilian Bayle. Sua conta, seu acesso e sua segurança.","noindex":true} -->
+<section class="account-section dark">
+ <div class="wrap account-grid">
+  <div class="account-intro">
+   <p class="mono gold">Brazilian Bayle · Comunidade</p>
+   <h1 class="display">Seu acesso.<br>Seu <em>Bayle.</em></h1>
+   <p class="lead dim">A música conecta. Sua conta leva você para dentro da conversa.</p>
+   <img class="account-parrot" src="/assets/papagaio-refletivo-v2.png" width="180" height="240" alt="Papagaio Brazilian Bayle">
+   <p class="account-note">No Spotted, você escolhe quando mostrar seu nickname. Seu e-mail nunca aparece nas publicações.</p>
+  </div>
+  <div class="account-card" id="accountRoot">
+   <p class="mono gold" id="accountStep">Acesso à comunidade</p>
+   <div class="account-tabs" role="group" aria-label="Acesso à conta">
+    <button type="button" data-mode="login" aria-pressed="true">Entrar</button>
+    <button type="button" data-mode="signup" aria-pressed="false">Criar conta</button>
+   </div>
+   <form id="accountForm">
+    <div class="field" id="accountNickField" hidden><label for="accountNick">Nickname público</label><input id="accountNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" placeholder="seu.nickname"><small>De 3 a 24 letras, números, pontos ou sublinhados.</small></div>
+    <div class="field" id="accountEmailField"><label for="accountEmail">E-mail</label><input id="accountEmail" type="email" autocomplete="email" maxlength="254" required></div>
+    <div class="field" id="accountPasswordField"><label for="accountPassword">Senha</label><input id="accountPassword" type="password" autocomplete="current-password" required maxlength="128"><small id="passwordHelp" hidden>Use pelo menos 12 caracteres, com letras e números.</small></div>
+    <div class="field" id="accountRepeatField" hidden><label for="accountRepeat">Repita a senha</label><input id="accountRepeat" type="password" autocomplete="new-password" maxlength="128"></div>
+    <label class="account-consent" id="accountConsentField" hidden><input id="accountConsent" type="checkbox"> <span>Li os <a href="/termos">termos de uso</a> e a <a href="/privacidade">política de privacidade</a>.</span></label>
+    <button class="btn account-primary" id="accountSubmit" type="submit">Entrar</button>
+   </form>
+   <div class="account-links" id="accountLinks"><button type="button" data-mode="recover">Esqueci minha senha</button><button type="button" data-mode="resend">Reenviar confirmação</button></div>
+   <section id="accountMember" hidden>
+    <h2 class="h3 display">Dentro do <em>Bayle.</em></h2>
+    <p>Sua conta está conectada.</p>
+    <a class="btn account-primary" id="accountContinue" href="/spotted">Ir para o Spotted</a>
+    <button class="btn btn-ghost" id="mfaEnroll" type="button">Ativar dois fatores</button>
+    <p id="mfaStatus" class="account-note"></p>
+    <button class="account-text-button" id="accountOut" type="button">Sair da conta</button>
+   </section>
+   <form id="mfaForm" hidden>
+    <h2 class="h3 display">Mais <em>proteção.</em></h2>
+    <p id="mfaHelp">Digite o código de seis dígitos do seu aplicativo autenticador.</p>
+    <img id="mfaQr" alt="QR code para configurar seu aplicativo autenticador" width="220" height="220" hidden>
+    <div class="field"><label for="mfaCode">Código de segurança</label><input id="mfaCode" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required></div>
+    <button class="btn account-primary" type="submit">Verificar código</button>
+    <button class="account-text-button" id="mfaCancel" type="button">Cancelar e sair</button>
+   </form>
+   <p id="accountMessage" class="account-message" role="status" aria-live="polite"></p>
+   <p class="account-note" id="accountPrivacy">Suas credenciais são verificadas pelo servidor. Nunca compartilhe sua senha ou seus códigos.</p>
+  </div>
+ </div>
+</section>

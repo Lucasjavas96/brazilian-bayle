@@ -52,7 +52,7 @@ class MigrationSafety(unittest.TestCase):
         lock=transaction.index('pg_advisory_xact_lock')
         unknown=transaction.index('Database history advanced beyond this checkout')
         older=transaction.index('Migration version is older than database history')
-        ddl=transaction.index('create or replace function public.brb_backend_health')
+        ddl=transaction.index(deploy.body(rows[-1]['sql']).strip())
         self.assertLess(lock,unknown);self.assertLess(unknown,older);self.assertLess(older,ddl)
 
 if __name__=='__main__':unittest.main()

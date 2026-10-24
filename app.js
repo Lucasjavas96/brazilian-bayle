@@ -472,7 +472,7 @@ $$(".slides").forEach(box => {
 
 /* Entradas coordenadas: cada bloco e sua legenda seguem a ordem da seção. */
 (() => {
-  if (reduced || !('IntersectionObserver' in window)) return;
+  if (reduced || document.body.classList.contains('page-conta') || !('IntersectionObserver' in window)) return;
   const headings = [...document.querySelectorAll('main h1, main h2, main h3, .foot-title')];
   headings.forEach(heading => {
     const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);

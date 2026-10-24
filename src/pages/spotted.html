@@ -12,34 +12,17 @@
     <p class="lead dim">Momentos e resenhas das festas, do jeito que aconteceram. Foto sem filtro, título e nickname. Toque no card para virar e ver os carimbos de quem passou por ali.</p>
     <p class="sp-demo mono">Contas protegidas por e-mail · publicações e interações compartilhadas</p>
 
-    <!-- cadastro / login: obrigatório antes de interagir -->
-    <div class="sp-auth" id="spAuth" hidden>
-      <div class="sp-tabs" role="tablist" aria-label="Acesso">
-        <button type="button" role="tab" id="spTabNew" aria-selected="true" aria-controls="spAuthForm">Criar conta</button>
-        <button type="button" role="tab" id="spTabIn" aria-selected="false" aria-controls="spAuthForm">Entrar</button>
-      </div>
-      <form id="spAuthForm" class="sp-form" novalidate>
-        <div class="field" id="spNickField">
-          <label for="spNick" class="mono">Nickname</label>
-          <input id="spNick" autocomplete="nickname" autocapitalize="none" spellcheck="false" maxlength="24" placeholder="como você aparece nos posts">
-        </div>
-        <div class="field">
-          <label for="spEmail" class="mono">E-mail</label>
-          <input id="spEmail" type="email" autocomplete="email" inputmode="email">
-        </div>
-        <div class="field">
-          <label for="spPass" class="mono">Senha</label>
-          <input id="spPass" type="password" autocomplete="new-password" minlength="6">
-        </div>
-        <p class="ferr" id="spAuthErr" role="alert"></p>
-        <button class="btn btn-y" type="submit" id="spAuthBtn">Criar conta e entrar</button>
-        <p class="sp-fine">Seu nickname aparece nos seus posts. Comentários e reações mostram o seu @, a menos que você ative "Ocultar meu nome".</p>
-      </form>
+    <div class="sp-auth account-callout" id="spAuth" hidden>
+      <p class="mono gold">Sua conta Brazilian Bayle</p>
+      <h2>O próximo momento é seu.</h2>
+      <p>Entre para publicar, comentar e reagir. Você decide quando mostrar seu nickname.</p>
+      <a class="btn account-primary" href="/conta?next=/spotted">Entrar</a>
+      <a class="btn btn-ghost" href="/conta?mode=signup&next=/spotted">Criar conta</a>
     </div>
 
     <!-- primeira tela depois do login: publicar -->
     <div class="sp-pub" id="spPub" hidden>
-      <div class="sp-me"><span class="sp-av" id="spMeAv" aria-hidden="true"></span><span>Logado como <b id="spMeNick"></b></span><button type="button" class="sp-out mono" id="spOut">Sair</button></div>
+      <div class="sp-me"><span class="sp-av" id="spMeAv" aria-hidden="true"></span><span>Logado como <b id="spMeNick"></b></span><a class="sp-out mono" href="/conta">Minha conta</a><button type="button" class="sp-out mono" id="spOut">Sair</button></div>
       <button type="button" class="btn btn-y sp-cta" id="spOpen">Avaliar a festa</button>
       <a href="#spFeedTop" class="sp-skip mono">Ver o feed ↓</a>
 

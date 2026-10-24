@@ -36,6 +36,9 @@
   async function setSession(session) {
     currentUser = null;
     if (session?.user) {
+      const { data: assurance, error } = await backend().auth.mfa.getAuthenticatorAssuranceLevel();
+      if (error) throw error;
+      if (assurance.nextLevel === "aal2" && assurance.currentLevel !== "aal2") { view(); return; }
       let profile = await rpc("profile_get");
       const savedNick = session.user.user_metadata?.nick;
       if (!profile?.nick && savedNick) {
@@ -52,41 +55,6 @@
   const when = d => new Date(d + (d.length === 10 ? "T12:00" : "")).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" });
   /* ---------- acesso ---------- */
   const auth = $("#spAuth"), pub = $("#spPub");
-  let mode = "new";
-  function setMode(m) {
-    mode = m; $("#spTabNew").setAttribute("aria-selected", m === "new"); $("#spTabIn").setAttribute("aria-selected", m === "in");
-    $("#spNickField").hidden = m === "in"; $("#spPass").autocomplete = m === "new" ? "new-password" : "current-password";
-    $("#spAuthBtn").textContent = m === "new" ? "Criar conta e entrar" : "Entrar"; $("#spAuthErr").textContent = "";
-  }
-  $("#spTabNew").onclick = () => setMode("new"); $("#spTabIn").onclick = () => setMode("in");
-  $("#spAuthForm").onsubmit = async e => {
-    e.preventDefault();
-    const err = $("#spAuthErr"), btn = $("#spAuthBtn");
-    const email = $("#spEmail").value.trim().toLowerCase(), password = $("#spPass").value;
-    const nick = $("#spNick").value.trim().replace(/^@/, "");
-    err.textContent = "";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return err.textContent = "Digite um e-mail válido.";
-    if (password.length < 6) return err.textContent = "A senha precisa de pelo menos 6 caracteres.";
-    if (mode === "new" && (!/^[A-Za-z0-9_.]{3,24}$/.test(nick) || BLOCK.test(nick))) return err.textContent = "Escolha um nickname de 3 a 24 letras, números, ponto ou sublinhado.";
-    btn.disabled = true;
-    try {
-      const client = backend().auth;
-      const result = mode === "new"
-        ? await client.signUp({ email, password, options: { data: { nick }, emailRedirectTo: location.origin + '/spotted' } })
-        : await client.signInWithPassword({ email, password });
-      if (result.error) throw result.error;
-      $("#spPass").value = "";
-      if (!result.data?.session) {
-        err.textContent = "Conta solicitada. Confira seu e-mail para confirmar o cadastro e depois entre.";
-        return;
-      }
-      if (mode === "new") await rpc("profile_save", { nick });
-      await setSession(result.data.session);
-      await refresh();
-      openCompose(); pub.scrollIntoView({ behavior: "smooth", block: "start" });
-    } catch (error) { err.textContent = message(error); }
-    finally { btn.disabled = false; }
-  };
   $("#spOut").onclick = async () => {
     const button = $("#spOut"); button.disabled = true;
     try {

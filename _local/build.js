@@ -18,6 +18,7 @@ const NAV = [
   ["djpedia", "/djpedia", "DJ Pédia"],
   ["curitiba", "/curitiba", "Bayle Curitibano"],
   ["spotted", "/spotted", "Spotted Bayle"],
+  ["conta", "/conta", "Login / Cadastro"],
   ["manifesto", "/manifesto", "Manifesto"],
   ["agenda", "/agenda", "Agenda"],
   ["clube", "/clube", "BRB Clubbers"],
@@ -86,6 +87,7 @@ ${jsonld}
   <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
   <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
   <p class="mbar-tag"><b>Brazilian <em>Bayle</em></b><span>A pista é brasileira e sempre vai ser</span></p>
+  <a class="mbar-account" href="/conta" aria-label="Login ou cadastro">Entrar</a>
 </div>
 
 <!-- menu lateral fixo -->
@@ -153,6 +155,8 @@ ${body.trim()}
 <script src="/backend-config.js" defer></script>
 <script src="/backend.js" defer></script>
 <script src="/app.js" defer></script>
+<script src="/media-guard.js" defer></script>
+${meta.nav === "conta" ? '<script src="/account.js" defer></script>' : ""}
 ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
 </body>
 </html>
@@ -325,7 +329,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

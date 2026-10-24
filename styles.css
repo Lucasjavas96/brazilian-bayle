@@ -1690,3 +1690,46 @@ table.ge{min-width:860px}
 
 /* Pena aprovada na Hostinger, aplicada ao menu da versão GitHub. */
 .mbar .burger{background-image:url('/assets/menu-duas-penas-metalicas.png');background-size:64px 64px;background-position:center;background-repeat:no-repeat;filter:none}
+
+/* Account area uses the site's existing typefaces and gold token. */
+.account-section{background:#080908;color:var(--paper);min-height:85vh;padding:clamp(36px,6vw,90px) 0;--focus:var(--gold)}
+.account-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.account-intro .display{margin-top:24px;font-size:clamp(42px,5vw,76px)}
+.account-section .display em{color:var(--gold)}
+.account-parrot{height:200px;width:auto;object-fit:contain;margin:32px 0}
+.account-note{font-size:13px;line-height:1.6;color:#bdbdb6;margin-top:20px;max-width:48ch}
+.account-card{border:1px solid #34342f;background:#121310;padding:clamp(22px,3vw,40px);border-radius:3px;min-width:0}
+.account-tabs{display:flex;gap:24px;border-bottom:1px solid #38382f;margin:24px 0}
+.account-tabs button{border:0;border-bottom:2px solid transparent;background:none;color:#bbb;padding:12px 0;cursor:pointer;font-size:18px}
+.account-tabs button[aria-pressed=true]{border-color:var(--gold);color:var(--paper)}
+.account-card .field{display:grid;gap:8px;margin:20px 0}
+.account-card input:not([type=checkbox]){width:100%;min-height:50px;border:1px solid #515148;background:#090a09;color:var(--paper);padding:12px;border-radius:2px}
+.account-card small{color:#bdbdb6;font-size:12px}
+.account-consent{display:flex;align-items:start;gap:10px;font-size:13px;margin:20px 0}
+.account-consent input{margin-top:4px;accent-color:var(--gold)}
+.account-primary{background:var(--gold);border-color:var(--gold);color:#10110e;margin-top:12px}
+.account-card .account-primary{width:100%}
+.account-card .btn-ghost{width:100%;margin-top:14px}
+.account-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:24px}
+.account-links button,.account-text-button{background:none;border:0;border-bottom:1px solid #79715e;color:#ddd3bd;font-size:13px;cursor:pointer;padding:6px 0}
+.account-text-button{display:block;margin-top:20px}
+.account-message{color:#e6cf9f;margin-top:20px;font-size:14px;overflow-wrap:anywhere}
+.account-card [hidden],.account-callout[hidden]{display:none!important}
+#mfaQr{margin:24px auto;background:white;padding:12px;max-width:100%}
+#accountMember h2,#mfaForm h2{margin:24px 0}
+.home-account{display:flex;align-items:center;justify-content:flex-end;gap:12px;background:#080908;color:var(--gold);padding:10px var(--pad);font-size:13px}
+.home-account img{height:32px;width:auto}
+.mbar-account{font-size:12px;color:var(--gold);margin-left:auto;padding:12px;white-space:nowrap}
+.account-callout{border-color:#4c422e!important}
+.account-callout h2{margin:16px 0;font-family:Syne,sans-serif;font-size:26px}
+.account-callout .btn{margin-right:12px}
+img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
+@media(max-width:760px){.account-grid{grid-template-columns:1fr}.account-parrot{display:none}.account-intro .account-note{display:none}.account-section{padding-top:32px}.account-intro .display{font-size:42px}.account-card{padding:24px}.mbar-tag{min-width:0}.mbar-tag span{display:none}}
+
+.account-card button::after,.account-card button::before,.account-callout .btn::after,.account-callout .btn::before{content:none!important}
+.account-card button{box-shadow:none;text-shadow:none}
+.account-card .account-primary{background:var(--gold);color:#10110e;border-radius:2px;box-shadow:none;filter:none}
+.account-card .account-tabs button{border-radius:0;background:none;box-shadow:none}
+.account-card .field label{color:var(--paper)}
+.account-card .account-consent input{width:18px;height:18px;min-height:0;padding:0;flex:0 0 18px}
+.account-section p{opacity:1}
