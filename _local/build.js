@@ -86,9 +86,11 @@ ${jsonld}
 <!-- barra do celular -->
 <div class="mbar">
   <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
-  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
   <p class="mbar-tag"><b>Brazilian <em>Bayle</em></b><span>A pista é brasileira e sempre vai ser</span></p>
-  <a class="mbar-account" href="/conta" aria-label="Login ou cadastro">Entrar</a>
+  <div class="mbar-access">
+  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
+  <a class="mbar-account" href="/conta">Entrar/Cadastrar</a>
+  </div>
 </div>
 
 <!-- menu lateral fixo -->
