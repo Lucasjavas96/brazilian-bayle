@@ -182,5 +182,7 @@
   $("#abAll").onclick = () => { POOL.forEach(s => { S.coladas[s] ||= 1 }); save(); renderAlbum(); toast(`${POOL.length} figurinhas coladas.`) };
   $("#abReset").onclick = () => { if (!confirm("Zerar o álbum de teste e ganhar 10 giros de novo?")) return; S = { giros: GIROS_TESTE, coladas: {} }; save(); renderAlbum(); toast("Teste recomeçado: álbum vazio e 10 giros.") };
 
+  // link de teste: /album#colar-todas já abre com todas as figurinhas prontas coladas
+  if (location.hash === "#colar-todas") POOL.forEach(s => { S.coladas[s] ||= 1 });
   renderAlbum(); save(); addEventListener("resize", () => { if (!$("#abReveal").hidden) fit($("#abReveal")); if (!$("#abModal").hidden) fit($("#abModal")) });
 })();
