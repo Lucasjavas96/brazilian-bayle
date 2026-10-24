@@ -1922,3 +1922,27 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 @media (max-width:350px){.mbar .mbar-tag b{font-size:11px}.mbar .mbar-tag span{font-size:8px}}
 @media (max-width:440px){.mbar .mbar-tag{max-width:132px}.mbar .mbar-tag span{line-height:1.15}}
 @media (max-width:440px){.mbar .mbar-tag{max-width:112px}}
+
+/* Shared card perimeter: the highlight follows the surface's own color. */
+.brb-static-card{position:relative}
+.brb-card-edge{position:absolute;inset:0;z-index:8;padding:1.5px;border-radius:inherit;pointer-events:none;
+ background:conic-gradient(from var(--medal-angle),transparent 0deg,transparent 240deg,var(--card-edge-color) 282deg,color-mix(in srgb,var(--card-edge-color) 85%,white) 298deg,var(--card-edge-color) 311deg,transparent 338deg);
+ -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+ mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;
+ animation:medal-border-orbit 4.8s linear infinite;filter:drop-shadow(0 0 2px var(--card-edge-color))}
+.brb-orbit-card:nth-child(3n+2)>.brb-card-edge{animation-delay:-1.6s}
+.brb-orbit-card:nth-child(3n)>.brb-card-edge{animation-delay:-3.2s}
+.account-card{background:#050505;border:1px solid #a98a4c;border-radius:22px;box-shadow:inset 0 1px 0 rgba(239,210,147,.12),0 12px 30px rgba(0,0,0,.15)}
+.account-card .account-primary{border-radius:999px;background:linear-gradient(115deg,#8f6d2f,#ead49c 28%,#c9a45c 56%,#e7cd90 79%,#a57b36);border-color:#c9a45c;box-shadow:inset 0 1px 1px #fff8,0 8px 24px #0004}
+.account-card input:not([type=checkbox]){border-radius:10px;background:#10110f;border-color:#5d5037}
+.account-card .field label{color:var(--gold)}
+.account-card .account-tabs button{font-family:'Syne',sans-serif;font-weight:600}
+@media(prefers-reduced-motion:reduce){.brb-card-edge{animation:none;--medal-angle:45deg}}
+
+.board tbody tr:is([data-rank="1"],[data-rank="2"],[data-rank="3"])::before{
+ content:""!important;position:absolute;inset:0;z-index:8;padding:1.5px;border-radius:12px;pointer-events:none;
+ background:conic-gradient(from var(--medal-angle),transparent 240deg,var(--metal) 282deg,color-mix(in srgb,var(--metal) 85%,white) 298deg,var(--metal) 311deg,transparent 338deg)!important;
+ -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+ mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;
+ animation:medal-border-orbit 4.8s linear infinite!important}
+@media(prefers-reduced-motion:reduce){.board tbody tr::before{animation:none!important}}

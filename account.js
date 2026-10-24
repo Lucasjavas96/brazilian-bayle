@@ -14,7 +14,7 @@
   if (/rate|too many|aguarde|tentativas/i.test(text)) return 'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.';
   if (/email.*not.*confirmed/i.test(text)) return 'Confirme seu e-mail antes de entrar. Você pode reenviar a confirmação abaixo.';
   if (/invalid.*credentials/i.test(text)) return 'Não foi possível entrar. Confira seu e-mail e sua senha.';
-  if (/smtp|email_address_not_authorized|sending.*email|send.*email/i.test(text)) return 'O envio de e-mails está indisponível no momento. Tente novamente mais tarde.';
+  if (/smtp|email_address_not_authorized|sending.*email|send.*email/i.test(text)) return mode === 'signup' ? 'Não conseguimos enviar a confirmação. Seu cadastro não foi concluído. Tente novamente mais tarde.' : 'Não conseguimos enviar o e-mail neste momento. Tente novamente mais tarde.';
   if (/password|senha/i.test(text)) return 'Confira a senha. Para uma nova senha, use pelo menos 12 caracteres, com letras e números.';
   if (/mfa|totp|verification.*code/i.test(text)) return 'Código inválido ou expirado. Confira o aplicativo e tente novamente.';
   return 'Não foi possível concluir. Tente novamente em instantes.';
