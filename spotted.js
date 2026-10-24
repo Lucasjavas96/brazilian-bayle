@@ -256,7 +256,7 @@
   });
 
   // só o botão sobre a foto vira o card: arrastar a barra de reações não vira
-  syncMode(); setMode("new"); view();
+  syncMode(); view();
   (async () => {
     try {
       const { data, error } = await backend().auth.getSession();
@@ -272,6 +272,6 @@
           }, 0);
         }
       });
-    } catch (error) { loading = false; loadError = message(error); render(); $("#spAuthErr").textContent = loadError; }
+    } catch (error) { loading = false; loadError = message(error); render(); toast(loadError); }
   })();
 })();

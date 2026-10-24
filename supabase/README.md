@@ -116,3 +116,38 @@ python scripts/backend_smoke.py
 - Bloqueio de edição por outra conta, ocultação da identidade, consentimento
   nulo/inválido, voto duplicado e peso de membro não verificado.
 - Formulários testados em transação revertida, sem deixar dados de teste.
+
+
+## Contas e segurança (24/10/2026)
+
+- `/conta`: entrar, cadastrar, reenviar confirmação, recuperar senha, definir nova
+  senha com evento real de recuperação e ativar/verificar TOTP. O Spotted exige
+  conta para escrever; a leitura do mural continua pública.
+- Supabase Auth guarda hashes de senha, confirmação e fatores. Nenhum diretório
+  de usuários, senha, chave administrativa ou segredo TOTP é incluído no HTML.
+  O navegador precisa receber a sessão do próprio usuário para acessar a API;
+  isso não é um segredo do servidor. E-mails não são publicados no mural.
+- SMTP Hostinger: `brazillian@frostweb.com.br`, TLS, senha guardada somente no
+  Supabase e no Windows Credential Manager de manutenção. Não está no GitHub.
+- Confirmação obrigatória; novas senhas têm mínimo de 12 caracteres com letras
+  e números. Links de e-mail expiram em 10 minutos. Templates BRB são condicionais
+  à metadata `brb_app`, preservando templates de outras aplicações do projeto.
+- Rate limits nativos configurados no servidor: token 30/5min por IP, verify e
+  OTP 10/5min por IP (o Supabase admite rajadas de até 30); SMTP 30/h por projeto,
+  intervalo de 60s por destinatário. Não são apenas temporizadores no navegador.
+- A função privada `password_guard` prepara bloqueio após 5 falhas por conta.
+  **Não está ativa:** habilitar o password verification hook retornou HTTP402
+  (plano pago necessário). O projeto não foi atualizado de plano. Não anunciar
+  essa proteção por conta como ativa; o limite nativo por IP está ativo.
+- MFA nativo é por aplicativo autenticador, não por e-mail. A RPC pública recusa
+  operações privadas de contas com fator verificado e sessão somente `aal1`.
+  A implementação antiga foi movida ao schema privado e revogada dos clientes.
+- CSP, proteção contra iframe, MIME sniffing e políticas de permissões em Vercel.
+- Mídia: arrastar/menu de contexto e controles de download são desabilitados
+  como dissuasão na interface. Isso não é DRM nem impede cópia/captura da mídia.
+- Não existe minigame nesta `main`, em outra branch remota ou em PR aberto no
+  momento desta alteração. Integrar estado/progresso/pontuação no backend exige
+  primeiro o código real do jogo e validação de regras no servidor; não criar
+  uma API que confie em pontuações fornecidas pelo navegador.
+- Somente arquivos da lista explícita do build vão a `dist`; SQL, scripts de
+  manutenção e testes não são servidos como arquivos do site.
