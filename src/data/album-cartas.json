@@ -987,37 +987,6 @@
       }
     },
     {
-      "slug": "badsista",
-      "nome": "Badsista",
-      "pais": "br",
-      "paisNome": "Brasil",
-      "genero": "Club / Baile Funk",
-      "tag": "FUNK",
-      "bpm": "128–135",
-      "rank": "CENA BR",
-      "pos": "center 25%",
-      "texto": "Produziu o álbum Pajubá, de Linn da Quebrada, e fundou o coletivo Bandida, que forma mulheres DJs.",
-      "faixa": "SEX ON THE FLOOR",
-      "foto": "/assets/album/fotos/badsista.webp",
-      "foto_fonte": "https://open.spotify.com/artist/0KdLlx7p42yA7aftp3dgpb",
-      "fontes": [
-        "https://open.spotify.com/artist/0KdLlx7p42yA7aftp3dgpb",
-        "https://djmag.com/features/recognise-badsista",
-        "https://ra.co/exchange/617",
-        "https://api.discogs.com/artists/5845411",
-        "https://www.youtube.com/results?search_query=Badsista+Boiler+Room",
-        "https://festapp.io/artists/badsista"
-      ],
-      "sinais": {
-        "ouvintes": 32202,
-        "inicio": 2012,
-        "selo": 1,
-        "boilerCercle": 1,
-        "festivais": 0,
-        "bpm": 130
-      }
-    },
-    {
       "slug": "mau-mau",
       "nome": "Mau Mau",
       "pais": "br",

@@ -178,6 +178,8 @@
   $("#abModal").addEventListener("click", e => { if (e.target.id === "abModal") closeModal() });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#abModal").hidden) closeModal() });
 
+  // modo teste: cola de uma vez todas as figurinhas prontas, para ver o álbum montado
+  $("#abAll").onclick = () => { POOL.forEach(s => { S.coladas[s] ||= 1 }); save(); renderAlbum(); toast(`${POOL.length} figurinhas coladas.`) };
   $("#abReset").onclick = () => { if (!confirm("Zerar o álbum de teste e ganhar 10 giros de novo?")) return; S = { giros: GIROS_TESTE, coladas: {} }; save(); renderAlbum(); toast("Teste recomeçado: álbum vazio e 10 giros.") };
 
   renderAlbum(); save(); addEventListener("resize", () => { if (!$("#abReveal").hidden) fit($("#abReveal")); if (!$("#abModal").hidden) fit($("#abModal")) });
