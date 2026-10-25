@@ -372,11 +372,13 @@ simpleForm({
     ['aName', 'Como você se chama?', () => $('#aName').value.trim().length >= 2, 'Escreva seu nome.'],
     ['aIg', 'Qual é o seu Instagram?', () => igOk($('#aIg').value), 'Use o formato @seu.perfil.'],
     ['aEmail', 'Qual é o seu e-mail?', () => mailOk($('#aEmail').value), 'Confira o e-mail.'],
-    ['aCity', 'De onde você vem?'],
-    ['aPlan', 'Como quer fazer parte?', () => $$('#aPlan input:checked').length > 0, 'Marque pelo menos uma opção.'],
-    ['aWhy', 'Por que quer viver esse bayle com a gente?'],
+    ['aCity', 'De onde você vem?', () => !!$('#aState').value && $('#aCityName').value.trim().length >= 2, 'Escolha o estado e escreva a cidade.'],
+    ['aPlan', 'Por que quer fazer parte?', () => $$('#aPlan input:checked').length > 0, 'Marque pelo menos uma opção.'],
     ['aConsent', 'Podemos concluir?', () => $('#aConsent').checked, 'Confirme que tem 18 anos ou mais e aceite os termos.']
   ];
+  // cidade = "Cidade - UF" no campo que o servidor já conhece
+  const syncCity = () => { const c = $('#aCityName').value.trim(), u = $('#aState').value; $('#aCity').value = c && u ? c + ' - ' + u : ''; };
+  $('#aCityName').addEventListener('input', syncCity); $('#aState').addEventListener('change', syncCity);
   const progress = document.createElement('div'); progress.className = 'vote-progress';
   progress.innerHTML = '<p class="vote-step-count" aria-live="polite"></p><div class="vote-step-track" aria-hidden="true"><span></span></div><h3 class="vote-step-title" tabindex="-1"></h3>';
   form.prepend(progress);

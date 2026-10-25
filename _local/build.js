@@ -47,7 +47,7 @@ function layout(meta, body) {
   const title = meta.path === "/" ? meta.title : `${meta.title} · Brazilian Bayle`;
   const jsonld = [ORG, ...(meta.jsonld || [])].map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n");
   const navLinks = NAV.map(([k, href, label, only], i) =>
-    `<li${only ? " hidden data-owner-only" : ""}><a href="${href}"${meta.nav === k ? ' aria-current="page"' : ""}><span class="mono">${String(i + 1).padStart(2, "0")}</span>${label}</a></li>`).join("\n        ");
+    `<li${only ? " hidden data-owner-only" : ""}><a href="${href}"${meta.nav === k ? ' aria-current="page"' : ""}><span class="mono">${String(i + 1).padStart(2, "0")}</span>${label}${only ? ' <span class="owner-badge" data-owner-badge hidden></span>' : ""}</a></li>`).join("\n        ");
 
   return `<!doctype html>
 <html lang="pt-BR">
@@ -92,7 +92,7 @@ ${jsonld}
   <p class="mbar-tag"><b>Brazilian <em>Bayle</em></b><span>A pista é brasileira e sempre vai ser</span></p>
   <div class="mbar-access">
   <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
-  <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
+  <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><a href="/moderacao" data-owner-only hidden>👑 Moderação <span class="owner-badge" data-owner-badge hidden></span></a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
   </div>
 </div>
 
@@ -131,7 +131,7 @@ ${body.trim()}
     <div class="wrap foot-cols">
       <div>
         <h3 class="mono">Navegue</h3>
-        <ul>${NAV.map(([, h, l]) => `<li><a href="${h}">${l}</a></li>`).join("")}</ul>
+        <ul>${NAV.filter(n => !n[3]).map(([, h, l]) => `<li><a href="${h}">${l}</a></li>`).join("")}</ul>
       </div>
       <div>
         <h3 class="mono">Contato</h3>
@@ -284,7 +284,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
         <h2 class="wiki-l" id="h-${gid(l)}">${l}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
         <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.historia?.length;
           return `<li id="${s}"><a class="wiki-item${full ? "" : " is-soon"}" href="/djpedia/${s}">
-            ${DJ_PHOTOS[s] ? `<img class="wiki-portrait" src="/${DJ_PHOTOS[s].thumb}" alt="${esc(d.nome)}" width="384" height="288" loading="lazy" decoding="async">` : `<span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>`}
+            ${DJ_PHOTOS[s] ? `<img class="wiki-portrait" src="/${DJ_PHOTOS[s].thumb}?v=2" alt="${esc(d.nome)}" width="384" height="288" loading="lazy" decoding="async">` : `<span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>`}
             <span class="wiki-name">${esc(d.nome)}</span>
             <span class="wiki-meta">${d.curitiba ? "Bayle Curitibano" : (p?.origem && p.origem !== NI ? p.origem + " · " : "") + d.estilo}</span>
             <span class="wiki-status mono">${full ? "Ler verbete →" : "Ficha em construção →"}</span>
@@ -321,7 +321,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     <div class="wiki-grid">
       <aside class="wiki-box" aria-label="Ficha de ${esc(p.nome)}">
         <figure class="wiki-photo">${img
-          ? `<img src="/${img}" alt="${esc(p.nome)}" width="${DJ_PHOTOS[s]?.width || 600}" height="${DJ_PHOTOS[s]?.height || 600}" decoding="async">`
+          ? `<img src="/${img}?v=2" alt="${esc(p.nome)}" width="${DJ_PHOTOS[s]?.width || 600}" height="${DJ_PHOTOS[s]?.height || 600}" decoding="async">`
           : `<div class="wiki-ph" role="img" aria-label="Foto de ${esc(p.nome)} em breve"><span>${ini(p.nome)}</span><small class="mono">Foto em breve</small></div>`}
         </figure>
         <p class="wiki-box-name">${esc(p.nome)}</p>

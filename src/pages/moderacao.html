@@ -10,7 +10,11 @@
   <div class="wrap">
     <p class="mono gold">👑 Owner · área restrita</p>
     <h1 class="display" id="t-md">Moderação do <em>Spotted</em></h1>
-    <p class="lead dim">Posts denunciados, em análise ou ocultos. Nada some para sempre sem passar por aqui: ocultar é reversível, e só um post já oculto pode ser apagado de vez.</p>
+    <p class="lead dim">Posts do Spotted denunciados, em análise ou ocultos, e as candidaturas ao BRB Clubbers. Nada some para sempre sem passar por aqui: ocultar é reversível, e só um post já oculto pode ser apagado de vez.</p>
+    <div class="md-tabs" id="mdTabs" role="group" aria-label="Seção" hidden>
+      <button type="button" data-tab="posts" aria-pressed="true">Posts do Spotted <span class="owner-badge" data-count="posts" hidden></span></button>
+      <button type="button" data-tab="apps" aria-pressed="false">Candidaturas <span class="owner-badge" data-count="apps" hidden></span></button>
+    </div>
     <p id="mdStatus" class="mono dim" role="status">Verificando seu acesso…</p>
     <div class="md-filter" id="mdFilter" role="group" aria-label="Filtrar" hidden>
       <button type="button" class="chip" data-f="todos" aria-pressed="true">Todos</button>

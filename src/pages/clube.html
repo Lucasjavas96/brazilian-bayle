@@ -78,6 +78,7 @@
       <h2 class="display h3" id="t-apply">Candidate-<em>se</em></h2>
       <p class="apply-copy">Aqui não tem lista VIP comprada nem fila na porta. Tem gente que vive a pista: chega cedo, sai com o sol e lembra de cada set.</p>
       <p class="apply-copy">Se você é dessa turma, conta pra gente quem você é. A Brazilian Bayle é feita de pessoas, e a próxima pode ser você.</p>
+      <p class="apply-copy"><b>Sendo um BRB Clubber, você passa a poder postar os seus vídeos no nosso Instagram oficial.</b></p>
       <p class="dim apply-note">O formulário envia sua candidatura à equipe para análise, com armazenamento protegido no Supabase. Para conversar sobre a seleção, fale com <a href="https://instagram.com/brazilianbayle" target="_blank" rel="noopener">@brazilianbayle no Instagram</a>.</p>
     </div>
     <form class="apply-form" id="applyForm" novalidate>
@@ -96,23 +97,23 @@
         <input id="aEmail" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="eaEmail">
         <p class="ferr" id="eaEmail"></p>
       </div>
-      <div class="field">
-        <label for="aCity" class="mono">Cidade</label>
-        <select id="aCity" name="cidade"><option>Balneário Camboriú</option><option>Curitiba</option><option>Outra cidade</option></select>
+      <div class="field" id="aCityField">
+        <label for="aState" class="mono">Estado</label>
+        <select id="aState" name="estado"><option value="">Selecione o estado</option><option value="AC">Acre</option><option value="AL">Alagoas</option><option value="AP">Amapá</option><option value="AM">Amazonas</option><option value="BA">Bahia</option><option value="CE">Ceará</option><option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option><option value="GO">Goiás</option><option value="MA">Maranhão</option><option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option><option value="MG">Minas Gerais</option><option value="PA">Pará</option><option value="PB">Paraíba</option><option value="PR">Paraná</option><option value="PE">Pernambuco</option><option value="PI">Piauí</option><option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option><option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="SC">Santa Catarina</option><option value="SP">São Paulo</option><option value="SE">Sergipe</option><option value="TO">Tocantins</option></select>
+        <label for="aCityName" class="mono">Cidade</label>
+        <input id="aCityName" autocomplete="address-level2" maxlength="80" placeholder="Digite sua cidade">
+        <input type="hidden" id="aCity" name="cidade" aria-describedby="eaCity">
+        <p class="ferr" id="eaCity"></p>
       </div>
       <fieldset class="field full" id="aPlan" aria-describedby="eaPlan">
-        <legend class="mono">Quero <span class="opt">(marque quantas quiser)</span></legend>
+        <legend class="mono">Por que você quer fazer parte? <span class="opt">(marque quantas quiser)</span></legend>
         <div class="pick">
-          <label><input type="checkbox" name="quero" value="Ser membro BRB Clubber"> Ser membro BRB Clubber (gratuito por tempo limitado)</label>
-          <label><input type="checkbox" name="quero" value="After do Solomun"> After do Solomun</label>
-          <label><input type="checkbox" name="quero" value="Brazilian Bayle, a Festa"> Brazilian Bayle, a Festa (5 de dezembro)</label>
+          <label><input type="checkbox" name="quero" value="Publicar meus vídeos no Instagram oficial da Brazilian Bayle"> Quero publicar meus vídeos no Instagram oficial da Brazilian Bayle</label>
+          <label><input type="checkbox" name="quero" value="Frequentar as festas da Brazilian Bayle"> Quero frequentar as festas da Brazilian Bayle</label>
+          <label><input type="checkbox" name="quero" value="Ter descontos especiais na loja"> Quero ter descontos especiais na loja</label>
         </div>
         <p class="ferr" id="eaPlan"></p>
       </fieldset>
-      <div class="field full">
-        <label for="aWhy" class="mono">Por que você quer fazer parte?</label>
-        <textarea id="aWhy" name="motivo" rows="3"></textarea>
-      </div>
       <label class="check full"><input type="checkbox" id="aConsent" aria-describedby="eaConsent"> Tenho 18 anos ou mais e aceito os <a href="/termos" target="_blank">termos</a> e a <a href="/privacidade" target="_blank">política de privacidade</a>.</label>
       <p class="ferr full" id="eaConsent"></p>
       <button class="btn btn-gold full" type="submit" id="applyBtn">Salvar meu interesse</button>
