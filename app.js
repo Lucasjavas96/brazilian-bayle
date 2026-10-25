@@ -83,21 +83,8 @@ const DJS = [["Alok","House"],["Vintage Culture","House"],["Mochakk","Tech house
   ["Cat Dealers","Brazilian bass"],["Dubdogz","Brazilian bass"],["KVSH","Brazilian bass"],["Bhaskar","House"],["Chemical Surf","Brazilian bass"],
   ["Zerb","Afro house"],["Öwnboss","Bass house"],["RUBACK","Tech house"],["Victor Ruiz","Techno"],["Gui Boratto","Techno"],
   ["Illusionize","Tech house"],["Beltran","Tech house"],["Mojjo","House"],["Classmatic","Tech house"],["GREG","House"]];
-const SEED = (() => {
-  const r = rnd(42); let base = 9.24;
-  return DJS.map(([name, style]) => {
-    const n = base; base -= .05 + r() * .07;
-    const votos = Math.floor((6 + r() * 12) * (55 + r() * 45)), w = votos * 1.4, sums = {};
-    CRIT.forEach(([k]) => sums[k] = Math.min(9.9, n + (r() - .5) * .7) * w);
-    return { name, style, votos, w, sums };
-  });
-})();
-function table() {
-  const rows = SEED.map(d => ({ ...d, sums: { ...d.sums } }));
-  rows.forEach(d => { CRIT.forEach(([k]) => d[k] = d.sums[k] / d.w); d.nota = CRIT.reduce((a, [k]) => a + d[k], 0) / 4 });
-  rows.sort((a, b) => b.nota - a.nota).forEach((d, i) => d.pos = i + 1);
-  return rows;
-}
+let officialRows = [];
+function table() { return officialRows.map(row=>({...row})); }
 const meter = v => { const full = Math.floor(v), half = v - full >= .5; return `<span class="meter" aria-hidden="true">${Array.from({ length: 10 }, (_, i) => `<i class="${i < full ? "on" : i === full && half ? "half" : ""}"></i>`).join("")}</span>` };
 const pad = n => String(n).padStart(2, "0");
 
@@ -129,7 +116,7 @@ function mountBoard(stage) {
   stage.classList.add('board-summary');
   const head = [["nota", "Nota"], ...CRIT, ["votos", "Votos"]];
   stage.innerHTML = `<table class="board">
-    <caption class="sr-only">Brasileirão dos DJs, pré-temporada com notas de demonstração${limit ? `, ${limit} primeiros` : ""}</caption>
+    <caption class="sr-only">Brasileirão dos DJs, classificação por avaliações aprovadas${limit ? `, ${limit} primeiros` : ""}</caption>
     <thead><tr><th scope="col">#</th><th scope="col" class="l">DJ</th>${head.map(([k, l]) => `<th scope="col"${k === "nota" ? ' aria-sort="descending"' : ""} data-k="${k}">${sortable ? `<button type="button" data-sort="${k}">${l}</button>` : l}</th>`).join("")}</tr></thead>
     <tbody></tbody></table>`;
   const more = document.createElement('button'); more.type = 'button'; more.className = 'btn btn-line-light board-more';
@@ -316,7 +303,7 @@ renderPodium();
       say('err', 'Não foi possível registrar: ' + error.message);
       return;
     } finally { btn.classList.remove('loading'); btn.removeAttribute('aria-busy'); btn.disabled = false; }
-    say('ok', '<b>Avaliação recebida.</b> Ela foi salva para análise. O ranking continua em demonstração.');
+    say('ok', '<b>Avaliação recebida.</b> Ela foi salva para análise. Após aprovação da equipe, ela entra no cálculo do ranking.');
     toast('Avaliação enviada com sucesso.');
     $("#vComment").value = "";
     const follow = document.createElement('div'); follow.className = 'vote-followup';
@@ -602,7 +589,7 @@ function mountGe(el) {
   el.innerHTML = `<div class="ge-card">
     <div class="ge-scroll" tabindex="0" role="region" aria-label="Tabela de classificação, deslize para ver todas as colunas">
     <table class="ge">
-      <caption class="sr-only">Brasileirão dos DJs, classificação da pré-temporada com notas de demonstração</caption>
+      <caption class="sr-only">Brasileirão dos DJs, classificação da classificação por avaliações aprovadas</caption>
       <thead><tr>
         <th scope="col" class="ge-c-pos" colspan="2">Classificação</th>
         ${cols.map(([k, ab, full]) => `<th scope="col" data-k="${k}" title="${full}"${k === "nota" ? ' aria-sort="descending"' : ""}>${sortable ? `<button type="button" data-sort="${k}">${ab}</button>` : ab}</th>`).join("")}
@@ -617,7 +604,7 @@ function mountGe(el) {
     $$("th[data-k]", el).forEach(th => th.dataset.k === st.sort ? th.setAttribute("aria-sort", "descending") : th.removeAttribute("aria-sort")); render();
   };
   function render(flash) {
-    const rows = table().map(d => ({ ...d, ...GE_EXTRA[d.name] }));
+    const rows = table();
     let list = rows;
     if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
     $("tbody", el).innerHTML = list.map(d => {
@@ -675,4 +662,16 @@ $$("[data-link]").forEach(a => {
   document.querySelector('#wikiCount').textContent = count ? `${count} DJs encontrados` : 'Nenhum DJ encontrado. Tente outro nome ou gênero.';
  };
  input.addEventListener('input',filter); filter();
+})();
+
+/* Public ranking contains only approved, confirmed-account evaluations. */
+(async()=>{
+ if(!document.querySelector('[data-board],[data-ge-table],[data-podium]'))return;
+ const note=document.createElement('p');note.className='hint';note.id='rankingLoadStatus';note.setAttribute('role','status');note.textContent='Carregando avaliações aprovadas…';document.querySelector('[data-podium],[data-board],[data-ge-table]').before(note);
+ try{
+  const result=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_ranking',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,'Content-Type':'application/json'},body:'{}'});
+  if(!result.ok)throw Error('ranking');
+  const rows=await result.json();officialRows=rows.map(row=>({...row,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
+  boards.forEach(board=>board.render());renderPodium();note.textContent=rows.length?'Ranking atualizado com avaliações aprovadas.':'Ainda não há avaliações aprovadas. Seja uma das primeiras pessoas a avaliar uma apresentação.';
+ }catch{note.textContent='Não foi possível carregar o ranking agora. Tente novamente mais tarde.';}
 })();

@@ -6,7 +6,7 @@
  const next = params.get('next');
  const destination = next && /^\/(?!\/)/.test(next) && !/[\\\r\n]/.test(next) && !next.startsWith('/conta') ? next : '/spotted';
  const callback = location.origin + '/conta';
- let mode = 'login', factor = null, enrolling = false, recovery = false;
+ let mode = 'login', factor = null, enrolling = false, recovery = new URLSearchParams(location.hash.slice(1)).get('type') === 'invite';
  const message = text => { $('#accountMessage').textContent = text; };
  const check = result => { if (result.error) throw result.error; return result.data; };
  const friendly = error => {
