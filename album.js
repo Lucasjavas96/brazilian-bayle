@@ -73,7 +73,7 @@
   function counts() {
     const got = Object.keys(S.coladas).length, reps = Object.values(S.coladas).reduce((a, n) => a + n - 1, 0);
     $("#abColadas").textContent = got; $("#abTotal").textContent = DATA.total; $("#abRep").textContent = reps;
-    $("#abGiros").textContent = S.giros; $("#abGiros2").textContent = S.giros;
+    const giros = S.giros >= 99999 ? "∞" : S.giros; $("#abGiros").textContent = giros; $("#abGiros2").textContent = giros;
     $("#abSpin").disabled = !ready || spinning || S.giros <= 0;
     jog.setAttribute("aria-disabled", String(!ready || spinning || S.giros <= 0));
     $("#abJogHint").textContent = !ready ? "Entre na sua conta para acessar seus giros e sua coleção." : S.giros > 0 ? "Gire para sortear uma figurinha. O resultado fica salvo automaticamente na sua conta." : "Você usou todos os giros disponíveis. Sua coleção continua salva.";
