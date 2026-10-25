@@ -109,6 +109,7 @@ function renderPodium() {
   el.innerHTML = officialRows.slice(0, 3).map(d => `
     <div class="pod p${d.pos}">
       ${rankAward(d.pos)}
+      <img class="pod-thumbnail" src="/assets/djs/thumbs/${slug(d.name)}.webp" alt="${d.name}" width="40" height="40" loading="lazy" decoding="async">
       <p class="pod-name"><a href="/djpedia/${slug(d.name)}">${d.name}</a></p><p class="pod-style mono">${d.style}</p>
       <p class="led" aria-label="nota ${fmt2(d.nota)}">${fmt2(d.nota)}</p>
       <div class="pod-block"><div class="top" aria-hidden="true"></div><div class="face"><span class="num3d" aria-label="${d.pos}º lugar">${pad(d.pos)}</span></div></div>
