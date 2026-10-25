@@ -82,14 +82,72 @@
     $("#abRepsGrid").innerHTML = Object.entries(S.coladas).filter(([, n]) => n > 1).map(([s, n]) => `<div class="ab-slot filled">${mini(CARDS[s])}<span class="ab-x mono">×${n - 1}</span></div>`).join("");
   }
 
+  /* ---------- sons (sintetizados no navegador, sem arquivos) ---------- */
+  const sfx = (() => {
+    let ctx = null, muted = false, lastTick = 0;
+    try { muted = localStorage.getItem("bb_album_mudo") === "1"; } catch {}
+    const audio = () => {
+      if (muted) return null;
+      try { ctx ||= new (window.AudioContext || window.webkitAudioContext)(); if (ctx.state === "suspended") ctx.resume(); return ctx; } catch { return null; }
+    };
+    const tone = (c, at, dur, type, vol, f0, f1) => {
+      const o = c.createOscillator(), g = c.createGain(), t = c.currentTime + at;
+      o.type = type; o.frequency.setValueAtTime(f0, t); if (f1) o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g).connect(c.destination); o.start(t); o.stop(t + dur + 0.02);
+    };
+    const noise = (c, at, dur, vol, type, f0, f1) => {
+      const n = Math.max(1, Math.floor(c.sampleRate * dur)), buf = c.createBuffer(1, n, c.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+      const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain(), t = c.currentTime + at;
+      s.buffer = buf; f.type = type; f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(f1, t + dur);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + dur * 0.25); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      s.connect(f).connect(g).connect(c.destination); s.start(t);
+    };
+    const NOTES = [523.25, 659.25, 783.99, 1046.5, 1318.5, 1568];
+    return {
+      get muted() { return muted; },
+      set muted(v) { muted = !!v; try { localStorage.setItem("bb_album_mudo", muted ? "1" : "0"); } catch {} },
+      unlock() { audio(); },
+      // clique de catraca do jog wheel (no máximo um a cada 28 ms)
+      tick() { const c = audio(), now = performance.now(); if (!c || now - lastTick < 28) return; lastTick = now; tone(c, 0, 0.03, "square", 0.045, 1900, 1100); },
+      whoosh() { const c = audio(); if (c) noise(c, 0, 0.8, 0.14, "bandpass", 300, 2600); },
+      // carta ganha: arpejo arcade, maior quanto mais rara
+      reveal(cls, dup) {
+        const c = audio(); if (!c) return;
+        if (dup) { tone(c, 0, 0.16, "triangle", 0.1, 392, 380); tone(c, 0.12, 0.2, "triangle", 0.09, 330, 320); return; }
+        const n = { comum: 2, rara: 3, epica: 4, lendaria: 6 }[cls] || 2;
+        for (let i = 0; i < n; i++) tone(c, i * 0.09, 0.28, "square", 0.05, NOTES[i], NOTES[i]);
+        tone(c, n * 0.09, 0.5, "triangle", 0.09, NOTES[n - 1] * 2, NOTES[n - 1] * 2);
+        if (cls === "epica" || cls === "lendaria") noise(c, 0.05, 0.6, 0.06, "highpass", 3000, 9000);
+        if (cls === "lendaria") { tone(c, 0, 0.9, "sine", 0.16, 130, 65); noise(c, n * 0.09, 0.9, 0.07, "highpass", 5000, 11000); }
+      },
+      // figurinha colada: tapa seco + plim
+      slap() {
+        const c = audio(); if (!c) return;
+        noise(c, 0, 0.1, 0.28, "lowpass", 2600, 300); tone(c, 0, 0.14, "sine", 0.28, 190, 55); tone(c, 0.09, 0.18, "triangle", 0.07, 1568, 1568);
+      },
+    };
+  })();
+  // botão de mudo, junto da dica da jog wheel
+  (() => {
+    const hint = document.getElementById("abJogHint"); if (!hint) return;
+    const b = document.createElement("button"); b.type = "button"; b.className = "ab-mute mono";
+    const paint = () => { b.textContent = sfx.muted ? "🔇 Som desligado" : "🔊 Som ligado"; b.setAttribute("aria-pressed", String(!sfx.muted)); };
+    b.onclick = () => { sfx.muted = !sfx.muted; paint(); if (!sfx.muted) { sfx.unlock(); sfx.tick(); } };
+    paint(); hint.after(b);
+  })();
+
   /* ---------- jog wheel ---------- */
   const jog = $("#abJog"), plate = $("#abPlate");
   let angle = 0, spinning = false, drag = null;
   const center = () => { const r = jog.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2] };
   const angAt = e => { const [cx, cy] = center(); return Math.atan2(e.clientY - cy, e.clientX - cx) * 180 / Math.PI };
-  const paint = () => plate.style.transform = `rotate(${angle}deg)`;
+  let lastClick = 0;
+  const paint = () => { plate.style.transform = `rotate(${angle}deg)`; if (Math.abs(angle - lastClick) >= 18) { lastClick = angle; sfx.tick(); } };
   jog.addEventListener("pointerdown", e => {
     if (spinning || !ready) return;
+    sfx.unlock();
     if (S.giros <= 0) return toast("Você não tem giros disponíveis.");
     try { jog.setPointerCapture(e.pointerId) } catch {} jog.classList.add("grab");
     drag = { a: angAt(e), samples: [] };
@@ -108,7 +166,7 @@
     spin(v);
   };
   jog.addEventListener("pointerup", release); jog.addEventListener("pointercancel", release);
-  const kick = () => { if (ready && !spinning && S.giros > 0) spin((Math.random() < .5 ? -1 : 1) * (1.4 + Math.random() * .8)); else if (S.giros <= 0) toast("Você não tem giros disponíveis.") };
+  const kick = () => { sfx.unlock(); if (ready && !spinning && S.giros > 0) spin((Math.random() < .5 ? -1 : 1) * (1.4 + Math.random() * .8)); else if (S.giros <= 0) toast("Você não tem giros disponíveis.") };
   $("#abSpin").onclick = kick;
   jog.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); kick() } });
 
@@ -128,7 +186,7 @@
       if (generation === epoch) { spinning = false; counts(); albumMessage(albumError(error)); }
       return;
     }
-    jog.classList.add('spinning');
+    jog.classList.add('spinning'); sfx.whoosh();
     v = Math.sign(v) * Math.min(Math.abs(v), 3.2);
     const k = reduced ? .01 : .0025, T = Math.min(6000, Math.log(Math.abs(v) / .015) / k), a0 = angle, start = performance.now();
     const at = t => a0 + v / k * (1 - Math.exp(-k * t));
@@ -146,7 +204,7 @@
   let current = null;
   function draw(result) {
     const slug = result.slug, c = CARDS[slug], dup = result.duplicate;
-    current = { slug, dup };
+    current = { slug, dup }; sfx.reveal(c.cls, dup);
     $("#abRevealCard").innerHTML = bigCard(c);
     $("#abRevealRar").innerHTML = `<b class="rar-${c.cls}">${c.rar}</b>${dup ? " · repetida" : ""}`;
     $("#abStick").textContent = dup ? "Guardar nas repetidas" : "Colar no álbum";
@@ -160,7 +218,7 @@
     const from = $(".djc", rv).getBoundingClientRect();
     rv.hidden = true; rv.className = "ab-reveal";
     const generation = epoch; // Already awarded atomically by the server.
-    if (dup) { counts(); toast(`${c.nome} foi para as repetidas.`); $("#abReps").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" }); return }
+    if (dup) { sfx.slap(); counts(); toast(`${c.nome} foi para as repetidas.`); $("#abReps").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" }); return }
     const target = $(`#slot-${slug}`);
     target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
     setTimeout(() => {
@@ -176,7 +234,7 @@
         if (generation !== epoch) return;
         target.outerHTML = slot({ ...findDj(slug), page: true }, 0);
         const fresh = $(`#slot-${slug}`); fresh.classList.add("just");
-        counts(); toast(`Figurinha ${c.num} colada!`);
+        sfx.slap(); counts(); toast(`Figurinha ${c.num} colada!`);
       }, reduced ? 60 : 720);
     }, reduced ? 50 : 550);
   };
