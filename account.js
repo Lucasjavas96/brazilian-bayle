@@ -75,7 +75,7 @@
   }
   if (mode === 'signup') {
    check(await auth.signUp({email,password,options:{data:{nick:$('#accountNick').value.trim(),brb_app:true,terms_version:'2026-10-24'},emailRedirectTo:callback}}));
-   message('Se o cadastro puder ser concluído com esse e-mail, você receberá a confirmação. Verifique também o spam.');
+   message('Se este e-mail ainda não tiver uma conta, enviaremos a confirmação. Se já tiver cadastro, use Entrar ou Esqueci minha senha. Solicitar novamente não cria outra conta.');
   } else if (mode === 'login') {
    check(await auth.signInWithPassword({email,password})); redirectAfterAuth=true; await showMember();
   } else if (mode === 'recover') {
