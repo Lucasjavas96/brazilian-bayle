@@ -23,14 +23,6 @@
    if ([...card.children].some(child => child.classList.contains('brb-card-edge'))) return;
    const edge = document.createElement('span');
    edge.className = 'brb-card-edge'; edge.setAttribute('aria-hidden','true');
-   const ns = 'http://www.w3.org/2000/svg';
-   const svg = document.createElementNS(ns,'svg');
-   const track = document.createElementNS(ns,'rect');
-   track.setAttribute('pathLength','100');
-   track.setAttribute('vector-effect','non-scaling-stroke');
-   const radius = parseFloat(style.borderTopLeftRadius) || 0;
-   track.setAttribute('rx',String(Math.max(0,radius - 1.5)));
-   svg.append(track); edge.append(svg);
    card.append(edge);
   });
  }

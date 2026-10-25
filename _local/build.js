@@ -347,4 +347,19 @@ ${urls.map(u => `  <url><loc>${SITE}${u}</loc></url>`).join("\n")}
 </urlset>
 `);
 fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";");
+// Content hashes prevent old CSS and card scripts being mixed after a deploy.
+const crypto = require('crypto');
+const versioned = ['styles.css','card-effects.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
+function versionHtml(dir) {
+  for (const entry of fs.readdirSync(dir,{withFileTypes:true})) {
+    const file = path.join(dir,entry.name);
+    if (entry.isDirectory()) versionHtml(file);
+    else if (entry.name.endsWith('.html')) {
+      let html = fs.readFileSync(file,'utf8');
+      for (const [asset,hash] of versioned) html = html.replaceAll(`/${asset}"`,`/${asset}?v=${hash}"`);
+      fs.writeFileSync(file,html);
+    }
+  }
+}
+versionHtml(OUT);
 console.log(`ok: ${pages.length} páginas em dist/`);
