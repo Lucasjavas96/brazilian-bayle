@@ -2980,6 +2980,2569 @@
         "essential": 1,
         "bpm": 130
       }
+    },
+    {
+      "slug": "david-guetta",
+      "nome": "David Guetta",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "EDM / House",
+      "tag": "EDM",
+      "bpm": "124–130",
+      "rank": "DJ MAG #1",
+      "pos": "center 25%",
+      "texto": "Número 1 do DJ Mag Top 100 2026, maior nome da dance music francesa.",
+      "faixa": "Titanium",
+      "foto": "/assets/album/fotos/david-guetta.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-01_David-Guetta.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://djmag.com/news/tomorrowland-2026-line-announced"
+      ],
+      "sinais": {
+        "ouvintes": 82156290,
+        "inicio": 1984,
+        "festivais": 1,
+        "headlines": 1,
+        "hino": 1,
+        "djmag": 1
+      }
+    },
+    {
+      "slug": "hugel",
+      "nome": "HUGEL",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Afro / Latin House",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "DJ MAG #48",
+      "pos": "center 25%",
+      "texto": "Produtor francês de afro e latin house, estourou com Bella Ciao.",
+      "faixa": "Bella Ciao",
+      "foto": "/assets/album/fotos/hugel.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-02_HUGEL.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "ouvintes": 37186751,
+        "hino": 1,
+        "djmag": 48
+      }
+    },
+    {
+      "slug": "dj-snake",
+      "nome": "DJ Snake",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Trap / EDM",
+      "tag": "EDM",
+      "bpm": "100–150",
+      "rank": "DJ MAG #60",
+      "pos": "center 25%",
+      "texto": "Produtor francês de trap e EDM, fechou o Main Stage do Ultra Miami 2026.",
+      "faixa": "Turn Down for What",
+      "foto": "/assets/album/fotos/dj-snake.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-03_DJ-Snake.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://djmag.com/news/ultra-miami-2026-full-stage-running-order-announced"
+      ],
+      "sinais": {
+        "ouvintes": 45245031,
+        "inicio": 2007,
+        "festivais": 1,
+        "headlines": 1,
+        "hino": 1,
+        "djmag": 60
+      }
+    },
+    {
+      "slug": "b-jones",
+      "nome": "B Jones",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Techno / Big Room",
+      "tag": "BIG ROOM",
+      "bpm": "126–150",
+      "rank": "DJ MAG #74",
+      "pos": "center 25%",
+      "texto": "Estreante no DJ Mag Top 100 2026 (#74), com selo próprio, o ARRYBA Music.",
+      "faixa": "Glow Up",
+      "foto": "/assets/album/fotos/b-jones.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-04_B-Jones.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/b-jones/5Z59lu7ApgQvSdntngRDkq"
+      ],
+      "sinais": {
+        "ouvintes": 370867,
+        "selo": 1,
+        "djmag": 74
+      }
+    },
+    {
+      "slug": "nico-moreno",
+      "nome": "Nico Moreno",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Hard Techno",
+      "tag": "TECHNO",
+      "bpm": "150–160",
+      "rank": "DJ MAG #82",
+      "pos": "center 25%",
+      "texto": "Produtor francês de hard techno, no Tomorrowland e no EDC Las Vegas 2026.",
+      "faixa": "You Make Me Horny",
+      "foto": "/assets/album/fotos/nico-moreno.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-05_Nico-Moreno.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/nico-moreno/6fjhNhp9IoeiZpEXq9AT2S",
+        "https://djmag.com/news/tomorrowland-2026-line-announced",
+        "https://djmag.com/news/edc-las-vegas-2026-full-line-announced"
+      ],
+      "sinais": {
+        "ouvintes": 1000000,
+        "festivais": 2,
+        "djmag": 82
+      }
+    },
+    {
+      "slug": "mosimann",
+      "nome": "Mosimann",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "DJ MAG #85",
+      "pos": "center 25%",
+      "texto": "Produtor francês de house, com a série de álbuns Outside the Box.",
+      "faixa": "Dancing On My Own",
+      "foto": "/assets/album/fotos/mosimann.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-06_Mosimann.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/mosimann/7sAqpkrQBaOkddsv1Tz1XK"
+      ],
+      "sinais": {
+        "ouvintes": 1300000,
+        "djmag": 85
+      }
+    },
+    {
+      "slug": "folamour",
+      "nome": "Folamour",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "House / Disco",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor e DJ francês de house e disco, de Lyon.",
+      "faixa": "Ordinary Drugs",
+      "foto": "/assets/album/fotos/folamour.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-07_Folamour.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/folamour/6pJY5At9SiMpAOBrw9YosS"
+      ],
+      "sinais": {
+        "ouvintes": 741248
+      }
+    },
+    {
+      "slug": "i-hate-models",
+      "nome": "I Hate Models",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Hard Techno",
+      "tag": "TECHNO",
+      "bpm": "140–160",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Nome do hard techno francês, escalado no palco Atmosphere do Tomorrowland 2026.",
+      "faixa": "Daydream",
+      "foto": "/assets/album/fotos/i-hate-models.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-08_I-Hate-Models.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/i-hate-models/0KqSULB80ft2H3aFg6kJmN",
+        "https://djmag.com/news/tomorrowland-2026-line-announced"
+      ],
+      "sinais": {
+        "ouvintes": 464803,
+        "festivais": 1
+      }
+    },
+    {
+      "slug": "laurent-garnier",
+      "nome": "Laurent Garnier",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Techno / House",
+      "tag": "TECHNO",
+      "bpm": "120–130",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Lenda da cena eletrônica francesa, pioneiro do techno e do house na França.",
+      "faixa": "The Man with the Red Face",
+      "foto": "/assets/album/fotos/laurent-garnier.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-09_Laurent-Garnier.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/laurent-garnier/3y1SoTOdrmRNTBVph5T0VZ",
+        "https://open.spotify.com/artist/3y1SoTOdrmRNTBVph5T0VZ"
+      ],
+      "sinais": {
+        "ouvintes": 208800,
+        "inicio": 1987,
+        "pioneiro": 1
+      }
+    },
+    {
+      "slug": "malaa",
+      "nome": "Malaa",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Bass House",
+      "tag": "BASS",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor francês de bass house, mascarado, com o álbum All In em 2025.",
+      "faixa": "Notorious",
+      "foto": "/assets/album/fotos/malaa.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-10_Malaa.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/malaa/7w1eTNePApzDk8XtgykCPS"
+      ],
+      "sinais": {
+        "ouvintes": 565451
+      }
+    },
+    {
+      "slug": "tchami",
+      "nome": "Tchami",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Future House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor francês e fundador do selo Confession, referência em future house.",
+      "faixa": "Promesses",
+      "foto": "/assets/album/fotos/tchami.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-11_Tchami.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/tchami/1KpCi9BOfviCVhmpI4G2sY"
+      ],
+      "sinais": {
+        "ouvintes": 2200000,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "trym",
+      "nome": "Trym",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Hard Techno",
+      "tag": "TECHNO",
+      "bpm": "145–160",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor francês de hard techno, com lançamentos em 2025 e 2026.",
+      "faixa": "R-301",
+      "foto": "/assets/album/fotos/trym.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (FRA-12_Trym.jpg)",
+      "fontes": [
+        "https://open.spotify.com/track/10AH8YLYFX2uUZR5N7ZGsc"
+      ],
+      "sinais": {}
+    },
+    {
+      "slug": "martin-garrix",
+      "nome": "Martin Garrix",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Big Room / Progressive",
+      "tag": "BIG ROOM",
+      "bpm": "126–128",
+      "rank": "DJ MAG #2",
+      "pos": "center 25%",
+      "texto": "Vice-líder do DJ Mag 2026 e dono do selo STMPD RCRDS.",
+      "faixa": "Animals",
+      "foto": "/assets/album/fotos/martin-garrix.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-01_Martin-Garrix.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://djmag.com/news/ultra-miami-2026-full-stage-running-order-announced",
+        "https://djmag.com/news/edc-las-vegas-2026-full-line-announced",
+        "https://djmag.com/news/tomorrowland-2026-line-announced"
+      ],
+      "sinais": {
+        "ouvintes": 22325393,
+        "inicio": 2012,
+        "festivais": 4,
+        "headlines": 3,
+        "hino": 1,
+        "selo": 1,
+        "djmag": 2
+      }
+    },
+    {
+      "slug": "armin-van-buuren",
+      "nome": "Armin van Buuren",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Trance",
+      "tag": "TRANCE",
+      "bpm": "136–140",
+      "rank": "DJ MAG #7",
+      "pos": "center 25%",
+      "texto": "Ícone do trance e fundador da Armada Music, cinco vezes número 1 do DJ Mag.",
+      "faixa": "Blah Blah Blah",
+      "foto": "/assets/album/fotos/armin-van-buuren.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-02_Armin-van-Buuren.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://djmag.com/news/ultra-miami-2026-full-stage-running-order-announced",
+        "https://djmag.com/news/edc-las-vegas-2026-full-line-announced",
+        "https://djmag.com/news/tomorrowland-2026-line-announced"
+      ],
+      "sinais": {
+        "ouvintes": 15191611,
+        "inicio": 1995,
+        "festivais": 4,
+        "headlines": 2,
+        "selo": 1,
+        "pioneiro": 1,
+        "djmag": 7
+      }
+    },
+    {
+      "slug": "don-diablo",
+      "nome": "Don Diablo",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Future House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #12",
+      "pos": "center 25%",
+      "texto": "Produtor holandês de future house e fundador do selo Hexagon.",
+      "faixa": "Momentum",
+      "foto": "/assets/album/fotos/don-diablo.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-03_Don-Diablo.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "ouvintes": 6152220,
+        "selo": 1,
+        "djmag": 12
+      }
+    },
+    {
+      "slug": "afrojack",
+      "nome": "Afrojack",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Electro House",
+      "tag": "HOUSE",
+      "bpm": "126–130",
+      "rank": "DJ MAG #15",
+      "pos": "center 25%",
+      "texto": "Produtor holandês de electro house e fundador do selo Wall Recordings.",
+      "faixa": "Take Over Control",
+      "foto": "/assets/album/fotos/afrojack.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-04_Afrojack.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://djmag.com/news/ultra-miami-2026-full-stage-running-order-announced"
+      ],
+      "sinais": {
+        "ouvintes": 25965252,
+        "inicio": 2007,
+        "festivais": 1,
+        "headlines": 1,
+        "selo": 1,
+        "djmag": 15
+      }
+    },
+    {
+      "slug": "w-and-w",
+      "nome": "W&W",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Big Room / Hardstyle",
+      "tag": "BIG ROOM",
+      "bpm": "128–150",
+      "rank": "DJ MAG #20",
+      "pos": "center 25%",
+      "texto": "Dupla holandesa de Breda, dona do selo Mainstage Music e presença certa nos palcos grandes.",
+      "faixa": "Bigfoot",
+      "foto": "/assets/album/fotos/w-and-w.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-05_WandW.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 20,
+        "ouvintes": 11738663,
+        "inicio": 2007,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "reinier-zonneveld",
+      "nome": "Reinier Zonneveld",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "130–140",
+      "rank": "DJ MAG #21",
+      "pos": "center 25%",
+      "texto": "Techno holandês de show ao vivo, dono do selo Filth on Acid e do alter ego Hardkar.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/reinier-zonneveld.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-06_Reinier-Zonneveld.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners4.html",
+        "https://festapp.io/festivals/tomorrowland/2025"
+      ],
+      "sinais": {
+        "djmag": 21,
+        "ouvintes": 2105250,
+        "festivais": 1,
+        "selo": 1,
+        "bpm": 135
+      }
+    },
+    {
+      "slug": "tiesto",
+      "nome": "Tiësto",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "EDM / House",
+      "tag": "EDM",
+      "bpm": "124–128",
+      "rank": "DJ MAG #22",
+      "pos": "center 25%",
+      "texto": "Ícone holandês da trance e do EDM, fundador do selo Musical Freedom e ex-número 1 do mundo.",
+      "faixa": "Adagio for Strings",
+      "foto": "/assets/album/fotos/tiesto.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-07_Tiesto.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://press.insomniac.com/blog/edc-las-vegas-2026-drops-200-artist-lineup-for-30th-anniversary-this-may",
+        "https://www.skiddle.com/news/all/Creamfields-reveals-full-lineup-day-splits-for-2026/61362/"
+      ],
+      "sinais": {
+        "djmag": 22,
+        "ouvintes": 33886869,
+        "inicio": 1994,
+        "festivais": 2,
+        "hino": 1,
+        "selo": 1,
+        "pioneiro": 1,
+        "grammy": "indicacao"
+      }
+    },
+    {
+      "slug": "nicky-romero",
+      "nome": "Nicky Romero",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Progressive House",
+      "tag": "HOUSE",
+      "bpm": "126–130",
+      "rank": "DJ MAG #27",
+      "pos": "center 25%",
+      "texto": "Holandês fundador do selo Protocol Recordings e autor do clássico Toulouse.",
+      "faixa": "Toulouse",
+      "foto": "/assets/album/fotos/nicky-romero.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-08_Nicky-Romero.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners2.html",
+        "https://festapp.io/festivals/tomorrowland/2025"
+      ],
+      "sinais": {
+        "djmag": 27,
+        "ouvintes": 4714878,
+        "inicio": 2008,
+        "festivais": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "hardwell",
+      "nome": "Hardwell",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Big Room / Techno",
+      "tag": "BIG ROOM",
+      "bpm": "126–150",
+      "rank": "DJ MAG #29",
+      "pos": "center 25%",
+      "texto": "Ex-número 1 do DJ Mag, fundador do selo Revealed Recordings e dono do hino Spaceman.",
+      "faixa": "Spaceman",
+      "foto": "/assets/album/fotos/hardwell.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-09_Hardwell.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners2.html",
+        "https://electronicgroove.com/tomorrowland-share-full-consciencia-line-up-and-timetable/",
+        "https://festapp.io/festivals/ultra-music-festival-miami/2026"
+      ],
+      "sinais": {
+        "djmag": 29,
+        "ouvintes": 5596125,
+        "inicio": 2006,
+        "festivais": 2,
+        "headlines": 1,
+        "hino": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "oliver-heldens",
+      "nome": "Oliver Heldens",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Future House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #39",
+      "pos": "center 25%",
+      "texto": "Holandês que popularizou o future house e fundou o selo Heldeep Records.",
+      "faixa": "Gecko (Overdrive)",
+      "foto": "/assets/album/fotos/oliver-heldens.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-10_Oliver-Heldens.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners2.html",
+        "https://festapp.io/festivals/tomorrowland/2025"
+      ],
+      "sinais": {
+        "djmag": 39,
+        "ouvintes": 5222330,
+        "inicio": 2012,
+        "festivais": 1,
+        "hino": 1,
+        "selo": 1,
+        "pioneiro": 1
+      }
+    },
+    {
+      "slug": "maddix",
+      "nome": "Maddix",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Big Room / Techno",
+      "tag": "BIG ROOM",
+      "bpm": "128–140",
+      "rank": "DJ MAG #52",
+      "pos": "center 25%",
+      "texto": "Produtor holandês que passou do big room ao techno e tocou no Mainstage do Tomorrowland 2025.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/maddix.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-12_Maddix.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners2.html",
+        "https://festapp.io/festivals/tomorrowland/2025",
+        "https://electronicgroove.com/?p=195229"
+      ],
+      "sinais": {
+        "djmag": 52,
+        "ouvintes": 4663699,
+        "festivais": 2
+      }
+    },
+    {
+      "slug": "mau-p",
+      "nome": "Mau P",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #55",
+      "pos": "center 25%",
+      "texto": "Produtor holandês de tech house que explodiu com o hit Drugs from Amsterdam.",
+      "faixa": "Drugs from Amsterdam",
+      "foto": "/assets/album/fotos/mau-p.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-13_Mau-P.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners2.html"
+      ],
+      "sinais": {
+        "djmag": 55,
+        "ouvintes": 5077294
+      }
+    },
+    {
+      "slug": "bassjackers",
+      "nome": "Bassjackers",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Big Room",
+      "tag": "BIG ROOM",
+      "bpm": "126–130",
+      "rank": "DJ MAG #58",
+      "pos": "center 25%",
+      "texto": "Dupla holandesa de big room formada por Marlon Flohr e Ralph van Hilst.",
+      "faixa": "Crackin",
+      "foto": "/assets/album/fotos/bassjackers.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-14_Bassjackers.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners2.html"
+      ],
+      "sinais": {
+        "djmag": 58,
+        "ouvintes": 3339758
+      }
+    },
+    {
+      "slug": "chris-stussy",
+      "nome": "Chris Stussy",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Minimal / House",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "DJ MAG #59",
+      "pos": "center 25%",
+      "texto": "Holandês de Amsterdã e figura em alta da cena house minimal, no EDC e no Creamfields 2026.",
+      "faixa": "Won't Stop (Don't)",
+      "foto": "/assets/album/fotos/chris-stussy.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-15_Chris-Stussy.webp)",
+      "fontes": [
+        "https://press.insomniac.com/blog/edc-las-vegas-2026-drops-200-artist-lineup-for-30th-anniversary-this-may",
+        "https://www.skiddle.com/news/all/Creamfields-reveals-full-lineup-day-splits-for-2026/61362/"
+      ],
+      "sinais": {
+        "djmag": 59,
+        "festivais": 2
+      }
+    },
+    {
+      "slug": "quintino",
+      "nome": "Quintino",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Big Room",
+      "tag": "BIG ROOM",
+      "bpm": "126–130",
+      "rank": "DJ MAG #76",
+      "pos": "center 25%",
+      "texto": "Produtor holandês de big room, conhecido por Epic e Go Hard.",
+      "faixa": "Epic",
+      "foto": "/assets/album/fotos/quintino.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-17_Quintino.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners5.html"
+      ],
+      "sinais": {
+        "djmag": 76,
+        "ouvintes": 1338078
+      }
+    },
+    {
+      "slug": "lucas-and-steve",
+      "nome": "Lucas & Steve",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Future House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #77",
+      "pos": "center 25%",
+      "texto": "Dupla holandesa de future house com hits como Summer on You.",
+      "faixa": "Summer on You",
+      "foto": "/assets/album/fotos/lucas-and-steve.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-18_Lucas-and-Steve.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners3.html"
+      ],
+      "sinais": {
+        "djmag": 77,
+        "ouvintes": 2287221
+      }
+    },
+    {
+      "slug": "marnik",
+      "nome": "Marnik",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Big Room",
+      "tag": "BIG ROOM",
+      "bpm": "126–130",
+      "rank": "DJ MAG #88",
+      "pos": "center 25%",
+      "texto": "Dupla holandesa de big room, ligada ao palco principal dos festivais europeus.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/marnik.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-20_Marnik.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners2.html"
+      ],
+      "sinais": {
+        "djmag": 88,
+        "ouvintes": 4332383
+      }
+    },
+    {
+      "slug": "nils-van-zandt",
+      "nome": "Nils van Zandt",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Dance",
+      "tag": "EDM",
+      "bpm": "124–130",
+      "rank": "DJ MAG #93",
+      "pos": "center 25%",
+      "texto": "Produtor e DJ holandês de dance, conhecido pelas faixas de pista e remixes.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/nils-van-zandt.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-21_Nils-van-Zandt.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners7.html"
+      ],
+      "sinais": {
+        "djmag": 93,
+        "ouvintes": 873910
+      }
+    },
+    {
+      "slug": "cuebrick",
+      "nome": "Cuebrick",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Big Room",
+      "tag": "BIG ROOM",
+      "bpm": "126–130",
+      "rank": "DJ MAG #96",
+      "pos": "center 25%",
+      "texto": "Produtor holandês de big room na lista do DJ Mag Top 100 de 2026.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/cuebrick.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-22_Cuebrick.webp)",
+      "fontes": [],
+      "sinais": {
+        "djmag": 96
+      }
+    },
+    {
+      "slug": "ki-ki",
+      "nome": "KI/KI",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Hard Techno / Trance",
+      "tag": "TECHNO",
+      "bpm": "145–155",
+      "rank": "DJ MAG #100",
+      "pos": "center 25%",
+      "texto": "Duo holandês de hard techno e trance, estreante no Top 100 do DJ Mag.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/ki-ki.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-24_KI-KI.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners4.html"
+      ],
+      "sinais": {
+        "djmag": 100,
+        "ouvintes": 1639820,
+        "bpm": 150
+      }
+    },
+    {
+      "slug": "job-jobse",
+      "nome": "Job Jobse",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "House / Techno",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Residente do Trouw e do De School, em Amsterdam, fundou os selos De Vlieger e Planet Strangelove.",
+      "faixa": "Where Dreams Fall",
+      "foto": "/assets/album/fotos/job-jobse.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-25_Job-Jobse.png)",
+      "fontes": [
+        "https://www.technoairlines.com/artist/job-jobse",
+        "https://www.ravejungle.com/2026/06/19/tomorrowland-2026-timetable/"
+      ],
+      "sinais": {
+        "selo": 1,
+        "festivais": 1
+      }
+    },
+    {
+      "slug": "joris-voorn",
+      "nome": "Joris Voorn",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Techno / House",
+      "tag": "TECHNO",
+      "bpm": "122–130",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Veterano de Amsterdam, toca em Awakenings e Ultra em 2026 e dirige o selo Green.",
+      "faixa": "Incident",
+      "foto": "/assets/album/fotos/joris-voorn.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-26_Joris-Voorn.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/joris-voorn/4jGpKAmwvU263l0tUh4xKU",
+        "https://electronicgroove.com/awakenings-festival-reveals-first-wave-of-2026-lineup/",
+        "https://www.festivaldust.com/festivals/ultra-miami-2026-miamifl/lineup"
+      ],
+      "sinais": {
+        "ouvintes": 1820000,
+        "festivais": 2,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "nicky-elisabeth",
+      "nome": "Nicky Elisabeth",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ e produtora de Amsterdam, lançou o álbum The Way of Love pela Anjunadeep em 2024.",
+      "faixa": "Dancing In The Dark",
+      "foto": "/assets/album/fotos/nicky-elisabeth.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-27_Nicky-Elisabeth.jpg)",
+      "fontes": [
+        "https://mixmag.net/feature/nicky-elisabeth-playlist-interview-anjunadeep",
+        "https://www.amsterdam-dance-event.nl/en/artists-speakers/nicky-elisabeth/25861/"
+      ],
+      "sinais": {}
+    },
+    {
+      "slug": "fred-again",
+      "nome": "Fred again..",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "UK Garage / Electronic",
+      "tag": "ELECTRONIC",
+      "bpm": "120–135",
+      "rank": "DJ MAG #16",
+      "pos": "center 25%",
+      "texto": "Produtor londrino que virou fenômeno global com a série Actual Life e shows em estádios.",
+      "faixa": "Delilah (pull me out of this)",
+      "foto": "/assets/album/fotos/fred-again.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-01_Fred-again...jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 16,
+        "ouvintes": 27215618,
+        "hino": 1,
+        "grammy": "indicacao"
+      }
+    },
+    {
+      "slug": "michael-bibi",
+      "nome": "Michael Bibi",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #37",
+      "pos": "center 25%",
+      "texto": "Londrino fundador do selo Solid Grooves, um dos nomes fortes do tech house mundial.",
+      "faixa": "Hella Good",
+      "foto": "/assets/album/fotos/michael-bibi.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-03_Michael-Bibi.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/michael-bibi/4cvdQRyHmkSQSakUrW2oxv",
+        "https://www.ravejungle.com/2026/06/19/tomorrowland-2026-timetable/"
+      ],
+      "sinais": {
+        "djmag": 37,
+        "ouvintes": 733700,
+        "festivais": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "josh-baker",
+      "nome": "Josh Baker",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #40",
+      "pos": "center 25%",
+      "texto": "DJ de Manchester, entrou no Top 50 do DJ Mag e toca no palco stereoBLOOM do EDC 2026.",
+      "faixa": "Back It Up",
+      "foto": "/assets/album/fotos/josh-baker.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-04_Josh-Baker.jpg)",
+      "fontes": [
+        "https://www.iamsterdam.com/en/whats-on/calendar/nightlife/clubbing/gashouder-presents-josh-baker",
+        "https://www.jambase.com/festival/edc-las-vegas-2026"
+      ],
+      "sinais": {
+        "djmag": 40,
+        "ouvintes": 2100000,
+        "festivais": 1
+      }
+    },
+    {
+      "slug": "joel-corry",
+      "nome": "Joel Corry",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Dance / House",
+      "tag": "HOUSE",
+      "bpm": "120–128",
+      "rank": "DJ MAG #44",
+      "pos": "center 25%",
+      "texto": "Hitmaker britânico do dance pop, autor de Sorry e Head & Heart.",
+      "faixa": "Head & Heart",
+      "foto": "/assets/album/fotos/joel-corry.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-05_Joel-Corry.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://www.ravejungle.com/2026/06/19/tomorrowland-2026-timetable/"
+      ],
+      "sinais": {
+        "djmag": 44,
+        "ouvintes": 7251099,
+        "festivais": 1,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "james-hype",
+      "nome": "James Hype",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "DJ MAG #51",
+      "pos": "center 25%",
+      "texto": "Produtor britânico do hit global Ferrari, presença fixa nos grandes festivais de house.",
+      "faixa": "Ferrari",
+      "foto": "/assets/album/fotos/james-hype.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-06_James-Hype.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://www.ravejungle.com/2026/06/19/tomorrowland-2026-timetable/"
+      ],
+      "sinais": {
+        "djmag": 51,
+        "ouvintes": 11584366,
+        "festivais": 1,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "ben-nicky",
+      "nome": "Ben Nicky",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Hard Dance / Trance",
+      "tag": "TRANCE",
+      "bpm": "138–145",
+      "rank": "DJ MAG #66",
+      "pos": "center 25%",
+      "texto": "Britânico de trance e hard dance conhecido pelos sets de alta energia e o Xtreme Trance.",
+      "faixa": "Oxygen",
+      "foto": "/assets/album/fotos/ben-nicky.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-07_Ben-Nicky.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/ben-nicky/3Bd1phrOZJuCev9U0bzdtA"
+      ],
+      "sinais": {
+        "djmag": 66,
+        "ouvintes": 869076,
+        "bpm": 140
+      }
+    },
+    {
+      "slug": "cloonee",
+      "nome": "Cloonee",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #84",
+      "pos": "center 25%",
+      "texto": "Tech house britânico, fundador do selo Inhale Exhale e presença no EDC Las Vegas 2026.",
+      "faixa": "Stay Don't Go",
+      "foto": "/assets/album/fotos/cloonee.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-08_Cloonee.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://www.edmtunes.com/2026/02/edc-las-vegas-2026-unveils-massive-30th-anniversary-lineup/"
+      ],
+      "sinais": {
+        "djmag": 84,
+        "ouvintes": 13132971,
+        "festivais": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "pawsa",
+      "nome": "PAWSA",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #86",
+      "pos": "center 25%",
+      "texto": "Produtor britânico de tech house de baixos pesados, com mais de 6 milhões de ouvintes mensais.",
+      "faixa": "Beep",
+      "foto": "/assets/album/fotos/pawsa.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-09_PAWSA.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 86,
+        "ouvintes": 6734323
+      }
+    },
+    {
+      "slug": "above-and-beyond",
+      "nome": "Above & Beyond",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Trance / Progressive",
+      "tag": "TRANCE",
+      "bpm": "128–138",
+      "rank": "DJ MAG #87",
+      "pos": "center 25%",
+      "texto": "Trio londrino de trance, donos do selo Anjunabeep e do evento Group Therapy.",
+      "faixa": "Sun & Moon",
+      "foto": "/assets/album/fotos/above-and-beyond.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-10_Above-and-Beyond.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/genres/progressive-house/340",
+        "https://www.edmtunes.com/2026/02/edc-las-vegas-2026-unveils-massive-30th-anniversary-lineup/"
+      ],
+      "sinais": {
+        "djmag": 87,
+        "ouvintes": 2100000,
+        "inicio": 2000,
+        "festivais": 1,
+        "selo": 1,
+        "hino": 1,
+        "pioneiro": 1
+      }
+    },
+    {
+      "slug": "prospa",
+      "nome": "Prospa",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Rave / House",
+      "tag": "HOUSE",
+      "bpm": "125–135",
+      "rank": "DJ MAG #94",
+      "pos": "center 25%",
+      "texto": "Produtor britânico de rave e house, com mais de 12 milhões de ouvintes mensais.",
+      "faixa": "Free Will",
+      "foto": "/assets/album/fotos/prospa.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-11_Prospa.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://www.edmtunes.com/2026/02/edc-las-vegas-2026-unveils-massive-30th-anniversary-lineup/"
+      ],
+      "sinais": {
+        "djmag": 94,
+        "ouvintes": 12045749,
+        "festivais": 1
+      }
+    },
+    {
+      "slug": "ben-ufo",
+      "nome": "Ben UFO",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Eclectic",
+      "tag": "BASS",
+      "bpm": "125–140",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Cofundador do selo Hessle Audio, DJ eclético com Essential Mix na BBC Radio 1.",
+      "faixa": "Fabriclive 67",
+      "foto": "/assets/album/fotos/ben-ufo.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-12_Ben-UFO.jpg)",
+      "fontes": [
+        "https://www.wikipedia.com/wiki/Ben_UFO",
+        "https://www.bandwagon.asia/articles/an-oral-history-of-hessle-audio-as-told-by-ben-ufo"
+      ],
+      "sinais": {
+        "inicio": 2007,
+        "selo": 1,
+        "pioneiro": 1,
+        "essential": 1
+      }
+    },
+    {
+      "slug": "chris-lake",
+      "nome": "Chris Lake",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor britânico de tech house e dono do selo Black Book Records.",
+      "faixa": "Turn Off The Lights",
+      "foto": "/assets/album/fotos/chris-lake.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-13_Chris-Lake.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "ouvintes": 8709962,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "chris-lorenzo",
+      "nome": "Chris Lorenzo",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Bass House",
+      "tag": "BASS",
+      "bpm": "125–130",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor britânico de bass house, autor de California Dreamin' com mais de 180 milhões de plays.",
+      "faixa": "California Dreamin'",
+      "foto": "/assets/album/fotos/chris-lorenzo.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-14_Chris-Lorenzo.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/genres/g-house/326",
+        "https://kworb.net/spotify/artist/7tm9Tuc70geXOOyKhtZHIj_songs.html",
+        "https://www.edmtunes.com/2026/02/edc-las-vegas-2026-unveils-massive-30th-anniversary-lineup/"
+      ],
+      "sinais": {
+        "ouvintes": 4800000,
+        "festivais": 1,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "dax-j",
+      "nome": "Dax J",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "135–145",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Londrino radicado em Berlim, fundou o selo Monnom Black e toca no Awakenings 2026.",
+      "faixa": "Spectral",
+      "foto": "/assets/album/fotos/dax-j.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-15_Dax-J.jpg)",
+      "fontes": [
+        "https://www.traxsource.com/artist/34307/dax-j",
+        "https://electronicgroove.com/awakenings-festival-expands-2026-lineup-with-new-additions/"
+      ],
+      "sinais": {
+        "inicio": 2013,
+        "selo": 1,
+        "festivais": 1,
+        "bpm": 140
+      }
+    },
+    {
+      "slug": "giuseppe-ottaviani",
+      "nome": "Giuseppe Ottaviani",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Trance",
+      "tag": "TRANCE",
+      "bpm": "136–140",
+      "rank": "DJ MAG #78",
+      "pos": "center 25%",
+      "texto": "Italiano de Roma que leva o trance puro ao palco com sets de piano e sintetizador ao vivo.",
+      "faixa": "Lumina",
+      "foto": "/assets/album/fotos/giuseppe-ottaviani.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-03_Giuseppe-Ottaviani.jpg)",
+      "fontes": [
+        "https://www.last.fm/music/Giuseppe+Ottaviani/A+State+of+Trance+Top+20+-+November+2017+(Selected+by+Armin+Van+Buuren)/Lumina"
+      ],
+      "sinais": {
+        "djmag": 78,
+        "bpm": 138
+      }
+    },
+    {
+      "slug": "deborah-de-luca",
+      "nome": "Deborah De Luca",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "128–135",
+      "rank": "DJ MAG #81",
+      "pos": "center 25%",
+      "texto": "Napolitana de Scampia que virou nome fixo do techno italiano nos grandes festivais.",
+      "faixa": "Nero",
+      "foto": "/assets/album/fotos/deborah-de-luca.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-04_Deborah-De-Luca.jpg)",
+      "fontes": [
+        "https://www.technoairlines.com/blog/deborah-de-luca-net-worth",
+        "https://last.fm/music/Deborah+De+Luca/_/Nero"
+      ],
+      "sinais": {
+        "djmag": 81
+      }
+    },
+    {
+      "slug": "999999999",
+      "nome": "999999999",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Acid Techno",
+      "tag": "TECHNO",
+      "bpm": "140–150",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla italiana de hard techno e acid, dona do selo NineTimesNine, dos nomes da cena rave.",
+      "faixa": "300000003",
+      "foto": "/assets/album/fotos/999999999.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-05_999999999.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/999999999/6uD2LjPHUjxrpax0se17Nc",
+        "https://electronicgroove.com/awakenings-festival-reveals-first-wave-of-2026-lineup/",
+        "https://www.festivalmates.com/festivals/awakenings-festival-2026"
+      ],
+      "sinais": {
+        "ouvintes": 362692,
+        "inicio": 2016,
+        "festivais": 1,
+        "hino": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "dj-tennis",
+      "nome": "DJ Tennis",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Electronic",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Manfredi Romano, fundador do selo Life and Death, mistura house, techno e indie.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/dj-tennis.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-06_DJ-Tennis.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/dj-tennis/6vJvFV1A2CpT8s5B1oUN6t",
+        "https://festapp.io/festivals/tomorrowland/2025"
+      ],
+      "sinais": {
+        "ouvintes": 563815,
+        "festivais": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "enrico-sangiuliano",
+      "nome": "Enrico Sangiuliano",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "128–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor italiano de techno melódico e peso, presença constante no Drumcode.",
+      "faixa": "Biomorph",
+      "foto": "/assets/album/fotos/enrico-sangiuliano.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-07_Enrico-Sangiuliano.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/enrico-sangiuliano/1u7DsNFbakULvxnDGtMm90",
+        "https://last.fm/music/Enrico+Sangiuliano/Biomorph"
+      ],
+      "sinais": {
+        "ouvintes": 1100000
+      }
+    },
+    {
+      "slug": "marco-carola",
+      "nome": "Marco Carola",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Minimal / Tech House",
+      "tag": "TECHNO",
+      "bpm": "124–130",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Napolitano que espalhou o techno italiano com residências em Ibiza e o selo Music On.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/marco-carola.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-08_Marco-Carola.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/genres/italian-techno/3470",
+        "https://www.musicmetricsvault.com/genres/minimal-tech-house/1319"
+      ],
+      "sinais": {
+        "selo": 1,
+        "pioneiro": 1,
+        "residencia": 1
+      }
+    },
+    {
+      "slug": "mathame",
+      "nome": "Mathame",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "122–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor italiano de techno melódico, com faixas em coletâneas e palcos do Tomorrowland.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/mathame.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-09_Mathame.jpg)",
+      "fontes": [
+        "https://festapp.io/festivals/tomorrowland/2025",
+        "https://www.musicmetricsvault.com/genres/melodic-techno/341"
+      ],
+      "sinais": {
+        "festivais": 1
+      }
+    },
+    {
+      "slug": "meduza",
+      "nome": "Meduza",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Trio italiano de Milão, indicado ao Grammy por Piece of Your Heart.",
+      "faixa": "Piece of Your Heart",
+      "foto": "/assets/album/fotos/meduza.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-10_Meduza.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://billboard.com.br/line-up-horarios-tomorrowland-2026/",
+        "https://festapp.io/festivals/tomorrowland/2025",
+        "https://press.insomniac.com/blog/edc-las-vegas-2026-drops-200-artist-lineup-for-30th-anniversary-this-may"
+      ],
+      "sinais": {
+        "ouvintes": 11475477,
+        "inicio": 2016,
+        "festivais": 3,
+        "hino": 1,
+        "grammy": "indicacao"
+      }
+    },
+    {
+      "slug": "tale-of-us",
+      "nome": "Tale Of Us",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla italiana fundadora do selo e festa Afterlife, referência do techno melódico.",
+      "faixa": "Another Earth",
+      "foto": "/assets/album/fotos/tale-of-us.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-11_Tale-Of-Us.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/tale-of-us/1UL813H5aj3e8ekE5RqWqc"
+      ],
+      "sinais": {
+        "ouvintes": 573614,
+        "inicio": 2009,
+        "selo": 1,
+        "pioneiro": 1
+      }
+    },
+    {
+      "slug": "calvin-harris",
+      "nome": "Calvin Harris",
+      "pais": "gb-sct",
+      "paisNome": "Escócia",
+      "genero": "Dance / House",
+      "tag": "EDM",
+      "bpm": "126–130",
+      "rank": "DJ MAG #11",
+      "pos": "center 25%",
+      "texto": "Escocês de Dumfries com hits globais como Feel So Close e estreia no Tomorrowland 2026.",
+      "faixa": "Feel So Close",
+      "foto": "/assets/album/fotos/calvin-harris.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 01 - Calvin Harris.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://billboard.com.br/tomorrowland-2026-line-up-completo/",
+        "https://djmag.com/news/tomorrowland-2026-line-announced"
+      ],
+      "sinais": {
+        "djmag": 11,
+        "ouvintes": 73981881,
+        "inicio": 2007,
+        "festivais": 1,
+        "hino": 1,
+        "grammy": "indicacao"
+      }
+    },
+    {
+      "slug": "peggy-gou",
+      "nome": "Peggy Gou",
+      "pais": "kr",
+      "paisNome": "Coreia do Sul",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "DJ MAG #13",
+      "pos": "center 25%",
+      "texto": "DJ e produtora de Seul, dona do hit (It Goes Like) Nanana e do selo Gudu Records.",
+      "faixa": "(It Goes Like) Nanana",
+      "foto": "/assets/album/fotos/peggy-gou.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 02 - Peggy Gou.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://press.insomniac.com/blog/edc-las-vegas-2026-drops-200-artist-lineup-for-30th-anniversary-this-may"
+      ],
+      "sinais": {
+        "djmag": 13,
+        "ouvintes": 6031807,
+        "festivais": 1,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "mahmut-orhan",
+      "nome": "Mahmut Orhan",
+      "pais": "tr",
+      "paisNome": "Turquia",
+      "genero": "Deep House",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "DJ MAG #42",
+      "pos": "center 25%",
+      "texto": "Produtor turco de Bursa, conhecido pelo hit Feel, com centenas de milhões de plays.",
+      "faixa": "Feel",
+      "foto": "/assets/album/fotos/mahmut-orhan.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 06 - Mahmut Orhan.png)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/mahmut-orhan/3t8WiyalpvnB9AObcMufiE",
+        "https://festapp.io/festivals/tomorrowland/2025"
+      ],
+      "sinais": {
+        "djmag": 42,
+        "ouvintes": 2000000,
+        "festivais": 1,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "kolsch",
+      "nome": "Kölsch",
+      "pais": "dk",
+      "paisNome": "Dinamarca",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "122–128",
+      "rank": "DJ MAG #65",
+      "pos": "center 25%",
+      "texto": "Dinamarquês de Copenhague, nome de peso do techno melódico e do selo Kompakt.",
+      "faixa": "All That Matters",
+      "foto": "/assets/album/fotos/kolsch.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 07 - Kölsch.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/kolsch/2D9Oe8R9UhbMvFAsMJpXj0",
+        "https://festapp.io/festivals/tomorrowland/2025",
+        "https://www.lavenir.net/culture/musique/2026/01/22/calvin-harris-enfin-a-tomorrowland-david-guetta-et-martin-garrix-aussi-de-la-partie-en-2026-tout-ce-quil-faut-savoir-sur-laffiche-et-les-billets-326O7WDLWVGONIIUNNEXVENO7E/"
+      ],
+      "sinais": {
+        "djmag": 65,
+        "ouvintes": 972186,
+        "festivais": 2
+      }
+    },
+    {
+      "slug": "padre-guilherme",
+      "nome": "Padre Guilherme",
+      "pais": "pt",
+      "paisNome": "Portugal",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "128–135",
+      "rank": "DJ MAG #79",
+      "pos": "center 25%",
+      "texto": "Padre português que toca techno e reuniu mais de 1 milhão de peregrinos na JMJ de Lisboa.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/padre-guilherme.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 09 - Padre Guilherme.jpg)",
+      "fontes": [
+        "https://www.tupi.fm/?p=1978782",
+        "https://rfm.pt/content/15946/esta-foi-a-setlist-com-que-o-dj-padre-guilherme-acordou-mais-de-1-milhao-de-peregrinos"
+      ],
+      "sinais": {
+        "djmag": 79,
+        "ouvintes": 53000
+      }
+    },
+    {
+      "slug": "yousuke-yukimatsu",
+      "nome": "¥ØU$UK€ ¥UK1MAT$U",
+      "pais": "jp",
+      "paisNome": "Japão",
+      "genero": "Hard Techno",
+      "tag": "TECHNO",
+      "bpm": "150–160",
+      "rank": "DJ MAG #95",
+      "pos": "center 25%",
+      "texto": "Produtor japonês de hard techno, um dos nomes da nova onda de techno pesado.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/yousuke-yukimatsu.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 10 - ¥ØU$UK€ ¥UK1MAT$U.jpg)",
+      "fontes": [],
+      "sinais": {
+        "djmag": 95,
+        "bpm": 155
+      }
+    },
+    {
+      "slug": "barry-cant-swim",
+      "nome": "Barry Can't Swim",
+      "pais": "gb-sct",
+      "paisNome": "Escócia",
+      "genero": "Electronic / House",
+      "tag": "HOUSE",
+      "bpm": "118–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Joshua Mainnie, de Edimburgo, mistura house, jazz e eletrônica com o hit How It Feels.",
+      "faixa": "How It Feels",
+      "foto": "/assets/album/fotos/barry-cant-swim.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 13 - Barry Can't Swim.jpg)",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/barry-cant-swim/0vTVU0KH0CVzijsoKGsTPl"
+      ],
+      "sinais": {
+        "ouvintes": 4240000
+      }
+    },
+    {
+      "slug": "dubfire",
+      "nome": "Dubfire",
+      "pais": "ir",
+      "paisNome": "Irã",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "124–130",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Iraniano criado nos EUA, metade do Deep Dish e fundador do selo Sci+Tec.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/dubfire.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 15 - Dubfire.jpg)",
+      "fontes": [
+        "https://allevents.in/performer/dubfire",
+        "https://last.fm/music/Dubfire/_/Fuego+-+Julian+Jeweil+Remix"
+      ],
+      "sinais": {
+        "ouvintes": 165700,
+        "inicio": 1991,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "hernan-cattaneo",
+      "nome": "Hernán Cattáneo",
+      "pais": "ar",
+      "paisNome": "Argentina",
+      "genero": "Progressive House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Referência argentina do progressive house, dono do selo Sudbeat.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/hernan-cattaneo.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 18 - Hernán Cattáneo.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/4mpJaw5y17CIN08qqe8EfB"
+      ],
+      "sinais": {
+        "ouvintes": 254000,
+        "selo": 1,
+        "pioneiro": 1
+      }
+    },
+    {
+      "slug": "kygo",
+      "nome": "Kygo",
+      "pais": "no",
+      "paisNome": "Noruega",
+      "genero": "Tropical House",
+      "tag": "HOUSE",
+      "bpm": "100–110",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Norueguês que popularizou o tropical house e criou o Palm Tree Music Festival.",
+      "faixa": "Firestone",
+      "foto": "/assets/album/fotos/kygo.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 20 - Kygo.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://en.wikipedia.org/wiki/Kygo",
+        "https://festivalviewer.com/tomorrowland/lineup/2025"
+      ],
+      "sinais": {
+        "ouvintes": 26644139,
+        "inicio": 2013,
+        "festivais": 1,
+        "hino": 1,
+        "selo": 1,
+        "pioneiro": 1
+      }
+    },
+    {
+      "slug": "nicole-moudaber",
+      "nome": "Nicole Moudaber",
+      "pais": "lb",
+      "paisNome": "Líbano",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "128–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Libanesa do techno, fundadora do selo e da festa MOOD.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/nicole-moudaber.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 21 - Nicole Moudaber.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/7ixDtqtITfqx5lZQGh5gKe",
+        "https://en.wikipedia.org/wiki/Nicole_Moudaber"
+      ],
+      "sinais": {
+        "ouvintes": 299200,
+        "inicio": 2008,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "nina-kraviz",
+      "nome": "Nina Kraviz",
+      "pais": "ru",
+      "paisNome": "Rússia",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "125–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Russa do techno, fundadora do selo трип e presença fixa nos grandes palcos.",
+      "faixa": "Ghetto Kraviz",
+      "foto": "/assets/album/fotos/nina-kraviz.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 22 - Nina Kraviz.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/1oZmFNkGAT93yD1xX4vTRE",
+        "https://en.wikipedia.org/wiki/Nina_Kraviz",
+        "https://www.skiddle.com/news/all/Creamfields-reveals-full-lineup-day-splits-for-2026/61362/",
+        "https://djmag.com/news/awakenings-festival-2025-full-line-announced",
+        "https://djmag.com/news/time-warp-announces-line-2025-mannheim-event"
+      ],
+      "sinais": {
+        "ouvintes": 283700,
+        "inicio": 2008,
+        "festivais": 3,
+        "selo": 1,
+        "boilerCercle": 1
+      }
+    },
+    {
+      "slug": "overmono",
+      "nome": "Overmono",
+      "pais": "gb-wls",
+      "paisNome": "País de Gales",
+      "genero": "Breaks / Techno",
+      "tag": "BREAKS",
+      "bpm": "130–140",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla galesa dos irmãos Russell, do breaks ao techno, com o álbum Good Lies.",
+      "faixa": "Is U",
+      "foto": "/assets/album/fotos/overmono.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 23 - Overmono.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/01PnN11ovfen6xUOHfNpn3",
+        "https://en.wikipedia.org/wiki/Overmono",
+        "https://festivalviewer.com/lollapalooza/lineup/2025"
+      ],
+      "sinais": {
+        "ouvintes": 1100000,
+        "inicio": 2015,
+        "festivais": 1
+      }
+    },
+    {
+      "slug": "ricardo-villalobos",
+      "nome": "Ricardo Villalobos",
+      "pais": "cl",
+      "paisNome": "Chile",
+      "genero": "Minimal",
+      "tag": "TECHNO",
+      "bpm": "120–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Chileno radicado em Berlim, nome central do minimal e do microhouse.",
+      "faixa": "Fizheuer Zieheuer",
+      "foto": "/assets/album/fotos/ricardo-villalobos.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 24 - Ricardo Villalobos.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/0s2YIpNnjdf0FY4tNrF8Y4",
+        "https://en.wikipedia.org/wiki/Ricardo_Villalobos",
+        "https://djmag.com/news/time-warp-announces-line-2025-mannheim-event"
+      ],
+      "sinais": {
+        "ouvintes": 109800,
+        "inicio": 1993,
+        "festivais": 1,
+        "pioneiro": 1,
+        "boilerCercle": 1
+      }
+    },
+    {
+      "slug": "yotto",
+      "nome": "Yotto",
+      "pais": "fi",
+      "paisNome": "Finlândia",
+      "genero": "Progressive House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Finlandês do progressive house, fundador do selo Odd One Out.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/yotto.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (RDM 26 - Yotto.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/5Dyfxq0ZrFjjeFBdSNxDbo",
+        "https://festivalviewer.com/tomorrowlandbrasil/lineup/2025"
+      ],
+      "sinais": {
+        "ouvintes": 1300000,
+        "festivais": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "swedish-house-mafia",
+      "nome": "Swedish House Mafia",
+      "pais": "se",
+      "paisNome": "Suécia",
+      "genero": "Progressive House",
+      "tag": "HOUSE",
+      "bpm": "124–130",
+      "rank": "DJ MAG #34",
+      "pos": "center 25%",
+      "texto": "Trio de Axwell, Angello e Ingrosso, com o hino Don't You Worry Child.",
+      "faixa": "Don't You Worry Child",
+      "foto": "/assets/album/fotos/swedish-house-mafia.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (SUE-01_Swedish-House-Mafia.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://en.wikipedia.org/wiki/Swedish_House_Mafia",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://www.skiddle.com/news/all/Creamfields-reveals-full-lineup-day-splits-for-2026/61362/"
+      ],
+      "sinais": {
+        "djmag": 34,
+        "ouvintes": 27463859,
+        "inicio": 2008,
+        "festivais": 2,
+        "headlines": 2,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "alesso",
+      "nome": "Alesso",
+      "pais": "se",
+      "paisNome": "Suécia",
+      "genero": "Progressive House",
+      "tag": "EDM",
+      "bpm": "124–130",
+      "rank": "DJ MAG #56",
+      "pos": "center 25%",
+      "texto": "Sueco do big room melódico, de Heroes a palcos principais no Ultra e Tomorrowland.",
+      "faixa": "Heroes (we could be)",
+      "foto": "/assets/album/fotos/alesso.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (SUE-02_Alesso.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://en.wikipedia.org/wiki/Alesso",
+        "https://festivalviewer.com/tomorrowland/lineup/2026",
+        "https://djmag.com/news/ultra-miami-2025-full-line-announced",
+        "https://electronicgroove.com/ultra-resistance-announces-2026-miami-lineup/",
+        "https://djmag.com/news/edc-las-vegas-2025-full-line-announced",
+        "https://festivalviewer.com/coachella/lineup/2025",
+        "https://festivalviewer.com/tomorrowlandbrasil/lineup/2025"
+      ],
+      "sinais": {
+        "djmag": 56,
+        "ouvintes": 16632894,
+        "inicio": 2010,
+        "festivais": 6,
+        "headlines": 2,
+        "hino": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "eric-prydz",
+      "nome": "Eric Prydz",
+      "pais": "se",
+      "paisNome": "Suécia",
+      "genero": "Progressive House",
+      "tag": "HOUSE",
+      "bpm": "124–130",
+      "rank": "DJ MAG #62",
+      "pos": "center 25%",
+      "texto": "Sueco do show audiovisual EPIC, criador de Call on Me e Pryda.",
+      "faixa": "Call on Me",
+      "foto": "/assets/album/fotos/eric-prydz.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (SUE-03_Eric-Prydz.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/5sm0jQ1mq0dusiLtDJ2b4R",
+        "https://en.wikipedia.org/wiki/Eric_Prydz",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://electronicgroove.com/ultra-resistance-announces-2026-miami-lineup/",
+        "https://djmag.com/news/edc-las-vegas-2025-full-line-announced",
+        "https://www.skiddle.com/news/all/Creamfields-reveals-full-lineup-day-splits-for-2026/61362/"
+      ],
+      "sinais": {
+        "djmag": 62,
+        "ouvintes": 8230000,
+        "inicio": 2001,
+        "festivais": 4,
+        "headlines": 2,
+        "hino": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "adam-beyer",
+      "nome": "Adam Beyer",
+      "pais": "se",
+      "paisNome": "Suécia",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "128–138",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Sueco do techno, fundador do selo e da festa Drumcode.",
+      "faixa": "Teach Me",
+      "foto": "/assets/album/fotos/adam-beyer.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (SUE-04_Adam-Beyer.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/1btv9qmIpbp7q1ixCYNdHu",
+        "https://en.wikipedia.org/wiki/Adam_Beyer",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://djmag.com/news/ultra-miami-2025-full-line-announced",
+        "https://electronicgroove.com/ultra-resistance-announces-2026-miami-lineup/",
+        "https://festivalviewer.com/coachella/lineup/2026",
+        "https://djmag.com/news/awakenings-festival-2025-full-line-announced",
+        "https://djmag.com/news/time-warp-announces-line-2025-mannheim-event"
+      ],
+      "sinais": {
+        "ouvintes": 1400000,
+        "inicio": 1993,
+        "festivais": 7,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "dj-seinfeld",
+      "nome": "DJ Seinfeld",
+      "pais": "se",
+      "paisNome": "Suécia",
+      "genero": "Lo-fi House",
+      "tag": "HOUSE",
+      "bpm": "115–125",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Sueco de Malmö, ícone do lo-fi house, dono do selo Young Ethics.",
+      "faixa": "U Already Know",
+      "foto": "/assets/album/fotos/dj-seinfeld.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (SUE-05_DJ-Seinfeld.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/37YzpfBeFju8QRZ3g0Ha1Q",
+        "https://en.wikipedia.org/wiki/DJ_Seinfeld",
+        "https://festivalviewer.com/tomorrowland/lineup/2026"
+      ],
+      "sinais": {
+        "ouvintes": 915700,
+        "festivais": 1,
+        "selo": 1,
+        "pioneiro": 1
+      }
+    },
+    {
+      "slug": "lilly-palmer",
+      "nome": "Lilly Palmer",
+      "pais": "ch",
+      "paisNome": "Suíça",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "130–140",
+      "rank": "DJ MAG #49",
+      "pos": "center 25%",
+      "texto": "Suíça do techno enérgico, uma das revelações do gênero desde 2020.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/lilly-palmer.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (SUI-01_Lilly-Palmer.png)",
+      "fontes": [
+        "https://open.spotify.com/artist/4h8IEOdrg60WM5XGyNOCVU",
+        "https://en.wikipedia.org/wiki/Lilly_Palmer",
+        "https://www.skiddle.com/news/all/Creamfields-reveals-full-lineup-day-splits-for-2026/61362/"
+      ],
+      "sinais": {
+        "djmag": 49,
+        "ouvintes": 904100,
+        "inicio": 2020,
+        "festivais": 1
+      }
+    },
+    {
+      "slug": "nora-en-pure",
+      "nome": "Nora En Pure",
+      "pais": "ch",
+      "paisNome": "Suíça",
+      "genero": "Deep House",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "DJ MAG #73",
+      "pos": "center 25%",
+      "texto": "Sul-africana radicada na Suíça, fundadora do selo Purified e de Saltwater.",
+      "faixa": "Saltwater",
+      "foto": "/assets/album/fotos/nora-en-pure.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (SUI-02_Nora-En-Pure.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/24DO0PijjITGIEWsO8XaPs",
+        "https://en.wikipedia.org/wiki/Nora_En_Pure",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://djmag.com/news/edc-las-vegas-2025-full-line-announced"
+      ],
+      "sinais": {
+        "djmag": 73,
+        "ouvintes": 1500000,
+        "inicio": 2001,
+        "festivais": 2,
+        "hino": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "adriatique",
+      "nome": "Adriatique",
+      "pais": "ch",
+      "paisNome": "Suíça",
+      "genero": "Melodic House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla suíça de Adrian Schweizer e Adrian Haldner, donos do selo Siamese.",
+      "faixa": "Rolling Stone",
+      "foto": "/assets/album/fotos/adriatique.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (SUI-03_Adriatique.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/02DWGcShQivFepRvGJ7xhB",
+        "https://en.wikipedia.org/wiki/Adriatique",
+        "https://electronicgroove.com/ultra-resistance-announces-2026-miami-lineup/",
+        "https://festivalviewer.com/coachella/lineup/2026"
+      ],
+      "sinais": {
+        "ouvintes": 3800000,
+        "inicio": 2009,
+        "festivais": 2,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "korolova",
+      "nome": "Korolova",
+      "pais": "ua",
+      "paisNome": "Ucrânia",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "122–128",
+      "rank": "DJ MAG #36",
+      "pos": "center 25%",
+      "texto": "Ucraniana de Chernihiv, nome em alta do melodic techno com palcos no Tomorrowland.",
+      "faixa": "Gravity",
+      "foto": "/assets/album/fotos/korolova.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (UCR-01_Korolova.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/0I6oCyQQ1Q50q97y9B9gAx",
+        "https://en.wikipedia.org/wiki/Korolova_(DJ)",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://festivalviewer.com/tomorrowland/lineup/2026",
+        "https://electronicgroove.com/ultra-resistance-announces-2026-miami-lineup/"
+      ],
+      "sinais": {
+        "djmag": 36,
+        "ouvintes": 1300000,
+        "inicio": 2012,
+        "festivais": 2
+      }
+    },
+    {
+      "slug": "miss-monique",
+      "nome": "Miss Monique",
+      "pais": "ua",
+      "paisNome": "Ucrânia",
+      "genero": "Progressive House",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "DJ MAG #61",
+      "pos": "center 25%",
+      "texto": "Ucraniana do progressive, fundadora do selo Siona e do show Biorythm.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/miss-monique.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (UCR-02_Miss-Monique.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/29TpNOsTNYbLb6Xa10H0PR",
+        "https://en.wikipedia.org/wiki/Miss_Monique",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://festivalviewer.com/tomorrowland/lineup/2026",
+        "https://electronicgroove.com/ultra-resistance-announces-2026-miami-lineup/",
+        "https://djmag.com/news/edc-las-vegas-2025-full-line-announced",
+        "https://festivalviewer.com/creamfields/lineup/2025",
+        "https://festivalviewer.com/tomorrowlandbrasil/lineup/2025"
+      ],
+      "sinais": {
+        "djmag": 61,
+        "ouvintes": 1100000,
+        "inicio": 2014,
+        "festivais": 5,
+        "selo": 1,
+        "boilerCercle": 1
+      }
+    },
+    {
+      "slug": "artbat",
+      "nome": "ARTBAT",
+      "pais": "ua",
+      "paisNome": "Ucrânia",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "120–126",
+      "rank": "DJ MAG #70",
+      "pos": "center 25%",
+      "texto": "Dupla ucraniana de Artem e Valentyn Stepanov, donos do selo Upperground.",
+      "faixa": "",
+      "foto": "/assets/album/fotos/artbat.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (UCR-03_ARTBAT.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/3BkRu2TGd2I1uBxZKddfg1",
+        "https://en.wikipedia.org/wiki/Artbat",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://festivalviewer.com/tomorrowland/lineup/2026",
+        "https://electronicgroove.com/ultra-resistance-announces-2026-miami-lineup/",
+        "https://djmag.com/news/edc-las-vegas-2025-full-line-announced"
+      ],
+      "sinais": {
+        "djmag": 70,
+        "ouvintes": 4900000,
+        "inicio": 2014,
+        "festivais": 3,
+        "headlines": 2,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "r3hab",
+      "nome": "R3hab",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "EDM",
+      "tag": "EDM",
+      "bpm": "126–130",
+      "rank": "DJ MAG #45",
+      "pos": "center 25%",
+      "texto": "Holandês de Volendam, dono do selo CYB3R e de remixes e parcerias com nomes do pop.",
+      "faixa": "Prayer in C",
+      "foto": "/assets/album/fotos/r3hab.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (HOL-11_R3hab.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://festapp.io/festivals/tomorrowland/2025"
+      ],
+      "sinais": {
+        "djmag": 45,
+        "ouvintes": 10801267,
+        "inicio": 2008,
+        "festivais": 1,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "disclosure",
+      "nome": "Disclosure",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "House / UK Garage",
+      "tag": "HOUSE",
+      "bpm": "122–130",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla dos irmãos Lawrence, de Surrey, com o álbum Settle indicado ao Grammy.",
+      "faixa": "Latch",
+      "foto": "/assets/album/fotos/disclosure.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-16_Disclosure.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/6nS5roXSAGhTGr34W6n7Et",
+        "https://www.timeout.com/uk/news/creamfields-has-revealed-its-huge-lineup-for-2026-with-calvin-harris-swedish-house-mafia-disclosure-and-more-022726"
+      ],
+      "sinais": {
+        "ouvintes": 21400000,
+        "inicio": 2010,
+        "festivais": 1,
+        "headlines": 1,
+        "hino": 1,
+        "grammy": "indicacao",
+        "boilerCercle": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "four-tet",
+      "nome": "Four Tet",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Electronic",
+      "tag": "ELECTRONIC",
+      "bpm": "118–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Kieran Hebden, produtor londrino, dono do selo Text e do festival All Dayer.",
+      "faixa": "Love Cry",
+      "foto": "/assets/album/fotos/four-tet.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-18_Four-Tet.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/7Eu1txygG6nJttLHbZdQOh",
+        "https://en.wikipedia.org/wiki/Four_Tet",
+        "https://www.livetracklist.com/show/bbc-radio-1-essential-mix"
+      ],
+      "sinais": {
+        "ouvintes": 3000000,
+        "inicio": 1995,
+        "selo": 1,
+        "essential": 1,
+        "boilerCercle": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "gorgon-city",
+      "nome": "Gorgon City",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla de house de Londres, dona do selo Realm, com hits no topo das paradas do Reino Unido.",
+      "faixa": "Ready for Your Love",
+      "foto": "/assets/album/fotos/gorgon-city.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-19_Gorgon-City.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/4VNQWV2y1E97Eqo2D5UTjx",
+        "https://www.festivaly.eu/cs/album/sidewindah/526460",
+        "https://en.wikipedia.org/wiki/Gorgon_City"
+      ],
+      "sinais": {
+        "ouvintes": 2800000,
+        "inicio": 2012,
+        "festivais": 1,
+        "hino": 1,
+        "selo": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "hot-since-82",
+      "nome": "Hot Since 82",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Deep / Tech House",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Daley Padley, de Leeds, fundador do selo Knee Deep In Sound e presença fixa em Ibiza.",
+      "faixa": "Buddy",
+      "foto": "/assets/album/fotos/hot-since-82.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-20_Hot-Since-82.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/1tRBmMtER4fGrzrt8O9VpS",
+        "https://en.wikipedia.org/wiki/Hot_Since_82",
+        "https://www.livetracklist.com/show/bbc-radio-1-essential-mix"
+      ],
+      "sinais": {
+        "ouvintes": 712000,
+        "inicio": 2011,
+        "selo": 1,
+        "essential": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "interplanetary-criminal",
+      "nome": "Interplanetary Criminal",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "UK Garage",
+      "tag": "GARAGE",
+      "bpm": "128–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor de Cambridge que levou o UK garage a palcos de festivais pelo mundo.",
+      "faixa": "Superstylin",
+      "foto": "/assets/album/fotos/interplanetary-criminal.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-21_Interplanetary-Criminal.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/6uJ51uV5rYzu1MJkC4CceI",
+        "https://en.wikipedia.org/wiki/Interplanetary_Criminal"
+      ],
+      "sinais": {
+        "ouvintes": 4100000,
+        "inicio": 2012,
+        "bpm": 132
+      }
+    },
+    {
+      "slug": "jamie-xx",
+      "nome": "Jamie xx",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Electronic / House",
+      "tag": "ELECTRONIC",
+      "bpm": "110–125",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor do The xx e artista solo, autor do álbum In Colour, vencedor do Prêmio Mercury.",
+      "faixa": "Loud Places",
+      "foto": "/assets/album/fotos/jamie-xx.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-22_Jamie-xx.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/7A0awCXkE1FtSU8B0qwOJQ",
+        "https://en.wikipedia.org/wiki/Jamie_xx"
+      ],
+      "sinais": {
+        "ouvintes": 2500000,
+        "inicio": 2006,
+        "boilerCercle": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "joshwa",
+      "nome": "Joshwa",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech House",
+      "tag": "TECH HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ e produtor britânico de tech house, nome em ascensão nos festivais dos EUA e da Europa.",
+      "faixa": "Lost in Music",
+      "foto": "/assets/album/fotos/joshwa.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-23_Joshwa.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/1PzAgFVk9v8cxn9flrqrv5",
+        "https://www.frontstagefestivals.com/artist/joshwa"
+      ],
+      "sinais": {
+        "ouvintes": 1500000,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "massano",
+      "nome": "Massano",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "120–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ de Liverpool, dono do selo Simulate, com Essential Mix e o álbum de estreia Natural.",
+      "faixa": "The Feeling",
+      "foto": "/assets/album/fotos/massano.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-24_Massano.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/6htWLP8aiuf19FYMA4VQAZ",
+        "https://www.beatportal.com/articles/916287-beatportal-exclusive-massano-natural-a-debut-album-built-on-instinct-chaos-and-connection"
+      ],
+      "sinais": {
+        "ouvintes": 1100000,
+        "selo": 1,
+        "essential": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "max-dean",
+      "nome": "Max Dean",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech House",
+      "tag": "TECH HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ de Londres, dono do selo neXup, com hits no Top 40 britânico e passagem pelo Coachella.",
+      "faixa": "Can't Decide",
+      "foto": "/assets/album/fotos/max-dean.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-25_Max-Dean.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/65TLDWbTJxYASqadmNAxvc",
+        "https://www.yorkshireeveningpost.co.uk/whats-on/arts-and-entertainment/mint-festival-2026-lineup-5437685",
+        "https://djmag.com/features/max-dean-family-affair"
+      ],
+      "sinais": {
+        "ouvintes": 2500000,
+        "selo": 1,
+        "festivais": 1,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "nia-archives",
+      "nome": "Nia Archives",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Jungle / DnB",
+      "tag": "JUNGLE",
+      "bpm": "160–174",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Cantora e produtora de Leeds que trouxe o jungle de volta às paradas britânicas.",
+      "faixa": "Off Wiv Ya Headz",
+      "foto": "/assets/album/fotos/nia-archives.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-26_Nia-Archives.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/7BMR0fwtEvzGtK4rNGdoiQ",
+        "https://en.wikipedia.org/wiki/Nia_Archives"
+      ],
+      "sinais": {
+        "ouvintes": 1300000,
+        "inicio": 2020,
+        "bpm": 170
+      }
+    },
+    {
+      "slug": "palms-trax",
+      "nome": "Palms Trax",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "House / Disco",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Jay Donaldson, britânico radicado em Berlim, com Essential Mix da BBC Radio 1 em 2018.",
+      "faixa": "Equation",
+      "foto": "/assets/album/fotos/palms-trax.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-27_Palms-Trax.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/52XSRQqTAfZ8ZrIqkQvQyA",
+        "https://djmag.com/news/palms-trax-drops-sizzling-essential-mix-listen"
+      ],
+      "sinais": {
+        "ouvintes": 94700,
+        "inicio": 2013,
+        "essential": 1,
+        "bpm": 120
+      }
+    },
+    {
+      "slug": "patrick-topping",
+      "nome": "Patrick Topping",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech House",
+      "tag": "TECH HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ de Newcastle, dono do selo Trick e residente de longa data em Ibiza.",
+      "faixa": "Forget",
+      "foto": "/assets/album/fotos/patrick-topping.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-28_Patrick-Topping.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/7yRimuQSC5Ks3T2Ts0iyZa",
+        "https://en.wikipedia.org/wiki/Patrick_Topping",
+        "https://www.livetracklist.com/show/bbc-radio-1-essential-mix"
+      ],
+      "sinais": {
+        "ouvintes": 591900,
+        "inicio": 2012,
+        "selo": 1,
+        "essential": 1,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "paula-temple",
+      "nome": "Paula Temple",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Industrial Techno",
+      "tag": "TECHNO",
+      "bpm": "135–145",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtora de Manchester, dona do selo Noise Manifesto e voz do techno industrial.",
+      "faixa": "Deathvox",
+      "foto": "/assets/album/fotos/paula-temple.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-29_Paula-Temple.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/4iy2RFU8gIpXF5yaK0l8ZT",
+        "https://en.wikipedia.org/wiki/Paula_Temple"
+      ],
+      "sinais": {
+        "ouvintes": 29500,
+        "inicio": 2002,
+        "selo": 1,
+        "bpm": 140
+      }
+    },
+    {
+      "slug": "sammy-virji",
+      "nome": "Sammy Virji",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "UK Garage",
+      "tag": "GARAGE",
+      "bpm": "130–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor de Hampshire que levou o UK garage ao topo do cartaz do Parklife 2026.",
+      "faixa": "Shed My Skin",
+      "foto": "/assets/album/fotos/sammy-virji.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-30_Sammy-Virji.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/1GuqTQbuixFHD6eBkFwVcb",
+        "https://www.efestivals.co.uk/news/26/parklife-festival-announces-lineup-for-2026.shtml"
+      ],
+      "sinais": {
+        "ouvintes": 4700000,
+        "inicio": 2015,
+        "headlines": 1,
+        "bpm": 132
+      }
+    },
+    {
+      "slug": "skream",
+      "nome": "Skream",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "House / Dubstep",
+      "tag": "DUBSTEP",
+      "bpm": "130–140",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Pioneiro do dubstep em Croydon, dono do selo Disfigured Dubz, hoje também no house.",
+      "faixa": "Midnight Request Line",
+      "foto": "/assets/album/fotos/skream.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ING-31_Skream.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/2jbP92oFLWqPqogflK1wlW",
+        "https://en.wikipedia.org/wiki/Skream"
+      ],
+      "sinais": {
+        "ouvintes": 617600,
+        "inicio": 2002,
+        "hino": 1,
+        "selo": 1,
+        "pioneiro": 1,
+        "bpm": 130
+      }
+    },
+    {
+      "slug": "anyma",
+      "nome": "Anyma",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "120–128",
+      "rank": "DJ MAG #3",
+      "pos": "center 25%",
+      "texto": "Projeto solo de Matteo Milleri, do Tale of Us, headliner do Coachella 2026 com o show Æden.",
+      "faixa": "Consciousness",
+      "foto": "/assets/album/fotos/anyma.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-01_Anyma.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/4iBwchw0U0GZv5RfVYSMxN",
+        "https://www.edmtunes.com/2025/09/anyma-sabrina-carpenter-justin-bieber-karol-g-headlining-coachella-2026/",
+        "https://en.wikipedia.org/wiki/Anyma"
+      ],
+      "sinais": {
+        "djmag": 3,
+        "ouvintes": 6700000,
+        "inicio": 2011,
+        "festivais": 3,
+        "headlines": 2,
+        "selo": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "joseph-capriati",
+      "nome": "Joseph Capriati",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "128–135",
+      "rank": "DJ MAG #68",
+      "pos": "center 25%",
+      "texto": "Napolitano do techno, dono do selo Metamorfosi e dos 20 anos de estrada em 2026.",
+      "faixa": "Save My Soul",
+      "foto": "/assets/album/fotos/joseph-capriati.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ITA-02_Joseph-Capriati.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/7onsqSWPufMm5ZnUCECDpf",
+        "https://weraveyou.com/2026/08/joseph-capriati-20-years-touring-naples-anniversary-ex-base-nato-september-27/"
+      ],
+      "sinais": {
+        "djmag": 68,
+        "ouvintes": 487400,
+        "inicio": 2006,
+        "selo": 1,
+        "bpm": 132
+      }
     }
   ]
 }

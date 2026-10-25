@@ -23,7 +23,7 @@
         </div>
         <div class="djc-type"><b>[ DJ / ${esc(c.genero)} ]</b><span>${esc(c.num)}</span></div>
         <div class="djc-stats">${Object.entries(c.attrs).map(([k, v]) => `<div class="djc-stat${v === maxv ? " top" : ""}"><b>${v}</b><span>${k}</span></div>`).join("")}</div>
-        <div class="djc-flavor"><p>${esc(c.texto)}</p><small>♪ ${esc(c.faixa)}</small></div>
+        <div class="djc-flavor"><p>${esc(c.texto)}</p>${c.faixa ? `<small>♪ ${esc(c.faixa)}</small>` : ""}</div>
         <div class="djc-foot"><b>★ ${c.rar}</b><span>Brazilian Bayle · 2026</span></div>
       </div><div class="djc-foil"></div><div class="djc-glare"></div></div>
       <div class="djc-face djc-back"><img src="/assets/album/verso.webp" alt="Verso: Bayle All Stars Album"><div class="djc-glare"></div></div>
