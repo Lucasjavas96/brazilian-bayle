@@ -14,7 +14,6 @@ const YEAR = 2026;
 
 const NAV = [
   ["ranking", "/ranking", "Brasileirão dos DJs"],
-  ["votar", "/ranking#votar", "Avaliar DJs"],
   ["djpedia", "/djpedia", "DJ Pédia"],
   ["album", "/album", "Bayle All Stars Album"],
   ["curitiba", "/curitiba", "Bayle Curitibano"],
