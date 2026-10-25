@@ -40,6 +40,7 @@ const ORG = {
 };
 
 function layout(meta, body) {
+  if (meta.nav === 'links') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Links oficiais · Brazilian Bayle</title><meta name="description" content="${esc(meta.description)}"><link rel="canonical" href="${SITE}/links"><meta name="theme-color" content="#080908"><meta property="og:type" content="website"><meta property="og:title" content="Brazilian Bayle · Links oficiais"><meta property="og:description" content="${esc(meta.description)}"><meta property="og:url" content="${SITE}/links"><meta property="og:image" content="${SITE}/assets/og-brazilian-v3.jpg"><link rel="icon" href="/assets/brand-icon-32.png"><link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/hero-dj-poster-800.webp" as="image"><link rel="stylesheet" href="/styles.css"></head><body class="page-links"><a class="skip" href="#conteudo">Pular para os links</a>${body.trim()}<script src="/media-guard.js" defer></script></body></html>`;
   const url = SITE + (meta.path === "/" ? "/" : meta.path);
   const title = meta.path === "/" ? meta.title : `${meta.title} · Brazilian Bayle`;
   const jsonld = [ORG, ...(meta.jsonld || [])].map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n");
