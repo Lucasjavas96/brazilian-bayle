@@ -10,39 +10,37 @@
 
   /* ---------- carta grande (frente estilo FIFA por raridade, verso com a arte do álbum) ---------- */
   function bigCard(c) {
-    const top = Object.entries(c.attrs).reduce((a, b) => b[1] > a[1] ? b : a)[0];
+    const maxv = Math.max(...Object.values(c.attrs));
     const stars = Math.max(1, Math.min(10, Math.round((c.ovr - 70) / 3)));
     return `<div class="djc ${c.cls}" tabindex="0" aria-label="${esc(c.nome)}, overall ${c.ovr}, figurinha ${c.rar}">
       <div class="djc-face djc-front"><div class="djc-inner">
-        <img class="djc-photo" src="${c.foto}" alt="${esc(c.nome)}" style="object-position:${c.pos};${c.zoom ? `transform:${c.zoom};transform-origin:${c.origin}` : ""}">
-        <div class="djc-shade"></div>
-        <div class="djc-ovr"><strong>${c.ovr}</strong><span>${esc(c.tag)}</span><img src="${flag(c.flag)}" alt="${esc(c.paisNome)}"></div>
-        <div class="djc-corner"><div class="djc-rank">${esc(c.rank)}</div><div class="djc-stars">${"<i></i>".repeat(stars)}</div></div>
-        <div class="djc-info">
-          <h3>${esc(c.nome)}</h3>
-          <div class="djc-type"><b>DJ · ${esc(c.genero)} · ${esc(c.bpm)} BPM</b><span>${esc(c.num)}</span></div>
-          <div class="djc-stats">${Object.entries(c.attrs).map(([k, v]) => `<div class="djc-stat${k === top ? " top" : ""}"><b>${v}</b><span>${k}</span><i style="--p:${Math.round((v - 60) / 39 * 100)}%"></i></div>`).join("")}</div>
-          <p class="djc-flavor">${esc(c.texto)}</p>
-          <div class="djc-foot"><b>♪ ${esc(c.faixa)}</b><span>★ ${c.rar}</span></div>
+        <div class="djc-name"><h3>${esc(c.nome)}</h3><div class="djc-orb" title="${esc(c.paisNome)}"><img src="${flag(c.flag)}" alt="${esc(c.paisNome)}"></div></div>
+        <div class="djc-stars">${"<i></i>".repeat(stars)}</div>
+        <div class="djc-art">
+          <img src="${c.foto}" alt="${esc(c.nome)}" style="object-position:${c.pos};${c.zoom ? `transform:${c.zoom};transform-origin:${c.origin}` : ""}">
+          <div class="djc-ovr"><strong>${c.ovr}</strong><span>${esc(c.tag)}</span><em></em><small>${esc(c.bpm)}<br>BPM</small></div>
+          <div class="djc-rank">${esc(c.rank)}</div>
         </div>
+        <div class="djc-type"><b>[ DJ / ${esc(c.genero)} ]</b><span>${esc(c.num)}</span></div>
+        <div class="djc-stats">${Object.entries(c.attrs).map(([k, v]) => `<div class="djc-stat${v === maxv ? " top" : ""}"><b>${v}</b><span>${k}</span></div>`).join("")}</div>
+        <div class="djc-flavor"><p>${esc(c.texto)}</p><small>♪ ${esc(c.faixa)}</small></div>
+        <div class="djc-foot"><b>★ ${c.rar}</b><span>Brazilian Bayle · 2026</span></div>
       </div><div class="djc-foil"></div><div class="djc-glare"></div></div>
       <div class="djc-face djc-back"><img src="/assets/album/verso.webp" alt="Verso: Bayle All Stars Album"><div class="djc-glare"></div></div>
     </div>`;
   }
-  const fit = root => $$(".djc-info h3", root).forEach(h => {
+  const fit = root => $$(".djc-name h3", root).forEach(h => {
     h.style.fontSize = ""; let s = parseFloat(getComputedStyle(h).fontSize);
     while (h.scrollWidth > h.clientWidth && s > 8) { s -= .5; h.style.fontSize = s + "px" }
   });
   function tilt(card) {
-    card.addEventListener("pointermove", e => {
-      if (e.pointerType === "touch") return;
-      const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      card.classList.add("live");
+    card.addEventListener("pointermove", e => {      const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      card.classList.add("tilting");
       card.style.setProperty("--mx", x * 100 + "%"); card.style.setProperty("--my", y * 100 + "%");
       card.style.setProperty("--ry", (x - .5) * 22 + "deg"); card.style.setProperty("--rx", (.5 - y) * 22 + "deg"); card.style.setProperty("--o", 1);
     });
     card.addEventListener("pointerleave", () => {
-      card.classList.remove("live");
+      card.classList.remove("tilting");
       for (const [k, v] of [["--rx", "0deg"], ["--ry", "0deg"], ["--o", 0], ["--mx", "50%"], ["--my", "50%"]]) card.style.setProperty(k, v);
     });
     const flip = () => card.classList.toggle("flip");
@@ -153,7 +151,7 @@
     $("#abRevealRar").innerHTML = `<b class="rar-${c.cls}">${c.rar}</b>${dup ? " · repetida" : ""}`;
     $("#abStick").textContent = dup ? "Guardar nas repetidas" : "Colar no álbum";
     const rv = $("#abReveal"); rv.hidden = false; rv.className = "ab-reveal show r-" + c.cls;
-    const card = $(".djc", rv); card.classList.add("flip"); fit(rv);
+    const card = $(".djc", rv); card.classList.add("flip"); fit(rv); tilt(card);
     setTimeout(() => { card.classList.remove("flip"); fit(rv) }, reduced ? 50 : 650);
     $("#abStick").focus();
   }
