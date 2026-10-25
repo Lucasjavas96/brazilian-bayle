@@ -1959,12 +1959,10 @@ animation:medal-border-orbit 4.8s linear infinite!important}
 .bio-intro h1 em{display:block;font:italic 1.6em/.95 'Cormorant Garamond',serif;color:#d6b775;letter-spacing:-.03em}
 .bio-intro>p:last-child{font-size:14px;color:#d1cfc6;margin:16px auto 0}
 .bio-main-links{display:grid;gap:11px}
-.bio-link{display:flex;align-items:center;justify-content:space-between;gap:14px;text-decoration:none;min-height:79px;border:1px solid #c9a45c66;border-radius:16px;padding:17px 20px;background:linear-gradient(125deg,#ffffff12,#ffffff03),#0b0d0bd6;backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 #ffffff18;transition:border-color .2s,background-color .2s}
+.bio-link{display:flex;align-items:center;justify-content:space-between;gap:14px;text-decoration:none;min-height:79px;padding:17px 24px;text-transform:none;letter-spacing:normal;font-family:"Inter Tight",sans-serif;text-align:left}
 .bio-link b{display:block;font-size:17px;font-weight:600;line-height:1.3;color:#f6f4ef}.bio-link small{display:block;font-size:12px;line-height:1.4;color:#c3beb0;margin-top:4px}
-.bio-featured{background:linear-gradient(125deg,#e1c891,#b2904d);border-color:#f1dca9;box-shadow:inset 0 1px 0 #fff7,0 8px 32px #0004}
 .bio-featured b{color:#10110f;font-size:21px}.bio-featured small{color:#34301f;font-size:10px;margin:0 0 5px;text-transform:uppercase;letter-spacing:.11em}.bio-featured .bio-arrow{color:#15170f}
 .bio-arrow{font-size:23px;color:#dfc487;flex-shrink:0}
-@media(hover:hover){.bio-link:hover{border-color:#edd298;background-color:#252217}.bio-featured:hover{background-color:#c9a45c}}
 .bio-explore{margin:28px 0 24px}.bio-explore h2{font-size:9px;letter-spacing:.16em;color:#a8a69c;margin-bottom:13px}.bio-explore>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .bio-explore a{display:flex;justify-content:space-between;align-items:center;gap:5px;border:1px solid #ffffff24;border-radius:10px;min-height:48px;padding:10px;font-size:11px;text-decoration:none;background:#0c0e0cb3;color:#ded8c9}
 .bio-explore span{color:#c9a45c}.bio-footer{display:flex;justify-content:center;align-items:center;gap:13px;flex-wrap:wrap;color:#c0bcae;font-size:12px}
@@ -1976,3 +1974,5 @@ animation:medal-border-orbit 4.8s linear infinite!important}
 .account-card input[aria-invalid=true]:focus-visible{outline-color:#ff8c8c}
 .ferr:not(:empty),.form-msg.err{color:#ff8c8c}
 .paper .ferr:not(:empty),.paper .form-msg.err{color:#a51b1b}
+.bio-explore a.btn{border-radius:999px;padding:10px 12px;letter-spacing:normal;text-transform:none;font-family:'Inter Tight',sans-serif;font-size:11px;background-color:#ffffff10;background-image:linear-gradient(150deg,#ffffff38,#ffffff08 55%,#ffffff1a);border-color:#c9a45c88}
+.bio-link>span{position:relative;z-index:1}.bio-link:focus-visible{outline-color:#ead49c}
