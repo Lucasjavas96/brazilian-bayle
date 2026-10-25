@@ -227,14 +227,21 @@ renderPodium();
 
   function err(id, text) { const p = $("#" + id); if (!p) return; p.textContent = text; const f = p.id && $(`[aria-describedby~="${p.id}"]`); if (f && f.matches("input,select")) f.setAttribute("aria-invalid", !!text) }
   const say = (cls, html) => { const m = $("#voteMsg"); m.className = "form-msg " + cls; m.innerHTML = html };
-  $("#vIg").addEventListener("blur", e => { const v = e.target.value.trim(); if (v && !v.startsWith("@")) e.target.value = "@" + v });
+  const voteAccount = $('#voteAccount');
+  const updateVoteAccount = async () => {
+    const {data} = await BRB.auth.getSession();
+    if(!data.session){voteAccount.textContent='Entre na sua conta para registrar sua avaliação.';return;}
+    try{const profile=await BRB.rpc('profile_get');voteAccount.textContent=profile?.nick ? 'Avaliando como @'+profile.nick : 'Sua avaliação será vinculada à sua conta.';}
+    catch{voteAccount.textContent='Confirme seu acesso na página da conta antes de avaliar.';}
+  };
+  BRB.auth.onAuthStateChange(()=>setTimeout(updateVoteAccount,0));updateVoteAccount();
 
   // Reutiliza os campos e a validação existentes em quatro etapas.
   const groups = [
     [party.closest('.field')],
     [lineup.closest('fieldset')],
     [$('#vSliders').closest('fieldset'), $('#vComment').closest('.field')],
-    [$('#vName').closest('.field.two'), $('#vClubber').closest('label'), $('#vConsent').closest('label'), $('#eConsent'), $('.vote-actions', form)]
+    [$('#voteIdentity'), $('#vConsent').closest('label'), $('#eConsent'), $('.vote-actions', form)]
   ];
   const titles = ['Em qual festa você esteve?', 'Quem você quer avaliar?', 'Como foi o set?', 'Confira e registre sua avaliação'];
   const progress = document.createElement('div'); progress.className = 'vote-progress';
@@ -293,24 +300,23 @@ renderPodium();
   form.onsubmit = async e => {
     e.preventDefault(); say("", "");
     if (step < 3) { nextStep(); return; }
-    const name = $("#vName").value.trim(), ig = $("#vIg").value.trim().toLowerCase().replace(/^@?/, "@");
+    const {data:sessionData}=await BRB.auth.getSession();
+    if(!sessionData.session){location.assign('/conta?next='+encodeURIComponent('/ranking#votar'));return;}
     let first = null; const bad = (id, t, el) => { err(id, t); if (t && !first) first = el };
     bad("eParty", party.value ? "" : "Escolha a festa em que você esteve.", party);
     bad("eDj", dj || !party.value ? "" : "Escolha o DJ que você quer avaliar.", lineup.querySelector("button"));
-    bad("eName", name.length >= 2 ? "" : "Escreva seu nome.", $("#vName"));
-    bad("eIg", /^@[a-z0-9._]{2,30}$/.test(ig) ? "" : "Use o formato @seu.perfil, só com letras, números, ponto e _.", $("#vIg"));
     bad("eNotas", touched.size === 4 ? "" : `Dê nota nos 4 critérios. Faltam ${4 - touched.size}.`, $(`#s_${CRIT.find(([k]) => !touched.has(k))?.[0] || "som"}`));
     bad("eConsent", $("#vConsent").checked ? "" : "Para votar, aceite a política de privacidade.", $("#vConsent"));
     if (first) { say("err", "Confira os campos marcados acima."); first.focus(); return }
     const btn = $("#voteBtn"); btn.disabled = true; btn.classList.add("loading"); btn.setAttribute("aria-busy", "true");
     const notas = {}; CRIT.forEach(([k]) => notas[k] = +$("#s_" + k).value);
     try {
-      await BRB.rpc('vote', { party: party.value, dj, ig, name, notas, clubber: $('#vClubber').checked, comment: $('#vComment').value.trim(), consent: $('#vConsent').checked });
+      await BRB.rpc('vote', { party: party.value, dj, notas, comment: $('#vComment').value.trim(), consent: $('#vConsent').checked });
     } catch (error) {
       say('err', 'Não foi possível registrar: ' + error.message);
       return;
     } finally { btn.classList.remove('loading'); btn.removeAttribute('aria-busy'); btn.disabled = false; }
-    say('ok', '<b>Avaliação recebida.</b> Ela foi salva para análise. O ranking continua em demonstração; a declaração de membro não altera o peso automaticamente.');
+    say('ok', '<b>Avaliação recebida.</b> Ela foi salva para análise. O ranking continua em demonstração.');
     toast('Avaliação enviada com sucesso.');
     $("#vComment").value = "";
     const follow = document.createElement('div'); follow.className = 'vote-followup';

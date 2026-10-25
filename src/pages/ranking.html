@@ -73,18 +73,7 @@
         <p class="ferr" id="eDj"></p>
       </fieldset>
 
-      <div class="field two">
-        <div>
-          <label for="vName" class="mono">03 · Nome</label>
-          <input id="vName" name="nome" autocomplete="name" required aria-describedby="eName">
-          <p class="ferr" id="eName"></p>
-        </div>
-        <div>
-          <label for="vIg" class="mono">@ do Instagram</label>
-          <input id="vIg" name="instagram" autocomplete="username" autocapitalize="none" spellcheck="false" inputmode="text" placeholder="@seu.perfil" required aria-describedby="eIg">
-          <p class="ferr" id="eIg"></p>
-        </div>
-      </div>
+      <div id="voteIdentity"><p id="voteAccount" class="hint" role="status">Sua avaliação será vinculada à conta conectada.</p><a href="/conta?next=%2Franking%23votar" class="link-arrow">Configurações da conta</a></div>
 
       <fieldset class="field">
         <legend class="mono">04 · Sua nota de 0 a 10 em cada critério</legend>
@@ -97,7 +86,6 @@
         <textarea id="vComment" name="comentario" rows="3"></textarea>
       </div>
 
-      <label class="check"><input type="checkbox" id="vClubber"> Sou BRB Clubber (sujeito à verificação da equipe)</label>
       <label class="check"><input type="checkbox" id="vConsent" aria-describedby="eConsent"> Li e aceito a <a href="/privacidade" target="_blank">política de privacidade</a>.</label>
       <p class="ferr" id="eConsent"></p>
 

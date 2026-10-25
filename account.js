@@ -46,8 +46,12 @@
   $('#mfaForm').hidden = true; $('#mfaQr').removeAttribute('src'); $('#mfaQr').hidden = true;
   if (recovery) { setMode('reset'); return; }
   $('#accountMember').hidden = false; $('#accountContinue').href = destination;
-  $('#mfaEnroll').hidden = assurance.currentLevel === 'aal2';
-  $('#mfaStatus').textContent = assurance.currentLevel === 'aal2' ? 'Dois fatores ativos nesta sessão.' : 'Adicione um aplicativo autenticador para proteger seus próximos acessos.';
+
+  const session = check(await auth.getUser()).user;
+  const profile = await BRB.rpc('profile_get');
+  $('#settingsNick').value = profile?.nick || session.user_metadata?.nick || '';
+  $('#settingsEmail').textContent = session.email || '';
+  $('#accountStep').textContent = 'Configurações da conta';
   $('#accountStep').textContent = 'Sua conta';
  }
  function showMfa() {
@@ -84,15 +88,15 @@
   $('#accountPassword').value = ''; $('#accountRepeat').value = '';
  }); };
  $('#accountOut').onclick = async () => { try { check(await auth.signOut()); location.replace('/conta'); } catch(e) { message(friendly(e)); } };
- $('#mfaEnroll').onclick = async () => {
-  $('#mfaEnroll').disabled = true; message('');
-  try {
-   const factors = check(await auth.mfa.listFactors());
-   for (const entry of factors.all.filter(f => f.status === 'unverified' && f.factor_type === 'totp')) check(await auth.mfa.unenroll({factorId:entry.id}));
-   const data = check(await auth.mfa.enroll({factorType:'totp',friendlyName:'Brazilian Bayle',issuer:'Brazilian Bayle'}));
-   factor = data.id; enrolling = true; $('#mfaQr').src = data.totp.qr_code; $('#mfaQr').hidden = false; showMfa();
-  } catch(e) { message(friendly(e)); } finally { $('#mfaEnroll').disabled = false; }
- };
+ $('#accountSettings').onsubmit = e => { e.preventDefault(); busy(e.currentTarget, async () => {
+  await BRB.rpc('profile_save',{nick:$('#settingsNick').value.trim()});
+  window.dispatchEvent(new Event('brb-profile-updated'));message('Nickname atualizado.');
+ }); };
+ $('#settingsPassword').onclick = async () => { try {
+  const user=check(await auth.getUser()).user;
+  check(await auth.resetPasswordForEmail(user.email,{redirectTo:callback+'?flow=recovery'}));
+  message('Enviamos o link para trocar sua senha. Verifique seu e-mail.');
+ }catch(e){message(friendly(e));} };
  $('#mfaForm').onsubmit = e => { e.preventDefault(); busy(e.currentTarget, async () => {
   if (!factor) throw new Error('mfa missing');
   check(await auth.mfa.challengeAndVerify({factorId:factor,code:$('#mfaCode').value}));

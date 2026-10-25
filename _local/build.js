@@ -66,14 +66,15 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(meta.description)}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/assets/og.jpg">
+<meta property="og:image" content="${SITE}/assets/og-brazilian-v3.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Brazilian Bayle: o campeonato brasileiro de DJs">
+<meta property="og:image:alt" content="Brazilian Bayle · A pista é brasileira.">
+<meta property="og:image:type" content="image/jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(meta.description)}">
-<meta name="twitter:image" content="${SITE}/assets/og.jpg">
+<meta name="twitter:image" content="${SITE}/assets/og-brazilian-v3.jpg">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
@@ -89,7 +90,7 @@ ${jsonld}
   <p class="mbar-tag"><b>Brazilian <em>Bayle</em></b><span>A pista é brasileira e sempre vai ser</span></p>
   <div class="mbar-access">
   <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
-  <a class="mbar-account" href="/conta">Entrar/Cadastrar</a>
+  <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
   </div>
 </div>
 
@@ -141,6 +142,7 @@ ${body.trim()}
       <div>
         <h3 class="mono">Legal</h3>
         <ul>
+          <li><a href="/suporte">Suporte</a></li>
           <li><a href="/termos">Termos de uso</a></li>
           <li><a href="/privacidade">Política de privacidade</a></li>
         </ul>
@@ -153,6 +155,7 @@ ${body.trim()}
   </footer>
 </div>
 
+${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="/assets/vendor/supabase-2.49.8.js" defer></script>
 <script src="/backend-config.js" defer></script>
@@ -161,6 +164,8 @@ ${body.trim()}
 <script src="/app.js" defer></script>
 <script src="/media-guard.js" defer></script>
 <script src="/card-effects.js" defer></script>
+<script src="/support.js" defer></script>
+<script src="/session-menu.js" defer></script>
 ${meta.nav === "conta" ? '<script src="/account.js" defer></script>' : ""}
 ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
 ${meta.nav === "album" ? '<script src="/album.js" defer></script>' : ""}
@@ -340,7 +345,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "album.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "album.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -350,7 +355,7 @@ ${urls.map(u => `  <url><loc>${SITE}${u}</loc></url>`).join("\n")}
 fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";");
 // Content hashes prevent old CSS and card scripts being mixed after a deploy.
 const crypto = require('crypto');
-const versioned = ['styles.css','card-effects.js','app.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
+const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','account.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
 function versionHtml(dir) {
   for (const entry of fs.readdirSync(dir,{withFileTypes:true})) {
     const file = path.join(dir,entry.name);

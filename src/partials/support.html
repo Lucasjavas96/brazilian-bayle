@@ -1,0 +1,21 @@
+<button class="support-launch" id="supportLaunch" type="button" aria-haspopup="dialog" aria-controls="supportDialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 4h16v12H9l-5 4V4Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Precisa de ajuda?</span></button>
+<dialog class="support-dialog" id="supportDialog" aria-labelledby="supportTitle">
+ <div class="support-head"><div><p class="mono gold">Brazilian Bayle</p><h2 id="supportTitle">Como podemos ajudar?</h2><p>Assistente de suporte · atendimento guiado</p></div><button type="button" id="supportClose" aria-label="Fechar suporte">×</button></div>
+ <form id="supportForm">
+  <section id="supportTopics"><p>Escolha o assunto para começar.</p><div class="support-topics">
+   <button type="button" data-support-topic="conta">Conta e acesso <span>→</span></button><button type="button" data-support-topic="votacao">Festas e votação <span>→</span></button><button type="button" data-support-topic="album">Álbum de DJs <span>→</span></button><button type="button" data-support-topic="spotted">Spotted e moderação <span>→</span></button><button type="button" data-support-topic="clube">BRB Clubbers <span>→</span></button><button type="button" data-support-topic="outro">Outro assunto <span>→</span></button>
+  </div></section>
+  <section id="supportDetails" hidden>
+   <button type="button" id="supportBack" class="support-back">← Trocar assunto</button><h3 id="supportTopicTitle" tabindex="-1"></h3><p id="supportTip" class="support-tip"></p>
+   <label for="supportName">Seu nome</label><input id="supportName" name="name" autocomplete="name" minlength="2" maxlength="80" required>
+   <label for="supportEmail">E-mail para resposta</label><input id="supportEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+   <label for="supportMessage">Conte o que aconteceu</label><textarea id="supportMessage" name="message" rows="4" minlength="20" maxlength="3000" placeholder="Descreva a dúvida e o que você já tentou." required></textarea>
+   <p class="support-note">Não envie senhas, códigos de acesso ou dados de pagamento.</p>
+   <div hidden aria-hidden="true"><label>Site<input name="website" tabindex="-1" autocomplete="off"></label></div>
+   <label class="support-consent"><input id="supportConsent" type="checkbox" required><span>Concordo com o uso dos dados para este atendimento, conforme a <a href="/privacidade" target="_blank" rel="noopener">Política de privacidade</a>.</span></label>
+   <button type="submit" class="btn btn-gold" id="supportSubmit">Revisar solicitação →</button>
+  </section>
+  <section id="supportReview" hidden><p class="mono gold">Confira antes de enviar</p><h3 id="supportReviewTitle"></h3><p id="supportReviewEmail"></p><p id="supportReviewMessage"></p><p class="support-note">Seu pedido será enviado à equipe da Brazilian Bayle. A resposta chegará por e-mail.</p><div class="support-actions"><button type="button" id="supportEdit" class="support-back">Editar</button><button type="submit" class="btn btn-gold" id="supportSend">Enviar solicitação</button></div></section>
+  <p id="supportStatus" role="status" aria-live="polite"></p>
+ </form>
+</dialog>

@@ -27,8 +27,8 @@
     <h2 class="h3 display">Dentro do <em>Bayle.</em></h2>
     <p>Sua conta está conectada.</p>
     <a class="btn account-primary" id="accountContinue" href="/spotted">Ir para o Spotted</a>
-    <button class="btn btn-ghost" id="mfaEnroll" type="button">Ativar dois fatores</button>
-    <p id="mfaStatus" class="account-note"></p>
+    <form id="accountSettings"><div class="field"><label for="settingsNick">Seu nickname</label><input id="settingsNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" required></div><p id="settingsEmail" class="account-note"></p><button class="btn btn-ghost" type="submit">Salvar nickname</button></form>
+    <button id="settingsPassword" class="account-text-button" type="button">Trocar minha senha por e-mail</button>
     <button class="account-text-button" id="accountOut" type="button">Sair da conta</button>
    </section>
    <form id="mfaForm" hidden>
