@@ -1,4 +1,4 @@
-/* Brazilian Bayle · avaliações aprovadas e dados pessoais protegidos no backend. */
+/* Brazilian Bayle · avaliações válidas e dados pessoais protegidos no backend. */
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -123,7 +123,7 @@ function mountBoard(stage) {
   stage.classList.add('board-summary');
   const head = [["nota", "Nota"], ...CRIT, ["votos", "Votos"]];
   stage.innerHTML = `<table class="board">
-    <caption class="sr-only">Brasileirão dos DJs, classificação por avaliações aprovadas${limit ? `, ${limit} primeiros` : ""}</caption>
+    <caption class="sr-only">Brasileirão dos DJs, classificação por avaliações válidas${limit ? `, ${limit} primeiros` : ""}</caption>
     <thead><tr><th scope="col">#</th><th scope="col" class="l">DJ</th>${head.map(([k, l]) => `<th scope="col"${k === "nota" ? ' aria-sort="descending"' : ""} data-k="${k}">${sortable ? `<button type="button" data-sort="${k}">${l}</button>` : l}</th>`).join("")}</tr></thead>
     <tbody></tbody></table>`;
   const more = document.createElement('button'); more.type = 'button'; more.className = 'btn btn-line-light board-more';
@@ -310,8 +310,9 @@ renderPodium();
       say('err', 'Não foi possível registrar: ' + error.message);
       return;
     } finally { btn.classList.remove('loading'); btn.removeAttribute('aria-busy'); btn.disabled = false; }
-    say('ok', '<b>Avaliação recebida.</b> Ela foi salva para análise. Após aprovação da equipe, ela entra no cálculo do ranking.');
+    say('ok', '<b>Avaliação recebida.</b> Ela já entrou no cálculo do ranking.');
     toast('Avaliação enviada com sucesso.');
+    await refreshOfficialRanking();
     $("#vComment").value = "";
     const follow = document.createElement('div'); follow.className = 'vote-followup';
     const another = document.createElement('button'); another.type = 'button'; another.className = 'btn btn-line-light'; another.textContent = 'Avaliar outro DJ';
@@ -596,7 +597,7 @@ function mountGe(el) {
   el.innerHTML = `<div class="ge-card">
     <div class="ge-scroll" tabindex="0" role="region" aria-label="Tabela de classificação, deslize para ver todas as colunas">
     <table class="ge">
-      <caption class="sr-only">Brasileirão dos DJs, classificação da classificação por avaliações aprovadas</caption>
+      <caption class="sr-only">Brasileirão dos DJs, classificação da classificação por avaliações válidas</caption>
       <thead><tr>
         <th scope="col" class="ge-c-pos" colspan="2">Classificação</th>
         ${cols.map(([k, ab, full]) => `<th scope="col" data-k="${k}" title="${full}"${k === "nota" ? ' aria-sort="descending"' : ""}>${sortable ? `<button type="button" data-sort="${k}">${ab}</button>` : ab}</th>`).join("")}
@@ -672,13 +673,14 @@ $$("[data-link]").forEach(a => {
 })();
 
 /* Public ranking contains only approved, confirmed-account evaluations. */
-(async()=>{
+async function refreshOfficialRanking(){
  if(!document.querySelector('[data-board],[data-ge-table],[data-podium]'))return;
- const note=document.createElement('p');note.className='hint';note.id='rankingLoadStatus';note.setAttribute('role','status');note.textContent='Carregando avaliações aprovadas…';document.querySelector('[data-podium],[data-board],[data-ge-table]').before(note);
+ let note=document.getElementById('rankingLoadStatus');if(!note)note=document.createElement('p');note.className='hint';note.id='rankingLoadStatus';note.setAttribute('role','status');note.textContent='Carregando avaliações válidas…';document.querySelector('[data-podium],[data-board],[data-ge-table]').before(note);
  try{
   const result=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_ranking',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,'Content-Type':'application/json'},body:'{}'});
   if(!result.ok)throw Error('ranking');
   const rows=await result.json();officialRows=rows.map(row=>({...row,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
-  boards.forEach(board=>board.render());renderPodium();note.textContent=rows.length?'Ranking atualizado com avaliações aprovadas.':'Ainda não há avaliações aprovadas. Seja uma das primeiras pessoas a avaliar uma apresentação.';
+  boards.forEach(board=>board.render());renderPodium();note.textContent=rows.length?'Ranking atualizado com avaliações válidas.':'Ainda não há avaliações. Seja uma das primeiras pessoas a avaliar uma apresentação.';
  }catch{note.textContent='Não foi possível carregar o ranking agora. Tente novamente mais tarde.';}
-})();
+}
+refreshOfficialRanking();
