@@ -6,7 +6,7 @@
    <h1 class="display">Seu acesso.<br>Seu <em>Bayle.</em></h1>
    <p class="lead dim">A música conecta. Sua conta leva você para dentro da conversa.</p>
    <img class="account-parrot" src="/assets/papagaio-refletivo-v2.png" width="180" height="240" alt="Papagaio Brazilian Bayle">
-   <p class="account-note">No Spotted, você escolhe quando mostrar seu nickname. Seu e-mail nunca aparece nas publicações.</p>
+   <p class="account-note">No Spotted, seu @ do Instagram identifica seus posts e comentários, e você escolhe quando mostrá-lo. Seu e-mail nunca aparece nas publicações.</p>
   </div>
   <div class="account-card" id="accountRoot">
    <p class="mono gold" id="accountStep">Acesso à comunidade</p>
@@ -15,7 +15,7 @@
     <button type="button" data-mode="signup" aria-pressed="false">Criar conta</button>
    </div>
    <form id="accountForm">
-    <div class="field" id="accountNickField" hidden><label for="accountNick">Nickname público</label><input id="accountNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" placeholder="seu.nickname"><small>De 3 a 24 letras, números, pontos ou sublinhados. Cada e-mail tem uma única conta; mudar o nickname não libera outra avaliação da mesma apresentação.</small></div>
+    <div class="field" id="accountNickField" hidden><label for="accountNick">Seu @ do Instagram</label><input id="accountNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" placeholder="seu.arroba"><small>Digite o @ do seu Instagram, sem o @. É ele que aparece nos seus posts e comentários do Spotted. De 3 a 24 letras, números, pontos ou sublinhados. Cada e-mail tem uma única conta; mudar o @ não libera outra avaliação da mesma apresentação.</small></div>
     <div class="field" id="accountEmailField"><label for="accountEmail">E-mail</label><input id="accountEmail" type="email" autocomplete="email" maxlength="254" required></div>
     <div class="field" id="accountPasswordField"><label for="accountPassword">Senha</label><input id="accountPassword" type="password" autocomplete="current-password" required maxlength="128"><small id="passwordHelp" hidden>Use pelo menos 12 caracteres, com letras e números.</small></div>
     <div class="field" id="accountRepeatField" hidden><label for="accountRepeat">Repita a senha</label><input id="accountRepeat" type="password" autocomplete="new-password" maxlength="128"></div>
@@ -27,7 +27,7 @@
     <h2 class="h3 display">Dentro do <em>Bayle.</em></h2>
     <p>Sua conta está conectada.</p><a href="/gestao" class="account-text-button">Painel da equipe (acesso restrito)</a>
     <a class="btn account-primary" id="accountContinue" href="/">Voltar para a home</a>
-    <form id="accountSettings"><div class="field"><label for="settingsNick">Seu nickname</label><input id="settingsNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" required></div><p id="settingsEmail" class="account-note"></p><button class="btn btn-ghost" type="submit">Salvar nickname</button></form>
+    <form id="accountSettings"><div class="field"><label for="settingsNick">Seu @ do Instagram</label><input id="settingsNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" required></div><p id="settingsEmail" class="account-note"></p><button class="btn btn-ghost" type="submit">Salvar nickname</button></form>
     <button id="settingsPassword" class="account-text-button" type="button">Trocar minha senha por e-mail</button>
     <button class="account-text-button" id="accountOut" type="button">Sair da conta</button>
    </section>

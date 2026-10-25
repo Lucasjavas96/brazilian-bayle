@@ -1,0 +1,24 @@
+<!--meta {
+  "path": "/moderacao",
+  "nav": "moderacao",
+  "title": "Moderação",
+  "description": "Área restrita ao owner da Brazilian Bayle.",
+  "noindex": true
+} -->
+
+<section class="sec dark page-head md" aria-labelledby="t-md">
+  <div class="wrap">
+    <p class="mono gold">👑 Owner · área restrita</p>
+    <h1 class="display" id="t-md">Moderação do <em>Spotted</em></h1>
+    <p class="lead dim">Posts denunciados, em análise ou ocultos. Nada some para sempre sem passar por aqui: ocultar é reversível, e só um post já oculto pode ser apagado de vez.</p>
+    <p id="mdStatus" class="mono dim" role="status">Verificando seu acesso…</p>
+    <div class="md-filter" id="mdFilter" role="group" aria-label="Filtrar" hidden>
+      <button type="button" class="chip" data-f="todos" aria-pressed="true">Todos</button>
+      <button type="button" class="chip" data-f="denunciado" aria-pressed="false">Denunciados</button>
+      <button type="button" class="chip" data-f="review" aria-pressed="false">Em análise</button>
+      <button type="button" class="chip" data-f="hidden" aria-pressed="false">Ocultos</button>
+      <button type="button" class="chip" id="mdRefresh">Atualizar</button>
+    </div>
+    <div class="md-list" id="mdList"></div>
+  </div>
+</section>

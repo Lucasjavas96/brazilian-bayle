@@ -18,7 +18,7 @@
   const text = error?.message || '';
   if (/rate|too many|aguarde|tentativas/i.test(text)) return 'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.';
   if (/email.*not.*confirmed/i.test(text)) return 'Confirme seu e-mail antes de entrar. Você pode reenviar a confirmação abaixo.';
-  if (/nickname|nick|unique|already.*registered|already.*exists/i.test(text)) return 'Nickname ou e-mail já utilizado. Se já possui cadastro, entre ou use Esqueci minha senha.';
+  if (/nickname|nick|unique|already.*registered|already.*exists/i.test(text)) return 'Esse @ ou e-mail já está em uso. Se já possui cadastro, entre ou use Esqueci minha senha.';
   if (/invalid.*credentials/i.test(text)) return 'Não foi possível entrar. Confira seu e-mail e sua senha.';
   if (/smtp|email_address_not_authorized|sending.*email|send.*email/i.test(text)) return mode === 'signup' ? 'Não conseguimos enviar a confirmação. Seu cadastro não foi concluído. Tente novamente mais tarde.' : 'Não conseguimos enviar o e-mail neste momento. Tente novamente mais tarde.';
   if (/password|senha/i.test(text)) return 'Confira a senha. Para uma nova senha, use pelo menos 12 caracteres, com letras e números.';
@@ -45,7 +45,7 @@
  root.addEventListener('invalid',event=>{
   const input=event.target;if(!(input instanceof HTMLInputElement))return;
   event.preventDefault();input.setAttribute('aria-invalid','true');
-  const text=input.validity.valueMissing?'Preencha este campo para continuar.':input.type==='email'?'Digite um e-mail válido.':input.id==='accountNick'?'Use um nickname de 3 a 24 letras, números, pontos ou sublinhados.':'Confira o formato e o tamanho deste campo.';
+  const text=input.validity.valueMissing?'Preencha este campo para continuar.':input.type==='email'?'Digite um e-mail válido.':input.id==='accountNick'?'Use o @ do seu Instagram: 3 a 24 letras, números, pontos ou sublinhados, sem o @.':'Confira o formato e o tamanho deste campo.';
   message(text,'error');
  },true);
  root.addEventListener('input',event=>{if(event.target instanceof HTMLInputElement)event.target.removeAttribute('aria-invalid');});
@@ -107,7 +107,7 @@
  $('#accountOut').onclick = async () => { try { check(await auth.signOut()); location.replace('/conta'); } catch(e) { message(friendly(e),'error'); } };
  $('#accountSettings').onsubmit = e => { e.preventDefault(); busy(e.currentTarget, async () => {
   await BRB.rpc('profile_save',{nick:$('#settingsNick').value.trim()});
-  window.dispatchEvent(new Event('brb-profile-updated'));message('Nickname atualizado.');
+  window.dispatchEvent(new Event('brb-profile-updated'));message('Seu @ foi atualizado.');
  }); };
  $('#settingsPassword').onclick = async () => { try {
   const user=check(await auth.getUser()).user;

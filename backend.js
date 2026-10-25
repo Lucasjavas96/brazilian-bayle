@@ -16,6 +16,16 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar o conteúdo.');
       return data;
     },
+    async commentsFor(ids) {
+      const { data, error } = await client.rpc('brb_comments_for', { ids });
+      if (error) throw new Error(error.message || 'Não foi possível carregar os comentários.');
+      return data || {};
+    },
+    async commentDelete(id) {
+      const { data, error } = await client.rpc('brb_comment_delete', { comment_id: id });
+      if (error) throw new Error(error.message || 'Não foi possível apagar o comentário.');
+      return data;
+    },
     async owner(action, payload = {}) {
       const { data, error } = await client.rpc('brb_owner', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');

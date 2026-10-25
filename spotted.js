@@ -36,6 +36,10 @@
   async function refresh() {
     const data = await rpc("feed");
     posts = Array.isArray(data) ? data : [];
+    try {
+      const cm = await backend().commentsFor(posts.map(p => p.id));
+      posts.forEach(p => { if (cm[p.id]) p.cc = cm[p.id]; });
+    } catch (e) { /* sem ids: só leitura */ }
     loading = false; loadError = ""; render();
   }
   async function setSession(session) {
@@ -122,13 +126,12 @@
   let filter = "";
   const all = () => posts;
   const counts = p => p.r || {};
-  const comments = p => Array.isArray(p.c) ? p.c : [];
+  const comments = p => Array.isArray(p.cc) ? p.cc : Array.isArray(p.c) ? p.c : [];
   const reactors = p => Array.isArray(p.reactors) ? p.reactors : [];
   const ownerPost = p => !p.anon && !!ownerNick && String(p.nick).toLowerCase() === ownerNick;
-  const OWNER_NAME = "Lucas Javas";
-  const author = p => p.anon ? ANON : ownerPost(p) ? OWNER_NAME : "@" + p.nick;
+  const author = p => p.anon ? ANON : "@" + p.nick;
   const ownerTag = '<i class="sp-owner mono"><span aria-hidden="true">👑</span> Owner</i>';
-  const whoName = w => ownerNick && String(w).toLowerCase() === "@" + ownerNick ? `<b class="sp-own-name">${OWNER_NAME}</b>${ownerTag}` : `<b>${esc(w)}</b>`;
+  const whoName = w => ownerNick && String(w).toLowerCase() === "@" + ownerNick ? `${ownerTag}<b class="sp-own-name">${esc(w)}</b>` : `<b>${esc(w)}</b>`;
 
   function card(p) {
     const u = me(), mine = u && u.email === p.owner, my = u && p.myReaction, rs = reactors(p), emo = Object.fromEntries(REACTIONS.map(([k, e]) => [k, e]));
@@ -150,7 +153,7 @@
           <div class="sp-info">
             <span class="sp-party mono">${p.is_demo ? 'DEMONSTRAÇÃO · ' : ''}${esc(p.party)}</span>
             <h3>${esc(p.title)}</h3>
-            <p class="sp-by">${p.anon ? `<span class="sp-av is-anon" aria-hidden="true">?</span>` : ownerPost(p) ? `<span class="sp-av is-owner" aria-hidden="true">👑</span>` : av(p.nick)}<span class="${ownerPost(p) ? "sp-own-name" : ""}">${esc(author(p))}</span>${ownerPost(p) ? ownerTag : ""}<span class="sp-when mono">${when(p.at)}</span></p>
+            <p class="sp-by">${p.anon ? `<span class="sp-av is-anon" aria-hidden="true">?</span>` : ownerPost(p) ? `<span class="sp-av is-owner" aria-hidden="true">${esc(String(p.nick)[0].toUpperCase())}</span>` : av(p.nick)}${ownerPost(p) ? ownerTag : ""}<span class="${ownerPost(p) ? "sp-own-name" : ""}">${esc(author(p))}</span><span class="sp-when mono">${when(p.at)}</span></p>
           </div>
           ${side}
           <div class="sp-rxw">
@@ -166,13 +169,13 @@
           <div class="sp-stamps">${REACTIONS.filter(([k]) => cnt[k]).sort((a, b) => cnt[b[0]] - cnt[a[0]]).map(([k, e, l]) => `<span class="sp-stamp"><i aria-hidden="true">${e}</i>${l}<b>${cnt[k]}</b></span>`).join("") || `<span class="sp-empty">Nenhum carimbo ainda.</span>`}</div>
           ${rs.length ? `<p class="sp-who">${rs.map(r => `<span>${emo[r.k] || ""} ${esc(r.who)}</span>`).join("")}</p>` : ""}
           <label class="sp-anon"><input type="checkbox" role="switch" data-anon${anonPref() ? " checked" : ""}><span class="sp-sw" aria-hidden="true"></span>Ocultar meu nome</label>
-          <ul class="sp-coms">${cm.map(x => `<li>${whoName(x.who)} ${esc(x.t)}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
+          <ul class="sp-coms">${cm.map(x => `<li>${whoName(x.who)} ${esc(x.t)}${x.can && x.id ? ` <button type="button" class="sp-cdel mono" data-cdel="${esc(x.id)}" aria-label="Apagar este comentário">Apagar</button>` : ""}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
           <form class="sp-com" data-com>
             <div class="sp-emo" aria-label="Emojis">${EMOJIS.map(e => `<button type="button" data-emo="${e}" aria-label="Inserir ${e}">${e}</button>`).join("")}</div>
             <div class="sp-com-row"><input maxlength="200" aria-label="Comentário" placeholder="Escreva um comentário"><button type="submit" class="btn btn-y">Enviar</button></div>
           </form>
           <button type="button" class="sp-report mono" data-report>Denunciar post</button>
-          ${isOwner ? `<button type="button" class="sp-report sp-del mono" data-del>👑 Apagar post (owner)</button>` : ""}
+          ${isOwner ? `<button type="button" class="sp-report sp-del mono" data-del>👑 Ocultar post (owner)</button>` : ""}
         </div>
       </div>
     </article>`;
@@ -240,10 +243,18 @@
     }
     const emo = t.closest("[data-emo]");
     if (emo) { const i = $("[data-com] input", c); i.value = (i.value + emo.dataset.emo).slice(0, 200); i.focus(); return }
+    const cdel = t.closest("[data-cdel]");
+    if (cdel) {
+      if (!confirm("Apagar este comentário?")) return;
+      cdel.disabled = true;
+      try { await backend().commentDelete(cdel.dataset.cdel); await refresh(); toast("Comentário apagado."); }
+      catch (error) { toast(message(error)); cdel.disabled = false; }
+      return;
+    }
     if (t.closest("[data-del]")) {
-      if (!isOwner || !confirm("Apagar este post para sempre? Isso não pode ser desfeito.")) return;
+      if (!isOwner || !confirm("Ocultar este post do mural? Você pode restaurar depois na aba Moderação.")) return;
       const button = t.closest("[data-del]"); button.disabled = true;
-      try { await backend().owner("post_delete", { id: c.dataset.id }); await refresh(); toast("Post apagado."); }
+      try { await backend().owner("post_status", { id: c.dataset.id, status: "hidden" }); await refresh(); toast("Post oculto. Dá para restaurar na aba Moderação."); }
       catch (error) { toast(message(error)); button.disabled = false; }
       return;
     }
