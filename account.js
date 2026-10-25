@@ -10,12 +10,15 @@
  const authLinkType = new URLSearchParams(location.hash.slice(1)).get('type');
  let redirectAfterAuth = authLinkType === 'signup' || Boolean(next);
  let mode = 'login', factor = null, enrolling = false, recovery = ['invite','recovery'].includes(authLinkType);
- const message = text => { $('#accountMessage').textContent = text; };
+ const message = (text,kind='info') => {
+  const box=$('#accountMessage');box.textContent=text;box.classList.toggle('is-error',Boolean(text)&&kind==='error');box.setAttribute('role',kind==='error'?'alert':'status');
+ };
  const check = result => { if (result.error) throw result.error; return result.data; };
  const friendly = error => {
   const text = error?.message || '';
   if (/rate|too many|aguarde|tentativas/i.test(text)) return 'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.';
   if (/email.*not.*confirmed/i.test(text)) return 'Confirme seu e-mail antes de entrar. Você pode reenviar a confirmação abaixo.';
+  if (/nickname|nick|unique|already.*registered|already.*exists/i.test(text)) return 'Nickname ou e-mail já utilizado. Se já possui cadastro, entre ou use Esqueci minha senha.';
   if (/invalid.*credentials/i.test(text)) return 'Não foi possível entrar. Confira seu e-mail e sua senha.';
   if (/smtp|email_address_not_authorized|sending.*email|send.*email/i.test(text)) return mode === 'signup' ? 'Não conseguimos enviar a confirmação. Seu cadastro não foi concluído. Tente novamente mais tarde.' : 'Não conseguimos enviar o e-mail neste momento. Tente novamente mais tarde.';
   if (/password|senha/i.test(text)) return 'Confira a senha. Para uma nova senha, use pelo menos 12 caracteres, com letras e números.';
@@ -38,6 +41,14 @@
   $('#accountSubmit').textContent = ({ login:'Entrar',signup:'Criar minha conta',recover:'Enviar recuperação',resend:'Reenviar confirmação',reset:'Salvar nova senha' })[value];
   $('#accountStep').textContent = ({recover:'Recuperar acesso',resend:'Confirmar e-mail',reset:'Definir nova senha'})[value] || 'Acesso à comunidade';
  }
+
+ root.addEventListener('invalid',event=>{
+  const input=event.target;if(!(input instanceof HTMLInputElement))return;
+  event.preventDefault();input.setAttribute('aria-invalid','true');
+  const text=input.validity.valueMissing?'Preencha este campo para continuar.':input.type==='email'?'Digite um e-mail válido.':input.id==='accountNick'?'Use um nickname de 3 a 24 letras, números, pontos ou sublinhados.':'Confira o formato e o tamanho deste campo.';
+  message(text,'error');
+ },true);
+ root.addEventListener('input',event=>{if(event.target instanceof HTMLInputElement)event.target.removeAttribute('aria-invalid');});
  root.querySelectorAll('[data-mode]').forEach(button => button.onclick = () => setMode(button.dataset.mode));
  async function showMember() {
   const assurance = check(await auth.mfa.getAuthenticatorAssuranceLevel());
@@ -65,17 +76,19 @@
  }
  async function busy(form, operation) {
   const button = form.querySelector('[type="submit"]'); button.disabled = true; message('');
-  try { await operation(); } catch (error) { message(friendly(error)); } finally { button.disabled = false; }
+  try { await operation(); } catch (error) { message(friendly(error),'error'); } finally { button.disabled = false; }
  }
  $('#accountForm').onsubmit = e => { e.preventDefault(); busy(e.currentTarget, async () => {
   const email = $('#accountEmail').value.trim(), password = $('#accountPassword').value;
   if (['signup','reset'].includes(mode)) {
-   if (password !== $('#accountRepeat').value) return message('As senhas precisam ser iguais.');
-   if (password.length < 12 || !/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) return message('Use pelo menos 12 caracteres, com letras e números.');
+   if (password !== $('#accountRepeat').value) return message('As senhas precisam ser iguais.','error');
+   if (password.length < 12 || !/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) return message('Use pelo menos 12 caracteres, com letras e números.','error');
   }
   if (mode === 'signup') {
-   check(await auth.signUp({email,password,options:{data:{nick:$('#accountNick').value.trim(),brb_app:true,terms_version:'2026-10-24'},emailRedirectTo:callback}}));
-   message('Se este e-mail ainda não tiver uma conta, enviaremos a confirmação. Se já tiver cadastro, use Entrar ou Esqueci minha senha. Solicitar novamente não cria outra conta.');
+   const signupData=check(await auth.signUp({email,password,options:{data:{nick:$('#accountNick').value.trim(),brb_app:true,terms_version:'2026-10-24'},emailRedirectTo:callback}}));
+   if(signupData.user && Array.isArray(signupData.user.identities) && signupData.user.identities.length===0){
+    message('Este e-mail já possui cadastro. Entre na sua conta ou clique em “Esqueci minha senha” para recuperar o acesso.','error');
+   }else message('Confira seu e-mail para confirmar o cadastro. Já possui conta? Use Entrar ou Esqueci minha senha.');
   } else if (mode === 'login') {
    check(await auth.signInWithPassword({email,password})); redirectAfterAuth=true; await showMember();
   } else if (mode === 'recover') {
@@ -91,7 +104,7 @@
   }
   $('#accountPassword').value = ''; $('#accountRepeat').value = '';
  }); };
- $('#accountOut').onclick = async () => { try { check(await auth.signOut()); location.replace('/conta'); } catch(e) { message(friendly(e)); } };
+ $('#accountOut').onclick = async () => { try { check(await auth.signOut()); location.replace('/conta'); } catch(e) { message(friendly(e),'error'); } };
  $('#accountSettings').onsubmit = e => { e.preventDefault(); busy(e.currentTarget, async () => {
   await BRB.rpc('profile_save',{nick:$('#settingsNick').value.trim()});
   window.dispatchEvent(new Event('brb-profile-updated'));message('Nickname atualizado.');
@@ -100,22 +113,22 @@
   const user=check(await auth.getUser()).user;
   check(await auth.resetPasswordForEmail(user.email,{redirectTo:recoveryCallback}));
   message('Enviamos o link para trocar sua senha. Verifique seu e-mail.');
- }catch(e){message(friendly(e));} };
+ }catch(e){message(friendly(e),'error');} };
  $('#mfaForm').onsubmit = e => { e.preventDefault(); busy(e.currentTarget, async () => {
   if (!factor) throw new Error('mfa missing');
   check(await auth.mfa.challengeAndVerify({factorId:factor,code:$('#mfaCode').value}));
   $('#mfaCode').value = ''; enrolling = false; await showMember(); message('Código verificado.');
  }); };
  $('#mfaCancel').onclick = async () => {
-  try { if (enrolling && factor) check(await auth.mfa.unenroll({factorId:factor})); check(await auth.signOut()); location.replace('/conta'); } catch(e) { message(friendly(e)); }
+  try { if (enrolling && factor) check(await auth.mfa.unenroll({factorId:factor})); check(await auth.signOut()); location.replace('/conta'); } catch(e) { message(friendly(e),'error'); }
  };
  // Recovery flag is set only for an actual recovery event, never a query parameter.
- auth.onAuthStateChange((event) => { if (event === 'PASSWORD_RECOVERY') { recovery = true; setTimeout(() => showMember().catch(e => message(friendly(e))),0); } });
+ auth.onAuthStateChange((event) => { if (event === 'PASSWORD_RECOVERY') { recovery = true; setTimeout(() => showMember().catch(e => message(friendly(e),'error')),0); } });
  (async () => {
   try {
    const data = check(await auth.getSession());
    if (data.session) { await showMember(); } else setMode(params.get('mode') === 'signup' ? 'signup' : 'login');
-   if (params.has('error') || location.hash.includes('error=')) { history.replaceState(null,'','/conta'); message('Esse link expirou ou já foi usado. Solicite um novo link.'); }
-  } catch(e) { message(friendly(e)); }
+   if (params.has('error') || location.hash.includes('error=')) { history.replaceState(null,'','/conta'); message('Esse link expirou ou já foi usado. Solicite um novo link.','error'); }
+  } catch(e) { message(friendly(e),'error'); }
  })();
 })();
