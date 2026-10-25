@@ -1848,6 +1848,1138 @@
         "inicio": 2013,
         "bpm": 126
       }
+    },
+    {
+      "slug": "themba",
+      "nome": "Themba",
+      "pais": "za",
+      "paisNome": "África do Sul",
+      "genero": "Afro Tech",
+      "tag": "TECHNO",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Sul-africano que virou referência do Afro Tech, com o hit Disappear.",
+      "faixa": "Disappear",
+      "foto": "/assets/album/fotos/themba.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AFS 05 - Themba.jpg)",
+      "fontes": [
+        "https://open.spotify.com/intl-de/artist/64tzIMKX4Npx37YLcNZZNC",
+        "https://en.wikipedia.org/wiki/Euphonik",
+        "https://www.musicinafrica.net/node/386797"
+      ],
+      "sinais": {
+        "ouvintes": 954500,
+        "inicio": 2003,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "paul-van-dyk",
+      "nome": "Paul van Dyk",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Trance",
+      "tag": "TRANCE",
+      "bpm": "132–140",
+      "rank": "DJ MAG #35",
+      "pos": "center 25%",
+      "texto": "Ícone do trance, número 1 do DJ Mag em 2005 e 2006 e autor de For an Angel.",
+      "faixa": "For an Angel",
+      "foto": "/assets/album/fotos/paul-van-dyk.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 02 - Paul van Dyk.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/7wU1naftD3lNq7rNsiDvOR",
+        "https://en.wikipedia.org/wiki/Paul_van_Dyk"
+      ],
+      "sinais": {
+        "djmag": 35,
+        "ouvintes": 1700000,
+        "inicio": 1991,
+        "hino": 1,
+        "selo": 1,
+        "pioneiro": 1,
+        "grammy": "indicacao",
+        "premios": 3,
+        "bpm": 138
+      }
+    },
+    {
+      "slug": "claptone",
+      "nome": "Claptone",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "DJ MAG #43",
+      "pos": "78% center",
+      "texto": "O DJ mascarado do house, dono do hit No Eyes e eleito Best House DJ no DJ Awards.",
+      "faixa": "No Eyes",
+      "foto": "/assets/album/fotos/claptone.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 03 - Claptone.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/4mncDFjVLUa3s025Tct3Ry",
+        "https://kworb.net/spotify/artist/4mncDFjVLUa3s025Tct3Ry_songs.html",
+        "https://en.wikipedia.org/wiki/Claptone"
+      ],
+      "sinais": {
+        "djmag": 43,
+        "ouvintes": 3100000,
+        "inicio": 2013,
+        "hino": 1,
+        "premios": 2,
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "zedd",
+      "nome": "Zedd",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Electro Pop",
+      "tag": "ELECTRO",
+      "bpm": "120–128",
+      "rank": "DJ MAG #54",
+      "pos": "center 28%",
+      "texto": "Produtor alemão-americano, Grammy por Clarity e autor de The Middle.",
+      "faixa": "Clarity",
+      "foto": "/assets/album/fotos/zedd.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 04 - Zedd.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://en.wikipedia.org/wiki/Zedd"
+      ],
+      "sinais": {
+        "djmag": 54,
+        "ouvintes": 20719721,
+        "inicio": 2010,
+        "hino": 1,
+        "grammy": "vitoria",
+        "bpm": 128
+      }
+    },
+    {
+      "slug": "boris-brejcha",
+      "nome": "Boris Brejcha",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "High-Tech Minimal",
+      "tag": "TECHNO",
+      "bpm": "122–128",
+      "rank": "DJ MAG #57",
+      "pos": "46% center",
+      "texto": "Dono do selo Fckng Serious e da máscara de Joker, rosto do High-Tech Minimal.",
+      "faixa": "Purple Noise",
+      "foto": "/assets/album/fotos/boris-brejcha.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 05 - Boris Brejcha.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/6caPJFLv1wesmM7gwK1ACy",
+        "https://en.wikipedia.org/wiki/Boris_Brejcha"
+      ],
+      "sinais": {
+        "djmag": 57,
+        "ouvintes": 1960000,
+        "inicio": 2006,
+        "selo": 1,
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "atb",
+      "nome": "ATB",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Trance",
+      "tag": "TRANCE",
+      "bpm": "130–140",
+      "rank": "DJ MAG #63",
+      "pos": "center 25%",
+      "texto": "Veterano do trance alemão, autor de 9 PM (Till I Come), número 1 no Reino Unido.",
+      "faixa": "9 PM (Till I Come)",
+      "foto": "/assets/album/fotos/atb.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 06 - ATB.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://en.wikipedia.org/wiki/ATB_(DJ)"
+      ],
+      "sinais": {
+        "djmag": 63,
+        "ouvintes": 6533146,
+        "inicio": 1993,
+        "hino": 1,
+        "bpm": 135
+      }
+    },
+    {
+      "slug": "adam-port",
+      "nome": "Adam Port",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Afro House",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Cofundador do Keinemusik e autor de Move, um dos maiores sons do Afro House.",
+      "faixa": "Move",
+      "foto": "/assets/album/fotos/adam-port.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 10 - Adam Port.png)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://en.wikipedia.org/wiki/Adam_Port"
+      ],
+      "sinais": {
+        "ouvintes": 10277081,
+        "inicio": 2009,
+        "hino": 1,
+        "selo": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "ben-bohmer",
+      "nome": "Ben Böhmer",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic House",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 30%",
+      "texto": "Produtor de Melodic House com álbuns pelo Anjunadeep e Ninja Tune, como Breathing e Bloom.",
+      "faixa": "Beyond Beliefs",
+      "foto": "/assets/album/fotos/ben-bohmer.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 12 - Ben Böhmer.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/5tDjiBYUsTqzd0RkTZxK7u",
+        "https://en.wikipedia.org/wiki/Ben_B%C3%B6hmer"
+      ],
+      "sinais": {
+        "ouvintes": 3800000,
+        "inicio": 2015,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "dixon",
+      "nome": "Dixon",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Cofundador da Innervisions e número 1 do poll do Resident Advisor de 2013 a 2016.",
+      "faixa": "Where We At",
+      "foto": "/assets/album/fotos/dixon.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 14 - Dixon.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Dixon_(DJ)"
+      ],
+      "sinais": {
+        "inicio": 1991,
+        "selo": 1,
+        "ra": 1,
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "fjaak",
+      "nome": "FJAAK",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "130–140",
+      "rank": "UNDERGROUND",
+      "pos": "55% center",
+      "texto": "Dupla berlinense de techno pesado, com álbum pelo Monkeytown e set no Boiler Room.",
+      "faixa": "Wolves",
+      "foto": "/assets/album/fotos/fjaak.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 16 - FJAAK.jpg)",
+      "fontes": [
+        "https://open.spotify.com/intl-es/artist/3D8uiQETB5m11ZbuCVC9jH",
+        "https://mixmagde.com/read/german-artists-you-need-to-see-at-awakenings-festival-2025-news"
+      ],
+      "sinais": {
+        "ouvintes": 110500,
+        "inicio": 2009,
+        "boilerCercle": 1,
+        "festivais": 1,
+        "bpm": 135
+      }
+    },
+    {
+      "slug": "helena-hauff",
+      "nome": "Helena Hauff",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Electro / Techno",
+      "tag": "TECHNO",
+      "bpm": "128–140",
+      "rank": "UNDERGROUND",
+      "pos": "62% 30%",
+      "texto": "Primeira mulher eleita Essential Mix of the Year, em 2017, mestre do electro cru.",
+      "faixa": "Actio Reactio",
+      "foto": "/assets/album/fotos/helena-hauff.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 17 - Helena Hauff.jpg)",
+      "fontes": [
+        "https://open.spotify.com/intl-fr/artist/1JcefSOP7bcWEluL0iEIaN",
+        "https://en.wikipedia.org/wiki/Helena_Hauff"
+      ],
+      "sinais": {
+        "ouvintes": 24500,
+        "inicio": 2013,
+        "essential": 1,
+        "emoty": 1,
+        "bpm": 135
+      }
+    },
+    {
+      "slug": "klangkuenstler",
+      "nome": "Klangkuenstler",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Hard Techno",
+      "tag": "TECHNO",
+      "bpm": "150–160",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Berlinense do Hard Techno, fundador do Outworld e dono de Toter Schmetterling.",
+      "faixa": "Toter Schmetterling",
+      "foto": "/assets/album/fotos/klangkuenstler.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 20 - Klangkuenstler.png)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Klangkuenstler",
+        "https://press.insomniac.com/blog/time-warp-new-york-city-announces-artist-lineup-for-2026-edition",
+        "https://www.technoairlines.com/artist/klangkuenstler"
+      ],
+      "sinais": {
+        "inicio": 2012,
+        "selo": 1,
+        "festivais": 1,
+        "bpm": 155
+      }
+    },
+    {
+      "slug": "kobosil",
+      "nome": "Kobosil",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "135–145",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Ex-residente do Berghain, de 2014 a 2019, e fundador do selo RK.",
+      "faixa": "BR3ATH3",
+      "foto": "/assets/album/fotos/kobosil.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 21 - Kobosil.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/2ZvIFwl0BuQgHqWvDE80hC",
+        "https://en.wikipedia.org/wiki/Kobosil"
+      ],
+      "sinais": {
+        "ouvintes": 538700,
+        "inicio": 2008,
+        "bpm": 140
+      }
+    },
+    {
+      "slug": "loco-dice",
+      "nome": "Loco Dice",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "62% 35%",
+      "texto": "Dono do selo Desolat e residente de Ibiza no Space e no Hï Ibiza.",
+      "faixa": "La Bicicletta",
+      "foto": "/assets/album/fotos/loco-dice.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 22 - Loco Dice.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Loco_Dice",
+        "https://www.technoairlines.com/label/desolat"
+      ],
+      "sinais": {
+        "inicio": 1994,
+        "selo": 1,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "monolink",
+      "nome": "Monolink",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic Techno (live)",
+      "tag": "TECHNO",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Projeto live de Melodic Techno do Embassy One, com os hits Sirens e Swallow.",
+      "faixa": "Sirens",
+      "foto": "/assets/album/fotos/monolink.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 24 - Monolink.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/2I4hRNCYkPKJQlkoEZKjYx",
+        "https://en.wikipedia.org/wiki/Monolink"
+      ],
+      "sinais": {
+        "ouvintes": 2200000,
+        "inicio": 2014,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "purple-disco-machine",
+      "nome": "Purple Disco Machine",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Nu Disco",
+      "tag": "DISCO",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Venceu o Grammy de Melhor Remix em 2023 com About Damn Time, da Lizzo.",
+      "faixa": "Hypnotized",
+      "foto": "/assets/album/fotos/purple-disco-machine.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 26 - Purple Disco Machine.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Purple_Disco_Machine",
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "ouvintes": 8242496,
+        "inicio": 2012,
+        "hino": 1,
+        "grammy": "vitoria",
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "rampa",
+      "nome": "Rampa",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Afro House",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Cofundador do Keinemusik, coletivo e selo de Berlim que virou referência no afro house.",
+      "faixa": "Say What",
+      "foto": "/assets/album/fotos/rampa.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 27 - Rampa.png)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Rampa_(DJ)",
+        "https://kworb.net/spotify/listeners2.html"
+      ],
+      "sinais": {
+        "ouvintes": 4267097,
+        "inicio": 2009,
+        "selo": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "stephan-bodzin",
+      "nome": "Stephan Bodzin",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "52% 20%",
+      "texto": "Fundou o selo Herzblut em 2006 e é nome clássico do techno melódico ao vivo.",
+      "faixa": "Singularity",
+      "foto": "/assets/album/fotos/stephan-bodzin.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 28 - Stephan Bodzin.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Stephan_Bodzin"
+      ],
+      "sinais": {
+        "inicio": 2005,
+        "selo": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "sven-vath",
+      "nome": "Sven Väth",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "128–134",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Fundou o Omen e o Cocoon, e é ícone do techno alemão desde 1982.",
+      "faixa": "L'Esperanza",
+      "foto": "/assets/album/fotos/sven-vath.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 29 - Sven Väth.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Sven_V%C3%A4th"
+      ],
+      "sinais": {
+        "inicio": 1982,
+        "hino": 1,
+        "selo": 1,
+        "pioneiro": 1,
+        "boilerCercle": 1,
+        "residencia": 1,
+        "premios": 3,
+        "bpm": 130
+      }
+    },
+    {
+      "slug": "timmy-trumpet",
+      "nome": "Timmy Trumpet",
+      "pais": "au",
+      "paisNome": "Austrália",
+      "genero": "Big Room / Psy",
+      "tag": "BIG ROOM",
+      "bpm": "128–140",
+      "rank": "DJ MAG #8",
+      "pos": "center 25%",
+      "texto": "Toca trompete ao vivo e foi eleito Club DJ of the Year no EDM Awards 2025.",
+      "faixa": "Freaks",
+      "foto": "/assets/album/fotos/timmy-trumpet.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AUS-01_Timmy-Trumpet.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Timmy_Trumpet",
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 8,
+        "ouvintes": 9679171,
+        "inicio": 2009,
+        "hino": 1,
+        "premios": 2,
+        "bpm": 132
+      }
+    },
+    {
+      "slug": "fisher",
+      "nome": "FISHER",
+      "pais": "au",
+      "paisNome": "Austrália",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #9",
+      "pos": "18% center",
+      "texto": "Indicado ao Grammy de Melhor Gravação Dance em 2019 com Losing It.",
+      "faixa": "Losing It",
+      "foto": "/assets/album/fotos/fisher.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AUS-02_FISHER.webp)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Fisher_(DJ)",
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 9,
+        "ouvintes": 17522797,
+        "inicio": 2012,
+        "hino": 1,
+        "grammy": "indicacao",
+        "premios": 4,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "dom-dolla",
+      "nome": "Dom Dolla",
+      "pais": "au",
+      "paisNome": "Austrália",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #38",
+      "pos": "center 25%",
+      "texto": "Indicado ao Grammy 2024 e quatro vezes vencedor do ARIA Awards.",
+      "faixa": "San Frandisco",
+      "foto": "/assets/album/fotos/dom-dolla.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AUS-03_Dom-Dolla.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Dom_Dolla",
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 38,
+        "ouvintes": 7549804,
+        "inicio": 2013,
+        "hino": 1,
+        "grammy": "indicacao",
+        "premios": 2,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "sonny-fodera",
+      "nome": "Sonny Fodera",
+      "pais": "au",
+      "paisNome": "Austrália",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "DJ MAG #80",
+      "pos": "62% center",
+      "texto": "Fundou o selo Solotoko em 2017 e tem hits como Somedays e Turn Back Time.",
+      "faixa": "Somedays",
+      "foto": "/assets/album/fotos/sonny-fodera.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AUS-04_Sonny-Fodera.webp)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Sonny_Fodera",
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 80,
+        "ouvintes": 7761891,
+        "inicio": 2007,
+        "selo": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "mall-grab",
+      "nome": "Mall Grab",
+      "pais": "au",
+      "paisNome": "Austrália",
+      "genero": "Lo-fi House / Techno",
+      "tag": "HOUSE",
+      "bpm": "120–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Australiano radicado em Londres, referência do lo-fi house, tocou no Coachella 2024.",
+      "faixa": "Sun Ra",
+      "foto": "/assets/album/fotos/mall-grab.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AUS-05_Mall-Grab.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Mall_Grab",
+        "https://kworb.net/spotify/listeners3.html"
+      ],
+      "sinais": {
+        "ouvintes": 2436452,
+        "inicio": 2015,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "dimitri-vegas-like-mike",
+      "nome": "Dimitri Vegas & Like Mike",
+      "pais": "be",
+      "paisNome": "Bélgica",
+      "genero": "Big Room",
+      "tag": "BIG ROOM",
+      "bpm": "126–132",
+      "rank": "DJ MAG #5",
+      "pos": "55% center",
+      "texto": "Residentes do Tomorrowland desde 2010 e números 1 do DJ Mag em 2015 e 2019.",
+      "faixa": "Tomorrow",
+      "foto": "/assets/album/fotos/dimitri-vegas-like-mike.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (BEL-01_Dimitri-Vegas-and-Like-Mike.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Dimitri_Vegas_%26_Like_Mike",
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 5,
+        "ouvintes": 13909989,
+        "inicio": 2008,
+        "hino": 1,
+        "selo": 1,
+        "residencia": 1,
+        "premios": 1,
+        "bpm": 128
+      }
+    },
+    {
+      "slug": "charlotte-de-witte",
+      "nome": "Charlotte de Witte",
+      "pais": "be",
+      "paisNome": "Bélgica",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "130–140",
+      "rank": "DJ MAG #6",
+      "pos": "center 25%",
+      "texto": "Fundou o selo KNTXT e venceu o DJ Awards de Techno em 2019.",
+      "faixa": "The Age of Love",
+      "foto": "/assets/album/fotos/charlotte-de-witte.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (BEL-02_Charlotte-de-Witte.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Charlotte_de_Witte",
+        "https://kworb.net/spotify/listeners4.html"
+      ],
+      "sinais": {
+        "djmag": 6,
+        "ouvintes": 1808991,
+        "inicio": 2010,
+        "selo": 1,
+        "beatport": "genero",
+        "boilerCercle": 1,
+        "premios": 3,
+        "bpm": 135
+      }
+    },
+    {
+      "slug": "lost-frequencies",
+      "nome": "Lost Frequencies",
+      "pais": "be",
+      "paisNome": "Bélgica",
+      "genero": "Deep House / Dance",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "DJ MAG #17",
+      "pos": "center 25%",
+      "texto": "Seu hit Are You with Me levou dois prêmios Echo em 2016.",
+      "faixa": "Are You with Me",
+      "foto": "/assets/album/fotos/lost-frequencies.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (BEL-03_Lost-Frequencies.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Lost_Frequencies",
+        "https://kworb.net/spotify/listeners.html"
+      ],
+      "sinais": {
+        "djmag": 17,
+        "ouvintes": 21115851,
+        "inicio": 2014,
+        "hino": 1,
+        "selo": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "amelie-lens",
+      "nome": "Amelie Lens",
+      "pais": "be",
+      "paisNome": "Bélgica",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "130–140",
+      "rank": "DJ MAG #47",
+      "pos": "center 25%",
+      "texto": "Dona do selo Lenske e criadora das noites Exhale, que rodaram vários festivais.",
+      "faixa": "Exhale",
+      "foto": "/assets/album/fotos/amelie-lens.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (BEL-04_Amelie-Lens.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Amelie_Lens",
+        "https://kworb.net/spotify/listeners5.html"
+      ],
+      "sinais": {
+        "djmag": 47,
+        "ouvintes": 1251842,
+        "inicio": 2014,
+        "selo": 1,
+        "bpm": 135
+      }
+    },
+    {
+      "slug": "mattn",
+      "nome": "MATTN",
+      "pais": "be",
+      "paisNome": "Bélgica",
+      "genero": "Big Room",
+      "tag": "BIG ROOM",
+      "bpm": "126–132",
+      "rank": "DJ MAG #92",
+      "pos": "center 25%",
+      "texto": "Belga ligado ao selo Smash the House, vencedor do MTV EMA de Melhor Belga em 2019.",
+      "faixa": "Let the Song Play",
+      "foto": "/assets/album/fotos/mattn.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (BEL-05_MATTN.webp)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Mattn",
+        "https://kworb.net/spotify/artist/1RQ3ZwCNI7KniEKIN5kkio.html"
+      ],
+      "sinais": {
+        "djmag": 92,
+        "bpm": 128
+      }
+    },
+    {
+      "slug": "black-coffee",
+      "nome": "Black Coffee",
+      "pais": "za",
+      "paisNome": "África do Sul",
+      "genero": "Afro House",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "DJ MAG #14",
+      "pos": "center 25%",
+      "texto": "Vencedor do Grammy com Subconsciously e fundador do selo Soulistic Music.",
+      "faixa": "Drive",
+      "foto": "/assets/album/fotos/black-coffee.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AFS 01 - Black Coffee.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Black_Coffee_(DJ)",
+        "https://open.spotify.com/artist/6wMr4zKPrrR0UVz08WtUWc"
+      ],
+      "sinais": {
+        "djmag": 14,
+        "ouvintes": 3300000,
+        "inicio": 1994,
+        "hino": 1,
+        "selo": 1,
+        "pioneiro": 1,
+        "grammy": "vitoria",
+        "boilerCercle": 1,
+        "ra": 91,
+        "premios": 4,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "shimza",
+      "nome": "Shimza",
+      "pais": "za",
+      "paisNome": "África do Sul",
+      "genero": "Afro Tech",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "DJ MAG #75",
+      "pos": "center 25%",
+      "texto": "Criador do festival One Man Show e presença na Tomorrowland e no Coachella.",
+      "faixa": "Fire Fire",
+      "foto": "/assets/album/fotos/shimza.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AFS 02 - Shimza.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Shimza",
+        "https://open.spotify.com/artist/2vNYtAwkq6uesHXbuVjSQz",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://festivalviewer.com/tomorrowland/lineup/2026",
+        "https://909originals.com/2025/01/31/awakenings-festival-2025-unveils-full-festival-lineup/",
+        "https://festivalviewer.com/coachella/lineup/2026"
+      ],
+      "sinais": {
+        "djmag": 75,
+        "ouvintes": 6000000,
+        "selo": 1,
+        "festivais": 4,
+        "headlines": 0,
+        "premios": 2,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "culoe-de-song",
+      "nome": "Culoe De Song",
+      "pais": "za",
+      "paisNome": "África do Sul",
+      "genero": "Afro House",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "78% 25%",
+      "texto": "Produtor sul-africano com discos na Innervisions e set no Boiler Room Joanesburgo.",
+      "faixa": "Fallen Siren",
+      "foto": "/assets/album/fotos/culoe-de-song.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AFS 03 - Culoe De Song.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Culoe_De_Song",
+        "https://open.spotify.com/artist/69vFBZxQu4TQ4ZDOI9L6KR"
+      ],
+      "sinais": {
+        "ouvintes": 193200,
+        "inicio": 2007,
+        "boilerCercle": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "da-capo",
+      "nome": "Da Capo",
+      "pais": "za",
+      "paisNome": "África do Sul",
+      "genero": "Afro House",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dono do selo Genesys Entity e campeão de Afro House no DJ Awards 2019.",
+      "faixa": "Found You",
+      "foto": "/assets/album/fotos/da-capo.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (AFS 04 - Da Capo.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Da_Capo_(music_producer)",
+        "https://www.traxsource.com/artist/27641/da-capo",
+        "https://festivalviewer.com/tomorrowland/lineup/2026"
+      ],
+      "sinais": {
+        "inicio": 2012,
+        "selo": 1,
+        "festivais": 1,
+        "headlines": 0,
+        "premios": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "keinemusik",
+      "nome": "Keinemusik",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Afro House",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "DJ MAG #31",
+      "pos": "center 25%",
+      "texto": "Coletivo berlinense de Adam Port, Rampa, &ME e Reznik, com Essential Mix em 2021.",
+      "faixa": "Move",
+      "foto": "/assets/album/fotos/keinemusik.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 01 - Keinemusik.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Keinemusik",
+        "https://kworb.net/spotify/listeners.html",
+        "https://festivalviewer.com/coachella/lineup/2025"
+      ],
+      "sinais": {
+        "djmag": 31,
+        "ouvintes": 10713717,
+        "inicio": 2009,
+        "selo": 1,
+        "essential": 1,
+        "boilerCercle": 1,
+        "festivais": 1,
+        "headlines": 0,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "plastik-funk",
+      "nome": "Plastik Funk",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "DJ MAG #90",
+      "pos": "center 25%",
+      "texto": "Dupla alemã desde 2002, do hit Dr. Who! com Tujamo, presença fixa na Tomorrowland.",
+      "faixa": "Dr. Who!",
+      "foto": "/assets/album/fotos/plastik-funk.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 07 - Plastik Funk.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Plastik_Funk",
+        "https://open.spotify.com/artist/7wmCy21VjfmbP8DznMJe8v",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://festivalviewer.com/tomorrowland/lineup/2026"
+      ],
+      "sinais": {
+        "djmag": 90,
+        "ouvintes": 499000,
+        "inicio": 2002,
+        "festivais": 2,
+        "headlines": 0,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "marlon-hoffstadt",
+      "nome": "Marlon Hoffstadt",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "House / Techno",
+      "tag": "HOUSE",
+      "bpm": "124–130",
+      "rank": "DJ MAG #97",
+      "pos": "center 25%",
+      "texto": "Alemão com mais de 8 milhões de ouvintes, do Mainstage da Tomorrowland ao Coachella.",
+      "faixa": "Sonne",
+      "foto": "/assets/album/fotos/marlon-hoffstadt.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 08 - Marlon Hoffstadt.jpg)",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://festivalviewer.com/tomorrowland/lineup/2026",
+        "https://festivalviewer.com/coachella/lineup/2026",
+        "https://festapp.io/festivals/ultra-music-festival-miami/2026"
+      ],
+      "sinais": {
+        "djmag": 97,
+        "ouvintes": 8715595,
+        "festivais": 3,
+        "headlines": 1,
+        "bpm": 128
+      }
+    },
+    {
+      "slug": "and-me",
+      "nome": "&ME",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Afro House",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Cofundador da Keinemusik e coprodutor de faixas do disco Honestly, Nevermind, de Drake.",
+      "faixa": "The Rapture Pt.III",
+      "foto": "/assets/album/fotos/and-me.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 09 - &ME.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/%26Me_(DJ)",
+        "https://open.spotify.com/artist/387r6VzdUXbp0n5qC8E5ec"
+      ],
+      "sinais": {
+        "ouvintes": 4600000,
+        "inicio": 2007,
+        "selo": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "ame",
+      "nome": "Âme",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic House",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla de Karlsruhe, autora de Rej e cofundadora da Innervisions em 2005.",
+      "faixa": "Rej",
+      "foto": "/assets/album/fotos/ame.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 11 - Âme.jpg)",
+      "fontes": [
+        "https://www.electronicbeats.net/artist/ame/",
+        "https://open.spotify.com/artist/5muFO8VqYRCRW13EkvX564",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://909originals.com/2025/01/31/awakenings-festival-2025-unveils-full-festival-lineup/"
+      ],
+      "sinais": {
+        "ouvintes": 604200,
+        "inicio": 2001,
+        "hino": 1,
+        "selo": 1,
+        "premios": 1,
+        "festivais": 2,
+        "headlines": 0,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "ben-klock",
+      "nome": "Ben Klock",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "130–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Residente do Berghain, dono do selo Klockworks e com Essential Mix em 2015.",
+      "faixa": "Subzero",
+      "foto": "/assets/album/fotos/ben-klock.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 13 - Ben Klock.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Ben_Klock",
+        "https://open.spotify.com/artist/1vJHfCreWAS46V8RZ67ojo",
+        "https://festivalviewer.com/tomorrowland/lineup/2026",
+        "https://festapp.io/fr/festivals/time-warp-germany/2026",
+        "https://edmmaniac.com/?p=3271"
+      ],
+      "sinais": {
+        "ouvintes": 122200,
+        "inicio": 1998,
+        "selo": 1,
+        "essential": 1,
+        "residencia": 1,
+        "festivais": 5,
+        "headlines": 0,
+        "bpm": 132
+      }
+    },
+    {
+      "slug": "kevin-de-vries",
+      "nome": "Kevin de Vries",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic Techno",
+      "tag": "TECHNO",
+      "bpm": "126–132",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Revelado na Drumcode com Eternity, tocou no Mainstage da Tomorrowland em 2025 e 2026.",
+      "faixa": "Eternity",
+      "foto": "/assets/album/fotos/kevin-de-vries.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 19 - Kevin de Vries.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/11aPF3sc8lDWNqPVInm4Zx",
+        "https://festivalviewer.com/tomorrowland/lineup/2025",
+        "https://festivalviewer.com/tomorrowland/lineup/2026",
+        "https://909originals.com/2025/01/31/awakenings-festival-2025-unveils-full-festival-lineup/",
+        "https://festapp.io/festivals/awakenings-summer-festival/2026"
+      ],
+      "sinais": {
+        "ouvintes": 1300000,
+        "inicio": 2015,
+        "festivais": 4,
+        "headlines": 2,
+        "bpm": 130
+      }
+    },
+    {
+      "slug": "marcel-dettmann",
+      "nome": "Marcel Dettmann",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "130–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Residente do Berghain desde os anos 90 e dono do selo MDR.",
+      "faixa": "Seduction",
+      "foto": "/assets/album/fotos/marcel-dettmann.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 23 - Marcel Dettmann.jpg)",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Marcel_Dettmann",
+        "https://open.spotify.com/artist/1sxHp39RqBEE01pgVqsdyP",
+        "https://festapp.io/fr/festivals/time-warp-germany/2026",
+        "https://edmmaniac.com/?p=3271"
+      ],
+      "sinais": {
+        "ouvintes": 114700,
+        "inicio": 1994,
+        "selo": 1,
+        "residencia": 1,
+        "festivais": 2,
+        "headlines": 0,
+        "bpm": 132
+      }
+    },
+    {
+      "slug": "objekt",
+      "nome": "Objekt",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Techno / Electro",
+      "tag": "TECHNO",
+      "bpm": "125–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "TJ Hertz, de Berlim, autor de Theme From Q e com Essential Mix na BBC Radio 1 em 2020.",
+      "faixa": "Theme From Q",
+      "foto": "/assets/album/fotos/objekt.webp",
+      "foto_fonte": "Fornecida pela Brazilian Bayle (ALE 25 - Objekt.jpg)",
+      "fontes": [
+        "https://open.spotify.com/artist/44z1nVVXZE8d4njcQmQLWc",
+        "https://control.eventbook.ro/editorial/artist-profile-objekt"
+      ],
+      "sinais": {
+        "ouvintes": 28800,
+        "inicio": 2011,
+        "essential": 1,
+        "bpm": 130
+      }
     }
   ]
 }
