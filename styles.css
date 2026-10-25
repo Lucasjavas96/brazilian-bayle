@@ -2128,3 +2128,9 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .bio-footer>a{text-decoration:none;min-height:32px;display:flex;align-items:center}.bio-footer>p{flex-basis:100%;text-align:center;font:italic 19px 'Cormorant Garamond',serif;color:#c6ab70;margin:5px auto 0}
 @media(min-width:900px){.bio-page{padding-top:44px;padding-bottom:40px}.bio-backdrop img{object-position:center 35%}.bio-backdrop::after{background:linear-gradient(90deg,#080908e6,#08090866 50%,#080908e6),linear-gradient(180deg,#08090844,#080908e6)}}
 @media(prefers-reduced-motion:reduce){.bio-link{transition:none}}
+
+.account-message.is-error{color:#ff8c8c!important;background:#4a101044;border:1px solid #f0646470;border-radius:10px;padding:13px 15px;font-size:14px;line-height:1.5}
+.account-card input[aria-invalid=true]{border-color:#f06464!important;box-shadow:0 0 0 1px #f0646440}
+.account-card input[aria-invalid=true]:focus-visible{outline-color:#ff8c8c}
+.ferr:not(:empty),.form-msg.err{color:#ff8c8c}
+.paper .ferr:not(:empty),.paper .form-msg.err{color:#a51b1b}
