@@ -1931,3 +1931,8 @@ animation:medal-border-orbit 4.8s linear infinite!important}
 .unrated-card p,.unrated-vote{margin:8px 14px}.unrated-card .mono{font-size:10px;color:#b8b6ae}
 .unrated-status{font-size:13px;color:#d3c29b}.unrated-vote{display:inline-block;font-size:12px;color:#d5ba7a;text-decoration:none;padding:6px 0}
 @media(max-width:600px){.unrated-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.unrated-card h3{font-size:16px}.unrated-vote{font-size:11px}}
+.pod-awaiting{padding:22px 12px;gap:10px;--card-edge-color:#c9a45c}
+.pod-awaiting>img{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:50% 22%;border:1px solid #c9a45c66}
+.pod-awaiting .pod-name{background:none;color:#f6f4ef;-webkit-text-fill-color:#f6f4ef}
+.pod-awaiting-status{font-size:12px;color:#bdb9ac}
+@media(max-width:600px){.pod-awaiting>img{width:62px;height:62px}.pod-awaiting .pod-name{font-size:13px}.pod-awaiting .unrated-vote{margin:0;font-size:11px}}

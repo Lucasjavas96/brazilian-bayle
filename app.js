@@ -2,8 +2,8 @@
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-const fmt2 = n => n.toFixed(2).replace(".", ",");
-const fmt1 = n => n.toFixed(1).replace(".", ",");
+const fmt2 = n => n == null ? "—" : n.toFixed(2).replace(".", ",");
+const fmt1 = n => n == null ? "—" : n.toFixed(1).replace(".", ",");
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const store = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } },
@@ -82,9 +82,12 @@ const DJS = [["Alok","House"],["Vintage Culture","House"],["Mochakk","Tech house
   ["Zerb","Afro house"],["Öwnboss","Bass house"],["RUBACK","Tech house"],["Victor Ruiz","Techno"],["Gui Boratto","Techno"],
   ["Illusionize","Tech house"],["Beltran","Tech house"],["Mojjo","House"],["Classmatic","Tech house"],["GREG","House"]];
 let officialRows = [];
-function table() { return officialRows.map(row=>({...row})); }
+function table() {
+ const rated=new Set(officialRows.map(row=>row.name));
+ return [...officialRows.map(row=>({...row})),...DJS.filter(([name])=>!rated.has(name)).map(([name,style])=>({name,style,pos:Infinity,nota:null,som:null,harmonia:null,energia:null,sofisticacao:null,votos:0,festas:0,unrated:true}))];
+}
 const meter = v => { const full = Math.floor(v), half = v - full >= .5; return `<span class="meter" aria-hidden="true">${Array.from({ length: 10 }, (_, i) => `<i class="${i < full ? "on" : i === full && half ? "half" : ""}"></i>`).join("")}</span>` };
-const pad = n => String(n).padStart(2, "0");
+const pad = n => Number.isFinite(n) ? String(n).padStart(2, "0") : "—";
 
 /* ---------- pódio ---------- */
 function rankAward(position) {
@@ -97,7 +100,13 @@ function rankAward(position) {
 }
 function renderPodium() {
   const el = $("[data-podium]"); if (!el) return;
-  el.innerHTML = table().slice(0, 3).map(d => `
+  el.hidden = false;
+  if(!officialRows.length){
+   el.setAttribute('aria-label','DJs aguardando avaliações');
+   el.innerHTML = DJS.slice(0,3).map(([name])=>`<div class="pod pod-awaiting"><img src="/assets/djs/thumbs/${slug(name)}.webp" alt="${name}" width="96" height="96"><p class="pod-name">${name}</p><p class="pod-awaiting-status">Sem avaliações</p><a href="#votar" class="unrated-vote">Avaliar DJ →</a></div>`).join('');return;
+  }
+  el.setAttribute('aria-label','Os três primeiros da classificação');
+  el.innerHTML = officialRows.slice(0, 3).map(d => `
     <div class="pod p${d.pos}">
       ${rankAward(d.pos)}
       <p class="pod-name"><a href="/djpedia/${slug(d.name)}">${d.name}</a></p><p class="pod-style mono">${d.style}</p>
@@ -132,7 +141,7 @@ function mountBoard(stage) {
   };
   function render() {
     const rows = table();
-    let list = rows;
+    let list = el.hasAttribute("data-limit") ? rows.slice(0,Number(el.dataset.limit)) : rows;
     if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
     if (limit) list = list.slice(0, limit);
     const total = list.length;
@@ -603,15 +612,15 @@ function mountGe(el) {
   };
   function render(flash) {
     const rows = table();
-    let list = rows;
+    let list = el.hasAttribute("data-limit") ? rows.slice(0,Number(el.dataset.limit)) : rows;
     if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
     $("tbody", el).innerHTML = list.map(d => {
       const prev = st.last[d.name];
       const mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="ge-mv up" aria-label="subiu ${prev - d.pos}">▲</span>` : `<span class="ge-mv dn" aria-label="caiu ${d.pos - prev}">▼</span>`) : `<span class="ge-mv" aria-hidden="true">•</span>`;
       const s = slug(d.name), href = `/djpedia/${s}`;
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
-        <td class="ge-pos"><b>${d.pos}</b>${mv}</td>
-        <th scope="row" class="ge-dj"><a href="${href}"><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
+        <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
+        <th scope="row" class="ge-dj"><a href="${href}"><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}${d.unrated?" · Sem avaliações":""}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
         <td class="ge-nota">${fmt2(d.nota)}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
@@ -662,21 +671,6 @@ $$("[data-link]").forEach(a => {
  input.addEventListener('input',filter); filter();
 })();
 
-/* Unrated artists remain discoverable without fictitious scores or positions. */
-function renderUnratedArtists(){
- const stage=document.querySelector('[data-board],[data-ge-table]');if(!stage)return;
- let catalog=document.getElementById('unratedArtists');
- if(!catalog){catalog=document.createElement('section');catalog.id='unratedArtists';catalog.setAttribute('aria-label','DJs aguardando avaliações');stage.after(catalog);}
- const rated=new Set(officialRows.map(row=>row.name));
- const artists=DJS.filter(([name])=>!rated.has(name));
- const home=stage.hasAttribute('data-limit'),shown=home?artists.slice(0,5):artists;
- catalog.hidden=!shown.length;
- catalog.innerHTML=`<p class="mono gold unrated-heading">${officialRows.length?'DJs aguardando avaliações':'Conheça os DJs · seja a primeira avaliação'}</p><div class="unrated-grid">${shown.map(([name,style])=>`<article class="unrated-card"><a href="/djpedia/${slug(name)}"><img src="/assets/djs/thumbs/${slug(name)}.webp" alt="${name}" width="384" height="288" loading="lazy" decoding="async"><h3>${name}</h3></a><p class="mono">${style}</p><p class="unrated-status">Ainda sem avaliações</p><a class="unrated-vote" href="/ranking#votar">Avaliar uma apresentação →</a></article>`).join('')}</div>${home&&artists.length>5?'<a class="link-arrow" href="/ranking#unratedArtists">Conhecer todos os DJs →</a>':''}`;
- stage.hidden=officialRows.length===0;
- const podium=document.querySelector('[data-podium]');if(podium)podium.hidden=officialRows.length===0;
-}
-renderUnratedArtists();
-
 /* Public ranking contains only approved, confirmed-account evaluations. */
 (async()=>{
  if(!document.querySelector('[data-board],[data-ge-table],[data-podium]'))return;
@@ -685,6 +679,6 @@ renderUnratedArtists();
   const result=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_ranking',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,'Content-Type':'application/json'},body:'{}'});
   if(!result.ok)throw Error('ranking');
   const rows=await result.json();officialRows=rows.map(row=>({...row,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
-  boards.forEach(board=>board.render());renderPodium();renderUnratedArtists();note.textContent=rows.length?'Ranking atualizado com avaliações aprovadas.':'Ainda não há avaliações aprovadas. Seja uma das primeiras pessoas a avaliar uma apresentação.';
+  boards.forEach(board=>board.render());renderPodium();note.textContent=rows.length?'Ranking atualizado com avaliações aprovadas.':'Ainda não há avaliações aprovadas. Seja uma das primeiras pessoas a avaliar uma apresentação.';
  }catch{note.textContent='Não foi possível carregar o ranking agora. Tente novamente mais tarde.';}
 })();
