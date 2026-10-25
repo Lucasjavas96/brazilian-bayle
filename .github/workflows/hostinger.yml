@@ -47,8 +47,8 @@ jobs:
           url = os.environ['HOSTINGER_DEPLOY_WEBHOOK'].strip()
           if not url:
               raise SystemExit('Hostinger deployment webhook secret is missing')
-          payload = {'ref':'refs/heads/hostinger','repository':{'full_name':os.environ['GITHUB_REPOSITORY']}}
-          request = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={'Content-Type':'application/json','X-GitHub-Event':'push'}, method='POST')
+          payload = {'ref':'refs/heads/hostinger','repository':{'full_name':os.environ['GITHUB_REPOSITORY'],'clone_url':'https://github.com/'+os.environ['GITHUB_REPOSITORY']+'.git'}}
+          request = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={'Content-Type':'application/json','X-GitHub-Event':'push','User-Agent':'GitHub-Hookshot'}, method='POST')
           try:
               with urllib.request.urlopen(request,timeout=90) as response:
                   print('Hostinger deployment trigger HTTP',response.status)
