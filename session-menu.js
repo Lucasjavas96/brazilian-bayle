@@ -13,7 +13,7 @@
   let profile;try{profile=await BRB.rpc('profile_get');}catch{}
   if(current!==revision)return;
   document.getElementById('headerNickname').textContent='@'+(profile?.nick||user.user_metadata?.nick||'minha.conta');
-  try{const c=await BRB.content('');document.querySelectorAll('[data-owner-only]').forEach(e=>{e.hidden=!c?.me_owner;});}catch{}
+  try{const c=await BRB.content('');document.querySelectorAll('[data-owner-only]').forEach(e=>{e.hidden=!c?.me_owner;});if(c?.me_owner){const s=await BRB.owner('mod_summary');const n=(s?.applications||0)+(s?.posts||0);document.querySelectorAll('[data-owner-badge]').forEach(b=>{b.textContent=n;b.hidden=!n;b.title=(s?.applications||0)+' candidatura(s) e '+(s?.posts||0)+' post(s) para ver';});}}catch{}
   document.getElementById('headerLogin').hidden=true;trigger.hidden=false;
  }
  document.getElementById('headerSignOut').onclick=async()=>{

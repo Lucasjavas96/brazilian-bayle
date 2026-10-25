@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=eb53b550bba1">
+<link rel="stylesheet" href="/styles.css?v=18567bc88b10">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brazilian Bayle","url":"https://brazilianbayle.com.br","logo":"https://brazilianbayle.com.br/assets/icon-512.png","email":"brazilianbaile@gmail.com","sameAs":["https://instagram.com/brazilianbayle"],"areaServed":"BR","description":"Campeonato brasileiro de DJs com votação da comunidade e o network BRB Clubbers."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mojjo","jobTitle":"DJ","genre":["House"],"image":"https://brazilianbayle.com.br/assets/djs/mojjo.webp","sameAs":[]}</script>
@@ -42,7 +42,7 @@
   <p class="mbar-tag"><b>Brazilian <em>Bayle</em></b><span>A pista é brasileira e sempre vai ser</span></p>
   <div class="mbar-access">
   <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
-  <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
+  <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><a href="/moderacao" data-owner-only hidden>👑 Moderação <span class="owner-badge" data-owner-badge hidden></span></a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
   </div>
 </div>
 
@@ -63,7 +63,7 @@
         <li><a href="/djpedia" aria-current="page"><span class="mono">09</span>DJ Pédia</a></li>
         <li><a href="/curitiba"><span class="mono">10</span>Bayle Curitibano</a></li>
         <li><a href="/loja"><span class="mono">11</span>Loja</a></li>
-        <li hidden data-owner-only><a href="/moderacao"><span class="mono">12</span>Moderação</a></li>
+        <li hidden data-owner-only><a href="/moderacao"><span class="mono">12</span>Moderação <span class="owner-badge" data-owner-badge hidden></span></a></li>
     </ul>
   </nav>
   <a href="/clube#candidatura" class="btn btn-y side-cta">Faça parte</a>
@@ -83,7 +83,7 @@
     <nav class="crumbs mono" aria-label="Você está em"><a href="/djpedia">DJ Pédia</a> <span aria-hidden="true">›</span> Mojjo</nav>
     <div class="wiki-grid">
       <aside class="wiki-box" aria-label="Ficha de Mojjo">
-        <figure class="wiki-photo"><img src="/assets/djs/mojjo.webp" alt="Mojjo" width="619" height="619" decoding="async">
+        <figure class="wiki-photo"><img src="/assets/djs/mojjo.webp?v=2" alt="Mojjo" width="619" height="619" decoding="async">
         </figure>
         <p class="wiki-box-name">Mojjo</p>
         <dl><div><dt>Nome artístico</dt><dd>Mojjo</dd></div><div><dt>Nome real</dt><dd class="ni">não informado</dd></div><div><dt>Local de nascimento</dt><dd class="ni">não informado</dd></div><div><dt>DJ desde</dt><dd class="ni">não informado</dd></div><div><dt>Principais gêneros</dt><dd>House</dd></div></dl>
@@ -117,7 +117,7 @@
     <div class="wrap foot-cols">
       <div>
         <h3 class="mono">Navegue</h3>
-        <ul><li><a href="/conta">Login / Cadastro</a></li><li><a href="/ranking">Brasileirão dos DJs</a></li><li><a href="/spotted">Spotted Bayle</a></li><li><a href="/after">Onde é o after?</a></li><li><a href="/album">Bayle All Stars Album</a></li><li><a href="/clube">BRB Clubbers</a></li><li><a href="/agenda">Agenda</a></li><li><a href="/manifesto">Manifesto</a></li><li><a href="/djpedia">DJ Pédia</a></li><li><a href="/curitiba">Bayle Curitibano</a></li><li><a href="/loja">Loja</a></li><li><a href="/moderacao">Moderação</a></li></ul>
+        <ul><li><a href="/conta">Login / Cadastro</a></li><li><a href="/ranking">Brasileirão dos DJs</a></li><li><a href="/spotted">Spotted Bayle</a></li><li><a href="/after">Onde é o after?</a></li><li><a href="/album">Bayle All Stars Album</a></li><li><a href="/clube">BRB Clubbers</a></li><li><a href="/agenda">Agenda</a></li><li><a href="/manifesto">Manifesto</a></li><li><a href="/djpedia">DJ Pédia</a></li><li><a href="/curitiba">Bayle Curitibano</a></li><li><a href="/loja">Loja</a></li></ul>
       </div>
       <div>
         <h3 class="mono">Contato</h3>
@@ -170,11 +170,11 @@
 <script src="/backend-config.js" defer></script>
 <script src="/backend.js" defer></script>
 <script src="/events-2026.js" defer></script>
-<script src="/app.js?v=999643b502f1" defer></script>
+<script src="/app.js?v=32524a60b67b" defer></script>
 <script src="/media-guard.js" defer></script>
 <script src="/card-effects.js?v=3700071dc1b7" defer></script>
 <script src="/support.js?v=15a0860aacef" defer></script>
-<script src="/session-menu.js?v=2cc4b91a2750" defer></script>
+<script src="/session-menu.js?v=cc9a76f30558" defer></script>
 
 
 

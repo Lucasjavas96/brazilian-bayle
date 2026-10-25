@@ -4,13 +4,33 @@
   const status = document.getElementById("mdStatus"), filterBar = document.getElementById("mdFilter");
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const LABEL = { published: "Publicado", review: "Em análise", hidden: "Oculto" };
-  let posts = [], filter = "todos";
+  const tabs = document.getElementById("mdTabs");
+  let posts = [], apps = [], filter = "todos", tab = "posts";
   const toast = m => { const t = document.createElement("div"); t.className = "af-toast"; t.setAttribute("role", "status"); t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2800); };
   const when = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
 
   const shown = () => posts.filter(p => filter === "todos" || (filter === "denunciado" ? p.reports > 0 : p.status === filter));
 
+  const FIELDS = [["email", "E-mail"], ["instagram", "Instagram"], ["cidade", "De onde vem"]];
+  function renderApps() {
+    list.innerHTML = apps.length ? apps.map(a => {
+      const d = a.data || {}, quero = [].concat(d.quero || []).filter(Boolean);
+      return `<article class="md-card" data-app="${esc(a.id)}">
+        <div class="md-head"><span class="md-badge ${a.status === "approved" ? "published" : a.status === "rejected" ? "hidden" : "review"}">${({ pending: "Em análise", approved: "Aprovada", rejected: "Recusada" })[a.status] || esc(a.status)}</span><span class="mono dim">${when(a.created_at)}</span></div>
+        <h3>${esc(d.nome || "Sem nome")}</h3>
+        <p class="mono dim">${FIELDS.map(([k, l]) => d[k] ? l + ": " + esc(d[k]) : "").filter(Boolean).join(" · ")}</p>
+        ${quero.length ? `<ul class="md-coms">${quero.map(q => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}
+        ${d.motivo ? `<p class="md-body">${esc(d.motivo)}</p>` : ""}
+        <div class="md-actions">
+          ${a.status !== "approved" ? `<button type="button" class="btn btn-y af-sm" data-ast="approved">Aprovar</button>` : ""}
+          ${a.status !== "rejected" ? `<button type="button" class="btn btn-ghost af-sm" data-ast="rejected">Recusar</button>` : ""}
+          ${a.status !== "pending" ? `<button type="button" class="btn btn-ghost af-sm" data-ast="pending">Voltar para análise</button>` : ""}
+        </div></article>`;
+    }).join("") : `<p class="af-empty">Nenhuma candidatura recebida ainda.</p>`;
+  }
+
   function render() {
+    if (tab === "apps") return renderApps();
     const rows = shown();
     list.innerHTML = rows.length ? rows.map(p => `<article class="md-card" data-id="${esc(p.id)}">
       <div class="md-head"><span class="md-badge ${esc(p.status)}">${LABEL[p.status] || esc(p.status)}</span>${p.reports ? `<span class="md-rep mono">${p.reports} denúncia${p.reports > 1 ? "s" : ""}</span>` : ""}<span class="mono dim">${when(p.created_at)}</span></div>
@@ -29,17 +49,34 @@
 
   async function load() {
     try {
-      const data = await BRB.owner("mod_list");
-      posts = data?.posts || []; filterBar.hidden = false;
-      status.textContent = `${posts.length} post${posts.length === 1 ? "" : "s"} em moderação (até 20, mais recentes primeiro).`;
+      const [data, ap] = await Promise.all([BRB.owner("mod_list"), BRB.owner("app_list")]);
+      posts = data?.posts || []; apps = ap?.applications || []; tabs.hidden = false;
+      const pend = apps.filter(a => a.status === "pending").length, flagged = posts.filter(p => p.status !== "hidden").length;
+      const cnt = (k, n) => { const b = tabs.querySelector('[data-count="' + k + '"]'); b.textContent = n; b.hidden = !n; };
+      cnt("posts", flagged); cnt("apps", pend);
+      filterBar.hidden = tab !== "posts";
+      status.textContent = tab === "apps" ? `${apps.length} candidatura${apps.length === 1 ? "" : "s"}, ${pend} em análise.` : `${posts.length} post${posts.length === 1 ? "" : "s"} em moderação (até 20, mais recentes primeiro).`;
       render();
     } catch (e) {
-      filterBar.hidden = true; list.innerHTML = "";
+      filterBar.hidden = true; tabs.hidden = true; list.innerHTML = "";
       status.textContent = /restrito|Entre|conta/i.test(e.message) ? "Acesso restrito ao owner. Entre com a sua conta." : e.message;
     }
   }
 
+  tabs.addEventListener("click", e => {
+    const b = e.target.closest("[data-tab]"); if (!b) return;
+    tab = b.dataset.tab; tabs.querySelectorAll("[data-tab]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    filterBar.hidden = tab !== "posts"; render();
+    status.textContent = tab === "apps" ? `${apps.length} candidatura${apps.length === 1 ? "" : "s"}, ${apps.filter(a => a.status === "pending").length} em análise.` : `${posts.length} post${posts.length === 1 ? "" : "s"} em moderação (até 20, mais recentes primeiro).`;
+  });
   list.addEventListener("click", async e => {
+    const appCard = e.target.closest("[data-app]");
+    if (appCard) {
+      const b = e.target.closest("[data-ast]"); if (!b) return;
+      try { b.disabled = true; await BRB.owner("submission_status", { id: appCard.dataset.app, status: b.dataset.ast }); toast("Candidatura atualizada."); await load(); }
+      catch (err) { toast(err.message); b.disabled = false; }
+      return;
+    }
     const card = e.target.closest(".md-card"); if (!card) return;
     const id = card.dataset.id, btn = e.target.closest("button"); if (!btn) return;
     try {
