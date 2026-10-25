@@ -1,6 +1,4 @@
-/* Brazilian Bayle · release 2
-   Pré-temporada: ranking, festas e resenhas são de demonstração e aparecem rotulados assim.
-   Votos, candidaturas e lista de espera são enviados ao Supabase. Ranking permanece demonstrativo. */
+/* Brazilian Bayle · avaliações aprovadas e dados pessoais protegidos no backend. */
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -72,7 +70,7 @@ document.querySelectorAll('.club-motion').forEach(button => {
   tick(); setInterval(tick, 1000);
 })();
 
-/* ---------- critérios e dados de demonstração ---------- */
+/* ---------- critérios e catálogo de DJs ---------- */
 const CRIT = [
   ["som", "Qualidade do Som"],
   ["harmonia", "Harmonia do Set"],
