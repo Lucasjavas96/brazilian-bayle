@@ -7,7 +7,7 @@ const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "dist");
-const SITE = "https://brazilian-bayle.vercel.app";
+const SITE = "https://brazilianbayle.com.br";
 const EMAIL = "brazilianbaile@gmail.com";
 const IG = "https://instagram.com/brazilianbayle";
 const YEAR = 2026;
@@ -363,4 +363,30 @@ function versionHtml(dir) {
   }
 }
 versionHtml(OUT);
+fs.writeFileSync(path.join(OUT,'.htaccess'), `Options -Indexes -MultiViews
+DirectoryIndex index.html
+RewriteEngine On
+RewriteRule ^(?:supabase|scripts|tests|src|_local|\\.git)(?:/|$) - [F,L]
+RewriteCond %{HTTP_HOST} ^www\\.brazilianbayle\\.com\\.br$ [NC]
+RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+ErrorDocument 404 /404.html
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set X-Frame-Options "DENY"
+<FilesMatch "\\.(html|css|js)$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+</IfModule>
+`);
 console.log(`ok: ${pages.length} páginas em dist/`);
+
+const securityHeaders = JSON.parse(fs.readFileSync(path.join(ROOT,'vercel.json'),'utf8')).headers[0].headers;
+fs.appendFileSync(path.join(OUT,'.htaccess'), '\n<IfModule mod_headers.c>\n' + securityHeaders.map(h => `Header always set ${h.key} "${h.value}"`).join('\n') + '\n</IfModule>\n');

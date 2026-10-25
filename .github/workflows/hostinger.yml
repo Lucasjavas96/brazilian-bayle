@@ -1,0 +1,40 @@
+name: Hostinger website
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hostinger-production
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node _local/build.js
+      - name: Publish built files to Hostinger branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp -a dist "$RUNNER_TEMP/brb-built"
+          if git show-ref --verify --quiet refs/remotes/origin/hostinger; then
+            git checkout -B hostinger origin/hostinger
+          else
+            git checkout --orphan hostinger
+          fi
+          git rm -rf --ignore-unmatch .
+          git clean -fdx
+          cp -a "$RUNNER_TEMP/brb-built/." .
+          git add --all
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Publish site from ${GITHUB_SHA}"
+          git push origin hostinger
