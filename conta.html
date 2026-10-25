@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=034f361d2b6f">
+<link rel="stylesheet" href="/styles.css?v=04f97f106149">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brazilian Bayle","url":"https://brazilianbayle.com.br","logo":"https://brazilianbayle.com.br/assets/icon-512.png","email":"brazilianbaile@gmail.com","sameAs":["https://instagram.com/brazilianbayle"],"areaServed":"BR","description":"Campeonato brasileiro de DJs com votação da comunidade e o network BRB Clubbers."}</script>
 </head>
@@ -62,6 +62,7 @@
         <li><a href="/agenda"><span class="mono">09</span>Agenda</a></li>
         <li><a href="/clube"><span class="mono">10</span>BRB Clubbers</a></li>
         <li><a href="/loja"><span class="mono">11</span>Loja</a></li>
+        <li hidden data-owner-only><a href="/moderacao"><span class="mono">12</span>Moderação</a></li>
     </ul>
   </nav>
   <a href="/clube#candidatura" class="btn btn-y side-cta">Faça parte</a>
@@ -83,7 +84,7 @@
    <h1 class="display">Seu acesso.<br>Seu <em>Bayle.</em></h1>
    <p class="lead dim">A música conecta. Sua conta leva você para dentro da conversa.</p>
    <img class="account-parrot" src="/assets/papagaio-refletivo-v2.png" width="180" height="240" alt="Papagaio Brazilian Bayle">
-   <p class="account-note">No Spotted, você escolhe quando mostrar seu nickname. Seu e-mail nunca aparece nas publicações.</p>
+   <p class="account-note">No Spotted, seu @ do Instagram identifica seus posts e comentários, e você escolhe quando mostrá-lo. Seu e-mail nunca aparece nas publicações.</p>
   </div>
   <div class="account-card" id="accountRoot">
    <p class="mono gold" id="accountStep">Acesso à comunidade</p>
@@ -92,7 +93,7 @@
     <button type="button" data-mode="signup" aria-pressed="false">Criar conta</button>
    </div>
    <form id="accountForm">
-    <div class="field" id="accountNickField" hidden><label for="accountNick">Nickname público</label><input id="accountNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" placeholder="seu.nickname"><small>De 3 a 24 letras, números, pontos ou sublinhados. Cada e-mail tem uma única conta; mudar o nickname não libera outra avaliação da mesma apresentação.</small></div>
+    <div class="field" id="accountNickField" hidden><label for="accountNick">Seu @ do Instagram</label><input id="accountNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" placeholder="seu.arroba"><small>Digite o @ do seu Instagram, sem o @. É ele que aparece nos seus posts e comentários do Spotted. De 3 a 24 letras, números, pontos ou sublinhados. Cada e-mail tem uma única conta; mudar o @ não libera outra avaliação da mesma apresentação.</small></div>
     <div class="field" id="accountEmailField"><label for="accountEmail">E-mail</label><input id="accountEmail" type="email" autocomplete="email" maxlength="254" required></div>
     <div class="field" id="accountPasswordField"><label for="accountPassword">Senha</label><input id="accountPassword" type="password" autocomplete="current-password" required maxlength="128"><small id="passwordHelp" hidden>Use pelo menos 12 caracteres, com letras e números.</small></div>
     <div class="field" id="accountRepeatField" hidden><label for="accountRepeat">Repita a senha</label><input id="accountRepeat" type="password" autocomplete="new-password" maxlength="128"></div>
@@ -104,7 +105,7 @@
     <h2 class="h3 display">Dentro do <em>Bayle.</em></h2>
     <p>Sua conta está conectada.</p><a href="/gestao" class="account-text-button">Painel da equipe (acesso restrito)</a>
     <a class="btn account-primary" id="accountContinue" href="/">Voltar para a home</a>
-    <form id="accountSettings"><div class="field"><label for="settingsNick">Seu nickname</label><input id="settingsNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" required></div><p id="settingsEmail" class="account-note"></p><button class="btn btn-ghost" type="submit">Salvar nickname</button></form>
+    <form id="accountSettings"><div class="field"><label for="settingsNick">Seu @ do Instagram</label><input id="settingsNick" autocomplete="nickname" pattern="[A-Za-z0-9_.]{3,24}" minlength="3" maxlength="24" required></div><p id="settingsEmail" class="account-note"></p><button class="btn btn-ghost" type="submit">Salvar nickname</button></form>
     <button id="settingsPassword" class="account-text-button" type="button">Trocar minha senha por e-mail</button>
     <button class="account-text-button" id="accountOut" type="button">Sair da conta</button>
    </section>
@@ -134,7 +135,7 @@
     <div class="wrap foot-cols">
       <div>
         <h3 class="mono">Navegue</h3>
-        <ul><li><a href="/ranking">Brasileirão dos DJs</a></li><li><a href="/djpedia">DJ Pédia</a></li><li><a href="/album">Bayle All Stars Album</a></li><li><a href="/curitiba">Bayle Curitibano</a></li><li><a href="/spotted">Spotted Bayle</a></li><li><a href="/after">Onde é o after?</a></li><li><a href="/conta">Login / Cadastro</a></li><li><a href="/manifesto">Manifesto</a></li><li><a href="/agenda">Agenda</a></li><li><a href="/clube">BRB Clubbers</a></li><li><a href="/loja">Loja</a></li></ul>
+        <ul><li><a href="/ranking">Brasileirão dos DJs</a></li><li><a href="/djpedia">DJ Pédia</a></li><li><a href="/album">Bayle All Stars Album</a></li><li><a href="/curitiba">Bayle Curitibano</a></li><li><a href="/spotted">Spotted Bayle</a></li><li><a href="/after">Onde é o after?</a></li><li><a href="/conta">Login / Cadastro</a></li><li><a href="/manifesto">Manifesto</a></li><li><a href="/agenda">Agenda</a></li><li><a href="/clube">BRB Clubbers</a></li><li><a href="/loja">Loja</a></li><li><a href="/moderacao">Moderação</a></li></ul>
       </div>
       <div>
         <h3 class="mono">Contato</h3>
@@ -191,9 +192,10 @@
 <script src="/media-guard.js" defer></script>
 <script src="/card-effects.js?v=3700071dc1b7" defer></script>
 <script src="/support.js?v=15a0860aacef" defer></script>
-<script src="/session-menu.js?v=64f66e0e803a" defer></script>
+<script src="/session-menu.js?v=2cc4b91a2750" defer></script>
 
-<script src="/account.js?v=f5b33be04212" defer></script>
+<script src="/account.js?v=1e120223a5cb" defer></script>
+
 
 
 

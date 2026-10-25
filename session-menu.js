@@ -9,10 +9,11 @@
   const current=++revision;
   const {data,error}=await BRB.auth.getSession();if(current!==revision)return;
   const user=!error&&data.session?.user;
-  if(!user){document.getElementById('headerLogin').hidden=false;trigger.hidden=true;document.getElementById('headerNickname').textContent='';close();return;}
+  if(!user){document.querySelectorAll('[data-owner-only]').forEach(e=>{e.hidden=true;});document.getElementById('headerLogin').hidden=false;trigger.hidden=true;document.getElementById('headerNickname').textContent='';close();return;}
   let profile;try{profile=await BRB.rpc('profile_get');}catch{}
   if(current!==revision)return;
   document.getElementById('headerNickname').textContent='@'+(profile?.nick||user.user_metadata?.nick||'minha.conta');
+  try{const c=await BRB.content('');document.querySelectorAll('[data-owner-only]').forEach(e=>{e.hidden=!c?.me_owner;});}catch{}
   document.getElementById('headerLogin').hidden=true;trigger.hidden=false;
  }
  document.getElementById('headerSignOut').onclick=async()=>{
