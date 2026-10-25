@@ -606,7 +606,7 @@ function mountGe(el) {
       const s = slug(d.name), href = `/djpedia/${s}`;
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${d.pos}</b>${mv}</td>
-        <th scope="row" class="ge-dj"><a href="${href}"><span class="ge-badge" aria-hidden="true">${initials(d.name)}</span><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
+        <th scope="row" class="ge-dj"><a href="${href}"><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
         <td class="ge-nota">${fmt2(d.nota)}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
