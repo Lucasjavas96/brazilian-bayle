@@ -18,6 +18,7 @@ const NAV = [
   ["album", "/album", "Bayle All Stars Album"],
   ["curitiba", "/curitiba", "Bayle Curitibano"],
   ["spotted", "/spotted", "Spotted Bayle"],
+  ["after", "/after", "Onde é o after?"],
   ["conta", "/conta", "Login / Cadastro"],
   ["manifesto", "/manifesto", "Manifesto"],
   ["agenda", "/agenda", "Agenda"],
@@ -169,6 +170,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 ${meta.nav === "gestao" ? '<script src="/management.js" defer></script>' : ""}
 ${meta.nav === "conta" ? '<script src="/account.js" defer></script>' : ""}
 ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
+${meta.nav === "after" ? '<script src="/after.js" defer></script>' : ""}
 ${meta.nav === "album" ? '<script src="/album.js" defer></script>' : ""}
 </body>
 </html>
@@ -346,7 +348,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "management.js", "album.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "management.js", "album.js", "after.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
