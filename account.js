@@ -4,9 +4,12 @@
  const $ = s => root.querySelector(s), auth = BRB.auth;
  const params = new URLSearchParams(location.search);
  const next = params.get('next');
- const destination = next && /^\/(?!\/)/.test(next) && !/[\\\r\n]/.test(next) && !next.startsWith('/conta') ? next : '/spotted';
- const callback = location.origin + '/conta';
- let mode = 'login', factor = null, enrolling = false, recovery = new URLSearchParams(location.hash.slice(1)).get('type') === 'invite';
+ const destination = next && /^\/(?!\/)/.test(next) && !/[\\\r\n]/.test(next) && !next.startsWith('/conta') ? next : '/';
+ const callback = location.origin + '/conta' + (destination !== '/' ? '?next='+encodeURIComponent(destination) : '');
+ const recoveryCallback = location.origin + '/conta?flow=recovery';
+ const authLinkType = new URLSearchParams(location.hash.slice(1)).get('type');
+ let redirectAfterAuth = authLinkType === 'signup' || Boolean(next);
+ let mode = 'login', factor = null, enrolling = false, recovery = ['invite','recovery'].includes(authLinkType);
  const message = text => { $('#accountMessage').textContent = text; };
  const check = result => { if (result.error) throw result.error; return result.data; };
  const friendly = error => {
@@ -45,6 +48,7 @@
   $('#accountForm').hidden = true; $('#accountLinks').hidden = true; $('.account-tabs').hidden = true;
   $('#mfaForm').hidden = true; $('#mfaQr').removeAttribute('src'); $('#mfaQr').hidden = true;
   if (recovery) { setMode('reset'); return; }
+  if (redirectAfterAuth) { location.replace(destination); return; }
   $('#accountMember').hidden = false; $('#accountContinue').href = destination;
 
   const session = check(await auth.getUser()).user;
@@ -52,7 +56,7 @@
   $('#settingsNick').value = profile?.nick || session.user_metadata?.nick || '';
   $('#settingsEmail').textContent = session.email || '';
   $('#accountStep').textContent = 'Configurações da conta';
-  $('#accountStep').textContent = 'Sua conta';
+
  }
  function showMfa() {
   $('#accountForm').hidden = true; $('#accountMember').hidden = true; $('#accountLinks').hidden = true; $('.account-tabs').hidden = true; $('#mfaForm').hidden = false; $('#mfaCode').value = '';
@@ -73,9 +77,9 @@
    check(await auth.signUp({email,password,options:{data:{nick:$('#accountNick').value.trim(),brb_app:true,terms_version:'2026-10-24'},emailRedirectTo:callback}}));
    message('Se o cadastro puder ser concluído com esse e-mail, você receberá a confirmação. Verifique também o spam.');
   } else if (mode === 'login') {
-   check(await auth.signInWithPassword({email,password})); await showMember();
+   check(await auth.signInWithPassword({email,password})); redirectAfterAuth=true; await showMember();
   } else if (mode === 'recover') {
-   check(await auth.resetPasswordForEmail(email,{redirectTo:callback+'?flow=recovery'}));
+   check(await auth.resetPasswordForEmail(email,{redirectTo:recoveryCallback}));
    message('Se houver uma conta com esse e-mail, enviaremos as instruções de recuperação.');
   } else if (mode === 'resend') {
    check(await auth.resend({type:'signup',email,options:{emailRedirectTo:callback}}));
@@ -94,7 +98,7 @@
  }); };
  $('#settingsPassword').onclick = async () => { try {
   const user=check(await auth.getUser()).user;
-  check(await auth.resetPasswordForEmail(user.email,{redirectTo:callback+'?flow=recovery'}));
+  check(await auth.resetPasswordForEmail(user.email,{redirectTo:recoveryCallback}));
   message('Enviamos o link para trocar sua senha. Verifique seu e-mail.');
  }catch(e){message(friendly(e));} };
  $('#mfaForm').onsubmit = e => { e.preventDefault(); busy(e.currentTarget, async () => {
