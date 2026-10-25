@@ -13,16 +13,16 @@ const IG = "https://instagram.com/brazilianbayle";
 const YEAR = 2026;
 
 const NAV = [
+  ["conta", "/conta", "Login / Cadastro"],
   ["ranking", "/ranking", "Brasileirão dos DJs"],
-  ["djpedia", "/djpedia", "DJ Pédia"],
-  ["album", "/album", "Bayle All Stars Album"],
-  ["curitiba", "/curitiba", "Bayle Curitibano"],
   ["spotted", "/spotted", "Spotted Bayle"],
   ["after", "/after", "Onde é o after?"],
-  ["conta", "/conta", "Login / Cadastro"],
-  ["manifesto", "/manifesto", "Manifesto"],
-  ["agenda", "/agenda", "Agenda"],
+  ["album", "/album", "Bayle All Stars Album"],
   ["clube", "/clube", "BRB Clubbers"],
+  ["agenda", "/agenda", "Agenda"],
+  ["manifesto", "/manifesto", "Manifesto"],
+  ["djpedia", "/djpedia", "DJ Pédia"],
+  ["curitiba", "/curitiba", "Bayle Curitibano"],
   ["loja", "/loja", "Loja"],
   ["moderacao", "/moderacao", "Moderação", "owner"], // só aparece para o owner (session-menu.js)
 ];
@@ -323,7 +323,6 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
         <figure class="wiki-photo">${img
           ? `<img src="/${img}" alt="${esc(p.nome)}" width="${DJ_PHOTOS[s]?.width || 600}" height="${DJ_PHOTOS[s]?.height || 600}" decoding="async">`
           : `<div class="wiki-ph" role="img" aria-label="Foto de ${esc(p.nome)} em breve"><span>${ini(p.nome)}</span><small class="mono">Foto em breve</small></div>`}
-          ${credit ? `<figcaption class="mono">Foto: ${credit}</figcaption>` : ""}
         </figure>
         <p class="wiki-box-name">${esc(p.nome)}</p>
         <dl>${box.map(([k, val]) => `<div><dt>${k}</dt><dd${val === NI ? ' class="ni"' : ""}>${esc(val)}</dd></div>`).join("")}</dl>

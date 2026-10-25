@@ -2,14 +2,14 @@
   "oscar-albuquerque": {
     "path": "assets/djs/oscar-albuquerque.webp",
     "thumb": "assets/djs/thumbs/oscar-albuquerque.webp",
-    "source": "https://soundcloud.com/oscaralbuquerquedj",
+    "source": "Fornecida pela Brazilian Bayle",
     "width": 500,
     "height": 500
   },
   "benato": {
     "path": "assets/djs/benato.webp",
     "thumb": "assets/djs/thumbs/benato.webp",
-    "source": "https://soundcloud.com/matheus-benato",
+    "source": "Fornecida pela Brazilian Bayle",
     "width": 500,
     "height": 500
   },
@@ -152,5 +152,54 @@
     "source": "Acervo do projeto: /assets/album/fotos/greg.webp",
     "width": 547,
     "height": 640
+  },
+  "wendel-cubas": {
+    "path": "assets/djs/wendel-cubas.webp",
+    "thumb": "assets/djs/thumbs/wendel-cubas.webp",
+    "source": "Fornecida pela Brazilian Bayle",
+    "width": 500,
+    "height": 500
+  },
+  "barbara-scalco": {
+    "path": "assets/djs/barbara-scalco.webp",
+    "thumb": "assets/djs/thumbs/barbara-scalco.webp",
+    "source": "Fornecida pela Brazilian Bayle",
+    "width": 500,
+    "height": 500
+  },
+  "patrick-vie": {
+    "path": "assets/djs/patrick-vie.webp",
+    "thumb": "assets/djs/thumbs/patrick-vie.webp",
+    "source": "Fornecida pela Brazilian Bayle",
+    "width": 500,
+    "height": 500
+  },
+  "makka": {
+    "path": "assets/djs/makka.webp",
+    "thumb": "assets/djs/thumbs/makka.webp",
+    "source": "Fornecida pela Brazilian Bayle",
+    "width": 500,
+    "height": 500
+  },
+  "kyza": {
+    "path": "assets/djs/kyza.webp",
+    "thumb": "assets/djs/thumbs/kyza.webp",
+    "source": "Fornecida pela Brazilian Bayle",
+    "width": 500,
+    "height": 500
+  },
+  "felpo": {
+    "path": "assets/djs/felpo.webp",
+    "thumb": "assets/djs/thumbs/felpo.webp",
+    "source": "Fornecida pela Brazilian Bayle",
+    "width": 500,
+    "height": 500
+  },
+  "oktn": {
+    "path": "assets/djs/oktn.webp",
+    "thumb": "assets/djs/thumbs/oktn.webp",
+    "source": "Fornecida pela Brazilian Bayle",
+    "width": 500,
+    "height": 500
   }
 }

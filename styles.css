@@ -2272,3 +2272,9 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .md .btn.btn-ghost{color:#fff;border-color:rgba(255,255,255,.35)}
 .md-danger{color:#ff8a8a!important;border-color:#ff8a8a!important}
 .sp-cdel{background:none;border:0;box-shadow:none;backdrop-filter:none;color:#b3261e;font-size:10px;cursor:pointer;min-height:32px;padding:0 6px;margin-left:4px;text-decoration:underline}
+
+/* menu lateral: barra de rolagem fina quando a lista não cabe na tela */
+.side nav[aria-label="Principal"]{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;margin:0 -10px;padding:0 10px;scrollbar-width:thin;scrollbar-color:#0a0b0a rgba(0,0,0,.15)}
+.side nav[aria-label="Principal"]::-webkit-scrollbar{width:8px}
+.side nav[aria-label="Principal"]::-webkit-scrollbar-track{background:rgba(0,0,0,.12);border-radius:99px}
+.side nav[aria-label="Principal"]::-webkit-scrollbar-thumb{background:#0a0b0a;border-radius:99px}
