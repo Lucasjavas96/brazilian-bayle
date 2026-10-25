@@ -133,16 +133,18 @@
   const ownerTag = '<i class="sp-owner mono"><span aria-hidden="true">👑</span> Owner</i>';
   const whoName = w => ownerNick && String(w).toLowerCase() === "@" + ownerNick ? `${ownerTag}<b class="sp-own-name">${esc(w)}</b>` : `<b>${esc(w)}</b>`;
 
+  const seal = '<span class="sp-seal" aria-hidden="true"><img src="/assets/papagaio-refletivo-v2.png" alt=""><b>Brazilian<br>Bayle</b></span>';
   function card(p) {
     const u = me(), mine = u && u.email === p.owner, my = u && p.myReaction, rs = reactors(p), emo = Object.fromEntries(REACTIONS.map(([k, e]) => [k, e]));
     const cnt = counts(p), total = Object.values(cnt).reduce((a, b) => a + b, 0), cm = comments(p);
     const face = p.img
       ? `<img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy" decoding="async">`
-      : `<div class="sp-txt"><span class="mono">Resenha</span><p>${esc(p.text)}</p></div>`;
+      : `<div class="sp-txt sp-sheet">${seal}<h4 class="sp-hand-title">${esc(p.title)}</h4><p>${esc(p.text)}</p></div>`;
     const side = p.img && (p.text || mine)
       ? `<button type="button" class="sp-tab mono" data-side aria-expanded="false">${p.text ? "Resenha" : "+ Resenha"}</button>
-         <div class="sp-side" data-side-panel hidden>
-           <p class="mono">Resenha de ${esc(author(p))}</p>
+         <div class="sp-side sp-sheet" data-side-panel hidden>
+           ${seal}<h4 class="sp-hand-title">${esc(p.title)}</h4>
+           <p class="sp-hand-by">por ${esc(author(p))}</p>
            ${p.text ? `<p class="sp-side-t">${esc(p.text)}</p>` : `<textarea maxlength="500" rows="5" aria-label="Escreva a resenha da festa" placeholder="Como foi a festa?"></textarea><button type="button" class="btn btn-y" data-save-text>Salvar resenha</button>`}
          </div>` : "";
     return `<article class="sp-card${p.img ? "" : " is-text"}" data-id="${esc(p.id)}" aria-label="${esc(p.title)}, por ${esc(author(p))}">
