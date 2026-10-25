@@ -8,7 +8,7 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "dist");
 const SITE = "https://brazilianbayle.com.br";
-const EMAIL = "brazilianbaile@gmail.com";
+const EMAIL = "contato@brazilianbayle.com.br";
 const IG = "https://instagram.com/brazilianbayle";
 const YEAR = 2026;
 
@@ -108,7 +108,7 @@ ${jsonld}
   <a href="/clube#candidatura" class="btn btn-y side-cta">Faça parte</a>
   <div class="side-foot">
     <a href="${IG}" target="_blank" rel="noopener" class="mono">Instagram ↗</a>
-    <span class="mono">Balneário Camboriú · Curitiba</span>
+    <span class="mono">Curitiba</span>
   </div>
 </header>
 <div class="scrim" id="scrim" hidden></div>
@@ -138,7 +138,7 @@ ${body.trim()}
         <ul>
           <li><a href="mailto:${EMAIL}">${EMAIL}</a></li>
           <li><a href="${IG}" target="_blank" rel="noopener">Instagram @brazilianbayle</a></li>
-          <li>Balneário Camboriú (SC) · Curitiba (PR)</li>
+          <li>Curitiba (PR)</li>
         </ul>
       </div>
       <div>

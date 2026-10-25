@@ -1559,7 +1559,7 @@ a.wiki-item:hover{border-color:var(--y);transform:translateY(-2px)}
 .is-text .sp-front:after{background:linear-gradient(180deg,transparent 52%,rgba(10,11,10,.95) 74%)}
 .sp-info{position:absolute;left:16px;right:16px;bottom:62px;z-index:2;pointer-events:none}
 .sp-party{display:inline-block;background:var(--y);color:var(--k0);padding:3px 8px;border-radius:999px;font-size:10px;font-weight:700;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sp-info h3{font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;text-transform:uppercase;font-size:20px;line-height:1.05;margin:8px 0}
+.sp-info h3{font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;text-transform:uppercase;font-size:16px;line-height:1.05;margin:8px 0}
 .sp-by{display:flex;align-items:center;gap:8px;font-size:14px}
 .sp-when{margin-left:auto;font-size:10px;color:rgba(255,255,255,.6)}
 .sp-rx{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;gap:6px;overflow-x:auto;padding:12px;scroll-snap-type:x proximity;scrollbar-width:none;touch-action:pan-x;background:rgba(10,11,10,.9)}
@@ -2288,8 +2288,6 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 /* "y" do Bayle cortado: o degradê só pinta dentro da caixa do texto, e o itálico passa dela */
 .display em,.display .title-accent,.manifesto-heading .manifesto-primary{padding:.12em .2em .26em .2em;margin:-.12em -.2em -.26em -.2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 /* home: assinatura do vídeo */
-.hero-date{bottom:34px}
-.hero-credit{position:absolute;left:var(--pad);bottom:12px;z-index:2;margin:0;font-size:10px;letter-spacing:.08em;color:var(--y);text-shadow:0 1px 6px rgba(0,0,0,.7)}
 .sp-points{margin-top:10px;max-width:640px}.sp-points b{color:var(--y)}.sp-points a{color:var(--y)}
 .ab-prize{margin-top:12px}.ab-prize b{color:var(--y)}
 .owner-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;margin-left:6px;border-radius:99px;background:#d93a4a;color:#fff;font:700 11px/1 'JetBrains Mono',monospace}
@@ -2297,3 +2295,41 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .md-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 4px}
 .md-tabs button{min-height:46px;padding:0 18px;background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;font:600 14px 'Inter Tight',sans-serif;border-radius:999px;cursor:pointer}
 .md-tabs button[aria-pressed=true]{background:var(--y);border-color:var(--y);color:var(--k0)}
+
+/* home: crédito da mídia, no canto superior direito do vídeo */
+.hero-credit{position:absolute;top:12px;right:var(--pad);z-index:2;margin:0;max-width:88%;text-align:right;font-size:9px;letter-spacing:.08em;color:var(--y);text-shadow:0 1px 6px rgba(0,0,0,.8)}
+/* home: Spotted Bayle */
+.sp-home{background:var(--k0);padding:clamp(56px,8vw,110px) 0}
+.sp-home-head{max-width:760px;margin-bottom:34px}
+.sp-home-head .display{margin:10px 0 16px}
+.sp-home-grid{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-bottom:30px}
+.sp-home-card{position:relative;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.16);border-radius:18px;overflow:hidden;background:#151615}
+.sp-home-card img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.sp-home-n{position:absolute;top:12px;left:12px;background:var(--y);color:var(--k0);border-radius:99px;padding:3px 10px;font-size:11px;font-weight:700}
+.sp-home-card div{padding:14px 16px 18px}
+.sp-home-card b{display:block;font:800 18px 'Syne','Syne Fallback',sans-serif;margin-bottom:6px}
+.sp-home-card p{font-size:14px;line-height:1.45;color:rgba(255,255,255,.8)}
+.sp-home-card small{display:block;margin-top:10px;font-size:10px;color:rgba(255,255,255,.5)}
+.sp-home-rule{max-width:760px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;margin-bottom:6px}
+.sp-home-rule b,.sp-home-rule strong{color:var(--y)}
+@media(max-width:1000px){.sp-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.sp-home-grid{grid-template-columns:minmax(0,1fr)}}
+/* Spotted: resenha em folha de caderno, letra de mão */
+.sp-sheet{--line:rgba(60,100,170,.3);background-color:#fbf8ec;
+  background-image:linear-gradient(90deg,transparent 46px,rgba(205,60,60,.55) 46px,rgba(205,60,60,.55) 48px,transparent 48px),repeating-linear-gradient(180deg,transparent 0 25px,var(--line) 25px 26px);
+  background-position:0 0,0 0;color:#1d2540;font-family:'Caveat','Segoe Script','Bradley Hand',cursive}
+.sp-sheet::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:22px;pointer-events:none;background:radial-gradient(circle,#1d1e1c 0 4.5px,rgba(0,0,0,.3) 5px 6.5px,transparent 7px) 0 15px/22px 52px repeat-y}
+.sp-txt.sp-sheet{padding:26px 18px 0 58px;color:#1d2540}
+.sp-sheet .sp-hand-title{font:700 30px/52px 'Caveat','Segoe Script','Bradley Hand',cursive;text-transform:none;letter-spacing:0;margin:0 66px 0 0;color:#16205a;border-bottom:2px solid rgba(22,32,90,.55);max-height:104px;overflow:hidden}
+.sp-txt.sp-sheet p{margin:0;font:500 22px/26px 'Caveat','Segoe Script','Bradley Hand',cursive;display:-webkit-box;-webkit-line-clamp:10;-webkit-box-orient:vertical;overflow:hidden}
+.sp-seal{position:absolute;top:14px;right:12px;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;align-content:center;gap:1px;text-align:center;transform:rotate(-12deg);color:#006b2d;border:2px solid rgba(0,107,45,.75);box-shadow:inset 0 0 0 3px rgba(251,248,236,.9),inset 0 0 0 4px rgba(0,107,45,.5);opacity:.88;background:rgba(255,255,255,.35)}
+.sp-seal img{width:24px;height:30px;object-fit:contain}
+.sp-seal b{font:700 7px/1 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.sp-side.sp-sheet{padding:16px 16px 16px 58px;display:block;font-family:'Caveat','Segoe Script','Bradley Hand',cursive}
+.sp-side.sp-sheet .sp-hand-by{font:600 20px/26px 'Caveat',cursive;color:#3b4a80;margin:0}
+.sp-side.sp-sheet .sp-side-t{font:500 22px/26px 'Caveat','Segoe Script','Bradley Hand',cursive;color:#1d2540}
+.sp-side.sp-sheet textarea{font:500 22px/26px 'Caveat',cursive;background:transparent;border:0;color:#1d2540}
+.is-text .sp-front:after{display:none}
+.is-text .sp-info{color:#1d2540}.is-text .sp-info h3{display:none}.is-text .sp-when{color:rgba(29,37,64,.6)}
+.is-text .sp-by{margin-top:6px}
+.is-text .sp-own-name,.sp-side .sp-own-name{color:#7a5a12}
