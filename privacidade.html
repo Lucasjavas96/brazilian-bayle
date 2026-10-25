@@ -17,17 +17,18 @@
 <meta property="og:title" content="Política de privacidade · Brazilian Bayle">
 <meta property="og:description" content="Como a Brazilian Bayle coleta, usa e protege os seus dados pessoais, de acordo com a LGPD (Lei 13.709/2018).">
 <meta property="og:url" content="https://brazilianbayle.com.br/privacidade">
-<meta property="og:image" content="https://brazilianbayle.com.br/assets/og.jpg">
+<meta property="og:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Brazilian Bayle: o campeonato brasileiro de DJs">
+<meta property="og:image:alt" content="Brazilian Bayle · A pista é brasileira.">
+<meta property="og:image:type" content="image/jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Política de privacidade · Brazilian Bayle">
 <meta name="twitter:description" content="Como a Brazilian Bayle coleta, usa e protege os seus dados pessoais, de acordo com a LGPD (Lei 13.709/2018).">
-<meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og.jpg">
+<meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=449769b61984">
+<link rel="stylesheet" href="/styles.css?v=31cceb134a76">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brazilian Bayle","url":"https://brazilianbayle.com.br","logo":"https://brazilianbayle.com.br/assets/icon-512.png","email":"brazilianbaile@gmail.com","sameAs":["https://instagram.com/brazilianbayle"],"areaServed":"BR","description":"Campeonato brasileiro de DJs com votação da comunidade e o network BRB Clubbers."}</script>
 </head>
@@ -40,7 +41,7 @@
   <p class="mbar-tag"><b>Brazilian <em>Bayle</em></b><span>A pista é brasileira e sempre vai ser</span></p>
   <div class="mbar-access">
   <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
-  <a class="mbar-account" href="/conta">Entrar/Cadastrar</a>
+  <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
   </div>
 </div>
 
@@ -80,7 +81,7 @@
     <p class="mono g">Versão 1.1 · 24 de outubro de 2026</p>
     <h1 class="display">Política de <em>privacidade</em></h1>
 
-    <p>Esta política explica quais dados pessoais a Brazilian Bayle coleta no site brazilian-bayle.vercel.app, para que eles servem e quais são os seus direitos, de acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018, a LGPD).</p>
+    <p>Esta política explica quais dados pessoais a Brazilian Bayle coleta no site brazilianbayle.com.br, para que eles servem e quais são os seus direitos, de acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018, a LGPD).</p>
 
     <h2>1. Quem cuida dos seus dados</h2>
     <p>A Brazilian Bayle, projeto independente com base em Balneário Camboriú (SC) e Curitiba (PR), é a controladora dos dados tratados neste site. Para qualquer assunto de privacidade, inclusive para falar com o encarregado de dados, escreva para <a href="mailto:brazilianbaile@gmail.com">brazilianbaile@gmail.com</a>.</p>
@@ -90,7 +91,8 @@
 
     <h2>3. Quais dados coletamos</h2>
     <ul>
-      <li><b>Voto:</b> nome, @ do Instagram, festa, DJ avaliado, notas, comentário e se você declarou ser BRB Clubber.</li>
+      <li><b>Suporte:</b> nome, e-mail, assunto, mensagem, página de origem e um identificador técnico derivado do IP para limitar abuso. O pedido é encaminhado à equipe por e-mail.</li>
+      <li><b>Voto:</b> identificador da conta, nickname, festa, DJ avaliado, notas e comentário opcional.</li>
       <li><b>Candidatura ao BRB Clubbers:</b> nome, @ do Instagram, e-mail, cidade, plano de interesse e o texto sobre por que quer fazer parte.</li>
       <li><b>Lista de espera da loja:</b> e-mail, tamanho e categorias de interesse.</li>
       <li><b>Spotted:</b> e-mail e dados de autenticação, nickname, fotos, textos, comentários, reações e denúncias. Há limites de frequência e moderação de denúncias.</li>
@@ -99,7 +101,7 @@
 
     <h2>4. Para que usamos</h2>
     <ul>
-      <li>Apurar o ranking, garantir um voto por @ em cada apresentação e descartar votos repetidos ou falsos.</li>
+      <li>Apurar o ranking, garantir um voto por conta em cada apresentação e descartar votos repetidos ou falsos.</li>
       <li>Avaliar candidaturas ao clube e enviar o convite a quem for aprovado.</li>
       <li>Avisar sobre o lançamento da loja.</li>
       <li>Publicar resenhas e vídeos que você enviar, sempre com o seu crédito.</li>
@@ -114,11 +116,12 @@
       <li>Votos e comentários: durante a temporada e por até 1 ano depois do fim dela.</li>
       <li>Candidaturas não aprovadas: até 6 meses.</li>
       <li>Dados de membros: enquanto a assinatura estiver ativa e por até 1 ano após o cancelamento.</li>
+      <li>Solicitações de suporte: até 6 meses para acompanhamento do atendimento.</li>
       <li>Lista de espera: até você pedir para sair.</li>
     </ul>
 
     <h2>7. Com quem compartilhamos</h2>
-    <p>Usamos Vercel para hospedagem e Supabase para banco de dados e autenticação. Nome, Instagram, e-mail e candidaturas não são expostos pela consulta pública. No Spotted, nickname, conteúdo e interações podem ser públicos; ao ocultar o nome, o público vê Anônimo, mas a equipe continua podendo associar o conteúdo à conta para moderação.</p>
+    <p>Usamos Hostinger para hospedagem e envio de e-mails, e Supabase para banco de dados e autenticação. Nome, Instagram, e-mail e candidaturas não são expostos pela consulta pública. No Spotted, nickname, conteúdo e interações podem ser públicos; ao ocultar o nome, o público vê Anônimo, mas a equipe continua podendo associar o conteúdo à conta para moderação.</p>
 
     <h2>8. Seus direitos</h2>
     <p>Você pode, a qualquer momento: confirmar se tratamos seus dados, acessá-los, corrigi-los, pedir que sejam apagados, revogar o consentimento e pedir a portabilidade (art. 18 da LGPD). Basta escrever para <a href="mailto:brazilianbaile@gmail.com">brazilianbaile@gmail.com</a>. Respondemos em até 15 dias.</p>
@@ -157,6 +160,7 @@
       <div>
         <h3 class="mono">Legal</h3>
         <ul>
+          <li><a href="/suporte">Suporte</a></li>
           <li><a href="/termos">Termos de uso</a></li>
           <li><a href="/privacidade">Política de privacidade</a></li>
         </ul>
@@ -169,14 +173,38 @@
   </footer>
 </div>
 
+<button class="support-launch" id="supportLaunch" type="button" aria-haspopup="dialog" aria-controls="supportDialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 4h16v12H9l-5 4V4Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Precisa de ajuda?</span></button>
+<dialog class="support-dialog" id="supportDialog" aria-labelledby="supportTitle">
+ <div class="support-head"><div><p class="mono gold">Brazilian Bayle</p><h2 id="supportTitle">Como podemos ajudar?</h2><p>Assistente de suporte · atendimento guiado</p></div><button type="button" id="supportClose" aria-label="Fechar suporte">×</button></div>
+ <form id="supportForm">
+  <section id="supportTopics"><p>Escolha o assunto para começar.</p><div class="support-topics">
+   <button type="button" data-support-topic="conta">Conta e acesso <span>→</span></button><button type="button" data-support-topic="votacao">Festas e votação <span>→</span></button><button type="button" data-support-topic="album">Álbum de DJs <span>→</span></button><button type="button" data-support-topic="spotted">Spotted e moderação <span>→</span></button><button type="button" data-support-topic="clube">BRB Clubbers <span>→</span></button><button type="button" data-support-topic="outro">Outro assunto <span>→</span></button>
+  </div></section>
+  <section id="supportDetails" hidden>
+   <button type="button" id="supportBack" class="support-back">← Trocar assunto</button><h3 id="supportTopicTitle" tabindex="-1"></h3><p id="supportTip" class="support-tip"></p>
+   <label for="supportName">Seu nome</label><input id="supportName" name="name" autocomplete="name" minlength="2" maxlength="80" required>
+   <label for="supportEmail">E-mail para resposta</label><input id="supportEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+   <label for="supportMessage">Conte o que aconteceu</label><textarea id="supportMessage" name="message" rows="4" minlength="20" maxlength="3000" placeholder="Descreva a dúvida e o que você já tentou." required></textarea>
+   <p class="support-note">Não envie senhas, códigos de acesso ou dados de pagamento.</p>
+   <div hidden aria-hidden="true"><label>Site<input name="website" tabindex="-1" autocomplete="off"></label></div>
+   <label class="support-consent"><input id="supportConsent" type="checkbox" required><span>Concordo com o uso dos dados para este atendimento, conforme a <a href="/privacidade" target="_blank" rel="noopener">Política de privacidade</a>.</span></label>
+   <button type="submit" class="btn btn-gold" id="supportSubmit">Revisar solicitação →</button>
+  </section>
+  <section id="supportReview" hidden><p class="mono gold">Confira antes de enviar</p><h3 id="supportReviewTitle"></h3><p id="supportReviewEmail"></p><p id="supportReviewMessage"></p><p class="support-note">Seu pedido será enviado à equipe da Brazilian Bayle. A resposta chegará por e-mail.</p><div class="support-actions"><button type="button" id="supportEdit" class="support-back">Editar</button><button type="submit" class="btn btn-gold" id="supportSend">Enviar solicitação</button></div></section>
+  <p id="supportStatus" role="status" aria-live="polite"></p>
+ </form>
+</dialog>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="/assets/vendor/supabase-2.49.8.js" defer></script>
 <script src="/backend-config.js" defer></script>
 <script src="/backend.js" defer></script>
 <script src="/events-2026.js" defer></script>
-<script src="/app.js?v=2779643f045f" defer></script>
+<script src="/app.js?v=f5a9b6e062e7" defer></script>
 <script src="/media-guard.js" defer></script>
 <script src="/card-effects.js?v=51494bb3427c" defer></script>
+<script src="/support.js?v=662cfa03949a" defer></script>
+<script src="/session-menu.js?v=64f66e0e803a" defer></script>
 
 
 

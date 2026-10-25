@@ -1878,3 +1878,39 @@ animation:medal-border-orbit 4.8s linear infinite!important}
 .cwb-photo{display:block;width:100%;height:auto;object-fit:cover}
 .wiki [hidden]{display:none!important}
 @media(max-width:480px){.wiki-genre>ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.support-launch{position:fixed;right:24px;bottom:22px;z-index:90;display:flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid #c9a45c88;border-radius:999px;background:#111e;color:#ead6a8;backdrop-filter:blur(18px);box-shadow:0 8px 24px #0005;cursor:pointer;font-size:14px}
+.support-dialog{position:fixed;inset:auto 22px 84px auto;margin:0;width:min(440px,calc(100vw - 32px));max-height:calc(100dvh - 110px);overflow:auto;border:1px solid #c9a45c77;border-radius:22px;padding:24px;background:#0b0c0b;color:#f6f4ef;box-shadow:0 24px 80px #0009;--focus:#c9a45c}
+.support-dialog::backdrop{background:#0008;backdrop-filter:blur(3px)}
+.support-head{display:flex;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid #ffffff20;margin-bottom:18px}
+.support-head h2{font-family:'Inter Tight',sans-serif;font-size:25px;line-height:1.15;margin:8px 0}
+.support-head p:last-child{font-size:12px;color:#aaa}
+#supportClose{background:none;border:0;color:#d8c595;font-size:28px;cursor:pointer;width:32px;height:32px;flex-shrink:0}
+.support-topics{display:grid;gap:9px;margin-top:16px}
+.support-topics button{display:flex;justify-content:space-between;gap:12px;text-align:left;border:1px solid #ffffff24;border-radius:12px;padding:13px;background:linear-gradient(140deg,#ffffff0e,#ffffff03);color:#eee;cursor:pointer}
+.support-topics button:hover{border-color:#c9a45c}
+.support-topics span{color:#c9a45c}
+.support-dialog label:not(.support-consent){display:block;margin:16px 0 6px;font-size:13px}
+.support-dialog input:not([type=checkbox]),.support-dialog textarea{display:block;width:100%;padding:11px 12px;border:1px solid #ffffff30;border-radius:10px;background:#151615;color:#f5f3ed;font:inherit;font-size:15px}
+.support-dialog textarea{resize:vertical;min-height:100px}
+.support-dialog input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin-top:3px;accent-color:#c9a45c}
+.support-consent{display:flex;align-items:start;gap:10px;font-size:12px;color:#c7c5bd;margin:16px 0}
+.support-tip{color:#c8c6bf;font-size:14px;margin:12px 0;padding-left:12px;border-left:2px solid #c9a45c}
+.support-note{font-size:12px;color:#b1afa7;margin:9px 0}
+.support-back{background:none;border:0;color:#d5ba7a;font-size:13px;cursor:pointer;padding:8px 0}
+.support-actions{display:flex;align-items:center;justify-content:space-between;gap:14px}
+#supportReviewTitle{margin:14px 0 6px}#supportReviewEmail{font-size:14px;overflow-wrap:anywhere}
+#supportReviewMessage{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;background:#161714;padding:14px;border-radius:12px;margin:16px 0}
+#supportStatus{font-size:14px;margin-top:16px;overflow-wrap:anywhere}
+.support-dialog [hidden]{display:none!important}
+@media(max-width:600px){.support-launch{right:16px;bottom:16px}.support-launch span{display:none}.support-dialog{right:16px;bottom:72px;padding:20px;max-height:calc(100dvh - 90px)}}
+.account-nav{position:relative;min-width:0}
+.account-nav [hidden]{display:none!important}
+.header-user{display:flex;align-items:center;gap:7px;max-width:190px;padding:9px 4px;background:none;border:0;color:#d5ba7a;cursor:pointer;font-size:13px}
+#headerNickname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.header-user::after,.header-user::before,#headerSignOut::after,#headerSignOut::before{content:none!important}
+.header-account-menu{position:absolute;top:calc(100% + 12px);right:0;width:240px;padding:10px;background:#10110f;border:1px solid #c9a45c88;border-radius:14px;box-shadow:0 16px 40px #0009;z-index:100}
+.header-account-menu a,.header-account-menu button{display:block;width:100%;text-align:left;padding:12px;color:#f6f4ef;text-decoration:none;font-size:14px;background:none;border:0;border-radius:8px;cursor:pointer}
+.header-account-menu a:hover,.header-account-menu button:hover{background:#c9a45c18}
+#headerAccountStatus{font-size:12px;color:#d5ba7a}
+#accountSettings{margin-top:22px}#settingsEmail{overflow-wrap:anywhere}
+@media(max-width:600px){.header-user{max-width:95px;font-size:12px}.header-account-menu{width:220px}}

@@ -17,17 +17,18 @@
 <meta property="og:title" content="Oscar Albuquerque · DJ Pédia · Brazilian Bayle">
 <meta property="og:description" content="Oscar Albuquerque, DJ da cena de Curitiba na DJ Pédia da Brazilian Bayle.">
 <meta property="og:url" content="https://brazilianbayle.com.br/djpedia/oscar-albuquerque">
-<meta property="og:image" content="https://brazilianbayle.com.br/assets/og.jpg">
+<meta property="og:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Brazilian Bayle: o campeonato brasileiro de DJs">
+<meta property="og:image:alt" content="Brazilian Bayle · A pista é brasileira.">
+<meta property="og:image:type" content="image/jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Oscar Albuquerque · DJ Pédia · Brazilian Bayle">
 <meta name="twitter:description" content="Oscar Albuquerque, DJ da cena de Curitiba na DJ Pédia da Brazilian Bayle.">
-<meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og.jpg">
+<meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=449769b61984">
+<link rel="stylesheet" href="/styles.css?v=31cceb134a76">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brazilian Bayle","url":"https://brazilianbayle.com.br","logo":"https://brazilianbayle.com.br/assets/icon-512.png","email":"brazilianbaile@gmail.com","sameAs":["https://instagram.com/brazilianbayle"],"areaServed":"BR","description":"Campeonato brasileiro de DJs com votação da comunidade e o network BRB Clubbers."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Oscar Albuquerque","jobTitle":"DJ","genre":[],"image":"https://brazilianbayle.com.br/assets/djs/oscar-albuquerque.webp","sameAs":[]}</script>
@@ -41,7 +42,7 @@
   <p class="mbar-tag"><b>Brazilian <em>Bayle</em></b><span>A pista é brasileira e sempre vai ser</span></p>
   <div class="mbar-access">
   <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-refletivo-v2.png" alt="" width="42" height="56"></a>
-  <a class="mbar-account" href="/conta">Entrar/Cadastrar</a>
+  <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
   </div>
 </div>
 
@@ -129,6 +130,7 @@
       <div>
         <h3 class="mono">Legal</h3>
         <ul>
+          <li><a href="/suporte">Suporte</a></li>
           <li><a href="/termos">Termos de uso</a></li>
           <li><a href="/privacidade">Política de privacidade</a></li>
         </ul>
@@ -141,14 +143,38 @@
   </footer>
 </div>
 
+<button class="support-launch" id="supportLaunch" type="button" aria-haspopup="dialog" aria-controls="supportDialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 4h16v12H9l-5 4V4Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Precisa de ajuda?</span></button>
+<dialog class="support-dialog" id="supportDialog" aria-labelledby="supportTitle">
+ <div class="support-head"><div><p class="mono gold">Brazilian Bayle</p><h2 id="supportTitle">Como podemos ajudar?</h2><p>Assistente de suporte · atendimento guiado</p></div><button type="button" id="supportClose" aria-label="Fechar suporte">×</button></div>
+ <form id="supportForm">
+  <section id="supportTopics"><p>Escolha o assunto para começar.</p><div class="support-topics">
+   <button type="button" data-support-topic="conta">Conta e acesso <span>→</span></button><button type="button" data-support-topic="votacao">Festas e votação <span>→</span></button><button type="button" data-support-topic="album">Álbum de DJs <span>→</span></button><button type="button" data-support-topic="spotted">Spotted e moderação <span>→</span></button><button type="button" data-support-topic="clube">BRB Clubbers <span>→</span></button><button type="button" data-support-topic="outro">Outro assunto <span>→</span></button>
+  </div></section>
+  <section id="supportDetails" hidden>
+   <button type="button" id="supportBack" class="support-back">← Trocar assunto</button><h3 id="supportTopicTitle" tabindex="-1"></h3><p id="supportTip" class="support-tip"></p>
+   <label for="supportName">Seu nome</label><input id="supportName" name="name" autocomplete="name" minlength="2" maxlength="80" required>
+   <label for="supportEmail">E-mail para resposta</label><input id="supportEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+   <label for="supportMessage">Conte o que aconteceu</label><textarea id="supportMessage" name="message" rows="4" minlength="20" maxlength="3000" placeholder="Descreva a dúvida e o que você já tentou." required></textarea>
+   <p class="support-note">Não envie senhas, códigos de acesso ou dados de pagamento.</p>
+   <div hidden aria-hidden="true"><label>Site<input name="website" tabindex="-1" autocomplete="off"></label></div>
+   <label class="support-consent"><input id="supportConsent" type="checkbox" required><span>Concordo com o uso dos dados para este atendimento, conforme a <a href="/privacidade" target="_blank" rel="noopener">Política de privacidade</a>.</span></label>
+   <button type="submit" class="btn btn-gold" id="supportSubmit">Revisar solicitação →</button>
+  </section>
+  <section id="supportReview" hidden><p class="mono gold">Confira antes de enviar</p><h3 id="supportReviewTitle"></h3><p id="supportReviewEmail"></p><p id="supportReviewMessage"></p><p class="support-note">Seu pedido será enviado à equipe da Brazilian Bayle. A resposta chegará por e-mail.</p><div class="support-actions"><button type="button" id="supportEdit" class="support-back">Editar</button><button type="submit" class="btn btn-gold" id="supportSend">Enviar solicitação</button></div></section>
+  <p id="supportStatus" role="status" aria-live="polite"></p>
+ </form>
+</dialog>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="/assets/vendor/supabase-2.49.8.js" defer></script>
 <script src="/backend-config.js" defer></script>
 <script src="/backend.js" defer></script>
 <script src="/events-2026.js" defer></script>
-<script src="/app.js?v=2779643f045f" defer></script>
+<script src="/app.js?v=f5a9b6e062e7" defer></script>
 <script src="/media-guard.js" defer></script>
 <script src="/card-effects.js?v=51494bb3427c" defer></script>
+<script src="/support.js?v=662cfa03949a" defer></script>
+<script src="/session-menu.js?v=64f66e0e803a" defer></script>
 
 
 
