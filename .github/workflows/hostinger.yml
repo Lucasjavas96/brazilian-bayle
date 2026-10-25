@@ -38,3 +38,20 @@ jobs:
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Publish site from ${GITHUB_SHA}"
           git push origin hostinger
+      - name: Deploy published branch on Hostinger
+        env:
+          HOSTINGER_DEPLOY_WEBHOOK: ${{ secrets.HOSTINGER_DEPLOY_WEBHOOK }}
+        run: |
+          python3 - <<'PY'
+          import os, json, urllib.request, urllib.error
+          url = os.environ['HOSTINGER_DEPLOY_WEBHOOK'].strip()
+          if not url:
+              raise SystemExit('Hostinger deployment webhook secret is missing')
+          payload = {'ref':'refs/heads/hostinger','repository':{'full_name':os.environ['GITHUB_REPOSITORY']}}
+          request = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={'Content-Type':'application/json','X-GitHub-Event':'push'}, method='POST')
+          try:
+              with urllib.request.urlopen(request,timeout=90) as response:
+                  print('Hostinger deployment trigger HTTP',response.status)
+          except urllib.error.HTTPError as error:
+              raise SystemExit('Hostinger deployment trigger failed: HTTP '+str(error.code))
+          PY
