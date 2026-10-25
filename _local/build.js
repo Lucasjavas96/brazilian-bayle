@@ -166,6 +166,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <script src="/card-effects.js" defer></script>
 <script src="/support.js" defer></script>
 <script src="/session-menu.js" defer></script>
+${meta.nav === "gestao" ? '<script src="/management.js" defer></script>' : ""}
 ${meta.nav === "conta" ? '<script src="/account.js" defer></script>' : ""}
 ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
 ${meta.nav === "album" ? '<script src="/album.js" defer></script>' : ""}
@@ -345,7 +346,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "album.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "management.js", "album.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -355,7 +356,7 @@ ${urls.map(u => `  <url><loc>${SITE}${u}</loc></url>`).join("\n")}
 fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";");
 // Content hashes prevent old CSS and card scripts being mixed after a deploy.
 const crypto = require('crypto');
-const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','account.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
+const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','account.js','management.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
 function versionHtml(dir) {
   for (const entry of fs.readdirSync(dir,{withFileTypes:true})) {
     const file = path.join(dir,entry.name);

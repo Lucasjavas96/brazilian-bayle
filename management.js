@@ -1,0 +1,15 @@
+(() => {
+ const root=document.getElementById('managementRoot');if(!root)return;
+ const status=document.getElementById('managementStatus'),records=document.getElementById('managementRecords');let data,tab='vote',busy=false;
+ const text=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e;};
+ async function rpc(action,payload={}){const {data:{session}}=await BRB.auth.getSession();if(!session)throw Error('Entre na sua conta para continuar.');const r=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_manage',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,Authorization:'Bearer '+session.access_token,'Content-Type':'application/json'},body:JSON.stringify({action,payload})});const result=await r.json();if(!r.ok)throw Error(result.message||'Não foi possível atualizar.');return result;}
+ function render(){records.replaceChildren();const rows=tab==='posts'?data.posts:tab==='support'?data.support:data.submissions.filter(row=>row.kind===tab);
+ document.querySelectorAll('[data-management]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.management===tab)));
+ if(!rows.length){records.append(text('p','Nenhum registro nesta categoria.'));return;}
+ rows.forEach(row=>{const card=document.createElement('article');card.className='management-record';const p=row.payload||row;card.append(text('p',new Date(row.created_at).toLocaleString('pt-BR')),text('h2',p.title||p.nick||p.nome||p.name||p.email||p.dj||row.id),text('p','Status: '+row.status));
+ const details=document.createElement('dl');Object.entries(p).filter(([key])=>!['id','ip_hash','user_id','consent_at','title'].includes(key)).forEach(([key,value])=>{if(value===null)return;details.append(text('dt',key),text('dd',typeof value==='object'?JSON.stringify(value):String(value)));});card.append(details);
+ if(tab==='posts')card.append(text('p','Denúncias: '+row.reports));
+ if(tab!=='support'){const actions=document.createElement('div');actions.className='management-actions';const options=tab==='posts'?[['published','Publicar'],['review','Em análise'],['hidden','Ocultar']]:[['approved','Aprovar'],['rejected','Recusar'],['pending','Em análise']];options.forEach(([value,label])=>{const button=text('button',label);button.type='button';button.className='btn btn-line-light';button.disabled=row.status===value;button.onclick=async()=>{if(busy)return;busy=true;button.disabled=true;try{await rpc(tab==='posts'?'post_status':'submission_status',{id:row.id,status:value});await load();}catch(e){status.textContent=e.message;}finally{busy=false;}};actions.append(button);});card.append(actions);}records.append(card);});}
+ async function load(){try{data=await rpc('list');root.hidden=false;status.textContent='Registros privados · até 100 por categoria, mais recentes primeiro.';render();}catch(e){root.hidden=true;status.textContent=e.message;}}
+ document.querySelectorAll('[data-management]').forEach(b=>b.onclick=()=>{tab=b.dataset.management;render();});document.getElementById('managementRefresh').onclick=load;load();
+})();
