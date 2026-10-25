@@ -1991,6 +1991,13 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 @property --brb-edge-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
 .brb-card-edge{padding:2px;opacity:1;background:conic-gradient(from var(--brb-edge-angle),transparent 210deg,color-mix(in srgb,var(--card-edge-color) 25%,transparent) 250deg,var(--card-edge-color) 290deg,color-mix(in srgb,var(--card-edge-color) 85%,white) 303deg,var(--card-edge-color) 314deg,transparent 340deg);animation:brb-edge-orbit 4s linear infinite}
 @keyframes brb-edge-orbit{to{--brb-edge-angle:360deg}}
+.brb-card-edge:has(svg){padding:0;background:none;mask:none;-webkit-mask:none;animation:none;filter:none;overflow:visible}
+.brb-card-edge>svg{display:block;width:100%;height:100%;overflow:visible;fill:none;pointer-events:none}
+.brb-card-edge rect{x:1.5px;y:1.5px;width:calc(100% - 3px);height:calc(100% - 3px);fill:none;stroke:var(--card-edge-color);stroke-width:2.5px;stroke-linecap:round;stroke-dasharray:18 82;animation:brb-perimeter-travel 3.6s linear infinite;filter:drop-shadow(0 0 3px var(--card-edge-color))}
+.brb-orbit-card:nth-child(3n+2)>.brb-card-edge rect{animation-delay:-1.2s}
+.brb-orbit-card:nth-child(3n)>.brb-card-edge rect{animation-delay:-2.4s}
+@keyframes brb-perimeter-travel{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
+@media(prefers-reduced-motion:reduce){.brb-card-edge rect{animation:none;stroke-dasharray:100 0;opacity:.65}}
 @media(prefers-reduced-motion:reduce){.brb-card-edge{animation:none;--brb-edge-angle:45deg}}
 /* Liquid glass action buttons use the same surface as the hero. */
 .btn{border-radius:999px;border-width:1px;min-height:48px;background-image:linear-gradient(150deg,#ffffff38,#ffffff08 55%,#ffffff1a);box-shadow:inset 0 1px 1px #ffffff88,inset 0 -1px 1px #ffffff18,0 8px 24px #0004;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%)}
