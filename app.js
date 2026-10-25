@@ -101,13 +101,9 @@ function rankAward(position) {
 function renderPodium() {
   const el = $("[data-podium]"); if (!el) return;
   el.hidden = false;
-  if(el.hasAttribute('data-home-podium') && !officialRows.length){
-   el.innerHTML=[1,2,3].map(position=>`<div class="pod p${position}">${rankAward(position)}<p class="pod-name">${position}º lugar</p><p class="pod-style mono">Aguardando avaliações</p><p class="led" aria-label="Sem nota">—</p><div class="pod-block"><div class="face"><span class="num3d">${pad(position)}</span></div></div></div>`).join('');return;
-  }
-
   if(!officialRows.length){
    el.setAttribute('aria-label','DJs aguardando avaliações');
-   el.innerHTML = DJS.slice(0,3).map(([name])=>`<div class="pod pod-awaiting"><img src="/assets/djs/thumbs/${slug(name)}.webp" alt="${name}" width="96" height="96"><p class="pod-name">${name}</p><p class="pod-awaiting-status">Sem avaliações</p><a href="#votar" class="unrated-vote">Avaliar DJ →</a></div>`).join('');return;
+   el.innerHTML = DJS.slice(0,3).map(([name,style],index)=>`<div class="pod pod-awaiting p${[2,1,3][index]}"><img src="/assets/djs/thumbs/${slug(name)}.webp" alt="${name}" width="96" height="96"><p class="pod-name">${name}</p><p class="pod-style mono">${style}</p><p class="led" aria-label="Sem nota">—</p><p class="pod-awaiting-status">Sem avaliações</p><a href="/ranking#votar" class="unrated-vote">Avaliar DJ →</a></div>`).join('');return;
   }
   el.setAttribute('aria-label','Os três primeiros da classificação');
   el.innerHTML = officialRows.slice(0, 3).map(d => `
