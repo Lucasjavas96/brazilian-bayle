@@ -363,6 +363,7 @@ function versionHtml(dir) {
   }
 }
 versionHtml(OUT);
+fs.writeFileSync(path.join(OUT,'release.json'), JSON.stringify({commit:process.env.GITHUB_SHA || null}));
 fs.writeFileSync(path.join(OUT,'.htaccess'), `Options -Indexes -MultiViews
 DirectoryIndex index.html
 RewriteEngine On
