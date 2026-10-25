@@ -266,8 +266,9 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     <p class="mono y">DJ Pédia · ${sorted.length} DJs · ${done} verbetes completos</p>
     <h1 class="display" id="t-wiki">Conheça os <em>DJs</em></h1>
     <p class="lead dim">A enciclopédia da pista brasileira, organizada por gênero. De onde cada DJ veio, como começou, o que toca e a trajetória até aqui. Toque no nome para abrir o verbete.</p>
+    <div class="catalog-search"><label for="wikiSearch" class="mono">Buscar DJ</label><input type="search" id="wikiSearch" placeholder="Nome, gênero ou cidade" autocomplete="off" aria-controls="wikiResults"><p id="wikiCount" class="hint" role="status"></p></div>
     <nav class="az az-genres" aria-label="Gêneros">${letters.map(l => `<a href="#genero-${gid(l)}">${l}</a>`).join("")}</nav>
-    <div class="wiki-list">
+    <div class="wiki-list" id="wikiResults">
       ${letters.map(l => `<section class="wiki-letter wiki-genre" id="genero-${gid(l)}" aria-labelledby="h-${gid(l)}">
         <h2 class="wiki-l" id="h-${gid(l)}">${l}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
         <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.historia?.length;

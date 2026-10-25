@@ -185,6 +185,20 @@ renderPodium();
     lineup.innerHTML = p ? p.dj.map(n => `<button type="button" aria-pressed="${n === dj}" data-dj="${n}">${n}</button>`).join("") : `<span class="hint">Escolha a festa primeiro.</span>`;
   };
   party.onchange = () => { dj = null; renderLineup(); err("eParty", "") };
+  const partySearch = $('#vPartySearch');
+  if (partySearch) {
+    const filterParties = () => {
+      const query = slug(partySearch.value).replaceAll('-',' ');
+      const matches = PARTIES.filter(p => query.split(' ').every(word => slug(p.label+' '+p.dj.join(' ')).replaceAll('-',' ').includes(word)));
+      const selected = party.value;
+      party.replaceChildren(new Option(matches.length ? 'Escolha a festa' : 'Nenhuma festa encontrada',''), ...matches.map(p => new Option(p.label,p.id)));
+      party.value = matches.some(p => p.id === selected) ? selected : '';
+      if (selected !== party.value) party.onchange();
+      $('#vPartyCount').textContent = `${matches.length} festa${matches.length === 1 ? '' : 's'} encontrada${matches.length === 1 ? '' : 's'}`;
+    };
+    partySearch.addEventListener('input',filterParties);
+    filterParties();
+  }
   lineup.onclick = e => { const b = e.target.closest("button"); if (!b) return; dj = b.dataset.dj; renderLineup(); err("eDj", ""); $(`[data-dj="${dj}"]`, lineup)?.focus() };
   renderLineup();
 
@@ -633,3 +647,26 @@ $$("[data-link]").forEach(a => {
   a.setAttribute("aria-disabled", "true");
   a.addEventListener("click", e => { e.preventDefault(); toast("O link de ingresso sai em breve no @brazilianbayle.") });
 });
+
+/* Search the encyclopedia without changing its genre organization. */
+(() => {
+ const input = document.querySelector('#wikiSearch');
+ if (!input) return;
+ const groups = [...document.querySelectorAll('.wiki-genre')];
+ const filter = () => {
+  const words = slug(input.value).split('-').filter(Boolean);
+  let count = 0;
+  groups.forEach(group => {
+   let visible = 0;
+   group.querySelectorAll('li').forEach(item => {
+    item.hidden = !words.every(word => slug(item.textContent).includes(word));
+    if (!item.hidden) { visible++; count++; }
+   });
+   group.hidden = visible === 0;
+   const link = document.querySelector('.az-genres a[href="#'+group.id+'"]');
+   if (link) link.hidden = group.hidden;
+  });
+  document.querySelector('#wikiCount').textContent = count ? `${count} DJs encontrados` : 'Nenhum DJ encontrado. Tente outro nome ou gênero.';
+ };
+ input.addEventListener('input',filter); filter();
+})();

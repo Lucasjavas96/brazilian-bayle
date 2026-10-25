@@ -60,6 +60,9 @@
 
       <div class="field">
         <label for="vParty" class="mono">01 · Festa</label>
+        <label for="vPartySearch" class="sr-only">Pesquisar festa, casa, DJ ou data</label>
+        <input type="search" id="vPartySearch" placeholder="Pesquisar festa, casa, DJ ou data" autocomplete="off" aria-controls="vParty">
+        <p class="hint" id="vPartyCount" role="status"></p>
         <select id="vParty" name="festa" required aria-describedby="eParty"></select>
         <p class="ferr" id="eParty"></p>
       </div>
