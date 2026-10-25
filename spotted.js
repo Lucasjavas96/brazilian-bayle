@@ -13,7 +13,7 @@
   const EMOJIS = ["🔥", "🪩", "🥂", "😂", "😍", "🙌", "💛", "💚", "🇧🇷", "🦜", "🎧", "🌅"];
   const BLOCK = /\b(porra|caralho|merda|puta|fdp|vsf|arrombad\w*|buceta|cuzão|viado|otári\w*)\b|https?:\/\/|www\./i;
   const ANON = "Anônimo";
-  let currentUser = null, posts = [], anonymous = false, loading = true, loadError = "";
+  let currentUser = null, posts = [], anonymous = false, loading = true, loadError = "", ownerNick = "", isOwner = false;
   const me = () => currentUser;
   const anonPref = () => !!me() && anonymous;
   const setAnon = value => { anonymous = !!value; };
@@ -28,6 +28,11 @@
     if (/email not confirmed/i.test(text)) return "Confirme seu e-mail antes de entrar.";
     return text;
   };
+  // owner: apelido dele (selo no mural) e se quem está logado é ele (botão de apagar)
+  async function loadOwner() {
+    try { const c = await backend().content(""); ownerNick = (c?.owner_nick || "").toLowerCase(); isOwner = !!c?.me_owner; }
+    catch (e) { ownerNick = ""; isOwner = false; }
+  }
   async function refresh() {
     const data = await rpc("feed");
     posts = Array.isArray(data) ? data : [];
@@ -47,6 +52,7 @@
       }
       currentUser = { email: session.user.id, nick: profile?.nick || savedNick || "clubber" };
     }
+    await loadOwner();
     view();
   }
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -118,7 +124,11 @@
   const counts = p => p.r || {};
   const comments = p => Array.isArray(p.c) ? p.c : [];
   const reactors = p => Array.isArray(p.reactors) ? p.reactors : [];
-  const author = p => p.anon ? ANON : "@" + p.nick;
+  const ownerPost = p => !p.anon && !!ownerNick && String(p.nick).toLowerCase() === ownerNick;
+  const OWNER_NAME = "Lucas Javas";
+  const author = p => p.anon ? ANON : ownerPost(p) ? OWNER_NAME : "@" + p.nick;
+  const ownerTag = '<i class="sp-owner mono"><span aria-hidden="true">👑</span> Owner</i>';
+  const whoName = w => ownerNick && String(w).toLowerCase() === "@" + ownerNick ? `<b class="sp-own-name">${OWNER_NAME}</b>${ownerTag}` : `<b>${esc(w)}</b>`;
 
   function card(p) {
     const u = me(), mine = u && u.email === p.owner, my = u && p.myReaction, rs = reactors(p), emo = Object.fromEntries(REACTIONS.map(([k, e]) => [k, e]));
@@ -140,7 +150,7 @@
           <div class="sp-info">
             <span class="sp-party mono">${p.is_demo ? 'DEMONSTRAÇÃO · ' : ''}${esc(p.party)}</span>
             <h3>${esc(p.title)}</h3>
-            <p class="sp-by">${p.anon ? `<span class="sp-av is-anon" aria-hidden="true">?</span>` : av(p.nick)}<span>${esc(author(p))}</span><span class="sp-when mono">${when(p.at)}</span></p>
+            <p class="sp-by">${p.anon ? `<span class="sp-av is-anon" aria-hidden="true">?</span>` : ownerPost(p) ? `<span class="sp-av is-owner" aria-hidden="true">👑</span>` : av(p.nick)}<span class="${ownerPost(p) ? "sp-own-name" : ""}">${esc(author(p))}</span>${ownerPost(p) ? ownerTag : ""}<span class="sp-when mono">${when(p.at)}</span></p>
           </div>
           ${side}
           <div class="sp-rxw">
@@ -156,12 +166,13 @@
           <div class="sp-stamps">${REACTIONS.filter(([k]) => cnt[k]).sort((a, b) => cnt[b[0]] - cnt[a[0]]).map(([k, e, l]) => `<span class="sp-stamp"><i aria-hidden="true">${e}</i>${l}<b>${cnt[k]}</b></span>`).join("") || `<span class="sp-empty">Nenhum carimbo ainda.</span>`}</div>
           ${rs.length ? `<p class="sp-who">${rs.map(r => `<span>${emo[r.k] || ""} ${esc(r.who)}</span>`).join("")}</p>` : ""}
           <label class="sp-anon"><input type="checkbox" role="switch" data-anon${anonPref() ? " checked" : ""}><span class="sp-sw" aria-hidden="true"></span>Ocultar meu nome</label>
-          <ul class="sp-coms">${cm.map(x => `<li><b>${esc(x.who)}</b> ${esc(x.t)}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
+          <ul class="sp-coms">${cm.map(x => `<li>${whoName(x.who)} ${esc(x.t)}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
           <form class="sp-com" data-com>
             <div class="sp-emo" aria-label="Emojis">${EMOJIS.map(e => `<button type="button" data-emo="${e}" aria-label="Inserir ${e}">${e}</button>`).join("")}</div>
             <div class="sp-com-row"><input maxlength="200" aria-label="Comentário" placeholder="Escreva um comentário"><button type="submit" class="btn btn-y">Enviar</button></div>
           </form>
           <button type="button" class="sp-report mono" data-report>Denunciar post</button>
+          ${isOwner ? `<button type="button" class="sp-report sp-del mono" data-del>👑 Apagar post (owner)</button>` : ""}
         </div>
       </div>
     </article>`;
@@ -229,6 +240,13 @@
     }
     const emo = t.closest("[data-emo]");
     if (emo) { const i = $("[data-com] input", c); i.value = (i.value + emo.dataset.emo).slice(0, 200); i.focus(); return }
+    if (t.closest("[data-del]")) {
+      if (!isOwner || !confirm("Apagar este post para sempre? Isso não pode ser desfeito.")) return;
+      const button = t.closest("[data-del]"); button.disabled = true;
+      try { await backend().owner("post_delete", { id: c.dataset.id }); await refresh(); toast("Post apagado."); }
+      catch (error) { toast(message(error)); button.disabled = false; }
+      return;
+    }
     if (t.closest("[data-report]")) {
       if (!need()) return;
       const button = t.closest("[data-report]"); button.disabled = true;

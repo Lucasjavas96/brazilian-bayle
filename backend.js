@@ -11,6 +11,16 @@
       if (error) throw new Error(error.message || 'Não foi possível atualizar seu álbum.');
       return data;
     },
+    async content(prefix = '') {
+      const { data, error } = await client.rpc('brb_content', { prefix });
+      if (error) throw new Error(error.message || 'Não foi possível carregar o conteúdo.');
+      return data;
+    },
+    async owner(action, payload = {}) {
+      const { data, error } = await client.rpc('brb_owner', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');
+      return data;
+    },
     async rpc(action, payload = {}) {
       const { data, error } = await client.rpc('brb_action', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível enviar. Tente novamente.');
