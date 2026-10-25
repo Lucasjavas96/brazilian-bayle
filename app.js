@@ -662,6 +662,21 @@ $$("[data-link]").forEach(a => {
  input.addEventListener('input',filter); filter();
 })();
 
+/* Unrated artists remain discoverable without fictitious scores or positions. */
+function renderUnratedArtists(){
+ const stage=document.querySelector('[data-board],[data-ge-table]');if(!stage)return;
+ let catalog=document.getElementById('unratedArtists');
+ if(!catalog){catalog=document.createElement('section');catalog.id='unratedArtists';catalog.setAttribute('aria-label','DJs aguardando avaliações');stage.after(catalog);}
+ const rated=new Set(officialRows.map(row=>row.name));
+ const artists=DJS.filter(([name])=>!rated.has(name));
+ const home=stage.hasAttribute('data-limit'),shown=home?artists.slice(0,5):artists;
+ catalog.hidden=!shown.length;
+ catalog.innerHTML=`<p class="mono gold unrated-heading">${officialRows.length?'DJs aguardando avaliações':'Conheça os DJs · seja a primeira avaliação'}</p><div class="unrated-grid">${shown.map(([name,style])=>`<article class="unrated-card"><a href="/djpedia/${slug(name)}"><img src="/assets/djs/thumbs/${slug(name)}.webp" alt="${name}" width="384" height="288" loading="lazy" decoding="async"><h3>${name}</h3></a><p class="mono">${style}</p><p class="unrated-status">Ainda sem avaliações</p><a class="unrated-vote" href="/ranking#votar">Avaliar uma apresentação →</a></article>`).join('')}</div>${home&&artists.length>5?'<a class="link-arrow" href="/ranking#unratedArtists">Conhecer todos os DJs →</a>':''}`;
+ stage.hidden=officialRows.length===0;
+ const podium=document.querySelector('[data-podium]');if(podium)podium.hidden=officialRows.length===0;
+}
+renderUnratedArtists();
+
 /* Public ranking contains only approved, confirmed-account evaluations. */
 (async()=>{
  if(!document.querySelector('[data-board],[data-ge-table],[data-podium]'))return;
@@ -670,6 +685,6 @@ $$("[data-link]").forEach(a => {
   const result=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_ranking',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,'Content-Type':'application/json'},body:'{}'});
   if(!result.ok)throw Error('ranking');
   const rows=await result.json();officialRows=rows.map(row=>({...row,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
-  boards.forEach(board=>board.render());renderPodium();note.textContent=rows.length?'Ranking atualizado com avaliações aprovadas.':'Ainda não há avaliações aprovadas. Seja uma das primeiras pessoas a avaliar uma apresentação.';
+  boards.forEach(board=>board.render());renderPodium();renderUnratedArtists();note.textContent=rows.length?'Ranking atualizado com avaliações aprovadas.':'Ainda não há avaliações aprovadas. Seja uma das primeiras pessoas a avaliar uma apresentação.';
  }catch{note.textContent='Não foi possível carregar o ranking agora. Tente novamente mais tarde.';}
 })();

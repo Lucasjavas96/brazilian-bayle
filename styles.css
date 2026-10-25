@@ -1921,3 +1921,13 @@ animation:medal-border-orbit 4.8s linear infinite!important}
 .management-record h2{font-size:22px;margin:10px 0}.management-record>p{color:#bdbbb2;font-size:13px}
 .management-record dl{display:grid;grid-template-columns:140px minmax(0,1fr);gap:10px;margin:20px 0;font-size:14px}.management-record dt{color:#c9a45c}.management-record dd{white-space:pre-wrap;overflow-wrap:anywhere}
 @media(max-width:600px){.management-record{padding:18px}.management-record dl{grid-template-columns:1fr;gap:4px}.management-record dd{margin-bottom:10px}}
+[data-board][hidden],[data-ge-table][hidden],[data-podium][hidden],#unratedArtists[hidden]{display:none!important}
+.unrated-heading{margin:24px 0 16px}
+.unrated-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin:16px 0 24px}
+.unrated-card{position:relative;min-width:0;background:#0c0e0c;border:1px solid #c9a45c55;border-radius:16px;overflow:hidden;padding-bottom:18px}
+.unrated-card>a:first-child{display:block;text-decoration:none}
+.unrated-card img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center 22%}
+.unrated-card h3{font-size:19px;line-height:1.2;margin:16px 14px 7px;color:#f6f4ef}
+.unrated-card p,.unrated-vote{margin:8px 14px}.unrated-card .mono{font-size:10px;color:#b8b6ae}
+.unrated-status{font-size:13px;color:#d3c29b}.unrated-vote{display:inline-block;font-size:12px;color:#d5ba7a;text-decoration:none;padding:6px 0}
+@media(max-width:600px){.unrated-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.unrated-card h3{font-size:16px}.unrated-vote{font-size:11px}}
