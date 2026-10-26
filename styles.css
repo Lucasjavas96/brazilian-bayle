@@ -2333,3 +2333,5 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .is-text .sp-info{color:#1d2540}.is-text .sp-info h3{display:none}.is-text .sp-when{color:rgba(29,37,64,.6)}
 .is-text .sp-by{margin-top:6px}
 .is-text .sp-own-name,.sp-side .sp-own-name{color:#7a5a12}
+/* Spotted: o botao invisivel que cobre o card nao pode borrar a foto (efeito de vidro global) */
+.sp-card .sp-hit,.sp-card .sp-hit:hover{backdrop-filter:none;-webkit-backdrop-filter:none;background-image:none;box-shadow:none}
