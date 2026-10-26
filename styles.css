@@ -2335,3 +2335,13 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .is-text .sp-own-name,.sp-side .sp-own-name{color:#7a5a12}
 /* Spotted: o botao invisivel que cobre o card nao pode borrar a foto (efeito de vidro global) */
 .sp-card .sp-hit,.sp-card .sp-hit:hover{backdrop-filter:none;-webkit-backdrop-filter:none;background-image:none;box-shadow:none}
+
+/* figurinha colada = a mesma carta que abre ao tocar (moldura, estrelas, notas, brilho) */
+.ab-st.ab-st-full{overflow:visible;background:none;box-shadow:none!important;border-radius:0;transform:none!important}
+.ab-st.ab-st-full .djc{pointer-events:auto}
+.ab-st.ab-st-full .djc-face{box-shadow:0 8px 16px -8px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.5)}
+.ab-fly .ab-st.ab-st-full{box-shadow:none}
+.ab-st.ab-st-full img{position:static;inset:auto;width:100%;height:100%;object-fit:cover}
+.ab-st.ab-st-full .djc-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ab-st.ab-st-full .djc-orb img{position:static;width:100%;height:100%;object-fit:cover}
+.ab-st.ab-st-full .djc{transform-style:flat}

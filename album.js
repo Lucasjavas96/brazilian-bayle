@@ -9,15 +9,15 @@
   const flag = f => f ? `/assets/flags/${f}.webp` : "";
 
   /* ---------- carta grande (frente estilo FIFA por raridade, verso com a arte do álbum) ---------- */
-  function bigCard(c) {
+  function bigCard(c, mini) {
     const maxv = Math.max(...Object.values(c.attrs));
     const stars = Math.max(1, Math.min(10, Math.round((c.ovr - 70) / 3)));
-    return `<div class="djc ${c.cls}" tabindex="0" aria-label="${esc(c.nome)}, overall ${c.ovr}, figurinha ${c.rar}">
+    return `<div class="djc ${c.cls}"${mini ? "" : ' tabindex="0"'} aria-label="${esc(c.nome)}, overall ${c.ovr}, figurinha ${c.rar}">
       <div class="djc-face djc-front"><div class="djc-inner">
-        <div class="djc-name"><h3>${esc(c.nome)}</h3><div class="djc-orb" title="${esc(c.paisNome)}"><img src="${flag(c.flag)}" alt="${esc(c.paisNome)}"></div></div>
+        <div class="djc-name"><h3>${esc(c.nome)}</h3><div class="djc-orb" title="${esc(c.paisNome)}"><img src="${flag(c.flag)}" alt="${esc(c.paisNome)}"${mini ? ' loading="lazy" decoding="async"' : ""}></div></div>
         <div class="djc-stars">${"<i></i>".repeat(stars)}</div>
         <div class="djc-art">
-          <img src="${c.foto}" alt="${esc(c.nome)}" style="object-position:${c.pos};${c.zoom ? `transform:${c.zoom};transform-origin:${c.origin}` : ""}">
+          <img src="${c.foto}" alt="${esc(c.nome)}"${mini ? ' loading="lazy" decoding="async"' : ""} style="object-position:${c.pos};${c.zoom ? `transform:${c.zoom};transform-origin:${c.origin}` : ""}">
           <div class="djc-ovr"><strong>${c.ovr}</strong><span>${esc(c.tag)}</span><em></em><small>${esc(c.bpm)}<br>BPM</small></div>
           <div class="djc-rank">${esc(c.rank)}</div>
         </div>
@@ -26,13 +26,15 @@
         <div class="djc-flavor"><p>${esc(c.texto)}</p>${c.faixa ? `<small>♪ ${esc(c.faixa)}</small>` : ""}</div>
         <div class="djc-foot"><b>★ ${c.rar}</b><span>Brazilian Bayle · 2026</span></div>
       </div><div class="djc-foil"></div><div class="djc-glare"></div></div>
-      <div class="djc-face djc-back"><img src="/assets/album/verso.webp" alt="Verso: Bayle All Stars Album"><div class="djc-glare"></div></div>
+      ${mini ? "" : `<div class="djc-face djc-back"><img src="/assets/album/verso.webp" alt="Verso: Bayle All Stars Album"><div class="djc-glare"></div></div>`}
     </div>`;
   }
-  const fit = root => $$(".djc-name h3", root).forEach(h => {
-    h.style.fontSize = ""; let s = parseFloat(getComputedStyle(h).fontSize);
-    while (h.scrollWidth > h.clientWidth && s > 8) { s -= .5; h.style.fontSize = s + "px" }
-  });
+  // encolhe o nome para caber na placa: lê tudo de uma vez e escreve de uma vez (rápido com 253 cartas)
+  const fit = (root, min = 8) => {
+    const hs = $$(".djc-name h3", root); hs.forEach(h => { h.style.fontSize = ""; });
+    const m = hs.map(h => [h, parseFloat(getComputedStyle(h).fontSize), h.scrollWidth, h.clientWidth]);
+    m.forEach(([h, size, sw, cw]) => { if (sw > cw && cw > 0) h.style.fontSize = Math.max(min, Math.floor(size * cw / sw * 2) / 2) + "px"; });
+  };
   function tilt(card) {
     card.addEventListener("pointermove", e => {      const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
       card.classList.add("tilting");
@@ -49,9 +51,19 @@
   }
 
   /* ---------- álbum ---------- */
-  const mini = c => `<button type="button" class="ab-st ${c.cls}" data-card="${c.slug}" aria-label="${esc(c.nome)}, ${c.num}, abrir figurinha">
-      <img src="${c.foto}" alt="" loading="lazy" style="object-position:${c.pos}"><span class="ab-st-ovr">${c.ovr}</span>
-      <span class="ab-st-txt"><b>${esc(c.nome)}</b><small>${esc(c.num)} · ${c.rar}</small></span></button>`;
+  const mini = c => `<button type="button" class="ab-st ab-st-full ${c.cls}" data-card="${c.slug}" aria-label="${esc(c.nome)}, ${c.num}, abrir figurinha">${bigCard(c, true)}</button>`;
+  // brilho e inclinação ao passar o mouse ou o dedo, também nas figurinhas coladas
+  let hot = null;
+  const cool = card => { card.classList.remove("tilting"); for (const [k, v] of [["--rx", "0deg"], ["--ry", "0deg"], ["--o", 0], ["--mx", "50%"], ["--my", "50%"]]) card.style.setProperty(k, v); };
+  document.addEventListener("pointermove", e => {
+    const card = e.target.closest?.(".ab-st-full .djc");
+    if (hot && hot !== card) { cool(hot); hot = null; }
+    if (!card) return;
+    hot = card; const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    card.classList.add("tilting"); card.style.setProperty("--mx", x * 100 + "%"); card.style.setProperty("--my", y * 100 + "%");
+    card.style.setProperty("--ry", (x - .5) * 18 + "deg"); card.style.setProperty("--rx", (.5 - y) * 18 + "deg"); card.style.setProperty("--o", 1);
+  });
+  document.addEventListener("pointerleave", () => { if (hot) { cool(hot); hot = null; } }, true);
   const slot = (d, i) => {
     const c = d.id && S.coladas[d.id] ? CARDS[d.id] : null;
     return `<div class="ab-slot${c ? " filled" : ""}" id="slot-${d.id || "x" + i}" data-num="${esc(d.num)}">${c ? mini(c) :
@@ -68,7 +80,7 @@
       </header>
       <div class="ab-grid">${p.djs.map(d => slot({ ...d, page: !!p.flag }, k++)).join("")}</div>
     </section>`).join("");
-    counts();
+    counts(); fit($("#abPages"), 3); document.fonts?.ready?.then(() => fit($("#abPages"), 3));
   }
   function counts() {
     const got = Object.keys(S.coladas).length, reps = Object.values(S.coladas).reduce((a, n) => a + n - 1, 0);
@@ -79,7 +91,7 @@
     $("#abJogHint").textContent = !ready ? "Entre na sua conta para acessar seus giros e sua coleção." : S.giros > 0 ? "Gire para sortear uma figurinha. O resultado fica salvo automaticamente na sua conta." : "Você usou todos os giros disponíveis. Sua coleção continua salva.";
     DATA.pages.forEach(p => { const n = p.djs.filter(d => d.id && S.coladas[d.id]).length; $(`[data-count="${p.sigla}"]`).innerHTML = `<b>${n}</b>/${p.djs.length}`; });
     const repsEl = $("#abReps"); repsEl.hidden = !reps;
-    $("#abRepsGrid").innerHTML = Object.entries(S.coladas).filter(([, n]) => n > 1).map(([s, n]) => `<div class="ab-slot filled">${mini(CARDS[s])}<span class="ab-x mono">×${n - 1}</span></div>`).join("");
+    $("#abRepsGrid").innerHTML = Object.entries(S.coladas).filter(([, n]) => n > 1).map(([s, n]) => `<div class="ab-slot filled">${mini(CARDS[s])}<span class="ab-x mono">×${n - 1}</span></div>`).join(""); fit($("#abRepsGrid"), 3);
   }
 
   /* ---------- sons (sintetizados no navegador, sem arquivos) ---------- */
@@ -227,13 +239,13 @@
       const fly = document.createElement("div"); fly.className = "ab-fly"; fly.innerHTML = mini(c);
       Object.assign(fly.style, { left: to.left + "px", top: to.top + "px", width: to.width + "px", height: to.height + "px",
         transform: `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${from.width / to.width}) rotate(-8deg)` });
-      document.body.appendChild(fly);
+      document.body.appendChild(fly); fit(fly, 3);
       requestAnimationFrame(() => requestAnimationFrame(() => { fly.classList.add("go"); fly.style.transform = "none" }));
       setTimeout(() => {
         fly.remove();
         if (generation !== epoch) return;
         target.outerHTML = slot({ ...findDj(slug), page: true }, 0);
-        const fresh = $(`#slot-${slug}`); fresh.classList.add("just");
+        const fresh = $(`#slot-${slug}`); fresh.classList.add("just"); fit(fresh, 3);
         sfx.slap(); counts(); toast(`Figurinha ${c.num} colada!`);
       }, reduced ? 60 : 720);
     }, reduced ? 50 : 550);
