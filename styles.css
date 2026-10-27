@@ -2382,3 +2382,22 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .btn,.btn:hover,.btn:active,.btn.btn-y,.btn.btn-k,.btn.btn-gold,.btn.btn-ghost,.btn.btn-line,.btn.btn-line-light,.hero .btn,.account-card .btn,.btn.btn-y:not(.side-cta),.btn.btn-y:not(.side-cta):hover{background-image:none!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;text-shadow:none!important}
 .btn.btn-y,.btn.btn-k,.btn.btn-gold,.hero .btn.btn-k,.account-card .btn.account-primary,.btn.btn-y:not(.side-cta){background-color:#c9a45c;border-color:#c9a45c;color:#0a0b0a}
 .btn.btn-y:hover,.btn.btn-gold:hover{background-color:#d8b66f}
+
+/* botões parados: o brilho só aparece (uma vez) quando passa o mouse */
+:is(.btn,button:not(.burger)):after{animation:none;opacity:0}
+:is(.btn,button:not(.burger)):hover:after{animation:button-contained-reflection 1s ease-out 1 both}
+@media(hover:none){:is(.btn,button:not(.burger)):hover:after{animation:none;opacity:0}}
+/* resenha: papel amarelo liso, letra preta, sem furos, sem margem vermelha, sem pauta */
+.sp-sheet,.sp-txt.sp-sheet,.sp-side.sp-sheet{background-color:#ffe066;background-image:none;color:#0a0b0a}
+.sp-sheet::before{display:none}
+.sp-txt.sp-sheet{padding:22px 18px 0 20px;color:#0a0b0a}
+.sp-sheet .sp-hand-title{font:700 32px/1.05 'Caveat','Segoe Script','Bradley Hand',cursive;color:#0a0b0a;border-bottom:2px solid #0a0b0a;margin:0 70px 12px 0;padding-bottom:8px;max-height:none}
+.sp-txt.sp-sheet p{font:500 24px/1.18 'Caveat','Segoe Script','Bradley Hand',cursive;color:#0a0b0a;-webkit-line-clamp:9}
+.sp-seal{color:#0a0b0a;border-color:rgba(10,11,10,.8);box-shadow:none;background:transparent;opacity:.9}
+.sp-side.sp-sheet{padding:16px}
+.sp-side.sp-sheet .sp-hand-by{font:600 22px/1.1 'Caveat',cursive;color:#0a0b0a;margin:0 0 8px}
+.sp-side.sp-sheet .sp-side-t{font:500 24px/1.18 'Caveat','Segoe Script','Bradley Hand',cursive;color:#0a0b0a}
+.sp-side.sp-sheet textarea{color:#0a0b0a}
+.is-text .sp-info,.is-text .sp-own-name,.sp-side .sp-own-name{color:#0a0b0a}
+.is-text .sp-when{color:rgba(10,11,10,.65)}
+.sp-card:has(.sp-dots) .sp-txt .sp-hand-title{margin-left:48px}
