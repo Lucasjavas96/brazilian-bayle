@@ -2241,3 +2241,17 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .sp-back .sp-anon{font-weight:500}
 .display :is(.title-accent,em) .reveal-word{padding:.12em .22em .34em .22em;margin:-.12em -.22em -.34em -.22em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .sp.page-head .sp-copy,.sp .sp-copy{margin-top:26px}
+.mf-b{min-height:0;padding-top:44px;padding-bottom:44px}
+.mf-b .display{font-size:clamp(28px,4.4vw,56px);margin:8px 0 12px}
+.mf-t{font-size:clamp(16px,1.5vw,20px);line-height:1.55;max-width:none}
+.mf-open{padding-top:56px;padding-bottom:36px}
+.mf-open .display{font-size:clamp(34px,6vw,80px)}
+@media(min-width:900px){
+.mf-b:not(.mf-open):not(.mf-end){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;row-gap:0;align-content:center;align-items:center}
+.mf-b:not(.mf-open):not(.mf-end) .mf-k,.mf-b:not(.mf-open):not(.mf-end) .display{grid-column:1}
+.mf-b:not(.mf-open):not(.mf-end) .mf-t{grid-column:2;grid-row:1 / span 2;align-self:center;margin:0}
+.mf-y{padding-right:max(var(--pad),calc((100% - 1100px)/2 + var(--pad)))}
+}
+.foot-dev{display:flex;justify-content:center;padding-top:6px;padding-bottom:18px}
+.dev-seal{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:5px 14px}
+.dev-seal b{color:var(--y);font-weight:700}
