@@ -27,5 +27,3 @@ insert into brb_private.event_catalog(id,event_date,venue,title,lineup,source) v
 ('pedreira-2026-10-31','2026-10-31','Pedreira','Solomun','["Alok","Vintage Culture","Mochakk","ANNA","Liu","Cat Dealers","Dubdogz","KVSH","Bhaskar","Chemical Surf","Zerb","Öwnboss","RUBACK","Victor Ruiz","Gui Boratto","Illusionize","Beltran","Mojjo","Classmatic","GREG"]'::jsonb,'Agenda do clube informada pela Brazilian Bayle (line-up a confirmar: vale qualquer DJ do ranking que tocou)')
 on conflict(id) do update set lineup=excluded.lineup,source=excluded.source where brb_private.event_catalog.lineup='[]'::jsonb;
 commit;
-
--- (reenviada para disparar a Action do Supabase, que só roda quando há mudança em supabase/migrations)
