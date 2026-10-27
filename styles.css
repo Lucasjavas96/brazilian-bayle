@@ -2272,3 +2272,8 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .fader:not(.untouched) .fader-hint{visibility:hidden}
 @media(max-width:380px){.fader-scale,.fader-rail{height:240px}}
 .sl>output{display:none}
+.djc-ovr strong{font-size:11.5cqw}
+.djc-ovr span{font-size:2.7cqw;margin-top:.6cqw}
+.djc-ovr em{width:7cqw;margin:1.1cqw 0}
+.djc-ovr small{font-size:2.3cqw}
+.djc-ovr{left:3cqw;top:2.2cqw}
