@@ -2470,3 +2470,29 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .djc-ovr em{width:7cqw;margin:1.1cqw 0}
 .djc-ovr small{font-size:2.3cqw}
 .djc-ovr{left:3cqw;top:2.2cqw}
+
+/* carta: foto do artista maior (+15%), critérios por extenso e novos acabamentos por raridade */
+.djc-inner{gap:1.3cqw;padding:2.2cqw}
+.djc-name{padding:1.1cqw 2.2cqw 1.1cqw 3cqw}
+.djc-name h3{font-size:8.6cqw}
+.djc-orb{width:8.4cqw;height:8.4cqw}
+.djc-stars{height:3.8cqw;margin-top:-.4cqw}.djc-stars i{width:3.6cqw;height:3.6cqw}
+.djc-type{padding:1.2cqw 2.2cqw;font-size:2.8cqw}
+.djc-stats{gap:.9cqw 2cqw}
+.djc-stat{gap:1.2cqw}.djc-stat b{font-size:5cqw;min-width:5.6cqw}.djc-stat span{font-size:2.4cqw;letter-spacing:.03em}
+.djc-flavor{padding:1.2cqw 2.4cqw}.djc-flavor p{font-size:3.9cqw;-webkit-line-clamp:2}.djc-flavor small{margin-top:.6cqw}
+/* rara: dourado */
+.djc.rara { --frame: linear-gradient(135deg, #89652d 0%, #f4df9e 28%, #b9944e 52%, #f7e6b5 76%, #8a6a2f 100%); --accent: #f4df9e; --glow: rgba(244,223,158,.55); --plate: linear-gradient(180deg, #2a2112, #0f0c07); }
+/* épica: platinado reluzente, puxado para o azul */
+.djc.epica { --frame: linear-gradient(135deg, #5f78a8 0%, #eef4ff 22%, #93aad8 45%, #f7faff 62%, #6f89ba 80%, #dbe7ff 100%); --accent: #cfe0ff; --glow: rgba(160,195,255,.6); --plate: linear-gradient(180deg, #141c2e, #080b14); }
+.djc.epica .djc-front:before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 32%, rgba(255,255,255,.7) 47%, rgba(190,215,255,.35) 53%, transparent 66%) 0 0 / 260% 100%; animation: djc-sheen 4.6s ease-in-out infinite; }
+/* lendária: diamante prismático */
+.djc.lendaria { --frame: conic-gradient(from 210deg at 50% 50%, #e8fbff, #b8f1ff 12%, #d6c8ff 24%, #ffd3f1 36%, #fff7c9 48%, #c8ffe6 60%, #a9e8ff 72%, #e5d4ff 84%, #e8fbff); --accent: #c9f4ff; --glow: rgba(170,235,255,.7); --plate: linear-gradient(180deg, #121a2e, #070a14); }
+.djc.lendaria .djc-front:before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: overlay;
+  background: repeating-linear-gradient(60deg, rgba(255,255,255,.55) 0 1.2px, transparent 1.2px 15px), repeating-linear-gradient(-60deg, rgba(255,255,255,.4) 0 1.2px, transparent 1.2px 15px), linear-gradient(115deg, transparent 30%, rgba(255,255,255,.8) 48%, transparent 62%);
+  background-size: auto, auto, 260% 100%; animation: djc-sheen 3.6s ease-in-out infinite; }
+.djc.lendaria .djc-foil { opacity: calc(.32 + var(--o) * .6); }
+@keyframes djc-sheen { 0%, 25% { background-position: 0 0, 0 0, 150% 0; } 75%, 100% { background-position: 0 0, 0 0, -50% 0; } }
+@media (prefers-reduced-motion: reduce) { .djc.epica .djc-front:before, .djc.lendaria .djc-front:before { animation: none; } }
+.rar-lendaria { color: #c9f4ff; } .rar-epica { color: #cfe0ff; } .rar-rara { color: #f4df9e; }
+.ab-reveal.r-lendaria { background: radial-gradient(circle at 50% 40%, rgba(170,235,255,.5), rgba(0,0,0,.97) 62%), rgba(0,0,0,.9); }
