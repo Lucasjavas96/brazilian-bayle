@@ -72,11 +72,19 @@ src: url(/assets/fonts/syne-700.woff2) format('woff2');
 unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-font-family: 'Caveat';
+font-family: 'Comic Neue';
 font-style: normal;
-font-weight: 400 700;
+font-weight: 400;
 font-display: swap;
-src: url(/assets/fonts/caveat-latin.woff2) format('woff2');
+src: url(/assets/fonts/comicneue-400.woff2) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+font-family: 'Comic Neue';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: url(/assets/fonts/comicneue-700.woff2) format('woff2');
 unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face{font-family:'Syne Fallback';src:local('Arial Black'),local('ArialMT-Black'),local('Roboto Black'),local('Arial Bold');size-adjust:150.6%;ascent-override:64.1%;descent-override:19.3%;line-gap-override:0%}
@@ -2136,18 +2144,18 @@ animation:medal-border-orbit 4.8s linear infinite!important}
 @media(max-width:520px){.sp-home-grid{grid-template-columns:minmax(0,1fr)}}
 .sp-sheet{--line:rgba(60,100,170,.3);background-color:#fbf8ec;
 background-image:linear-gradient(90deg,transparent 46px,rgba(205,60,60,.55) 46px,rgba(205,60,60,.55) 48px,transparent 48px),repeating-linear-gradient(180deg,transparent 0 25px,var(--line) 25px 26px);
-background-position:0 0,0 0;color:#1d2540;font-family:'Caveat','Segoe Script','Bradley Hand',cursive}
+background-position:0 0,0 0;color:#1d2540;font-family:'Comic Neue','Comic Sans MS',cursive}
 .sp-sheet::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:22px;pointer-events:none;background:radial-gradient(circle,#1d1e1c 0 4.5px,rgba(0,0,0,.3) 5px 6.5px,transparent 7px) 0 15px/22px 52px repeat-y}
 .sp-txt.sp-sheet{padding:26px 18px 0 58px;color:#1d2540}
-.sp-sheet .sp-hand-title{font:700 30px/52px 'Caveat','Segoe Script','Bradley Hand',cursive;text-transform:none;letter-spacing:0;margin:0 66px 0 0;color:#16205a;border-bottom:2px solid rgba(22,32,90,.55);max-height:104px;overflow:hidden}
-.sp-txt.sp-sheet p{margin:0;font:500 22px/26px 'Caveat','Segoe Script','Bradley Hand',cursive;display:-webkit-box;-webkit-line-clamp:10;-webkit-box-orient:vertical;overflow:hidden}
+.sp-sheet .sp-hand-title{font:700 30px/52px 'Comic Neue','Comic Sans MS',cursive;text-transform:none;letter-spacing:0;margin:0 66px 0 0;color:#16205a;border-bottom:2px solid rgba(22,32,90,.55);max-height:104px;overflow:hidden}
+.sp-txt.sp-sheet p{margin:0;font:500 22px/26px 'Comic Neue','Comic Sans MS',cursive;display:-webkit-box;-webkit-line-clamp:10;-webkit-box-orient:vertical;overflow:hidden}
 .sp-seal{position:absolute;top:14px;right:12px;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;align-content:center;gap:1px;text-align:center;transform:rotate(-12deg);color:#006b2d;border:2px solid rgba(0,107,45,.75);box-shadow:inset 0 0 0 3px rgba(251,248,236,.9),inset 0 0 0 4px rgba(0,107,45,.5);opacity:.88;background:rgba(255,255,255,.35)}
 .sp-seal img{width:24px;height:30px;object-fit:contain}
 .sp-seal b{font:700 7px/1 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
-.sp-side.sp-sheet{padding:16px 16px 16px 58px;display:block;font-family:'Caveat','Segoe Script','Bradley Hand',cursive}
-.sp-side.sp-sheet .sp-hand-by{font:600 20px/26px 'Caveat',cursive;color:#3b4a80;margin:0}
-.sp-side.sp-sheet .sp-side-t{font:500 22px/26px 'Caveat','Segoe Script','Bradley Hand',cursive;color:#1d2540}
-.sp-side.sp-sheet textarea{font:500 22px/26px 'Caveat',cursive;background:transparent;border:0;color:#1d2540}
+.sp-side.sp-sheet{padding:16px 16px 16px 58px;display:block;font-family:'Comic Neue','Comic Sans MS',cursive}
+.sp-side.sp-sheet .sp-hand-by{font:600 20px/26px 'Comic Neue','Comic Sans MS',cursive;color:#3b4a80;margin:0}
+.sp-side.sp-sheet .sp-side-t{font:500 22px/26px 'Comic Neue','Comic Sans MS',cursive;color:#1d2540}
+.sp-side.sp-sheet textarea{font:500 22px/26px 'Comic Neue','Comic Sans MS',cursive;background:transparent;border:0;color:#1d2540}
 .is-text .sp-front:after{display:none}
 .is-text .sp-info{color:#1d2540}.is-text .sp-info h3{display:none}.is-text .sp-when{color:rgba(29,37,64,.6)}
 .is-text .sp-by{margin-top:6px}
@@ -2199,12 +2207,12 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .sp-sheet,.sp-txt.sp-sheet,.sp-side.sp-sheet{background-color:#ffe066;background-image:none;color:#0a0b0a}
 .sp-sheet::before{display:none}
 .sp-txt.sp-sheet{padding:22px 18px 0 20px;color:#0a0b0a}
-.sp-sheet .sp-hand-title{font:700 32px/1.05 'Caveat','Segoe Script','Bradley Hand',cursive;color:#0a0b0a;border-bottom:2px solid #0a0b0a;margin:0 70px 12px 0;padding-bottom:8px;max-height:none}
-.sp-txt.sp-sheet p{font:500 24px/1.18 'Caveat','Segoe Script','Bradley Hand',cursive;color:#0a0b0a;-webkit-line-clamp:9}
+.sp-sheet .sp-hand-title{font:700 26px/1.15 'Comic Neue','Comic Sans MS',cursive;color:#0a0b0a;border-bottom:2px solid #0a0b0a;margin:0 70px 12px 0;padding-bottom:8px;max-height:none}
+.sp-txt.sp-sheet p{font:400 18px/1.35 'Comic Neue','Comic Sans MS',cursive;color:#0a0b0a;-webkit-line-clamp:11}
 .sp-seal{color:#0a0b0a;border-color:rgba(10,11,10,.8);box-shadow:none;background:transparent;opacity:.9}
 .sp-side.sp-sheet{padding:16px}
-.sp-side.sp-sheet .sp-hand-by{font:600 22px/1.1 'Caveat',cursive;color:#0a0b0a;margin:0 0 8px}
-.sp-side.sp-sheet .sp-side-t{font:500 24px/1.18 'Caveat','Segoe Script','Bradley Hand',cursive;color:#0a0b0a}
+.sp-side.sp-sheet .sp-hand-by{font:700 16px/1.2 'Comic Neue','Comic Sans MS',cursive;color:#0a0b0a;margin:0 0 8px}
+.sp-side.sp-sheet .sp-side-t{font:400 18px/1.35 'Comic Neue','Comic Sans MS',cursive;color:#0a0b0a}
 .sp-side.sp-sheet textarea{color:#0a0b0a}
 .is-text .sp-info,.is-text .sp-own-name,.sp-side .sp-own-name{color:#0a0b0a}
 .is-text .sp-when{color:rgba(10,11,10,.65)}
