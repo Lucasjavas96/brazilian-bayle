@@ -6,11 +6,13 @@
       "festas": [
         {
           "data": "03/01",
-          "nome": "HUGEL"
+          "nome": "HUGEL",
+          "evento": "greenvalley-2026-01-03"
         },
         {
           "data": "10/01",
-          "nome": "Adam Beyer"
+          "nome": "Adam Beyer",
+          "evento": "greenvalley-2026-01-10"
         },
         {
           "data": "17/01",
@@ -24,11 +26,13 @@
         },
         {
           "data": "16/02",
-          "nome": "ARTBAT + CamelPhat"
+          "nome": "ARTBAT + CamelPhat",
+          "evento": "greenvalley-2026-02-16"
         },
         {
           "data": "28/02",
-          "nome": "RÜFÜS DU SOL"
+          "nome": "RÜFÜS DU SOL",
+          "evento": "greenvalley-2026-02-28"
         },
         {
           "data": "02/05",
@@ -37,23 +41,28 @@
         },
         {
           "data": "06/06",
-          "nome": "Boris Brejcha"
+          "nome": "Boris Brejcha",
+          "evento": "greenvalley-2026-06-06"
         },
         {
           "data": "18/07",
-          "nome": "Claptone"
+          "nome": "Claptone",
+          "evento": "greenvalley-2026-07-18"
         },
         {
           "data": "05/09",
-          "nome": "Max Styler"
+          "nome": "Max Styler",
+          "evento": "greenvalley-2026-09-05"
         },
         {
           "data": "10/10",
-          "nome": "Elderbrook"
+          "nome": "Elderbrook",
+          "evento": "greenvalley-2026-10-10"
         },
         {
           "data": "21/11",
-          "nome": "PAWSA"
+          "nome": "PAWSA",
+          "evento": "greenvalley-2026-11-21"
         },
         {
           "data": "30/12",
@@ -68,11 +77,13 @@
       "festas": [
         {
           "data": "09/01",
-          "nome": "DJ Marky"
+          "nome": "DJ Marky",
+          "evento": "surreal-park-2026-01-09"
         },
         {
           "data": "16/01",
-          "nome": "Trotamundo"
+          "nome": "Trotamundo",
+          "evento": "surreal-park-2026-01-16"
         },
         {
           "data": "15/02",
@@ -81,7 +92,8 @@
         },
         {
           "data": "21/03",
-          "nome": "Vanjee"
+          "nome": "Vanjee",
+          "evento": "surreal-park-2026-03-21"
         },
         {
           "data": "03/04",
@@ -95,23 +107,28 @@
         },
         {
           "data": "20/06",
-          "nome": "Magdalena"
+          "nome": "Magdalena",
+          "evento": "surreal-park-2026-06-20"
         },
         {
           "data": "17/07",
-          "nome": "Apollonia"
+          "nome": "Apollonia",
+          "evento": "surreal-park-2026-07-17"
         },
         {
           "data": "15/08",
-          "nome": "Victor Lou"
+          "nome": "Victor Lou",
+          "evento": "surreal-park-2026-08-15"
         },
         {
           "data": "19/09",
-          "nome": "House Mag"
+          "nome": "House Mag",
+          "evento": "surreal-park-2026-09-19"
         },
         {
           "data": "09/10",
-          "nome": "Ratier"
+          "nome": "Ratier",
+          "evento": "surreal-park-2026-10-09"
         },
         {
           "data": "01/11",
@@ -120,19 +137,23 @@
         },
         {
           "data": "20/11",
-          "nome": "Hernán Cattáneo"
+          "nome": "Hernán Cattáneo",
+          "evento": "surreal-park-2026-11-20"
         },
         {
           "data": "05/12",
-          "nome": "Vini Vici"
+          "nome": "Vini Vici",
+          "evento": "surreal-park-2026-12-05"
         },
         {
           "data": "27/12",
-          "nome": "Surreal 5 Anos"
+          "nome": "Surreal 5 Anos",
+          "evento": "surreal-park-2026-12-27"
         },
         {
           "data": "31/12",
-          "nome": "Réveillon Surreal"
+          "nome": "Réveillon Surreal",
+          "evento": "surreal-park-2026-12-31"
         }
       ]
     },
@@ -142,7 +163,8 @@
       "festas": [
         {
           "data": "31/10",
-          "nome": "Solomun"
+          "nome": "Solomun",
+          "evento": "pedreira-2026-10-31"
         }
       ]
     }

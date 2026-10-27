@@ -269,13 +269,30 @@ renderPodium();
   CRIT.forEach(([key], index) => {
     const row = $('#row_' + key), range = $('#s_' + key);
     const tip = document.createElement('p'); tip.className = 'criterion-tip'; tip.textContent = criterionTips[index]; range.before(tip);
-    const choices = document.createElement('div'); choices.className = 'note-choices';
-    for (let n = 0; n <= 10; n++) {
-      const choice = document.createElement('button'); choice.type = 'button'; choice.textContent = n; choice.setAttribute('aria-pressed', 'false');
-      choice.onclick = () => { range.value = n; touched.add(key); updateAvg(); err('eNotas', ''); [...choices.children].forEach(b => b.setAttribute('aria-pressed', String(b === choice))); };
-      choices.append(choice);
-    }
-    range.hidden = true; row.append(choices);
+    const fader = document.createElement('div'); fader.className = 'fader untouched'; fader.tabIndex = 0;
+    fader.setAttribute('role', 'slider'); fader.setAttribute('aria-label', CRIT[index][1]); fader.setAttribute('aria-valuemin', '0'); fader.setAttribute('aria-valuemax', '10'); fader.setAttribute('aria-valuenow', '0'); fader.setAttribute('aria-valuetext', 'Não avaliado'); fader.setAttribute('aria-orientation', 'vertical');
+    fader.innerHTML = '<div class="fader-scale" aria-hidden="true">' + [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map(n => '<span>' + n + '</span>').join('') + '</div><div class="fader-rail" aria-hidden="true"><i class="fader-fill"></i><b class="fader-cap"></b></div><output class="fader-val" aria-hidden="true">—</output><p class="fader-hint">Arraste para cima ou para baixo</p>';
+    const rail = $('.fader-rail', fader), fill = $('.fader-fill', fader), cap = $('.fader-cap', fader), val = $('.fader-val', fader);
+    const paintFader = v => {
+      const pct = v * 10;
+      fill.style.height = pct + '%'; cap.style.bottom = pct + '%';
+      val.textContent = touched.has(key) ? fmt1(v) : '—';
+      fader.classList.toggle('untouched', !touched.has(key));
+      fader.setAttribute('aria-valuenow', String(v)); fader.setAttribute('aria-valuetext', touched.has(key) ? fmt1(v) + ' de 10' : 'Não avaliado');
+    };
+    const setFader = v => { v = Math.max(0, Math.min(10, Math.round(v * 2) / 2)); range.value = v; touched.add(key); paintFader(v); updateAvg(); err('eNotas', ''); };
+    const fromPointer = e => { const r = rail.getBoundingClientRect(); setFader((1 - (e.clientY - r.top) / r.height) * 10); };
+    let drag = false;
+    fader.addEventListener('pointerdown', e => { drag = true; try { fader.setPointerCapture(e.pointerId); } catch {} fromPointer(e); e.preventDefault(); });
+    fader.addEventListener('pointermove', e => { if (drag) fromPointer(e); });
+    const stop = () => { drag = false; }; fader.addEventListener('pointerup', stop); fader.addEventListener('pointercancel', stop);
+    fader.addEventListener('keydown', e => {
+      const cur = touched.has(key) ? +range.value : 0, step = { ArrowUp: .5, ArrowRight: .5, ArrowDown: -.5, ArrowLeft: -.5, PageUp: 1, PageDown: -1 }[e.key];
+      if (step !== undefined) { e.preventDefault(); setFader(cur + step); } else if (e.key === 'Home') { e.preventDefault(); setFader(0); } else if (e.key === 'End') { e.preventDefault(); setFader(10); }
+    });
+    fader.reset = () => { touched.delete(key); range.value = 5; paintFader(0); };
+    paintFader(0);
+    range.hidden = true; row.append(fader);
   });
   const showCriterion = () => {
     CRIT.forEach(([key], index) => $('#row_' + key).hidden = index !== criterion);
@@ -298,7 +315,7 @@ renderPodium();
     if (step === 0 && !party.value) { err('eParty', 'Escolha a festa em que você esteve.'); party.focus(); return; }
     if (step === 1 && !dj) { err('eDj', 'Escolha um DJ para continuar.'); lineup.querySelector('button')?.focus(); return; }
     if (step === 2) {
-      if (!touched.has(CRIT[criterion][0])) { err('eNotas', 'Escolha uma nota para continuar.'); $('.note-choices button', $('#row_' + CRIT[criterion][0])).focus(); return; }
+      if (!touched.has(CRIT[criterion][0])) { err('eNotas', 'Escolha uma nota para continuar.'); $('.fader', $('#row_' + CRIT[criterion][0])).focus(); return; }
       if (criterion < 3) { criterion++; showCriterion(); return; }
     }
     if (step < 3) showStep(step + 1);
@@ -332,7 +349,7 @@ renderPodium();
     $("#vComment").value = "";
     const follow = document.createElement('div'); follow.className = 'vote-followup';
     const another = document.createElement('button'); another.type = 'button'; another.className = 'btn btn-line-light'; another.textContent = 'Avaliar outro DJ';
-    another.onclick = () => { dj = null; touched.clear(); criterion = 0; renderLineup(); updateAvg(); $$('.note-choices button', form).forEach(b => b.setAttribute('aria-pressed', 'false')); showStep(0); };
+    another.onclick = () => { dj = null; touched.clear(); criterion = 0; renderLineup(); updateAvg(); $$('.fader', form).forEach(f => f.reset()); showStep(0); };
     const rankingLink = document.createElement('a'); rankingLink.href = '#t-rank'; rankingLink.textContent = 'Voltar ao ranking'; rankingLink.className = 'link-arrow';
     follow.append(another, rankingLink); $('#voteMsg').append(follow);
   };
