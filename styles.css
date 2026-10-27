@@ -2181,12 +2181,15 @@ background-position:0 0,0 0;color:#1d2540;font-family:'Caveat','Segoe Script','B
 .sp-festa.on{border-color:var(--y);background:rgba(255,212,0,.16)}
 @media(max-width:900px){.sp-layout{grid-template-columns:minmax(0,1fr)}.sp-clubs{position:static;max-height:none;overflow:visible}}
 .sp-rx{justify-content:center;padding:10px}
-.sp-baile{position:relative;width:64px;height:64px;padding:0;border-radius:50%;border:3px solid #fff;background:#fff;cursor:pointer;overflow:visible;box-shadow:0 4px 14px rgba(0,0,0,.45);transition:transform .15s}
-.sp-baile img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
-.sp-baile:hover{transform:scale(1.08) rotate(-4deg)}
-.sp-baile:active{transform:scale(.92)}
-.sp-baile[aria-pressed=true]{border-color:var(--y);box-shadow:0 0 0 3px var(--y),0 4px 14px rgba(0,0,0,.45);animation:baile-pulse .6s ease-out}
-.sp-baile b{position:absolute;right:-8px;top:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:99px;background:var(--y);color:#0a0b0a;font:800 12px/22px 'Inter Tight',sans-serif;text-align:center}
-@keyframes baile-pulse{0%{transform:scale(.8) rotate(-8deg)}60%{transform:scale(1.14) rotate(4deg)}100%{transform:scale(1)}}
-.sp-card button.sp-baile{backdrop-filter:none;-webkit-backdrop-filter:none;background-image:none;box-shadow:0 4px 14px rgba(0,0,0,.45)}
-@media(prefers-reduced-motion:reduce){.sp-baile,.sp-baile[aria-pressed=true]{animation:none;transition:none}}
+.sp-like{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:#fff;font:700 14px 'Inter Tight',sans-serif;cursor:pointer}
+.sp-like svg{flex:none}
+.sp-like b{background:var(--y);color:#0a0b0a;border-radius:99px;min-width:22px;padding:0 7px;height:22px;line-height:22px;text-align:center;font-size:12px}
+.sp-like[aria-pressed=true]{background:var(--y);border-color:var(--y);color:#0a0b0a}
+.sp-like[aria-pressed=true] b{background:#0a0b0a;color:var(--y)}
+.sp-like:active svg{transform:scale(.8) rotate(-12deg)}
+.sp-dots{position:absolute;top:10px;left:10px;z-index:5;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(10,11,10,.75);color:#f4df9e;font:800 22px/1 'Inter Tight',sans-serif;cursor:pointer;padding:0 0 6px}
+.is-text .sp-dots{background:rgba(255,255,255,.85);color:#7a5a12;border-color:rgba(0,0,0,.2)}
+button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;text-shadow:none}
+.btn,.btn:hover,.btn:active,.btn.btn-y,.btn.btn-k,.btn.btn-gold,.btn.btn-ghost,.btn.btn-line,.btn.btn-line-light,.hero .btn,.account-card .btn,.btn.btn-y:not(.side-cta),.btn.btn-y:not(.side-cta):hover{background-image:none!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;text-shadow:none!important}
+.btn.btn-y,.btn.btn-k,.btn.btn-gold,.hero .btn.btn-k,.account-card .btn.account-primary,.btn.btn-y:not(.side-cta){background-color:#c9a45c;border-color:#c9a45c;color:#0a0b0a}
+.btn.btn-y:hover,.btn.btn-gold:hover{background-color:#d8b66f}
