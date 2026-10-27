@@ -9,6 +9,7 @@
   const flag = f => f ? `/assets/flags/${f}.webp` : "";
 
   /* ---------- carta grande (frente estilo FIFA por raridade, verso com a arte do álbum) ---------- */
+  const STAT_NAMES = { SOM: "Som", HAR: "Harmonia", ENE: "Energia", SOF: "Sofisticação", HYP: "Hype", LEG: "Legado" };
   function bigCard(c, mini) {
     const maxv = Math.max(...Object.values(c.attrs));
     const stars = Math.max(1, Math.min(10, Math.round((c.ovr - 70) / 3)));
@@ -22,7 +23,7 @@
           <div class="djc-rank">${esc(c.rank)}</div>
         </div>
         <div class="djc-type"><b>[ DJ / ${esc(c.genero)} ]</b><span>${esc(c.num)}</span></div>
-        <div class="djc-stats">${Object.entries(c.attrs).map(([k, v]) => `<div class="djc-stat${v === maxv ? " top" : ""}"><b>${v}</b><span>${k}</span></div>`).join("")}</div>
+        <div class="djc-stats">${Object.entries(c.attrs).map(([k, v]) => `<div class="djc-stat${v === maxv ? " top" : ""}"><b>${v}</b><span>${STAT_NAMES[k] || k}</span></div>`).join("")}</div>
         <div class="djc-flavor"><p>${esc(c.texto)}</p>${c.faixa ? `<small>♪ ${esc(c.faixa)}</small>` : ""}</div>
         <div class="djc-foot"><b>★ ${c.rar}</b><span>Brazilian Bayle · 2026</span></div>
       </div><div class="djc-foil"></div><div class="djc-glare"></div></div>
