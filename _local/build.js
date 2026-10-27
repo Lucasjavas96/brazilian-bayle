@@ -154,6 +154,7 @@ ${body.trim()}
       <span>© ${YEAR} Brazilian Bayle · projeto independente, sem vínculo com os artistas e casas citados</span>
       <span>A pista é brasileira e sempre vai ser.</span>
     </div>
+    <div class="wrap foot-dev"><span class="dev-seal mono">Powered by <b>Lucas Javas</b></span></div>
   </footer>
 </div>
 
