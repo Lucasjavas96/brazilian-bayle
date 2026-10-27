@@ -1,5 +1,5 @@
 {
-  "scope": "Curadoria inicial de eventos importantes em dez casas; não é calendário anual exaustivo nem ranking oficial de casas. Somente datas passadas até 24/10/2026.",
+  "scope": "Curadoria inicial de eventos importantes em dez casas; não é calendário anual exaustivo nem ranking oficial de casas. Datas passadas até 24/10/2026, mais as festas do Green Valley e do Surreal Park informadas pela Brazilian Bayle (as futuras só aceitam avaliação a partir do dia).",
   "events": [
     {
       "id": "p12-2026-01-09",
@@ -11,6 +11,17 @@
       ],
       "source": "https://www.ingresse.com/meet-day-adam-sellouk-p12-jurere/",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "greenvalley-2026-01-17",
+      "date": "2026-01-17",
+      "venue": "Greenvalley",
+      "name": "Vintage Culture (Arena Open)",
+      "lineup": [
+        "Vintage Culture"
+      ],
+      "source": "Agenda do clube informada pela Brazilian Bayle (só o headliner)",
+      "checked_at": "2026-10-27"
     },
     {
       "id": "warung-2026-01-17",
@@ -103,6 +114,17 @@
       "checked_at": "2026-10-24"
     },
     {
+      "id": "surreal-park-2026-04-03",
+      "date": "2026-04-03",
+      "venue": "Surreal Park",
+      "name": "Mochakk",
+      "lineup": [
+        "Mochakk"
+      ],
+      "source": "Agenda do clube informada pela Brazilian Bayle (só o headliner)",
+      "checked_at": "2026-10-27"
+    },
+    {
       "id": "warung-2026-04-04",
       "date": "2026-04-04",
       "venue": "Warung",
@@ -169,6 +191,17 @@
       ],
       "source": "https://warungclub.com.br/agenda/",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "surreal-park-2026-05-16",
+      "date": "2026-05-16",
+      "venue": "Surreal Park",
+      "name": "Illusionize Saturn",
+      "lineup": [
+        "Illusionize"
+      ],
+      "source": "Agenda do clube informada pela Brazilian Bayle (só o headliner)",
+      "checked_at": "2026-10-27"
     },
     {
       "id": "matahari-2026-05-23",
@@ -326,6 +359,28 @@
       ],
       "source": "https://site.blueticket.com.br/evento/41985/freak-chic-d-edge-sp-pres-p1-dimmish-adnan-sharif-bauhouse",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "surreal-park-2026-11-01",
+      "date": "2026-11-01",
+      "venue": "Surreal Park",
+      "name": "Beltran",
+      "lineup": [
+        "Beltran"
+      ],
+      "source": "Agenda do clube informada pela Brazilian Bayle (só o headliner)",
+      "checked_at": "2026-10-27"
+    },
+    {
+      "id": "greenvalley-2026-12-30",
+      "date": "2026-12-30",
+      "venue": "Greenvalley",
+      "name": "Vintage Culture (Arena Open)",
+      "lineup": [
+        "Vintage Culture"
+      ],
+      "source": "Agenda do clube informada pela Brazilian Bayle (só o headliner)",
+      "checked_at": "2026-10-27"
     }
   ]
 }

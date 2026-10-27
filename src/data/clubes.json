@@ -1,0 +1,150 @@
+{
+  "clubes": [
+    {
+      "id": "gv",
+      "nome": "Green Valley",
+      "festas": [
+        {
+          "data": "03/01",
+          "nome": "HUGEL"
+        },
+        {
+          "data": "10/01",
+          "nome": "Adam Beyer"
+        },
+        {
+          "data": "17/01",
+          "nome": "Vintage Culture (Arena Open)",
+          "evento": "greenvalley-2026-01-17"
+        },
+        {
+          "data": "14/02",
+          "nome": "Vintage Culture",
+          "evento": "greenvalley-2026-02-14"
+        },
+        {
+          "data": "16/02",
+          "nome": "ARTBAT + CamelPhat"
+        },
+        {
+          "data": "28/02",
+          "nome": "RÜFÜS DU SOL"
+        },
+        {
+          "data": "02/05",
+          "nome": "Alok",
+          "evento": "greenvalley-2026-05-02"
+        },
+        {
+          "data": "06/06",
+          "nome": "Boris Brejcha"
+        },
+        {
+          "data": "18/07",
+          "nome": "Claptone"
+        },
+        {
+          "data": "05/09",
+          "nome": "Max Styler"
+        },
+        {
+          "data": "10/10",
+          "nome": "Elderbrook"
+        },
+        {
+          "data": "21/11",
+          "nome": "PAWSA"
+        },
+        {
+          "data": "30/12",
+          "nome": "Vintage Culture (Arena Open)",
+          "evento": "greenvalley-2026-12-30"
+        }
+      ]
+    },
+    {
+      "id": "sr",
+      "nome": "Surreal Park",
+      "festas": [
+        {
+          "data": "09/01",
+          "nome": "DJ Marky"
+        },
+        {
+          "data": "16/01",
+          "nome": "Trotamundo"
+        },
+        {
+          "data": "15/02",
+          "nome": "[a:rpia:r]",
+          "evento": "surreal-park-2026-02-15"
+        },
+        {
+          "data": "21/03",
+          "nome": "Vanjee"
+        },
+        {
+          "data": "03/04",
+          "nome": "Mochakk",
+          "evento": "surreal-park-2026-04-03"
+        },
+        {
+          "data": "16/05",
+          "nome": "Illusionize Saturn",
+          "evento": "surreal-park-2026-05-16"
+        },
+        {
+          "data": "20/06",
+          "nome": "Magdalena"
+        },
+        {
+          "data": "17/07",
+          "nome": "Apollonia"
+        },
+        {
+          "data": "15/08",
+          "nome": "Victor Lou"
+        },
+        {
+          "data": "19/09",
+          "nome": "House Mag"
+        },
+        {
+          "data": "09/10",
+          "nome": "Ratier"
+        },
+        {
+          "data": "01/11",
+          "nome": "Beltran",
+          "evento": "surreal-park-2026-11-01"
+        },
+        {
+          "data": "20/11",
+          "nome": "Hernán Cattáneo"
+        },
+        {
+          "data": "05/12",
+          "nome": "Vini Vici"
+        },
+        {
+          "data": "27/12",
+          "nome": "Surreal 5 Anos"
+        },
+        {
+          "data": "31/12",
+          "nome": "Réveillon Surreal"
+        }
+      ]
+    },
+    {
+      "id": "pd",
+      "nome": "Pedreira",
+      "festas": [
+        {
+          "data": "31/10",
+          "nome": "Solomun"
+        }
+      ]
+    }
+  ]
+}

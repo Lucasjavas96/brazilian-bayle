@@ -57,11 +57,11 @@
       <p class="mono demo-tag" id="voteHelp">Ranking da comunidade · eventos com data verificada</p>
 
       <div class="field">
-        <label for="vParty" class="mono">01 · Festa</label>
-        <label for="vPartySearch" class="sr-only">Pesquisar festa, casa, DJ ou data</label>
-        <input type="search" id="vPartySearch" placeholder="Pesquisar festa, casa, DJ ou data" autocomplete="off" aria-controls="vParty">
-        <p class="hint" id="vPartyCount" role="status"></p>
-        <select id="vParty" name="festa" required aria-describedby="eParty"></select>
+        <label for="vClub" class="mono">01 · Em qual clube você esteve?</label>
+        <select id="vClub" aria-describedby="eParty"></select>
+        <label for="vParty" class="mono vote-sub">Em qual festa?</label>
+        <select id="vParty" name="festa" required aria-describedby="eParty" disabled></select>
+        <p class="hint" id="vPartyCount" role="status">Só aparecem para avaliar as festas com DJ do ranking que já aconteceram.</p>
         <p class="ferr" id="eParty"></p>
       </div>
 
