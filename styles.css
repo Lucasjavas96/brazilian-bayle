@@ -2239,3 +2239,5 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .sp-back .sp-com-row input::placeholder{color:#7c7c76}
 .sp-back .sp-com-row .btn,.sp-back .sp-com-row .btn.btn-y{background:#fff;border-color:#fff;color:#111;border-radius:10px;min-height:44px;padding:0 16px;font:700 13px 'Inter Tight',sans-serif;letter-spacing:0;text-transform:none}
 .sp-back .sp-anon{font-weight:500}
+.display :is(.title-accent,em) .reveal-word{padding:.12em .22em .34em .22em;margin:-.12em -.22em -.34em -.22em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sp.page-head .sp-copy,.sp .sp-copy{margin-top:26px}
