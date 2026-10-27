@@ -303,6 +303,23 @@
   addEventListener("resize", () => arrows());
   new MutationObserver(() => arrows()).observe(feed, { childList: true });
 
+  /* ---------- foto ampliada: 1º toque amplia, 2º toque vira para os comentários ---------- */
+  const modal = $("#spModal"), mCard = $("#spModalCard");
+  document.body.appendChild(modal); // fora de qualquer bloco com transformação, para o fixed valer para a janela toda
+  let openId = null, modalFlipped = false;
+  function renderModal() {
+    const p = all().find(x => x.id === openId);
+    if (!p) { closeModal(); return; }
+    mCard.innerHTML = card(p);
+    const c = $(".sp-card", mCard);
+    if (modalFlipped) { c.classList.add("flipped"); $(".sp-back", c).setAttribute("aria-hidden", "false"); $(".sp-front", c).inert = true; $(".sp-back", c).inert = false; }
+    if (modal.hidden) { modal.hidden = false; document.body.classList.add("af-lock"); $("#spModalX").focus({ preventScroll: true }); }
+  }
+  function closeModal() { openId = null; modalFlipped = false; modal.hidden = true; mCard.innerHTML = ""; document.body.classList.remove("af-lock"); }
+  $("#spModalX").onclick = closeModal;
+  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden && !document.querySelector(".de-scrim")) closeModal(); });
+
   function render() {
     const list = all();
     const parties = [...new Set([...ALL_PARTIES, ...all().map(p => p.party)])];
@@ -318,6 +335,7 @@
       + group(BB.id, BB.nome, bbParties.map(lb => [lb, "", lb]));
     const shown = list.filter(inFilter);
     feed.innerHTML = shown.map(card).join("") || `<p class="sp-empty">${loading ? "Carregando publicações…" : esc(loadError || "Nenhum post dessa festa ainda.")}</p>`;
+    if (openId) renderModal();
   }
 
   $("#spFilter").onclick = e => {
@@ -331,10 +349,11 @@
 
   const need = () => { if (me()) return true; toast("Crie sua conta ou entre para interagir."); auth.scrollIntoView({ behavior: "smooth" }); return false };
   const post = el => all().find(p => p.id === el.closest(".sp-card").dataset.id);
-  feed.addEventListener("click", async e => {
+  const onFeedClick = async e => {
     const t = e.target, c = t.closest(".sp-card"); if (!c) return;
     if (t.closest("[data-flip]")) {
-      const on = c.classList.toggle("flipped");
+      if (!c.closest("#spModal")) { openId = c.dataset.id; modalFlipped = false; renderModal(); return; } // na grade: amplia
+      const on = c.classList.toggle("flipped"); modalFlipped = on;
       $(".sp-back", c).setAttribute("aria-hidden", String(!on)); $(".sp-front", c).inert = on; $(".sp-back", c).inert = !on;
       return;
     }
@@ -399,9 +418,11 @@
       } catch (error) { toast(message(error)); }
       finally { button.disabled = false; }
     }
-  });
-  feed.addEventListener("change", e => { if (e.target.matches("[data-anon]") && need()) { setAnon(e.target.checked); toast(e.target.checked ? "Seus próximos comentários e reações saem como Anônimo." : "Seus próximos comentários e reações mostram o seu @.") } });
-  feed.addEventListener("submit", async e => {
+  };
+  feed.addEventListener("click", onFeedClick); modal.addEventListener("click", onFeedClick);
+  const onFeedChange = e => { if (e.target.matches("[data-anon]") && need()) { setAnon(e.target.checked); toast(e.target.checked ? "Seus próximos comentários e reações saem como Anônimo." : "Seus próximos comentários e reações mostram o seu @.") } };
+  feed.addEventListener("change", onFeedChange); modal.addEventListener("change", onFeedChange);
+  const onFeedSubmit = async e => {
     const f = e.target.closest("[data-com]"); if (!f) return; e.preventDefault();
     if (!need()) return;
     const i = $("input", f), v = i.value.trim(), c = f.closest(".sp-card"); if (!v) return;
@@ -409,12 +430,11 @@
     const id = c.dataset.id, button = f.querySelector('[type="submit"]'); button.disabled = true;
     try {
       await rpc("comment", { post_id: id, text: v, anon: anonPref() });
-      await refresh();
-      const n = [...feed.querySelectorAll(".sp-card")].find(el => el.dataset.id === id);
-      if (n) { n.classList.add("flipped"); $(".sp-back", n).setAttribute("aria-hidden", "false"); $(".sp-front", n).inert = true; $(".sp-back", n).inert = false; }
+      modalFlipped = true; await refresh();
     } catch (error) { toast(message(error)); }
     finally { button.disabled = false; }
-  });
+  };
+  feed.addEventListener("submit", onFeedSubmit); modal.addEventListener("submit", onFeedSubmit);
 
   // só o botão sobre a foto vira o card: arrastar a barra de reações não vira
   syncMode(); view();
