@@ -280,7 +280,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
     groups[b].length - groups[a].length || a.localeCompare(b, "pt-BR"));
   const gid = g => slugify(g);
-  const done = sorted.filter(d => PROFILES[slugify(d.nome)]?.historia?.length).length;
+  const done = sorted.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length).length; // verbete pesquisado = tem fonte listada
   writePage("djpedia", {
     path: "/djpedia", nav: "djpedia", title: "DJ Pédia · Conheça os DJs",
     description: "A enciclopédia dos DJs do ranking da Brazilian Bayle e da cena de Curitiba, organizada por gênero: origem, início de carreira e trajetória de cada artista.",
@@ -295,12 +295,12 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     <div class="wiki-list" id="wikiResults">
       ${letters.map(l => `<section class="wiki-letter wiki-genre" id="genero-${gid(l)}" aria-labelledby="h-${gid(l)}">
         <h2 class="wiki-l" id="h-${gid(l)}">${l}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
-        <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.historia?.length;
+        <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.fontes?.length;
           return `<li id="${s}"><a class="wiki-item${full ? "" : " is-soon"}" href="/djpedia/${s}">
             ${DJ_PHOTOS[s] ? `<img class="wiki-portrait" src="/${DJ_PHOTOS[s].thumb}?v=2" alt="${esc(d.nome)}" width="384" height="288" loading="lazy" decoding="async">` : `<span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>`}
             <span class="wiki-name">${esc(d.nome)}</span>
             <span class="wiki-meta">${d.curitiba ? "Bayle Curitibano" : (p?.origem && p.origem !== NI ? p.origem + " · " : "") + d.estilo}</span>
-            <span class="wiki-status mono">${full ? "Ler verbete →" : "Ficha em construção →"}</span>
+            <span class="wiki-status mono">${full ? "Ler verbete →" : d.album ? "Ver ficha →" : "Ficha em construção →"}</span>
           </a></li>` }).join("")}</ul>
       </section>`).join("")}
     </div>
