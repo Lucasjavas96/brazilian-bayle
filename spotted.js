@@ -212,7 +212,6 @@
           ${isOwner ? `<button type="button" class="sp-dots" data-move aria-label="Mover para outra festa" title="Mover para outra festa (owner)">⋯</button>` : ""}
           ${face}
           <div class="sp-info">
-            <span class="sp-party mono">${p.is_demo ? 'DEMONSTRAÇÃO · ' : ''}${esc(p.party)}</span>
             <h3>${esc(p.title)}</h3>
             <p class="sp-by">${p.anon ? `<span class="sp-av is-anon" aria-hidden="true">?</span>` : ownerPost(p) ? `<span class="sp-av is-owner" aria-hidden="true">${esc(String(p.nick)[0].toUpperCase())}</span>` : av(p.nick)}${ownerPost(p) ? ownerTag : ""}<span class="${ownerPost(p) ? "sp-own-name" : ""}">${esc(author(p))}</span><span class="sp-when mono">${when(p.at)}</span></p>
           </div>
