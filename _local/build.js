@@ -240,12 +240,13 @@ const DJ_PHOTOS = readJson("dj-photos.json");
 // verbete automático dos DJs do álbum: só com o que está na figurinha (país, gênero, DJ Mag, início, faixa)
 for (const a of ALBUM_PEDIA) {
   DJ_PHOTOS[a.slug] = { path: a.foto, thumb: a.thumb, source: "Fornecida pela Brazilian Bayle", width: a.w, height: a.h };
-  PROFILES[a.slug] = { ...{
+  const researched = PROFILES[a.slug];
+  PROFILES[a.slug] = researched ? { pais_nome: a.paisNome, origem: a.paisNome, estilos: [a.genero], ...researched } : { ...{
     slug: a.slug, nome: a.nome, estilos: [a.genero], origem: a.paisNome, pais_nome: a.paisNome, ativo_desde: a.inicio ? String(a.inicio) : undefined,
     resumo: a.texto,
     historia: [[`País de origem: ${a.paisNome}. Gênero principal: ${a.genero}.`, a.djmag ? `Está na posição ${a.djmag} do DJ Mag Top 100 de 2026.` : "", a.inicio ? `Começou a carreira em ${a.inicio}.` : ""].filter(Boolean).join(" ")],
     faixas_marcantes: a.faixa ? [a.faixa] : [], marcos: a.djmag ? [`DJ Mag Top 100 de 2026: posição ${a.djmag}`] : [], fontes: [],
-  }, ...(PROFILES[a.slug] || {}) };
+  } };
 }
 function rankingOrder() {
   try {
