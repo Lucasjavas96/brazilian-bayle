@@ -2255,3 +2255,4 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .foot-dev{display:flex;justify-content:center;padding-top:6px;padding-bottom:18px}
 .dev-seal{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:5px 14px}
 .dev-seal b{color:var(--y);font-weight:700}
+.vote-sub{display:block;margin-top:14px}

@@ -171,15 +171,28 @@ renderPodium();
 (() => {
   const form = $("#voteForm"); if (!form) return;
   const NATIONAL = new Set(DJS.map(d => d[0]));
-  const PARTIES = (window.BRB_EVENTS || []).map(event => ({id:event.id,label:`${event.venue} · ${event.date.slice(8)}/${event.date.slice(5,7)}/${event.date.slice(0,4)} · ${event.name}`,dj:event.lineup.filter(name=>NATIONAL.has(name))})).filter(event=>event.dj.length);
+  const PARTIES = (window.BRB_EVENTS || []).map(event => ({id:event.id,date:event.date,label:`${event.venue} · ${event.date.slice(8)}/${event.date.slice(5,7)}/${event.date.slice(0,4)} · ${event.name}`,dj:event.lineup.filter(name=>NATIONAL.has(name))})).filter(event=>event.dj.length);
   let dj = null; const touched = new Set();
   const party = $("#vParty"), lineup = $("#vLineup");
-  party.innerHTML = `<option value="">Escolha a festa</option>` + PARTIES.map(p => `<option value="${p.id}">${p.label}</option>`).join("");
+  // clube primeiro; a lista de festas é a mesma do Spotted. Só dá para avaliar festa que já aconteceu e tenha DJ do ranking.
+  const CLUBS = window.BRB_CLUBS || [], clubSel = $("#vClub"), today = new Date().toLocaleDateString("sv-SE");
+  clubSel.innerHTML = '<option value="">Escolha o clube</option>' + CLUBS.map(c => '<option value="' + c.id + '">' + c.nome + '</option>').join("");
+  const fillParties = () => {
+    const c = CLUBS.find(x => x.id === clubSel.value);
+    party.disabled = !c;
+    party.innerHTML = c ? '<option value="">Escolha a festa</option>' + c.festas.map(f => {
+      const ev = f.evento && PARTIES.find(p => p.id === f.evento), ok = ev && ev.date <= today;
+      const why = ok ? '' : ev ? ' (ainda não aconteceu)' : ' (sem DJ do ranking)';
+      return '<option value="' + (ok ? ev.id : '') + '"' + (ok ? '' : ' disabled') + '>' + f.data + ' · ' + f.nome + why + '</option>';
+    }).join('') : '<option value="">Escolha primeiro o clube</option>';
+    dj = null; renderLineup();
+  };
   const renderLineup = () => {
     const p = PARTIES.find(x => x.id === party.value);
     lineup.innerHTML = p ? p.dj.map(n => `<button type="button" aria-pressed="${n === dj}" data-dj="${n}">${n}</button>`).join("") : `<span class="hint">Escolha a festa primeiro.</span>`;
   };
   party.onchange = () => { dj = null; renderLineup(); err("eParty", "") };
+  clubSel.onchange = () => { fillParties(); err("eParty", ""); };
   const partySearch = $('#vPartySearch');
   if (partySearch) {
     const filterParties = () => {
@@ -194,6 +207,7 @@ renderPodium();
     partySearch.addEventListener('input',filterParties);
     filterParties();
   }
+  fillParties();
   lineup.onclick = e => { const b = e.target.closest("button"); if (!b) return; dj = b.dataset.dj; renderLineup(); err("eDj", ""); $(`[data-dj="${dj}"]`, lineup)?.focus() };
   renderLineup();
 
@@ -238,7 +252,7 @@ renderPodium();
     [$('#vSliders').closest('fieldset'), $('#vComment').closest('.field')],
     [$('#voteIdentity'), $('#vConsent').closest('label'), $('#eConsent'), $('.vote-actions', form)]
   ];
-  const titles = ['Em qual festa você esteve?', 'Quem você quer avaliar?', 'Como foi o set?', 'Confira e registre sua avaliação'];
+  const titles = ['Em qual clube e festa você esteve?', 'Quem você quer avaliar?', 'Como foi o set?', 'Confira e registre sua avaliação'];
   const progress = document.createElement('div'); progress.className = 'vote-progress';
   progress.innerHTML = '<p class="vote-step-count" aria-live="polite"></p><div class="vote-step-track" aria-hidden="true"><span></span></div><h3 class="vote-step-title" tabindex="-1"></h3><p class="vote-step-summary"></p>';
   $('#voteHelp').after(progress);
@@ -280,6 +294,7 @@ renderPodium();
     if (focus) $('.vote-step-title', progress).focus({preventScroll:true});
   };
   const nextStep = () => {
+    if (step === 0 && !clubSel.value) { err('eParty', 'Escolha o clube em que você esteve.'); clubSel.focus(); return; }
     if (step === 0 && !party.value) { err('eParty', 'Escolha a festa em que você esteve.'); party.focus(); return; }
     if (step === 1 && !dj) { err('eDj', 'Escolha um DJ para continuar.'); lineup.querySelector('button')?.focus(); return; }
     if (step === 2) {
