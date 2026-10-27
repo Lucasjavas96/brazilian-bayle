@@ -109,7 +109,8 @@
     const err = $("#spErr"), foto = form.spMode.value === "foto", title = $("#spTitle").value.trim(), party = $("#spParty").value.trim(), text = $("#spText").value.trim();
     if (foto && !photo) return err.textContent = "Escolha a foto do momento ou mude para Só resenha.";
     if (!title) return err.textContent = "Dê um título ao post.";
-    if (!party) return err.textContent = "Conte em qual festa você estava.";
+    if (!$("#spClub").value) return err.textContent = "Escolha o clube em que você estava.";
+    if (!party) return err.textContent = "Escolha a festa em que você estava.";
     if (!foto && !text) return err.textContent = "Sem foto, a resenha é obrigatória.";
     if (BLOCK.test(title + " " + party + " " + text)) return err.textContent = "Tire palavrões e links do post.";
     const button = form.querySelector('[type="submit"]'); button.disabled = true; err.textContent = "";
@@ -127,6 +128,17 @@
   const CLUBS = [{"id":"gv","nome":"Green Valley","festas":[["03/01","HUGEL"],["10/01","Adam Beyer"],["17/01","Vintage Culture (Arena Open)"],["14/02","Vintage Culture"],["16/02","ARTBAT + CamelPhat"],["28/02","RÜFÜS DU SOL"],["02/05","Alok"],["06/06","Boris Brejcha"],["18/07","Claptone"],["05/09","Max Styler"],["10/10","Elderbrook"],["21/11","PAWSA"],["30/12","Vintage Culture (Arena Open)"]]},{"id":"sr","nome":"Surreal Park","festas":[["09/01","DJ Marky"],["16/01","Trotamundo"],["15/02","[a:rpia:r]"],["21/03","Vanjee"],["03/04","Mochakk"],["16/05","Illusionize Saturn"],["20/06","Magdalena"],["17/07","Apollonia"],["15/08","Victor Lou"],["19/09","House Mag"],["09/10","Ratier"],["01/11","Beltran"],["20/11","Hernán Cattáneo"],["05/12","Vini Vici"],["27/12","Surreal 5 Anos"],["31/12","Réveillon Surreal"]]},{"id":"pd","nome":"Pedreira","festas":[["31/10","Solomun"]]}];
   const partyLabel = (c, f) => `${c.nome} · ${f[1]} · ${f[0]}`;
   const ALL_PARTIES = CLUBS.flatMap(c => c.festas.map(f => partyLabel(c, f)));
+  // clube e festa do post: a festa só abre as do clube escolhido
+  const clubSel = $("#spClub"), partySel = $("#spParty");
+  clubSel.innerHTML = '<option value="">Escolha o clube</option>' + CLUBS.map(c => `<option value="${c.id}">${esc(c.nome)}</option>`).join("");
+  const fillParties = () => {
+    const c = CLUBS.find(x => x.id === clubSel.value);
+    partySel.disabled = !c;
+    partySel.innerHTML = c ? '<option value="">Escolha a festa</option>' + c.festas.map(f => `<option value="${esc(partyLabel(c, f))}">${f[0]} · ${esc(f[1])}</option>`).join("") : '<option value="">Escolha primeiro o clube</option>';
+  };
+  clubSel.addEventListener("change", fillParties);
+  form.addEventListener("reset", () => setTimeout(fillParties, 0));
+  fillParties();
   /* ---------- som do botão "É baile fio" (sintetizado, sem arquivos) ---------- */
   const BAILE_SOUND = "funk"; // opções: "funk" (tamborzão), "horn" (buzina de DJ), "rave" (sirene + laser), "party" (confete + apito)
   const sfx = (() => {
@@ -287,7 +299,6 @@
   function render() {
     const list = all();
     const parties = [...new Set([...ALL_PARTIES, ...all().map(p => p.party)])];
-    $("#spParties").innerHTML = parties.map(p => `<option value="${esc(p)}">`).join("");
     const count = fn => all().filter(fn).length;
     const bbParties = [...new Set(all().filter(p => !fixedClub(p)).map(p => p.party))].sort();
     const group = (id, nome, festas) => {

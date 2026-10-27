@@ -53,9 +53,12 @@
           <input id="spTitle" maxlength="60" required>
         </div>
         <div class="field">
+          <label for="spClub" class="mono">Em qual clube você estava?</label>
+          <select id="spClub" required><option value="">Escolha o clube</option></select>
+        </div>
+        <div class="field">
           <label for="spParty" class="mono">Em qual festa você estava?</label>
-          <input id="spParty" list="spParties" maxlength="60" required placeholder="nome da festa">
-          <datalist id="spParties"></datalist>
+          <select id="spParty" required disabled><option value="">Escolha primeiro o clube</option></select>
         </div>
         <div class="field">
           <label for="spText" class="mono">Resenha <span class="opt" id="spTextOpt">(opcional com foto)</span></label>
