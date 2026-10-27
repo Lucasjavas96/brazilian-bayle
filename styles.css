@@ -1447,7 +1447,9 @@ a.wiki-item:hover{border-color:var(--y);transform:translateY(-2px)}
 .sp-tabs button[aria-selected=true]{background:var(--y);border-color:var(--y);color:var(--k0)}
 .sp-form .btn{width:100%}
 .sp-fine{font-size:13px;color:rgba(255,255,255,.6);margin-top:12px}
-.sp-me{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.sp-me{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.sp-pts{font-size:12px;border:1px solid var(--y);color:var(--y);padding:4px 10px;border-radius:999px}
+.sp-pts b{color:#fff;font-size:14px;margin-left:4px}
 .sp-out{margin-left:auto;background:none;border:0;color:var(--y);cursor:pointer;font-size:11px;min-height:44px}
 .sp-cta{width:100%;font-size:18px;min-height:60px}
 .sp-skip{display:inline-block;margin-top:12px;color:var(--y);font-size:11px}

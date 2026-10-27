@@ -77,11 +77,18 @@
     finally { button.disabled = false; }
   };
 
+  // marcador de pontos (foto 5, comentário 1): lido do servidor, nunca calculado aqui
+  async function loadPoints() {
+    const el = $("#spPtsN"); if (!el) return;
+    if (!me()) { el.textContent = "0"; return; }
+    try { const p = await backend().points(); el.textContent = String(p?.points ?? 0); $("#spPts").title = `Hoje: ${p?.today ?? 0} de ${p?.daily_cap ?? 40} pontos. Cada ponto é um giro no álbum.`; }
+    catch (e) { /* migração ainda não aplicada: mantém o marcador como está */ }
+  }
   function view() {
     const u = me();
     auth.hidden = !!u; pub.hidden = !u; $("#spLocked").hidden = !!u;
     if (u) { $("#spMeNick").textContent = "@" + u.nick; $("#spMeAv").outerHTML = av(u.nick).replace('class="sp-av"', 'class="sp-av" id="spMeAv"') }
-    render();
+    render(); loadPoints();
   }
 
   /* ---------- publicar ---------- */
@@ -117,7 +124,7 @@
     try {
       const anon = $("#spAnon").checked;
       await rpc("post_create", { title, party, text, img: foto ? photo : "", anon });
-      setAnon(anon); $("#spCancel").click(); await refresh(); toast("Publicado no Spotted Bayle.");
+      setAnon(anon); $("#spCancel").click(); await refresh(); loadPoints(); toast("Publicado no Spotted Bayle.");
       $("#spFeedTop").scrollIntoView({ behavior: "smooth" });
     } catch (error) { err.textContent = message(error); }
     finally { button.disabled = false; }
@@ -430,7 +437,7 @@
     const id = c.dataset.id, button = f.querySelector('[type="submit"]'); button.disabled = true;
     try {
       await rpc("comment", { post_id: id, text: v, anon: anonPref() });
-      modalFlipped = true; await refresh();
+      modalFlipped = true; await refresh(); loadPoints();
     } catch (error) { toast(message(error)); }
     finally { button.disabled = false; }
   };

@@ -26,6 +26,11 @@
       if (error) throw new Error(error.message || 'Não foi possível apagar o comentário.');
       return data;
     },
+    async points() {
+      const { data, error } = await client.rpc('brb_points');
+      if (error) throw new Error(error.message || 'Não foi possível carregar seus pontos.');
+      return data;
+    },
     async owner(action, payload = {}) {
       const { data, error } = await client.rpc('brb_owner', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');
