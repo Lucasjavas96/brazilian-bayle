@@ -167,6 +167,21 @@
           "evento": "pedreira-2026-10-31"
         }
       ]
+    },
+    {
+      "id": "vibe",
+      "nome": "Club Vibe",
+      "festas": []
+    },
+    {
+      "id": "laroc",
+      "nome": "Laroc",
+      "festas": []
+    },
+    {
+      "id": "fortin",
+      "nome": "El Fortin",
+      "festas": []
     }
   ]
 }

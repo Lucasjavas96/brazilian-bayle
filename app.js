@@ -175,7 +175,7 @@ renderPodium();
   let dj = null; const touched = new Set();
   const party = $("#vParty"), lineup = $("#vLineup");
   // clube primeiro; a lista de festas é a mesma do Spotted. Só dá para avaliar festa que já aconteceu e tenha DJ do ranking.
-  const CLUBS = window.BRB_CLUBS || [], clubSel = $("#vClub"), today = new Date().toLocaleDateString("sv-SE");
+  const CLUBS = (window.BRB_CLUBS || []).filter(c => c.festas.length), clubSel = $("#vClub"), today = new Date().toLocaleDateString("sv-SE");
   clubSel.innerHTML = '<option value="">Escolha o clube</option>' + CLUBS.map(c => '<option value="' + c.id + '">' + c.nome + '</option>').join("");
   const fillParties = () => {
     const c = CLUBS.find(x => x.id === clubSel.value);
