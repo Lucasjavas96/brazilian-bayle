@@ -94,51 +94,74 @@
     $("#abRepsGrid").innerHTML = Object.entries(S.coladas).filter(([, n]) => n > 1).map(([s, n]) => `<div class="ab-slot filled">${mini(CARDS[s])}<span class="ab-x mono">×${n - 1}</span></div>`).join(""); fit($("#abRepsGrid"), 3);
   }
 
-  /* ---------- sons (sintetizados no navegador, sem arquivos) ---------- */
+  /* ---------- sons: trance (arpejo, supersaw, caixa), sintetizados no navegador, sem arquivos ---------- */
   const sfx = (() => {
-    let ctx = null, muted = false, lastTick = 0;
+    let ctx = null, master = null, dly = null, muted = false, lastTick = 0, step = 0;
     try { muted = localStorage.getItem("bb_album_mudo") === "1"; } catch {}
-    const audio = () => {
+    const boot = () => {
       if (muted) return null;
-      try { ctx ||= new (window.AudioContext || window.webkitAudioContext)(); if (ctx.state === "suspended") ctx.resume(); return ctx; } catch { return null; }
+      try {
+        if (!ctx) {
+          ctx = new (window.AudioContext || window.webkitAudioContext)();
+          master = ctx.createGain(); master.gain.value = .8;
+          const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 5; master.connect(comp); comp.connect(ctx.destination);
+          // eco curto para dar espaço aos sintetizadores
+          dly = ctx.createDelay(1); dly.delayTime.value = .19;
+          const fb = ctx.createGain(), wet = ctx.createGain(), lp = ctx.createBiquadFilter();
+          fb.gain.value = .38; wet.gain.value = .28; lp.type = "lowpass"; lp.frequency.value = 3200;
+          dly.connect(lp); lp.connect(fb); fb.connect(dly); lp.connect(wet); wet.connect(master);
+        }
+        if (ctx.state === "suspended") ctx.resume();
+        return ctx;
+      } catch { return null; }
     };
-    const tone = (c, at, dur, type, vol, f0, f1) => {
-      const o = c.createOscillator(), g = c.createGain(), t = c.currentTime + at;
-      o.type = type; o.frequency.setValueAtTime(f0, t); if (f1) o.frequency.exponentialRampToValueAtTime(f1, t + dur);
-      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-      o.connect(g).connect(c.destination); o.start(t); o.stop(t + dur + 0.02);
+    const out = (node, send = 0) => { node.connect(master); if (send) { const s = ctx.createGain(); s.gain.value = send; node.connect(s); s.connect(dly); } };
+    const env = (g, t, a, d, peak) => { g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(.0001, t + a + d); };
+    const noiseBuf = d => { const n = Math.floor(ctx.sampleRate * d), b = ctx.createBuffer(1, n, ctx.sampleRate), x = b.getChannelData(0); for (let i = 0; i < n; i++) x[i] = Math.random() * 2 - 1; return b; };
+    const noise = (t, d, vol, type, f0, f1, q = 1, send = 0) => {
+      const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+      s.buffer = noiseBuf(d + .05); f.type = type; f.Q.value = q; f.frequency.setValueAtTime(f0, t); if (f1) f.frequency.exponentialRampToValueAtTime(f1, t + d);
+      env(g, t, Math.min(.01, d / 3), d, vol); s.connect(f); f.connect(g); out(g, send); s.start(t);
     };
-    const noise = (c, at, dur, vol, type, f0, f1) => {
-      const n = Math.max(1, Math.floor(c.sampleRate * dur)), buf = c.createBuffer(1, n, c.sampleRate), d = buf.getChannelData(0);
-      for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
-      const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain(), t = c.currentTime + at;
-      s.buffer = buf; f.type = type; f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(f1, t + dur);
-      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + dur * 0.25); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-      s.connect(f).connect(g).connect(c.destination); s.start(t);
+    const osc = (t, d, type, f0, f1, vol, send = 0) => {
+      const o = ctx.createOscillator(), g = ctx.createGain(); o.type = type; o.frequency.setValueAtTime(f0, t); if (f1) o.frequency.exponentialRampToValueAtTime(f1, t + d);
+      env(g, t, .004, d, vol); o.connect(g); out(g, send); o.start(t); o.stop(t + d + .05);
     };
-    const NOTES = [523.25, 659.25, 783.99, 1046.5, 1318.5, 1568];
+    const supersaw = (t, f, d, v = .2) => [-18, -9, 0, 9, 18].forEach(det => {
+      const o = ctx.createOscillator(), lp = ctx.createBiquadFilter(), g = ctx.createGain();
+      o.type = "sawtooth"; o.frequency.value = f; o.detune.value = det; lp.type = "lowpass"; lp.frequency.setValueAtTime(7000, t); lp.frequency.exponentialRampToValueAtTime(900, t + d);
+      env(g, t, .006, d, v / 5 * 1.8); o.connect(lp); lp.connect(g); out(g, .35); o.start(t); o.stop(t + d + .05);
+    });
+    const stab = (t, freqs, d, v = .2) => freqs.forEach(f => [-9, 9].forEach(det => {
+      const o = ctx.createOscillator(), lp = ctx.createBiquadFilter(), g = ctx.createGain();
+      o.type = "sawtooth"; o.frequency.value = f; o.detune.value = det; lp.type = "lowpass"; lp.Q.value = 3; lp.frequency.setValueAtTime(4200, t); lp.frequency.exponentialRampToValueAtTime(500, t + d);
+      env(g, t, .005, d, v / freqs.length * 1.6); o.connect(lp); lp.connect(g); out(g, .3); o.start(t); o.stop(t + d + .05);
+    }));
+    const kick = (t, v = .9) => { osc(t, .32, "sine", 160, 42, v); noise(t, .02, v * .35, "highpass", 2500); };
+    const snare = (t, v = .5) => { noise(t, .16, v, "bandpass", 1900, 1400, .8); osc(t, .1, "triangle", 230, 160, v * .6); };
+    const riser = (t, d, v = .22) => { noise(t, d, v, "bandpass", 300, 7000, 2.5, .2); osc(t, d, "sawtooth", 110, 880, v * .25); };
+    const crash = (t, v = .3) => noise(t, 1.4, v, "highpass", 3500, 6000, .7, .3);
+    const A = n => 440 * Math.pow(2, (n - 9) / 12);
+    const SCALE = [0, 2, 3, 7, 8, 12, 14, 15, 19, 20, 24];
     return {
       get muted() { return muted; },
       set muted(v) { muted = !!v; try { localStorage.setItem("bb_album_mudo", muted ? "1" : "0"); } catch {} },
-      unlock() { audio(); },
-      // clique de catraca do jog wheel (no máximo um a cada 28 ms)
-      tick() { const c = audio(), now = performance.now(); if (!c || now - lastTick < 28) return; lastTick = now; tone(c, 0, 0.03, "square", 0.045, 1900, 1100); },
-      whoosh() { const c = audio(); if (c) noise(c, 0, 0.8, 0.14, "bandpass", 300, 2600); },
-      // carta ganha: arpejo arcade, maior quanto mais rara
+      unlock() { boot(); },
+      // cada clique da jog wheel é uma nota do arpejo; a escala sobe a cada volta (no máximo uma nota a cada 28 ms)
+      tick() { const c = boot(), now = performance.now(); if (!c || now - lastTick < 28) return; lastTick = now; step = (step + 1) % SCALE.length; supersaw(c.currentTime, A(SCALE[step] - 12), .09, .1); },
+      // soltou a roda: riser e rufar de caixa
+      whoosh() { const c = boot(); if (!c) return; step = 0; const t = c.currentTime; riser(t, 1, .2); for (let i = 0; i < 10; i++) snare(t + i * .1, .1 + i * .04); },
+      // carta ganha: acorde supersaw; mais raro = mais longo, mais camadas, mais brilho
       reveal(cls, dup) {
-        const c = audio(); if (!c) return;
-        if (dup) { tone(c, 0, 0.16, "triangle", 0.1, 392, 380); tone(c, 0.12, 0.2, "triangle", 0.09, 330, 320); return; }
-        const n = { comum: 2, rara: 3, epica: 4, lendaria: 6 }[cls] || 2;
-        for (let i = 0; i < n; i++) tone(c, i * 0.09, 0.28, "square", 0.05, NOTES[i], NOTES[i]);
-        tone(c, n * 0.09, 0.5, "triangle", 0.09, NOTES[n - 1] * 2, NOTES[n - 1] * 2);
-        if (cls === "epica" || cls === "lendaria") noise(c, 0.05, 0.6, 0.06, "highpass", 3000, 9000);
-        if (cls === "lendaria") { tone(c, 0, 0.9, "sine", 0.16, 130, 65); noise(c, n * 0.09, 0.9, 0.07, "highpass", 5000, 11000); }
+        const c = boot(); if (!c) return; const t = c.currentTime;
+        if (dup) { supersaw(t, A(7 - 12), .22, .1); supersaw(t + .12, A(3 - 12), .28, .09); return; }
+        const r = { comum: 0, rara: 1, epica: 2, lendaria: 3 }[cls] || 0, root = [0, 0, -2, -5][r];
+        stab(t, [root, root + 7, root + 12, root + 16, root + 19].map(n => A(n - 12)), .9 + .3 * r, .2);
+        supersaw(t, A(root + 12), 1.2 + .4 * r, .3); crash(t, .15 + .08 * r);
+        if (r === 3) { supersaw(t + .2, A(root + 19), 1.4, .3); kick(t, 1); }
       },
-      // figurinha colada: tapa seco + plim
-      slap() {
-        const c = audio(); if (!c) return;
-        noise(c, 0, 0.1, 0.28, "lowpass", 2600, 300); tone(c, 0, 0.14, "sine", 0.28, 190, 55); tone(c, 0.09, 0.18, "triangle", 0.07, 1568, 1568);
-      },
+      // figurinha colada: caixa, bumbo e um sopro de impacto
+      slap() { const c = boot(); if (!c) return; const t = c.currentTime; snare(t, .7); kick(t, .9); noise(t, .5, .2, "lowpass", 2500, 200); },
     };
   })();
   // botão de mudo, junto da dica da jog wheel
