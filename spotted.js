@@ -106,7 +106,7 @@
   form.onsubmit = async e => {
     e.preventDefault();
     if (!need()) return;
-    const err = $("#spErr"), foto = form.spMode.value === "foto", title = $("#spTitle").value.trim(), party = $("#spParty").value.trim(), text = $("#spText").value.trim();
+    const err = $("#spErr"), foto = form.spMode.value === "foto", title = $("#spTitle").value.trim(), party = partyValue(), text = $("#spText").value.trim();
     if (foto && !photo) return err.textContent = "Escolha a foto do momento ou mude para Só resenha.";
     if (!title) return err.textContent = "Dê um título ao post.";
     if (!$("#spClub").value) return err.textContent = "Escolha o clube em que você estava.";
@@ -134,8 +134,14 @@
   const fillParties = () => {
     const c = CLUBS.find(x => x.id === clubSel.value);
     partySel.disabled = !c;
-    partySel.innerHTML = c ? '<option value="">Escolha a festa</option>' + c.festas.map(f => `<option value="${esc(partyLabel(c, f))}">${f[0]} · ${esc(f[1])}</option>`).join("") : '<option value="">Escolha primeiro o clube</option>';
+    partySel.innerHTML = c ? '<option value="">Escolha a festa</option>' + c.festas.map(f => `<option value="${esc(partyLabel(c, f))}">${f[0]} · ${esc(f[1])}</option>`).join("") + '<option value="__outra">Outra festa (digitar o nome)</option>' : '<option value="">Escolha primeiro o clube</option>';
+    syncOther();
   };
+  const otherBox = $("#spOtherField"), otherIn = $("#spPartyOther");
+  const syncOther = () => { const on = partySel.value === "__outra"; otherBox.hidden = !on; otherIn.required = on; if (!on) otherIn.value = ""; };
+  partySel.addEventListener("change", syncOther);
+  // "Clube · Festa" da publicação (festa digitada entra como "Clube · nome")
+  const partyValue = () => { if (partySel.value !== "__outra") return partySel.value.trim(); const c = CLUBS.find(x => x.id === clubSel.value), t = otherIn.value.trim(); return c && t ? `${c.nome} · ${t}` : ""; };
   clubSel.addEventListener("change", fillParties);
   form.addEventListener("reset", () => setTimeout(fillParties, 0));
   fillParties();
@@ -269,16 +275,17 @@
     document.body.appendChild(dlg); document.body.classList.add("af-lock");
     const club = $("#mvClub", dlg), festa = $("#mvFesta", dlg), livre = $("#mvLivre", dlg);
     const sync = () => {
-      const bb = club.value === BB.id; $("#mvFestaBox", dlg).hidden = bb; $("#mvLivreBox", dlg).hidden = !bb;
+      const sel = CLUBS.find(x => x.id === club.value), bb = club.value === BB.id || !sel.festas.length; $("#mvFestaBox", dlg).hidden = bb; $("#mvLivreBox", dlg).hidden = !bb;
       if (!bb) { const c = CLUBS.find(x => x.id === club.value); festa.innerHTML = c.festas.map(f => `<option value="${esc(partyLabel(c, f))}"${partyLabel(c, f) === post.party ? " selected" : ""}>${f[0]} · ${esc(f[1])}</option>`).join(""); }
-      else if (!livre.value) livre.value = fixedClub(post) ? BB.nome : post.party;
+      else if (!livre.value) livre.value = club.value === BB.id ? (fixedClub(post) ? BB.nome : post.party) : "";
     };
     club.onchange = sync; sync();
     const close = () => { dlg.remove(); document.body.classList.remove("af-lock"); };
     dlg.addEventListener("click", e => { if (e.target === dlg || e.target.closest("[data-x]")) close(); });
     dlg.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
     $("#mvSave", dlg).onclick = async ev => {
-      const btn = ev.currentTarget, party = (club.value === BB.id ? livre.value : festa.value).trim(), err = $("#mvErr", dlg);
+      const sel = CLUBS.find(x => x.id === club.value), free = club.value === BB.id || !sel.festas.length;
+      const btn = ev.currentTarget, party = (club.value === BB.id ? livre.value.trim() : free ? (livre.value.trim() ? `${sel.nome} · ${livre.value.trim()}` : "") : festa.value.trim()), err = $("#mvErr", dlg);
       if (!party) return err.textContent = "Escolha ou escreva a festa.";
       btn.disabled = true; err.textContent = "";
       try { await backend().owner("post_move", { id: post.id, party }); close(); await refresh(); toast("Post movido."); }
