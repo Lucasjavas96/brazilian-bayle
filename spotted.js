@@ -177,8 +177,11 @@
     };
     return { play() { const c = boot(); if (c) (SOUNDS[BAILE_SOUND] || SOUNDS.funk)(c.currentTime); } };
   })();
+  const BB = { id: "bb", nome: "Brazilian Bayle Afters" };
+  const fixedClub = p => CLUBS.find(c => String(p.party).startsWith(c.nome + " ·"));
+  const inClub = (id, p) => id === BB.id ? !fixedClub(p) : String(p.party).startsWith(CLUBS.find(c => c.id === id).nome + " ·");
   let filter = "", openClub = "";
-  const inFilter = p => !filter || (filter.startsWith("club:") ? String(p.party).startsWith(CLUBS.find(c => c.id === filter.slice(5)).nome + " ·") : p.party === filter.slice(6));
+  const inFilter = p => !filter || (filter.startsWith("club:") ? inClub(filter.slice(5), p) : p.party === filter.slice(6));
   const all = () => posts;
   const counts = p => p.r || {};
   const comments = p => Array.isArray(p.cc) ? p.cc : Array.isArray(p.c) ? p.c : [];
@@ -206,6 +209,7 @@
       <div class="sp-flip">
         <div class="sp-front">
           <button type="button" class="sp-hit" data-flip aria-label="Virar o card e ver reações e comentários"></button>
+          ${isOwner ? `<button type="button" class="sp-dots" data-move aria-label="Mover para outra festa" title="Mover para outra festa (owner)">⋯</button>` : ""}
           ${face}
           <div class="sp-info">
             <span class="sp-party mono">${p.is_demo ? 'DEMONSTRAÇÃO · ' : ''}${esc(p.party)}</span>
@@ -215,7 +219,7 @@
           ${side}
           <div class="sp-rxw">
             <div class="sp-rx" role="group" aria-label="Reações">
-              <button type="button" class="sp-baile" data-rx="fino" aria-pressed="${my === "fino"}" aria-label="É baile fio${cnt.fino ? ", " + cnt.fino + " reações" : ""}"><img src="/assets/spotted/baile-fio.webp" alt="" width="72" height="72">${cnt.fino ? `<b>${cnt.fino}</b>` : ""}</button>
+              <button type="button" class="sp-like" data-rx="fino" aria-pressed="${my === "fino"}"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M2 10.5h4v10H2zM8 20.5V10l4.2-7.2c.6-.3 1.3-.2 1.8.3.4.4.6 1 .5 1.6L13.8 9H20c1.2 0 2.1 1.1 1.9 2.3l-1.3 7.2c-.2 1.2-1.2 2-2.4 2H8z" fill="currentColor"/></svg><span>É baile fio</span>${cnt.fino ? `<b>${cnt.fino}</b>` : ""}</button>
             </div>
           </div>
         </div>
@@ -236,6 +240,41 @@
     </article>`;
   }
 
+
+  /* ---------- owner: mover post para outro clube e festa ---------- */
+  function openMove(post) {
+    const clubs = [...CLUBS.map(c => ({ id: c.id, nome: c.nome })), BB];
+    const cur = fixedClub(post) || BB, bbList = [...new Set(all().filter(x => !fixedClub(x)).map(x => x.party))].sort();
+    const dlg = document.createElement("div"); dlg.className = "de-scrim";
+    dlg.innerHTML = `<div class="de-box" role="dialog" aria-modal="true" aria-label="Mover post">
+      <button type="button" class="de-x mono" data-x>Fechar</button>
+      <p class="mono gold">👑 Owner · mover post</p><h2>${esc(post.title)}</h2>
+      <p class="de-note">Hoje em: <b>${esc(post.party)}</b></p>
+      <label class="de-f"><span>Clube</span><select id="mvClub">${clubs.map(c => `<option value="${c.id}"${c.id === cur.id ? " selected" : ""}>${esc(c.nome)}</option>`).join("")}</select></label>
+      <label class="de-f" id="mvFestaBox"><span>Festa</span><select id="mvFesta"></select></label>
+      <label class="de-f" id="mvLivreBox" hidden><span>Nome da festa ou do after</span><input type="text" id="mvLivre" maxlength="120" list="mvLista" placeholder="Ex.: After na cobertura"><datalist id="mvLista">${bbList.map(p => `<option value="${esc(p)}">`).join("")}</datalist></label>
+      <p class="de-err" id="mvErr" role="alert"></p>
+      <div class="de-actions"><button type="button" class="btn btn-ghost" data-x>Cancelar</button><button type="button" class="btn btn-y" id="mvSave">Mover</button></div></div>`;
+    document.body.appendChild(dlg); document.body.classList.add("af-lock");
+    const club = $("#mvClub", dlg), festa = $("#mvFesta", dlg), livre = $("#mvLivre", dlg);
+    const sync = () => {
+      const bb = club.value === BB.id; $("#mvFestaBox", dlg).hidden = bb; $("#mvLivreBox", dlg).hidden = !bb;
+      if (!bb) { const c = CLUBS.find(x => x.id === club.value); festa.innerHTML = c.festas.map(f => `<option value="${esc(partyLabel(c, f))}"${partyLabel(c, f) === post.party ? " selected" : ""}>${f[0]} · ${esc(f[1])}</option>`).join(""); }
+      else if (!livre.value) livre.value = fixedClub(post) ? BB.nome : post.party;
+    };
+    club.onchange = sync; sync();
+    const close = () => { dlg.remove(); document.body.classList.remove("af-lock"); };
+    dlg.addEventListener("click", e => { if (e.target === dlg || e.target.closest("[data-x]")) close(); });
+    dlg.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+    $("#mvSave", dlg).onclick = async ev => {
+      const btn = ev.currentTarget, party = (club.value === BB.id ? livre.value : festa.value).trim(), err = $("#mvErr", dlg);
+      if (!party) return err.textContent = "Escolha ou escreva a festa.";
+      btn.disabled = true; err.textContent = "";
+      try { await backend().owner("post_move", { id: post.id, party }); close(); await refresh(); toast("Post movido."); }
+      catch (e) { err.textContent = message(e); btn.disabled = false; }
+    };
+  }
+
   function arrows(root = feed) {
     $$(".sp-rxw", root).forEach(w => {
       const r = $(".sp-rx", w), [prev, next] = $$(".sp-arr", w); if (!prev || !next) return;
@@ -251,11 +290,15 @@
     const parties = [...new Set([...ALL_PARTIES, ...all().map(p => p.party)])];
     $("#spParties").innerHTML = parties.map(p => `<option value="${esc(p)}">`).join("");
     const count = fn => all().filter(fn).length;
-    $("#spFilter").innerHTML = `<button type="button" class="sp-club${!filter ? " on" : ""}" data-f="">Todas as festas <small>${all().length}</small></button>` + CLUBS.map(c => {
-      const isOpen = openClub === c.id, on = filter === "club:" + c.id;
-      return `<div class="sp-club-g"><button type="button" class="sp-club${on ? " on" : ""}" data-club="${c.id}" aria-expanded="${isOpen}">${esc(c.nome)} <small>${count(p => String(p.party).startsWith(c.nome + " ·"))}</small><i aria-hidden="true">${isOpen ? "−" : "+"}</i></button>
-        <ul class="sp-festas" ${isOpen ? "" : "hidden"}>${c.festas.map(f => { const lb = partyLabel(c, f); return `<li><button type="button" class="sp-festa${filter === "party:" + lb ? " on" : ""}" data-party="${esc(lb)}"><b>${f[0]}</b> ${esc(f[1])}<small>${count(p => p.party === lb) || ""}</small></button></li>`; }).join("")}</ul></div>`;
-    }).join("");
+    const bbParties = [...new Set(all().filter(p => !fixedClub(p)).map(p => p.party))].sort();
+    const group = (id, nome, festas) => {
+      const isOpen = openClub === id, on = filter === "club:" + id;
+      return `<div class="sp-club-g"><button type="button" class="sp-club${on ? " on" : ""}" data-club="${id}" aria-expanded="${isOpen}">${esc(nome)} <small>${count(p => inClub(id, p))}</small><i aria-hidden="true">${isOpen ? "−" : "+"}</i></button>
+        <ul class="sp-festas" ${isOpen ? "" : "hidden"}>${festas.map(([lb, dt, nm]) => `<li><button type="button" class="sp-festa${filter === "party:" + lb ? " on" : ""}" data-party="${esc(lb)}">${dt ? `<b>${dt}</b> ` : ""}${esc(nm)}<small>${count(p => p.party === lb) || ""}</small></button></li>`).join("")}</ul></div>`;
+    };
+    $("#spFilter").innerHTML = `<button type="button" class="sp-club${!filter ? " on" : ""}" data-f="">Todas as festas <small>${all().length}</small></button>`
+      + CLUBS.map(c => group(c.id, c.nome, c.festas.map(f => [partyLabel(c, f), f[0], f[1]]))).join("")
+      + group(BB.id, BB.nome, bbParties.map(lb => [lb, "", lb]));
     const shown = list.filter(inFilter);
     feed.innerHTML = shown.map(card).join("") || `<p class="sp-empty">${loading ? "Carregando publicações…" : esc(loadError || "Nenhum post dessa festa ainda.")}</p>`;
   }
@@ -311,6 +354,10 @@
     }
     const emo = t.closest("[data-emo]");
     if (emo) { const i = $("[data-com] input", c); i.value = (i.value + emo.dataset.emo).slice(0, 200); i.focus(); return }
+    if (t.closest("[data-move]")) {
+      const post = all().find(x => x.id === c.dataset.id); if (post) openMove(post);
+      return;
+    }
     const cdel = t.closest("[data-cdel]");
     if (cdel) {
       if (!confirm("Apagar este comentário?")) return;
