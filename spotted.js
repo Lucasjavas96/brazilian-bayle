@@ -223,17 +223,17 @@
           </div>
         </div>
         <div class="sp-back" aria-hidden="true" inert>
-          <div class="sp-back-h"><span class="mono">Carimbos · ${total} reações · ${cm.length} comentários</span><button type="button" class="sp-close mono" data-flip>Voltar ↺</button></div>
-          <div class="sp-stamps">${REACTIONS.filter(([k]) => cnt[k]).sort((a, b) => cnt[b[0]] - cnt[a[0]]).map(([k, e, l]) => `<span class="sp-stamp"><i aria-hidden="true">${e}</i>${l}<b>${cnt[k]}</b></span>`).join("") || `<span class="sp-empty">Nenhum carimbo ainda.</span>`}</div>
-          ${rs.length ? `<p class="sp-who">${rs.map(r => `<span>${emo[r.k] || ""} ${esc(r.who)}</span>`).join("")}</p>` : ""}
-          <label class="sp-anon"><input type="checkbox" role="switch" data-anon${anonPref() ? " checked" : ""}><span class="sp-sw" aria-hidden="true"></span>Ocultar meu nome</label>
-          <ul class="sp-coms">${cm.map(x => `<li>${whoName(x.who)} ${esc(x.t)}${x.can && x.id ? ` <button type="button" class="sp-cdel mono" data-cdel="${esc(x.id)}" aria-label="Apagar este comentário">Apagar</button>` : ""}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
+          <div class="sp-back-h"><span>${cm.length} ${cm.length === 1 ? "comentário" : "comentários"}</span><button type="button" class="sp-close" data-flip>Voltar</button></div>
+          <p class="sp-lk"><b>${cnt.fino || 0}</b> ${(cnt.fino || 0) === 1 ? "pessoa disse" : "pessoas disseram"} “É baile fio”</p>
+          <ul class="sp-coms">${cm.map(x => `<li>${whoName(x.who)} ${esc(x.t)}${x.can && x.id ? ` <button type="button" class="sp-cdel" data-cdel="${esc(x.id)}" aria-label="Apagar este comentário">Apagar</button>` : ""}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
+          <div class="sp-back-ctl">
+            <label class="sp-anon"><input type="checkbox" role="switch" data-anon${anonPref() ? " checked" : ""}><span class="sp-sw" aria-hidden="true"></span>Ocultar meu nome</label>
+            <button type="button" class="sp-report" data-report>Denunciar post</button>
+            ${isOwner ? `<button type="button" class="sp-report sp-del" data-del>Ocultar post (owner)</button>` : ""}
+          </div>
           <form class="sp-com" data-com>
-            <div class="sp-emo" aria-label="Emojis">${EMOJIS.map(e => `<button type="button" data-emo="${e}" aria-label="Inserir ${e}">${e}</button>`).join("")}</div>
             <div class="sp-com-row"><input maxlength="200" aria-label="Comentário" placeholder="Escreva um comentário"><button type="submit" class="btn btn-y">Enviar</button></div>
           </form>
-          <button type="button" class="sp-report mono" data-report>Denunciar post</button>
-          ${isOwner ? `<button type="button" class="sp-report sp-del mono" data-del>👑 Ocultar post (owner)</button>` : ""}
         </div>
       </div>
     </article>`;
