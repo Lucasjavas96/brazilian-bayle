@@ -2350,3 +2350,30 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .sp-copy-hook{font:800 clamp(22px,3vw,30px)/1.1 'Syne','Syne Fallback',sans-serif;color:var(--y);letter-spacing:-.01em}
 .sp-copy-cta{font-weight:700;color:#fff}
 .sp-copy-end{font-style:italic;font-family:'Cormorant Garamond','Cormorant Fallback',serif;font-size:clamp(20px,2.4vw,26px);color:var(--y)}
+
+/* Spotted: menu lateral por clube e festa */
+.sp-layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:28px;align-items:start}
+.sp-clubs{display:grid;gap:8px;position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding-right:4px}
+.sp-club{width:100%;display:flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border-radius:14px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font:700 15px 'Inter Tight',sans-serif;cursor:pointer;text-align:left}
+.sp-club small{margin-left:auto;font:700 11px 'JetBrains Mono',monospace;color:rgba(255,255,255,.6)}
+.sp-club i{font-style:normal;font-size:18px;color:var(--y);width:14px;text-align:center}
+.sp-club small + i{margin-left:0}
+.sp-club.on,.sp-club[aria-expanded=true]{border-color:var(--y);background:rgba(255,212,0,.14);color:var(--y)}
+.sp-festas{list-style:none;display:grid;gap:4px;margin:6px 0 4px 10px;padding-left:10px;border-left:2px solid rgba(255,212,0,.4)}
+.sp-festas[hidden]{display:none}
+.sp-festa{width:100%;display:flex;align-items:baseline;gap:8px;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid transparent;background:rgba(255,255,255,.05);color:#fff;font:500 14px 'Inter Tight',sans-serif;cursor:pointer;text-align:left}
+.sp-festa b{font:700 11px 'JetBrains Mono',monospace;color:var(--y);flex:none}
+.sp-festa small{margin-left:auto;font:700 11px 'JetBrains Mono',monospace;color:rgba(255,255,255,.6)}
+.sp-festa.on{border-color:var(--y);background:rgba(255,212,0,.16)}
+@media(max-width:900px){.sp-layout{grid-template-columns:minmax(0,1fr)}.sp-clubs{position:static;max-height:none;overflow:visible}}
+/* Spotted: única reação, o pombo "É baile fio" */
+.sp-rx{justify-content:center;padding:10px}
+.sp-baile{position:relative;width:64px;height:64px;padding:0;border-radius:50%;border:3px solid #fff;background:#fff;cursor:pointer;overflow:visible;box-shadow:0 4px 14px rgba(0,0,0,.45);transition:transform .15s}
+.sp-baile img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.sp-baile:hover{transform:scale(1.08) rotate(-4deg)}
+.sp-baile:active{transform:scale(.92)}
+.sp-baile[aria-pressed=true]{border-color:var(--y);box-shadow:0 0 0 3px var(--y),0 4px 14px rgba(0,0,0,.45);animation:baile-pulse .6s ease-out}
+.sp-baile b{position:absolute;right:-8px;top:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:99px;background:var(--y);color:#0a0b0a;font:800 12px/22px 'Inter Tight',sans-serif;text-align:center}
+@keyframes baile-pulse{0%{transform:scale(.8) rotate(-8deg)}60%{transform:scale(1.14) rotate(4deg)}100%{transform:scale(1)}}
+.sp-card button.sp-baile{backdrop-filter:none;-webkit-backdrop-filter:none;background-image:none;box-shadow:0 4px 14px rgba(0,0,0,.45)}
+@media(prefers-reduced-motion:reduce){.sp-baile,.sp-baile[aria-pressed=true]{animation:none;transition:none}}

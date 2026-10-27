@@ -4,7 +4,7 @@
 
   // lista de reações: edite aqui (chave, emoji, texto)
   const REACTIONS = [
-    ["fino", "🥂", "Bayle fino"], ["gusta", "💃", "Me gusta mucho"], ["queria", "🥺", "#queria"],
+    ["fino", "🕺", "É baile fio"], ["gusta", "💃", "Me gusta mucho"], ["queria", "🥺", "#queria"],
     ["eita", "😳", "Eita"], ["tenebroso", "💀", "Tenebroso"], ["nefastos", "⛈️", "Tempos nefastos"],
     ["bicho", "🤨", "Que é isso, bicho?"], ["dormir", "😴", "House é pra dormir"], ["caneco", "🍺", "Meu caneco"],
     ["bailao", "🪩", "Bailão"], ["ousadia", "😈", "Ousadia"], ["abobora", "🎃", "Abóbora"],
@@ -123,7 +123,62 @@
   };
 
   /* ---------- feed ---------- */
-  let filter = "";
+  // clubes e festas de 2026 (data dd/mm). O rótulo "Clube · Festa · dd/mm" é o que vai no campo festa do post.
+  const CLUBS = [{"id":"gv","nome":"Green Valley","festas":[["03/01","HUGEL"],["10/01","Adam Beyer"],["17/01","Vintage Culture (Arena Open)"],["14/02","Vintage Culture"],["16/02","ARTBAT + CamelPhat"],["28/02","RÜFÜS DU SOL"],["02/05","Alok"],["06/06","Boris Brejcha"],["18/07","Claptone"],["05/09","Max Styler"],["10/10","Elderbrook"],["21/11","PAWSA"],["30/12","Vintage Culture (Arena Open)"]]},{"id":"sr","nome":"Surreal Park","festas":[["09/01","DJ Marky"],["16/01","Trotamundo"],["15/02","[a:rpia:r]"],["21/03","Vanjee"],["03/04","Mochakk"],["16/05","Illusionize Saturn"],["20/06","Magdalena"],["17/07","Apollonia"],["15/08","Victor Lou"],["19/09","House Mag"],["09/10","Ratier"],["01/11","Beltran"],["20/11","Hernán Cattáneo"],["05/12","Vini Vici"],["27/12","Surreal 5 Anos"],["31/12","Réveillon Surreal"]]},{"id":"pd","nome":"Pedreira","festas":[["31/10","Solomun"]]}];
+  const partyLabel = (c, f) => `${c.nome} · ${f[1]} · ${f[0]}`;
+  const ALL_PARTIES = CLUBS.flatMap(c => c.festas.map(f => partyLabel(c, f)));
+  /* ---------- som do botão "É baile fio" (sintetizado, sem arquivos) ---------- */
+  const BAILE_SOUND = "funk"; // opções: "funk" (tamborzão), "horn" (buzina de DJ), "rave" (sirene + laser), "party" (confete + apito)
+  const sfx = (() => {
+    let ctx = null, master = null, dly = null;
+    const boot = () => {
+      try {
+        if (localStorage.getItem("bb_album_mudo") === "1") return null;
+        if (!ctx) {
+          ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.gain.value = .8;
+          const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 5; master.connect(comp); comp.connect(ctx.destination);
+          dly = ctx.createDelay(1); dly.delayTime.value = .19; const fb = ctx.createGain(), wet = ctx.createGain(), lp = ctx.createBiquadFilter();
+          fb.gain.value = .38; wet.gain.value = .28; lp.type = "lowpass"; lp.frequency.value = 3200; dly.connect(lp); lp.connect(fb); fb.connect(dly); lp.connect(wet); wet.connect(master);
+        }
+        if (ctx.state === "suspended") ctx.resume();
+        return ctx;
+      } catch { return null; }
+    };
+    const out = (n, send = 0) => { n.connect(master); if (send) { const s = ctx.createGain(); s.gain.value = send; n.connect(s); s.connect(dly); } };
+    const env = (g, t, a, d, peak) => { g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(.0001, t + a + d); };
+    const noise = (t, d, vol, type, f0, f1, q = 1, send = 0) => {
+      const n = Math.floor(ctx.sampleRate * (d + .05)), b = ctx.createBuffer(1, n, ctx.sampleRate), x = b.getChannelData(0); for (let i = 0; i < n; i++) x[i] = Math.random() * 2 - 1;
+      const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain(); s.buffer = b; f.type = type; f.Q.value = q; f.frequency.setValueAtTime(f0, t); if (f1) f.frequency.exponentialRampToValueAtTime(f1, t + d);
+      env(g, t, Math.min(.01, d / 3), d, vol); s.connect(f); f.connect(g); out(g, send); s.start(t);
+    };
+    const osc = (t, d, type, f0, f1, vol, send = 0) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = type; o.frequency.setValueAtTime(f0, t); if (f1) o.frequency.exponentialRampToValueAtTime(f1, t + d); env(g, t, .004, d, vol); o.connect(g); out(g, send); o.start(t); o.stop(t + d + .05); };
+    const kick = (t, v = .9) => { osc(t, .32, "sine", 160, 42, v); noise(t, .02, v * .35, "highpass", 2500); };
+    const hat = (t, v = .18) => noise(t, .04, v, "highpass", 7500);
+    const clap = (t, v = .5) => { [0, .011, .023].forEach(o => noise(t + o, .06, v * .7, "bandpass", 1300, 900, 1.1)); noise(t + .03, .2, v * .5, "bandpass", 1200, 800, .9, .25); };
+    const crash = (t, v = .3) => noise(t, 1.4, v, "highpass", 3500, 6000, .7, .3);
+    const cowbell = (t, v = .18) => { osc(t, .12, "square", 800, 780, v); osc(t, .12, "square", 540, 530, v * .8); };
+    const horn = (t, d, v = .22) => [466, 698].forEach(f => {
+      const o = ctx.createOscillator(), g = ctx.createGain(), lp = ctx.createBiquadFilter(); o.type = "sawtooth"; o.frequency.setValueAtTime(f * .93, t); o.frequency.exponentialRampToValueAtTime(f, t + .07);
+      g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(v, t + .02); g.gain.setValueAtTime(v, t + d - .08); g.gain.linearRampToValueAtTime(.0001, t + d); lp.type = "lowpass"; lp.frequency.value = 3200; o.connect(lp); lp.connect(g); out(g, .25); o.start(t); o.stop(t + d + .05);
+    });
+    const siren = (t, d, v = .16) => {
+      const o = ctx.createOscillator(), lfo = ctx.createOscillator(), lg = ctx.createGain(), lp = ctx.createBiquadFilter(), g = ctx.createGain(); o.type = "square"; lfo.frequency.value = 5; lg.gain.value = 300; lfo.connect(lg); lg.connect(o.frequency); o.frequency.value = 900; lp.type = "lowpass"; lp.frequency.value = 2600;
+      g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(v, t + .04); g.gain.setValueAtTime(v, t + d - .12); g.gain.linearRampToValueAtTime(.0001, t + d); o.connect(lp); lp.connect(g); out(g, .2); o.start(t); lfo.start(t); o.stop(t + d + .05); lfo.stop(t + d + .05);
+    };
+    const whistle = (t, d, v = .18) => {
+      const o = ctx.createOscillator(), lfo = ctx.createOscillator(), lg = ctx.createGain(), g = ctx.createGain(); o.type = "sine"; o.frequency.setValueAtTime(1800, t); o.frequency.exponentialRampToValueAtTime(2700, t + d); lfo.frequency.value = 28; lg.gain.value = 90; lfo.connect(lg); lg.connect(o.frequency);
+      g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(v, t + .02); g.gain.setValueAtTime(v, t + d - .05); g.gain.linearRampToValueAtTime(.0001, t + d); o.connect(g); out(g, .25); o.start(t); lfo.start(t); o.stop(t + d + .05); lfo.stop(t + d + .05);
+    };
+    const SOUNDS = {
+      funk(t) { const s = .115; [0, 3, 6, 8, 11].forEach(i => kick(t + i * s, .9)); [4, 12].forEach(i => clap(t + i * s, .5)); [0, 2, 3, 5, 6, 8, 10, 11, 13].forEach(i => cowbell(t + i * s, .12)); [1, 5, 9, 13].forEach(i => hat(t + i * s, .15)); },
+      horn(t) { horn(t, .16); horn(t + .22, .16); horn(t + .44, .4, .26); kick(t + .44, 1); crash(t + .44, .2); },
+      rave(t) { siren(t, .55, .15); [.2, .4].forEach(o => osc(t + o, .35, "sawtooth", 2600, 160, .18, .2)); kick(t + .6, 1); osc(t + .6, .5, "sine", 70, 38, .7); crash(t + .6, .18); },
+      party(t) { noise(t, .05, .5, "bandpass", 1500, 500, .8); osc(t, .12, "sine", 220, 60, .4); for (let i = 0; i < 14; i++) noise(t + .03 + Math.random() * .35, .05, .1, "highpass", 5000 + Math.random() * 4000); whistle(t + .12, .5, .16); clap(t + .35, .4); clap(t + .5, .4); },
+    };
+    return { play() { const c = boot(); if (c) (SOUNDS[BAILE_SOUND] || SOUNDS.funk)(c.currentTime); } };
+  })();
+  let filter = "", openClub = "";
+  const inFilter = p => !filter || (filter.startsWith("club:") ? String(p.party).startsWith(CLUBS.find(c => c.id === filter.slice(5)).nome + " ·") : p.party === filter.slice(6));
   const all = () => posts;
   const counts = p => p.r || {};
   const comments = p => Array.isArray(p.cc) ? p.cc : Array.isArray(p.c) ? p.c : [];
@@ -159,11 +214,9 @@
           </div>
           ${side}
           <div class="sp-rxw">
-            <button type="button" class="sp-arr" data-arr="-1" aria-label="Reações anteriores" hidden>‹</button>
             <div class="sp-rx" role="group" aria-label="Reações">
-              ${REACTIONS.map(([k, e, l]) => `<button type="button" class="sp-pill" data-rx="${k}" aria-pressed="${my === k}"><span aria-hidden="true">${e}</span>${l}${cnt[k] ? `<b>${cnt[k]}</b>` : ""}</button>`).join("")}
+              <button type="button" class="sp-baile" data-rx="fino" aria-pressed="${my === "fino"}" aria-label="É baile fio${cnt.fino ? ", " + cnt.fino + " reações" : ""}"><img src="/assets/spotted/baile-fio.webp" alt="" width="72" height="72">${cnt.fino ? `<b>${cnt.fino}</b>` : ""}</button>
             </div>
-            <button type="button" class="sp-arr" data-arr="1" aria-label="Mais reações">›</button>
           </div>
         </div>
         <div class="sp-back" aria-hidden="true" inert>
@@ -185,7 +238,7 @@
 
   function arrows(root = feed) {
     $$(".sp-rxw", root).forEach(w => {
-      const r = $(".sp-rx", w), [prev, next] = $$(".sp-arr", w);
+      const r = $(".sp-rx", w), [prev, next] = $$(".sp-arr", w); if (!prev || !next) return;
       prev.hidden = r.scrollLeft < 4; next.hidden = r.scrollLeft + r.clientWidth >= r.scrollWidth - 4;
     });
   }
@@ -195,14 +248,26 @@
 
   function render() {
     const list = all();
-    const parties = [...new Set(all().map(p => p.party))];
+    const parties = [...new Set([...ALL_PARTIES, ...all().map(p => p.party)])];
     $("#spParties").innerHTML = parties.map(p => `<option value="${esc(p)}">`).join("");
-    $("#spFilter").innerHTML = ["", ...parties].map(p => `<button type="button" class="chip" aria-pressed="${p === filter}" data-party="${esc(p)}">${p ? esc(p) : "Todas as festas"}</button>`).join("");
-    const shown = list.filter(p => !filter || p.party === filter);
+    const count = fn => all().filter(fn).length;
+    $("#spFilter").innerHTML = `<button type="button" class="sp-club${!filter ? " on" : ""}" data-f="">Todas as festas <small>${all().length}</small></button>` + CLUBS.map(c => {
+      const isOpen = openClub === c.id, on = filter === "club:" + c.id;
+      return `<div class="sp-club-g"><button type="button" class="sp-club${on ? " on" : ""}" data-club="${c.id}" aria-expanded="${isOpen}">${esc(c.nome)} <small>${count(p => String(p.party).startsWith(c.nome + " ·"))}</small><i aria-hidden="true">${isOpen ? "−" : "+"}</i></button>
+        <ul class="sp-festas" ${isOpen ? "" : "hidden"}>${c.festas.map(f => { const lb = partyLabel(c, f); return `<li><button type="button" class="sp-festa${filter === "party:" + lb ? " on" : ""}" data-party="${esc(lb)}"><b>${f[0]}</b> ${esc(f[1])}<small>${count(p => p.party === lb) || ""}</small></button></li>`; }).join("")}</ul></div>`;
+    }).join("");
+    const shown = list.filter(inFilter);
     feed.innerHTML = shown.map(card).join("") || `<p class="sp-empty">${loading ? "Carregando publicações…" : esc(loadError || "Nenhum post dessa festa ainda.")}</p>`;
   }
 
-  $("#spFilter").onclick = e => { const b = e.target.closest("[data-party]"); if (!b) return; filter = b.dataset.party; render() };
+  $("#spFilter").onclick = e => {
+    const club = e.target.closest("[data-club]"), party = e.target.closest("[data-party]"), all0 = e.target.closest("[data-f]");
+    if (party) filter = "party:" + party.dataset.party;
+    else if (club) { if (openClub === club.dataset.club) { openClub = ""; filter = ""; } else { openClub = club.dataset.club; filter = "club:" + openClub; } }
+    else if (all0) { filter = ""; openClub = ""; }
+    else return;
+    render();
+  };
 
   const need = () => { if (me()) return true; toast("Crie sua conta ou entre para interagir."); auth.scrollIntoView({ behavior: "smooth" }); return false };
   const post = el => all().find(p => p.id === el.closest(".sp-card").dataset.id);
@@ -216,6 +281,7 @@
     const rx = t.closest("[data-rx]");
     if (rx) {
       if (!need()) return;
+      sfx.play();
       const id = c.dataset.id, x = $(".sp-rx", c).scrollLeft;
       rx.disabled = true;
       try {
