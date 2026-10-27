@@ -708,5 +708,1662 @@
       }
     ],
     "foto": null
+  },
+  {
+    "slug": "fancy-inc",
+    "nome": "Fancy Inc",
+    "origem": "Rio Grande do Sul",
+    "resumo": "Dupla gaúcha formada por Adriano Dub e Matheus Rodrigues. Ficou conhecida pela parceria com Vintage Culture em In The Dark, faixa que chegou ao primeiro lugar da parada de dance dos Estados Unidos.",
+    "estilos": [
+      "Brazilian Bass",
+      "House"
+    ],
+    "gravadoras": [
+      "Spinnin' Records"
+    ],
+    "historia": [
+      "A Fancy Inc é uma dupla do Rio Grande do Sul formada por Adriano Dub e Matheus Rodrigues. Segundo a Rolling Stone Brasil, o ano de 2020 foi o divisor de águas da carreira do projeto.",
+      "Nesse período a dupla lançou In The Dark com Vintage Culture pela Spinnin' Records, além de Happy, com Drunky Daniels e Vintage Culture. A Warner também a convidou para remixar Let's Love, de David Guetta e Sia, em parceria com Vintage Culture.",
+      "A Billboard registra que In The Dark deu a Vintage Culture o primeiro lugar na Dance/Club Songs em 2020."
+    ],
+    "faixas_marcantes": [
+      "In The Dark",
+      "Happy",
+      "My Girl"
+    ],
+    "marcos": [
+      "2020: lançamento de In The Dark com Vintage Culture, que chegou ao primeiro lugar da parada Dance/Club Songs da Billboard",
+      "2020: remix oficial de Let's Love, de David Guetta e Sia, com Vintage Culture"
+    ],
+    "fontes": [
+      {
+        "titulo": "Dupla Fancy Inc conquista fãs com músicas cheias de personalidade, Rolling Stone Brasil",
+        "url": "https://rollingstone.com.br/?p=109617"
+      },
+      {
+        "titulo": "Vintage Culture chega ao 2º lugar nas paradas dance/club dos Estados Unidos com hit In The Dark, Rolling Stone Brasil",
+        "url": "https://rollingstone.com.br/noticia/vintage-culture-chega-ao-2-lugar-nas-paradas-danceclub-dos-estados-unidos-com-hit-dark/"
+      },
+      {
+        "titulo": "Vintage Culture guide to Brazil, Billboard",
+        "url": "https://www.billboard.com/music/music-news/vintage-culture-guide-to-brazil-anabel-englund-leftwing-kody-tiesto-1235007811"
+      }
+    ]
+  },
+  {
+    "slug": "felguk",
+    "nome": "Felguk",
+    "origem": "Rio de Janeiro",
+    "ativo_desde": "2007",
+    "resumo": "Dupla carioca de electro house formada por Felipe Lozinsky e Gustavo Rozenthal, ativa desde 2007. Entrou no ranking DJ Mag Top 100 em 2011 e 2012.",
+    "estilos": [
+      "Electro House"
+    ],
+    "gravadoras": [
+      "HUB Records",
+      "Smash the House",
+      "Spinnin' Records",
+      "Musical Freedom",
+      "Dongle Records"
+    ],
+    "historia": [
+      "A Felguk começou a lançar música em 2007, no Rio de Janeiro, formada por Felipe Lozinsky e Gustavo Rozenthal.",
+      "Em 2010, 2nite apareceu no trailer do Electric Daisy Carnival e a dupla tocou no festival. No mesmo ano o remix de Exceeder chegou ao segundo lugar no Beatport. Em 2011 criou o próprio selo, a Dongle Records.",
+      "Mais tarde lançou Nova com Dimitri Vegas & Like Mike e Tujamo, que chegou ao primeiro lugar do Beatport. Em 2019 Gustavo afirmou que Felipe morava em Portugal desde o fim de 2017, mas que a dupla continuaria."
+    ],
+    "faixas_marcantes": [
+      "2nite",
+      "Nova",
+      "Exceeder (remix)"
+    ],
+    "marcos": [
+      "2010: 2nite no trailer do Electric Daisy Carnival",
+      "2010: remix de Exceeder em segundo lugar no Beatport",
+      "2011: criação da Dongle Records",
+      "2011: 87º lugar no DJ Mag Top 100",
+      "2012: 90º lugar no DJ Mag Top 100",
+      "2014: 12 faixas no top 10 de electro house do Beatport"
+    ],
+    "fontes": [
+      {
+        "titulo": "Felguk, Wikipédia (en)",
+        "url": "https://en.wikipedia.org/wiki/Felguk"
+      }
+    ]
+  },
+  {
+    "slug": "antdot",
+    "nome": "Antdot",
+    "nome_civil": "Bruno Gustavo",
+    "origem": "Joinville, Santa Catarina",
+    "resumo": "DJ e produtor de Joinville, cofundador do selo Dawn Patrol Records ao lado de Maz. Tocou no palco Core do Tomorrowland Bélgica em 2026.",
+    "estilos": [
+      "Afro House"
+    ],
+    "gravadoras": [
+      "Dawn Patrol Records"
+    ],
+    "historia": [
+      "Bruno Gustavo, o Antdot, nasceu em Joinville. Na adolescência produzia música no quarto e trabalhou na linha de produção de uma fábrica de componentes mecânicos para pagar um curso de DJ. O hip-hop esteve entre seus primeiros interesses.",
+      "Ele cofundou a Dawn Patrol Records com o produtor Maz e é apontado pela Billboard Brasil como um dos nomes fortes do afro house brasileiro.",
+      "Em 2026 tocou no palco Core, no primeiro fim de semana do Tomorrowland Bélgica, e estreou no Tomorrowland Winter no mesmo ano."
+    ],
+    "referencias_musicais": [
+      "Hip-hop"
+    ],
+    "faixas_marcantes": [
+      "Povoada"
+    ],
+    "marcos": [
+      "2026: set no palco Core do Tomorrowland Bélgica",
+      "2026: estreia no Tomorrowland Winter"
+    ],
+    "fontes": [
+      {
+        "titulo": "Estou sempre procurando o verão, diz Antdot sobre shows, Billboard Brasil",
+        "url": "https://billboard.com.br/antdot-verao-tomorrowland/"
+      }
+    ]
+  },
+  {
+    "slug": "rooftime",
+    "nome": "Rooftime",
+    "origem": "Itatiba, São Paulo",
+    "ativo_desde": "2018",
+    "resumo": "Trio formado pelos irmãos Rodrigo e Gabriel Sousa e pelo DJ Lisandro Carvalho, que mistura música eletrônica com violão e voz. Estreou em 2018 com I Will Find, em parceria com Vintage Culture.",
+    "estilos": [
+      "Eletrônico com violão e voz",
+      "Tech House"
+    ],
+    "historia": [
+      "O Rooftime é formado pelos irmãos Rodrigo Sousa (voz) e Gabriel Sousa (violão) e pelo amigo Lisandro Carvalho, DJ. O nome vem do sótão da casa dos irmãos, onde fizeram os primeiros ensaios.",
+      "O single de estreia, I Will Find, saiu em 2018 com Vintage Culture. Em 2019 vieram Free My Mind, com Alok e Dubdogz, e It's All About.",
+      "Em 2025 o trio lançou uma versão de Crazy, de Gnarls Barkley, com Dubdogz, e em outubro o single Out of My Mynd, mais eletrônico que o trabalho anterior."
+    ],
+    "faixas_marcantes": [
+      "I Will Find",
+      "Free My Mind",
+      "Out of My Mynd"
+    ],
+    "marcos": [
+      "2018: single de estreia I Will Find, com Vintage Culture",
+      "2019: Free My Mind, com Alok e Dubdogz",
+      "2025: single Out of My Mynd"
+    ],
+    "fontes": [
+      {
+        "titulo": "Em Billboard Descobre, o eletrônico unplugged do Rooftime, Billboard Brasil",
+        "url": "https://billboard.com.br/em-bilboard-descobre-o-eletronico-unplugged-do-rooftime/"
+      }
+    ]
+  },
+  {
+    "slug": "binaryh",
+    "nome": "Binaryh",
+    "origem": "Brasil",
+    "resumo": "Dupla brasileira de melodic techno formada por Rene e Camila, responsável pelo selo DECØDED. Em 2022 entrou no elenco da Afterlife e lançou Seyfert na coletânea Unity Pt III.",
+    "estilos": [
+      "Melodic Techno"
+    ],
+    "gravadoras": [
+      "DECØDED",
+      "Afterlife"
+    ],
+    "historia": [
+      "O Binaryh é uma dupla brasileira de melodic techno formada por Rene e Camila. Eles comandam o selo DECØDED, criado no Brasil para lançar música do gênero.",
+      "Em 2022 entraram no elenco da Afterlife, pela qual lançaram Seyfert na coletânea Unity Pt III, e se apresentaram na noite do selo no Hï Ibiza."
+    ],
+    "faixas_marcantes": [
+      "Seyfert",
+      "Other Side"
+    ],
+    "marcos": [
+      "2022: entrada no elenco da Afterlife e lançamento de Seyfert na Unity Pt III",
+      "2022: apresentação na noite da Afterlife no Hï Ibiza"
+    ],
+    "fontes": [
+      {
+        "titulo": "Binaryh discuss their DECØDED label, creative processes and Brazil's electronic landscape, The Playground",
+        "url": "https://theplayground.co.uk/binaryh-discuss-their-decoded-label-creative-processes-and-brazils-electronic-landscape-interview/"
+      }
+    ]
+  },
+  {
+    "slug": "elekfantz",
+    "nome": "Elekfantz",
+    "origem": "Florianópolis, Santa Catarina, e São Paulo",
+    "ativo_desde": "2012",
+    "resumo": "Dupla formada por Daniel Kuhnen e Leo Piovezani, que tocaram juntos em uma banda de blues na adolescência. Diggin' On You, de 2013, saiu pelo selo D.O.C. de Gui Boratto e ficou mais de três meses no top 100 do Beatport.",
+    "estilos": [
+      "Indie Dance",
+      "House"
+    ],
+    "gravadoras": [
+      "D.O.C."
+    ],
+    "historia": [
+      "Daniel Kuhnen e Leo Piovezani tocaram juntos em uma banda de blues quando eram adolescentes. A dupla gravou entre Florianópolis e São Paulo e apareceu em 2012 com o vinil limitado Wish.",
+      "Em 2013 lançou Diggin' On You pelo selo D.O.C., de Gui Boratto, com distribuição da Kompakt. A faixa teve remix de Solomun e ficou mais de três meses no top 100 do Beatport. Boratto foi o primeiro artista contratado pelo selo e produziu o álbum de estreia, Dark Tales & Love Songs.",
+      "Em 2014 a dupla tocou no Lollapalooza e no Creamfields Brasil, estreou no Melt! Festival e ganhou dois prêmios RMC Prize. No início de 2015 foi atração da primeira edição brasileira do Tomorrowland."
+    ],
+    "faixas_marcantes": [
+      "Diggin' On You",
+      "Wish"
+    ],
+    "marcos": [
+      "2012: vinil Wish",
+      "2013: Diggin' On You pelo selo D.O.C., com remix de Solomun",
+      "2014: Lollapalooza, Creamfields Brasil e Melt! Festival",
+      "2014: melhor faixa no RMC Prize",
+      "2015: atração da primeira edição brasileira do Tomorrowland"
+    ],
+    "fontes": [
+      {
+        "titulo": "Elekfantz, True Love Music",
+        "url": "https://truelovemusic.com/elekfantz"
+      }
+    ]
+  },
+  {
+    "slug": "l-cio",
+    "nome": "L_cio",
+    "origem": "São Paulo",
+    "resumo": "Flautista de formação que se tornou produtor de música eletrônica e toca em formato ao vivo. Lançou por selos como a Archipel, do Canadá, e a Perlon, da Alemanha.",
+    "estilos": [
+      "Eletrônico",
+      "House"
+    ],
+    "gravadoras": [
+      "Archipel",
+      "Perlon"
+    ],
+    "historia": [
+      "Flautista de formação, com sete anos de estudo do instrumento, L_cio é filho de músicos. Segundo a Vice, passou a frequentar raves de trance em 2004 e decidiu unir a flauta às suas faixas e apresentações.",
+      "Lançou música pela Archipel, do Canadá, e pela Perlon, da Alemanha. Participa de projetos em parceria com Daniel Cozta (Lacozta), Rodrigo Coelho (Molar) e Pedro Zopelar (Gaturamo), e o live com o Gaturamo chegou ao Boiler Room."
+    ],
+    "referencias_musicais": [
+      "Trance"
+    ],
+    "faixas_marcantes": [
+      "Construção"
+    ],
+    "fontes": [
+      {
+        "titulo": "3 9 workshop L_cio, Vice Brasil",
+        "url": "https://www.vice.com/pt/article/3-9-workshop-lcio/"
+      }
+    ]
+  },
+  {
+    "slug": "patife",
+    "nome": "Patife",
+    "nome_civil": "Wagner Ribeiro de Souza",
+    "resumo": "DJ e produtor brasileiro de drum and bass, parceiro de DJ Marky. Lançou o álbum Sounds of Drum'n'bass em 2000 e tocou no Rock in Rio em 2001.",
+    "estilos": [
+      "Drum & Bass"
+    ],
+    "gravadoras": [
+      "V Recordings"
+    ],
+    "historia": [
+      "Wagner Ribeiro de Souza, o DJ Patife, é um dos nomes do drum and bass brasileiro. Seu primeiro show foi no Arena Music Hall, em São Paulo.",
+      "Em 2000 lançou o álbum Sounds of Drum'n'bass e três de suas faixas entraram na coletânea Brazil EP, da V Recordings. No mesmo ano remixou Pra Você Lembrar, de Max de Castro.",
+      "Em 2001 tocou no Rock in Rio e fez apresentações nos Estados Unidos, na Escócia, em Londres e em Amsterdã."
+    ],
+    "faixas_marcantes": [
+      "The Midnighter",
+      "Pra Você Lembrar (remix)"
+    ],
+    "marcos": [
+      "2000: álbum Sounds of Drum'n'bass",
+      "2000: três faixas na coletânea Brazil EP, da V Recordings",
+      "2001: apresentação no Rock in Rio"
+    ],
+    "fontes": [
+      {
+        "titulo": "DJ Patife, Wikipédia (en)",
+        "url": "https://en.wikipedia.org/wiki/DJ_Patife"
+      }
+    ]
+  },
+  {
+    "slug": "leo-janeiro",
+    "nome": "Leo Janeiro",
+    "origem": "Rio de Janeiro",
+    "resumo": "DJ e produtor carioca com cerca de 30 anos de carreira, responsável pelo selo Cocada Music. Teve residências no Warung, no D-EDGE e no Beehive.",
+    "estilos": [
+      "House"
+    ],
+    "gravadoras": [
+      "Cocada Music"
+    ],
+    "historia": [
+      "Leo Janeiro é DJ e produtor carioca, com cerca de 30 anos de carreira na pista. Teve residências no Warung, no D-EDGE e no Beehive.",
+      "Comanda a Cocada Music, selo voltado a artistas latino-americanos de música eletrônica, pelo qual lançou seu primeiro álbum de estúdio, Tempo. O disco mistura house, jazz, disco, soul, hip-hop e influências da música brasileira.",
+      "Em julho de 2026 fez uma turnê europeia com 14 apresentações em cinco países, incluindo o Hï Ibiza. A Billboard Brasil informa que ele faria no Rock in Rio, em novembro, sua sétima participação no festival, em B2B com simo not simon, no palco New Dance Order."
+    ],
+    "faixas_marcantes": [
+      "Redentor"
+    ],
+    "marcos": [
+      "2026: turnê europeia com 14 apresentações em cinco países, com estreia no Hï Ibiza",
+      "2026: sétima participação no Rock in Rio, no palco New Dance Order"
+    ],
+    "fontes": [
+      {
+        "titulo": "Leo Janeiro passa por Hï Ibiza em turnê por cinco países, Billboard Brasil",
+        "url": "https://billboard.com.br/leo-janeiro-turne-europeia-2026/"
+      }
+    ]
+  },
+  {
+    "slug": "breaking-beattz",
+    "nome": "Breaking Beattz",
+    "resumo": "Produtor brasileiro criador do movimento Bass de Vagabundo e do selo BDV Records. Tem lançamentos pela Hellbent, de Cloonee, e pela Confession, de Tchami, e estreou na Dirtybird com o EP Booty Bang.",
+    "estilos": [
+      "Bass House"
+    ],
+    "gravadoras": [
+      "Dirtybird",
+      "Hellbent Records",
+      "Confession",
+      "BDV Records"
+    ],
+    "historia": [
+      "Breaking Beattz é um produtor brasileiro com mais de uma década de carreira. Criou o movimento Bass de Vagabundo e mantém o selo BDV Records, que apoia a cena eletrônica do Brasil.",
+      "Já lançou pela Hellbent Records, de Cloonee, e pela Confession, de Tchami. Em 2026 estreou na Dirtybird com o EP Booty Bang, que traz uma faixa em parceria com Ishimaru e outra, Down N Down."
+    ],
+    "faixas_marcantes": [
+      "Booty Bang",
+      "Down N Down",
+      "Hold Your Pants"
+    ],
+    "marcos": [
+      "2026: estreia na Dirtybird com o EP Booty Bang"
+    ],
+    "fontes": [
+      {
+        "titulo": "Breaking Beattz interview, Magnetic Magazine",
+        "url": "https://magneticmag.com/2026/07/breaking-beattz-interview/"
+      }
+    ]
+  },
+  {
+    "slug": "zerb",
+    "nome": "Zerb",
+    "nome_civil": "Matheus Zerbini Massa",
+    "nascimento": "25 de dezembro de 1997",
+    "origem": "São Paulo",
+    "ativo_desde": "2012",
+    "resumo": "DJ e produtor paulistano que começou postando faixas na internet na adolescência. Ganhou projeção internacional em 2023 com \"Mwaki\", parceria com a cantora queniana Sofiya Nzau.",
+    "estilos": [
+      "Afro house",
+      "Deep house",
+      "Tropical house"
+    ],
+    "historia": [
+      "Zerb começou a produzir música eletrônica em 2012, aos 14 anos, publicando as faixas no YouTube e no SoundCloud. Em 2015 chamou atenção com remixes, entre eles uma versão de \"Faded\", de ZHU, feita com Vintage Culture, e foi anunciado no Lollapalooza de 2016.",
+      "Em 2017 foi escalado para o Rock in Rio. Nos anos seguintes emplacou faixas como \"With You\" (2018), que chegou ao 9º lugar nas paradas virais do Spotify, e \"Like 2 Party\" (2020), com Noto e Marc Benjamin, que figurou entre as mais vendidas do gênero electro house na Beatport.",
+      "A virada veio em 2023 com \"Mwaki\", com a cantora Sofiya Nzau, que viralizou no TikTok, entrou em paradas europeias e ganhou remixes de Major Lazer e Tiësto. No mesmo ano lançou o EP Surrender e, em 2024, colaborou com The Chainsmokers e Ink em \"Addicted\"."
+    ],
+    "faixas_marcantes": [
+      "Mwaki",
+      "Addicted",
+      "Like 2 Party",
+      "With You"
+    ],
+    "marcos": [
+      "2016: anunciado no line-up do Lollapalooza",
+      "2017: escalado para o Rock in Rio",
+      "2020: \"Like 2 Party\" entre as faixas de electro house mais vendidas da Beatport",
+      "2023: sucesso global com \"Mwaki\" e lançamento do EP Surrender",
+      "2024: \"Addicted\", com The Chainsmokers e Ink"
+    ],
+    "fontes": [
+      {
+        "titulo": "Zerb, Wikipédia (en)",
+        "url": "https://en.wikipedia.org/wiki/Zerb"
+      }
+    ]
+  },
+  {
+    "slug": "ownboss",
+    "nome": "Öwnboss",
+    "nome_civil": "Eduardo Fornasa Zaniolo",
+    "nascimento": "16 de junho de 1989, Florianópolis (SC)",
+    "origem": "Florianópolis, Santa Catarina",
+    "ativo_desde": "2015",
+    "resumo": "Produtor e DJ catarinense, uma das presenças constantes do bass house. Seu maior sucesso é \"Move Your Body\", feita com Sevek.",
+    "estilos": [
+      "Bass house",
+      "Música eletrônica de pista"
+    ],
+    "gravadoras": [
+      "Spinnin' Records",
+      "Ultra Records",
+      "Musical Freedom"
+    ],
+    "historia": [
+      "Öwnboss está em atividade desde 2015 e construiu sua trajetória no bass house, com lançamentos por selos como Spinnin' Records e Ultra Records e, mais recentemente, pela Musical Freedom, gravadora de Tiësto.",
+      "\"Move Your Body\", em parceria com Sevek, passou de 200 milhões de execuções, foi a quarta faixa mais tocada do mundo em 2022 segundo o 1001Tracklists e entrou na trilha do jogo F1 da EA Sports. A música também venceu, em 2022, o prêmio de melhor faixa de bass house do EDM Awards.",
+      "Ele já se apresentou em festivais como Tomorrowland, Rock in Rio e Lollapalooza. Em 2022 foi apontado pela One World Radio, do Tomorrowland, entre os 20 artistas mais promissores do ano e figurou como o terceiro artista brasileiro mais ouvido no mundo."
+    ],
+    "faixas_marcantes": [
+      "Move Your Body",
+      "Papapo",
+      "Left & Right"
+    ],
+    "marcos": [
+      "2022: \"Move Your Body\" premiada como melhor faixa de bass house no EDM Awards",
+      "2022: quarta faixa mais tocada do mundo segundo o 1001Tracklists",
+      "2022: terceiro artista brasileiro mais ouvido do mundo",
+      "2022: entre os 20 artistas mais promissores segundo a One World Radio, do Tomorrowland"
+    ],
+    "fontes": [
+      {
+        "titulo": "Öwnboss, Wikipédia (pt)",
+        "url": "https://pt.wikipedia.org/wiki/Öwnboss"
+      }
+    ]
+  },
+  {
+    "slug": "ruback",
+    "nome": "RUBACK",
+    "origem": "Brasil",
+    "resumo": "Duo formado pelos irmãos Marcos e Lucas Ruback, que vieram do psytrance e hoje têm uma produção mais experimental, voltada ao techno.",
+    "estilos": [
+      "Techno",
+      "Psytrance"
+    ],
+    "gravadoras": [
+      "ERRORR"
+    ],
+    "historia": [
+      "Os irmãos Marcos e Lucas Ruback começaram na cena psytrance ainda adolescentes, tocando primeiro como Wega e depois como Ruback, e viajam o mundo desde os 14 anos.",
+      "Na fase atual, a produção do duo é descrita como mais experimental e orientada ao techno. Seus lançamentos recentes incluem o remix oficial de \"I Wish\", do Infected Mushroom, pela ERRORR, o remix de \"Navras\", do Juno Reactor, e um remix de \"X-Files\" que chegou ao topo do chart de psytrance da Beatport.",
+      "O duo já tocou em festivais como Universo Paralello e Tribe, além de eventos da própria ERRORR."
+    ],
+    "faixas_marcantes": [
+      "Dance Is The Answer",
+      "I Wish (remix)",
+      "X-Files (remix)",
+      "Navras (remix)"
+    ],
+    "fontes": [
+      {
+        "titulo": "RUBACK lança remix \"I Wish\" e se reconecta ao PsyTrance, Billboard Brasil",
+        "url": "https://billboard.com.br/ruback-assina-remix-i-wish/"
+      }
+    ]
+  },
+  {
+    "slug": "victor-ruiz",
+    "nome": "Victor Ruiz",
+    "origem": "Brasil",
+    "resumo": "Produtor e DJ de origem brasileira, hoje baseado em Amsterdã, conhecido por um techno melódico de pista e por edits de clássicos da música eletrônica e do pop.",
+    "estilos": [
+      "Techno",
+      "Techno melódico"
+    ],
+    "gravadoras": [
+      "Drumcode"
+    ],
+    "historia": [
+      "Victor Ruiz tem formação no rock e consolidou-se na cena techno com um som melódico de horário nobre. Já chegou ao primeiro lugar da Beatport várias vezes e toca em eventos que vão de grandes festivais a clubes pequenos.",
+      "Ficou conhecido por edits de clássicos usados em seus sets, como \"Breathe\", do The Prodigy, \"Children\", de Robert Miles, \"Everything Counts\", do Depeche Mode (com Thomas Schumacher), e \"Teardrop\", do Massive Attack. Também assinou remixes oficiais para nomes como Moby, Stephan Bodzin e Dubfire.",
+      "Na Drumcode, selo de Adam Beyer, tem lançamentos como \"Simulator\", \"Bloom\", \"Omen\" e \"Jurema\"."
+    ],
+    "faixas_marcantes": [
+      "Simulator",
+      "Bloom",
+      "Omen",
+      "Jurema"
+    ],
+    "fontes": [
+      {
+        "titulo": "Victor Ruiz, Drumcode",
+        "url": "https://drumcode.se/artists/victor-ruiz"
+      }
+    ]
+  },
+  {
+    "slug": "gui-boratto",
+    "nome": "Gui Boratto",
+    "nome_civil": "Guilherme Boratto",
+    "nascimento": "1974, São Paulo",
+    "origem": "São Paulo",
+    "ativo_desde": "2005",
+    "resumo": "Arquiteto de formação, compositor, produtor e DJ paulistano. Estreou em 2005 e lançou a maior parte dos álbuns pela alemã Kompakt, a começar por Chromophobia (2007).",
+    "estilos": [
+      "House",
+      "Progressive house",
+      "Techno"
+    ],
+    "gravadoras": [
+      "Kompakt",
+      "Mega Music"
+    ],
+    "historia": [
+      "Gui Boratto estreou em 2005 com singles como \"Arquipélago\" e \"Sunrise\" e o Twiggy EP. Em 2006 lançou uma série de compactos de 12 polegadas por vários selos e assinou remixes para Goldfrapp e Agoria.",
+      "Seu primeiro álbum, Chromophobia, saiu em 2007 pela Kompakt, selo que também lançou Take my Breath Away (2009), III (2011), Abaporu (2014) e Pentagram (2018).",
+      "Ao longo dos anos fez remixes de artistas de peso, como Pet Shop Boys (\"Love Etc.\", 2009) e Massive Attack (\"Paradise Circus\", 2010)."
+    ],
+    "faixas_marcantes": [
+      "Arquipélago",
+      "Sunrise"
+    ],
+    "marcos": [
+      "2005: primeiros singles, entre eles \"Arquipélago\" e \"Sunrise\"",
+      "2007: álbum Chromophobia (Kompakt)",
+      "2009: remix de \"Love Etc.\", do Pet Shop Boys",
+      "2010: remix de \"Paradise Circus\", do Massive Attack",
+      "2011: álbum III (Kompakt)",
+      "2014: álbum Abaporu (Kompakt)",
+      "2018: álbum Pentagram (Kompakt)"
+    ],
+    "fontes": [
+      {
+        "titulo": "Gui Boratto, Wikipédia (pt)",
+        "url": "https://pt.wikipedia.org/wiki/Gui_Boratto"
+      }
+    ]
+  },
+  {
+    "slug": "illusionize",
+    "nome": "Illusionize",
+    "nome_civil": "Pedro Mendes",
+    "origem": "Brasil",
+    "resumo": "DJ e produtor brasileiro ligado ao surgimento do Brazilian bass. Seu clássico \"Bass\" saiu por volta de 2013 pela Bunny Tiger.",
+    "estilos": [
+      "Tech house",
+      "Brazilian bass"
+    ],
+    "gravadoras": [
+      "Bunny Tiger",
+      "Armada",
+      "Elevation"
+    ],
+    "historia": [
+      "\"Bass\" foi lançada por volta de 2013 pela Bunny Tiger, selo de Sharam Jey, em produção com Chemical Surf e o próprio Sharam Jey. A faixa surgiu numa fase em que produtores brasileiros davam feição própria ao tech house e é citada como influência para uma geração do Brazilian bass.",
+      "Illusionize lançou também por selos como Armada e DirtyBird e mantém o próprio selo, Elevation. Em 2019 fez cerca de 160 shows pelo mundo, e costuma lotar casas no Brasil, como o Laroc Club, de 5 mil lugares.",
+      "Já tocou no palco principal do Rock in Rio e, em 2023, relançou \"Bass\" numa nova versão, com a bateria refeita para um tech house mais linear."
+    ],
+    "faixas_marcantes": [
+      "Bass"
+    ],
+    "marcos": [
+      "2013: lançamento de \"Bass\" pela Bunny Tiger (data aproximada segundo a fonte)",
+      "2019: cerca de 160 shows pelo mundo",
+      "2023: nova versão de \"Bass\""
+    ],
+    "fontes": [
+      {
+        "titulo": "Illusionize updates his classic track Bass for 2023, Electronic Groove",
+        "url": "https://electronicgroove.com/illusionize-updates-his-classic-track-bass-for-2023/"
+      },
+      {
+        "titulo": "Illusionize, Viking Entertainment",
+        "url": "https://www.vikingentertainment.nl/illusionize-boeken/"
+      }
+    ]
+  },
+  {
+    "slug": "beltran",
+    "nome": "Beltran",
+    "resumo": "DJ e produtor brasileiro de som difícil de classificar. Seu maior sucesso é \"Smack Yo'\", lançada em 2022 pela Solid Grooves.",
+    "estilos": [
+      "Tech house",
+      "House"
+    ],
+    "historia": [
+      "Beltran começou tocando em festas underground no Brasil e, segundo ele mesmo conta, aprendeu boa parte do que sabe frequentando uma casa noturna de uma cidade vizinha ainda adolescente. Trabalhava também como especialista em segurança de TI. Seus sets misturam elementos minimalistas, indie e house.",
+      "O lançamento de \"Smack Yo'\" pela Solid Grooves, em 2022, foi o grande marco de sua carreira de produtor. Michael Bibi, dono do selo, já tocava a faixa em festivais antes do lançamento.",
+      "Em 2024 estreou no Circoloco, na DC10, em Ibiza, e também se apresentou no Coachella."
+    ],
+    "faixas_marcantes": [
+      "Smack Yo'"
+    ],
+    "marcos": [
+      "2022: lançamento de \"Smack Yo'\" pela Solid Grooves",
+      "2024: estreia no Circoloco, na DC10",
+      "2024: apresentação no Coachella"
+    ],
+    "fontes": [
+      {
+        "titulo": "Spinning Out, NYLON Nights (perfil de Beltran)",
+        "url": "https://www.nylon.com/entertainment/nylon-nights/beltran-spinning-out"
+      }
+    ]
+  },
+  {
+    "slug": "mojjo",
+    "nome": "Mojjo",
+    "nome_civil": "Gederson Quintino",
+    "origem": "Brasil",
+    "ativo_desde": "2011",
+    "resumo": "Produtor e DJ brasileiro que começou como baterista, entrou na música eletrônica em 2011 em dupla e seguiu carreira solo a partir de 2017, com contrato na Som Livre.",
+    "estilos": [
+      "House",
+      "Bass house",
+      "Deep house",
+      "Tech house"
+    ],
+    "gravadoras": [
+      "Som Livre"
+    ],
+    "historia": [
+      "Mojjo começou na música tocando bateria aos 10 anos. Em 2011 passou a atuar na música eletrônica como parte de uma dupla e, em 2017, seguiu em carreira solo.",
+      "Assinou com a Som Livre e lançou faixas em parceria com outros artistas, como \"Love Love\" (com Alok), \"Worst Enemy\" (com Bhaskar), \"Push The Feeling On\" (com JØRD) e \"Love the Way\" (com Meca).",
+      "Já se apresentou em festivais como Ultra Music Festival, Green Valley, Surreal, Universo Paralello e Wehoo Festival."
+    ],
+    "faixas_marcantes": [
+      "Love Love",
+      "Worst Enemy",
+      "Push The Feeling On",
+      "Love the Way"
+    ],
+    "marcos": [
+      "2011: entrada na música eletrônica, em dupla",
+      "2017: início da carreira solo"
+    ],
+    "fontes": [
+      {
+        "titulo": "Mojjo, Volumo (biografia)",
+        "url": "https://volumo.com/artist/147233-mojjo/about"
+      }
+    ]
+  },
+  {
+    "slug": "classmatic",
+    "nome": "Classmatic",
+    "origem": "Brasil",
+    "resumo": "DJ e produtor brasileiro de tech house, com lançamentos por selos internacionais como Solid Grooves e Hot Creations.",
+    "estilos": [
+      "Tech house"
+    ],
+    "gravadoras": [
+      "Solid Grooves",
+      "Hot Creations",
+      "elrow Music",
+      "Revival New York",
+      "Hottrax"
+    ],
+    "historia": [
+      "Classmatic tem lançamentos pela Hot Creations, elrow, Revival New York e Hottrax e é presença recorrente na Solid Grooves, onde participou da coletânea Raw Grooves Vol.1, em 2020.",
+      "Em 20 de junho de 2022 lançou \"Fly Away\" pela Solid Grooves, faixa de tech house minimalista incluída no 2022 Ibiza Sampler do selo. No mesmo ano integrou o line-up do showcase da gravadora no DC10, em Ibiza."
+    ],
+    "faixas_marcantes": [
+      "Fly Away"
+    ],
+    "marcos": [
+      "2020: participação na coletânea Raw Grooves Vol.1, da Solid Grooves",
+      "2022: lançamento de \"Fly Away\" pela Solid Grooves",
+      "2022: showcase da Solid Grooves no DC10, em Ibiza"
+    ],
+    "fontes": [
+      {
+        "titulo": "Listen to Classmatic's new single Fly Away, Electronic Groove",
+        "url": "https://electronicgroove.com/listen-to-classmatics-new-single-fly-away/"
+      }
+    ]
+  },
+  {
+    "slug": "greg",
+    "nome": "GREG",
+    "origem": "Brasil",
+    "resumo": "Produtor brasileiro, também creditado como GREG (BR) e GREG 99, lançado principalmente pela Hellbent Records, de Cloonee. Sua faixa \"Still My Baby\", com Cloonee, chegou ao topo do Top 100 geral da Beatport em 2024.",
+    "estilos": [
+      "Tech house",
+      "House"
+    ],
+    "gravadoras": [
+      "Hellbent Records"
+    ],
+    "historia": [
+      "GREG lança com regularidade pela Hellbent Records, selo de Cloonee. Em 2023 teve destaque com contribuições para a série Hotter Than Hell e com o EP Bad Bongo.",
+      "Em 2024 gravou \"Still My Baby\" com Cloonee, que se tornou sua primeira faixa a liderar o Top 100 geral da Beatport. Em janeiro de 2025 lançou o EP Whispers pela Hellbent e participou do podcast Data Transmission."
+    ],
+    "faixas_marcantes": [
+      "Still My Baby",
+      "Bad Bongo",
+      "Whispers"
+    ],
+    "marcos": [
+      "2023: contribuições em Hotter Than Hell e EP Bad Bongo na Hellbent Records",
+      "2024: \"Still My Baby\", com Cloonee, no topo do Top 100 geral da Beatport",
+      "2025: EP Whispers na Hellbent Records"
+    ],
+    "fontes": [
+      {
+        "titulo": "DT903: GREG (BR), Data Transmission",
+        "url": "https://datatransmission.co/podcasts/dt903-greg-br/"
+      }
+    ]
+  },
+  {
+    "slug": "gabe",
+    "nome": "Gabe",
+    "nome_civil": "Gabriel Serrasqueiro",
+    "ativo_desde": "2002",
+    "resumo": "Produtor e DJ brasileiro com mais de duas décadas de estrada, que ganhou projeção internacional no psytrance e hoje assina como Gabe, com um som que combina house e techno.",
+    "estilos": [
+      "House",
+      "Techno",
+      "Tech house"
+    ],
+    "gravadoras": [
+      "Catch & Release"
+    ],
+    "historia": [
+      "Gabe construiu o nome no psytrance, com os projetos Wrecked Machines e Growling Machines, que lhe deram reconhecimento fora do Brasil.",
+      "Mais tarde passou a usar o próprio nome artístico em um trabalho solo de house e techno. Faixas como Expressions e um remix de Caught in Between fazem parte dessa fase.",
+      "Em 2025 lançou a colaboração Tell Us com Roddy Lima e voltou ao selo Catch & Release, de Fisher. Em 31 de julho de 2026 saiu pelo mesmo selo Let It Drop, parceria com FatSync."
+    ],
+    "faixas_marcantes": [
+      "Let It Drop",
+      "Expressions",
+      "Tell Us"
+    ],
+    "marcos": [
+      "2025: lança Tell Us em parceria com Roddy Lima",
+      "2026: lança Let It Drop, com FatSync, pelo Catch & Release (31 de julho)"
+    ],
+    "fontes": [
+      {
+        "titulo": "A Heavyweight Brazilian Connection, Audiojacked",
+        "url": "https://audiojacked.com/music-news/gabe-fatsync-let-it-drop-catch-and-release"
+      }
+    ]
+  },
+  {
+    "slug": "jetlag-music",
+    "nome": "JetLag Music",
+    "ativo_desde": "2014",
+    "resumo": "Dupla formada pelos DJs Paulo Velloso e Thiago Mansur. Ficou conhecida a partir de 2014 com Your Love e, depois, com remixes de grande alcance no Brasil.",
+    "estilos": [
+      "House",
+      "Pop eletrônico"
+    ],
+    "gravadoras": [
+      "Armada Music"
+    ],
+    "historia": [
+      "Em 2014 a dupla lançou Your Love, com a cantora americana de house Katherine Ellis. Segundo a imprensa brasileira, a faixa esteve entre as mais vendidas do mundo no Beatport naquele ano, e o sucesso levou o duo ao line-up do Tomorrowland, na Bélgica. A New York Magazine chamou os dois de Brazilian Superstar Duo.",
+      "Em dezembro de 2014 gravaram Honk com o DJ holandês Chuckie, lançada pela Armada Music. Em 2015 tocaram em festivais em Nova York e Chicago.",
+      "Em 2016 decidiram fortalecer a base no Brasil, o que levou à produção de Oração e a uma aproximação com o pop. Em 2017 o remix de Trem Bala, de Ana Vilela, ficou três meses em primeiro lugar no iTunes Brasil."
+    ],
+    "faixas_marcantes": [
+      "Your Love",
+      "Honk",
+      "Oração"
+    ],
+    "marcos": [
+      "2014: lançam Your Love e entram no line-up do Tomorrowland",
+      "2014: gravam Honk com Chuckie, lançada pela Armada Music",
+      "2017: remix de Trem Bala fica três meses em primeiro lugar no iTunes Brasil"
+    ],
+    "fontes": [
+      {
+        "titulo": "Duo JetLag se apresenta na Boate Wood's, Conexão Tocantins (14/09/2018)",
+        "url": "https://conexaoto.com.br/2018/09/14/duo-jetlag-composta-pelos-djs-paulo-velloso-e-thiago-mansur-se-apresenta-na-boate-wood-s"
+      }
+    ]
+  },
+  {
+    "slug": "shapeless",
+    "nome": "Shapeless",
+    "origem": "Minas Gerais",
+    "resumo": "Dupla mineira formada por Edson Junior e Rômulo Tsvetcoff, que mistura techno e house e desconstrói padrões musicais.",
+    "estilos": [
+      "Techno",
+      "House",
+      "Nu-house"
+    ],
+    "historia": [
+      "O projeto nasceu da ideia de misturar techno e house e fugir de fórmulas. Em um ranking da House Mag, o estilo da dupla foi destacado ao lado de Alok e Vintage Culture.",
+      "Em 5 de outubro de 2019 a dupla foi anunciada no palco New Dance Order do Rock in Rio, na Cidade do Rock."
+    ],
+    "marcos": [
+      "2019: anunciada no palco New Dance Order do Rock in Rio (5 de outubro)"
+    ],
+    "fontes": [
+      {
+        "titulo": "SHAPELESS: dia 05/10, no palco New Dance Order, Artecult",
+        "url": "http://artecult.com/shapeless-dia-0510-no-palco-new-dance-order-rock-in-rio-2019/"
+      }
+    ]
+  },
+  {
+    "slug": "eli-iwasa",
+    "nome": "Eli Iwasa",
+    "origem": "São Paulo",
+    "resumo": "DJ paulistana de techno e house, com cerca de 25 anos de carreira. É sócia do Club 88, em Campinas, e está à frente do selo Heels of Love.",
+    "estilos": [
+      "Techno",
+      "House"
+    ],
+    "gravadoras": [
+      "Heels of Love"
+    ],
+    "historia": [
+      "Nascida em São Paulo, formou-se em Publicidade, mas escolheu a música. Na adolescência comprava discos na Galeria do Rock e se interessou por post-punk, goth e industrial. Em 2017, contava cerca de 15 anos de carreira como DJ.",
+      "Promoveu a noite Technova, às sextas, no Lov.e Club, em São Paulo, por sete anos. Mudou-se para Campinas e tornou-se sócia do Club 88, instalado em um prédio histórico. Toca com frequência no Warung e também formou a banda Bleeping Sauce com Marco AS.",
+      "Em 2024 foi celebrado em São Paulo o lançamento do selo Heels of Love, com a faixa Juicy Bar, assinada por ela e GIGEE. Em 2026 comemorou 25 anos de carreira e lançou o EP RARA pelo selo. Em 5 de setembro de 2026 fez um b2b com Camila Jun no palco New Dance Order do Rock in Rio, sua quarta participação no festival."
+    ],
+    "referencias_musicais": [
+      "Post-punk",
+      "Goth",
+      "Industrial"
+    ],
+    "marcos": [
+      "2024: lançamento do selo Heels of Love, com a faixa Juicy Bar (com GIGEE)",
+      "2026: 25 anos de carreira e EP RARA pelo Heels of Love",
+      "2026: b2b com Camila Jun no Rock in Rio, quarta participação dela no festival"
+    ],
+    "fontes": [
+      {
+        "titulo": "Conversation: DJ Eli Iwasa, Data Transmission (2017)",
+        "url": "https://datatransmission.co/features/conversation-dj-eli-iwasa/"
+      },
+      {
+        "titulo": "Eli Iwasa celebra 25 anos de carreira, Billboard Brasil",
+        "url": "https://billboard.com.br/eli-iwasa-25-anos-carreira/"
+      }
+    ]
+  },
+  {
+    "slug": "bruno-be",
+    "nome": "Bruno Be",
+    "origem": "Santa Catarina",
+    "ativo_desde": "2008",
+    "resumo": "DJ e produtor catarinense de house, com quase duas décadas de carreira e mais de 100 milhões de plays no Spotify.",
+    "estilos": [
+      "House",
+      "Deep house"
+    ],
+    "gravadoras": [
+      "Controversia"
+    ],
+    "historia": [
+      "Antes de se dedicar à música, cursou medicina e deixou o curso para seguir a carreira de DJ. Tem várias colaborações com Vintage Culture e remixes que o levaram ao cenário internacional.",
+      "Entre os lançamentos recentes está Silence, com ÜHÜ e IDKARE, pelo selo Controversia, de Alok. Citou Innerbloom, do RÜFÜS DU SOL, como a faixa que gostaria de ter produzido.",
+      "Também integra a lista de artistas brasileiros do Tomorrowland Brasil 2025, realizado de 10 a 12 de outubro, em Itu (SP)."
+    ],
+    "referencias_musicais": [
+      "RÜFÜS DU SOL"
+    ],
+    "faixas_marcantes": [
+      "Silence"
+    ],
+    "marcos": [
+      "2025: line-up do Tomorrowland Brasil, em Itu (SP)"
+    ],
+    "fontes": [
+      {
+        "titulo": "Q+A: Five minutes with Bruno Be, The Playground",
+        "url": "https://theplayground.co.uk/qa-five-minutes-with-bruno-be/"
+      },
+      {
+        "titulo": "DJ catarinense Bruno Be se apresenta na Torre de TV, Correio Braziliense (2022)",
+        "url": "https://www.correiobraziliense.com.br/diversao-e-arte/2022/05/5009012-dj-bruno-be-se-apresenta-no-mezanino-da-torre-de-tv-nesta-quinta.html"
+      },
+      {
+        "titulo": "Tomorrowland Brasil confirma atrações de 2025, Folha PE",
+        "url": "https://www.folhape.com.br/cultura/tomorrowland-brasil-atracoes-2025-confira-artistas/403110/"
+      }
+    ]
+  },
+  {
+    "slug": "mau-mau",
+    "nome": "Mau Mau",
+    "origem": "São Paulo",
+    "ativo_desde": "1987",
+    "resumo": "Um dos pioneiros da música eletrônica no Brasil. Começou em 1987 no Madame Satã, em São Paulo, e foi o DJ residente do after do Hell's Club.",
+    "estilos": [
+      "House",
+      "Techno"
+    ],
+    "gravadoras": [
+      "Tropic Records",
+      "M. Music"
+    ],
+    "historia": [
+      "Mau Mau começou a tocar em 1987 no Madame Satã, em São Paulo, influenciado pelo underground americano e europeu. Foi residente em casas paulistanas como a Sra. Krawitz.",
+      "O Hell's Club estreou em 9 de julho de 1994, no Columbia. Mau Mau foi o único DJ fixo semanal do after, nas manhãs de sábado para domingo, durante toda a existência da casa nesse endereço. A imprensa atribui a ele boa parte do sucesso da festa.",
+      "Fundou o selo Tropic Records com Manoel Vanni e Franco Junior e criou o M. Music para lançar seus EPs. Em 2004 lançou o CD Music Is My Life e já tinha tocado em países como Argentina, Chile, Estados Unidos, Portugal, França, Inglaterra, Alemanha e Turquia. Mais tarde lançou o EP Hell's Club, em 2019."
+    ],
+    "faixas_marcantes": [
+      "Hell's Club",
+      "Music Is My Life",
+      "Ta Tarada"
+    ],
+    "marcos": [
+      "1987: estreia como DJ no Madame Satã",
+      "1994: residente do after do Hell's Club",
+      "2004: lançamento do CD Music Is My Life",
+      "2019: lançamento do Hell's Club EP"
+    ],
+    "fontes": [
+      {
+        "titulo": "Como surgiu o conceito das after parties no Brasil, Vice Brasil",
+        "url": "https://www.vice.com/pt/article/como-surgiu-o-conceito-das-after-parties-no-brasil/"
+      },
+      {
+        "titulo": "DJ Mau Mau lança CD na cidade, Jornal de Brasília (2004)",
+        "url": "https://jornaldebrasilia.com.br/promocoes/dj-mau-mau-lanca-cd-na-cidade/"
+      },
+      {
+        "titulo": "DJ Mau Mau, Last.fm",
+        "url": "https://www.last.fm/music/DJ+Mau+Mau"
+      }
+    ]
+  },
+  {
+    "slug": "sevek",
+    "nome": "Sevek",
+    "resumo": "DJ e produtor brasileiro, conhecido por Move Your Body, parceria com Öwnboss lançada em 2021 pela Spinnin' Records.",
+    "estilos": [
+      "Brazilian bass",
+      "Bass house"
+    ],
+    "gravadoras": [
+      "Spinnin' Records",
+      "Armada Music"
+    ],
+    "historia": [
+      "Move Your Body, com Öwnboss, saiu em 2021 pela Spinnin' Records e virou sucesso global, ganhando uma edição de Tiësto. Segundo o perfil da Armada, chegou ao topo de rankings como Beatport e Spotify.",
+      "Segundo o perfil da Armada Music, ele tocou em festivais como Tomorrowland, Ultra Miami, Ultra Europe e Lollapalooza. Seus lançamentos recentes saem pela Armada, entre eles I'm Alive, Dark Love e La La Land."
+    ],
+    "faixas_marcantes": [
+      "Move Your Body",
+      "Dark Love",
+      "I'm Alive",
+      "La La Land"
+    ],
+    "marcos": [
+      "2021: lança Move Your Body com Öwnboss, pela Spinnin' Records"
+    ],
+    "fontes": [
+      {
+        "titulo": "Sevek, Armada Music",
+        "url": "https://www.armadamusic.com/artists/sevek"
+      },
+      {
+        "titulo": "Öwnboss, Wikipédia",
+        "url": "https://en.wikipedia.org/wiki/%C3%96wnboss"
+      }
+    ]
+  },
+  {
+    "slug": "bruno-martini",
+    "nome": "Bruno Martini",
+    "ativo_desde": "2010",
+    "resumo": "Produtor e compositor brasileiro, coautor e coprodutor de Hear Me Now, com Alok e a cantora Zeeba, lançada em 2016 pela Spinnin' Records.",
+    "estilos": [
+      "Brazilian bass",
+      "Dance pop"
+    ],
+    "gravadoras": [
+      "Spinnin' Records"
+    ],
+    "historia": [
+      "Bruno Martini assina como compositor e produtor, ao lado de Alok e Zeeba, Hear Me Now, lançada em 21 de outubro de 2016 pela Spinnin' Records. A faixa foi a segunda mais bem colocada nas paradas anuais de 2017 no Brasil e recebeu três discos de platina no país.",
+      "A mesma formação voltou em 2017 com Never Let Me Go, sequência de Hear Me Now."
+    ],
+    "faixas_marcantes": [
+      "Hear Me Now",
+      "Never Let Me Go"
+    ],
+    "marcos": [
+      "2016: lançamento de Hear Me Now, com Alok e Zeeba, pela Spinnin' Records",
+      "2017: Hear Me Now fica em segundo nas paradas anuais do Brasil",
+      "2017: lançamento de Never Let Me Go"
+    ],
+    "fontes": [
+      {
+        "titulo": "Hear Me Now (Alok and Bruno Martini song), Wikipédia",
+        "url": "https://en.wikipedia.org/wiki/Hear_Me_Now_(Alok_and_Bruno_Martini_song)"
+      }
+    ]
+  },
+  {
+    "slug": "victor-lou",
+    "nome": "Victor Lou",
+    "origem": "Goiás",
+    "resumo": "DJ e produtor goiano de música eletrônica comercial, que mistura tech house e funk e criou com o DJ GBR o Baile Lotadão.",
+    "estilos": [
+      "Tech house",
+      "Funk"
+    ],
+    "historia": [
+      "Natural de Goiás, Victor Lou iniciou a carreira profissional como DJ e produtor em 2014. Em entrevista, contou que no início não havia referências locais e que queria levar a música eletrônica a mais pessoas.",
+      "Seu som passou a se aproximar do funk, deixando o tech house mais grave. Em 2023 lançou um álbum, depois ampliado pelo conceito Summer All Day, e em 2024 lançou com DJ GBR o EP Soca Soca do Submundo. Em 12 de janeiro de 2025 fez um show gratuito na Rocinha, no lançamento do Summer All Day 6.",
+      "Com DJ GBR, criou o Baile Lotadão, que levou mais de seis mil pessoas ao Mané Garrincha, em Brasília, e depois passou por São Paulo (26 de abril de 2025) e Rio de Janeiro (10 de maio de 2025)."
+    ],
+    "faixas_marcantes": [
+      "Soca Soca do Submundo",
+      "Untitled",
+      "Diu Diu Lai",
+      "Remote Control"
+    ],
+    "marcos": [
+      "2014: início da carreira profissional",
+      "2024: EP Soca Soca do Submundo, com DJ GBR",
+      "2025: Baile Lotadão no Mané Garrincha, em Brasília",
+      "2025: Baile Lotadão em São Paulo (26 de abril) e no Rio de Janeiro (10 de maio)"
+    ],
+    "fontes": [
+      {
+        "titulo": "Victor Lou volta à Brasília após Mané Garrincha lotado, Billboard Brasil",
+        "url": "https://billboard.com.br/victor-lou-volta-a-brasilia-apos-mane-garrincha-lotado-com-tech-house-funk/"
+      },
+      {
+        "titulo": "Victor Lou volta à Rocinha após sair de Goiás, Billboard Brasil",
+        "url": "https://billboard.com.br/victor-lou-volta-a-rocinha-assustado-com-popularidade-apos-sair-de-goias/"
+      },
+      {
+        "titulo": "Victor Lou leva Baile Lotadão para São Paulo e Rio de Janeiro, IstoÉ",
+        "url": "https://istoe.com.br/victor-lou-leva-baile-lotadao-para-sao-paulo-e-rio-de-janeiro"
+      }
+    ]
+  },
+  {
+    "slug": "pontifexx",
+    "nome": "Pontifexx",
+    "resumo": "DJ e produtor brasileiro assinado com a STMPD RCRDS, selo de Martin Garrix, que foi o artista mais jovem do line-up do Lollapalooza Brasil.",
+    "estilos": [
+      "Brazilian bass",
+      "Electro house"
+    ],
+    "gravadoras": [
+      "STMPD RCRDS"
+    ],
+    "historia": [
+      "Pontifexx tocou no ADE, em Amsterdã, e fez turnê pela África do Sul com GoldFish. No Brasil, passou por Lollapalooza, Só Track Boa, Green Valley, Laroc e Universo Paralelo. Entre seus lançamentos estão Rising Sun (com GoldFish e Gustavo Bertoni), Feelings (com Zeeba) e Stand By You (com DubVision).",
+      "Atualmente faz parte do casting da STMPD RCRDS."
+    ],
+    "faixas_marcantes": [
+      "Stand By You",
+      "Rising Sun",
+      "Feelings"
+    ],
+    "marcos": [
+      "Lollapalooza Brasil, como artista mais jovem do line-up"
+    ],
+    "fontes": [
+      {
+        "titulo": "PONTIFEXX, Last.fm",
+        "url": "https://www.last.fm/music/PONTIFEXX/+wiki"
+      }
+    ]
+  },
+  {
+    "slug": "wehbba",
+    "nome": "Wehbba",
+    "origem": "São Paulo (SP), radicado em Barcelona, Espanha",
+    "resumo": "DJ e produtor paulistano radicado em Barcelona, com carreira em house e techno e lançamentos por selos como Tronic e Drumcode. Lançou o álbum Straight Lines and Sharp Corners pela Drumcode em 2020.",
+    "estilos": [
+      "Techno",
+      "House"
+    ],
+    "gravadoras": [
+      "Drumcode",
+      "Tronic",
+      "Systematic",
+      "Bedrock",
+      "Soma",
+      "Suara",
+      "Hotflush",
+      "Second State"
+    ],
+    "historia": [
+      "Nascido em São Paulo, Wehbba construiu carreira internacional no house e no techno, com passagens por festivais e clubes como Tomorrowland, Sensation, Lollapalooza, Warung, D-Edge e Pacha, segundo a biografia do artista.",
+      "Seu primeiro álbum de estúdio, Full Circle, saiu pela Tronic em 2010, e o segundo, Square Two, em 2013. Também lançou por selos como Systematic, Bedrock, Soma, 2020Vision e Suara.",
+      "Em 2020 lançou na Drumcode o álbum de 13 faixas Straight Lines and Sharp Corners e depois voltou ao selo com o EP Dynamo. Em entrevista de 2022, descreveu a rotina de turnês pela Europa e o show ao vivo Wehbba Live Station."
+    ],
+    "marcos": [
+      "2010: lançamento do álbum Full Circle pela Tronic",
+      "2013: lançamento do álbum Square Two pela Tronic",
+      "2020: álbum Straight Lines and Sharp Corners pela Drumcode"
+    ],
+    "fontes": [
+      {
+        "titulo": "Wehbba, biografia, Global Groove",
+        "url": "https://globalgroove.co.uk/artists/wehbba/"
+      },
+      {
+        "titulo": "Entrevista com Wehbba, Flow Music",
+        "url": "https://flowmusic.one/?p=46055"
+      }
+    ]
+  },
+  {
+    "slug": "selvagem",
+    "nome": "Selvagem",
+    "origem": "São Paulo",
+    "resumo": "Festa e dupla paulistana formada por Millos Kaiser e Trepanado (Augusto Olivani), que mistura disco brasileiro, house, techno e funk. A dupla acabou em 2019 e a festa e o selo Selva Discos seguem com Trepanado.",
+    "estilos": [
+      "Disco",
+      "House",
+      "Balearic"
+    ],
+    "gravadoras": [
+      "Selva Discos"
+    ],
+    "historia": [
+      "Selvagem nasceu em São Paulo como festa e dupla de DJs de Millos Kaiser e Trepanado, ambos com passagem pela cena de festas livres da cidade. Em 2018, a imprensa registrava que as festas rodavam havia mais de seis anos, e eles chegaram a cunhar o termo Balnearico, mistura de balearic com praia.",
+      "Em 2017 lançaram o selo Selva Discos, com apoio do Optimo, de Glasgow, voltado a música brasileira rara ou pouco conhecida. O primeiro lançamento foi Brasileira, de Maria Rita Stumpf.",
+      "A parceria entre os dois terminou no início de 2019. Trepanado ficou à frente da festa, realizada em São Paulo e no Rio de Janeiro, e do selo; Millos Kaiser passou a atuar solo."
+    ],
+    "marcos": [
+      "2017: lançamento do selo Selva Discos, com apoio do Optimo",
+      "2018: lançamento de Brasileira, de Maria Rita Stumpf, estreia do selo",
+      "2019: fim da dupla; Trepanado segue com a festa e o selo"
+    ],
+    "fontes": [
+      {
+        "titulo": "Walk on the wild side: the Selvagem story, Sounds and Colours",
+        "url": "https://soundsandcolours.com/articles/brazil/walk-wild-side-selvagem-story-maria-ritas-brasileira-39857/"
+      },
+      {
+        "titulo": "Diggers Directory: Trepanado, Stamp the Wax",
+        "url": "https://www.stampthewax.com/2019/08/15/diggers-directory-trepanado/"
+      }
+    ]
+  },
+  {
+    "slug": "tropkillaz",
+    "nome": "Tropkillaz",
+    "origem": "São Paulo",
+    "ativo_desde": "2012",
+    "resumo": "Dupla paulistana de produtores formada por Zegon (Zé Gonzales) e Laudz, ativa desde 2012. Ficou conhecida por Bola Rebola, com J Balvin e Anitta, e hoje também assina produções para o pop coreano.",
+    "estilos": [
+      "Trap",
+      "Bass music",
+      "Funk"
+    ],
+    "gravadoras": [
+      "Universal Music"
+    ],
+    "historia": [
+      "Zé Gonzales (DJ Zegon), que já integrou o grupo N.A.S.A., formou o Tropkillaz em 2012 com o DJ e produtor Laudz. A dupla estreou em 2015 com Bugg That A$$ e emplacou Mambo no mesmo ano.",
+      "Em 2019 lançaram Bola Rebola, com J Balvin e Anitta e participação de MC Zaac, que ficou mais de 30 dias como a música mais ouvida do Spotify no Brasil e recebeu certificação platina latina da RIAA em 2020.",
+      "Depois de serem descobertos por meio da plataforma Splice, passaram a trabalhar em acampamentos de produção em Seul e Los Angeles, com créditos para NCT, LE SSERAFIM e TXT, e loops seus foram usados em Lalisa, de Lisa (BLACKPINK), em 2021."
+    ],
+    "faixas_marcantes": [
+      "Bola Rebola",
+      "Mambo",
+      "Bugg That A$$"
+    ],
+    "marcos": [
+      "2012: formação da dupla",
+      "2019: lançamento de Bola Rebola, número 1 na parada de streaming do Brasil",
+      "2020: Bola Rebola recebe certificação platina latina da RIAA",
+      "2021: loops da dupla aparecem em Lalisa, de Lisa"
+    ],
+    "fontes": [
+      {
+        "titulo": "Ze Gonzales, Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Ze_Gonzales"
+      },
+      {
+        "titulo": "Bola Rebola, Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Tropkillaz"
+      },
+      {
+        "titulo": "Tropkillaz: como o duo brasileiro conquistou Seul, Billboard Brasil",
+        "url": "https://billboard.com.br/?p=197333"
+      }
+    ]
+  },
+  {
+    "slug": "dj-marky",
+    "nome": "DJ Marky",
+    "nome_civil": "Marco Antonio da Silva",
+    "origem": "São Paulo",
+    "ativo_desde": "1992",
+    "resumo": "DJ e produtor paulistano de drum & bass, um dos nomes que levaram o gênero brasileiro ao exterior. Fez o Essential Mix da BBC Radio 1 em março de 2004 e lançou LK em 2002.",
+    "estilos": [
+      "Drum & Bass"
+    ],
+    "gravadoras": [
+      "Innerground Records",
+      "V Recordings",
+      "Shogun Audio",
+      "BBE Music"
+    ],
+    "historia": [
+      "Marky começou no drum & bass em 1992, em São Paulo. Em 1998, tocando em uma casa noturna da cidade, foi visto por Bryan Gee, da V Recordings, que o convidou para Londres; a crítica inglesa o chamou de revelação de 1999.",
+      "Na Inglaterra teve residências nos clubes Movement e The End. Em 2002, LK (Carolina Carol Bela), com XRS, tornou-se uma das faixas mais comerciais do ano, e em março de 2004 ele gravou o Essential Mix da BBC Radio 1.",
+      "Dirige o selo Innerground, pelo qual saiu o álbum In Rotation (2004), e hoje também lança pela Shogun Audio. Seus discos incluem Fabriclive 55 (2011), My Heroes (2015) e The Time Is Right (2023)."
+    ],
+    "faixas_marcantes": [
+      "LK (Carolina Carol Bela)",
+      "The Brazilian Job"
+    ],
+    "marcos": [
+      "1999: eleito Best New DJ pela crítica britânica",
+      "2002: lançamento de LK, com XRS",
+      "2004: Essential Mix na BBC Radio 1 e álbum In Rotation",
+      "2006: headliner do Lovebox, em Londres",
+      "2007: melhor artista/DJ internacional no BBC 1Xtra XtraBass Awards",
+      "2022: melhor artista internacional no Drum & Bass Awards"
+    ],
+    "fontes": [
+      {
+        "titulo": "DJ Marky, Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/DJ_Marky"
+      },
+      {
+        "titulo": "DJ Marky, Shogun Audio",
+        "url": "https://www.shogunaudio.co.uk/pages/dj-marky"
+      }
+    ]
+  },
+  {
+    "slug": "anderson-noise",
+    "nome": "Anderson Noise",
+    "origem": "Belo Horizonte, Minas Gerais",
+    "ativo_desde": "1988",
+    "resumo": "DJ mineiro de Belo Horizonte, ativo desde o fim dos anos 1980 e fundador do selo Noise Music, apresentado como o primeiro selo de techno do Brasil. Segundo sua biografia divulgada, chegou ao 26º lugar no Top 100 da DJ Mag em 2008.",
+    "estilos": [
+      "Techno",
+      "House"
+    ],
+    "gravadoras": [
+      "Noise Music"
+    ],
+    "historia": [
+      "Mineiro, atua na música eletrônica desde o fim dos anos 1980. Nas décadas de 1990 e 2000 produziu festas em espaços pouco convencionais de Belo Horizonte, como prédios abandonados, galpões e um antigo hospício.",
+      "Fundou o selo Noise Music e a Radio Noise, apresentadas na biografia divulgada como o primeiro selo de techno e a primeira rádio on-line de música eletrônica do país. A mesma biografia diz que foi eleito melhor DJ pela DJ Mag Brasil por dois anos seguidos e que apareceu três anos no Top 100 da DJ Mag, com o 26º lugar em 2008.",
+      "Sua trajetória virou o livro O Barulho da Lua, da jornalista Claudia Assef. Segue tocando, inclusive em sets só de vinil em Belo Horizonte."
+    ],
+    "marcos": [
+      "2008: 26º lugar no Top 100 da DJ Mag, segundo a biografia divulgada pelo artista e por casas de show",
+      "Fundação do selo Noise Music e da Radio Noise",
+      "Biografia O Barulho da Lua, escrita por Claudia Assef"
+    ],
+    "fontes": [
+      {
+        "titulo": "Anderson Noise, biografia no Bandsintown",
+        "url": "https://www.bandsintown.com/e/106793241-anderson-noise-at-d-edge"
+      },
+      {
+        "titulo": "O Barulho da Lua, Anderson Noise B-Day, Shotgun",
+        "url": "https://shotgun.live/pt-br/events/o-baulho-da-lua-anderson-noise-b-day"
+      }
+    ]
+  },
+  {
+    "slug": "groove-delight",
+    "nome": "Groove Delight",
+    "origem": "São Paulo",
+    "ativo_desde": "2009",
+    "resumo": "Projeto da artista paulistana Ké Fernandes, que combina house e techno com influências de rock e new wave.",
+    "estilos": [
+      "Tech house",
+      "Techno",
+      "House"
+    ],
+    "historia": [
+      "Groove Delight é o projeto musical de Ké Fernandes, de São Paulo, que mistura house e techno com rock e new wave e toques psicodélicos e industriais. O Last.fm indica atividade na cena eletrônica desde 2009, ano diferente do 2013 que consta na lista de origem; a diferença não foi resolvida.",
+      "Em 14 de julho de 2023 fechou o terceiro e último dia do festival We Love Sun, na Praia do Futuro, em Fortaleza."
+    ],
+    "marcos": [
+      "2023: encerra o festival We Love Sun, em Fortaleza"
+    ],
+    "fontes": [
+      {
+        "titulo": "Groove Delight, Last.fm",
+        "url": "https://www.last.fm/music/Groove+Delight/+wiki"
+      },
+      {
+        "titulo": "We Love Sun, Portalin",
+        "url": "https://www.portalin.com.br/notas/we-love-sun-ultimo-dia-de-festival-traz-groove-delight-e-liva-na-praia-do-futuro/"
+      }
+    ]
+  },
+  {
+    "slug": "renato-ratier",
+    "nome": "Renato Ratier",
+    "origem": "São Paulo (SP), com família de Campo Grande, Mato Grosso do Sul",
+    "ativo_desde": "1996",
+    "resumo": "DJ, produtor e empresário, dono e diretor artístico do clube D-Edge, em São Paulo. Hoje assina também como Ratier e lançou o álbum Ritual em 2023.",
+    "estilos": [
+      "Techno",
+      "House",
+      "Tech house"
+    ],
+    "gravadoras": [
+      "Get Physical",
+      "Gigolo",
+      "Kompakt",
+      "Light My Fire",
+      "No.19 Music"
+    ],
+    "historia": [
+      "Nascido em São Paulo, Renato Ratier tem família de Campo Grande (MS) e se mudou para o Rio de Janeiro em 1992 para cursar faculdade. Segundo a Billboard Brasil, a carreira como DJ completou 30 anos, o que a situa a partir de meados dos anos 1990.",
+      "O D-Edge começou em 2000 em Campo Grande e, em 2003, foi transferido para São Paulo, onde abriu em 22 de abril, no bairro da Barra Funda, com projeto visual do designer Muti Randolph. Ratier é o proprietário e diretor geral e artístico do clube, que chegou ao 9º lugar na lista Top 100 Clubs da DJ Mag em 2009.",
+      "Além do D-Edge, ele é sócio e DJ residente do Warung Beach Club (Santa Catarina) e do Holzmarkt, em Berlim, participou do desenvolvimento do Surreal Park, em Camboriú, e abriu uma filial do D-Edge no Rio de Janeiro. Em 2020, o clube lançou três coletâneas de 20 anos com artistas brasileiros, com Ratier presente no volume 3. Em dezembro de 2023 saiu o álbum Ritual, já sob o nome Ratier, gravado em Dolby Atmos."
+    ],
+    "faixas_marcantes": [
+      "Time"
+    ],
+    "marcos": [
+      "2000: o D-Edge abre em Campo Grande (MS)",
+      "2003: o D-Edge abre em São Paulo, em 22 de abril",
+      "2009: D-Edge fica em 9º na lista Top 100 Clubs da DJ Mag",
+      "2020: coletâneas D-Edge 20 Years (volumes 1, 2 e 3), com a faixa Time de Ratier no volume 3",
+      "2023: lançamento do álbum Ritual, como Ratier"
+    ],
+    "fontes": [
+      {
+        "titulo": "Billboard Brasil, entrevista com Renato Ratier sobre 30 anos de carreira",
+        "url": "https://billboard.com.br/?p=201322"
+      },
+      {
+        "titulo": "909originals, MyRecordBag: Renato Ratier",
+        "url": "https://909originals.com/2024/01/08/myrecordbag-renato-ratier-shares-his-top-d-edge-club-classics/"
+      },
+      {
+        "titulo": "Wikipédia, D-Edge",
+        "url": "https://pt.wikipedia.org/wiki/D-Edge"
+      },
+      {
+        "titulo": "Electronic Groove, D-Edge celebrates 20 years with 3 VA compilations",
+        "url": "https://electronicgroove.com/d-edge-celebrates-20-years-with-3-va-compilations/"
+      }
+    ]
+  },
+  {
+    "slug": "mila-journee",
+    "nome": "Mila Journée",
+    "resumo": "DJ e produtora brasileira com EPs pela Diynamic e pela Truesoul. Em 2025 recebeu o prêmio The Future Of Dance no Amsterdam Dance Event e em 2026 abriu o próprio selo, a Journeey Records.",
+    "estilos": [
+      "Melodic house",
+      "Melodic techno"
+    ],
+    "gravadoras": [
+      "Diynamic",
+      "Truesoul",
+      "Stil Von Talent",
+      "mau5trap",
+      "Journeey Records"
+    ],
+    "historia": [
+      "A imprensa descreve Mila Journée como artista brasileira em ascensão. Seus EPs Serendipity e No Es No saíram pela Diynamic, e a faixa Closer To You, com Kiko, foi lançada em 2023 pela Stil Von Talent.",
+      "Em 23 de agosto de 2024 saiu pela Truesoul o EP Trombe, feito em trio com Olivier Giacomotto e Kiko. A faixa It's Not Real entrou no Hot Mix dela no programa de Pete Tong, na BBC Radio 1, e ela se apresentou em casas e eventos como Time Warp, Hï Ibiza e Pacha Ibiza.",
+      "Em 9 de janeiro de 2026 lançou a Journeey Records, com a faixa Malabaris em parceria com Vintage Culture. A Billboard Brasil registra passagens dela pelo Tomorrowland Brasil e pelo Lollapalooza."
+    ],
+    "faixas_marcantes": [
+      "Malabaris",
+      "Trombe",
+      "Closer To You",
+      "Serendipity",
+      "No Es No"
+    ],
+    "marcos": [
+      "2023: Closer To You, com Kiko, pela Stil Von Talent",
+      "2024: EP Trombe pela Truesoul, com Olivier Giacomotto e Kiko",
+      "2025: prêmio The Future Of Dance no Amsterdam Dance Event",
+      "2026: estreia da gravadora Journeey Records com Malabaris, em parceria com Vintage Culture"
+    ],
+    "fontes": [
+      {
+        "titulo": "Billboard Brasil, Mila Journée estreia gravadora própria com colaboração de Vintage Culture",
+        "url": "https://billboard.com.br/mila-journee-estreia-gravadora-propria-com-colaboracao-de-vintage-culture/"
+      },
+      {
+        "titulo": "When We Dip, premiere de Trombe (Truesoul)",
+        "url": "https://whenwedip.com/2024/08/premiere-mila-journee-olivier-giacomotto-kiko-truesoul/"
+      },
+      {
+        "titulo": "DVOX Mag, Mila Journée, Olivier Giacomotto e Kiko: Trombe",
+        "url": "https://dvoxmag.com/mila-journee-olivier-giacomotto-kiko-trombe/"
+      }
+    ]
+  },
+  {
+    "slug": "ney-faustini",
+    "nome": "Ney Faustini",
+    "origem": "São Paulo",
+    "resumo": "DJ e produtor paulistano que começou na cena de drum and bass na virada do século, passou pelo D-Edge e pelo Warung e recebeu o prêmio de melhor revelação do Rio Music Conference em 2013.",
+    "estilos": [
+      "House",
+      "Techno",
+      "Drum and bass"
+    ],
+    "gravadoras": [
+      "Foul & Sunk",
+      "Appian Sounds",
+      "Fox Trax",
+      "Fountain Music"
+    ],
+    "historia": [
+      "Segundo o perfil do Amsterdam Dance Event, Ney Faustini nasceu em São Paulo e ganhou força na cena de drum and bass na virada do século, tocando em casas paulistanas como Lov.e e Overnight.",
+      "Depois passou por clubes como D-Edge e Warung e integrou o elenco da D-Edge Agency em seus primeiros anos. Em 2013 recebeu o prêmio de melhor revelação do Rio Music Conference e foi selecionado para a primeira edição brasileira do Boiler Room.",
+      "Passou a produzir mais tarde e lançou por selos como Foul & Sunk, Appian Sounds, Fox Trax e Fountain Music. Nomes como Rainer Trüby, Anton Zap, Scott Grooves e Rampa já tocaram suas faixas."
+    ],
+    "marcos": [
+      "2013: prêmio de melhor revelação (Best Newcomer) do Rio Music Conference",
+      "Selecionado para a primeira edição do Boiler Room Brasil"
+    ],
+    "fontes": [
+      {
+        "titulo": "Amsterdam Dance Event, perfil de Ney Faustini",
+        "url": "https://www.amsterdam-dance-event.nl/en/artists-speakers/ney-faustini-gromma/4270"
+      }
+    ]
+  },
+  {
+    "slug": "vhoor",
+    "nome": "Vhoor",
+    "origem": "Venda Nova, Belo Horizonte, Minas Gerais",
+    "ativo_desde": "2014",
+    "resumo": "Produtor, beatmaker e DJ de Belo Horizonte. Ficou conhecido em 2021 com o álbum Baile, feito com o rapper FBC e puxado pelo hit Se Tá Solteira.",
+    "estilos": [
+      "Baile funk",
+      "Miami bass",
+      "Beats"
+    ],
+    "historia": [
+      "Mineiro ligado ao bairro Venda Nova, em Belo Horizonte, Vhoor trabalhou como menor aprendiz na área de recursos humanos antes da música. Em 2024 contava dez anos de carreira, que ele descreve como uma brincadeira que cresceu.",
+      "O salto veio em 2021 com Baile, produzido por ele em parceria com FBC, e a faixa Se Tá Solteira. Em 2022 lançou Baile & Bass e, em 2023, tocou no Primavera Sound, em Barcelona.",
+      "Em 26 de abril de 2024 lançou Resenha, álbum de 11 faixas que percorre fases do funk, do tamborzão ao mandelão paulista, com participações de D.A.N.V e MC GW. A Billboard Brasil registra que ele diz querer ganhar um Grammy."
+    ],
+    "faixas_marcantes": [
+      "Se Tá Solteira",
+      "Rolezinho",
+      "BH House",
+      "Escorregou"
+    ],
+    "marcos": [
+      "2021: álbum Baile, com FBC, e o hit Se Tá Solteira",
+      "2022: álbum Baile & Bass",
+      "2023: show no Primavera Sound, em Barcelona",
+      "2024: álbum Resenha, lançado em 26 de abril"
+    ],
+    "fontes": [
+      {
+        "titulo": "Billboard Brasil, Depois de estourar com Se Tá Solteira, VHOOR agora quer um Grammy",
+        "url": "https://billboard.com.br/viciado-em-resenha-de-funk-vhoor-agora-quer-um-grammy/"
+      },
+      {
+        "titulo": "Correio Braziliense, DJ Vhoor lança Resenha, álbum que dialoga com vários ritmos do funk",
+        "url": "https://www.correiobraziliense.com.br/diversao-e-arte/2024/04/6846104-dj-vhoor-lanca-resenha-album-que-dialoga-com-varios-ritmos-do-funk.html"
+      }
+    ]
+  },
+  {
+    "slug": "renato-cohen",
+    "nome": "Renato Cohen",
+    "nascimento": "1974, São Paulo (SP)",
+    "origem": "São Paulo",
+    "resumo": "Produtor e DJ paulistano de techno e house. Pontapé, de 2002, saiu pelo selo Intec, de Carl Cox, e deu projeção internacional a ele.",
+    "estilos": [
+      "Techno",
+      "House"
+    ],
+    "gravadoras": [
+      "Intec",
+      "Sino",
+      "Systematic",
+      "Pets Recordings",
+      "Defected",
+      "Skylax Records"
+    ],
+    "historia": [
+      "Renato Cohen tocou bateria e guitarra na infância e se interessou pela música eletrônica por gostar de criar com máquinas. Produziu música de pista antes de começar a discotecar.",
+      "Em 2002 prensou 500 cópias em vinil white label de Pontapé para enviar a DJs. Carl Cox assinou a faixa para o Intec depois de ver a reação do público a ela em uma turnê no Brasil. No mesmo ano ele ganhou o prêmio de melhor produtor do Palomino Awards.",
+      "Teve lançamentos também pelos selos Sino, de Technasia, Systematic, de Marc Romboy, Pets Recordings e Defected, e é conhecido pelos shows ao vivo. Em junho de 2025 lançou o Roaring EP pela Skylax Records. Em entrevista à DMC World, em 2016, citou o primeiro show na Europa, no Ost Gut, e uma longa residência na A Loca, em São Paulo."
+    ],
+    "referencias_musicais": [
+      "Airto Moreira",
+      "Hermeto Pascoal",
+      "Moacir Santos",
+      "Dom Um Romão",
+      "Gilberto Gil",
+      "João Donato"
+    ],
+    "faixas_marcantes": [
+      "Pontapé",
+      "Roaring EP"
+    ],
+    "marcos": [
+      "2002: Pontapé lançada pelo Intec, de Carl Cox",
+      "2002: prêmio de melhor produtor no Palomino Awards",
+      "2025: Roaring EP pela Skylax Records"
+    ],
+    "fontes": [
+      {
+        "titulo": "DMC World, entrevista com Renato Cohen",
+        "url": "https://www.dmcworld.net/interviews/renato-cohen/"
+      },
+      {
+        "titulo": "Deejay.de, perfil de Renato Cohen (texto do Roaring EP, Skylax)",
+        "url": "https://www.deejay.de/Technasia"
+      }
+    ]
+  },
+  {
+    "slug": "vinne",
+    "nome": "Vinne",
+    "resumo": "DJ e produtor brasileiro com lançamentos pela Revealed Recordings, de Hardwell, incluindo Balança (2023) e parcerias com Dillon Francis.",
+    "estilos": [
+      "Bass house",
+      "Tech house",
+      "Big room"
+    ],
+    "gravadoras": [
+      "Revealed Recordings"
+    ],
+    "historia": [
+      "A página da Revealed Recordings descreve Vinne como DJ e produtor brasileiro em atividade desde os 18 anos. Ele assina Free, em parceria com Alok, e Bring It Back, com Illusionize.",
+      "Na Revealed, lançou Once Again com Dillon Francis em 2022 e Balança com Hardwell em 10 de fevereiro de 2023. O catálogo do selo inclui ainda faixas com MC Bin Laden, Tujamo, Laidback Luke e Bonka, e as coletâneas ADE Sampler 2022 e 2023."
+    ],
+    "faixas_marcantes": [
+      "Balança",
+      "Once Again",
+      "Free",
+      "Acelerar",
+      "Yessir"
+    ],
+    "marcos": [
+      "2022: Once Again, com Dillon Francis, pela Revealed Recordings",
+      "2023: Balança, com Hardwell, lançada em 10 de fevereiro pela Revealed Recordings"
+    ],
+    "fontes": [
+      {
+        "titulo": "Revealed Recordings, Hardwell e VINNE: Balança",
+        "url": "https://www.revealedrecordings.com/releases/hardwell-vinne-balanca"
+      },
+      {
+        "titulo": "Revealed Recordings, catálogo de VINNE",
+        "url": "https://www.revealedrecordings.com/artists/vinne"
+      }
+    ]
+  },
+  {
+    "slug": "volkoder",
+    "nome": "Volkoder",
+    "origem": "Salto, São Paulo",
+    "resumo": "Produtor e DJ de Salto (SP) com mais de 200 lançamentos. Em 2026 assinou com a agência WME para a representação internacional.",
+    "estilos": [
+      "Bass house",
+      "Tech house"
+    ],
+    "historia": [
+      "Natural de Salto, no interior paulista, Volkoder tem carreira de cerca de duas décadas, segundo a Billboard Brasil. Já tocou no Tomorrowland Brasil, no Rock in Rio, no Ministry of Sound, no Space Miami e no Eden Ibiza.",
+      "Acumula mais de 200 lançamentos e mais de 50 milhões de streams. Tornado e Sensation são citados entre os destaques, e o EP Pictures: Volkoder saiu em 2026. Solomun, Keinemusik, Peggy Gou, Jamie Jones, Carl Cox e Camelphat já apoiaram a música dele.",
+      "Em abril de 2026 passou a integrar o elenco da WME, responsável pela carreira internacional, e planeja temporada em Ibiza e turnê de cerca de dois meses pela Europa. No Brasil é gerenciado por Guilherme Tannenbaum, da Braslive Entertainment."
+    ],
+    "faixas_marcantes": [
+      "Tornado",
+      "Sensation"
+    ],
+    "marcos": [
+      "2026: EP Pictures: Volkoder",
+      "2026: assinatura com a agência WME, noticiada em 22 de abril"
+    ],
+    "fontes": [
+      {
+        "titulo": "Billboard Brasil, Volkoder assina com WME e leva cena eletrônica brasileira para o mundo",
+        "url": "https://billboard.com.br/volkoder-assina-wme/"
+      }
+    ]
+  },
+  {
+    "slug": "dashdot",
+    "nome": "Dashdot",
+    "origem": "São Paulo",
+    "ativo_desde": "2012",
+    "resumo": "Dupla paulistana de house formada em fevereiro de 2012 por Felipe Flora e André Guarda, que se conheceram no circuito house de São Paulo.",
+    "estilos": [
+      "Deep house",
+      "House"
+    ],
+    "gravadoras": [
+      "PopArt"
+    ],
+    "historia": [
+      "Em entrevista de 2013 republicada pelo Sounds and Colours, a dupla conta que se formou em fevereiro de 2012, depois de os dois se conhecerem no circuito de house de São Paulo. A música é descrita como profunda, de clima sombrio, mas suave e elegante.",
+      "Segundo a entrevista, a dupla já havia tocado em vários países e destacava o selo PopArt como referência em música eletrônica de qualidade."
+    ],
+    "faixas_marcantes": [
+      "Make It Better"
+    ],
+    "marcos": [
+      "2012: formação da dupla, em fevereiro, em São Paulo"
+    ],
+    "fontes": [
+      {
+        "titulo": "Sounds and Colours, entrevista com a dupla Dashdot (2013)",
+        "url": "https://soundsandcolours.com/articles/brazil/brazilian-house-music-global-reference-says-brazilian-house-duo-dashdot-21619/"
+      }
+    ]
+  },
+  {
+    "slug": "maz",
+    "nome": "Maz",
+    "nome_civil": "Thomaz Prado",
+    "origem": "Rio de Janeiro",
+    "ativo_desde": "2015",
+    "resumo": "DJ e produtor carioca de afro house. O remix de Banho de Folhas, de Luedji Luna, foi o lançamento eletrônico brasileiro mais vendido no Beatport em 2022 e 2023.",
+    "estilos": [
+      "Afro house",
+      "Organic house"
+    ],
+    "gravadoras": [
+      "Dawn Patrol Records"
+    ],
+    "historia": [
+      "Thomaz Prado nasceu e cresceu no Rio de Janeiro. A Forbes Brasil conta que ele já mexia com Virtual DJ e instrumentos e decidiu se dedicar à música eletrônica depois do festival Universo Paralello, em 2013 ou 2014. O projeto Maz começou em 2015.",
+      "O remix de Banho de Folhas, de Luedji Luna, passou de 1 milhão de plays e chegou ao primeiro lugar de afro house no Beatport. Outro remix, Todo Homem, de Zeca Veloso, feito com Antdot, chegou ao primeiro lugar de organic house. Maz fundou o selo Dawn Patrol Records e acumula mais de 2 milhões de ouvintes mensais.",
+      "Tocou no Rock in Rio (2019 e 2022), Lollapalooza Brasil, Universo Paralello, Tomorrowland Brasil, Coachella (2024) e Hï Ibiza, a convite de Vintage Culture, além do Brazilian Storm no Amsterdam Dance Event de 2022. Estava escalado para o Camarote Salvador em 2026."
+    ],
+    "faixas_marcantes": [
+      "Banho de Folhas (remix)",
+      "Todo Homem (remix)",
+      "Amana",
+      "Corpo e Canção",
+      "Povoada (remix)"
+    ],
+    "marcos": [
+      "2015: início do projeto Maz",
+      "2019 e 2022: Rock in Rio",
+      "2022: Brazilian Storm no Amsterdam Dance Event",
+      "2022 e 2023: remix de Banho de Folhas é o lançamento eletrônico brasileiro mais vendido do Beatport, segundo a Billboard Brasil",
+      "2024: Coachella"
+    ],
+    "fontes": [
+      {
+        "titulo": "Forbes Brasil, Como DJ Maz foi do Rio de Janeiro para as pistas internacionais",
+        "url": "https://forbes.com.br/forbes-life/2024/11/como-dj-maz-foi-do-rio-de-janeiro-para-as-pistas-internacionais/"
+      },
+      {
+        "titulo": "Billboard Brasil, Conheça Maz: o DJ que leva o Afro House ao Camarote Salvador",
+        "url": "https://billboard.com.br/conheca-maz-o-dj-que-leva-o-afro-house-ao-camarote-salvador/"
+      }
+    ]
+  },
+  {
+    "slug": "malifoo",
+    "nome": "Malifoo",
+    "resumo": "DJ e produtor brasileiro de Brazilian bass, escalado na seção Brazil's Finest do Tomorrowland Brasil 2025.",
+    "estilos": [
+      "Brazilian bass"
+    ],
+    "historia": [
+      "Em 2025, Malifoo constou no lineup do Tomorrowland Brasil, realizado de 10 a 12 de outubro no Parque Maeda, em Itu (SP), na seção Brazil's Finest. A fonte não indica o palco."
+    ],
+    "marcos": [
+      "2025: escalado no Tomorrowland Brasil, em Itu (SP)"
+    ],
+    "fontes": [
+      {
+        "titulo": "EDMTunes, Tomorrowland Brasil unveils line-up for 2025",
+        "url": "https://www.edmtunes.com/2025/04/tomorrowland-brasil-unveils-line-up-for-2025/"
+      }
+    ]
   }
 ]

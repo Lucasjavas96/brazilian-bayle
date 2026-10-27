@@ -240,12 +240,12 @@ const DJ_PHOTOS = readJson("dj-photos.json");
 // verbete automático dos DJs do álbum: só com o que está na figurinha (país, gênero, DJ Mag, início, faixa)
 for (const a of ALBUM_PEDIA) {
   DJ_PHOTOS[a.slug] = { path: a.foto, thumb: a.thumb, source: "Fornecida pela Brazilian Bayle", width: a.w, height: a.h };
-  PROFILES[a.slug] = {
+  PROFILES[a.slug] = { ...{
     slug: a.slug, nome: a.nome, estilos: [a.genero], origem: a.paisNome, pais_nome: a.paisNome, ativo_desde: a.inicio ? String(a.inicio) : undefined,
     resumo: a.texto,
     historia: [[`País de origem: ${a.paisNome}. Gênero principal: ${a.genero}.`, a.djmag ? `Está na posição ${a.djmag} do DJ Mag Top 100 de 2026.` : "", a.inicio ? `Começou a carreira em ${a.inicio}.` : ""].filter(Boolean).join(" ")],
     faixas_marcantes: a.faixa ? [a.faixa] : [], marcos: a.djmag ? [`DJ Mag Top 100 de 2026: posição ${a.djmag}`] : [], fontes: [],
-  };
+  }, ...(PROFILES[a.slug] || {}) };
 }
 function rankingOrder() {
   try {
@@ -311,7 +311,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   for (const d of sorted) {
     const s = slugify(d.nome), p = { nome: d.nome, estilos: d.estilo ? [d.estilo] : [], ...PROFILES[s] };
     const v = x => (x && String(x).trim()) || NI;
-    const box = [["Nome artístico", p.nome], ["Nome real", v(p.nome_civil)], ...(p.pais_nome ? [["País", p.pais_nome]] : [["Local de nascimento", v(p.nascimento)]]), ["DJ desde", v(p.ativo_desde)],
+    const box = [["Nome artístico", p.nome], ["Nome real", v(p.nome_civil)], ...(p.nascimento || !p.pais_nome ? [["Local de nascimento", v(p.nascimento)]] : [["País", p.pais_nome]]), ["DJ desde", v(p.ativo_desde)],
       ["Principais gêneros", v(list(p.estilos).join(", "))], ...(list(p.gravadoras).length ? [["Selos", p.gravadoras.join(", ")]] : [])];
     const img = djPhoto(s), foto = p.foto;
     const sec = (id, title, html) => html ? `<section class="wiki-sec" aria-labelledby="${id}"><h2 id="${id}">${title}</h2>${html}</section>` : "";
