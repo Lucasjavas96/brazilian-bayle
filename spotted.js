@@ -141,8 +141,7 @@
   const fillParties = () => {
     const c = CLUBS.find(x => x.id === clubSel.value), bb = clubSel.value === "bb";
     partySel.closest(".field").hidden = bb; partySel.required = !bb;
-    $("label[for=spPartyOther]").textContent = bb ? "Nome da festa ou do after" : "Nome da festa";
-    if (bb) { partySel.disabled = false; partySel.innerHTML = '<option value="__outra">Outra</option>'; syncOther(); return; }
+    if (bb) { partySel.disabled = true; partySel.innerHTML = '<option value="">Sem festa</option>'; syncOther(); return; }
     partySel.disabled = !c;
     partySel.innerHTML = c ?'<option value="">Escolha a festa</option>' + c.festas.map(f => `<option value="${esc(partyLabel(c, f))}">${f[0]} · ${esc(f[1])}</option>`).join("") + '<option value="__outra">Outra festa (digitar o nome)</option>' : '<option value="">Escolha primeiro o clube</option>';
     syncOther();
@@ -151,7 +150,7 @@
   const syncOther = () => { const on = partySel.value === "__outra"; otherBox.hidden = !on; otherIn.required = on; if (!on) otherIn.value = ""; };
   partySel.addEventListener("change", syncOther);
   // "Clube · Festa" da publicação (festa digitada entra como "Clube · nome")
-  const partyValue = () => { if (clubSel.value === "bb") return otherIn.value.trim(); if (partySel.value !== "__outra") return partySel.value.trim(); const c = CLUBS.find(x => x.id === clubSel.value), t = otherIn.value.trim(); return c && t ? `${c.nome} · ${t}` : ""; };
+  const partyValue = () => { if (clubSel.value === "bb") return "Brazilian Bayle Afters"; if (partySel.value !== "__outra") return partySel.value.trim(); const c = CLUBS.find(x => x.id === clubSel.value), t = otherIn.value.trim(); return c && t ? `${c.nome} · ${t}` : ""; };
   clubSel.addEventListener("change", fillParties);
   form.addEventListener("reset", () => setTimeout(fillParties, 0));
   fillParties();
