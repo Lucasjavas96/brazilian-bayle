@@ -223,13 +223,7 @@
     const face = p.img
       ? `<img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy" decoding="async">`
       : `<div class="sp-txt sp-sheet">${seal}<h4 class="sp-hand-title">${esc(p.title)}</h4><p>${esc(p.text)}</p></div>`;
-    const side = p.img && (p.text || mine)
-      ? `<button type="button" class="sp-tab mono" data-side aria-expanded="false">${p.text ? "Resenha" : "+ Resenha"}</button>
-         <div class="sp-side sp-sheet" data-side-panel hidden>
-           ${seal}<h4 class="sp-hand-title">${esc(p.title)}</h4>
-           <p class="sp-hand-by">por ${esc(author(p))}</p>
-           ${p.text ? `<p class="sp-side-t">${esc(p.text)}</p>` : `<textarea maxlength="500" rows="5" aria-label="Escreva a resenha da festa" placeholder="Como foi a festa?"></textarea><button type="button" class="btn btn-y" data-save-text>Salvar resenha</button>`}
-         </div>` : "";
+    const side = "";
     return `<article class="sp-card${p.img ? "" : " is-text"}" data-id="${esc(p.id)}" aria-label="${esc(p.title)}, por ${esc(author(p))}">
       <div class="sp-flip">
         <div class="sp-front">
