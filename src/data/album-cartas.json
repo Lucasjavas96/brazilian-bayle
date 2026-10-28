@@ -1360,34 +1360,6 @@
       }
     },
     {
-      "slug": "vhoor",
-      "nome": "Vhoor",
-      "pais": "br",
-      "paisNome": "Brasil",
-      "genero": "Beats / Baile Funk",
-      "tag": "FUNK",
-      "bpm": "125–135",
-      "rank": "CENA BR",
-      "pos": "center 25%",
-      "texto": "Beatmaker de Belo Horizonte que leva o baile funk ao mundo, autor do álbum Baile com o rapper FBC.",
-      "faixa": "Delírios",
-      "foto": "/assets/album/fotos/vhoor.webp",
-      "foto_fonte": "https://open.spotify.com/artist/0aEDa47F4RWuk4Udm0SEoH",
-      "fontes": [
-        "https://open.spotify.com/artist/0aEDa47F4RWuk4Udm0SEoH",
-        "https://musicbrainz.org/artist/d488b1ad-e2ff-475f-9bbd-45c7d8127ca1",
-        "https://www.qobuz.com/ca-en/interpreter/vhoor/3252363",
-        "https://www.tokyogigguide.com/en/gigs/event/34967",
-        "https://vhoor.bandcamp.com/album/baile"
-      ],
-      "sinais": {
-        "ouvintes": 1100000,
-        "inicio": 2017,
-        "boilerCercle": 1,
-        "bpm": 130
-      }
-    },
-    {
       "slug": "renato-cohen",
       "nome": "Renato Cohen",
       "pais": "br",
