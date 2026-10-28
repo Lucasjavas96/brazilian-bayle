@@ -284,13 +284,13 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const done = sorted.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length).length; // verbete pesquisado = tem fonte listada
   writePage("djpedia", {
     path: "/djpedia", nav: "djpedia", title: "DJ Pédia · Conheça os DJs",
-    description: "A enciclopédia dos DJs do ranking da Brazilian Bayle e da cena de Curitiba, organizada por gênero: origem, início de carreira e trajetória de cada artista.",
+    description: "A enciclopédia da pista global: os principais DJs do Brasil e do mundo, organizados por gênero, com origem, início de carreira e trajetória de cada artista.",
   }, `
 <section class="sec dark page-head wiki" aria-labelledby="t-wiki">
   <div class="wrap">
     <p class="mono y">DJ Pédia · ${sorted.length} DJs · ${done} verbetes completos</p>
     <h1 class="display" id="t-wiki">Conheça os <em>DJs</em></h1>
-    <p class="lead dim">A enciclopédia da pista brasileira, organizada por gênero. De onde cada DJ veio, como começou, o que toca e a trajetória até aqui. Toque no nome para abrir o verbete.</p>
+    <p class="lead dim">A enciclopédia da pista global. Os principais DJs do Brasil e do mundo, organizados por gênero: de onde vieram, como começaram, o que tocam e a trajetória até aqui. Toque no nome para abrir o verbete.</p>
     <div class="catalog-search"><label for="wikiSearch" class="mono">Buscar DJ</label><input type="search" id="wikiSearch" placeholder="Nome, gênero ou cidade" autocomplete="off" aria-controls="wikiResults"><p id="wikiCount" class="hint" role="status"></p></div>
     <div class="wiki-list" id="wikiResults">
       ${letters.map(l => `<section class="wiki-letter wiki-genre" id="genero-${gid(l)}" aria-labelledby="h-${gid(l)}">
