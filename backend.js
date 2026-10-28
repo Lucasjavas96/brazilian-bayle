@@ -31,6 +31,11 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar seus pontos.');
       return data;
     },
+    async moderation(section, filter = 'todos', cursor = null) {
+      const {data,error}=await client.rpc('brb_moderation_page',{section,filter_name:filter,cursor});
+      if(error) throw new Error(error.message || 'Não foi possível carregar a moderação.');
+      return data;
+    },
     async owner(action, payload = {}) {
       const { data, error } = await client.rpc('brb_owner', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');

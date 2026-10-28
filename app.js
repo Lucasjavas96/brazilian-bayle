@@ -175,17 +175,20 @@ renderPodium();
   let dj = null; const touched = new Set();
   const party = $("#vParty"), lineup = $("#vLineup");
   // clube primeiro; a lista de festas é a mesma do Spotted. Só dá para avaliar festa que já aconteceu e tenha DJ do ranking.
-  const CLUBS = (window.BRB_CLUBS || []).filter(c => c.festas.length), clubSel = $("#vClub"), today = new Date().toLocaleDateString("sv-SE");
-  clubSel.innerHTML = '<option value="">Escolha o clube</option>' + CLUBS.map(c => '<option value="' + c.id + '">' + c.nome + '</option>').join("");
+  const EVENTS = window.BRB_EVENTS || [];
+  const CLUBS = [...new Set(EVENTS.map(e => e.venue))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  const clubSel = $('#vClub'), today = new Date().toLocaleDateString('sv-SE',{timeZone:'America/Sao_Paulo'});
+  clubSel.replaceChildren(new Option('Escolha o clube',''), ...CLUBS.map(c=>new Option(c,c)));
   const fillParties = () => {
-    const c = CLUBS.find(x => x.id === clubSel.value);
-    party.disabled = !c;
-    party.innerHTML = c ? '<option value="">Escolha a festa</option>' + c.festas.map(f => {
-      const ev = f.evento && PARTIES.find(p => p.id === f.evento), ok = ev && ev.date <= today;
-      const why = ok ? '' : ev ? ' (ainda não aconteceu)' : ' (sem DJ do ranking)';
-      return '<option value="' + (ok ? ev.id : '') + '"' + (ok ? '' : ' disabled') + '>' + f.data + ' · ' + f.nome + why + '</option>';
-    }).join('') : '<option value="">Escolha primeiro o clube</option>';
-    dj = null; renderLineup();
+    const events = EVENTS.filter(e=>e.venue===clubSel.value);
+    party.disabled = !events.length;
+    party.replaceChildren(new Option(events.length ? 'Escolha a festa' : 'Escolha primeiro o clube',''), ...events.map(e=>{
+      const eligible=PARTIES.find(p=>p.id===e.id), future=e.date>today;
+      const label=`${e.date.slice(8)}/${e.date.slice(5,7)} · ${e.name}`+(future?' (ainda não aconteceu)':!eligible?' (sem apresentação brasileira confirmada)':'');
+      const option=new Option(label,e.id);option.disabled=future||!eligible;return option;
+    }));
+    $('#vPartyCount').textContent=events.length ? `${events.length} festas cadastradas. Avaliações disponíveis para apresentações brasileiras confirmadas e já realizadas.` : 'Escolha o clube para ver as festas.';
+    dj=null;renderLineup();
   };
   const renderLineup = () => {
     const p = PARTIES.find(x => x.id === party.value);
