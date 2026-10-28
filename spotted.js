@@ -13,7 +13,7 @@
   const EMOJIS = ["🔥", "🪩", "🥂", "😂", "😍", "🙌", "💛", "💚", "🇧🇷", "🦜", "🎧", "🌅"];
   const BLOCK = /\b(porra|caralho|merda|puta|fdp|vsf|arrombad\w*|buceta|cuzão|viado|otári\w*)\b|https?:\/\/|www\./i;
   const ANON = "Anônimo";
-  let currentUser = null, posts = [], anonymous = false, loading = true, loadError = "", ownerNick = "", isOwner = false;
+  let currentUser = null, posts = [], anonymous = false, loading = true, loadError = "", ownerNick = "", isOwner = false, clubbers = new Set();
   const me = () => currentUser;
   const anonPref = () => !!me() && anonymous;
   const setAnon = value => { anonymous = !!value; };
@@ -30,8 +30,8 @@
   };
   // owner: apelido dele (selo no mural) e se quem está logado é ele (botão de apagar)
   async function loadOwner() {
-    try { const c = await backend().content(""); ownerNick = (c?.owner_nick || "").toLowerCase(); isOwner = !!c?.me_owner; }
-    catch (e) { ownerNick = ""; isOwner = false; }
+    try { const c = await backend().content(""); ownerNick = (c?.owner_nick || "").toLowerCase(); isOwner = !!c?.me_owner; clubbers = new Set((c?.clubber_nicks || []).map(n => String(n).toLowerCase())); }
+    catch (e) { ownerNick = ""; isOwner = false; clubbers = new Set(); }
   }
   async function refresh() {
     const data = await rpc("feed");
@@ -137,18 +137,21 @@
   const ALL_PARTIES = CLUBS.flatMap(c => c.festas.map(f => partyLabel(c, f)));
   // clube e festa do post: a festa só abre as do clube escolhido
   const clubSel = $("#spClub"), partySel = $("#spParty");
-  clubSel.innerHTML = '<option value="">Escolha o clube</option>' + CLUBS.map(c => `<option value="${c.id}">${esc(c.nome)}</option>`).join("");
+  clubSel.innerHTML = '<option value="">Escolha o clube</option>' + CLUBS.map(c => `<option value="${c.id}">${esc(c.nome)}</option>`).join("") + '<option value="bb">Brazilian Bayle Afters</option>';
   const fillParties = () => {
-    const c = CLUBS.find(x => x.id === clubSel.value);
+    const c = CLUBS.find(x => x.id === clubSel.value), bb = clubSel.value === "bb";
+    partySel.closest(".field").hidden = bb; partySel.required = !bb;
+    $("label[for=spPartyOther]").textContent = bb ? "Nome da festa ou do after" : "Nome da festa";
+    if (bb) { partySel.disabled = false; partySel.innerHTML = '<option value="__outra">Outra</option>'; syncOther(); return; }
     partySel.disabled = !c;
-    partySel.innerHTML = c ? '<option value="">Escolha a festa</option>' + c.festas.map(f => `<option value="${esc(partyLabel(c, f))}">${f[0]} · ${esc(f[1])}</option>`).join("") + '<option value="__outra">Outra festa (digitar o nome)</option>' : '<option value="">Escolha primeiro o clube</option>';
+    partySel.innerHTML = c ?'<option value="">Escolha a festa</option>' + c.festas.map(f => `<option value="${esc(partyLabel(c, f))}">${f[0]} · ${esc(f[1])}</option>`).join("") + '<option value="__outra">Outra festa (digitar o nome)</option>' : '<option value="">Escolha primeiro o clube</option>';
     syncOther();
   };
   const otherBox = $("#spOtherField"), otherIn = $("#spPartyOther");
   const syncOther = () => { const on = partySel.value === "__outra"; otherBox.hidden = !on; otherIn.required = on; if (!on) otherIn.value = ""; };
   partySel.addEventListener("change", syncOther);
   // "Clube · Festa" da publicação (festa digitada entra como "Clube · nome")
-  const partyValue = () => { if (partySel.value !== "__outra") return partySel.value.trim(); const c = CLUBS.find(x => x.id === clubSel.value), t = otherIn.value.trim(); return c && t ? `${c.nome} · ${t}` : ""; };
+  const partyValue = () => { if (clubSel.value === "bb") return otherIn.value.trim(); if (partySel.value !== "__outra") return partySel.value.trim(); const c = CLUBS.find(x => x.id === clubSel.value), t = otherIn.value.trim(); return c && t ? `${c.nome} · ${t}` : ""; };
   clubSel.addEventListener("change", fillParties);
   form.addEventListener("reset", () => setTimeout(fillParties, 0));
   fillParties();
@@ -214,7 +217,9 @@
   const ownerPost = p => !p.anon && !!ownerNick && String(p.nick).toLowerCase() === ownerNick;
   const author = p => p.anon ? ANON : "@" + p.nick;
   const ownerTag = '<i class="sp-owner mono"><span aria-hidden="true">👑</span> Owner</i>';
-  const whoName = w => ownerNick && String(w).toLowerCase() === "@" + ownerNick ? `${ownerTag}<b class="sp-own-name">${esc(w)}</b>` : `<b>${esc(w)}</b>`;
+  const clubberTag = '<i class="sp-clubber mono">BRB Clubber <span aria-hidden="true">🦜</span></i>';
+  const clubberNick = n => { const k = String(n || "").replace(/^@/, "").toLowerCase(); return !!k && clubbers.has(k) && k !== ownerNick; };
+  const whoName = w => ownerNick && String(w).toLowerCase() === "@" + ownerNick ? `${ownerTag}<b class="sp-own-name">${esc(w)}</b>` : clubberNick(w) ? `${clubberTag}<b>${esc(w)}</b>` : `<b>${esc(w)}</b>`;
 
   const seal = '<span class="sp-seal" aria-hidden="true"><img src="/assets/papagaio-refletivo-v2.png" alt=""><b>Brazilian<br>Bayle</b></span>';
   function card(p) {
@@ -232,7 +237,7 @@
           ${face}
           <div class="sp-info">
             <h3>${esc(p.title)}</h3>
-            <p class="sp-by">${p.anon ? `<span class="sp-av is-anon" aria-hidden="true">?</span>` : ownerPost(p) ? `<span class="sp-av is-owner" aria-hidden="true">${esc(String(p.nick)[0].toUpperCase())}</span>` : av(p.nick)}${ownerPost(p) ? ownerTag : ""}<span class="${ownerPost(p) ? "sp-own-name" : ""}">${esc(author(p))}</span><span class="sp-when mono">${when(p.at)}</span></p>
+            <p class="sp-by">${p.anon ? `<span class="sp-av is-anon" aria-hidden="true">?</span>` : ownerPost(p) ? `<span class="sp-av is-owner" aria-hidden="true">${esc(String(p.nick)[0].toUpperCase())}</span>` : av(p.nick)}${ownerPost(p) ? ownerTag : !p.anon && clubberNick(p.nick) ? clubberTag : ""}<span class="${ownerPost(p) ? "sp-own-name" : ""}">${esc(author(p))}</span><span class="sp-when mono">${when(p.at)}</span></p>
           </div>
           ${side}
           <div class="sp-rxw">
