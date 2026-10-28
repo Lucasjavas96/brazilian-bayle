@@ -6724,6 +6724,31 @@
         "festivais": 2,
         "bpm": 140
       }
+    },
+    {
+      "slug": "greggio",
+      "nome": "Greggio",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Tech House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Mineiro de Juiz de Fora radicado em Londres, lançou pela Diynamic, de Solomun, e levou um EP ao topo de lançamentos do Beatport.",
+      "faixa": "Oldskool Flavor",
+      "foto": "/assets/album/fotos/greggio.webp",
+      "foto_fonte": "https://playbpm.com.br/noticias/greggio-estreia-no-ame-club/",
+      "fontes": [
+        "https://playbpm.com.br/noticias/greggio-vive-momento-de-destaque-no-tech-house-global/",
+        "https://playbpm.com.br/noticias/greggio-estreia-no-ame-club/",
+        "https://playbpm.com.br/lancamentos/nacionais/greggio-feel-the-drop/"
+      ],
+      "sinais": {
+        "beatport": "geral",
+        "festivais": 3,
+        "bpm": 126
+      }
     }
   ]
 }

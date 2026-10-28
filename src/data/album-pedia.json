@@ -4192,5 +4192,22 @@
   "w": 1000,
   "h": 1000,
   "ordem": 253
+ },
+ {
+  "nome": "Greggio",
+  "slug": "greggio",
+  "pais": "br",
+  "paisNome": "Brasil",
+  "genero": "Tech House",
+  "grupo": "House",
+  "rank": "CENA BR",
+  "djmag": null,
+  "texto": "Mineiro de Juiz de Fora radicado em Londres, lançou pela Diynamic, de Solomun, e levou um EP ao topo de lançamentos do Beatport.",
+  "faixa": "Oldskool Flavor",
+  "foto": "assets/album/fotos/greggio.webp",
+  "thumb": "assets/djs/thumbs/greggio.webp",
+  "w": 720,
+  "h": 720,
+  "ordem": 254
  }
 ]
