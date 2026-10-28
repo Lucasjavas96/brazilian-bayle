@@ -249,7 +249,7 @@
         <div class="sp-back" aria-hidden="true" inert>
           <div class="sp-back-h"><span>${cm.length} ${cm.length === 1 ? "comentário" : "comentários"}</span><button type="button" class="sp-close" data-flip>Voltar</button></div>
           <p class="sp-lk"><b>${cnt.fino || 0}</b> ${(cnt.fino || 0) === 1 ? "pessoa disse" : "pessoas disseram"} “É baile fio”</p>
-          <ul class="sp-coms">${cm.map(x => `<li>${whoName(x.who)} ${esc(x.t)}${x.can && x.id ? ` <button type="button" class="sp-cdel" data-cdel="${esc(x.id)}" aria-label="Apagar este comentário">Apagar</button>` : ""}</li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
+          <ul class="sp-coms">${cm.map(x => `<li><span class="sp-cwho">${whoName(x.who)}</span><span class="sp-ctx">${esc(x.t)}${x.can && x.id ? ` <button type="button" class="sp-cdel" data-cdel="${esc(x.id)}" aria-label="Apagar este comentário">Apagar</button>` : ""}</span></li>`).join("") || `<li class="sp-empty">Seja o primeiro a comentar.</li>`}</ul>
           <div class="sp-back-ctl">
             <label class="sp-anon"><input type="checkbox" role="switch" data-anon${anonPref() ? " checked" : ""}><span class="sp-sw" aria-hidden="true"></span>Ocultar meu nome</label>
             <button type="button" class="sp-report" data-report>Denunciar post</button>
