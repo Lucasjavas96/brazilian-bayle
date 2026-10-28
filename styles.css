@@ -2342,3 +2342,9 @@ background-size: auto, auto, 260% 100%; animation: djc-sheen 3.6s ease-in-out in
 .wiki-letter .wiki-item .wiki-name,.wiki-letter .wiki-item:has(.wiki-portrait) .wiki-name{margin:0;font-size:13px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wiki-letter .wiki-item .wiki-meta,.wiki-letter .wiki-item:has(.wiki-portrait) .wiki-meta{margin:0;font-size:10px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wiki-letter .wiki-item .wiki-status,.wiki-letter .wiki-item:has(.wiki-portrait) .wiki-status{display:none}
+#genero-bayle-curitibano ul{grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:9px}
+#genero-bayle-curitibano .wiki-item,#genero-bayle-curitibano .wiki-item:has(.wiki-portrait){grid-template-columns:72px minmax(0,1fr);height:72px;column-gap:15px;padding-right:12px;border-radius:12px}
+#genero-bayle-curitibano .wiki-portrait,#genero-bayle-curitibano .wiki-item .ge-badge{width:72px;height:72px}
+#genero-bayle-curitibano .wiki-item .ge-badge{font-size:21px}
+#genero-bayle-curitibano .wiki-item .wiki-name,#genero-bayle-curitibano .wiki-item:has(.wiki-portrait) .wiki-name{font-size:19.5px}
+#genero-bayle-curitibano .wiki-item .wiki-meta,#genero-bayle-curitibano .wiki-item:has(.wiki-portrait) .wiki-meta{font-size:15px}
