@@ -2537,3 +2537,13 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .sp-back .sp-cwho b{font-size:var(--tam-nome);margin:0;overflow-wrap:anywhere;line-height:1.25}
 .sp-back .sp-cwho .sp-owner,.sp-back .sp-cwho .sp-clubber{font-size:var(--tam-selo);padding:var(--pad-selo);margin:0;white-space:nowrap}
 .sp-back .sp-ctx{font-size:var(--tam-texto);min-width:0;overflow-wrap:anywhere}
+
+/* DJ Pédia: miniaturas em cartão horizontal (layout 4 escolhido pelo Lucas) */
+.wiki-letter ul{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px}
+.wiki-letter .wiki-item,.wiki-letter .wiki-item:has(.wiki-portrait){display:grid;grid-template-columns:48px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:10px;row-gap:0;padding:0 8px 0 0;height:48px;border-radius:8px;overflow:hidden;transform:none;box-shadow:none}
+.wiki-letter .wiki-item:hover{transform:none;box-shadow:none}
+.wiki-letter .wiki-portrait{grid-row:1/3;width:48px;height:48px;aspect-ratio:1;object-fit:cover;object-position:50% 20%}
+.wiki-letter .wiki-item .ge-badge{grid-row:1/3;width:48px;height:48px;border-radius:0;display:grid;place-items:center;font-size:14px}
+.wiki-letter .wiki-item .wiki-name,.wiki-letter .wiki-item:has(.wiki-portrait) .wiki-name{margin:0;font-size:13px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wiki-letter .wiki-item .wiki-meta,.wiki-letter .wiki-item:has(.wiki-portrait) .wiki-meta{margin:0;font-size:10px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wiki-letter .wiki-item .wiki-status,.wiki-letter .wiki-item:has(.wiki-portrait) .wiki-status{display:none}

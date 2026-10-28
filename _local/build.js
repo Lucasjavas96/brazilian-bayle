@@ -232,7 +232,8 @@ for (const f of pages) {
 const slugify = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const ini = s => s.replace(/[^A-Za-zÀ-ÿ ]/g, "").split(/\s+/).filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
 const readJson = f => JSON.parse(fs.readFileSync(path.join(ROOT, "src/data", f), "utf8"));
-const ALBUM_PEDIA = readJson("album-pedia.json"); // DJs do Bayle All Stars Album que ainda não tinham verbete
+const HIDDEN = new Set(["vhoor"]); // fora da DJ Pédia por decisão do Lucas (categoria Funk removida); os dados seguem no álbum
+const ALBUM_PEDIA = readJson("album-pedia.json").filter(a => !HIDDEN.has(a.slug)); // DJs do Bayle All Stars Album que ainda não tinham verbete
 const DJLIST = [...readJson("djs.json"), ...readJson("curitiba.json").map(d => ({ ...d, curitiba: true })), ...ALBUM_PEDIA.map(a => ({ nome: a.nome, estilo: a.genero, grupo: a.grupo, album: a }))];
 const PROFILES = Object.fromEntries(readJson("djpedia.json").map(p => [p.slug, p]));
 const NI = "não informado";
