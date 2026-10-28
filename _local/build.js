@@ -277,7 +277,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   [...DJLIST].sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d));
   const FIRST = ["House", "Techno"];
   const letters = Object.keys(groups).sort((a, b) =>
-    (a === "Bayle Curitibano") - (b === "Bayle Curitibano") ||
+    (b === "Bayle Curitibano") - (a === "Bayle Curitibano") || // Baile Curitibano abre a lista
     ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
     groups[b].length - groups[a].length || a.localeCompare(b, "pt-BR"));
   const gid = g => slugify(g);
