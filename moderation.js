@@ -5,7 +5,8 @@
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const LABEL = { published: "Publicado", review: "Em análise", hidden: "Oculto" };
   const tabs = document.getElementById("mdTabs");
-  let posts = [], apps = [], filter = "todos", tab = "posts";
+  let posts = [], apps = [], filter = "todos", tab = "posts", cursor = null, request = 0;
+  const more = document.getElementById("mdMore");
   const toast = m => { const t = document.createElement("div"); t.className = "af-toast"; t.setAttribute("role", "status"); t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2800); };
   const when = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
 
@@ -47,27 +48,29 @@
       </div></article>`).join("") : `<p class="af-empty">Nada para moderar neste filtro.</p>`;
   }
 
-  async function load() {
+  async function load(append=false) {
+    const revision=++request, section=tab;
+    more.disabled=true;
     try {
-      const [data, ap] = await Promise.all([BRB.owner("mod_list"), BRB.owner("app_list")]);
-      posts = data?.posts || []; apps = ap?.applications || []; tabs.hidden = false;
-      const pend = apps.filter(a => a.status === "pending").length, flagged = posts.filter(p => p.status !== "hidden").length;
-      const cnt = (k, n) => { const b = tabs.querySelector('[data-count="' + k + '"]'); b.textContent = n; b.hidden = !n; };
-      cnt("posts", flagged); cnt("apps", pend);
-      filterBar.hidden = tab !== "posts";
-      status.textContent = tab === "apps" ? `${apps.length} candidatura${apps.length === 1 ? "" : "s"}, ${pend} em análise.` : `${posts.length} post${posts.length === 1 ? "" : "s"} em moderação (até 20, mais recentes primeiro).`;
+      const data=await BRB.moderation(section,filter,append?cursor:null);
+      if(revision!==request)return;
+      if(section==='apps')apps=append?apps.concat(data.items):data.items;
+      else posts=append?posts.concat(data.items):data.items;
+      cursor=data.next;tabs.hidden=false;filterBar.hidden=tab!=='posts';more.hidden=!cursor;
+      const rows=section==='apps'?apps:posts;
+      status.textContent=`${rows.length} de ${data.total} ${section==='apps'?'candidaturas':'posts'} neste filtro.`;
       render();
-    } catch (e) {
-      filterBar.hidden = true; tabs.hidden = true; list.innerHTML = "";
-      status.textContent = /restrito|Entre|conta/i.test(e.message) ? "Acesso restrito ao owner. Entre com a sua conta." : e.message;
-    }
+    } catch(e) {
+      if(revision!==request)return;
+      status.textContent=e.message;more.hidden=true;
+      if(!append){posts=[];apps=[];render();}
+    } finally {if(revision===request)more.disabled=false;}
   }
-
-  tabs.addEventListener("click", e => {
-    const b = e.target.closest("[data-tab]"); if (!b) return;
-    tab = b.dataset.tab; tabs.querySelectorAll("[data-tab]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-    filterBar.hidden = tab !== "posts"; render();
-    status.textContent = tab === "apps" ? `${apps.length} candidatura${apps.length === 1 ? "" : "s"}, ${apps.filter(a => a.status === "pending").length} em análise.` : `${posts.length} post${posts.length === 1 ? "" : "s"} em moderação (até 20, mais recentes primeiro).`;
+  more.onclick=()=>load(true);
+  tabs.addEventListener('click',e=>{
+    const b=e.target.closest('[data-tab]');if(!b)return;
+    tab=b.dataset.tab;tabs.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+    load();
   });
   list.addEventListener("click", async e => {
     const appCard = e.target.closest("[data-app]");
@@ -94,7 +97,7 @@
   filterBar.addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
     if (b.id === "mdRefresh") return load();
-    filter = b.dataset.f; filterBar.querySelectorAll("[data-f]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); render();
+    filter = b.dataset.f; filterBar.querySelectorAll("[data-f]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); load();
   });
 
   (async () => {
