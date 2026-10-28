@@ -17,7 +17,7 @@
     list.innerHTML = apps.length ? apps.map(a => {
       const d = a.data || {}, quero = [].concat(d.quero || []).filter(Boolean);
       return `<article class="md-card" data-app="${esc(a.id)}">
-        <div class="md-head"><span class="md-badge ${a.status === "approved" ? "published" : a.status === "rejected" ? "hidden" : "review"}">${({ pending: "Em análise", approved: "Aprovada", rejected: "Recusada" })[a.status] || esc(a.status)}</span><span class="mono dim">${when(a.created_at)}</span></div>
+        <div class="md-head"><span class="md-badge ${a.status === "approved" ? "published" : a.status === "rejected" || a.status === "removed" ? "hidden" : "review"}">${({ pending: "Em análise", approved: "Aprovada", rejected: "Recusada", removed: "Membro excluído" })[a.status] || esc(a.status)}</span><span class="mono dim">${when(a.created_at)}</span></div>
         <h3>${esc(d.nome || "Sem nome")}</h3>
         <p class="mono dim">${FIELDS.map(([k, l]) => d[k] ? l + ": " + esc(d[k]) : "").filter(Boolean).join(" · ")}</p>
         ${quero.length ? `<ul class="md-coms">${quero.map(q => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}
@@ -37,7 +37,7 @@
         <div class="md-head"><span class="md-badge published">Membro</span><span class="mono dim">${m.mailed_at ? "E-mail enviado em " + when(m.mailed_at) : "E-mail ainda não enviado"}</span></div>
         <h3>${esc(d.nome || "Sem nome")}</h3>
         <p class="mono dim">${FIELDS.map(([k, l]) => d[k] ? l + ": " + esc(d[k]) : "").filter(Boolean).join(" · ")}</p>
-        <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-mail>${m.mailed_at ? "Reenviar e-mail de aprovação" : "Enviar e-mail de aprovação"}</button></div></article>`;
+        <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-mail>${m.mailed_at ? "Reenviar e-mail de aprovação" : "Enviar e-mail de aprovação"}</button><button type="button" class="btn btn-ghost af-sm md-danger" data-remove>Excluir membro</button></div></article>`;
     }).join("") : `<p class="af-empty">Nenhum membro aprovado ainda.</p>`;
   }
 
@@ -94,6 +94,13 @@
   list.addEventListener("click", async e => {
     const memberCard = e.target.closest("[data-member]");
     if (memberCard) {
+      const rm = e.target.closest("[data-remove]");
+      if (rm) {
+        if (!confirm("Excluir este membro? Ele perde o selo BRB Clubber e não poderá mais comentar no Spotted.")) return;
+        try { rm.disabled = true; await BRB.removeMember(memberCard.dataset.member); toast("Membro excluído."); await load(); }
+        catch (err) { toast(err.message); rm.disabled = false; }
+        return;
+      }
       const b = e.target.closest("[data-mail]"); if (!b) return;
       if (!confirm("Enviar o e-mail de parabéns para este membro?")) return;
       try { b.disabled = true; await BRB.sendApprovalMail(memberCard.dataset.member); toast("E-mail enviado."); await load(); }

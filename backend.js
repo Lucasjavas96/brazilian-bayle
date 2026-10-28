@@ -46,6 +46,11 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar os membros.');
       return data;
     },
+    async removeMember(id) {
+      const { data, error } = await client.rpc('brb_members', { action: 'remove', payload: { id } });
+      if (error) throw new Error(error.message || 'Não foi possível excluir o membro.');
+      return data;
+    },
     async sendApprovalMail(id) {
       const { data: s } = await client.auth.getSession();
       const token = s?.session?.access_token;
