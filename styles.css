@@ -2529,10 +2529,11 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .sp-card.flipped .sp-front{visibility:hidden;transition:visibility 0s linear .35s}
 .sp-card:not(.flipped) .sp-back{visibility:hidden;transition:visibility 0s linear .35s}
 .sp-card.flipped .sp-back{visibility:visible;transition:visibility 0s linear 0s}
-/* comentários em duas colunas, como no Instagram: nome com selo à esquerda (1/3), texto à direita (2/3) */
-.sp-back .sp-coms li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:12px;align-items:start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+/* comentários em duas colunas: nome e selo pequeno à esquerda, texto à direita (ajustado à mão no teste local) */
+.sp-back{--col-nome:.9fr;--col-texto:1.75fr;--gap-col:2px;--tam-selo:5px;--tam-nome:10px;--tam-texto:11px;--gap-linha:9px;--pad-selo:2px 5px}
+.sp-back .sp-coms li{display:grid;grid-template-columns:minmax(0,var(--col-nome)) minmax(0,var(--col-texto));column-gap:var(--gap-col);align-items:start;padding:var(--gap-linha) 0;border-bottom:1px solid rgba(255,255,255,.07)}
 .sp-back .sp-coms li.sp-empty{display:block}
-.sp-back .sp-cwho{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
-.sp-back .sp-cwho b{margin:0;overflow-wrap:anywhere;line-height:1.25}
-.sp-back .sp-cwho .sp-owner,.sp-back .sp-cwho .sp-clubber{margin:0;white-space:nowrap}
-.sp-back .sp-ctx{min-width:0;overflow-wrap:anywhere}
+.sp-back .sp-cwho{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:4px;min-width:0}
+.sp-back .sp-cwho b{font-size:var(--tam-nome);margin:0;overflow-wrap:anywhere;line-height:1.25}
+.sp-back .sp-cwho .sp-owner,.sp-back .sp-cwho .sp-clubber{font-size:var(--tam-selo);padding:var(--pad-selo);margin:0;white-space:nowrap}
+.sp-back .sp-ctx{font-size:var(--tam-texto);min-width:0;overflow-wrap:anywhere}
