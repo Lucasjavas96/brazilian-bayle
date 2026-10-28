@@ -41,6 +41,23 @@
       if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');
       return data;
     },
+    async members() {
+      const { data, error } = await client.rpc('brb_members', { action: 'list', payload: {} });
+      if (error) throw new Error(error.message || 'Não foi possível carregar os membros.');
+      return data;
+    },
+    async sendApprovalMail(id) {
+      const { data: s } = await client.auth.getSession();
+      const token = s?.session?.access_token;
+      if (!token) throw new Error('Entre com a conta de owner.');
+      const r = await fetch(BRB_CONFIG.url + '/functions/v1/brb-approval-mail', {
+        method: 'POST', headers: { apikey: BRB_CONFIG.publishableKey, Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      });
+      const body = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(body.error || 'Não foi possível enviar o e-mail.');
+      return body;
+    },
     async rpc(action, payload = {}) {
       const { data, error } = await client.rpc('brb_action', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível enviar. Tente novamente.');

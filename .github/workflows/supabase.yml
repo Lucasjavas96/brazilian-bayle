@@ -75,6 +75,10 @@ jobs:
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         run: supabase functions deploy brb-support --project-ref bereyocdqacudfvazdpa --no-verify-jwt --use-api
+      - name: Deploy approval mail endpoint
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: supabase functions deploy brb-approval-mail --project-ref bereyocdqacudfvazdpa --no-verify-jwt --use-api
       - name: Update branded authentication emails
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}

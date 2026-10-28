@@ -5,14 +5,14 @@
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const LABEL = { published: "Publicado", review: "Em análise", hidden: "Oculto" };
   const tabs = document.getElementById("mdTabs");
-  let posts = [], apps = [], filter = "todos", tab = "posts", cursor = null, request = 0;
+  let posts = [], apps = [], members = [], filter = "todos", tab = "posts", cursor = null, request = 0;
   const more = document.getElementById("mdMore");
   const toast = m => { const t = document.createElement("div"); t.className = "af-toast"; t.setAttribute("role", "status"); t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2800); };
   const when = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
 
   const shown = () => posts.filter(p => filter === "todos" || (filter === "denunciado" ? p.reports > 0 : p.status === filter));
 
-  const FIELDS = [["email", "E-mail"], ["instagram", "Instagram"], ["cidade", "De onde vem"]];
+  const FIELDS = [["email", "E-mail"], ["telefone", "Celular"], ["instagram", "Instagram"], ["cidade", "De onde vem"]];
   function renderApps() {
     list.innerHTML = apps.length ? apps.map(a => {
       const d = a.data || {}, quero = [].concat(d.quero || []).filter(Boolean);
@@ -30,7 +30,19 @@
     }).join("") : `<p class="af-empty">Nenhuma candidatura recebida ainda.</p>`;
   }
 
+  function renderMembers() {
+    list.innerHTML = members.length ? members.map(m => {
+      const d = m.data || {};
+      return `<article class="md-card" data-member="${esc(m.id)}">
+        <div class="md-head"><span class="md-badge published">Membro</span><span class="mono dim">${m.mailed_at ? "E-mail enviado em " + when(m.mailed_at) : "E-mail ainda não enviado"}</span></div>
+        <h3>${esc(d.nome || "Sem nome")}</h3>
+        <p class="mono dim">${FIELDS.map(([k, l]) => d[k] ? l + ": " + esc(d[k]) : "").filter(Boolean).join(" · ")}</p>
+        <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-mail>${m.mailed_at ? "Reenviar e-mail de aprovação" : "Enviar e-mail de aprovação"}</button></div></article>`;
+    }).join("") : `<p class="af-empty">Nenhum membro aprovado ainda.</p>`;
+  }
+
   function render() {
+    if (tab === "members") return renderMembers();
     if (tab === "apps") return renderApps();
     const rows = shown();
     list.innerHTML = rows.length ? rows.map(p => `<article class="md-card" data-id="${esc(p.id)}">
@@ -52,6 +64,13 @@
     const revision=++request, section=tab;
     more.disabled=true;
     try {
+      if(section==='members'){
+        const data=await BRB.members();
+        if(revision!==request)return;
+        members=data.members||[];cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
+        status.textContent=`${members.length} membro${members.length===1?'':'s'} aprovado${members.length===1?'':'s'}.`;
+        render();return;
+      }
       const data=await BRB.moderation(section,filter,append?cursor:null);
       if(revision!==request)return;
       if(section==='apps')apps=append?apps.concat(data.items):data.items;
@@ -63,7 +82,7 @@
     } catch(e) {
       if(revision!==request)return;
       status.textContent=e.message;more.hidden=true;
-      if(!append){posts=[];apps=[];render();}
+      if(!append){posts=[];apps=[];members=[];render();}
     } finally {if(revision===request)more.disabled=false;}
   }
   more.onclick=()=>load(true);
@@ -73,6 +92,14 @@
     load();
   });
   list.addEventListener("click", async e => {
+    const memberCard = e.target.closest("[data-member]");
+    if (memberCard) {
+      const b = e.target.closest("[data-mail]"); if (!b) return;
+      if (!confirm("Enviar o e-mail de parabéns para este membro?")) return;
+      try { b.disabled = true; await BRB.sendApprovalMail(memberCard.dataset.member); toast("E-mail enviado."); await load(); }
+      catch (err) { toast(err.message); b.disabled = false; }
+      return;
+    }
     const appCard = e.target.closest("[data-app]");
     if (appCard) {
       const b = e.target.closest("[data-ast]"); if (!b) return;

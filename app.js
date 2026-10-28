@@ -389,15 +389,17 @@ function simpleForm({ form, btn, msg, key, checks, done }) {
 }
 const igOk = v => /^@?[a-z0-9._]{2,30}$/i.test(v.trim());
 const mailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+const phoneOk = v => { const d = v.replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, ''); return /^\d{10,11}$/.test(d) && /^[1-9]{2}/.test(d); };
 simpleForm({
   form: "#applyForm", btn: "#applyBtn", msg: "#applyMsg", key: "bb_apps",
   checks: () => [
     ["eaName", () => $("#aName").value.trim().length >= 2, "Escreva seu nome.", "#aName"],
     ["eaIg", () => igOk($("#aIg").value), "Use o formato @seu.perfil.", "#aIg"],
     ["eaEmail", () => mailOk($("#aEmail").value), "Confira o e-mail.", "#aEmail"],
+    ["eaPhone", () => phoneOk($("#aPhone").value), "Informe o celular com DDD.", "#aPhone"],
     ["eaConsent", () => $("#aConsent").checked, "Confirme que tem 18 anos ou mais e aceite os termos.", "#aConsent"],
   ],
-  done: () => "<b>Candidatura recebida.</b> Seus dados foram enviados à equipe para análise. A seleção não garante aprovação automática.",
+  done: () => "<b>Candidatura recebida.</b> Seus dados foram enviados à equipe para análise. Cada e-mail só pode se candidatar uma vez. A seleção não garante aprovação automática.",
 });
 /* Candidatura guiada: mantém os campos e a validação do formulário original. */
 (() => {
@@ -407,6 +409,7 @@ simpleForm({
     ['aName', 'Como você se chama?', () => $('#aName').value.trim().length >= 2, 'Escreva seu nome.'],
     ['aIg', 'Qual é o seu Instagram?', () => igOk($('#aIg').value), 'Use o formato @seu.perfil.'],
     ['aEmail', 'Qual é o seu e-mail?', () => mailOk($('#aEmail').value), 'Confira o e-mail.'],
+    ['aPhone', 'Qual é o seu celular?', () => phoneOk($('#aPhone').value), 'Informe o celular com DDD.'],
     ['aCity', 'De onde você vem?', () => !!$('#aState').value && $('#aCityName').value.trim().length >= 2, 'Escolha o estado e escreva a cidade.'],
     ['aPlan', 'Por que quer fazer parte?', () => $$('#aPlan input:checked').length > 0, 'Marque pelo menos uma opção.'],
     ['aConsent', 'Podemos concluir?', () => $('#aConsent').checked, 'Confirme que tem 18 anos ou mais e aceite os termos.']
