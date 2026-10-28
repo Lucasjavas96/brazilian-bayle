@@ -54,6 +54,7 @@ p{max-width:68ch}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .cta-row.center{justify-content:center}
+@media(max-width:767px){.hero .hero-actions .hero-action-secondary{display:none}}
 .link-arrow{text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;white-space:nowrap}
 .link-arrow:hover{color:var(--y)}
 
