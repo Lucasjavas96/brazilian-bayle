@@ -84,7 +84,9 @@
     counts(); fit($("#abPages"), 3); document.fonts?.ready?.then(() => fit($("#abPages"), 3));
   }
   function counts() {
-    const got = Object.keys(S.coladas).length, reps = Object.values(S.coladas).reduce((a, n) => a + n - 1, 0);
+    // só conta cartas que ainda estão no álbum (uma carta retirada, como o Vhoor, pode seguir no inventário de quem a tirou)
+    const mine = Object.entries(S.coladas).filter(([s]) => CARDS[s]);
+    const got = mine.length, reps = mine.reduce((a, [, n]) => a + n - 1, 0);
     $("#abColadas").textContent = got; $("#abTotal").textContent = DATA.total; $("#abRep").textContent = reps;
     const giros = S.giros >= 99999 ? "∞" : S.giros; $("#abGiros").textContent = giros; $("#abGiros2").textContent = giros;
     $("#abSpin").disabled = !ready || spinning || S.giros <= 0;
@@ -92,7 +94,7 @@
     $("#abJogHint").textContent = !ready ? "Entre na sua conta para acessar seus giros e sua coleção." : S.giros > 0 ? "Gire para sortear uma figurinha. O resultado fica salvo automaticamente na sua conta." : "Você usou todos os giros disponíveis. Sua coleção continua salva.";
     DATA.pages.forEach(p => { const n = p.djs.filter(d => d.id && S.coladas[d.id]).length; $(`[data-count="${p.sigla}"]`).innerHTML = `<b>${n}</b>/${p.djs.length}`; });
     const repsEl = $("#abReps"); repsEl.hidden = !reps;
-    $("#abRepsGrid").innerHTML = Object.entries(S.coladas).filter(([, n]) => n > 1).map(([s, n]) => `<div class="ab-slot filled">${mini(CARDS[s])}<span class="ab-x mono">×${n - 1}</span></div>`).join(""); fit($("#abRepsGrid"), 3);
+    $("#abRepsGrid").innerHTML = mine.filter(([, n]) => n > 1).map(([s, n]) => `<div class="ab-slot filled">${mini(CARDS[s])}<span class="ab-x mono">×${n - 1}</span></div>`).join(""); fit($("#abRepsGrid"), 3);
   }
 
   /* ---------- sons: trance (arpejo, supersaw, caixa), sintetizados no navegador, sem arquivos ---------- */
