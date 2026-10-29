@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carta dourada · 5 variações (só local)</title>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{--y:#FFD400;--g:#009C3B;--b:#002776;--pc1:#d9b45a;--pc2:#c9ced6;--pc3:#c98a55}
+*{box-sizing:border-box;margin:0}
+body{background:#050605;color:#f4f4f0;font-family:'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+header.top{padding:28px 20px 10px;max-width:1000px;margin:0 auto}
+header.top h1{font-family:'Syne',sans-serif;font-size:26px;text-transform:uppercase}
+header.top p{color:#aaa;margin-top:6px;font-size:14px}
+nav.idx{position:sticky;top:0;z-index:50;background:#050605ee;backdrop-filter:blur(6px);padding:10px 20px;display:flex;gap:8px;justify-content:center;border-bottom:1px solid #222}
+nav.idx a{color:#000;background:var(--y);text-decoration:none;font-weight:800;border-radius:99px;padding:4px 14px;font-size:13px}
+section.op{padding:54px 20px 60px;border-bottom:1px solid #1d1e1d}
+section.op>h2{max-width:900px;margin:0 auto 6px;font-family:'Syne',sans-serif;font-size:20px;text-transform:uppercase}
+section.op>h2 b{color:var(--y)}
+section.op>p.d{max-width:900px;margin:0 auto 34px;color:#9a9a94;font-size:13px}
+.podium{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,2vw,22px);align-items:end}
+.mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em}
+.c1{--c:var(--pc1)}.c2{--c:var(--pc2)}.c3{--c:var(--pc3)}
+.p1{order:2}.p2{order:1}.p3{order:3}
+/* carta 6 (base de todas) */
+.cd{container-type:inline-size;position:relative;background:linear-gradient(160deg,#2b2412,#0e0d09 70%);border:2px solid var(--c);border-radius:16px;padding:3cqw;box-shadow:0 0 30px color-mix(in srgb,var(--c) 30%,transparent);display:flex;flex-direction:column;overflow:visible}
+.cd.p1{transform:translateY(-18px)}
+.ph{aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--c);position:relative}
+.ph img.f{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.sc{position:absolute;top:-12px;right:-8px;z-index:5;background:var(--c);color:#000;border-radius:12px;padding:2px 12px}
+.sc span{font-family:'Big Shoulders',Impact,sans-serif;font-weight:900;font-size:clamp(22px,13cqw,38px);line-height:1.1}
+.t{padding:3cqw 1cqw 1cqw;text-align:center;position:relative;z-index:2}
+.nm{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(13px,7cqw,20px);line-height:1.15}
+.st{margin-top:4px;font-size:max(7px,3.2cqw);color:var(--c)}
+/* timbre igual ao do topo do site */
+.wm{display:grid;justify-items:center;line-height:1.05;text-align:center;position:relative;z-index:3}
+.wm b{font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(9px,6.4cqw,16px);color:var(--y);white-space:nowrap}
+.wm b em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;text-transform:none;font-size:1.15em;color:var(--y)}
+.wm span{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:max(6px,3.3cqw);color:#fff;margin-top:2px;white-space:nowrap}
+.wm.l{justify-items:start;text-align:left}
+.papa{display:block;mix-blend-mode:screen;object-fit:contain}
+/* V1 timbre centrado */
+.v1 .wm{margin:1cqw 0 3cqw}
+/* V2 papagaio + timbre */
+.v2 .top{display:flex;align-items:center;gap:3cqw;margin:0 0 3cqw}
+.v2 .papa{height:13cqw;width:auto;flex:none}
+/* V3 fita */
+.v3 .fita{height:5px;border-radius:9px;background:linear-gradient(90deg,var(--g) 0 34%,var(--y) 34% 67%,var(--b) 67%);margin:1cqw 0 3cqw}
+.v3 .wm{margin:0 0 3cqw}
+.v3 .ft{display:flex;justify-content:space-between;font-size:max(6px,2.8cqw);color:#8d8a80;padding:0 1cqw 1cqw;letter-spacing:.14em}
+.v3 .ft b{color:var(--c)}
+/* V4 timbre sobre a foto */
+.v4 .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#000c 0,#0000 38%,#0000 70%,#0009 100%);z-index:1}
+.v4 .ph .wm{position:absolute;top:3cqw;left:0;right:0;z-index:2}
+.v4 .ph .papa{position:absolute;right:2cqw;bottom:2cqw;height:24cqw;z-index:2;opacity:.75}
+/* V5 logo BR + marca d'água */
+.v5{overflow:hidden}
+.v5::before{content:"";position:absolute;inset:0;background:url(/assets/papagaio-refletivo-v2.png) 50% 55%/auto 92% no-repeat;opacity:.13;mix-blend-mode:screen;pointer-events:none}
+.v5 .logo{display:block;height:15cqw;width:auto;margin:1cqw auto 3cqw;position:relative}
+.v5 .rod{position:relative;z-index:2;margin-top:2cqw;padding-bottom:1cqw}
+.v5 .rod .wm b{font-size:clamp(8px,5cqw,13px)}
+.v5.cd{overflow:visible}
+.v5 .wrap{position:absolute;inset:0;border-radius:14px;overflow:hidden;pointer-events:none}
+.v5 .wrap::before{content:"";position:absolute;inset:0;background:url(/assets/papagaio-refletivo-v2.png) 50% 55%/auto 92% no-repeat;opacity:.13;mix-blend-mode:screen}
+.v5::before{display:none}
+@media(max-width:600px){.cd{border-radius:10px;padding:5px}.sc{right:-4px;padding:1px 6px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Carta dourada · 5 variações</h1>
+  <p>Mesma carta da opção 6, agora com o timbre Brazilian Bayle igual ao do topo do site (Syne amarelo + Bayle em itálico + "A pista é brasileira e sempre vai ser") e artefatos da marca. DJs e notas são exemplo.</p>
+</header>
+<nav class="idx"><a href="#v1">1</a><a href="#v2">2</a><a href="#v3">3</a><a href="#v4">4</a><a href="#v5">5</a></nav>
+<main id="root"></main>
+<script>
+const D=[{pos:1,n:"Alok",s:"House",nota:"9,42",slug:"alok"},{pos:2,n:"Vintage Culture",s:"House",nota:"9,31",slug:"vintage-culture"},{pos:3,n:"Mochakk",s:"Tech house",nota:"9,18",slug:"mochakk"}];
+const ord=[D[1],D[0],D[2]];
+const WM=(tag=true,cls="")=>`<p class="wm ${cls}"><b>Brazilian <em>Bayle</em></b>${tag?"<span>A pista é brasileira e sempre vai ser</span>":""}</p>`;
+const PAPA=`<img class="papa" src="/assets/papagaio-refletivo-v2.png" alt="">`;
+const img=d=>`<img class="f" src="/assets/djs/${d.slug}.webp" alt="${d.n}">`;
+const sc=d=>`<div class="sc"><span>${d.nota}</span></div>`;
+const tx=d=>`<div class="t"><p class="nm">${d.n}</p><p class="st mono">${d.pos}º lugar · ${d.s}</p></div>`;
+const V=[
+["Timbre centrado","O timbre do topo do site, inteiro (marca e frase), centralizado acima da foto.",
+ d=>`<div class="cd v1 p${d.pos} c${d.pos}">${sc(d)}${WM(true)}<div class="ph">${img(d)}</div>${tx(d)}</div>`],
+["Papagaio + timbre","Papagaio verde refletivo ao lado do nome Brazilian Bayle, em linha, no topo.",
+ d=>`<div class="cd v2 p${d.pos} c${d.pos}">${sc(d)}<div class="top">${PAPA}${WM(true,"l")}</div><div class="ph">${img(d)}</div>${tx(d)}</div>`],
+["Fita verde, amarela e azul","Fita com as cores do Brasil sob o timbre e rodapé estilo carta do álbum.",
+ d=>`<div class="cd v3 p${d.pos} c${d.pos}">${sc(d)}<div class="fita"></div>${WM(true)}<div class="ph">${img(d)}</div>${tx(d)}<div class="ft mono"><b>★ ${d.pos}º</b><span>Brasileirão dos DJs · 2026</span></div></div>`],
+["Timbre sobre a foto","O timbre fica por cima da foto, no alto, com o papagaio no canto de baixo da foto.",
+ d=>`<div class="cd v4 p${d.pos} c${d.pos}">${sc(d)}<div class="ph">${img(d)}${WM(false)}${PAPA}</div>${tx(d)}</div>`],
+["Logo BR + marca d'água","Logo BR com o papagaio no topo, papagaio gigante apagado no fundo da carta e timbre no rodapé.",
+ d=>`<div class="cd v5 p${d.pos} c${d.pos}"><div class="wrap"></div>${sc(d)}<img class="logo" src="/assets/logo-original-transparente.png" alt="BR Bayle"><div class="ph">${img(d)}</div>${tx(d)}<div class="rod">${WM(true)}</div></div>`]
+];
+const root=document.getElementById("root");
+V.forEach(([t,desc,f],i)=>root.insertAdjacentHTML("beforeend",`<section class="op" id="v${i+1}"><h2><b>Variação ${i+1}</b> · ${t}</h2><p class="d">${desc}</p><div class="podium">${ord.map(f).join("")}</div></section>`));
+</script>
+</body>
+</html>
