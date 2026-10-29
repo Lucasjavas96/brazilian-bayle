@@ -54,7 +54,7 @@ p{max-width:68ch}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .cta-row.center{justify-content:center}
-@media(max-width:767px){.hero .hero-actions .hero-action-secondary{display:none}}
+
 .link-arrow{text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;white-space:nowrap}
 .link-arrow:hover{color:var(--y)}
 
@@ -2555,3 +2555,7 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 #genero-bayle-curitibano .wiki-item .ge-badge{font-size:21px}
 #genero-bayle-curitibano .wiki-item .wiki-name,#genero-bayle-curitibano .wiki-item:has(.wiki-portrait) .wiki-name{font-size:19.5px}
 #genero-bayle-curitibano .wiki-item .wiki-meta,#genero-bayle-curitibano .wiki-item:has(.wiki-portrait) .wiki-meta{font-size:15px}
+/* Hero: 4 botões iguais (241x50) em grade 2x2 no PC; no celular só Avaliar DJs e Spotted Bayle */
+.hero .hero-actions{display:grid;grid-template-columns:repeat(2,241px);grid-template-rows:repeat(2,50px);grid-auto-flow:column;gap:12px;max-width:none;align-items:stretch;justify-content:start}
+.hero .hero-actions .btn{flex:none;width:241px;height:50px;min-width:0;min-height:50px;margin:0;padding:0 8px;white-space:nowrap;font-size:12px;letter-spacing:.06em;line-height:1}
+@media(max-width:767px){.hero .hero-actions{grid-template-columns:241px;grid-template-rows:repeat(2,50px)}.hero .hero-actions .hero-pc-only{display:none}}
