@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pódio · 10 opções (só local)</title>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{--y:#FFD400;--gold:#d9b45a;--silver:#c9ced6;--bronze:#c98a55;--k:#0c0d0c;--k2:#17181a;--ink:#f4f4f0}
+*{box-sizing:border-box;margin:0}
+body{background:#050605;color:var(--ink);font-family:'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+header.top{padding:28px 20px 10px;max-width:1100px;margin:0 auto}
+header.top h1{font-family:'Syne',sans-serif;font-size:28px;text-transform:uppercase}
+header.top p{color:#aaa;margin-top:6px;font-size:14px}
+nav.idx{position:sticky;top:0;z-index:50;background:#050605ee;backdrop-filter:blur(6px);padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;border-bottom:1px solid #222}
+nav.idx a{color:#000;background:var(--y);text-decoration:none;font-weight:800;border-radius:99px;padding:4px 12px;font-size:13px}
+section.op{padding:48px 20px 56px;border-bottom:1px solid #1d1e1d}
+section.op>h2{max-width:1100px;margin:0 auto 6px;font-family:'Syne',sans-serif;font-size:20px;text-transform:uppercase}
+section.op>h2 b{color:var(--y)}
+section.op>p.d{max-width:1100px;margin:0 auto 26px;color:#9a9a94;font-size:13px}
+.stage{max-width:900px;margin:0 auto}
+.mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em}
+.dj{font-family:'Syne',sans-serif;font-weight:800;line-height:1.1}
+.nt{font-family:'Big Shoulders Display','Big Shoulders',Impact,sans-serif;font-weight:900;font-variant-numeric:tabular-nums}
+img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.c1{--c:var(--gold)}.c2{--c:var(--silver)}.c3{--c:var(--bronze)}
+
+/* 1 Medalhões */
+.o1{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end;text-align:center}
+.o1 .p{display:flex;flex-direction:column;align-items:center;gap:8px}
+.o1 .ph{width:clamp(96px,17vw,150px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:4px solid var(--c);box-shadow:0 0 0 6px #ffffff10,0 14px 40px #000a}
+.o1 .p1 .ph{width:clamp(120px,22vw,200px)}
+.o1 .nt{font-size:clamp(40px,7vw,64px);color:var(--c);line-height:1}
+.o1 .p1 .nt{font-size:clamp(52px,9vw,84px)}
+.o1 .r{width:34px;height:34px;border-radius:50%;background:var(--c);color:#000;display:grid;place-items:center;font-weight:900;margin-top:-26px;z-index:2;border:3px solid var(--k)}
+/* 2 Degraus */
+.o2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:end}
+.o2 .p{display:flex;flex-direction:column;align-items:center;text-align:center}
+.o2 .ph{width:78%;aspect-ratio:1;border-radius:12px;overflow:hidden;margin-bottom:-26px;z-index:2;border:3px solid var(--c)}
+.o2 .step{width:100%;background:linear-gradient(180deg,var(--c),#0000 130%),#1a1b1a;border-radius:10px 10px 0 0;padding:38px 8px 18px;display:flex;flex-direction:column;align-items:center;gap:4px;color:#111}
+.o2 .p1 .step{height:260px}.o2 .p2 .step{height:210px}.o2 .p3 .step{height:175px}
+.o2 .step .dj{font-size:16px}.o2 .nt{font-size:46px;line-height:1}
+.o2 .rk{margin-top:auto;font-family:'Big Shoulders Display';font-weight:900;font-size:56px;opacity:.28;line-height:.8}
+/* 3 Retrato cheio */
+.o3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end}
+.o3 .p{position:relative;aspect-ratio:3/4.2;border-radius:16px;overflow:hidden;border:1px solid var(--c)}
+.o3 .p1{aspect-ratio:3/4.8}
+.o3 .p::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 45%,#000e 100%)}
+.o3 .in{position:absolute;left:0;right:0;bottom:0;padding:14px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:8px}
+.o3 .dj{font-size:clamp(14px,2vw,20px)}.o3 .nt{font-size:clamp(34px,5vw,52px);color:var(--c);line-height:.9}
+.o3 .tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--c);color:#000;font-weight:900;border-radius:99px;padding:2px 10px;font-size:13px}
+/* 4 Faixas */
+.o4{display:flex;flex-direction:column;gap:10px}
+.o4 .p{display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:16px;background:var(--k2);border-left:6px solid var(--c);border-radius:10px;padding:10px 18px 10px 10px;position:relative;overflow:hidden}
+.o4 .ph{width:64px;height:64px;border-radius:8px;overflow:hidden}
+.o4 .p1 .ph{width:64px}
+.o4 .bar{height:6px;background:#2a2b2a;border-radius:9px;margin-top:8px;overflow:hidden}
+.o4 .bar i{display:block;height:100%;background:var(--c);width:var(--w)}
+.o4 .nt{font-size:44px;color:var(--c);line-height:1}
+.o4 .pos{position:absolute;right:90px;top:-10px;font-family:'Big Shoulders Display';font-weight:900;font-size:90px;color:#ffffff09}
+/* 5 Hexágono */
+.o5{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end;text-align:center}
+.o5 .p{display:flex;flex-direction:column;align-items:center;gap:10px}
+.o5 .hx{position:relative;width:clamp(110px,20vw,180px);aspect-ratio:.866;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--c);padding:4px}
+.o5 .p1 .hx{width:clamp(140px,26vw,230px)}
+.o5 .hx>div{width:100%;height:100%;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);overflow:hidden}
+.o5 .seal{margin-top:-34px;z-index:2;width:62px;height:62px;border-radius:50%;background:var(--k);border:3px solid var(--c);display:grid;place-items:center;color:var(--c);font-size:26px}
+/* 6 Carta */
+.o6{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:end}
+.o6 .p{background:linear-gradient(160deg,#2b2412,#0e0d09 70%);border:2px solid var(--c);border-radius:16px;padding:10px;position:relative;box-shadow:0 0 30px color-mix(in srgb,var(--c) 30%,transparent)}
+.o6 .p1{transform:translateY(-18px)}
+.o6 .ph{aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--c)}
+.o6 .sc{position:absolute;top:-12px;right:-8px;background:var(--c);color:#000;border-radius:12px;padding:2px 12px}
+.o6 .sc .nt{font-size:34px;line-height:1.1}
+.o6 .t{padding:10px 4px 4px;text-align:center}.o6 .dj{font-size:15px}
+.o6 .st{font-size:10px;color:var(--c);margin-top:4px}
+/* 7 Painéis diagonais */
+.o7{display:grid;grid-template-columns:1fr 1.25fr 1fr;height:420px;gap:0}
+.o7 .p{position:relative;overflow:hidden;display:flex;align-items:flex-end;margin-left:-26px;clip-path:polygon(26px 0,100% 0,calc(100% - 26px) 100%,0 100%)}
+.o7 .p:first-child{margin-left:0}
+.o7 .p img{position:absolute;inset:0;filter:grayscale(.7) contrast(1.05)}
+.o7 .p1 img{filter:none}
+.o7 .p::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 35%,#000d)}
+.o7 .big{position:absolute;top:-6px;left:30px;font-family:'Big Shoulders Display';font-weight:900;font-size:160px;color:transparent;-webkit-text-stroke:2px var(--c);z-index:2;line-height:1}
+.o7 .in{position:relative;z-index:2;padding:0 40px 20px;width:100%}
+.o7 .nt{font-size:56px;color:var(--c);line-height:1}.o7 .dj{font-size:18px}
+/* 8 Arco */
+.o8{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end;text-align:center}
+.o8 .ar{aspect-ratio:.72;border-radius:999px 999px 14px 14px;overflow:hidden;border:3px solid var(--c);position:relative}
+.o8 .p1 .ar{aspect-ratio:.62}
+.o8 .pl{margin:-34px 10px 0;position:relative;z-index:2;background:var(--c);color:#111;border-radius:12px;padding:10px 6px}
+.o8 .pl .dj{font-size:15px}.o8 .pl .nt{font-size:42px;line-height:1}
+.o8 .md{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:3;background:#000a;color:var(--c);border:1px solid var(--c);border-radius:99px;padding:2px 12px;font-weight:800}
+/* 9 Ingresso */
+.o9{display:flex;flex-direction:column;gap:14px}
+.o9 .p{display:grid;grid-template-columns:150px 1fr 150px;background:var(--c);color:#111;border-radius:14px;overflow:hidden;position:relative;min-height:130px}
+.o9 .p::before,.o9 .p::after{content:"";position:absolute;width:26px;height:26px;border-radius:50%;background:#050605;left:calc(150px - 13px)}
+.o9 .p::before{top:-13px}.o9 .p::after{bottom:-13px}
+.o9 .ph{height:100%}
+.o9 .mid{padding:16px 22px;border-left:2px dashed #0006;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.o9 .mid .dj{font-size:24px}.o9 .mid small{font-size:11px}
+.o9 .rt{background:#0003;display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:2px dashed #0006}
+.o9 .rt .nt{font-size:60px;line-height:1}
+/* 10 Anel de nota */
+.o10{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center;align-items:end}
+.o10 .rg{position:relative;width:clamp(130px,24vw,210px);margin:0 auto;aspect-ratio:1}
+.o10 .p1 .rg{width:clamp(160px,30vw,260px)}
+.o10 svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.o10 .ph{position:absolute;inset:9%;border-radius:50%;overflow:hidden}
+.o10 .nt{font-size:clamp(44px,8vw,72px);line-height:1;margin-top:10px;color:#fff}
+.o10 .dj{font-size:15px;margin-top:2px}
+.o10 .p span.mono{color:var(--c);font-size:11px}
+.n{font-size:12px;color:#777;text-align:center;margin-top:20px}
+@media(max-width:640px){.o7{height:340px}.o7 .big{font-size:100px}.o7 .in{padding:0 28px 14px}.o7 .nt{font-size:36px}.o7 .dj{font-size:13px}.o9 .p{grid-template-columns:100px 1fr 90px}.o9 .p::before,.o9 .p::after{left:calc(100px - 13px)}.o9 .rt .nt{font-size:38px}.o9 .mid .dj{font-size:17px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Pódio do Brasileirão · 10 opções</h1>
+  <p>Página só de teste (localhost). Os 3 DJs e as notas abaixo são exemplo, só para ver o desenho. Me diga o número das opções que você gostou e o que pegar de cada uma (foto, enquadramento, nota, cores).</p>
+</header>
+<nav class="idx" id="idx"></nav>
+<main id="root"></main>
+<script>
+const D=[{pos:1,n:"Alok",s:"House",nota:"9.42",slug:"alok"},{pos:2,n:"Vintage Culture",s:"House",nota:"9.31",slug:"vintage-culture"},{pos:3,n:"Mochakk",s:"Tech house",nota:"9.18",slug:"mochakk"}];
+const img=d=>`<img src="/assets/djs/${d.slug}.webp" alt="${d.n}">`;
+const ord=[D[1],D[0],D[2]]; // 2-1-3
+const O=[
+["Medalhões","Foto redonda com aro de ouro, prata e bronze. O 1º maior, nota grande embaixo.",
+ `<div class="o1">${ord.map(d=>`<div class="p p${d.pos} c${d.pos}"><div class="ph">${img(d)}</div><div class="r">${d.pos}</div><p class="dj">${d.n}</p><p class="mono" style="font-size:10px;color:#999">${d.s}</p><p class="nt">${d.nota}</p></div>`).join("")}</div>`],
+["Degraus com foto","Foto quadrada apoiada num degrau de alturas diferentes, nota dentro do degrau.",
+ `<div class="o2">${ord.map(d=>`<div class="p p${d.pos} c${d.pos}"><div class="ph">${img(d)}</div><div class="step"><p class="dj">${d.n}</p><p class="nt">${d.nota}</p><span class="rk">${d.pos}</span></div></div>`).join("")}</div>`],
+["Retrato cheio","Foto em pé ocupando o card inteiro, nome e nota por cima num degradê escuro.",
+ `<div class="o3">${ord.map(d=>`<div class="p p${d.pos} c${d.pos}">${img(d)}<span class="tag">${d.pos}º</span><div class="in"><div><p class="dj">${d.n}</p><p class="mono" style="font-size:10px;color:#bbb">${d.s}</p></div><p class="nt">${d.nota}</p></div></div>`).join("")}</div>`],
+["Faixas de placar","Três linhas empilhadas, foto pequena à esquerda, barra mostrando a nota de 0 a 10.",
+ `<div class="o4">${D.map(d=>`<div class="p p${d.pos} c${d.pos}"><span class="pos">${d.pos}</span><div class="ph">${img(d)}</div><div><p class="dj">${d.n}</p><p class="mono" style="font-size:10px;color:#999">${d.s}</p><div class="bar"><i style="--w:${d.nota*10}%"></i></div></div><p class="nt">${d.nota}</p></div>`).join("")}</div>`],
+["Hexágonos","Foto recortada em hexágono com borda de cor e um selo redondo com a posição.",
+ `<div class="o5">${ord.map(d=>`<div class="p p${d.pos} c${d.pos}"><div class="hx"><div>${img(d)}</div></div><div class="seal nt">${d.pos}</div><p class="dj">${d.n}</p><p class="nt" style="font-size:44px;color:var(--c);line-height:1">${d.nota}</p></div>`).join("")}</div>`],
+["Carta dourada","Estilo figurinha do álbum: moldura metálica, nota num selo no canto, 1º mais alto.",
+ `<div class="o6">${ord.map(d=>`<div class="p p${d.pos} c${d.pos}"><div class="sc"><p class="nt">${d.nota}</p></div><div class="ph">${img(d)}</div><div class="t"><p class="dj">${d.n}</p><p class="st mono">${d.pos}º lugar · ${d.s}</p></div></div>`).join("")}</div>`],
+["Painéis diagonais","Três fatias inclinadas lado a lado, número gigante vazado atrás. Só o 1º em cor.",
+ `<div class="o7">${ord.map(d=>`<div class="p p${d.pos} c${d.pos}">${img(d)}<span class="big">${d.pos}</span><div class="in"><p class="dj">${d.n}</p><p class="nt">${d.nota}</p></div></div>`).join("")}</div>`],
+["Arco","Foto em arco (porta de catedral), medalha no topo e placa colorida com nome e nota.",
+ `<div class="o8">${ord.map(d=>`<div class="p p${d.pos} c${d.pos}"><div class="ar">${img(d)}<span class="md mono">${d.pos}º</span></div><div class="pl"><p class="dj">${d.n}</p><p class="nt">${d.nota}</p></div></div>`).join("")}</div>`],
+["Ingresso","Cada colocado é um ingresso de festa: foto no canhoto, nome no meio, nota no destaque.",
+ `<div class="o9">${D.map(d=>`<div class="p c${d.pos}"><div class="ph">${img(d)}</div><div class="mid"><small class="mono">${d.pos}º lugar · ${d.s}</small><p class="dj">${d.n}</p></div><div class="rt"><small class="mono">nota</small><p class="nt">${d.nota}</p></div></div>`).join("")}</div>`],
+["Anel de nota","A foto redonda tem um anel que enche conforme a nota (de 0 a 10). Nota enorme embaixo.",
+ `<div class="o10">${ord.map(d=>{const r=46,c=2*Math.PI*r,f=c*d.nota/10;return `<div class="p p${d.pos} c${d.pos}"><div class="rg"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="${r}" fill="none" stroke="#ffffff18" stroke-width="4"/><circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--c)" stroke-width="4" stroke-linecap="round" stroke-dasharray="${f} ${c}"/></svg><div class="ph">${img(d)}</div></div><p class="nt">${d.nota}</p><p class="dj">${d.n}</p><span class="mono">${d.pos}º · ${d.s}</span></div>`}).join("")}</div>`]
+];
+const root=document.getElementById("root"),idx=document.getElementById("idx");
+O.forEach(([t,d,h],i)=>{
+  root.insertAdjacentHTML("beforeend",`<section class="op" id="o${i+1}"><h2><b>Opção ${i+1}</b> · ${t}</h2><p class="d">${d}</p><div class="stage">${h}</div></section>`);
+  idx.insertAdjacentHTML("beforeend",`<a href="#o${i+1}">${i+1}</a>`);
+});
+</script>
+</body>
+</html>

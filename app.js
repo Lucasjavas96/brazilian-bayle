@@ -98,22 +98,23 @@ function rankAward(position) {
     : '<path d="M6 2h5l2 7-5 2-2-9zm12 0h-5l-2 7 5 2 2-9z" opacity=".65"/><circle cx="12" cy="15" r="7"/><circle cx="12" cy="15" r="5" fill="none" stroke="#000" stroke-opacity=".3"/><text x="12" y="18" text-anchor="middle" fill="#141414" font-size="9" font-family="sans-serif" font-weight="700">' + position + '</text>';
   return `<svg class="rank-award" viewBox="0 0 24 24" role="img" aria-label="${label}" fill="currentColor">${shape}</svg>`;
 }
+function podiumCard(pos, name, style, note, label) {
+  return `<div class="pod pc p${pos}" style="--c:var(--pc${pos})">
+    <div class="pc-score"><span class="pc-n" aria-label="${label}">${note}</span></div>
+    <p class="pc-brand mono">Brazilian Bayle</p>
+    <div class="pc-ph"><img src="/assets/djs/${slug(name)}.webp" alt="${name}" width="500" height="500" loading="lazy" decoding="async"></div>
+    <div class="pc-t"><p class="pc-name"><a href="/djpedia/${slug(name)}">${name}</a></p><p class="pc-st mono">${pos}º lugar · ${style}</p></div>
+  </div>`;
+}
 function renderPodium() {
   const el = $("[data-podium]"); if (!el) return;
   el.hidden = false;
   if(!officialRows.length){
    el.setAttribute('aria-label','DJs aguardando avaliações');
-   el.innerHTML = DJS.slice(0,3).map(([name,style],index)=>`<div class="pod pod-awaiting p${[2,1,3][index]}"><img src="/assets/djs/thumbs/${slug(name)}.webp" alt="${name}" width="96" height="96"><p class="pod-name">${name}</p><p class="pod-style mono">${style}</p><p class="led" aria-label="Sem nota">—</p><p class="pod-awaiting-status">Sem avaliações</p><a href="/ranking#votar" class="unrated-vote">Avaliar DJ →</a></div>`).join('');return;
+   el.innerHTML = DJS.slice(0,3).map(([name,style],index)=>podiumCard(index+1,name,style,"—","Sem nota")).join("");return;
   }
   el.setAttribute('aria-label','Os três primeiros da classificação');
-  el.innerHTML = officialRows.slice(0, 3).map(d => `
-    <div class="pod p${d.pos}">
-      ${rankAward(d.pos)}
-      <img class="pod-thumbnail" src="/assets/djs/thumbs/${slug(d.name)}.webp" alt="${d.name}" width="40" height="40" loading="lazy" decoding="async">
-      <p class="pod-name"><a href="/djpedia/${slug(d.name)}">${d.name}</a></p><p class="pod-style mono">${d.style}</p>
-      <p class="led" aria-label="nota ${fmt2(d.nota)}">${fmt2(d.nota)}</p>
-      <div class="pod-block"><div class="top" aria-hidden="true"></div><div class="face"><span class="num3d" aria-label="${d.pos}º lugar">${pad(d.pos)}</span></div></div>
-    </div>`).join("");
+  el.innerHTML = officialRows.slice(0, 3).map(d => podiumCard(d.pos, d.name, d.style, fmt2(d.nota), "nota " + fmt2(d.nota))).join("");
 }
 
 /* ---------- tabela ---------- */

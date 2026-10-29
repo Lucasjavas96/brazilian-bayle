@@ -12,6 +12,7 @@ http.createServer((q, r) => {
   // editor dos botões do Hero: só local, aberto com ?editar
   if (p === "/__editor.js") { r.writeHead(200, { "Content-Type": T[".js"], "Cache-Control": "no-store" }); return r.end(fs.readFileSync(path.join(__dirname, "editor-botoes.js"))); }
   if (p === "/__salvar" && q.method === "POST") { let b = ""; q.on("data", c => b += c); q.on("end", () => { fs.writeFileSync(path.join(__dirname, "botoes-hero.json"), b); r.writeHead(200); r.end("ok"); }); return; }
+  if (p === "/podio-opcoes") { r.writeHead(200, { "Content-Type": T[".html"], "Cache-Control": "no-store" }); return r.end(fs.readFileSync(path.join(__dirname, "podio-opcoes.html"))); }
   if (p.endsWith("/")) p += "index.html";
   let f = path.join(DIST, p);
   if (!path.extname(f) && fs.existsSync(f + ".html")) f += ".html";
