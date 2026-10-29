@@ -8249,5 +8249,35 @@
       "pagina": "https://commons.wikimedia.org/wiki/File:Gigi_Dag.jpg"
     },
     "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "genx",
+    "nome": "GenX",
+    "nome_civil": "Pedro Eugenio",
+    "origem": "Florianópolis, Santa Catarina",
+    "estilos": [
+      "Música eletrônica"
+    ],
+    "ativo_desde": "2017",
+    "resumo": "GenX é o nome artístico de Pedro Eugenio, DJ e produtor de Florianópolis. Começou a produzir em 2017, ainda na faculdade, e ficou conhecido por \"Pirate\", feita com o DJ Liu.",
+    "historia": [
+      "Pedro Eugenio, o GenX, começou a carreira como produtor musical em 2017, motivado pela paixão pela música eletrônica. Ainda cursava a UFSC quando lançou, com o amigo DJ Liu, sua primeira música, \"Pirate\".",
+      "A faixa fez sucesso e o levou a investir na carreira de DJ, que ele aprendeu usando o YouTube como escola. Segundo a imprensa catarinense, \"Pirate\" passou de 21 milhões de visualizações no Spotify e de 9,6 milhões de plays no YouTube, e está entre as músicas mais usadas em Reels no Instagram. Seu trabalho teve reconhecimento de Alok e Vintage Culture, que tocaram suas músicas.",
+      "Em 2021, lançou \"Back Around\" com a Universal Music, em parceria com os DJs Liu e Vicenzi. Segundo a matéria de novembro de 2023, ele também lançou com o DJ Schillist o álbum Like a Dream, de oito faixas, que virou um curta-metragem."
+    ],
+    "faixas_marcantes": [
+      "Pirate (com DJ Liu)",
+      "Back Around (com Liu e Vicenzi)"
+    ],
+    "marcos": [
+      "2017: começa a produzir",
+      "2021: \"Back Around\", com a Universal Music"
+    ],
+    "fontes": [
+      {
+        "titulo": "ND Mais, Do funk ao eletrônico: DJs de Florianópolis conquistam espaço no cenário musical nacional (19/11/2023)",
+        "url": "https://ndmais.com.br/musica/djs-conquistam-espaco-no-cenario-musical/"
+      }
+    ]
   }
 ]
