@@ -33,7 +33,7 @@ let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textCont
 /* ---------- faixa ---------- */
 (() => {
   const el = $("#ticker"); if (!el) return;
-  const t = ["After do Solomun · 31.10", "BRB Clubbers", "Temporada 2026 · Carnaval a Carnaval", "Só DJs brasileiros",
+  const t = ["After do Solomun · 31.10", "BRB Clubbers", "O melhor network de música eletrônica do Brasil", "Só DJs brasileiros",
     "Os 5 melhores tocam na Final", "Avalie a performance dos DJs", "A pista é brasileira e sempre vai ser"];
   el.innerHTML = [...t, ...t].map(x => `<span>${x}</span>`).join("");
 })();
