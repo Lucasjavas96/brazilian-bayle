@@ -220,7 +220,7 @@
   const clubberNick = n => { const k = String(n || "").replace(/^@/, "").toLowerCase(); return !!k && clubbers.has(k) && k !== ownerNick; };
   const whoName = w => ownerNick && String(w).toLowerCase() === "@" + ownerNick ? `${ownerTag}<b class="sp-own-name">${esc(w)}</b>` : clubberNick(w) ? `${clubberTag}<b>${esc(w)}</b>` : `<b>${esc(w)}</b>`;
 
-  const seal = '<span class="sp-seal" aria-hidden="true"><img src="/assets/papagaio-refletivo-v2.png" alt=""><b>Brazilian<br>Bayle</b></span>';
+  const seal = '<span class="sp-seal" aria-hidden="true"><img src="/assets/papagaio-bayle.png" alt=""><b>Brazilian<br>Bayle</b></span>';
   function card(p) {
     const u = me(), mine = u && u.email === p.owner, my = u && p.myReaction, rs = reactors(p), emo = Object.fromEntries(REACTIONS.map(([k, e]) => [k, e]));
     const cnt = counts(p), total = Object.values(cnt).reduce((a, b) => a + b, 0), cm = comments(p);
