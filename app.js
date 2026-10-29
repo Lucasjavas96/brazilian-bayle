@@ -101,7 +101,7 @@ function rankAward(position) {
 function podiumCard(pos, name, style, note, label) {
   return `<div class="pod pc p${pos}" style="--c:var(--pc${pos})">
     <div class="pc-score"><span class="pc-n" aria-label="${label}">${note}</span></div>
-    <div class="pc-ph"><img src="/assets/djs/${slug(name)}.webp" alt="${name}" width="500" height="500" loading="lazy" decoding="async"><p class="pc-wm"><b>Brazilian <em>Bayle</em></b></p><img class="pc-papa" src="/assets/papagaio-refletivo-v2.png" alt="" width="96" height="192" loading="lazy" decoding="async"></div>
+    <div class="pc-ph"><img src="/assets/djs/${slug(name)}.webp" alt="${name}" width="500" height="500" loading="lazy" decoding="async"><p class="pc-wm"><b>Brazilian <em>Bayle</em></b></p><img class="pc-papa" src="/assets/papagaio-bayle.png" alt="" width="96" height="192" loading="lazy" decoding="async"></div>
     <div class="pc-t"><p class="pc-name"><a href="/djpedia/${slug(name)}">${name}</a></p><p class="pc-st mono">${pos}º lugar · ${style}</p></div>
   </div>`;
 }
