@@ -234,7 +234,7 @@ const ini = s => s.replace(/[^A-Za-zÀ-ÿ ]/g, "").split(/\s+/).filter(Boolean).
 const readJson = f => JSON.parse(fs.readFileSync(path.join(ROOT, "src/data", f), "utf8"));
 const HIDDEN = new Set(["vhoor"]); // fora da DJ Pédia por decisão do Lucas (categoria Funk removida); os dados seguem no álbum
 const ALBUM_PEDIA = readJson("album-pedia.json").filter(a => !HIDDEN.has(a.slug)); // DJs do Bayle All Stars Album que ainda não tinham verbete
-const DJLIST = [...readJson("djs.json"), ...readJson("curitiba.json").map(d => ({ ...d, curitiba: true })), ...ALBUM_PEDIA.map(a => ({ nome: a.nome, estilo: a.genero, grupo: a.grupo, album: a }))];
+const DJLIST = [...readJson("djs.json"), ...readJson("curitiba.json").map(d => ({ ...d, curitiba: true })), ...ALBUM_PEDIA.map(a => ({ nome: a.nome, estilo: a.genero, grupo: a.grupo, album: a })), ...readJson("pedia-extra.json").map(e => ({ ...e, extra: true }))]; // pedia-extra: DJs só da DJ Pédia, sem figurinha
 const PROFILES = Object.fromEntries(readJson("djpedia.json").map(p => [p.slug, p]));
 const NI = "não informado";
 const DJ_PHOTOS = readJson("dj-photos.json");
@@ -270,9 +270,9 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const sorted = [...DJLIST].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
   // gênero principal = o primeiro da ficha; dentro de cada gênero, a ordem do ranking (notas da pré-temporada do app.js)
   const cap = g => g ? g[0].toUpperCase() + g.slice(1).toLowerCase() : "Outros";
-  const genreOf = d => d.curitiba ? "Bayle Curitibano" : d.album ? d.grupo : cap((PROFILES[slugify(d.nome)]?.estilos || [])[0] || d.estilo);
+  const genreOf = d => d.curitiba ? "Bayle Curitibano" : d.extra ? d.grupo : d.album ? d.grupo : cap((PROFILES[slugify(d.nome)]?.estilos || [])[0] || d.estilo);
   const rank = rankingOrder();
-  const pos = d => d.curitiba ? 1000 + DJLIST.indexOf(d) : d.album ? 2000 + d.album.ordem : (rank.indexOf(d.nome) + 1 || 999);
+  const pos = d => d.curitiba ? 1000 + DJLIST.indexOf(d) : d.extra ? 3000 + DJLIST.indexOf(d) : d.album ? 2000 + d.album.ordem : (rank.indexOf(d.nome) + 1 || 999);
   const groups = {};
   [...DJLIST].sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d));
   const FIRST = ["House", "Techno"];
@@ -320,7 +320,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     const full = list(p.historia).length > 0;
     const hist = full ? p.historia.map(x => `<p>${esc(x)}</p>`).join("")
       : `<p>Ainda não reunimos fontes confiáveis sobre a trajetória de ${esc(p.nome)}. Este verbete está em construção, e os campos sem informação aparecem como "não informado".</p>`;
-    const kind = d.curitiba ? "Bayle Curitibano" : d.album ? `Bayle All Stars Album · ${esc(d.album.paisNome)}` : `Brasileirão dos DJs · ${esc(d.estilo)}`;
+    const kind = d.curitiba ? "Bayle Curitibano" : d.extra ? `DJ Pédia · ${esc(d.pais)}` : d.album ? `Bayle All Stars Album · ${esc(d.album.paisNome)}` : `Brasileirão dos DJs · ${esc(d.estilo)}`;
     const credit = DJ_PHOTOS[s]?.source.startsWith("https:") ? `<a href="${esc(DJ_PHOTOS[s].source)}" target="_blank" rel="noopener">Perfil público do artista</a>` : img && foto ? `${esc(foto.credito)} · ${foto.pagina ? `<a href="${esc(foto.pagina)}" target="_blank" rel="noopener">${esc(foto.licenca)}</a>` : esc(foto.licenca)}` : "";
     writePage(`djpedia/${s}`, {
       path: `/djpedia/${s}`, nav: "djpedia", title: `${p.nome} · DJ Pédia`,
@@ -339,7 +339,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
         </figure>
         <p class="wiki-box-name">${esc(p.nome)}</p>
         <dl>${box.map(([k, val]) => `<div><dt>${k}</dt><dd${val === NI ? ' class="ni"' : ""}>${esc(val)}</dd></div>`).join("")}</dl>
-        ${d.curitiba ? "" : d.album ? `<a class="btn btn-k" href="/album">Ver no Bayle All Stars Album</a>` : `<a class="btn btn-k" href="/ranking#votar">Avaliar ${esc(p.nome)}</a><a class="link-arrow mono" href="/ranking#tabela">Ver no ranking →</a>`}
+        ${d.curitiba || d.extra ? "" : d.album ? `<a class="btn btn-k" href="/album">Ver no Bayle All Stars Album</a>` : `<a class="btn btn-k" href="/ranking#votar">Avaliar ${esc(p.nome)}</a><a class="link-arrow mono" href="/ranking#tabela">Ver no ranking →</a>`}
       </aside>
       <div class="wiki-main">
         <p class="mono g">${kind}</p>

@@ -201,5 +201,12 @@
     "source": "Fornecida pela Brazilian Bayle",
     "width": 500,
     "height": 500
+  },
+  "gigi-d-agostino": {
+    "path": "assets/djs/gigi-dagostino.webp",
+    "thumb": "assets/djs/thumbs/gigi-dagostino.webp",
+    "source": "Wikimedia Commons",
+    "width": 720,
+    "height": 720
   }
 }
