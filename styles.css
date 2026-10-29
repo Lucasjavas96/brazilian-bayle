@@ -2589,3 +2589,8 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .pc-ph{border:0;border-radius:14px 14px 0 0}
 .pc-t{padding:3cqw 3cqw 3.5cqw}
 @media(max-width:600px){.pc{padding:0}.pc-ph{border-radius:8px 8px 0 0}}
+
+/* Pódio: timbre no extremo inferior da foto, centralizado, 10% menor */
+.pc-wm{top:auto;bottom:1.2cqw}
+.pc-wm b{font-size:clamp(5.4px,4.05cqw,9.9px)}
+.pc-wm b{font-size:clamp(5.4px,3.2cqw,9px)}
