@@ -208,5 +208,12 @@
     "source": "Wikimedia Commons",
     "width": 720,
     "height": 720
+  },
+  "genx": {
+    "path": "assets/djs/genx.webp",
+    "thumb": "assets/djs/thumbs/genx.webp",
+    "source": "ND Mais",
+    "width": 720,
+    "height": 720
   }
 }
