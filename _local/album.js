@@ -21,6 +21,14 @@ const MIN_PAGE = 3; // abaixo disso, o país vai para o Resto do Mundo
 const slugify = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const tier = o => o >= 90 ? ["lendaria", "Lendária"] : o >= 85 ? ["epica", "Épica"] : o >= 80 ? ["rara", "Rara"] : ["comum", "Comum"];
 
+// OVR fixado: sobe todos os atributos 1 ponto por vez (teto 99), mantendo o perfil do DJ, até o OVR da régua
+// (15% SOM, HAR, ENE, SOF + 20% HYP e LEG) chegar ao valor fixado.
+const PESO = { SOM: .15, HAR: .15, ENE: .15, SOF: .15, HYP: .2, LEG: .2 };
+const ovrDe = n => Math.round(Object.entries(PESO).reduce((s, [k, p]) => s + p * n[k], 0));
+function liftAttrs(n, alvo) {
+  while (ovrDe(n) < alvo && Object.keys(PESO).some(k => n[k] < 99)) for (const k of Object.keys(PESO)) if (n[k] < 99) n[k]++;
+}
+
 module.exports = function albumData(ROOT) {
   const djs = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/album-djs.json"), "utf8")).djs;
   const cartas = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/album-cartas.json"), "utf8")).cartas;
@@ -47,6 +55,7 @@ module.exports = function albumData(ROOT) {
     d.flag = COUNTRIES[d.pais][1];
     const c = byName[d.nome]; if (!c) return;
     const n = nota(c.sinais), ovr = c.ovrManual || n.OVR; delete n.OVR; // ovrManual: OVR fixado pelo Lucas, vale sobre a régua
+    if (c.ovrManual) liftAttrs(n, c.ovrManual);
     const [cls, rar] = tier(ovr);
     d.id = c.slug;
     cards[c.slug] = { slug: c.slug, nome: c.nome, num: d.num, flag: c.pais, paisNome: c.paisNome, genero: c.genero, tag: c.tag, bpm: c.bpm,
