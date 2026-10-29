@@ -30,7 +30,8 @@
         "headlines": 3,
         "bpm": 128,
         "premios": 2
-      }
+      },
+      "ovrManual": 93
     },
     {
       "slug": "vintage-culture",
@@ -59,7 +60,8 @@
         "headlines": 2,
         "bpm": 124,
         "premios": 2
-      }
+      },
+      "ovrManual": 92
     },
     {
       "slug": "ferry-corsten",
@@ -292,7 +294,8 @@
         "festivais": 7,
         "headlines": 4,
         "bpm": 124
-      }
+      },
+      "ovrManual": 94
     },
     {
       "slug": "cat-dealers",
@@ -1955,7 +1958,8 @@
         "inicio": 2006,
         "selo": 1,
         "bpm": 125
-      }
+      },
+      "ovrManual": 96
     },
     {
       "slug": "atb",
@@ -2978,7 +2982,8 @@
         "headlines": 1,
         "hino": 1,
         "djmag": 1
-      }
+      },
+      "ovrManual": 92
     },
     {
       "slug": "hugel",
@@ -6499,7 +6504,8 @@
         "residencia": 1,
         "premios": 2,
         "bpm": 122
-      }
+      },
+      "ovrManual": 94
     },
     {
       "slug": "vini-vici",

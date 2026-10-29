@@ -46,7 +46,7 @@ module.exports = function albumData(ROOT) {
     d.num = `${p.sigla} ${String(i + 1).padStart(2, "0")}`;
     d.flag = COUNTRIES[d.pais][1];
     const c = byName[d.nome]; if (!c) return;
-    const n = nota(c.sinais), ovr = n.OVR; delete n.OVR;
+    const n = nota(c.sinais), ovr = c.ovrManual || n.OVR; delete n.OVR; // ovrManual: OVR fixado pelo Lucas, vale sobre a régua
     const [cls, rar] = tier(ovr);
     d.id = c.slug;
     cards[c.slug] = { slug: c.slug, nome: c.nome, num: d.num, flag: c.pais, paisNome: c.paisNome, genero: c.genero, tag: c.tag, bpm: c.bpm,
