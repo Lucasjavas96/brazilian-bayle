@@ -270,12 +270,23 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const sorted = [...DJLIST].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
   // gênero principal = o primeiro da ficha; dentro de cada gênero, a ordem do ranking (notas da pré-temporada do app.js)
   const cap = g => g ? g[0].toUpperCase() + g.slice(1).toLowerCase() : "Outros";
-  const genreOf = d => d.curitiba ? "Bayle Curitibano" : d.extra ? d.grupo : d.album ? d.grupo : cap((PROFILES[slugify(d.nome)]?.estilos || [])[0] || d.estilo);
+  // só 4 seções de gênero (mais o Bayle Curitibano). Critério: os grooves de house (inclui bass, big room, EDM, disco, garage, pop)
+  // ficam em House; o que é mais rápido, escuro ou de rave (hard techno, breaks, drum and bass, jungle, dubstep) fica em Techno;
+  // trance, psy e o melódico eufórico ficam em Trance; Tech house segue só com os de tech house.
+  const SECTION = { "House": "House", "Deep house": "House", "Afro house": "House", "Bass house": "House", "Brazilian bass": "House", "Bass": "House", "Big room": "House", "Edm": "House", "EDM": "House", "Disco": "House", "Garage": "House", "Pop": "House", "Indie": "House", "Progressive": "House", "Eletrônica": "House", "Electro": "House",
+    "Techno": "Techno", "Hard techno": "Techno", "Breaks": "Techno", "Drum and bass": "Techno", "Jungle": "Techno", "Dubstep": "Techno",
+    "Tech house": "Tech house", "Trance": "Trance", "Psytrance": "Trance" };
+  const SECTION_OVERRIDE = { excision: "Techno", rezz: "Techno", skrillex: "Techno", subtronics: "Techno", "ben-ufo": "Techno", illenium: "Trance", "seven-lions": "Trance", "gigi-d-agostino": "Trance" };
+  const rawGenre = d => d.curitiba ? "Bayle Curitibano" : d.extra ? d.grupo : d.album ? d.grupo : cap((PROFILES[slugify(d.nome)]?.estilos || [])[0] || d.estilo);
+  // quando o verbete diz que o primeiro estilo é tech house, techno ou trance, a seção segue o verbete
+  const byStyle = d => { const e = String((PROFILES[slugify(d.nome)]?.estilos || [])[0] || "").toLowerCase();
+    return /tech house/.test(e) ? "Tech house" : /trance/.test(e) ? "Trance" : /techno|schranz|gabber|hardcore/.test(e) ? "Techno" : ""; };
+  const genreOf = d => d.curitiba ? "Bayle Curitibano" : SECTION_OVERRIDE[slugify(d.nome)] || byStyle(d) || SECTION[rawGenre(d)] || "House";
   const rank = rankingOrder();
   const pos = d => d.curitiba ? 1000 + DJLIST.indexOf(d) : d.extra ? 3000 + DJLIST.indexOf(d) : d.album ? 2000 + d.album.ordem : (rank.indexOf(d.nome) + 1 || 999);
   const groups = {};
   [...DJLIST].sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d));
-  const FIRST = ["House", "Techno"];
+  const FIRST = ["House", "Techno", "Tech house", "Trance"];
   const letters = Object.keys(groups).sort((a, b) =>
     (b === "Bayle Curitibano") - (a === "Bayle Curitibano") || // Baile Curitibano abre a lista
     ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
