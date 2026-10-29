@@ -281,7 +281,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
     groups[b].length - groups[a].length || a.localeCompare(b, "pt-BR"));
   const gid = g => slugify(g);
-  const done = sorted.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length).length; // verbete pesquisado = tem fonte listada
+  const done = sorted.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length || PROFILES[slugify(d.nome)]?.fonte_texto).length; // verbete pesquisado = tem fonte listada ou texto da Bayle
   writePage("djpedia", {
     path: "/djpedia", nav: "djpedia", title: "DJ Pédia · Conheça os DJs",
     description: "A enciclopédia da pista global: os principais DJs do Brasil e do mundo, organizados por gênero, com origem, início de carreira e trajetória de cada artista.",
@@ -295,7 +295,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     <div class="wiki-list" id="wikiResults">
       ${letters.map(l => `<section class="wiki-letter wiki-genre" id="genero-${gid(l)}" aria-labelledby="h-${gid(l)}">
         <h2 class="wiki-l" id="h-${gid(l)}">${l}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
-        <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.fontes?.length;
+        <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.fontes?.length || p?.fonte_texto;
           return `<li id="${s}"><a class="wiki-item${full ? "" : " is-soon"}" href="/djpedia/${s}">
             ${DJ_PHOTOS[s] ? `<img class="wiki-portrait" src="/${DJ_PHOTOS[s].thumb}?v=2" alt="${esc(d.nome)}" width="384" height="288" loading="lazy" decoding="async">` : `<span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>`}
             <span class="wiki-name">${esc(d.nome)}</span>
@@ -349,7 +349,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
         ${sec("h-faixas", "Faixas marcantes", ul(p.faixas_marcantes))}
         ${sec("h-marcos", "Marcos da carreira", ul(p.marcos))}
         ${sec("h-infl", "Influências musicais", ul(p.referencias_musicais))}
-        ${sec("h-fontes", "Referências", list(p.fontes).length ? `<ol class="wiki-src">${p.fontes.map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.titulo)}</a></li>`).join("")}</ol>` : `<p>Nenhuma fonte publicada ainda.</p>`)}
+        ${sec("h-fontes", "Referências", list(p.fontes).length ? `<ol class="wiki-src">${p.fontes.map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.titulo)}</a></li>`).join("")}</ol>` : p.fonte_texto ? `<p>${esc(p.fonte_texto)}</p>` : `<p>Nenhuma fonte publicada ainda.</p>`)}
         ${credit ? `<p class="example-note mono">Crédito da imagem: ${credit}</p>` : ""}
         <p class="example-note mono">Última revisão: outubro de 2026</p>
       </div>
