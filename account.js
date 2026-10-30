@@ -16,6 +16,7 @@
  const check = result => { if (result.error) throw result.error; return result.data; };
  const friendly = error => {
   const text = error?.message || '';
+  if (/weak.?password|should contain at least one character|known to be weak|easy to guess/i.test(text)) return 'Senha fraca. Use pelo menos 12 caracteres, com letra minúscula, letra MAIÚSCULA e número, e evite senhas comuns. Exemplo: BaylePista2026.';
   if (/rate|too many|aguarde|tentativas/i.test(text)) return 'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.';
   if (/email.*not.*confirmed/i.test(text)) return 'Confirme seu e-mail antes de entrar. Você pode reenviar a confirmação abaixo.';
   if (/nickname|nick|unique|already.*registered|already.*exists/i.test(text)) return 'Esse @ ou e-mail já está em uso. Se já possui cadastro, entre ou use Esqueci minha senha.';
@@ -82,7 +83,7 @@
   const email = $('#accountEmail').value.trim(), password = $('#accountPassword').value;
   if (['signup','reset'].includes(mode)) {
    if (password !== $('#accountRepeat').value) return message('As senhas precisam ser iguais.','error');
-   if (password.length < 12 || !/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) return message('Use pelo menos 12 caracteres, com letras e números.','error');
+   if (password.length < 12 || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) return message('A senha precisa ter pelo menos 12 caracteres, com letra minúscula, letra MAIÚSCULA e número. Exemplo: BaylePista2026.','error');
   }
   if (mode === 'signup') {
    const signupData=check(await auth.signUp({email,password,options:{data:{nick:$('#accountNick').value.trim(),brb_app:true,terms_version:'2026-10-24'},emailRedirectTo:callback}}));
