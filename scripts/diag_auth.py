@@ -9,6 +9,11 @@ import urllib.request
 
 REF = 'bereyocdqacudfvazdpa'
 TOKEN = os.environ['SUPABASE_ACCESS_TOKEN']
+OUT = []
+
+
+def say(*parts):
+    OUT.append(' '.join(str(p) for p in parts))
 
 
 def call(path):
@@ -31,10 +36,9 @@ try:
             'security_captcha_enabled', 'mailer_otp_exp', 'hook_before_user_created_enabled', 'hook_send_email_enabled']
     for key in keys:
         if key in cfg:
-            value = cfg[key]
-            print(f'cfg {key} = {mask(value)}')
+            say('cfg', key, '=', mask(cfg[key]))
 except Exception as error:
-    print('cfg erro', mask(error))
+    say('cfg erro', mask(error))
 
 try:
     end = time.time()
@@ -44,7 +48,7 @@ try:
     query = urllib.parse.urlencode({'sql': sql, 'iso_timestamp_start': iso(start), 'iso_timestamp_end': iso(end)})
     data = call(f'/v1/projects/{REF}/analytics/endpoints/logs.all?{query}')
     rows = data.get('result') or []
-    print('logs linhas', len(rows))
+    say('logs linhas', len(rows))
     seen = {}
     for row in rows:
         message = mask(row.get('event_message', ''))
@@ -53,7 +57,11 @@ try:
         short = re.sub(r'"(time|timestamp|duration|request_id|remote_addr)":"?[^,"}]*"?,?', '', message)[:420]
         seen[short] = seen.get(short, 0) + 1
     for message, count in sorted(seen.items(), key=lambda kv: -kv[1])[:30]:
-        print(f'log x{count}: {message}')
+        say(f'log x{count}:', message)
 except Exception as error:
-    print('logs erro', mask(error))
+    say('logs erro', mask(error))
+
+text = '\n'.join(OUT)
+print(text)
+print('::notice title=diag::' + text.replace('%', '%25').replace('\r', '').replace('\n', '%0A')[:60000])
 sys.exit(0)
