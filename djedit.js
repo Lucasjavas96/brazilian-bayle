@@ -1,4 +1,4 @@
-/* DJ Pédia: textos e foto editados pelo owner aparecem para todo mundo; só o owner vê o botão de editar.
+/* DJ Index: textos e foto editados pelo owner aparecem para todo mundo; só o owner vê o botão de editar.
    Tudo passa por brb_content (leitura pública) e brb_owner (escrita, só o e-mail do owner confirmado). */
 (() => {
   const art = document.querySelector("[data-dj]"); if (!art) return;
