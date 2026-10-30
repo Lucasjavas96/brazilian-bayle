@@ -17,7 +17,9 @@
  const friendly = error => {
   const text = error?.message || '';
   if (/weak.?password|should contain at least one character|known to be weak|easy to guess/i.test(text)) return 'Senha fraca. Use pelo menos 6 caracteres e evite senhas muito comuns.';
-  if (/rate|too many|aguarde|tentativas/i.test(text)) return 'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.';
+  const wait = text.match(/after (\d+) seconds?/i);
+  if (wait) return `Aguarde ${wait[1]} segundos para pedir o e-mail de novo. O primeiro já foi enviado: veja também a caixa de spam ou lixo eletrônico.`;
+  if (error?.status === 429 || /over_email|rate|too many|aguarde|tentativas/i.test(text + (error?.code || ''))) return 'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.';
   if (/email.*not.*confirmed/i.test(text)) return 'Confirme seu e-mail antes de entrar. Você pode reenviar a confirmação abaixo.';
   if (/nickname|nick|unique|already.*registered|already.*exists/i.test(text)) return 'Esse @ ou e-mail já está em uso. Se já possui cadastro, entre ou use Esqueci minha senha.';
   if (/invalid.*credentials/i.test(text)) return 'Não foi possível entrar. Confira seu e-mail e sua senha.';
