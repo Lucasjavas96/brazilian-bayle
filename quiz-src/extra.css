@@ -1,0 +1,12 @@
+/* Bailinho no site: voltar ao menu e aviso de pontos (arquivo à mão; não é gerado pelo port-quiz) */
+.qx-back{white-space:nowrap;width:auto;height:auto;position:fixed;top:10px;left:10px;z-index:60;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;background:rgba(10,11,10,.82);border:1px solid rgba(255,255,255,.28);color:#fff;font:600 13px/1 'Inter Tight',system-ui,sans-serif;text-decoration:none;backdrop-filter:blur(8px)}
+.qx-back:hover,.qx-back:focus-visible{border-color:#FFD400;color:#FFD400}
+body:has(#top:not([hidden])) .qx-back{display:none}
+.qx-rule{margin:14px auto 0;max-width:420px;padding:10px 14px;border:1px dashed rgba(255,212,0,.6);border-radius:14px;background:rgba(255,212,0,.07);color:#fff;font-size:14px;line-height:1.5;text-align:center}
+.qx-rule b{color:#FFD400}
+.qx-rule a{color:#FFD400}
+.qx-toast{position:fixed;left:50%;bottom:112px;transform:translateX(-50%);z-index:70;max-width:min(92vw,420px);padding:10px 16px;border-radius:999px;background:#FFD400;color:#000;font:700 14px/1.3 'Inter Tight',system-ui,sans-serif;text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.4)}
+.qx-toast.soft{background:#1c1e1c;color:#fff;border:1px solid rgba(255,255,255,.25);font-weight:600}
+.wrap{padding-top:max(env(safe-area-inset-top),0px)}
+.map-head{padding-top:46px}
+#conf{display:none}

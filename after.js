@@ -1,4 +1,4 @@
-/* Onde é o after? · demonstração no navegador. Ver a lista é livre; pedir, oferecer e avaliar exige conta Bayle. */
+/* Onde é o after?. Ver a lista é livre; pedir, oferecer e avaliar exige conta Bayle. */
 (() => {
   const app = document.getElementById("afApp"); if (!app) return;
   const $ = (s, r = document) => r.querySelector(s);
@@ -18,15 +18,9 @@
   ];
   const CRIT = [["som", "Som"], ["espaco", "Espaço"], ["fraternidade", "Fraternidade"]];
 
-  const seed = [
-    { id: 1, festa: "After do Solomun", bairro: "Batel", endereco: "Rua Bispo Dom José, 1200, ap 82", hora: "Dom, 01/11 · 04h", vagas: 12, ocupadas: 7, modo: "livre", host: "camila.sp", desc: "Sala ampla, caixa de som boa, playlist de house e funk. Tem água e gelo. Sem briga.", hue: 48, status: "aberto", notas: [{ som: 5, espaco: 4, fraternidade: 5 }, { som: 4, espaco: 4, fraternidade: 5 }] },
-    { id: 2, festa: "After do Solomun", bairro: "Bigorrilho", endereco: "Av. do Batel, 1800, cobertura 41", hora: "Dom, 01/11 · 05h", vagas: 8, ocupadas: 3, modo: "aprovacao", host: "rafa.cwb", desc: "Cobertura com varanda. Pedimos perfil verificado e foto de rosto.", hue: 150, status: "aberto", notas: [{ som: 4, espaco: 5, fraternidade: 4 }] },
-    { id: 3, festa: "Brazilian Bayle, a Festa", bairro: "Cabral", endereco: "Rua Mateus Leme, 900", hora: "Dom, 06/12 · 03h", vagas: 20, ocupadas: 11, modo: "livre", host: "duda_", desc: "Casa com quintal e churrasqueira. Quem puder, traga uma bebida.", hue: 200, status: "aberto", notas: [] },
-    { id: 4, festa: "Brazilian Bayle, a Festa", bairro: "Centro", endereco: "Rua XV de Novembro, 700, ap 12", hora: "Dom, 06/12 · 04h", vagas: 6, ocupadas: 5, modo: "aprovacao", host: "thiago.b", desc: "Apê pequeno e aconchegante, som de caixa Bluetooth.", hue: 20, status: "aberto", notas: [{ som: 3, espaco: 3, fraternidade: 5 }] },
-    { id: 5, festa: "Deep Dish Day Party", bairro: "Água Verde", endereco: "Rua Brigadeiro Franco, 2100", hora: "Sáb, 17/01 · 22h", vagas: 10, ocupadas: 10, modo: "aprovacao", host: "bia.dj", desc: "After com DJ convidado e área externa.", hue: 290, status: "encerrado", notas: [{ som: 5, espaco: 5, fraternidade: 4 }] },
-  ];
+  const seed = [];
 
-  let S = { user: null, ready: false, tab: "procurar", q: "", modo: "todos", sel: null, rate: null, afters: seed, joins: { 5: "confirmado" }, reqs: {}, rated: {}, fotos: [], err: {}, outra: false };
+  let S = { user: null, ready: false, tab: "procurar", q: "", modo: "todos", sel: null, rate: null, afters: seed, joins: {}, reqs: {}, rated: {}, fotos: [], err: {}, outra: false };
 
   /* ---------- sessão (mesma conta do Spotted) ---------- */
   async function loadUser() {
@@ -60,36 +54,17 @@
     return S.afters.filter(a => (S.modo === "todos" || a.modo === S.modo) && (!q || (a.festa + " " + a.bairro).toLowerCase().includes(q)));
   }
 
-  /* ---------- mapa ---------- */
-  function mapHTML(list) {
-    const pins = list.map(a => {
-      const p = BAIRROS[a.bairro] || [200, 200];
-      const x = p[0] + ((a.id * 37) % 24) - 12, y = p[1] + ((a.id * 53) % 20) - 10;
-      const col = a.status === "encerrado" ? "#6b6f6c" : a.modo === "livre" ? "#1fa862" : "#d93a4a";
-      return `<g class="af-pin" data-open="${a.id}" role="button" tabindex="0" aria-label="${esc(a.festa)}, ${esc(a.bairro)}, ${left(a)} vagas livres"><circle cx="${x}" cy="${y}" r="${S.sel === a.id ? 17 : 14}" fill="${col}"/><text x="${x}" y="${y + 4}">${left(a)}</text></g>`;
-    }).join("");
-    const labels = Object.entries(BAIRROS).map(([n, p]) => `<text class="af-lab" x="${p[0]}" y="${p[1] + 34}" text-anchor="middle">${n}</text>`).join("");
-    return `<div class="af-map"><svg viewBox="0 0 400 380" role="img" aria-label="Mapa ilustrativo de Curitiba com os afters cadastrados">
-      <rect width="400" height="380" fill="#1a1b1a"/>
-      <path d="M0 250 C60 232 90 262 150 252 S200 214 238 240 S330 276 400 252 L400 262 C330 286 250 262 238 252 S170 270 150 264 S60 244 0 262Z" fill="#0f2a5e"/>
-      <path d="M20 60 q40 -30 90 -4 q22 40 -20 60 q-60 14 -70 -56Z" fill="#0c4f2b"/>
-      <path d="M300 280 q40 -26 70 10 q8 44 -38 54 q-40 -8 -32 -64Z" fill="#0c4f2b"/>
-      <path d="M186 206 q18 -8 30 4 q-4 16 -26 12 q-8 -8 -4 -16Z" fill="#0c4f2b"/>
-      <g stroke="rgba(255,255,255,.2)" stroke-width="6" fill="none" stroke-linecap="round">
-        <path d="M0 170 C100 160 200 210 400 180"/><path d="M180 0 C190 120 200 260 214 380"/>
-        <path d="M0 300 C120 280 260 310 400 290"/><path d="M110 0 C120 120 150 260 190 380"/>
-      </g>
-      <g stroke="rgba(255,255,255,.1)" stroke-width="3" fill="none" stroke-linecap="round">
-        <path d="M0 110 L400 124"/><path d="M0 350 L400 340"/><path d="M280 0 L270 380"/><path d="M60 0 L50 380"/>
-      </g>
-      ${labels}${pins}</svg><span class="af-mapnote mono">Mapa ilustrativo · número = vagas livres</span></div>`;
+  /* ---------- mapa (Google Maps) ---------- */
+  const MAPA = "https://www.google.com/maps?q=Curitiba%2C+PR&hl=pt-BR&z=12&output=embed", MAPA_LINK = "https://www.google.com/maps/search/?api=1&query=Curitiba%2C+PR";
+  function mapHTML() {
+    return `<div class="af-map"><iframe src="${MAPA}" title="Mapa de Curitiba no Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><a class="af-mapnote mono" href="${MAPA_LINK}" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a></div>`;
   }
 
   function cardHTML(a) {
     const m = avgAll(a);
     return `<button type="button" class="af-card" data-open="${a.id}">
       ${photo(a, 0, "af-ph")}
-      <div class="af-bd">${badge(a)}<span class="af-ex mono">Exemplo</span>
+      <div class="af-bd">${badge(a)}
         <h3>Depois de: ${esc(a.festa)}</h3>
         <div class="af-meta"><span>${esc(a.bairro)}</span><span>${esc(a.hora)}</span><span>${left(a)} de ${a.vagas} vagas</span></div>
         <div class="af-meta">${m != null ? `<span><span class="af-star">${starsTxt(m)}</span> ${fmt(m)} (${a.notas.length})</span>` : "<span>Ainda sem avaliações</span>"}<span>por @${esc(a.host)}</span></div>
@@ -99,11 +74,12 @@
   /* ---------- abas ---------- */
   function procurarHTML() {
     const l = filtered();
+    if (!S.afters.length) return `<div class="af-grid af-solo"><div class="af-side"><div id="afMap">${mapHTML()}</div></div><div class="af-list" id="afList"><p class="af-empty">Ainda não há afters cadastrados. Os afters da Brazilian Bayle aparecem aqui assim que forem divulgados.</p></div></div>`;
     return `<div class="af-grid">
       <div class="af-side">
         <label class="af-field"><span class="af-sr">Buscar</span><input type="text" id="afQ" placeholder="Busque por festa ou bairro" value="${esc(S.q)}" autocomplete="off"></label>
         <div class="af-chips" role="group" aria-label="Filtrar">${[["todos", "Todos"], ["livre", "Entrada livre"], ["aprovacao", "Sob aprovação"]].map(([k, t]) => `<button type="button" class="af-chip" data-modo="${k}" aria-pressed="${S.modo === k}">${t}</button>`).join("")}</div>
-        <div id="afMap">${mapHTML(l)}</div>
+        <div id="afMap">${mapHTML()}</div>
       </div>
       <div class="af-list" id="afList">${listHTML(l)}</div></div>`;
   }
@@ -156,7 +132,7 @@
     else if (mine(a)) cta = '<button type="button" class="btn btn-ghost af-full" disabled>Este after é seu</button>';
     else if (j === "confirmado" && a.status === "encerrado") cta = S.rated[a.id] ? '<button type="button" class="btn btn-ghost af-full" disabled>Você já avaliou</button>' : `<button type="button" class="btn btn-y af-full" data-rate="${a.id}">Avaliar este after</button>`;
     else if (j === "confirmado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>Você está dentro</button>';
-    else if (j === "pendente") cta = `<button type="button" class="btn btn-ghost af-full" disabled>Pedido enviado, aguardando o anfitrião</button><p class="af-fine"><button type="button" class="af-link mono" data-demo="${a.id}">Demonstração: simular aprovação</button></p>`;
+    else if (j === "pendente") cta = `<button type="button" class="btn btn-ghost af-full" disabled>Pedido enviado, aguardando o anfitrião</button>`;
     else if (a.status === "encerrado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>After encerrado</button>';
     else if (left(a) <= 0) cta = '<button type="button" class="btn btn-ghost af-full" disabled>Lotado</button>';
     else cta = `<button type="button" class="btn btn-y af-full" data-join="${a.id}">${a.modo === "livre" ? "Entrar no after" : "Pedir para entrar"}</button>`;
@@ -195,7 +171,7 @@
   }
   function refreshList() {
     const l = filtered();
-    $("#afMap").innerHTML = mapHTML(l); $("#afList").innerHTML = listHTML(l);
+    $("#afMap").innerHTML = mapHTML(); $("#afList").innerHTML = listHTML(l);
   }
 
   function publish() {
@@ -217,7 +193,7 @@
     S.afters = [{ id, festa: outra ? nome : f.nome, bairro: $("#fBairro").value, endereco: end, hora: (outra ? "Depois de " + data : f.depois) + " · " + hh,
       vagas: Math.max(1, Math.min(200, parseInt($("#fVagas").value) || 10)), ocupadas: 0, modo, host: S.user, desc: $("#fDesc").value.trim(), fotos: S.fotos.slice(), hue: Math.floor(Math.random() * 360), status: "aberto", notas: [] }, ...S.afters];
     if (modo === "aprovacao") S.reqs[id] = [{ nome: "lari", status: "pendente" }, { nome: "gabriel", status: "pendente" }];
-    S.fotos = []; S.outra = false; S.tab = "meus"; render(); toast("After publicado (demonstração)");
+    S.fotos = []; S.outra = false; S.tab = "meus"; render(); toast("After publicado");
   }
 
   /* ---------- eventos ---------- */

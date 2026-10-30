@@ -38,10 +38,15 @@ const page = `<!doctype html>
 <meta name="description" content="Bailinho: o quiz de música eletrônica da Brazilian Bayle. Trilha 1, entre na pista e mostre que é bayle fino.">
 <link rel="icon" href="/assets/favicon-32.png">
 <link rel="stylesheet" href="/quiz/quiz.css">
+<link rel="stylesheet" href="/quiz/extra.css">
 </head>
 <body>
 ${bodyHtml}
+<script src="/assets/vendor/supabase-2.49.8.js"></script>
+<script src="/backend-config.js"></script>
+<script src="/backend.js"></script>
 <script src="/quiz/quiz.js"></script>
+<script src="/quiz/extra.js"></script>
 </body>
 </html>
 `;
