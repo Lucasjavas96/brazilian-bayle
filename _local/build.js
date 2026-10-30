@@ -19,6 +19,7 @@ const NAV = [
   ["after", "/after", "Onde é o after?"],
   ["album", "/album", "Bayle All Stars Album"],
   ["clube", "/clube", "BRB Clubbers"],
+  ["quiz", "/quiz/", "Quiz Bailinho"],
   ["agenda", "/agenda", "Agenda"],
   ["manifesto", "/manifesto", "Manifesto"],
   ["djpedia", "/djpedia", "DJ Pédia"],
@@ -375,6 +376,9 @@ const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") +
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
 for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "management.js", "album.js", "after.js", "djedit.js", "moderation.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+// Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
+fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
+for (const f of ["index.html", "quiz.css", "quiz.js", "trilha1.json"]) fs.copyFileSync(path.join(ROOT, "quiz-src", f), path.join(OUT, "quiz", f));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
