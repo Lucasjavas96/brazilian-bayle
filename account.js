@@ -31,7 +31,7 @@
   const signup = value === 'signup', reset = value === 'reset', password = signup || reset || value === 'login';
   $('#accountEmailField').hidden = reset; $('#accountEmail').required = !reset;
   $('#accountPasswordField').hidden = !password; $('#accountPassword').required = password;
-  $('#accountPassword').minLength = signup || reset ? 12 : 1;
+  $('#accountPassword').minLength = signup || reset ? 6 : 1;
   $('#accountPassword').autocomplete = signup || reset ? 'new-password' : 'current-password';
   $('#passwordHelp').hidden = !(signup || reset);
   $('#accountNickField').hidden = !signup; $('#accountNick').required = signup;
@@ -46,10 +46,10 @@
  root.addEventListener('invalid',event=>{
   const input=event.target;if(!(input instanceof HTMLInputElement))return;
   event.preventDefault();input.setAttribute('aria-invalid','true');
-  const text=input.validity.valueMissing?'Preencha este campo para continuar.':input.type==='email'?'Digite um e-mail válido.':input.id==='accountNick'?'Use o @ do seu Instagram: 3 a 24 letras, números, pontos ou sublinhados, sem o @.':'Confira o formato e o tamanho deste campo.';
+  const text=input.validity.valueMissing?'Preencha este campo para continuar.':input.type==='email'?'Digite um e-mail válido.':input.id==='accountPassword'?'A senha precisa ter pelo menos 6 caracteres.':input.id==='accountNick'?'Use o @ do seu Instagram: 3 a 24 letras, números, pontos ou sublinhados, sem o @.':'Confira o formato e o tamanho deste campo.';
   message(text,'error');
  },true);
- root.addEventListener('input',event=>{if(event.target instanceof HTMLInputElement)event.target.removeAttribute('aria-invalid');});
+ root.addEventListener('input',event=>{if(event.target instanceof HTMLInputElement){event.target.removeAttribute('aria-invalid');if(event.target.id==='accountNick'||event.target.id==='settingsNick')event.target.value=event.target.value.replace(/[@\s]/g,'');}});
  root.querySelectorAll('[data-mode]').forEach(button => button.onclick = () => setMode(button.dataset.mode));
  async function showMember() {
   const assurance = check(await auth.mfa.getAuthenticatorAssuranceLevel());
