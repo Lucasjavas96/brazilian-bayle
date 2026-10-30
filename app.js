@@ -74,8 +74,8 @@ document.querySelectorAll('.club-motion').forEach(button => {
 const CRIT = [
   ["som", "Qualidade do Som"],
   ["harmonia", "Harmonia do Set"],
-  ["energia", "Energia e Vibe"],
-  ["sofisticacao", "Sofisticação e Inovação"],
+  ["energia", "Vibe"],
+  ["sofisticacao", "Sofisticação"],
 ];
 const DJS = [
   ["Alok","House"],["Vintage Culture","House"],["Mochakk","Tech house"],["ANNA","Techno"],["Liu","Bass house"],
@@ -91,6 +91,9 @@ const DJS = [
   ["Vinne","Bass house"],["Volkoder","Bass house"],["Dashdot","Deep house"],["Maz","Afro house"],["Malifoo","Brazilian bass"],
   ["Greggio","Tech house"],["GenX","Música eletrônica"]];
 let officialRows = [];
+const MIN_VOTES = 30;
+const djNote = d => d.unrated ? "Sem avaliações" : d.emAvaliacao ? `Em avaliação · ${d.votos}/${MIN_VOTES} avaliadores` : `Média ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.venue_name ? "Local: " + d.venue_name : "Sem local validado"}`;
+const scoreCell = d => Number.isFinite(d.pos) ? fmt2(d.nota) : "Em avaliação";
 function table() {
  const rated=new Set(officialRows.map(row=>row.name));
  return [...officialRows.map(row=>({...row})),...DJS.filter(([name])=>!rated.has(name)).map(([name,style])=>({name,style,pos:Infinity,nota:null,som:null,harmonia:null,energia:null,sofisticacao:null,votos:0,festas:0,unrated:true}))];
@@ -117,12 +120,13 @@ function podiumCard(pos, name, style, note, label) {
 function renderPodium() {
   const el = $("[data-podium]"); if (!el) return;
   el.hidden = false;
-  if(!officialRows.length){
+  const official=officialRows.filter(d=>!d.emAvaliacao);
+  if(!official.length){
    el.setAttribute('aria-label','DJs aguardando avaliações');
-   el.innerHTML = DJS.slice(0,3).map(([name,style],index)=>podiumCard(index+1,name,style,"—","Sem nota")).join("");return;
+   el.innerHTML = DJS.slice(0,3).map(([name,style],index)=>podiumCard(index+1,name,style,"—","Em avaliação")).join("");return;
   }
   el.setAttribute('aria-label','Os três primeiros da classificação');
-  el.innerHTML = officialRows.slice(0, 3).map(d => podiumCard(d.pos, d.name, d.style, fmt2(d.nota), "nota " + fmt2(d.nota))).join("");
+  el.innerHTML = official.slice(0, 3).map(d => podiumCard(d.pos, d.name, d.style, fmt2(d.nota), "nota " + fmt2(d.nota))).join("");
 }
 
 /* ---------- tabela ---------- */
@@ -163,8 +167,8 @@ function mountBoard(stage) {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
-        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>${mv}<span class="mono">${d.style}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
-        <td class="b-score"><span class="led">${fmt2(d.nota)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
+        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
+        <td class="b-score"><span class="led${Number.isFinite(d.pos) ? "" : " led-wait"}">${scoreCell(d)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
     }).join("");
@@ -671,8 +675,8 @@ function mountGe(el) {
       const s = slug(d.name), href = `/djpedia/${s}`;
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
-        <th scope="row" class="ge-dj"><a href="${href}"><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}${d.unrated?" · Sem avaliações":""}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
-        <td class="ge-nota">${fmt2(d.nota)}</td>
+        <th scope="row" class="ge-dj"><a href="${href}"><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
+        <td class="ge-nota${Number.isFinite(d.pos) ? "" : " ge-wait"}">${scoreCell(d)}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
     }).join("");
@@ -729,7 +733,7 @@ async function refreshOfficialRanking(){
  try{
   const result=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_ranking',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,'Content-Type':'application/json'},body:'{}'});
   if(!result.ok)throw Error('ranking');
-  const rows=await result.json();officialRows=rows.map(row=>({...row,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
+  const rows=await result.json();officialRows=rows.map(row=>({...row,pos:row.eligible&&row.pos!=null?row.pos:Infinity,emAvaliacao:!row.eligible,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
   boards.forEach(board=>board.render());renderPodium();note.textContent=rows.length?'Ranking atualizado com avaliações válidas.':'Ainda não há avaliações. Seja uma das primeiras pessoas a avaliar uma apresentação.';
  }catch{note.textContent='Não foi possível carregar o ranking agora. Tente novamente mais tarde.';}
 }

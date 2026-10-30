@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=e4b9bf7bdcc5">
+<link rel="stylesheet" href="/styles.css?v=0ae2171dec3f">
 <link rel="preload" as="image" href="/assets/hero-dj-poster-800.webp" fetchpriority="high">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brazilian Bayle","url":"https://brazilianbayle.com.br","logo":"https://brazilianbayle.com.br/assets/icon-512.png","email":"contato@brazilianbayle.com.br","sameAs":["https://instagram.com/brazilianbayle"],"areaServed":"BR","description":"Campeonato brasileiro de DJs com votação da comunidade e o network BRB Clubbers."}</script>
 </head>
@@ -144,7 +144,34 @@
   <div class="wrap">
     <p class="mono y">Racional da pontuação</p>
     <h2 class="display" id="t-formula">Como a nota do DJ <em>é calculada</em></h2>
-    <p class="lead dim">A fórmula completa da pontuação dos DJs será publicada aqui.</p>
+    <p class="lead dim">Cada DJ tem uma nota só, de 0 a 10: a <strong class="copy-accent">Brazilian Bayle Ranking Score (BRS)</strong>. Ela junta o que a pista achou do set, quantas pessoas avaliaram e o peso do melhor palco onde o DJ comprovadamente tocou.</p>
+    <ol class="fm-grid">
+      <li>
+        <span class="mono fm-tag">Base · a nota da pista</span>
+        <h3 class="display">4 critérios, pesos iguais</h3>
+        <p>Som, Harmonia, Vibe e Sofisticação, cada um de 0 a 10 e valendo 25%. Os quatro juntos contam como uma avaliação só. Cada pessoa vale uma vez por DJ: se avaliar de novo, vale a mais recente.</p>
+      </li>
+      <li>
+        <span class="mono fm-tag">Ajuste · até 15%</span>
+        <h3 class="display">Quantidade de avaliadores</h3>
+        <p>Quanto mais gente avalia, mais firme fica a nota. O ajuste cresce até 2.000 avaliadores. Acima disso os votos continuam entrando na média, mas o ajuste não sobe mais. Com poucos votos, a nota é puxada para a média de referência (7,5), para que 3 notas dez não passem na frente de centenas de notas boas.</p>
+      </li>
+      <li>
+        <span class="mono fm-tag">Ajuste · até 10%</span>
+        <h3 class="display">Relevância do local</h3>
+        <p>Vale o melhor local onde o DJ comprovadamente se apresentou, numa lista curada pela Brazilian Bayle. Tocar mais vezes no mesmo clube não muda nada, e quantidade de shows ou tempo de carreira não pontuam.</p>
+      </li>
+    </ol>
+    <div class="fm-eq" role="group" aria-label="Fórmula da BRS">
+      <p class="mono">BRS <b>=</b> Qualidade <b>×</b> Fator de volume <b>×</b> Fator do local</p>
+      <p class="fm-small">Qualidade = média dos 4 critérios regularizada com a média de referência. Fator de volume: de 0,85 a 1,00. Fator do local: de 0,90 a 1,00.</p>
+    </div>
+    <p class="fm-rule"><b>Quem entra na tabela:</b> DJs com pelo menos 30 avaliadores. Antes disso o DJ aparece como <strong>Em avaliação</strong>, com as notas e o total de votos, mas sem posição oficial. Em empate, ganha quem tem mais avaliadores, depois a maior qualidade.</p>
+    <details class="fm-venues">
+      <summary class="mono">Ver a lista curada de locais</summary>
+      <ol><li>Green Valley</li><li>Laroc Club</li><li>Surreal Park</li><li>Pedreira Paulo Leminski</li><li>D-EDGE São Paulo</li><li>Warung Beach Club (histórico)</li><li>Ame Club</li><li>P12 Jurerê</li><li>Club Vibe</li><li>Park Art Superclub</li><li>D-EDGE Rio</li><li>CAOS</li><li>Terraza Music Park</li><li>Matahari Music Stage</li><li>Privilège Búzios</li></ol>
+      <p class="fm-small">Curadoria editorial da Brazilian Bayle, não é uma cópia do ranking da DJ Mag. A Pedreira Paulo Leminski é um espaço de shows: conta a apresentação do DJ em evento de música eletrônica. O Warung encerrou a operação na Praia Brava em junho de 2026, e as apresentações passadas verificadas continuam valendo.</p>
+    </details>
   </div>
 </section>
 
@@ -285,7 +312,7 @@
 <script src="/backend-config.js" defer></script>
 <script src="/backend.js?v=6b7406dad857" defer></script>
 <script src="/events-2026.js?v=68b2e9701733" defer></script>
-<script src="/app.js?v=c0987bdc6543" defer></script>
+<script src="/app.js?v=12dcd944b6d9" defer></script>
 <script src="/media-guard.js" defer></script>
 <script src="/card-effects.js?v=b3f699672fd6" defer></script>
 <script src="/support.js?v=15a0860aacef" defer></script>
