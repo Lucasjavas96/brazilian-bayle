@@ -22,7 +22,7 @@ const NAV = [
   ["quiz", "/quiz/", "Quiz Bailinho"],
   ["agenda", "/agenda", "Agenda"],
   ["manifesto", "/manifesto", "Manifesto"],
-  ["djpedia", "/djpedia", "DJ Pédia"],
+  ["djpedia", "/djpedia", "DJ Index"],
   ["curitiba", "/curitiba", "Bayle Curitibano"],
   ["loja", "/loja", "Loja"],
   ["moderacao", "/moderacao", "Moderação", "owner"], // só aparece para o owner (session-menu.js)
@@ -296,12 +296,12 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const listed = sorted.filter(d => !d.curitiba);
   const done = listed.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length || PROFILES[slugify(d.nome)]?.fonte_texto).length; // verbete pesquisado = tem fonte listada ou texto da Bayle
   writePage("djpedia", {
-    path: "/djpedia", nav: "djpedia", title: "DJ Pédia · Conheça os DJs",
+    path: "/djpedia", nav: "djpedia", title: "DJ Index · Conheça os DJs",
     description: "A enciclopédia da pista global: os principais DJs do Brasil e do mundo, organizados por gênero, com origem, início de carreira e trajetória de cada artista.",
   }, `
 <section class="sec dark page-head wiki" aria-labelledby="t-wiki">
   <div class="wrap">
-    <p class="mono y">DJ Pédia · ${listed.length} DJs · ${done} verbetes completos</p>
+    <p class="mono y">DJ Index · ${listed.length} DJs · ${done} verbetes completos</p>
     <h1 class="display" id="t-wiki">Conheça os <em>DJs</em></h1>
     <p class="lead dim">A enciclopédia da pista global. Os principais DJs do Brasil e do mundo, organizados por gênero: de onde vieram, como começaram, o que tocam e a trajetória até aqui. Toque no nome para abrir o verbete.</p>
     <div class="catalog-search"><label for="wikiSearch" class="mono">Buscar DJ</label><input type="search" id="wikiSearch" placeholder="Nome, gênero ou cidade" autocomplete="off" aria-controls="wikiResults"><p id="wikiCount" class="hint" role="status"></p></div>
@@ -333,17 +333,17 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     const full = list(p.historia).length > 0;
     const hist = full ? p.historia.map(x => `<p>${esc(x)}</p>`).join("")
       : `<p>Ainda não reunimos fontes confiáveis sobre a trajetória de ${esc(p.nome)}. Este verbete está em construção, e os campos sem informação aparecem como "não informado".</p>`;
-    const kind = d.curitiba ? "Bayle Curitibano" : d.extra ? `DJ Pédia · ${esc(d.pais)}` : d.album ? `Bayle All Stars Album · ${esc(d.album.paisNome)}` : `Brasileirão dos DJs · ${esc(d.estilo)}`;
+    const kind = d.curitiba ? "Bayle Curitibano" : d.extra ? `DJ Index · ${esc(d.pais)}` : d.album ? `Bayle All Stars Album · ${esc(d.album.paisNome)}` : `Brasileirão dos DJs · ${esc(d.estilo)}`;
     const credit = DJ_PHOTOS[s]?.source.startsWith("https:") ? `<a href="${esc(DJ_PHOTOS[s].source)}" target="_blank" rel="noopener">Perfil público do artista</a>` : img && foto ? `${esc(foto.credito)} · ${foto.pagina ? `<a href="${esc(foto.pagina)}" target="_blank" rel="noopener">${esc(foto.licenca)}</a>` : esc(foto.licenca)}` : "";
     writePage(`djpedia/${s}`, {
-      path: `/djpedia/${s}`, nav: "djpedia", title: `${p.nome} · DJ Pédia`,
-      description: (p.resumo || `${p.nome}, DJ ${d.curitiba ? "da cena de Curitiba" : "brasileiro"} na DJ Pédia da Brazilian Bayle.`).slice(0, 158),
+      path: `/djpedia/${s}`, nav: "djpedia", title: `${p.nome} · DJ Index`,
+      description: (p.resumo || `${p.nome}, DJ ${d.curitiba ? "da cena de Curitiba" : "brasileiro"} no DJ Index da Brazilian Bayle.`).slice(0, 158),
       noindex: !full,
       jsonld: [{ "@context": "https://schema.org", "@type": "Person", name: p.nome, alternateName: p.nome_civil && p.nome_civil !== NI ? p.nome_civil : undefined, jobTitle: "DJ", genre: list(p.estilos), image: img ? `${SITE}/${img}` : undefined, sameAs: list((p.fontes || []).map(f => f.url)).slice(0, 3) }],
     }, `
 <article class="sec paper page-head wiki-article" aria-labelledby="t-dj" data-dj="${s}">
   <div class="wrap">
-    <nav class="crumbs mono" aria-label="Você está em"><a href="/djpedia">DJ Pédia</a> <span aria-hidden="true">›</span> ${esc(p.nome)}</nav>
+    <nav class="crumbs mono" aria-label="Você está em"><a href="/djpedia">DJ Index</a> <span aria-hidden="true">›</span> ${esc(p.nome)}</nav>
     <div class="wiki-grid">
       <aside class="wiki-box" aria-label="Ficha de ${esc(p.nome)}">
         <figure class="wiki-photo">${img
