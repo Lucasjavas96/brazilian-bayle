@@ -16,13 +16,13 @@
  const check = result => { if (result.error) throw result.error; return result.data; };
  const friendly = error => {
   const text = error?.message || '';
-  if (/weak.?password|should contain at least one character|known to be weak|easy to guess/i.test(text)) return 'Senha fraca. Use pelo menos 12 caracteres, com letra minúscula, letra MAIÚSCULA e número, e evite senhas comuns. Exemplo: BaylePista2026.';
+  if (/weak.?password|should contain at least one character|known to be weak|easy to guess/i.test(text)) return 'Senha fraca. Use pelo menos 6 caracteres e evite senhas muito comuns.';
   if (/rate|too many|aguarde|tentativas/i.test(text)) return 'Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.';
   if (/email.*not.*confirmed/i.test(text)) return 'Confirme seu e-mail antes de entrar. Você pode reenviar a confirmação abaixo.';
   if (/nickname|nick|unique|already.*registered|already.*exists/i.test(text)) return 'Esse @ ou e-mail já está em uso. Se já possui cadastro, entre ou use Esqueci minha senha.';
   if (/invalid.*credentials/i.test(text)) return 'Não foi possível entrar. Confira seu e-mail e sua senha.';
   if (/smtp|email_address_not_authorized|sending.*email|send.*email/i.test(text)) return mode === 'signup' ? 'Não conseguimos enviar a confirmação. Seu cadastro não foi concluído. Tente novamente mais tarde.' : 'Não conseguimos enviar o e-mail neste momento. Tente novamente mais tarde.';
-  if (/password|senha/i.test(text)) return 'Confira a senha. Para uma nova senha, use pelo menos 12 caracteres, com letras e números.';
+  if (/password|senha/i.test(text)) return 'Confira a senha. Para uma nova senha, use pelo menos 6 caracteres.';
   if (/mfa|totp|verification.*code/i.test(text)) return 'Código inválido ou expirado. Confira o aplicativo e tente novamente.';
   return 'Não foi possível concluir. Tente novamente em instantes.';
  };
@@ -83,7 +83,7 @@
   const email = $('#accountEmail').value.trim(), password = $('#accountPassword').value;
   if (['signup','reset'].includes(mode)) {
    if (password !== $('#accountRepeat').value) return message('As senhas precisam ser iguais.','error');
-   if (password.length < 12 || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) return message('A senha precisa ter pelo menos 12 caracteres, com letra minúscula, letra MAIÚSCULA e número. Exemplo: BaylePista2026.','error');
+   if (password.length < 6) return message('A senha precisa ter pelo menos 6 caracteres.','error');
   }
   if (mode === 'signup') {
    const signupData=check(await auth.signUp({email,password,options:{data:{nick:$('#accountNick').value.trim(),brb_app:true,terms_version:'2026-10-24'},emailRedirectTo:callback}}));

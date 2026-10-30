@@ -129,8 +129,8 @@ python scripts/backend_smoke.py
   isso não é um segredo do servidor. E-mails não são publicados no mural.
 - SMTP Hostinger: `brazillian@frostweb.com.br`, TLS, senha guardada somente no
   Supabase e no Windows Credential Manager de manutenção. Não está no GitHub.
-- Confirmação obrigatória; novas senhas têm mínimo de 12 caracteres com letras
-  e números. Links de e-mail expiram em 10 minutos. Templates BRB são condicionais
+- Confirmação obrigatória; novas senhas têm mínimo de 6 caracteres,
+  sem exigir tipos de caractere. Links de e-mail expiram em 10 minutos. Templates BRB são condicionais
   à metadata `brb_app`, preservando templates de outras aplicações do projeto.
 - Rate limits nativos configurados no servidor: token 30/5min por IP, verify e
   OTP 10/5min por IP (o Supabase admite rajadas de até 30); SMTP 30/h por projeto,

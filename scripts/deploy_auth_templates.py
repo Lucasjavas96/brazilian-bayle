@@ -12,6 +12,9 @@ body = {
     'mailer_subjects_recovery': 'Recupere seu acesso · Brazilian Bayle',
     # Links de confirmação e recuperação caem no site de verdade (antes o padrão era localhost:3000).
     'site_url': 'https://brazilianbayle.com.br',
+    # Senha nova: mínimo de 6 caracteres, sem exigir tipos de caractere (decisão do Lucas).
+    'password_min_length': 6,
+    'password_required_characters': '',
     'uri_allow_list': ','.join([
         'https://brazilianbayle.com.br/conta', 'https://brazilianbayle.com.br/conta?flow=recovery', 'https://brazilianbayle.com.br/conta?next=**', 'https://brazilianbayle.com.br/spotted',
         'https://www.brazilianbayle.com.br/conta', 'https://www.brazilianbayle.com.br/conta?flow=recovery', 'https://www.brazilianbayle.com.br/conta?next=**', 'https://www.brazilianbayle.com.br/spotted',
