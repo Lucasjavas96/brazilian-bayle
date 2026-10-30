@@ -286,21 +286,22 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const rank = rankingOrder();
   const pos = d => d.curitiba ? 1000 + DJLIST.indexOf(d) : d.extra ? 3000 + DJLIST.indexOf(d) : d.album ? 2000 + d.album.ordem : (rank.indexOf(d.nome) + 1 || 999);
   const groups = {};
-  [...DJLIST].sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d));
+  [...DJLIST].filter(d => !d.curitiba).sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d)); // Bayle Curitibano fora do índice (as páginas seguem, o /curitiba aponta para elas)
+  Object.values(groups).forEach(g => g.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }))); // cada seção em ordem alfabética
   const FIRST = ["House", "Techno", "Tech house", "Trance", "EDM", "Disco"];
   const letters = Object.keys(groups).sort((a, b) =>
-    (b === "Bayle Curitibano") - (a === "Bayle Curitibano") || // Baile Curitibano abre a lista
     ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
     groups[b].length - groups[a].length || a.localeCompare(b, "pt-BR"));
   const gid = g => slugify(g);
-  const done = sorted.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length || PROFILES[slugify(d.nome)]?.fonte_texto).length; // verbete pesquisado = tem fonte listada ou texto da Bayle
+  const listed = sorted.filter(d => !d.curitiba);
+  const done = listed.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length || PROFILES[slugify(d.nome)]?.fonte_texto).length; // verbete pesquisado = tem fonte listada ou texto da Bayle
   writePage("djpedia", {
     path: "/djpedia", nav: "djpedia", title: "DJ Pédia · Conheça os DJs",
     description: "A enciclopédia da pista global: os principais DJs do Brasil e do mundo, organizados por gênero, com origem, início de carreira e trajetória de cada artista.",
   }, `
 <section class="sec dark page-head wiki" aria-labelledby="t-wiki">
   <div class="wrap">
-    <p class="mono y">DJ Pédia · ${sorted.length} DJs · ${done} verbetes completos</p>
+    <p class="mono y">DJ Pédia · ${listed.length} DJs · ${done} verbetes completos</p>
     <h1 class="display" id="t-wiki">Conheça os <em>DJs</em></h1>
     <p class="lead dim">A enciclopédia da pista global. Os principais DJs do Brasil e do mundo, organizados por gênero: de onde vieram, como começaram, o que tocam e a trajetória até aqui. Toque no nome para abrir o verbete.</p>
     <div class="catalog-search"><label for="wikiSearch" class="mono">Buscar DJ</label><input type="search" id="wikiSearch" placeholder="Nome, gênero ou cidade" autocomplete="off" aria-controls="wikiResults"><p id="wikiCount" class="hint" role="status"></p></div>
@@ -316,7 +317,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
           </a></li>` }).join("")}</ul>
       </section>`).join("")}
     </div>
-    <p class="example-note mono">Os verbetes são escritos a partir de fontes públicas, listadas no fim de cada página.</p>
+    <p class="example-note mono">Os textos são enviados pela Brazilian Bayle, reunidos de todas as fontes públicas.</p>
   </div>
 </section>`);
 
@@ -361,7 +362,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
         ${sec("h-faixas", "Faixas marcantes", ul(p.faixas_marcantes))}
         ${sec("h-marcos", "Marcos da carreira", ul(p.marcos))}
         ${sec("h-infl", "Influências musicais", ul(p.referencias_musicais))}
-        ${sec("h-fontes", "Referências", list(p.fontes).length ? `<ol class="wiki-src">${p.fontes.map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.titulo)}</a></li>`).join("")}</ol>` : p.fonte_texto ? `<p>${esc(p.fonte_texto)}</p>` : `<p>Nenhuma fonte publicada ainda.</p>`)}
+        ${sec("h-fontes", "Referências", `<p>Texto enviado pela Brazilian Bayle, reunido de todas as fontes públicas.</p>`)}
         ${credit ? `<p class="example-note mono">Crédito da imagem: ${credit}</p>` : ""}
         <p class="example-note mono">Última revisão: outubro de 2026</p>
       </div>
