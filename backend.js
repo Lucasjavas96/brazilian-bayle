@@ -51,6 +51,13 @@
       if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');
       return data;
     },
+    async quizCorrect(question) {
+      const { data: s } = await client.auth.getSession();
+      if (!s?.session) return { login: false };
+      const { data, error } = await client.rpc('brb_quiz_correct', { question });
+      if (error) throw new Error(error.message || 'Não foi possível registrar o acerto.');
+      return data;
+    },
     async removeMember(id) {
       const { data, error } = await client.rpc('brb_members', { action: 'remove', payload: { id } });
       if (error) throw new Error(error.message || 'Não foi possível excluir o membro.');
