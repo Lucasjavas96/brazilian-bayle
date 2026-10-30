@@ -46,6 +46,11 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar os membros.');
       return data;
     },
+    async rankingAdmin(action, payload = {}) {
+      const { data, error } = await client.rpc('brb_ranking_admin', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');
+      return data;
+    },
     async removeMember(id) {
       const { data, error } = await client.rpc('brb_members', { action: 'remove', payload: { id } });
       if (error) throw new Error(error.message || 'Não foi possível excluir o membro.');

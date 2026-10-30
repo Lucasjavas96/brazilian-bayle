@@ -2410,3 +2410,4 @@ background-size: auto, auto, 260% 100%; animation: djc-sheen 3.6s ease-in-out in
 .led.led-wait,.ge-nota.ge-wait{font-size:.55em;letter-spacing:.04em;text-transform:uppercase;white-space:normal;line-height:1.2}
 .dj-meta{display:block;margin-top:2px;font-size:10px;color:rgba(255,255,255,.62)}
 @media(max-width:820px){.fm-grid{grid-template-columns:1fr}.fm-venues ol{columns:1}}
+.md-in{background:#0c0d0c;color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:9px 12px;font:inherit;min-width:180px;max-width:100%}

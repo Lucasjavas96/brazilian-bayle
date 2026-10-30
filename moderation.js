@@ -5,7 +5,7 @@
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const LABEL = { published: "Publicado", review: "Em análise", hidden: "Oculto" };
   const tabs = document.getElementById("mdTabs");
-  let posts = [], apps = [], members = [], filter = "todos", tab = "posts", cursor = null, request = 0;
+  let posts = [], apps = [], members = [], venues = [], perfs = [], filter = "todos", tab = "posts", cursor = null, request = 0;
   const more = document.getElementById("mdMore");
   const toast = m => { const t = document.createElement("div"); t.className = "af-toast"; t.setAttribute("role", "status"); t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2800); };
   const when = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
@@ -41,7 +41,25 @@
     }).join("") : `<p class="af-empty">Nenhum membro aprovado ainda.</p>`;
   }
 
+  function renderVenues() {
+    const v = venues, names = typeof DJS !== "undefined" ? DJS.map(d => d[0]) : [];
+    const confirmed = perfs.filter(p => p.status === "confirmed");
+    list.innerHTML = `<article class="md-card" id="vnForm">
+      <h3>Confirmar um show</h3>
+      <p class="mono dim">Só cadastre show que você conferiu em fonte (agenda do clube, ingresso, post oficial). Um DJ vale pelo melhor local confirmado; mais shows no mesmo local não mudam a nota. A Pedreira só vale para evento de música eletrônica.</p>
+      <div class="md-actions" style="flex-wrap:wrap;gap:10px;align-items:flex-end">
+        <label class="mono dim">DJ<br><input class="md-in" list="vnDjs" id="vnDj" placeholder="Nome do DJ" autocomplete="off"><datalist id="vnDjs">${names.map(n => `<option value="${esc(n)}">`).join("")}</datalist></label>
+        <label class="mono dim">Local<br><select class="md-in" id="vnRank">${v.filter(x => x.editorial_rank).map(x => `<option value="${x.editorial_rank}">${x.editorial_rank}º · ${esc(x.name)} (${esc(x.city)}/${esc(x.state)})</option>`).join("")}</select></label>
+        <label class="mono dim">Data do show<br><input class="md-in" type="date" id="vnDate"></label>
+        <label class="mono dim">Fonte (link, opcional)<br><input class="md-in" type="url" id="vnSrc" placeholder="https://"></label>
+        <button type="button" class="btn btn-y af-sm" id="vnAdd">Confirmar show</button>
+      </div></article>
+      <h3 class="mono" style="margin:22px 0 8px">Shows confirmados (${confirmed.length})</h3>
+      ${confirmed.length ? confirmed.map(p => `<article class="md-card" data-perf="${esc(p.id)}"><div class="md-head"><span class="md-badge published">${p.rank}º · ${esc(p.venue)}</span><span class="mono dim">${esc(p.date)}</span></div><h3>${esc(p.dj)}</h3>${p.source ? `<p class="mono dim"><a href="${esc(p.source)}" target="_blank" rel="noopener noreferrer">Fonte</a></p>` : ""}<div class="md-actions"><button type="button" class="btn btn-ghost af-sm md-danger" data-perf-del>Remover</button></div></article>`).join("") : `<p class="af-empty">Nenhum show confirmado ainda. Enquanto não houver, todo DJ fica com o fator de local mínimo.</p>`}`;
+  }
+
   function render() {
+    if (tab === "venues") return renderVenues();
     if (tab === "members") return renderMembers();
     if (tab === "apps") return renderApps();
     const rows = shown();
@@ -71,6 +89,13 @@
         status.textContent=`${members.length} membro${members.length===1?'':'s'} aprovado${members.length===1?'':'s'}.`;
         render();return;
       }
+      if(section==='venues'){
+        const data=await BRB.rankingAdmin('list');
+        if(revision!==request)return;
+        venues=data.venues||[];perfs=data.performances||[];cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
+        status.textContent='Locais do ranking: cada DJ vale pelo melhor local onde tem show confirmado.';
+        render();return;
+      }
       const data=await BRB.moderation(section,filter,append?cursor:null);
       if(revision!==request)return;
       if(section==='apps')apps=append?apps.concat(data.items):data.items;
@@ -92,6 +117,20 @@
     load();
   });
   list.addEventListener("click", async e => {
+    if (tab === "venues") {
+      const add = e.target.closest("#vnAdd"), del = e.target.closest("[data-perf-del]");
+      try {
+        if (add) {
+          const dj = document.getElementById("vnDj").value.trim(), rank = Number(document.getElementById("vnRank").value), date = document.getElementById("vnDate").value, source = document.getElementById("vnSrc").value.trim();
+          if (!dj || !date) return toast("Informe o DJ e a data do show.");
+          add.disabled = true; await BRB.rankingAdmin("confirm", { dj, rank, date, source }); toast("Show confirmado."); await load();
+        } else if (del) {
+          if (!confirm("Remover este show confirmado? A nota do DJ é recalculada.")) return;
+          del.disabled = true; await BRB.rankingAdmin("remove", { id: del.closest("[data-perf]").dataset.perf }); toast("Show removido."); await load();
+        }
+      } catch (err) { toast(err.message); (add || del).disabled = false; }
+      return;
+    }
     const memberCard = e.target.closest("[data-member]");
     if (memberCard) {
       const rm = e.target.closest("[data-remove]");
