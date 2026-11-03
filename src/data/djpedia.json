@@ -11937,5 +11937,679 @@
       "licenca": "Divulgação",
       "pagina": "https://www.beatport.com/artist/d-nox/10607"
     }
+  },
+  {
+    "slug": "deep-dish",
+    "nome": "Deep Dish",
+    "nome_civil": "Ali Shirazinia (Dubfire) e Sharam Tayebi",
+    "origem": "Washington, D.C., Estados Unidos",
+    "estilos": [
+      "Progressive house",
+      "Deep house",
+      "House"
+    ],
+    "ativo_desde": "1991",
+    "resumo": "Dupla formada em Washington, D.C., em 1991, por Ali Shirazinia (Dubfire) e Sharam Tayebi, ambos nascidos no Irã. Foi uma das grandes referências do house nos anos 1990 e 2000 e ganhou um Grammy.",
+    "historia": [
+      "O Deep Dish foi formado em Washington, D.C., em 1991, por Ali Shirazinia (Dubfire) e Sharam Tayebi, nascidos no Irã. A gravadora da dupla foi criada em 1992. A dupla se tornou uma das grandes referências do house nos anos 1990 e 2000, conquistando reconhecimento internacional e um Grammy."
+    ],
+    "faixas_marcantes": [
+      "Flashdance",
+      "Say Hello",
+      "Dreams (remix)",
+      "Sacramento"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "deeper-purpose",
+    "nome": "Deeper Purpose",
+    "nome_civil": "Stephen Galloway",
+    "origem": "região de Londres, Inglaterra",
+    "estilos": [
+      "Tech house",
+      "House"
+    ],
+    "ativo_desde": "década de 2010",
+    "resumo": "DJ e produtor de tech house da região de Londres, com residências no Egg London e no XOYO. Fundou a gravadora In 2 Deep em 2024.",
+    "historia": [
+      "Deeper Purpose é natural da região de Londres. Ganhou espaço com residências no Egg London e no XOYO e passou a se apresentar internacionalmente. Fundou a gravadora In 2 Deep em 2024."
+    ],
+    "faixas_marcantes": [
+      "Party Diva",
+      "Activate",
+      "My Demons",
+      "Everybody's Free (To Feel Good) (remix)"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "desiree",
+    "nome": "DESIREE",
+    "nome_civil": "Palesa Desiree Shilabje",
+    "origem": "região de Joanesburgo, África do Sul",
+    "estilos": [
+      "Afro house",
+      "Deep house",
+      "Afro tech"
+    ],
+    "ativo_desde": "2018",
+    "resumo": "DJ e produtora sul-africana de afro house, deep house e afro tech, da região de Joanesburgo. Começou em 2018, depois da universidade, e tocou no Hï Ibiza e no Watergate.",
+    "historia": [
+      "DESIREE é natural da região de Joanesburgo e começou sua trajetória profissional depois da universidade, por volta de 2018. Conquistou reconhecimento internacional com apresentações no Hï Ibiza, no Watergate e em outros grandes espaços."
+    ],
+    "faixas_marcantes": [
+      "Pussy Power (remix)"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "devochka",
+    "nome": "Devochka",
+    "nome_civil": "Mayra Cruz",
+    "origem": "Minas Gerais, Brasil",
+    "estilos": [
+      "Bass house",
+      "House"
+    ],
+    "resumo": "DJ mineira de bass house e house que tocou no palco Perry's do Lollapalooza Brasil, em 2018, representando a presença feminina na música eletrônica.",
+    "historia": [
+      "Devochka é uma DJ brasileira de Minas Gerais. Em 2018, se apresentou no palco Perry's do Lollapalooza Brasil, representando a presença feminina na música eletrônica. Sua carreira começou antes disso."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "dimmish",
+    "nome": "Dimmish",
+    "estilos": [
+      "Minimal deep tech",
+      "Tech house"
+    ],
+    "resumo": "Produtor italiano de minimal deep tech e tech house, conhecido pelo groove minimalista. Lançou por Solid Grooves, No Art e Eastenderz e toca com frequência na Europa e em Ibiza.",
+    "historia": [
+      "Dimmish é um produtor italiano reconhecido pelo groove minimalista e por lançamentos em gravadoras como Solid Grooves, No Art e Eastenderz. Tem presença frequente em clubes europeus e na cena de Ibiza."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "dj-murphy",
+    "nome": "DJ Murphy",
+    "nome_civil": "Marcos Santos",
+    "estilos": [
+      "Techno",
+      "Hard techno"
+    ],
+    "ativo_desde": "2001",
+    "resumo": "Nome histórico do techno brasileiro, com apresentações no D-Edge e no Fabrik Madrid e lançamentos por Hardsignal e Naked Lunch Records.",
+    "historia": [
+      "DJ Murphy é um nome histórico do techno brasileiro. O primeiro registro de evento dele no Resident Advisor é anterior a 2001. Tem apresentações em clubes como D-Edge e Fabrik Madrid e lançamentos em gravadoras como Hardsignal e Naked Lunch Records."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "dyed-soundorom",
+    "nome": "Dyed Soundorom",
+    "estilos": [
+      "Deep house",
+      "Minimal house",
+      "Underground house"
+    ],
+    "ativo_desde": "década de 2000",
+    "resumo": "DJ francês de deep house, minimal house e underground house, ligado às cenas de Paris e Ibiza e integrante do trio Apollonia, ao lado de Dan Ghenacia e Shonky.",
+    "historia": [
+      "Dyed Soundorom é um DJ francês associado à cena de Paris e Ibiza. É integrante do trio Apollonia, ao lado de Dan Ghenacia e Shonky."
+    ],
+    "faixas_marcantes": [
+      "Tapioca"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "elderbrook",
+    "nome": "Elderbrook",
+    "nome_civil": "Alexander Kotz",
+    "estilos": [
+      "Deep house",
+      "Melodic house",
+      "Indie electronic"
+    ],
+    "ativo_desde": "2015",
+    "resumo": "Cantor, compositor e produtor britânico que funde vocais próprios e música eletrônica. Ganhou projeção mundial com \"Cola\", com o CamelPhat, indicada ao Grammy.",
+    "historia": [
+      "Elderbrook é um cantor, compositor e produtor britânico, reconhecido pela fusão entre vocais próprios e música eletrônica. O projeto começou por volta de 2015. Alcançou projeção mundial com \"Cola\", colaboração com o CamelPhat indicada ao Grammy."
+    ],
+    "faixas_marcantes": [
+      "Cola (com CamelPhat)",
+      "Numb",
+      "Inner Light",
+      "Something About You",
+      "Howl"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "ezequiel-arias",
+    "nome": "Ezequiel Arias",
+    "origem": "Córdoba, Argentina",
+    "estilos": [
+      "Progressive house",
+      "Melodic house"
+    ],
+    "ativo_desde": "2017",
+    "resumo": "Produtor argentino de progressive house e melodic house, de Córdoba, com lançamentos pela Anjunadeep, Sudbeat, Replug e The Soundgarden e apoio de Hernán Cattáneo, Guy J e Above & Beyond.",
+    "historia": [
+      "Ezequiel Arias é um produtor argentino com base em Córdoba. O primeiro evento dele registrado no Resident Advisor é de 2017, mas a carreira começou antes. Lançou pela Anjunadeep, Sudbeat, Replug e The Soundgarden. Sua música recebe apoio de nomes como Hernán Cattáneo, Guy J e Above & Beyond."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "fernanda-pistelli",
+    "nome": "Fernanda Pistelli",
+    "estilos": [
+      "Psytech",
+      "Progressive techno",
+      "Psychedelic techno"
+    ],
+    "ativo_desde": "2015",
+    "resumo": "DJ brasileira de psytech, progressive techno e psychedelic techno. Começou no fim de 2015, enquanto estudava Administração, e ganhou projeção internacional depois de uma apresentação no Universo Paralello.",
+    "historia": [
+      "Fernanda Pistelli começou como DJ no fim de 2015, enquanto estudava Administração. Depois, se formou em produção musical e conquistou projeção internacional após uma apresentação no Universo Paralello."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "gms",
+    "nome": "GMS",
+    "nome_civil": "Riktam Matkin e Bansi Quinteros",
+    "origem": "Amsterdã, Países Baixos",
+    "estilos": [
+      "Psytrance",
+      "Full-on",
+      "Psychedelic trance"
+    ],
+    "ativo_desde": "1995",
+    "resumo": "Growling Mad Scientists, projeto de psytrance formado em 1995, em Amsterdã, por Riktam Matkin e Bansi Quinteros. Virou um dos mais influentes do psytrance mundial.",
+    "historia": [
+      "O GMS, sigla de Growling Mad Scientists, foi formado em 1995, em Amsterdã, e tem integrantes de diferentes origens. Riktam Matkin e Bansi Quinteros são os integrantes históricos. Tornou-se um dos projetos mais influentes do psytrance mundial. Os integrantes desenvolveram carreira internacional, participaram de grandes festivais e lançaram diversos álbuns."
+    ],
+    "faixas_marcantes": [
+      "No Rules",
+      "The Remixes",
+      "Chaos Laboratory"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "guy-gerber",
+    "nome": "Guy Gerber",
+    "estilos": [
+      "Melodic house",
+      "Techno",
+      "Progressive house"
+    ],
+    "ativo_desde": "final dos anos 1990",
+    "resumo": "Produtor israelense de melodic house, techno e progressive house, conhecido pelas produções hipnóticas e pela marca e gravadora Rumors. Tem residências internacionais, em especial em Ibiza.",
+    "historia": [
+      "Guy Gerber é um produtor israelense conhecido por suas produções hipnóticas e pela criação da marca e gravadora Rumors. Começou entre o fim dos anos 1990 e o início dos anos 2000 e desenvolveu residências internacionais, especialmente em Ibiza."
+    ],
+    "faixas_marcantes": [
+      "Timing",
+      "What To Do (&ME Remix)",
+      "Stoppage Time",
+      "Secret Encounters"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "guy-j",
+    "nome": "Guy J",
+    "estilos": [
+      "Progressive house",
+      "Melodic house",
+      "Progressive techno"
+    ],
+    "ativo_desde": "década de 2000",
+    "resumo": "Referência mundial do progressive house, com carreira ligada à Bedrock Records, de John Digweed. Fundou a gravadora Lost & Found.",
+    "historia": [
+      "Guy J é uma referência mundial do progressive house, com carreira associada à Bedrock Records, de John Digweed. Fundou a gravadora Lost & Found e se tornou uma influência importante no progressive contemporâneo."
+    ],
+    "faixas_marcantes": [
+      "Lamur",
+      "Nirvana",
+      "Once in a Blue Moon",
+      "Small Alarms"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "julian-fijma",
+    "nome": "Julian Fijma",
+    "estilos": [
+      "Minimal house",
+      "Tech house"
+    ],
+    "resumo": "DJ de minimal house e tech house ligado ao circuito europeu de house e às festas Paradise, de Jamie Jones, com apresentações em Ibiza e outros destinos internacionais.",
+    "historia": [
+      "Julian Fijma é um DJ associado ao circuito europeu de house e às festas Paradise, de Jamie Jones, com apresentações em Ibiza e outros destinos internacionais."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "kink",
+    "nome": "KiNK",
+    "nome_civil": "Strahil Velchev",
+    "origem": "Sófia, Bulgária",
+    "estilos": [
+      "House",
+      "Techno",
+      "Acid house",
+      "Experimental"
+    ],
+    "ativo_desde": "década de 2000",
+    "resumo": "Produtor búlgaro de Sófia, reconhecido pelas apresentações ao vivo com equipamentos analógicos e improvisação. Um dos principais nomes da música eletrônica da Bulgária.",
+    "historia": [
+      "KiNK, Strahil Velchev, é de Sófia e tem apresentações documentadas desde pelo menos 2008. É reconhecido internacionalmente pelas apresentações ao vivo com equipamentos analógicos e improvisação e é um dos principais nomes da música eletrônica búlgara."
+    ],
+    "faixas_marcantes": [
+      "Perth",
+      "Cloud Generator",
+      "Existence",
+      "Chorus"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "len-faki",
+    "nome": "Len Faki",
+    "nome_civil": "Levent Faki",
+    "nascimento": "Stuttgart, Alemanha, 1975",
+    "origem": "Stuttgart, Alemanha, 1975",
+    "estilos": [
+      "Techno",
+      "Minimal techno",
+      "Peak-time techno"
+    ],
+    "ativo_desde": "1990",
+    "resumo": "DJ alemão de techno, nascido em Stuttgart em 1975. Começou como DJ La Monde, fundou as gravadoras Figure e Figure Jams e é muito associado ao Berghain.",
+    "historia": [
+      "Len Faki, Levent Faki, nasceu em Stuttgart em 1975 e começou como DJ em meados dos anos 1990, sob o nome DJ La Monde. Tornou-se um dos nomes mais influentes do techno berlinense. Fundou as gravadoras Figure e Figure Jams e desenvolveu forte associação com o Berghain."
+    ],
+    "faixas_marcantes": [
+      "Mekong Delta",
+      "Just a Dance",
+      "My Black Sheep",
+      "BX 3"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "lolu-menayed",
+    "nome": "Lolu Menayed",
+    "origem": "Buenos Aires, Argentina",
+    "estilos": [
+      "House",
+      "Deep house",
+      "Minimal house"
+    ],
+    "resumo": "DJ e produtora de Buenos Aires, de house, deep house e minimal house. Fundou as gravadoras DIGHOP Records e 44CUPIDS Records e tocou em festas e clubes europeus.",
+    "historia": [
+      "Lolu Menayed é DJ e produtora de Buenos Aires, fundadora das gravadoras DIGHOP Records e 44CUPIDS Records. Conquistou espaço na cena europeia com apresentações em festas e clubes internacionais."
+    ],
+    "faixas_marcantes": [
+      "Stay Sticky",
+      "Wild Wind",
+      "Nothing to U"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "m-high",
+    "nome": "M-High",
+    "nome_civil": "Marijn Schiedon",
+    "origem": "Amsterdã, Países Baixos",
+    "estilos": [
+      "House",
+      "Deep house",
+      "Minimal house"
+    ],
+    "ativo_desde": "2019",
+    "resumo": "Multi-instrumentista e produtor de Amsterdã, associado à PIV Records, de house e deep house. Tocou em clubes como o fabric e o Shelter.",
+    "historia": [
+      "M-High, Marijn Schiedon, é um multi-instrumentista e produtor de Amsterdã, associado à PIV Records. O primeiro registro dele no Resident Advisor é de 2019. Construiu carreira internacional, com apresentações em clubes como fabric e Shelter."
+    ],
+    "faixas_marcantes": [
+      "Return The Phavour",
+      "Dark Web Pinger",
+      "Taking Time",
+      "Cold Hands"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "magdalena",
+    "nome": "Magdalena",
+    "estilos": [
+      "Melodic house",
+      "Melodic techno",
+      "Progressive"
+    ],
+    "ativo_desde": "década de 2010",
+    "resumo": "DJ alemã de melodic house e melodic techno, ligada à cena de Hamburgo e à marca Diynamic. Ficou conhecida pelas apresentações em Ibiza e pela programação do EGO Club.",
+    "historia": [
+      "Magdalena é uma DJ alemã ligada à cena de Hamburgo e à marca Diynamic. Ficou conhecida por suas apresentações em Ibiza e por sua participação na programação do EGO Club."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "mano-le-tough",
+    "nome": "Mano Le Tough",
+    "nome_civil": "Niall Mannion",
+    "estilos": [
+      "Melodic house",
+      "Deep house",
+      "Indie dance"
+    ],
+    "ativo_desde": "década de 2000",
+    "resumo": "Produtor irlandês radicado em Berlim, de melodic house, deep house e indie dance. Cofundador da gravadora Maeve e autor dos álbuns Changing Days e Trails.",
+    "historia": [
+      "Mano Le Tough, Niall Mannion, é um produtor irlandês que desenvolveu a carreira em Berlim. Criou uma identidade musical que combina elementos melódicos, vocais e influências alternativas. É cofundador da gravadora Maeve."
+    ],
+    "faixas_marcantes": [
+      "Primative People",
+      "Everything You've Done Before",
+      "Can't Do Without You (remix)",
+      "Ahsure"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "marten-lou",
+    "nome": "Marten Lou",
+    "origem": "Europa; uma ficha do Amsterdam Dance Event o classifica como artista da França",
+    "estilos": [
+      "Melodic house",
+      "Deep house",
+      "Afro house"
+    ],
+    "ativo_desde": "década de 2020",
+    "resumo": "Produtor de melodic house, deep house e afro house que ganhou reconhecimento nos anos 2020, com apoio de Keinemusik, Adriatique, CamelPhat e BLOND:ISH. Tocou em Ibiza, Paris, Nova York e São Paulo.",
+    "historia": [
+      "Marten Lou conquistou reconhecimento internacional com produções melódicas apoiadas por Keinemusik, Adriatique, CamelPhat e BLOND:ISH. Apresentou-se em Ibiza, Paris, Nova York e São Paulo. Uma ficha do Amsterdam Dance Event o classifica como artista da França."
+    ],
+    "faixas_marcantes": [
+      "My Love For You (Yebba's Heartbreak)",
+      "Another Life",
+      "No One Like You"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "max-styler",
+    "nome": "Max Styler",
+    "origem": "San Luis Obispo, Califórnia, Estados Unidos",
+    "estilos": [
+      "Tech house",
+      "Indie dance",
+      "House"
+    ],
+    "ativo_desde": "2012",
+    "resumo": "Produtor de San Luis Obispo, na Califórnia, que começou em 2012, assinou com a Dim Mak e migrou do EDM e do bass para um house mais underground. Tem a própria gravadora, a Nu Moda.",
+    "historia": [
+      "Max Styler começou a produzir música eletrônica na adolescência e assinou com a Dim Mak. Evoluiu de sonoridades EDM e bass para um house mais underground, com lançamentos pela Diynamic, Experts Only e pela sua própria gravadora, a Nu Moda."
+    ],
+    "faixas_marcantes": [
+      "Hypnotic",
+      "Time to Go",
+      "Lights Out",
+      "Body High"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "miane",
+    "nome": "Miane",
+    "origem": "Málaga, Espanha",
+    "estilos": [
+      "Tech house",
+      "House"
+    ],
+    "ativo_desde": "2020",
+    "resumo": "DJ de Málaga, de tech house e house, que desenvolveu o projeto Miane em Ibiza. Foi a primeira artista espanhola a lançar pela Hot Creations e colaborou com Chris Lake e Gorgon City.",
+    "historia": [
+      "Miane começou a trajetória musical em Málaga, sob o nome anterior Taty Muñoz, e desenvolveu o projeto Miane em Ibiza. Tornou-se a primeira artista espanhola a lançar pela Hot Creations e colaborou com artistas como Chris Lake e Gorgon City."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "morttagua",
+    "nome": "Morttagua",
+    "nome_civil": "Danilo Morttagua",
+    "origem": "Rio de Janeiro, Brasil",
+    "estilos": [
+      "Melodic techno",
+      "Progressive house",
+      "Progressive techno"
+    ],
+    "ativo_desde": "2013",
+    "resumo": "Produtor do Rio de Janeiro de melodic techno e progressive house, conhecido pelas atmosferas melódicas e sombrias. Fundou a Timeless Moment, gravadora de gêneros melódicos e progressivos.",
+    "historia": [
+      "Morttagua é um produtor brasileiro do Rio de Janeiro, conhecido por atmosferas melódicas e sonoridades sombrias. É o fundador da Timeless Moment, gravadora dedicada a gêneros melódicos e progressivos."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "neelix",
+    "nome": "Neelix",
+    "nome_civil": "Henrik Twardzik",
+    "estilos": [
+      "Progressive psytrance",
+      "Psytrance"
+    ],
+    "ativo_desde": "década de 1990",
+    "resumo": "Um dos principais nomes do progressive psytrance alemão, ativo desde os anos 1990, com som que mistura elementos psicodélicos, melodias e vocais.",
+    "historia": [
+      "Neelix, Henrik Twardzik, é um dos principais representantes do progressive psytrance alemão. Tornou-se referência internacional com uma sonoridade que mistura elementos psicodélicos, melodias e vocais."
+    ],
+    "faixas_marcantes": [
+      "Waterfall",
+      "Bang Bang",
+      "Leave Me Alone",
+      "The Twenty Five"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "nic-fanciulli",
+    "nome": "Nic Fanciulli",
+    "estilos": [
+      "House",
+      "Tech house",
+      "Techno"
+    ],
+    "ativo_desde": "final dos anos 1990",
+    "resumo": "DJ britânico de house, tech house e techno, que ganhou projeção como residente do Club Class, em Maidstone, no fim dos anos 1990. Fundou a Saved Records e lançou o álbum My Heart (2017).",
+    "historia": [
+      "Nic Fanciulli ganhou projeção como residente do Club Class, em Maidstone. Fundou a Saved Records e desenvolveu parcerias com James Zabiela e Joris Voorn."
+    ],
+    "faixas_marcantes": [
+      "My Heart",
+      "The Social"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "patrice-baumel",
+    "nome": "Patrice Bäumel",
+    "estilos": [
+      "Melodic techno",
+      "Progressive house",
+      "Techno"
+    ],
+    "ativo_desde": "década de 1990",
+    "resumo": "DJ alemão de melodic techno e progressive house, que desenvolveu a carreira nos Países Baixos e foi residente do Trouw, em Amsterdã.",
+    "historia": [
+      "Patrice Bäumel é um DJ alemão que desenvolveu boa parte da carreira nos Países Baixos, tornando-se residente do Trouw, em Amsterdã. É reconhecido por produções melódicas e apresentações internacionais."
+    ],
+    "faixas_marcantes": [
+      "Glutes",
+      "Roar",
+      "Surge",
+      "Sender"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "per-hammar",
+    "nome": "Per Hammar",
+    "estilos": [
+      "Minimal house",
+      "Dub techno",
+      "Deep house"
+    ],
+    "ativo_desde": "década de 2000",
+    "resumo": "DJ e produtor sueco da cena underground de Malmö, de minimal house, dub techno e deep house. Fundou a Dirty Hands.",
+    "historia": [
+      "Per Hammar é um DJ e produtor sueco associado à cena underground de Malmö, com forte influência do dub techno e da música minimalista. Fundou a Dirty Hands."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "phaxe",
+    "nome": "Phaxe",
+    "nome_civil": "Kevin Josefsen",
+    "estilos": [
+      "Progressive psytrance"
+    ],
+    "ativo_desde": "década de 2000",
+    "resumo": "Produtor dinamarquês de progressive psytrance melódico, com apresentações no Universo Paralello e no Boom.",
+    "historia": [
+      "Phaxe, Kevin Josefsen, é um produtor dinamarquês reconhecido internacionalmente pelo progressive psytrance melódico, com apresentações em festivais como Universo Paralello e Boom."
+    ],
+    "faixas_marcantes": [
+      "Angels of Destruction",
+      "The Quest",
+      "Lost in Motion"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "phonique",
+    "nome": "Phonique",
+    "nome_civil": "Michael Vater",
+    "estilos": [
+      "Deep house",
+      "House",
+      "Tech house"
+    ],
+    "ativo_desde": "década de 1990",
+    "resumo": "DJ e produtor alemão de deep house radicado em Berlim, ativo desde os anos 1990, com lançamentos pela Dessous Recordings.",
+    "historia": [
+      "Phonique, Michael Vater, é um DJ e produtor alemão com carreira consolidada em Berlim. Ficou internacionalmente conhecido por produções de deep house e lançamentos pela Dessous Recordings."
+    ],
+    "faixas_marcantes": [
+      "For the Time Being",
+      "The Red Dress",
+      "Feel What You Want"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "rufus-du-sol",
+    "nome": "RÜFÜS DU SOL",
+    "nome_civil": "Tyrone Lindqvist, Jon George e James Hunt",
+    "origem": "Sydney, Austrália",
+    "estilos": [
+      "Melodic house",
+      "Indie dance",
+      "Alternative dance"
+    ],
+    "ativo_desde": "2010",
+    "resumo": "Trio de Sydney formado em 2010 por Tyrone Lindqvist, Jon George e James Hunt, um dos maiores grupos de música eletrônica ao vivo do mundo. Venceu o Grammy com \"Alive\".",
+    "historia": [
+      "O RÜFÜS DU SOL foi formado em 2010, em Sydney, por Tyrone Lindqvist, Jon George e James Hunt. É um dos maiores grupos de música eletrônica ao vivo do mundo, com álbuns de sucesso e apresentações como headliner de grandes festivais internacionais. Venceu o Grammy com \"Alive\"."
+    ],
+    "faixas_marcantes": [
+      "Innerbloom",
+      "You Were Right",
+      "Alive",
+      "Underwater",
+      "Sundream",
+      "On My Knees"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "sasha",
+    "nome": "Sasha",
+    "nome_civil": "Alexander Paul Coe",
+    "nascimento": "1969",
+    "origem": "País de Gales",
+    "estilos": [
+      "Progressive house",
+      "Trance",
+      "Melodic house"
+    ],
+    "ativo_desde": "final da década de 1980",
+    "resumo": "DJ e produtor galês nascido em 1969, pioneiro do progressive house. Ficou conhecido pela parceria com John Digweed e pelos mixes Northern Exposure e Renaissance, e foi eleito DJ número 1 da DJ Mag em 2000.",
+    "historia": [
+      "Sasha, Alexander Paul Coe, nasceu em 1969 e é um dos principais pioneiros do progressive house mundial. Ficou conhecido pela parceria com John Digweed, pelos álbuns de mixagem Northern Exposure e Renaissance e pela série Involver. Foi eleito DJ número 1 do mundo pela DJ Mag em 2000."
+    ],
+    "faixas_marcantes": [
+      "Xpander",
+      "Belfunk",
+      "Wavy Gravy",
+      "Rabbitweed"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "scenarios",
+    "nome": "SCENARIOS",
+    "nome_civil": "Emanuel Satie, Maga, Sean Doron e Tim Engelhardt",
+    "estilos": [
+      "Melodic house",
+      "Indie dance",
+      "Afro house"
+    ],
+    "ativo_desde": "década de 2020",
+    "resumo": "Coletivo e marca musical da década de 2020, associado a Emanuel Satie, Maga, Sean Doron e Tim Engelhardt, criado para eventos, produções colaborativas e experiências de música eletrônica underground.",
+    "historia": [
+      "O SCENARIOS é um coletivo e uma marca musical criada para desenvolver eventos, produções colaborativas e experiências de música eletrônica underground. É um projeto internacional, associado a Emanuel Satie, Maga, Sean Doron e Tim Engelhardt."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "silvie-loto",
+    "nome": "Silvie Loto",
+    "estilos": [
+      "House",
+      "Techno",
+      "Minimal"
+    ],
+    "ativo_desde": "década de 2000",
+    "resumo": "DJ italiana de house, techno e minimal, ativa desde os anos 2000. Reconhecida no circuito underground europeu, tocou em Ibiza e em eventos como o Circoloco.",
+    "historia": [
+      "Silvie Loto é uma DJ italiana reconhecida pela atuação no circuito underground europeu, com apresentações em Ibiza e participação em eventos como o Circoloco."
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "zac",
+    "nome": "ZAC",
+    "estilos": [
+      "Progressive house",
+      "Melodic house",
+      "Melodic techno"
+    ],
+    "resumo": "DJ e produtor brasileiro de progressive house, melodic house e melodic techno, com faixas em colaboração com Bakka e Ashibah.",
+    "historia": [
+      "ZAC é um DJ e produtor brasileiro associado ao circuito de progressive e melodic house, com colaborações com artistas como Bakka e Ashibah."
+    ],
+    "faixas_marcantes": [
+      "Make It Better",
+      "Distortion",
+      "So High"
+    ],
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
   }
 ]
