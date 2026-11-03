@@ -14,7 +14,7 @@ const YEAR = 2026;
 
 const NAV = [
   ["conta", "/conta", "Login / Cadastro"],
-  ["ranking", "/ranking", "Brasileirão dos DJs"],
+  ["ranking", "/ranking", "Avaliação dos DJs"],
   ["spotted", "/spotted", "Spotted Bayle"],
   ["after", "/after", "Onde é o after?"],
   ["album", "/album", "Bayle All Stars Album"],

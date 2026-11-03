@@ -94,6 +94,7 @@ const DJS = [
   ["Solomun","House"],["Ben Sterling","Tech house"]];
 let officialRows = [];
 const MIN_VOTES = 30;
+const reviewBtn = d => d.votos > 0 ? `<button type="button" class="rv-btn mono" data-reviews="${d.name.replace(/"/g, "&quot;")}">Ver resenhas</button>` : "";
 const hasPedia = n => !window.BRB_PEDIA || window.BRB_PEDIA.includes(slug(n));
 const djNote = d => d.unrated ? "Sem avaliações" : d.emAvaliacao ? `Em avaliação · ${d.votos}/${MIN_VOTES} avaliadores` : `Média ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.venue_name ? "Local: " + d.venue_name : "Sem local validado"}`;
 const scoreCell = d => Number.isFinite(d.pos) ? fmt2(d.nota) : "Em avaliação";
@@ -172,7 +173,7 @@ function mountBoard(stage) {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
-        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
+        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
         <td class="b-score"><span class="led${Number.isFinite(d.pos) ? "" : " led-wait"}">${scoreCell(d)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
@@ -681,7 +682,7 @@ function mountGe(el) {
       const s = slug(d.name), href = hasPedia(d.name) ? `/djpedia/${s}` : null, tag = href ? "a" : "span";
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
-        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
+        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${reviewBtn(d)}${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
         <td class="ge-nota${Number.isFinite(d.pos) ? "" : " ge-wait"}">${scoreCell(d)}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
@@ -744,3 +745,26 @@ async function refreshOfficialRanking(){
  }catch{note.textContent='Não foi possível carregar o ranking agora. Tente novamente mais tarde.';}
 }
 refreshOfficialRanking();
+
+/* ---------- Ver resenhas: comentários das avaliações de um DJ ---------- */
+(() => {
+  const esc = t => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  let box = null, back = null;
+  const close = () => { box?.remove(); box = null; document.body.classList.remove("rv-lock"); back?.focus?.(); back = null; };
+  const open = async (name, trigger) => {
+    close(); back = trigger;
+    box = document.createElement("div"); box.className = "rv-scrim"; box.innerHTML = `<div class="rv-sheet" role="dialog" aria-modal="true" aria-label="Resenhas de ${esc(name)}"><button type="button" class="rv-close mono" data-rv-close>Fechar</button><p class="mono y">Resenhas da pista</p><h2 class="display">${esc(name)}</h2><div class="rv-list" aria-live="polite"><p class="rv-empty">Carregando as resenhas…</p></div></div>`;
+    document.body.appendChild(box); document.body.classList.add("rv-lock"); box.querySelector("[data-rv-close]").focus();
+    const list = box.querySelector(".rv-list");
+    try {
+      const items = await window.BRB.reviews(name);
+      list.innerHTML = items.length ? items.map(r => `<article class="rv-item"><div class="rv-top"><b>@${esc(r.nick)}</b><span class="mono">nota ${fmt1(Number(r.nota))}</span></div><p>${esc(r.text)}</p><small class="mono">${esc(r.festa || "")}</small></article>`).join("") : '<p class="rv-empty">Ainda não há resenhas escritas para este DJ. Quem avalia pode contar como foi o set.</p>';
+    } catch (e) { list.innerHTML = '<p class="rv-empty">Não foi possível carregar as resenhas agora. Tente novamente em instantes.</p>'; }
+  };
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-reviews]");
+    if (b) { open(b.dataset.reviews, b); return; }
+    if (e.target.closest("[data-rv-close]") || e.target.classList?.contains("rv-scrim")) close();
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && box) close(); });
+})();
