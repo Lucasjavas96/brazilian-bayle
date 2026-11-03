@@ -772,3 +772,18 @@ refreshOfficialRanking();
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && box) close(); });
 })();
+
+/* ---------- Ranking: cards das demais festas do fim de semana ---------- */
+(() => {
+  const box = document.getElementById("wkMore"); if (!box) return;
+  const FEATURED = new Set(["pedreira-2026-10-31", "surreal-park-2026-11-01"]);
+  const PLACE = { "D-EDGE São Paulo": ["D-EDGE", "São Paulo/SP"], "Club Vibe": ["Club Vibe", "Curitiba/PR"], "Ame Club": ["Ame Club", "Valinhos/SP"], "P12": ["P12 Jurerê", "Florianópolis/SC"], "Parque Villa-Lobos": ["Parque Villa-Lobos", "São Paulo/SP"] };
+  const DOW = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+  const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const list = (window.BRB_EVENTS || []).filter(e => e.date >= "2026-10-30" && e.date <= "2026-11-01" && !FEATURED.has(e.id) && e.lineup.length)
+    .sort((a, b) => a.date.localeCompare(b.date) || a.venue.localeCompare(b.venue));
+  box.innerHTML = list.map(e => {
+    const [nome, cidade] = PLACE[e.venue] || [e.venue, ""], d = new Date(e.date + "T12:00:00");
+    return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${hasPedia(n) ? `<a href="/djpedia/${slug(n)}">${esc(n)}</a>` : esc(n)}</li>`).join("")}</ul><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a></article>`;
+  }).join("");
+})();
