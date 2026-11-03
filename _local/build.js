@@ -386,7 +386,7 @@ fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="U
 ${urls.map(u => `  <url><loc>${SITE}${u}</loc></url>`).join("\n")}
 </urlset>
 `);
-fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";window.BRB_CLUBS="+JSON.stringify(readJson("clubes.json").clubes)+";");
+fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_PEDIA="+JSON.stringify([...new Set(DJLIST.filter(d=>!d.curitiba).map(d=>slugify(d.nome)))])+";window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";window.BRB_CLUBS="+JSON.stringify(readJson("clubes.json").clubes)+";");
 // Content hashes prevent old CSS and card scripts being mixed after a deploy.
 const crypto = require('crypto');
 const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','moderation.js','events-2026.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
