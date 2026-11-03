@@ -5,7 +5,7 @@
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const LABEL = { published: "Publicado", review: "Em análise", hidden: "Oculto" };
   const tabs = document.getElementById("mdTabs");
-  let posts = [], apps = [], members = [], venues = [], perfs = [], filter = "todos", tab = "posts", cursor = null, request = 0;
+  let posts = [], apps = [], members = [], venues = [], perfs = [], actUsers = [], actEvents = [], actView = "users", actQ = "", actUid = "", actName = "", filter = "todos", tab = "posts", cursor = null, request = 0;
   const more = document.getElementById("mdMore");
   const toast = m => { const t = document.createElement("div"); t.className = "af-toast"; t.setAttribute("role", "status"); t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2800); };
   const when = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
@@ -58,7 +58,30 @@
       ${confirmed.length ? confirmed.map(p => `<article class="md-card" data-perf="${esc(p.id)}"><div class="md-head"><span class="md-badge published">${p.rank}º · ${esc(p.venue)}</span><span class="mono dim">${esc(p.date)}</span></div><h3>${esc(p.dj)}</h3>${p.source ? `<p class="mono dim"><a href="${esc(p.source)}" target="_blank" rel="noopener noreferrer">Fonte</a></p>` : ""}<div class="md-actions"><button type="button" class="btn btn-ghost af-sm md-danger" data-perf-del>Remover</button></div></article>`).join("") : `<p class="af-empty">Nenhum show confirmado ainda. Enquanto não houver, todo DJ fica com o fator de local mínimo.</p>`}`;
   }
 
+  const fullWhen = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" });
+  function renderActivity() {
+    const bar = `<div class="md-actions" style="flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px">
+      <button type="button" class="btn ${actView === "users" ? "btn-y" : "btn-ghost"} af-sm" data-av="users">Usuários</button>
+      <button type="button" class="btn ${actView === "feed" ? "btn-y" : "btn-ghost"} af-sm" data-av="feed">Todas as ações</button>
+      <input class="md-in" id="actQ" placeholder="Buscar por e-mail ou @" value="${esc(actQ)}" autocomplete="off">
+      <button type="button" class="btn btn-ghost af-sm" id="actGo">Buscar</button>
+      ${actUid ? `<button type="button" class="btn btn-ghost af-sm" id="actClear">Tirar o filtro de @${esc(actName)}</button>` : ""}</div>`;
+    let body;
+    if (actView === "users") {
+      body = actUsers.length ? actUsers.map(x => `<article class="md-card" data-uid="${esc(x.id)}" data-uname="${esc(x.nick || x.email)}">
+        <div class="md-head"><span class="md-badge ${x.confirmed ? "published" : "review"}">${x.confirmed ? "E-mail confirmado" : "E-mail não confirmado"}</span><span class="mono dim">criou em ${fullWhen(x.created_at)}</span></div>
+        <h3>${x.nick ? "@" + esc(x.nick) : "Sem @ ainda"}</h3>
+        <p class="mono dim">${esc(x.email)} · último acesso: ${x.last_sign_in_at ? fullWhen(x.last_sign_in_at) : "nunca"}</p>
+        <p class="mono dim">${x.votes} avaliaç${x.votes === 1 ? "ão" : "ões"} · ${x.posts} post${x.posts === 1 ? "" : "s"} · ${x.comments} comentário${x.comments === 1 ? "" : "s"}</p>
+        <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-uact>Ver as ações dessa conta</button></div></article>`).join("") : '<p class="af-empty">Nenhuma conta encontrada.</p>';
+    } else {
+      body = actEvents.length ? `<div class="act-feed">${actEvents.map(e => `<div class="act-row"><span class="mono dim act-when">${fullWhen(e.at)}</span><span class="act-who"><b>${e.nick ? "@" + esc(e.nick) : "?"}</b><small class="mono dim">${esc(e.email)}</small></span><span class="md-badge act-type">${esc(e.type)}</span><span class="act-detail">${esc(e.detail)}</span></div>`).join("")}</div>` : '<p class="af-empty">Nenhuma ação registrada neste filtro.</p>';
+    }
+    list.innerHTML = bar + body;
+  }
+
   function render() {
+    if (tab === "activity") return renderActivity();
     if (tab === "venues") return renderVenues();
     if (tab === "members") return renderMembers();
     if (tab === "apps") return renderApps();
@@ -89,6 +112,14 @@
         status.textContent=`${members.length} membro${members.length===1?'':'s'} aprovado${members.length===1?'':'s'}.`;
         render();return;
       }
+      if(section==='activity'){
+        const data=await BRB.activity(actView,{q:actQ,user_id:actUid||undefined,limit:300});
+        if(revision!==request)return;
+        if(actView==='users')actUsers=data.users||[];else actEvents=data.events||[];
+        cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
+        status.textContent=actView==='users'?`${actUsers.length} conta${actUsers.length===1?'':'s'} (as mais novas primeiro).`:`${actEvents.length} ${actEvents.length===1?'ação registrada':'ações registradas'} (as mais recentes primeiro)${actUid?', só de @'+actName:''}.`;
+        render();return;
+      }
       if(section==='venues'){
         const data=await BRB.rankingAdmin('list');
         if(revision!==request)return;
@@ -116,7 +147,17 @@
     tab=b.dataset.tab;tabs.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
     load();
   });
+  list.addEventListener("keydown", e => { if (tab === "activity" && e.key === "Enter" && e.target.id === "actQ") { actQ = e.target.value.trim(); load(); } });
   list.addEventListener("click", async e => {
+    if (tab === "activity") {
+      const v = e.target.closest("[data-av]"), go = e.target.closest("#actGo"), clr = e.target.closest("#actClear"), ua = e.target.closest("[data-uact]");
+      const qi = document.getElementById("actQ"); if (qi) actQ = qi.value.trim();
+      if (v) { actView = v.dataset.av; load(); }
+      else if (go) load();
+      else if (clr) { actUid = ""; actName = ""; load(); }
+      else if (ua) { const c = ua.closest("[data-uid]"); actUid = c.dataset.uid; actName = c.dataset.uname; actView = "feed"; load(); }
+      return;
+    }
     if (tab === "venues") {
       const add = e.target.closest("#vnAdd"), del = e.target.closest("[data-perf-del]");
       try {

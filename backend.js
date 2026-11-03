@@ -63,6 +63,11 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar as resenhas.');
       return data || [];
     },
+    async activity(action, payload = {}) {
+      const { data, error } = await client.rpc('brb_activity', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível carregar a atividade.');
+      return data;
+    },
     async removeMember(id) {
       const { data, error } = await client.rpc('brb_members', { action: 'remove', payload: { id } });
       if (error) throw new Error(error.message || 'Não foi possível excluir o membro.');
