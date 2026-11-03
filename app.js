@@ -89,7 +89,8 @@ const DJS = [
   ["Wehbba","Techno"],["Selvagem","Disco"],["Tropkillaz","Trap"],["DJ Marky","Drum & bass"],["Anderson Noise","Techno"],
   ["Groove Delight","Tech house"],["Renato Ratier","Techno"],["Mila Journée","Melodic house"],["Ney Faustini","House"],["Renato Cohen","Techno"],
   ["Vinne","Bass house"],["Volkoder","Bass house"],["Dashdot","Deep house"],["Maz","Afro house"],["Malifoo","Brazilian bass"],
-  ["Greggio","Tech house"],["GenX","Música eletrônica"]];
+  ["Greggio","Tech house"],["GenX","Música eletrônica"],
+  ["Doozie","House"],["Albuquerque","House"],["Analu","House"],["gggguerra","House"],["Simas","House"]];
 let officialRows = [];
 const MIN_VOTES = 30;
 const djNote = d => d.unrated ? "Sem avaliações" : d.emAvaliacao ? `Em avaliação · ${d.votos}/${MIN_VOTES} avaliadores` : `Média ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.venue_name ? "Local: " + d.venue_name : "Sem local validado"}`;
@@ -224,6 +225,8 @@ renderPodium();
     filterParties();
   }
   fillParties();
+  { const want = new URLSearchParams(location.search).get('festa'), ev = EVENTS.find(e => e.id === want);
+    if (ev) { clubSel.value = ev.venue; fillParties(); party.value = ev.id; if (party.value === ev.id) party.onchange(); } }
   lineup.onclick = e => { const b = e.target.closest("button"); if (!b) return; dj = b.dataset.dj; renderLineup(); err("eDj", ""); $(`[data-dj="${dj}"]`, lineup)?.focus() };
   renderLineup();
 
