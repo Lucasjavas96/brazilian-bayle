@@ -2445,3 +2445,4 @@ background-size: auto, auto, 260% 100%; animation: djc-sheen 3.6s ease-in-out in
 .rv-item small{display:block;margin-top:8px;color:rgba(255,255,255,.55);font-size:10px}
 .rv-empty{color:rgba(255,255,255,.75);font-size:15px}
 body.rv-lock{overflow:hidden}
+.wk-left .wk-ph{object-position:50% 16%}
