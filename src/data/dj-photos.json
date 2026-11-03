@@ -215,5 +215,166 @@
     "source": "ND Mais",
     "width": 720,
     "height": 720
+  },
+  "carla-elektra": {
+    "path": "assets/djs/carla-elektra.webp",
+    "thumb": "assets/djs/thumbs/carla-elektra.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "carol-favero": {
+    "path": "assets/djs/carol-favero.webp",
+    "thumb": "assets/djs/thumbs/carol-favero.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "corren-cavini": {
+    "path": "assets/djs/corren-cavini.webp",
+    "thumb": "assets/djs/thumbs/corren-cavini.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "curol": {
+    "path": "assets/djs/curol.webp",
+    "thumb": "assets/djs/thumbs/curol.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "gabss": {
+    "path": "assets/djs/gabss.webp",
+    "thumb": "assets/djs/thumbs/gabss.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "jessica-brankka": {
+    "path": "assets/djs/jessica-brankka.webp",
+    "thumb": "assets/djs/thumbs/jessica-brankka.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "lary-lima": {
+    "path": "assets/djs/lary-lima.webp",
+    "thumb": "assets/djs/thumbs/lary-lima.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "leff": {
+    "path": "assets/djs/leff.webp",
+    "thumb": "assets/djs/thumbs/leff.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "mary-gripa": {
+    "path": "assets/djs/mary-gripa.webp",
+    "thumb": "assets/djs/thumbs/mary-gripa.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "raiza-koh-sante": {
+    "path": "assets/djs/raiza-koh-sante.webp",
+    "thumb": "assets/djs/thumbs/raiza-koh-sante.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "einmusik": {
+    "path": "assets/djs/einmusik.webp",
+    "thumb": "assets/djs/thumbs/einmusik.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "solarce-brothers": {
+    "path": "assets/djs/solarce-brothers.webp",
+    "thumb": "assets/djs/thumbs/solarce-brothers.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "solare": {
+    "path": "assets/djs/solare.webp",
+    "thumb": "assets/djs/thumbs/solare.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "stormyx": {
+    "path": "assets/djs/stormyx.webp",
+    "thumb": "assets/djs/thumbs/stormyx.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "sterium": {
+    "path": "assets/djs/sterium.webp",
+    "thumb": "assets/djs/thumbs/sterium.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "viot": {
+    "path": "assets/djs/viot.webp",
+    "thumb": "assets/djs/thumbs/viot.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "carbon-c": {
+    "path": "assets/djs/carbon-c.webp",
+    "thumb": "assets/djs/thumbs/carbon-c.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "ekanta": {
+    "path": "assets/djs/ekanta.webp",
+    "thumb": "assets/djs/thumbs/ekanta.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "avicii": {
+    "path": "assets/djs/avicii.webp",
+    "thumb": "assets/djs/thumbs/avicii.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "albuquerque": {
+    "path": "assets/djs/albuquerque.webp",
+    "thumb": "assets/djs/thumbs/albuquerque.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "doozie": {
+    "path": "assets/djs/doozie.webp",
+    "thumb": "assets/djs/thumbs/doozie.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "simas": {
+    "path": "assets/djs/simas.webp",
+    "thumb": "assets/djs/thumbs/simas.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
+  },
+  "ben-sterling": {
+    "path": "assets/djs/ben-sterling.webp",
+    "thumb": "assets/djs/thumbs/ben-sterling.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
   }
 }
