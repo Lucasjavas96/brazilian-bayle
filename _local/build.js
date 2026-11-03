@@ -39,7 +39,7 @@ const ORG = {
   email: EMAIL,
   sameAs: [IG],
   areaServed: "BR",
-  description: "Campeonato da Pista Brasileira: todo DJ que toca aqui entra, a pista dá a nota. Votação da comunidade e o network BRB Clubbers.",
+  description: "O Ranking da Pista Brasileira: todo DJ que toca aqui entra, a pista dá a nota. Votação da comunidade e o network BRB Clubbers.",
 };
 
 function layout(meta, body) {
