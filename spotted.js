@@ -81,7 +81,7 @@
   async function loadPoints() {
     const el = $("#spPtsN"); if (!el) return;
     if (!me()) { el.textContent = "0"; return; }
-    try { const p = await backend().points(); el.textContent = String(p?.points ?? 0); $("#spPts").title = `Hoje: ${p?.today ?? 0} de ${p?.daily_cap ?? 40} pontos. Cada ponto é um giro no álbum.`; }
+    try { const p = await backend().points(); el.textContent = String(p?.points ?? 0); window.dispatchEvent(new Event('brb-points-changed')); $("#spPts").title = `Hoje: ${p?.today ?? 0} de ${p?.daily_cap ?? 40} pontos. Cada ponto é um giro no álbum.`; }
     catch (e) { /* migração ainda não aplicada: mantém o marcador como está */ }
   }
   function view() {

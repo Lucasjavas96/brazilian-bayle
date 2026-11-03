@@ -35,7 +35,7 @@
         <div class="md-head"><span class="md-badge published">E-mail confirmado</span>${x.clubber ? '<span class="md-badge review">BRB Clubber</span>' : ""}<span class="mono dim">criou em ${fullWhen(x.created_at)}</span></div>
         <h3>${esc(x.nome || (x.nick ? "@" + x.nick : x.email))}</h3>
         <p class="mono dim">${x.nick ? "@" + esc(x.nick) + " · " : ""}${esc(x.email)} · último acesso: ${x.last_sign_in_at ? fullWhen(x.last_sign_in_at) : "nunca"}</p>
-        <p class="mono dim">${x.votes} avaliaç${x.votes === 1 ? "ão" : "ões"} · ${x.posts} post${x.posts === 1 ? "" : "s"} · ${x.comments} comentário${x.comments === 1 ? "" : "s"}</p></article>`).join("") : '<p class="af-empty">Nenhuma conta com e-mail confirmado ainda.</p>';
+        <p class="mono dim">${x.votes} avaliaç${x.votes === 1 ? "ão" : "ões"} · ${x.posts} post${x.posts === 1 ? "" : "s"} · ${x.comments} comentário${x.comments === 1 ? "" : "s"}</p><p class="mono dim">Pontos ganhos: <b>${x.points}</b>${x.points !== x.points_expected ? ` (pela regra: ${x.points_expected})` : ""} · giros disponíveis: <b>${x.spins}</b></p></article>`).join("") : '<p class="af-empty">Nenhuma conta com e-mail confirmado ainda.</p>';
     const clubbers = members.length ? members.map(m => {
       const d = m.data || {};
       return `<article class="md-card" data-member="${esc(m.id)}">
@@ -80,6 +80,7 @@
         <h3>${x.nick ? "@" + esc(x.nick) : "Sem @ ainda"}</h3>
         <p class="mono dim">${esc(x.email)} · último acesso: ${x.last_sign_in_at ? fullWhen(x.last_sign_in_at) : "nunca"}</p>
         <p class="mono dim">${x.votes} avaliaç${x.votes === 1 ? "ão" : "ões"} · ${x.posts} post${x.posts === 1 ? "" : "s"} · ${x.comments} comentário${x.comments === 1 ? "" : "s"}</p>
+        <p class="mono dim">Pontos ganhos: <b>${x.points}</b>${x.points !== x.points_expected ? ` (pela regra: ${x.points_expected})` : ""} · giros disponíveis: <b>${x.spins}</b></p>
         <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-uact>Ver as ações dessa conta</button><button type="button" class="btn btn-ghost af-sm md-danger" data-dismiss="${esc(x.key)}">Excluir</button></div></article>`).join("") : '<p class="af-empty">Nenhuma conta encontrada.</p>';
     } else {
       body = actEvents.length ? `<div class="act-feed">${actEvents.map(e => `<div class="act-row"><span class="mono dim act-when">${fullWhen(e.at)}</span><span class="act-who"><b>${e.nick ? "@" + esc(e.nick) : "?"}</b><small class="mono dim">${esc(e.email)}</small></span><span class="md-badge act-type">${esc(e.type)}</span><span class="act-detail">${esc(e.detail)}</span><button type="button" class="btn btn-ghost af-sm md-danger act-del" data-dismiss="${esc(e.key)}">Excluir</button></div>`).join("")}</div>` : '<p class="af-empty">Nenhuma ação registrada neste filtro.</p>';

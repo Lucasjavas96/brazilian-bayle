@@ -362,7 +362,7 @@ renderPodium();
     const btn = $("#voteBtn"); btn.disabled = true; btn.classList.add("loading"); btn.setAttribute("aria-busy", "true");
     const notas = {}; CRIT.forEach(([k]) => notas[k] = +$("#s_" + k).value);
     try {
-      await BRB.rpc('vote', { party: party.value, dj, notas, comment: $('#vComment').value.trim(), consent: $('#vConsent').checked });
+      await BRB.rpc('vote', { party: party.value, dj, notas, comment: $('#vComment').value.trim(), consent: $('#vConsent').checked }); window.dispatchEvent(new Event('brb-points-changed'));
     } catch (error) {
       say('err', 'Não foi possível registrar: ' + error.message);
       return;
