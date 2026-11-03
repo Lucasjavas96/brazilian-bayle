@@ -16,5 +16,41 @@
     "estilo": "Progressive house",
     "grupo": "EDM",
     "pais": "Suécia"
+  },
+  {
+    "nome": "Doozie",
+    "estilo": "House",
+    "grupo": "House",
+    "pais": "Brasil"
+  },
+  {
+    "nome": "Albuquerque",
+    "estilo": "House",
+    "grupo": "House",
+    "pais": "Brasil"
+  },
+  {
+    "nome": "Ben Sterling",
+    "estilo": "Tech house",
+    "grupo": "Tech house",
+    "pais": "Reino Unido"
+  },
+  {
+    "nome": "Analu",
+    "estilo": "House",
+    "grupo": "House",
+    "pais": "Brasil"
+  },
+  {
+    "nome": "gggguerra",
+    "estilo": "House",
+    "grupo": "House",
+    "pais": "Brasil"
+  },
+  {
+    "nome": "Simas",
+    "estilo": "House",
+    "grupo": "House",
+    "pais": "Brasil"
   }
 ]

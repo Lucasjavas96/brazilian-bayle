@@ -10393,5 +10393,161 @@
       "Notoriously Fast"
     ],
     "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+  },
+  {
+    "slug": "doozie",
+    "nome": "Doozie",
+    "origem": "Brasil",
+    "estilos": [
+      "House",
+      "Deep house",
+      "Tech house"
+    ],
+    "resumo": "DJ e produtor brasileiro de house, com som que mistura deep house e tech house, de baixos marcados. Lançou o EP Around, com 3Beat, pela Repopulate Mars, selo de Lee Foss, e fez turnê pela Europa ao lado de Vintage Culture.",
+    "historia": [
+      "Doozie é um DJ e produtor brasileiro em atividade há quase uma década. Seu som mistura deep house e tech house, com linhas de baixo marcadas.",
+      "Lançou o EP Around, em parceria com 3Beat, pelo selo Repopulate Mars, fundado por Lee Foss, e fez turnê por cidades da Europa no verão europeu, ao lado de Vintage Culture."
+    ],
+    "faixas_marcantes": [
+      "Around"
+    ],
+    "marcos": [
+      "EP Around, com 3Beat, pela Repopulate Mars",
+      "Turnê europeia ao lado de Vintage Culture"
+    ],
+    "fontes": [
+      {
+        "titulo": "Band, Doozie amplia presença internacional com EP e turnê ao lado de Vintage Culture",
+        "url": "https://www.band.com.br/entretenimento/doozie-amplia-presenca-internacional-com-ep-e-turne-ao-lado-de-vintage-culture"
+      }
+    ]
+  },
+  {
+    "slug": "albuquerque",
+    "nome": "Albuquerque",
+    "nome_civil": "Ricardo Albuquerque",
+    "origem": "Curitiba, Paraná",
+    "estilos": [
+      "House",
+      "Melodic house"
+    ],
+    "resumo": "Ricardo Albuquerque é um DJ e produtor brasileiro nascido em Curitiba, residente do Warung Beach Club desde 2013. Comanda os selos Radiola e Sonido Profundo e toca à frente do Warung Recordings, ao lado de Leo Janeiro.",
+    "historia": [
+      "Albuquerque nasceu em Curitiba e começou a tocar no Brasil em 2008. Em entrevista, conta que uma festa Dance Valley, em Amsterdã, em 2007, mudou sua vida.",
+      "É residente do Warung Beach Club desde 2013, comanda os selos Radiola e Sonido Profundo e participa do Warung Recordings, ao lado de Leo Janeiro. Em 2025, seu segundo álbum de estúdio foi apontado pela Billboard Brasil entre os melhores álbuns brasileiros do ano."
+    ],
+    "marcos": [
+      "Residente do Warung Beach Club desde 2013",
+      "2025: segundo álbum de estúdio entre os melhores brasileiros do ano, segundo a Billboard Brasil"
+    ],
+    "fontes": [
+      {
+        "titulo": "Electronic Groove, Interview: Albuquerque",
+        "url": "https://electronicgroove.com/interview-albuquerque/"
+      },
+      {
+        "titulo": "Volumo, Albuquerque",
+        "url": "https://volumo.com/artist/15419-albuquerque"
+      }
+    ]
+  },
+  {
+    "slug": "ben-sterling",
+    "nome": "Ben Sterling",
+    "nome_civil": "Benjamin Anderson",
+    "origem": "Londres, Inglaterra",
+    "pais_nome": "Reino Unido",
+    "estilos": [
+      "Tech house",
+      "Acid house",
+      "Disco house"
+    ],
+    "resumo": "Ben Sterling é um DJ e produtor de Londres, ativo desde 2016, com som entre o tech house e o acid house. Estreou na Hot Creations em 2019, com o EP The Energy, e foi indicado ao prêmio de artista revelação RIOT Noise no DJ Awards de 2024.",
+    "historia": [
+      "Ben Sterling é um DJ e produtor de Londres. Ele mesmo descreve seu som como acid house eletrônico, com influências de Chicago house, Detroit techno e do disco dos anos 1970 e 1980, herdado da coleção de discos da família.",
+      "Lançou pela Planet X e pela X-Files, estreou na Hot Creations em 2019, com o EP The Energy, e foi indicado ao prêmio de artista revelação RIOT Noise no DJ Awards de 2024."
+    ],
+    "faixas_marcantes": [
+      "The Energy"
+    ],
+    "marcos": [
+      "2019: estreia na Hot Creations, com o EP The Energy",
+      "2024: indicado ao RIOT Noise Breakthrough Artist, no DJ Awards"
+    ],
+    "fontes": [
+      {
+        "titulo": "Wikipedia, Ben Sterling",
+        "url": "https://en.wikipedia.org/wiki/Ben_Sterling"
+      },
+      {
+        "titulo": "Resident Advisor, Ben Sterling",
+        "url": "https://ra.co/dj/bensterling/biography"
+      }
+    ]
+  },
+  {
+    "slug": "analu",
+    "nome": "Analu",
+    "origem": "Brasil",
+    "estilos": [
+      "House"
+    ],
+    "resumo": "Analu é DJ, produtora, compositora e vocalista brasileira, apontada como um dos nomes da nova geração do house no Brasil. Tocou no line-up do Beltools, no Surreal Park, em 1º de novembro de 2026.",
+    "historia": [
+      "Analu é DJ, produtora, compositora e vocalista, e figura entre os nomes da nova geração do house brasileiro.",
+      "Em 1º de novembro de 2026 integrou o line-up do Beltools, de Beltran e Ben Sterling, no palco Bells do Surreal Park."
+    ],
+    "marcos": [
+      "2026: line-up do Beltools, no Surreal Park (1º de novembro)"
+    ],
+    "fontes": [
+      {
+        "titulo": "Visite São Paulo, Gui Boratto, Junior C. e Analu",
+        "url": "https://visitesaopaulo.com/evento/gui-boratto-junior-c-e-analu-2026/"
+      }
+    ],
+    "fonte_texto": "Line-up informado pela Brazilian Bayle."
+  },
+  {
+    "slug": "gggguerra",
+    "nome": "gggguerra",
+    "origem": "Brasil",
+    "estilos": [
+      "House"
+    ],
+    "resumo": "gggguerra é um DJ brasileiro que integrou o line-up do Beltools, de Beltran e Ben Sterling, no palco Bells do Surreal Park, em 1º de novembro de 2026.",
+    "historia": [
+      "Em 1º de novembro de 2026, gggguerra tocou no Beltools, no palco Bells do Surreal Park, ao lado de Beltran, Ben Sterling, Analu e Simas."
+    ],
+    "marcos": [
+      "2026: line-up do Beltools, no Surreal Park (1º de novembro)"
+    ],
+    "fonte_texto": "Line-up informado pela Brazilian Bayle. Ainda não há biografia publicada em fontes abertas."
+  },
+  {
+    "slug": "simas",
+    "nome": "Simas",
+    "origem": "Brasil",
+    "estilos": [
+      "House"
+    ],
+    "resumo": "Simas é um produtor brasileiro de house, da nova geração da música eletrônica do país. Sua faixa Benja foi relançada pela Dirtybird Records e é presença nos sets de Claude VonStroke.",
+    "historia": [
+      "Simas é um produtor brasileiro de house, apontado como símbolo de originalidade na nova geração da música eletrônica do Brasil.",
+      "A faixa Benja foi relançada pela Dirtybird Records, selo de Claude VonStroke, que a inclui nos próprios sets. Em 1º de novembro de 2026 integrou o line-up do Beltools, no Surreal Park."
+    ],
+    "faixas_marcantes": [
+      "Benja"
+    ],
+    "marcos": [
+      "Benja relançada pela Dirtybird Records",
+      "2026: line-up do Beltools, no Surreal Park (1º de novembro)"
+    ],
+    "fontes": [
+      {
+        "titulo": "Find Your Sounds, Brazilian producer Simas re-releases Benja on Dirtybird Records",
+        "url": "https://findyoursounds.com/brazilian-producer-simas-re-releases-benja-on-dirtybird-records/"
+      }
+    ]
   }
 ]

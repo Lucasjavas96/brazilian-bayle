@@ -499,21 +499,30 @@
       "id": "pedreira-2026-10-31",
       "date": "2026-10-31",
       "venue": "Pedreira",
-      "name": "Solomun",
-      "lineup": [],
-      "source": "Agenda informada pela Brazilian Bayle; participantes brasileiros pendentes de confirmação.",
-      "checked_at": "2026-10-27"
+      "name": "Solomun + Vintage Culture",
+      "lineup": [
+        "Solomun",
+        "Vintage Culture",
+        "Doozie",
+        "Albuquerque"
+      ],
+      "source": "Line-up informado pela Brazilian Bayle, conforme a programação publicada pela plataforma Timelapse.",
+      "checked_at": "2026-11-03"
     },
     {
       "id": "surreal-park-2026-11-01",
       "date": "2026-11-01",
       "venue": "Surreal Park",
-      "name": "Beltran",
+      "name": "Beltools · Beltran & Ben Sterling",
       "lineup": [
-        "Beltran"
+        "Beltran",
+        "Ben Sterling",
+        "Analu",
+        "gggguerra",
+        "Simas"
       ],
-      "source": "Agenda do clube informada pela Brazilian Bayle (só o headliner)",
-      "checked_at": "2026-10-27"
+      "source": "Line-up informado pela Brazilian Bayle (palco Bells, a partir das 23h).",
+      "checked_at": "2026-11-03"
     },
     {
       "id": "surreal-park-2026-11-20",
