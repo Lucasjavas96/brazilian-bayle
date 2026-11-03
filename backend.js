@@ -58,6 +58,11 @@
       if (error) throw new Error(error.message || 'Não foi possível registrar o acerto.');
       return data;
     },
+    async reviews(dj) {
+      const { data, error } = await client.rpc('brb_reviews', { dj_name: dj });
+      if (error) throw new Error(error.message || 'Não foi possível carregar as resenhas.');
+      return data || [];
+    },
     async removeMember(id) {
       const { data, error } = await client.rpc('brb_members', { action: 'remove', payload: { id } });
       if (error) throw new Error(error.message || 'Não foi possível excluir o membro.');
