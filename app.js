@@ -33,7 +33,7 @@ let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textCont
 /* ---------- faixa ---------- */
 (() => {
   const el = $("#ticker"); if (!el) return;
-  const t = ["After do Solomun · 31.10", "BRB Clubbers", "O melhor network de música eletrônica do Brasil", "Só DJs brasileiros",
+  const t = ["After do Solomun · 31.10", "BRB Clubbers", "O melhor network de música eletrônica do Brasil", "Todo DJ que toca na pista brasileira",
     "Os 5 melhores tocam na Final", "Avalie a performance dos DJs", "A pista é brasileira e sempre vai ser"];
   el.innerHTML = [...t, ...t].map(x => `<span>${x}</span>`).join("");
 })();
@@ -90,14 +90,18 @@ const DJS = [
   ["Groove Delight","Tech house"],["Renato Ratier","Techno"],["Mila Journée","Melodic house"],["Ney Faustini","House"],["Renato Cohen","Techno"],
   ["Vinne","Bass house"],["Volkoder","Bass house"],["Dashdot","Deep house"],["Maz","Afro house"],["Malifoo","Brazilian bass"],
   ["Greggio","Tech house"],["GenX","Música eletrônica"],
-  ["Doozie","House"],["Albuquerque","House"],["Analu","House"],["gggguerra","House"],["Simas","House"]];
+  ["Doozie","House"],["Albuquerque","House"],["Analu","House"],["gggguerra","House"],["Simas","House"],
+  ["Solomun","House"],["Ben Sterling","Tech house"]];
 let officialRows = [];
 const MIN_VOTES = 30;
+const hasPedia = n => !window.BRB_PEDIA || window.BRB_PEDIA.includes(slug(n));
 const djNote = d => d.unrated ? "Sem avaliações" : d.emAvaliacao ? `Em avaliação · ${d.votos}/${MIN_VOTES} avaliadores` : `Média ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.venue_name ? "Local: " + d.venue_name : "Sem local validado"}`;
 const scoreCell = d => Number.isFinite(d.pos) ? fmt2(d.nota) : "Em avaliação";
 function table() {
  const rated=new Set(officialRows.map(row=>row.name));
- return [...officialRows.map(row=>({...row})),...DJS.filter(([name])=>!rated.has(name)).map(([name,style])=>({name,style,pos:Infinity,nota:null,som:null,harmonia:null,energia:null,sofisticacao:null,votos:0,festas:0,unrated:true}))];
+ const today=new Date().toLocaleDateString('sv-SE',{timeZone:'America/Sao_Paulo'}),known=new Set([...DJS.map(d=>d[0]),...rated]);
+ const pedia=new Set(window.BRB_PEDIA||[]),played=[];(window.BRB_EVENTS||[]).filter(e=>e.date<=today).forEach(e=>(e.lineup||[]).forEach(n=>{if(!known.has(n)&&pedia.has(slug(n))){known.add(n);played.push([n,'Eletrônica']);}}));
+ return [...officialRows.map(row=>({...row})),...[...DJS,...played].filter(([name])=>!rated.has(name)).map(([name,style])=>({name,style,pos:Infinity,nota:null,som:null,harmonia:null,energia:null,sofisticacao:null,votos:0,festas:0,unrated:true}))];
 }
 const meter = v => { const full = Math.floor(v), half = v - full >= .5; return `<span class="meter" aria-hidden="true">${Array.from({ length: 10 }, (_, i) => `<i class="${i < full ? "on" : i === full && half ? "half" : ""}"></i>`).join("")}</span>` };
 const pad = n => Number.isFinite(n) ? String(n).padStart(2, "0") : "—";
@@ -168,7 +172,7 @@ function mountBoard(stage) {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
-        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
+        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
         <td class="b-score"><span class="led${Number.isFinite(d.pos) ? "" : " led-wait"}">${scoreCell(d)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
@@ -184,8 +188,7 @@ renderPodium();
 /* ---------- avaliar ---------- */
 (() => {
   const form = $("#voteForm"); if (!form) return;
-  const NATIONAL = new Set(DJS.map(d => d[0]));
-  const PARTIES = (window.BRB_EVENTS || []).map(event => ({id:event.id,date:event.date,label:`${event.venue} · ${event.date.slice(8)}/${event.date.slice(5,7)}/${event.date.slice(0,4)} · ${event.name}`,dj:event.lineup.filter(name=>NATIONAL.has(name))})).filter(event=>event.dj.length);
+  const PARTIES = (window.BRB_EVENTS || []).map(event => ({id:event.id,date:event.date,label:`${event.venue} · ${event.date.slice(8)}/${event.date.slice(5,7)}/${event.date.slice(0,4)} · ${event.name}`,dj:event.lineup.slice()})).filter(event=>event.dj.length);
   let dj = null; const touched = new Set();
   const party = $("#vParty"), lineup = $("#vLineup");
   // clube primeiro; a lista de festas é a mesma do Spotted. Só dá para avaliar festa que já aconteceu e tenha DJ do ranking.
@@ -198,10 +201,10 @@ renderPodium();
     party.disabled = !events.length;
     party.replaceChildren(new Option(events.length ? 'Escolha a festa' : 'Escolha primeiro o clube',''), ...events.map(e=>{
       const eligible=PARTIES.find(p=>p.id===e.id), future=e.date>today;
-      const label=`${e.date.slice(8)}/${e.date.slice(5,7)} · ${e.name}`+(future?' (ainda não aconteceu)':!eligible?' (sem apresentação brasileira confirmada)':'');
+      const label=`${e.date.slice(8)}/${e.date.slice(5,7)} · ${e.name}`+(future?' (ainda não aconteceu)':!eligible?' (line-up ainda não confirmado)':'');
       const option=new Option(label,e.id);option.disabled=future||!eligible;return option;
     }));
-    $('#vPartyCount').textContent=events.length ? `${events.length} festas cadastradas. Avaliações disponíveis para apresentações brasileiras confirmadas e já realizadas.` : 'Escolha o clube para ver as festas.';
+    $('#vPartyCount').textContent=events.length ? `${events.length} festas cadastradas. Avaliações disponíveis para apresentações com line-up confirmado e já realizadas.` : 'Escolha o clube para ver as festas.';
     dj=null;renderLineup();
   };
   const renderLineup = () => {
@@ -675,10 +678,10 @@ function mountGe(el) {
     $("tbody", el).innerHTML = list.map(d => {
       const prev = st.last[d.name];
       const mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="ge-mv up" aria-label="subiu ${prev - d.pos}">▲</span>` : `<span class="ge-mv dn" aria-label="caiu ${d.pos - prev}">▼</span>`) : `<span class="ge-mv" aria-hidden="true">•</span>`;
-      const s = slug(d.name), href = `/djpedia/${s}`;
+      const s = slug(d.name), href = hasPedia(d.name) ? `/djpedia/${s}` : null, tag = href ? "a" : "span";
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
-        <th scope="row" class="ge-dj"><a href="${href}"><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></a>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
+        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
         <td class="ge-nota${Number.isFinite(d.pos) ? "" : " ge-wait"}">${scoreCell(d)}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
