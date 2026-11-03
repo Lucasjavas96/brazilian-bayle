@@ -97,8 +97,8 @@ const MIN_VOTES = 30;
 const isBR = n => (window.BRB_BR || []).includes(slug(n));
 const reviewBtn = d => d.votos > 0 ? `<button type="button" class="rv-btn mono" data-reviews="${d.name.replace(/"/g, "&quot;")}">Ver resenhas</button>` : "";
 const hasPedia = n => !window.BRB_PEDIA || window.BRB_PEDIA.includes(slug(n));
-const djNote = d => d.unrated ? "Sem avaliações" : d.emAvaliacao ? `Em avaliação · ${d.votos}/${MIN_VOTES} avaliadores` : `Média ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.venue_name ? "Local: " + d.venue_name : "Sem local validado"}`;
-const scoreCell = d => Number.isFinite(d.pos) ? fmt2(d.nota) : "Em avaliação";
+const djNote = d => d.unrated ? "Sem avaliação" : !Number.isFinite(d.pos) ? `${d.votos} avaliaç${d.votos === 1 ? "ão" : "ões"}` : `Média ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.venue_name ? "Local: " + d.venue_name : "Sem local validado"}`;
+const scoreCell = d => Number.isFinite(d.pos) ? fmt2(d.nota) : d.votos > 0 ? fmt2(d.m) : "Sem avaliação";
 function table() {
  const rated=new Set(officialRows.map(row=>row.name));
  const today=new Date().toLocaleDateString('sv-SE',{timeZone:'America/Sao_Paulo'}),known=new Set([...DJS.map(d=>d[0]),...rated]);
@@ -130,7 +130,7 @@ function renderPodium() {
   const official=officialRows.filter(d=>!d.emAvaliacao);
   if(!official.length){
    el.setAttribute('aria-label','DJs aguardando avaliações');
-   el.innerHTML = DJS.slice(0,3).map(([name,style],index)=>podiumCard(index+1,name,style,"—","Em avaliação")).join("");return;
+   el.innerHTML = DJS.slice(0,3).map(([name,style],index)=>podiumCard(index+1,name,style,"—","Sem avaliação")).join("");return;
   }
   el.setAttribute('aria-label','Os três primeiros da classificação');
   el.innerHTML = official.slice(0, 3).map(d => podiumCard(d.pos, d.name, d.style, fmt2(d.nota), "nota " + fmt2(d.nota))).join("");
@@ -175,7 +175,7 @@ function mountBoard(stage) {
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
         <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
-        <td class="b-score"><span class="led${Number.isFinite(d.pos) ? "" : " led-wait"}">${scoreCell(d)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
+        <td class="b-score"><span class="led${Number.isFinite(d.pos) || d.votos > 0 ? "" : " led-wait"}">${scoreCell(d)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
     }).join("");
@@ -687,7 +687,7 @@ function mountGe(el) {
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
         <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${reviewBtn(d)}${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
-        <td class="ge-nota${Number.isFinite(d.pos) ? "" : " ge-wait"}">${scoreCell(d)}</td>
+        <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
     }).join("");
@@ -784,6 +784,6 @@ refreshOfficialRanking();
     .sort((a, b) => a.date.localeCompare(b.date) || a.venue.localeCompare(b.venue));
   box.innerHTML = list.map(e => {
     const [nome, cidade] = PLACE[e.venue] || [e.venue, ""], d = new Date(e.date + "T12:00:00");
-    return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${hasPedia(n) ? `<a href="/djpedia/${slug(n)}">${esc(n)}</a>` : esc(n)}</li>`).join("")}</ul><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a></article>`;
+    return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${hasPedia(n) ? `<a href="/djpedia/${slug(n)}">${esc(n)}</a>` : esc(n)}</li>`).join("")}</ul><div class="wk-actions"><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a><a class="btn btn-silver" href="/spotted">Publicar Spotted</a></div></article>`;
   }).join("");
 })();
