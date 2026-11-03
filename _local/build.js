@@ -170,6 +170,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <script src="/card-effects.js" defer></script>
 <script src="/support.js" defer></script>
 <script src="/session-menu.js" defer></script>
+<script src="/points-badge.js" defer></script>
 ${meta.nav === "gestao" ? '<script src="/management.js" defer></script>' : ""}
 ${meta.nav === "conta" ? '<script src="/account.js" defer></script>' : ""}
 ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
@@ -376,7 +377,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "management.js", "album.js", "after.js", "djedit.js", "moderation.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "moderation.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 // Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
 fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
 for (const f of ["index.html", "quiz.css", "quiz.js", "trilha1.json", "extra.css", "extra.js"]) fs.copyFileSync(path.join(ROOT, "quiz-src", f), path.join(OUT, "quiz", f));
@@ -391,7 +392,7 @@ const isBrazilian = d => { const s = slugify(d.nome), p = PROFILES[s] || {}; if 
 fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_BR="+JSON.stringify([...new Set(DJLIST.filter(isBrazilian).map(d=>slugify(d.nome)))])+";window.BRB_PEDIA="+JSON.stringify([...new Set(DJLIST.filter(d=>!d.curitiba).map(d=>slugify(d.nome)))])+";window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";window.BRB_CLUBS="+JSON.stringify(readJson("clubes.json").clubes)+";");
 // Content hashes prevent old CSS and card scripts being mixed after a deploy.
 const crypto = require('crypto');
-const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','moderation.js','events-2026.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
+const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','points-badge.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','moderation.js','events-2026.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
 function versionHtml(dir) {
   for (const entry of fs.readdirSync(dir,{withFileTypes:true})) {
     const file = path.join(dir,entry.name);
