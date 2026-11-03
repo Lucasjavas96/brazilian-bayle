@@ -89,24 +89,29 @@
   }
 
   function render() {
+    list.classList.toggle("md-grid", tab === "posts");
     if (tab === "activity") return renderActivity();
     if (tab === "venues") return renderVenues();
     if (tab === "members") return renderMembers();
     if (tab === "apps") return renderApps();
     const rows = shown();
-    list.innerHTML = rows.length ? rows.map(p => `<article class="md-card" data-id="${esc(p.id)}">
-      <div class="md-head"><span class="md-badge ${esc(p.status)}">${LABEL[p.status] || esc(p.status)}</span>${p.reports ? `<span class="md-rep mono">${p.reports} denúncia${p.reports > 1 ? "s" : ""}</span>` : ""}<span class="mono dim">${when(p.created_at)}</span></div>
-      <h3>${esc(p.title)}</h3>
-      <p class="mono dim">${esc(p.party)} · por ${p.anon ? `Anônimo${p.nick ? " (@" + esc(p.nick) + ")" : ""}` : "@" + esc(p.nick || "?")}${p.is_demo ? " · demonstração" : ""}</p>
-      ${p.img ? `<img class="md-img" src="${esc(p.img)}" alt="Foto do post" loading="lazy">` : ""}
-      ${p.body ? `<p class="md-body">${esc(p.body)}</p>` : ""}
-      ${(p.comments || []).length ? `<ul class="md-coms">${p.comments.map(c => `<li><b>${c.anon ? "Anônimo" : "@" + esc(c.nick || "?")}</b> ${esc(c.body)} <button type="button" class="md-link mono" data-cdel="${esc(c.id)}">Apagar comentário</button></li>`).join("")}</ul>` : ""}
+    list.innerHTML = rows.length ? rows.map(p => {
+      const who = p.anon ? `Anônimo${p.nick ? " (@" + esc(p.nick) + ")" : ""}` : "@" + esc(p.nick || "?"), cms = p.comments || [];
+      return `<article class="md-card md-post" data-id="${esc(p.id)}">
+      <div class="md-thumb">${p.img ? `<img src="${esc(p.img)}" alt="Foto do post" loading="lazy">` : `<p>${esc(p.body || "Sem foto")}</p>`}<span class="md-badge ${esc(p.status)}">${LABEL[p.status] || esc(p.status)}</span>${p.reports ? `<span class="md-rep mono">${p.reports} denúncia${p.reports > 1 ? "s" : ""}</span>` : ""}</div>
+      <div class="md-info">
+        <h3>${esc(p.title)}</h3>
+        <p class="md-who">${who}</p>
+        <dl class="md-meta"><div><dt>Festa</dt><dd>${esc(p.party)}</dd></div><div><dt>Data</dt><dd>${when(p.created_at)}</dd></div>${p.is_demo ? `<div><dt>Tipo</dt><dd>Demonstração</dd></div>` : ""}</dl>
+        ${p.img && p.body ? `<p class="md-body">${esc(p.body)}</p>` : ""}
+        ${cms.length ? `<details class="md-cdet"><summary>${cms.length} comentário${cms.length > 1 ? "s" : ""}</summary><ul class="md-coms">${cms.map(c => `<li><b>${c.anon ? "Anônimo" : "@" + esc(c.nick || "?")}</b> ${esc(c.body)} <button type="button" class="md-link mono" data-cdel="${esc(c.id)}">Apagar</button></li>`).join("")}</ul></details>` : `<p class="md-none mono">Sem comentários</p>`}
+      </div>
       <div class="md-actions">
-        ${p.status !== "published" ? `<button type="button" class="btn btn-y af-sm" data-st="published">Restaurar no mural</button>` : ""}
+        ${p.status !== "published" ? `<button type="button" class="btn btn-y af-sm" data-st="published">Publicar</button>` : ""}
         ${p.status !== "review" ? `<button type="button" class="btn btn-ghost af-sm" data-st="review">Em análise</button>` : ""}
         ${p.status !== "hidden" ? `<button type="button" class="btn btn-ghost af-sm" data-st="hidden">Ocultar</button>` : ""}
-        ${p.status === "hidden" ? `<button type="button" class="btn btn-ghost af-sm md-danger" data-erase>Apagar de vez</button>` : ""}
-      </div></article>`).join("") : `<p class="af-empty">Nada para moderar neste filtro.</p>`;
+        ${p.status === "hidden" ? `<button type="button" class="btn btn-ghost af-sm md-danger" data-erase>Apagar</button>` : ""}
+      </div></article>`; }).join("") : `<p class="af-empty">Nada para moderar neste filtro.</p>`;
   }
 
   async function load(append=false) {
