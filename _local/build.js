@@ -388,7 +388,7 @@ ${urls.map(u => `  <url><loc>${SITE}${u}</loc></url>`).join("\n")}
 </urlset>
 `);
 const BR_RE = /Brasil|, (São Paulo|Rio de Janeiro|Minas Gerais|Goiás|Paraná|Santa Catarina|Mato Grosso|Bahia|Pernambuco|Ceará|Rio Grande|Distrito)|^(São Paulo|Rio de Janeiro|Minas Gerais|Goiás|Santa Catarina|Rio Grande do Sul)|^Florian|Goiânia|Curitiba|Brasília/;
-const isBrazilian = d => { const s = slugify(d.nome), p = PROFILES[s] || {}; if (d.curitiba) return true; if (d.extra) return d.pais === "Brasil" || d.br === true; if (d.album) return d.album.paisNome === "Brasil"; if (s === "cloonee") return false; return BR_RE.test(p.origem || "") || (!p.origem && /brasileir/i.test(p.resumo || "")); };
+const isBrazilian = d => { const s = slugify(d.nome), p = PROFILES[s] || {}; if (d.curitiba) return true; if (d.extra) return d.pais === "Brasil" || d.br === true || d.pais === "A confirmar"; if (d.album) return d.album.paisNome === "Brasil"; if (s === "cloonee") return false; return BR_RE.test(p.origem || "") || (!p.origem && /brasileir/i.test(p.resumo || "")); };
 fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_BR="+JSON.stringify([...new Set(DJLIST.filter(isBrazilian).map(d=>slugify(d.nome)))])+";window.BRB_PEDIA="+JSON.stringify([...new Set(DJLIST.filter(d=>!d.curitiba).map(d=>slugify(d.nome)))])+";window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";window.BRB_CLUBS="+JSON.stringify(readJson("clubes.json").clubes)+";");
 // Content hashes prevent old CSS and card scripts being mixed after a deploy.
 const crypto = require('crypto');
