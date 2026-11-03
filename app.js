@@ -94,6 +94,7 @@ const DJS = [
   ["Solomun","House"],["Ben Sterling","Tech house"]];
 let officialRows = [];
 const MIN_VOTES = 30;
+const isBR = n => (window.BRB_BR || []).includes(slug(n));
 const reviewBtn = d => d.votos > 0 ? `<button type="button" class="rv-btn mono" data-reviews="${d.name.replace(/"/g, "&quot;")}">Ver resenhas</button>` : "";
 const hasPedia = n => !window.BRB_PEDIA || window.BRB_PEDIA.includes(slug(n));
 const djNote = d => d.unrated ? "Sem avaliações" : d.emAvaliacao ? `Em avaliação · ${d.votos}/${MIN_VOTES} avaliadores` : `Média ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.venue_name ? "Local: " + d.venue_name : "Sem local validado"}`;
@@ -652,7 +653,7 @@ $$(".slides").forEach(box => {
 const GE_EXTRA = (() => { const r = rnd(7); return Object.fromEntries(DJS.map(([n]) => [n, { festas: 6 + Math.floor(r() * 12) }])) })();
 function mountGe(el) {
   const sortable = el.hasAttribute("data-sortable");
-  const st = { sort: "nota", last: {} };
+  const st = { sort: "nota", last: {}, tab: "br" };
   const cols = [["nota", "Nota", "Nota geral"], ["votos", "Votos", "Votos"], ["festas", "Festas", "Festas avaliadas"],
     ...CRIT.map(([k, l]) => [k, l, l])];
   el.innerHTML = `<div class="ge-card">
@@ -668,12 +669,15 @@ function mountGe(el) {
     <div class="ge-legend">
       <span><i class="ge-zone"></i>Zona da Final · 1º ao 5º</span>
     </div></div>`;
+  el.insertAdjacentHTML("afterbegin", `<div class="rk-tabs" role="group" aria-label="Escolha o ranking"><button type="button" data-gtab="br" aria-pressed="true"><span aria-hidden="true">🇧🇷</span> DJs brasileiros</button><button type="button" data-gtab="int" aria-pressed="false"><span aria-hidden="true">🌍</span> DJs internacionais</button></div>`);
+  el.querySelector(".rk-tabs").onclick = e => { const b = e.target.closest("[data-gtab]"); if (!b) return; st.tab = b.dataset.gtab; st.last = {}; el.querySelectorAll("[data-gtab]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); render(); };
   if (sortable) $("thead", el).onclick = e => {
     const b = e.target.closest("button[data-sort]"); if (!b) return; st.sort = b.dataset.sort;
     $$("th[data-k]", el).forEach(th => th.dataset.k === st.sort ? th.setAttribute("aria-sort", "descending") : th.removeAttribute("aria-sort")); render();
   };
   function render(flash) {
-    const rows = table();
+    const rows = table().filter(d => isBR(d.name) === (st.tab === "br"));
+    let place = 0; rows.forEach(d => { if (Number.isFinite(d.pos)) d.pos = ++place; });
     let list = el.hasAttribute("data-limit") ? rows.slice(0,Number(el.dataset.limit)) : rows;
     if (st.sort !== "nota") list = [...list].sort((a, b) => b[st.sort] - a[st.sort]);
     $("tbody", el).innerHTML = list.map(d => {
