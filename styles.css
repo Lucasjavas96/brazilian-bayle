@@ -2672,3 +2672,4 @@ button,.btn{background-image:none;box-shadow:none;backdrop-filter:none;-webkit-b
 .rv-item small{display:block;margin-top:8px;color:rgba(255,255,255,.55);font-size:10px}
 .rv-empty{color:rgba(255,255,255,.75);font-size:15px}
 body.rv-lock{overflow:hidden}
+.wk-left .wk-ph{object-position:50% 16%}
