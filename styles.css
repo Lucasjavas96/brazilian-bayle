@@ -2712,3 +2712,23 @@ body.rv-lock{overflow:hidden}
 .voice-crit div{padding:12px 14px;border-radius:14px}
 .voice-crit dt{font-size:13px}
 .voice-crit dd{font-size:13px;line-height:1.5}
+
+/* Ranking: cards em destaque menores e demais festas */
+.wk-sm{gap:clamp(12px,2vw,20px);margin:clamp(14px,2vw,22px) 0}
+.wk-sm .wk-ph{aspect-ratio:16/9}
+.wk-sm .wk-body{padding:clamp(14px,2vw,22px);gap:8px}
+.wk-sm .wk-body h3{font-size:clamp(20px,2.4vw,28px)}
+.wk-sm .wk-extra,.wk-sm .wk-lineup li{font-size:14px}
+.wk-head-sm{margin:clamp(18px,2.4vw,28px) 0 10px}
+.wk-more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:26px}
+.wk-mini{border:1px solid rgba(255,212,0,.45);border-radius:20px;padding:16px;background:linear-gradient(160deg,#211c0b,#0d0d0b 70%);display:flex;flex-direction:column;gap:8px;box-shadow:0 0 24px rgba(255,212,0,.07)}
+.wk-mini-top{display:flex;flex-direction:column;gap:6px}
+.wk-mini-top p{font-size:11px}
+.wk-badge{align-self:flex-start;background:var(--y);color:#000;border-radius:99px;padding:3px 10px;font-size:11px;font-weight:700}
+.wk-mini h3{font-size:clamp(18px,2vw,24px);line-height:1.1}
+.wk-mini-lineup{list-style:none;display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 6px}
+.wk-mini-lineup li{border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:3px 10px;font-size:12px;color:#fff}
+.wk-mini-lineup a{color:#fff}
+.wk-mini .btn{margin-top:auto;align-self:flex-start}
+@media(max-width:980px){.wk-more{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.wk-more{grid-template-columns:1fr}}

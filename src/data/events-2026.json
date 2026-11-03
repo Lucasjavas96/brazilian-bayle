@@ -496,6 +496,31 @@
       "checked_at": "2026-10-24"
     },
     {
+      "id": "d-edge-sao-paulo-2026-10-30",
+      "date": "2026-10-30",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Viot",
+        "Sterium",
+        "Goes",
+        "Halfcab"
+      ],
+      "source": "Line-up informado pela Brazilian Bayle.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-10-30",
+      "date": "2026-10-30",
+      "venue": "Club Vibe",
+      "name": "Illusionize",
+      "lineup": [
+        "Illusionize"
+      ],
+      "source": "Line-up informado pela Brazilian Bayle.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "pedreira-2026-10-31",
       "date": "2026-10-31",
       "venue": "Pedreira",
@@ -508,6 +533,40 @@
       ],
       "source": "Line-up informado pela Brazilian Bayle, conforme a programação publicada pela plataforma Timelapse.",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-31",
+      "date": "2026-10-31",
+      "venue": "D-EDGE São Paulo",
+      "name": "Unlimited D EDGE",
+      "lineup": [
+        "Carla Elektra",
+        "Leticia Stempi",
+        "Malu",
+        "Solare",
+        "Carol Favero",
+        "Raiza Koh Sante",
+        "Mary Gripa",
+        "Stormyx",
+        "Ekanta",
+        "Carbon C",
+        "Paola Vigorito",
+        "Lary Lima"
+      ],
+      "source": "Line-up informado pela Brazilian Bayle.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-10-31",
+      "date": "2026-10-31",
+      "venue": "Club Vibe",
+      "name": "Gabss + Solarce Brothers",
+      "lineup": [
+        "Gabss",
+        "Solarce Brothers"
+      ],
+      "source": "Line-up informado pela Brazilian Bayle.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-11-01",
@@ -523,6 +582,48 @@
       ],
       "source": "Line-up informado pela Brazilian Bayle (palco Bells, a partir das 23h).",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "ame-club-2026-11-01",
+      "date": "2026-11-01",
+      "venue": "Ame Club",
+      "name": "Nora En Pure + Einmusik",
+      "lineup": [
+        "Nora En Pure",
+        "Einmusik",
+        "Gui Boratto",
+        "Corren Cavini",
+        "Leff"
+      ],
+      "source": "Line-up informado pela Brazilian Bayle.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "p12-2026-11-01",
+      "date": "2026-11-01",
+      "venue": "P12",
+      "name": "Jessica Brankka + Miss Natalia",
+      "lineup": [
+        "Jessica Brankka",
+        "Miss Natalia",
+        "Tiago Kuhnen"
+      ],
+      "source": "Line-up informado pela Brazilian Bayle.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "parque-villa-lobos-2026-11-01",
+      "date": "2026-11-01",
+      "venue": "Parque Villa-Lobos",
+      "name": "Solomun + Vintage Culture",
+      "lineup": [
+        "Solomun",
+        "Vintage Culture",
+        "Curol",
+        "Analu"
+      ],
+      "source": "Line-up informado pela Brazilian Bayle.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-11-20",
