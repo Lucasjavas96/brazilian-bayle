@@ -5,7 +5,7 @@
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const LABEL = { published: "Publicado", review: "Em análise", hidden: "Oculto" };
   const tabs = document.getElementById("mdTabs");
-  let posts = [], apps = [], members = [], venues = [], perfs = [], actUsers = [], actEvents = [], actView = "users", actQ = "", actUid = "", actName = "", filter = "todos", tab = "posts", cursor = null, request = 0;
+  let posts = [], apps = [], members = [], venues = [], perfs = [], actUsers = [], actEvents = [], accounts = [], actView = "users", actQ = "", actUid = "", actName = "", filter = "todos", tab = "posts", cursor = null, request = 0;
   const more = document.getElementById("mdMore");
   const toast = m => { const t = document.createElement("div"); t.className = "af-toast"; t.setAttribute("role", "status"); t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2800); };
   const when = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
@@ -31,14 +31,20 @@
   }
 
   function renderMembers() {
-    list.innerHTML = members.length ? members.map(m => {
+    const acc = accounts.length ? accounts.map(x => `<article class="md-card">
+        <div class="md-head"><span class="md-badge published">E-mail confirmado</span>${x.clubber ? '<span class="md-badge review">BRB Clubber</span>' : ""}<span class="mono dim">criou em ${fullWhen(x.created_at)}</span></div>
+        <h3>${esc(x.nome || (x.nick ? "@" + x.nick : x.email))}</h3>
+        <p class="mono dim">${x.nick ? "@" + esc(x.nick) + " · " : ""}${esc(x.email)} · último acesso: ${x.last_sign_in_at ? fullWhen(x.last_sign_in_at) : "nunca"}</p>
+        <p class="mono dim">${x.votes} avaliaç${x.votes === 1 ? "ão" : "ões"} · ${x.posts} post${x.posts === 1 ? "" : "s"} · ${x.comments} comentário${x.comments === 1 ? "" : "s"}</p></article>`).join("") : '<p class="af-empty">Nenhuma conta com e-mail confirmado ainda.</p>';
+    const clubbers = members.length ? members.map(m => {
       const d = m.data || {};
       return `<article class="md-card" data-member="${esc(m.id)}">
-        <div class="md-head"><span class="md-badge published">Membro</span><span class="mono dim">${m.mailed_at ? "E-mail enviado em " + when(m.mailed_at) : "E-mail ainda não enviado"}</span></div>
+        <div class="md-head"><span class="md-badge published">BRB Clubber</span><span class="mono dim">${m.mailed_at ? "E-mail enviado em " + when(m.mailed_at) : "E-mail ainda não enviado"}</span></div>
         <h3>${esc(d.nome || "Sem nome")}</h3>
         <p class="mono dim">${FIELDS.map(([k, l]) => d[k] ? l + ": " + esc(d[k]) : "").filter(Boolean).join(" · ")}</p>
         <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-mail>${m.mailed_at ? "Reenviar e-mail de aprovação" : "Enviar e-mail de aprovação"}</button><button type="button" class="btn btn-ghost af-sm md-danger" data-remove>Excluir membro</button></div></article>`;
-    }).join("") : `<p class="af-empty">Nenhum membro aprovado ainda.</p>`;
+    }).join("") : '<p class="af-empty">Nenhum BRB Clubber aprovado ainda.</p>';
+    list.innerHTML = `<h3 class="mono" style="margin:0 0 10px">Contas ativas (${accounts.length})</h3>${acc}<h3 class="mono" style="margin:26px 0 10px">BRB Clubbers aprovados (${members.length})</h3>${clubbers}`;
   }
 
   function renderVenues() {
@@ -65,6 +71,7 @@
       <button type="button" class="btn ${actView === "feed" ? "btn-y" : "btn-ghost"} af-sm" data-av="feed">Todas as ações</button>
       <input class="md-in" id="actQ" placeholder="Buscar por e-mail ou @" value="${esc(actQ)}" autocomplete="off">
       <button type="button" class="btn btn-ghost af-sm" id="actGo">Buscar</button>
+      <button type="button" class="btn btn-ghost af-sm" id="actRestore">Restaurar ocultos</button>
       ${actUid ? `<button type="button" class="btn btn-ghost af-sm" id="actClear">Tirar o filtro de @${esc(actName)}</button>` : ""}</div>`;
     let body;
     if (actView === "users") {
@@ -73,9 +80,9 @@
         <h3>${x.nick ? "@" + esc(x.nick) : "Sem @ ainda"}</h3>
         <p class="mono dim">${esc(x.email)} · último acesso: ${x.last_sign_in_at ? fullWhen(x.last_sign_in_at) : "nunca"}</p>
         <p class="mono dim">${x.votes} avaliaç${x.votes === 1 ? "ão" : "ões"} · ${x.posts} post${x.posts === 1 ? "" : "s"} · ${x.comments} comentário${x.comments === 1 ? "" : "s"}</p>
-        <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-uact>Ver as ações dessa conta</button></div></article>`).join("") : '<p class="af-empty">Nenhuma conta encontrada.</p>';
+        <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-uact>Ver as ações dessa conta</button><button type="button" class="btn btn-ghost af-sm md-danger" data-dismiss="${esc(x.key)}">Excluir</button></div></article>`).join("") : '<p class="af-empty">Nenhuma conta encontrada.</p>';
     } else {
-      body = actEvents.length ? `<div class="act-feed">${actEvents.map(e => `<div class="act-row"><span class="mono dim act-when">${fullWhen(e.at)}</span><span class="act-who"><b>${e.nick ? "@" + esc(e.nick) : "?"}</b><small class="mono dim">${esc(e.email)}</small></span><span class="md-badge act-type">${esc(e.type)}</span><span class="act-detail">${esc(e.detail)}</span></div>`).join("")}</div>` : '<p class="af-empty">Nenhuma ação registrada neste filtro.</p>';
+      body = actEvents.length ? `<div class="act-feed">${actEvents.map(e => `<div class="act-row"><span class="mono dim act-when">${fullWhen(e.at)}</span><span class="act-who"><b>${e.nick ? "@" + esc(e.nick) : "?"}</b><small class="mono dim">${esc(e.email)}</small></span><span class="md-badge act-type">${esc(e.type)}</span><span class="act-detail">${esc(e.detail)}</span><button type="button" class="btn btn-ghost af-sm md-danger act-del" data-dismiss="${esc(e.key)}">Excluir</button></div>`).join("")}</div>` : '<p class="af-empty">Nenhuma ação registrada neste filtro.</p>';
     }
     list.innerHTML = bar + body;
   }
@@ -106,10 +113,10 @@
     more.disabled=true;
     try {
       if(section==='members'){
-        const data=await BRB.members();
+        const [data,acc]=await Promise.all([BRB.members(),BRB.activity('members',{limit:500})]);
         if(revision!==request)return;
-        members=data.members||[];cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
-        status.textContent=`${members.length} membro${members.length===1?'':'s'} aprovado${members.length===1?'':'s'}.`;
+        accounts=acc.accounts||[];members=data.members||[];cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
+        status.textContent=`${accounts.length} conta${accounts.length===1?'':'s'} com e-mail confirmado, ${members.length} BRB Clubber${members.length===1?'':'s'} aprovado${members.length===1?'':'s'}.`;
         render();return;
       }
       if(section==='activity'){
@@ -150,6 +157,9 @@
   list.addEventListener("keydown", e => { if (tab === "activity" && e.key === "Enter" && e.target.id === "actQ") { actQ = e.target.value.trim(); load(); } });
   list.addEventListener("click", async e => {
     if (tab === "activity") {
+      const dm = e.target.closest("[data-dismiss]"), rs = e.target.closest("#actRestore");
+      if (dm) { if (!confirm("Excluir esta linha do painel? Só some daqui: a conta e os dados da pessoa continuam. Dá para trazer de volta em Restaurar ocultos.")) return; try { dm.disabled = true; await BRB.activity("dismiss", { key: dm.dataset.dismiss }); toast("Linha excluída do painel."); await load(); } catch (err) { toast(err.message); dm.disabled = false; } return; }
+      if (rs) { try { await BRB.activity("restore"); toast("Linhas ocultas restauradas."); await load(); } catch (err) { toast(err.message); } return; }
       const v = e.target.closest("[data-av]"), go = e.target.closest("#actGo"), clr = e.target.closest("#actClear"), ua = e.target.closest("[data-uact]");
       const qi = document.getElementById("actQ"); if (qi) actQ = qi.value.trim();
       if (v) { actView = v.dataset.av; load(); }
