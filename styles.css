@@ -2766,3 +2766,25 @@ body.rv-lock{overflow:hidden}
 .pt-pop li b{color:var(--y)}
 .pt-go{width:100%;text-align:center}
 @media(max-width:600px){.pt-float{left:8px;bottom:10px}.pt-chip{padding:7px 11px}.pt-lbl{display:none}}
+
+/* Moderação: posts em cards pequenos e limpos (foto, @, festa, data) */
+.md-list.md-grid{max-width:none;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;align-items:start}
+.md-post{padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:14px;background:#141514}
+.md-thumb{position:relative;aspect-ratio:4/3;background:#0d0e0d;display:grid;place-items:center;overflow:hidden}
+.md-thumb img{width:100%;height:100%;object-fit:cover;max-height:none;margin:0;border-radius:0}
+.md-thumb p{margin:0;padding:14px;font-size:13px;color:#cfcfca;overflow:hidden;max-height:100%}
+.md-thumb .md-badge{position:absolute;top:8px;left:8px;background:rgba(10,11,10,.85);font-size:10px;padding:3px 8px}
+.md-thumb .md-badge.published{color:#35d07f}
+.md-thumb .md-rep{position:absolute;top:8px;right:8px;background:#8B1A12;color:#fff;border-radius:99px;padding:3px 8px;font-size:10px}
+.md-info{padding:12px 12px 4px;display:grid;gap:6px}
+.md-post h3{font:700 15px/1.2 'Inter Tight',sans-serif;margin:0;text-transform:none;overflow-wrap:anywhere}
+.md-who{margin:0;font:700 13px 'Inter Tight',sans-serif;color:var(--y);overflow-wrap:anywhere}
+.md-meta{display:grid;gap:3px;margin:2px 0 0;font-size:12px;color:#9a9a94}
+.md-meta div{display:grid;grid-template-columns:44px 1fr;gap:6px}
+.md-meta dt{color:#6f6f6a}.md-meta dd{margin:0;color:#cfcfca;overflow-wrap:anywhere}
+.md-post .md-body{font-size:12px;color:#cfcfca;margin:0}
+.md-cdet summary{cursor:pointer;font-size:12px;color:#9a9a94}
+.md-cdet .md-coms{margin:6px 0 0;font-size:12px}
+.md-none{margin:0;font-size:11px;color:#6f6f6a}
+.md-post .md-actions{margin:0;padding:10px 12px 12px;gap:6px}
+.md-post .md-actions .btn{min-height:32px;padding:0 10px;font-size:12px}
