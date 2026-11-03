@@ -16,6 +16,7 @@
  const check = result => { if (result.error) throw result.error; return result.data; };
  const friendly = error => {
   const text = error?.message || '';
+  if (/database error saving new user|informe o @|@ já está em uso/i.test(text)) return 'Não conseguimos criar a conta. Confira se o @ do Instagram está preenchido (3 a 24 letras, números, pontos ou sublinhados) e se ele já não está em uso por outra pessoa.';
   if (/weak.?password|should contain at least one character|known to be weak|easy to guess/i.test(text)) return 'Senha fraca. Use pelo menos 6 caracteres e evite senhas muito comuns.';
   const wait = text.match(/after (\d+) seconds?/i);
   if (wait) return `Aguarde ${wait[1]} segundos para pedir o e-mail de novo. O primeiro já foi enviado: veja também a caixa de spam ou lixo eletrônico.`;
@@ -88,6 +89,7 @@
    if (password.length < 6) return message('A senha precisa ter pelo menos 6 caracteres.','error');
   }
   if (mode === 'signup') {
+   if (!/^[A-Za-z0-9_.]{3,24}$/.test($('#accountNick').value.trim())) return message('Informe o @ do seu Instagram para criar a conta: 3 a 24 letras, números, pontos ou sublinhados, sem o @.','error');
    const signupData=check(await auth.signUp({email,password,options:{data:{nick:$('#accountNick').value.trim(),brb_app:true,terms_version:'2026-10-24'},emailRedirectTo:callback}}));
    if(signupData.user && Array.isArray(signupData.user.identities) && signupData.user.identities.length===0){
     message('Este e-mail já possui cadastro. Entre na sua conta ou clique em “Esqueci minha senha” para recuperar o acesso.','error');

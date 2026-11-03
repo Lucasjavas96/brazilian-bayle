@@ -2506,3 +2506,6 @@ body.rv-lock{overflow:hidden}
 .act-type{justify-self:start}
 .act-detail{overflow-wrap:anywhere}
 @media(max-width:820px){.act-row{grid-template-columns:1fr;gap:4px}}
+.act-row{grid-template-columns:120px 190px 100px 1fr auto!important}
+.act-del{padding:6px 12px!important;font-size:12px!important}
+@media(max-width:820px){.act-row{grid-template-columns:1fr!important}}
