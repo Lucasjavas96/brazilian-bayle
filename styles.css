@@ -2658,3 +2658,11 @@ background:conic-gradient(from 0deg at 20% 30%,transparent 0 40deg,#fff 44deg 46
 .djc.lendaria.fx-daftpunk .djc-inner { background: linear-gradient(180deg, #0b0b0b, #000); }
 .djc.lendaria.fx-daftpunk .djc-name h3 { background: linear-gradient(90deg, #fff, #ffd36b, #7fe7ff, #ff8fd0, #fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .djc.lendaria.fx-daftpunk .djc-lend { background: linear-gradient(90deg, #ffd36b, #fff, #7fe7ff, #ff8fd0, #ffd36b); color: #111; }
+.tp-home{background:var(--k);padding:clamp(56px,8vw,110px) 0}
+.tp-home .display{margin:10px 0 16px}
+.tp-home .lead{max-width:760px}
+.tp-home-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0 30px;max-width:980px}
+.tp-home-steps li{display:flex;gap:12px;align-items:flex-start;border:1px solid rgba(255,212,0,.35);border-radius:18px;padding:16px 18px;background:rgba(255,255,255,.04)}
+.tp-home-steps b{color:var(--y)}
+.tp-home-steps span{font-size:15px;line-height:1.45;color:rgba(255,255,255,.85)}
+@media(max-width:820px){.tp-home-steps{grid-template-columns:1fr}}
