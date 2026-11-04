@@ -556,5 +556,12 @@
     "estilo": "Progressive house",
     "grupo": "House",
     "pais": "Brasil"
+  },
+  {
+    "nome": "Departamento",
+    "estilo": "House",
+    "grupo": "House",
+    "pais": "Brasil",
+    "br": true
   }
 ]

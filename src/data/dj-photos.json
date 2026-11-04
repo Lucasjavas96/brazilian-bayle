@@ -852,5 +852,12 @@
     "source": "Divulgação",
     "width": 720,
     "height": 720
+  },
+  "departamento": {
+    "path": "assets/djs/departamento.webp",
+    "thumb": "assets/djs/thumbs/departamento.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
   }
 }
