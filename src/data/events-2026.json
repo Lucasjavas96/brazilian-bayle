@@ -191,6 +191,37 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "laroc-2026-02-14",
+      "date": "2026-02-14",
+      "venue": "Laroc",
+      "name": "Ame Laroc Festival — Dia 1",
+      "lineup": [
+        "Above & Beyond",
+        "Vintage Culture",
+        "Ben Gold",
+        "Malóne",
+        "Odymel",
+        "Doozie",
+        "Miss Natalia",
+        "Kölsch",
+        "Massano",
+        "Miss Monique",
+        "Curol",
+        "Corren Cavini",
+        "Bigfett",
+        "DOT",
+        "Aura Vortex",
+        "Krome Angels",
+        "Paranormal Attack",
+        "Sighter",
+        "Avan7",
+        "Ekanta",
+        "Sonic Massala"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
+    },
+    {
       "id": "warung-2026-02-14",
       "date": "2026-02-14",
       "venue": "Warung",
@@ -202,6 +233,21 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Parcial. Fonte: https://warungclub.com.br/agenda-antigas/ Obs.: Resident Advisor menciona Luciano na mesma data; divergência de fontes não resolvida",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "laroc-2026-02-15",
+      "date": "2026-02-15",
+      "venue": "Laroc",
+      "name": "Ame Laroc Festival — Dia 2",
+      "lineup": [
+        "Dom Dolla",
+        "GENESI",
+        "Azzecca",
+        "Carol Seubert",
+        "GREG"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
     },
     {
       "id": "surreal-park-2026-02-15",
@@ -252,6 +298,39 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "laroc-2026-02-16",
+      "date": "2026-02-16",
+      "venue": "Laroc",
+      "name": "Ame Laroc Festival — Dia 3",
+      "lineup": [
+        "Agents of Time",
+        "Steve Angello",
+        "Andromedik",
+        "Öwnboss",
+        "RUBACK",
+        "ETTA",
+        "Miller",
+        "Silvio Soul",
+        "ANNA",
+        "Jamie Jones",
+        "WhoMadeWho",
+        "Beltran",
+        "GENESI",
+        "Rose Ringed",
+        "Scorz",
+        "Tawwa",
+        "Blazy",
+        "Freedom Fighters",
+        "Vermont",
+        "Wrecked Machines",
+        "GroundBass",
+        "Human Heart",
+        "Synthatic"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
+    },
+    {
       "id": "club-vibe-2026-02-21",
       "date": "2026-02-21",
       "venue": "Club Vibe",
@@ -289,6 +368,22 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "laroc-2026-03-07",
+      "date": "2026-03-07",
+      "venue": "Laroc",
+      "name": "Armin van Buuren",
+      "lineup": [
+        "Armin van Buuren",
+        "Junior C",
+        "Laura van Dam",
+        "Scorz",
+        "AVIRA",
+        "Silvio Soul"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
+    },
+    {
       "id": "club-vibe-2026-03-13",
       "date": "2026-03-13",
       "venue": "Club Vibe",
@@ -298,6 +393,34 @@
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
       "checked_at": "2026-11-04"
+    },
+    {
+      "id": "laroc-2026-03-14",
+      "date": "2026-03-14",
+      "venue": "Laroc",
+      "name": "TRIIIPLE Festival — Dubdogz & Ruback",
+      "lineup": [
+        "Chemical Surf",
+        "Dubdogz",
+        "ETTA",
+        "Fatsync",
+        "Liu",
+        "NERVO",
+        "Topic",
+        "Departamento",
+        "JOA",
+        "MORTEN",
+        "Rafael Cerato",
+        "RUBACK",
+        "Silvio Soul",
+        "Space Motion",
+        "The Element",
+        "André Werneck",
+        "DJ Meme",
+        "DJ Puff"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
     },
     {
       "id": "club-vibe-2026-03-21",
@@ -414,6 +537,21 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "laroc-2026-04-20",
+      "date": "2026-04-20",
+      "venue": "Laroc",
+      "name": "Argy + Omiki",
+      "lineup": [
+        "Argy",
+        "Omiki",
+        "Bigfett",
+        "Binaryh",
+        "The Element"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
+    },
+    {
       "id": "club-vibe-2026-04-30",
       "date": "2026-04-30",
       "venue": "Club Vibe",
@@ -423,6 +561,17 @@
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
       "checked_at": "2026-11-04"
+    },
+    {
+      "id": "laroc-2026-05-01",
+      "date": "2026-05-01",
+      "venue": "Laroc",
+      "name": "Axwell",
+      "lineup": [
+        "Axwell"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
     },
     {
       "id": "club-vibe-2026-05-02",
@@ -690,6 +839,23 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "laroc-2026-06-13",
+      "date": "2026-06-13",
+      "venue": "Laroc",
+      "name": "Spektrum 2026",
+      "lineup": [
+        "Raja Ram",
+        "Infected Mushroom",
+        "Becker",
+        "Dust Pilots",
+        "Inê Goa",
+        "Lucas O'Brien",
+        "Luna DJ"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
+    },
+    {
       "id": "club-vibe-2026-06-19",
       "date": "2026-06-19",
       "venue": "Club Vibe",
@@ -759,6 +925,24 @@
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
       "checked_at": "2026-11-04"
+    },
+    {
+      "id": "laroc-2026-07-04",
+      "date": "2026-07-04",
+      "venue": "Laroc",
+      "name": "Rewind 6.0",
+      "lineup": [
+        "Alex Gaudino",
+        "SNAP!",
+        "Technotronic",
+        "Viktor Mora",
+        "Pagani",
+        "Ronaldinho",
+        "Evandro Soldera",
+        "Acorsi"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
     },
     {
       "id": "club-vibe-2026-07-10",
@@ -867,6 +1051,17 @@
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
       "checked_at": "2026-11-04"
+    },
+    {
+      "id": "laroc-2026-08-08",
+      "date": "2026-08-08",
+      "venue": "Laroc",
+      "name": "Illusionize Birthday: The Long Bday Journey",
+      "lineup": [
+        "Illusionize"
+      ],
+      "source": "Line-up da Laroc informado pela Brazilian Bayle (levantamento de 2026, a partir da divulgação dos eventos).",
+      "checked_at": "2026-11-06"
     },
     {
       "id": "club-vibe-2026-08-15",

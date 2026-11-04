@@ -462,7 +462,63 @@
     {
       "id": "laroc",
       "nome": "Laroc",
-      "festas": []
+      "festas": [
+        {
+          "data": "14/02",
+          "nome": "Ame Laroc Festival — Dia 1",
+          "evento": "laroc-2026-02-14"
+        },
+        {
+          "data": "15/02",
+          "nome": "Ame Laroc Festival — Dia 2",
+          "evento": "laroc-2026-02-15"
+        },
+        {
+          "data": "16/02",
+          "nome": "Ame Laroc Festival — Dia 3",
+          "evento": "laroc-2026-02-16"
+        },
+        {
+          "data": "07/03",
+          "nome": "Armin van Buuren",
+          "evento": "laroc-2026-03-07"
+        },
+        {
+          "data": "14/03",
+          "nome": "TRIIIPLE Festival — Dubdogz & Ruback",
+          "evento": "laroc-2026-03-14"
+        },
+        {
+          "data": "20/04",
+          "nome": "Argy + Omiki",
+          "evento": "laroc-2026-04-20"
+        },
+        {
+          "data": "01/05",
+          "nome": "Axwell",
+          "evento": "laroc-2026-05-01"
+        },
+        {
+          "data": "13/06",
+          "nome": "Spektrum 2026",
+          "evento": "laroc-2026-06-13"
+        },
+        {
+          "data": "04/07",
+          "nome": "Rewind 6.0",
+          "evento": "laroc-2026-07-04"
+        },
+        {
+          "data": "08/08",
+          "nome": "Illusionize Birthday: The Long Bday Journey",
+          "evento": "laroc-2026-08-08"
+        },
+        {
+          "data": "17/10",
+          "nome": "Rave The World by Alok",
+          "evento": "laroc-2026-10-17"
+        }
+      ]
     },
     {
       "id": "fortin",
