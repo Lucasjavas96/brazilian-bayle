@@ -1,9 +1,11 @@
-/* Temperatura da Pista: agenda das festas anunciadas com termômetro de interesse.
-   Festas em window.BRB_TEMP (src/data/temperatura.json, via build); contagem e respostas em brb_interest. */
+/* Temperatura da Pista: agenda das festas anunciadas, uma seção por clube, com termômetro de interesse.
+   Clubes e festas em window.BRB_TEMP (src/data/temperatura.json, via build); contagem e respostas em brb_interest. */
 (() => {
-  const box = document.getElementById("tpAgenda");
+  const box = document.getElementById("tpAgenda"), nav = document.getElementById("tpClubs");
   if (!box) return;
-  const FESTAS = (window.BRB_TEMP || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+  const DATA = window.BRB_TEMP || {}, CLUBS = DATA.clubs || [];
+  const FESTAS = (DATA.festas || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+  const SECS = CLUBS.map(c => ({ c, list: FESTAS.filter(f => f.club === c.id) })).filter(s => s.list.length);
   const MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
   const MESF = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
   const DIA = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
@@ -33,19 +35,26 @@
     return `<article class="tp-row" style="--heat:${t.color}"><div class="tp-row-date"><b>${String(d.getDate()).padStart(2, "0")}</b><span>${MES[d.getMonth()]} · ${DIA[d.getDay()]}</span></div>
       <div class="tp-row-main">${f.photo ? `<img class="tp-row-av" src="${esc(f.photo)}" alt="" loading="lazy" width="62" height="62">` : `<span class="tp-row-av tp-row-ini" aria-hidden="true">${esc(f.name.slice(0, 1))}</span>`}
       <p class="tp-kick">${esc(f.tag || f.venue + " · " + f.cidade)}</p><h3>${esc(f.name)}</h3>
-      <p>${f.lineup.map(esc).join(" · ")}${f.partial ? ` · <em>mais atrações a anunciar</em>` : ""}</p></div>
+      <p>${f.lineup.slice(0, 12).map(esc).join(" · ")}${f.lineup.length > 12 ? ` · e mais ${f.lineup.length - 12} atrações` : ""}${f.partial ? ` · <em>mais atrações a anunciar</em>` : ""}</p></div>
       <div>${tube}${line}</div>${vote}</article>`;
   }
 
-  function render() {
+  function months(list) {
     let out = "", m = "";
-    for (const f of FESTAS) {
+    for (const f of list) {
       const d = dt(f.date), mm = MESF[d.getMonth()] + " " + d.getFullYear();
-      if (mm !== m) { out += `<h2 class="tp-month">${mm}</h2>`; m = mm; }
+      if (mm !== m) { out += `<h3 class="tp-month">${mm}</h3>`; m = mm; }
       out += row(f);
     }
-    box.innerHTML = out || `<p class="dim">Nenhuma festa anunciada por enquanto.</p>`;
+    return out;
   }
+
+  function render() {
+    box.innerHTML = SECS.map(({ c, list }) => `<section class="tp-club" id="clube-${esc(c.id)}" aria-labelledby="tc-${esc(c.id)}">
+      <header class="tp-club-head"><h2 class="display" id="tc-${esc(c.id)}">${esc(c.nome)}</h2><p class="mono dim">${esc(c.cidade)} · ${list.length} festa${list.length > 1 ? "s" : ""}</p></header>
+      <div class="tp-list">${months(list)}</div></section>`).join("") || `<p class="dim">Nenhuma festa anunciada por enquanto.</p>`;
+  }
+  if (nav && SECS.length > 1) nav.innerHTML = SECS.map(({ c, list }) => `<a href="#clube-${esc(c.id)}">${esc(c.nome)} <span>${list.length}</span></a>`).join("");
 
   async function load() {
     try { const r = await BRB.interest("list"); counts = r.counts || {}; mine = r.mine || {}; }
