@@ -20,8 +20,6 @@ const NAV = [
   ["after", "/after", "Onde é o after?"],
   ["album", "/album", "Bayle All Stars Album"],
   ["clube", "/clube", "BRB Clubbers"],
-  ["quiz", "/quiz/", "Quiz Bailinho"],
-  ["agenda", "/agenda", "Agenda"],
   ["manifesto", "/manifesto", "Manifesto"],
   ["djindex", "/djindex", "DJ Index"],
   ["curitiba", "/curitiba", "Bayle Curitibano"],
