@@ -20,13 +20,13 @@
         <div class="djc-art">
           <img src="${c.foto}" alt="${esc(c.nome)}"${mini ? ' loading="lazy" decoding="async"' : ""} style="object-position:${c.pos};${c.zoom ? `transform:${c.zoom};transform-origin:${c.origin}` : ""}">
           <div class="djc-ovr"><strong>${c.ovr}</strong><span>${esc(c.tag)}</span><em></em><small>${esc(c.bpm)}<br>BPM</small></div>
-          <div class="djc-rank">${esc(c.rank)}</div>
+          <div class="djc-rank">${esc(c.rank)}</div>${c.cls === "lendaria" ? `<div class="djc-lend">LENDÁRIA</div>` : ""}
         </div>
         <div class="djc-type"><b>[ DJ / ${esc(c.genero)} ]</b><span>${esc(c.num)}</span></div>
         <div class="djc-stats">${Object.entries(c.attrs).map(([k, v]) => `<div class="djc-stat${v === maxv ? " top" : ""}"><b>${v}</b><span>${STAT_NAMES[k] || k}</span></div>`).join("")}</div>
         <div class="djc-flavor"><p>${esc(c.texto)}</p>${c.faixa ? `<small>♪ ${esc(c.faixa)}</small>` : ""}</div>
         <div class="djc-foot"><b>★ ${c.rar}</b><span>Brazilian Bayle · 2026</span></div>
-      </div><div class="djc-foil"></div><div class="djc-glare"></div></div>
+      </div>${c.cls === "lendaria" ? `<div class="djc-spark"></div><i class="djc-gem g1"></i><i class="djc-gem g2"></i><i class="djc-gem g3"></i><i class="djc-gem g4"></i>` : ""}<div class="djc-foil"></div><div class="djc-glare"></div></div>
       ${mini ? "" : `<div class="djc-face djc-back"><img src="/assets/album/verso.webp?v=3" alt="Verso: Bayle All Stars Album"><div class="djc-glare"></div></div>`}
     </div>`;
   }
