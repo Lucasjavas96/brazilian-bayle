@@ -23871,7 +23871,12 @@
         "titulo": "Emanuel Satie, Gray Area",
         "url": "https://grayarea.co/artists/emanuel-satie"
       }
-    ]
+    ],
+    "foto": {
+      "credito": "Foto de imprensa do selo SCENARIOS, via House Music With Love",
+      "licenca": "Divulgação",
+      "pagina": "https://www.housemusicwithlove.com/2023/scenarios-collective-teams-up-on-new-single-side-by-side/"
+    }
   },
   {
     "slug": "silvie-loto",

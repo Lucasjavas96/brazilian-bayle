@@ -845,5 +845,12 @@
     "source": "Divulgação",
     "width": 720,
     "height": 720
+  },
+  "scenarios": {
+    "path": "assets/djs/scenarios.webp",
+    "thumb": "assets/djs/thumbs/scenarios.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
   }
 }
