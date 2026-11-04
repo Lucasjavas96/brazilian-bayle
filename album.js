@@ -27,7 +27,7 @@
         <div class="djc-flavor"><p>${esc(c.texto)}</p>${c.faixa ? `<small>♪ ${esc(c.faixa)}</small>` : ""}</div>
         <div class="djc-foot"><b>★ ${c.rar}</b><span>Brazilian Bayle · 2026</span></div>
       </div><div class="djc-foil"></div><div class="djc-glare"></div></div>
-      ${mini ? "" : `<div class="djc-face djc-back"><img src="/assets/album/verso.webp" alt="Verso: Bayle All Stars Album"><div class="djc-glare"></div></div>`}
+      ${mini ? "" : `<div class="djc-face djc-back"><img src="/assets/album/verso.webp?v=3" alt="Verso: Bayle All Stars Album"><div class="djc-glare"></div></div>`}
     </div>`;
   }
   // encolhe o nome para caber na placa: lê tudo de uma vez e escreve de uma vez (rápido com 253 cartas)
