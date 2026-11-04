@@ -13,7 +13,7 @@
   function bigCard(c, mini) {
     const maxv = Math.max(...Object.values(c.attrs));
     const stars = Math.max(1, Math.min(10, Math.round((c.ovr - 70) / 3)));
-    return `<div class="djc ${c.cls}"${mini ? "" : ' tabindex="0"'} aria-label="${esc(c.nome)}, overall ${c.ovr}, figurinha ${c.rar}">
+    return `<div class="djc ${c.cls}${c.fx ? " " + c.fx : ""}"${mini ? "" : ' tabindex="0"'} aria-label="${esc(c.nome)}, overall ${c.ovr}, figurinha ${c.rar}">
       <div class="djc-face djc-front"><div class="djc-inner">
         <div class="djc-name"><h3>${esc(c.nome)}</h3><div class="djc-orb" title="${esc(c.paisNome)}"><img src="${flag(c.flag)}" alt="${esc(c.paisNome)}"${mini ? ' loading="lazy" decoding="async"' : ""}></div></div>
         <div class="djc-stars">${"<i></i>".repeat(stars)}</div>
@@ -52,7 +52,7 @@
   }
 
   /* ---------- álbum ---------- */
-  const mini = c => `<button type="button" class="ab-st ab-st-full ${c.cls}" data-card="${c.slug}" aria-label="${esc(c.nome)}, ${c.num}, abrir figurinha">${bigCard(c, true)}</button>`;
+  const mini = c => `<button type="button" class="ab-st ab-st-full ${c.cls}${c.fx ? " " + c.fx : ""}" data-card="${c.slug}" aria-label="${esc(c.nome)}, ${c.num}, abrir figurinha">${bigCard(c, true)}</button>`;
   // brilho e inclinação ao passar o mouse ou o dedo, também nas figurinhas coladas
   let hot = null;
   const cool = card => { card.classList.remove("tilting"); for (const [k, v] of [["--rx", "0deg"], ["--ry", "0deg"], ["--o", 0], ["--mx", "50%"], ["--my", "50%"]]) card.style.setProperty(k, v); };

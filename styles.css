@@ -2809,3 +2809,20 @@ a.av-item:hover,a.av-item:focus-visible{background:rgba(255,212,0,.16);border-co
 .wiki-sec .pista-item p{font-size:16px;line-height:1.55;margin:0;color:var(--ink);overflow-wrap:anywhere}
 .pista-item small{display:block;margin-top:8px;font-size:10px;color:var(--muted)}
 .pista-link{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+
+/* Daft Punk (OVR 99): capacete cromado com reflexo arco-íris girando, linhas de LED e brilho próprio */
+@property --dp { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes dpGira { to { --dp: 360deg; } }
+@keyframes dpLed { 0% { background-position: 0 0; } 100% { background-position: 0 24px; } }
+@keyframes dpHue { to { filter: hue-rotate(360deg); } }
+.djc.fx-daftpunk { --frame: conic-gradient(from var(--dp), #f2f2f2, #9a9a9a, #ffd36b, #ffffff, #7fe7ff, #c9a2ff, #ff8fd0, #f2f2f2); --accent: #ffe08a; --glow: rgba(255,214,120,.85); --plate: linear-gradient(180deg, #0b0b0b, #000); animation: dpGira 4s linear infinite; }
+.djc.fx-daftpunk .djc-front:before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; mix-blend-mode: screen; opacity: .2;
+  background: repeating-linear-gradient(0deg, rgba(255,60,60,.0) 0 3px, rgba(255,80,80,.55) 3px 4px), linear-gradient(90deg, rgba(255,0,128,.25), rgba(0,200,255,.25), rgba(255,220,0,.25)); background-size: 100% 24px, 100% 100%; animation: dpLed 1.2s linear infinite; }
+.djc.fx-daftpunk .djc-name h3 { background: linear-gradient(90deg, #fff, #ffd36b, #7fe7ff, #ff8fd0, #fff); -webkit-background-clip: text; background-clip: text; color: transparent; animation: dpHue 6s linear infinite; }
+.djc.fx-daftpunk .djc-foil { opacity: calc(.28 + var(--o, 0) * .5); }
+.ab-st.fx-daftpunk { box-shadow: 0 0 0 3px #ffe08a, 0 0 22px rgba(255,214,120,.9), 0 0 44px rgba(127,231,255,.5); animation: dpHue 5s linear infinite; }
+.wiki-especial .wiki-photo img { box-shadow: 0 0 0 4px #ffe08a, 0 0 30px rgba(255,214,120,.8), 0 0 60px rgba(127,231,255,.45); animation: dpHue 8s linear infinite; }
+.wiki-especial .wiki-especial-selo { color: #ffe08a !important; }
+.wiki-especial-selo { display: inline-block; margin: 6px 0 4px; padding: 6px 12px; border-radius: 99px; background: #111; color: #ffe08a; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; box-shadow: 0 0 0 1px #ffe08a; }
+.wiki-especial-frase { font-style: italic; opacity: .75; margin: 4px 0 14px; }
+@media (prefers-reduced-motion: reduce) { .djc.fx-daftpunk, .djc.fx-daftpunk .djc-front:before, .djc.fx-daftpunk .djc-name h3, .ab-st.fx-daftpunk, .wiki-especial .wiki-photo img { animation: none; } }

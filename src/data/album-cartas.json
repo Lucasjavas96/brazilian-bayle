@@ -61,7 +61,7 @@
         "bpm": 124,
         "premios": 2
       },
-      "ovrManual": 92
+      "ovrManual": 89
     },
     {
       "slug": "ferry-corsten",
@@ -6721,7 +6721,8 @@
         "ouvintes": 10922496,
         "inicio": 1986,
         "hino": 1
-      }
+      },
+      "ovrManual": 90
     },
     {
       "slug": "genx",
@@ -6766,7 +6767,8 @@
         "ouvintes": 37458383,
         "inicio": 2006,
         "hino": 1
-      }
+      },
+      "ovrManual": 91
     },
     {
       "slug": "doozie",
@@ -8714,6 +8716,36 @@
       "sinais": {
         "bpm": 123
       }
+    },
+    {
+      "slug": "daft-punk",
+      "nome": "Daft Punk",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "French House",
+      "tag": "HOUSE",
+      "bpm": "110–124",
+      "rank": "ÍCONE",
+      "pos": "center 35%",
+      "texto": "Thomas Bangalter e Guy-Manuel de Homem-Christo, os robôs de Paris que levaram o french house ao mundo.",
+      "faixa": "One More Time",
+      "foto": "/assets/album/fotos/daft-punk.webp",
+      "foto_fonte": "https://commons.wikimedia.org/wiki/File:Daft_Punk_in_2013.jpg (Sony Music Entertainment, CC BY 4.0)",
+      "fontes": [
+        "https://commons.wikimedia.org/wiki/File:Daft_Punk_in_2013.jpg",
+        "https://en.wikipedia.org/wiki/Daft_Punk"
+      ],
+      "sinais": {
+        "inicio": 1993,
+        "hino": 1,
+        "selo": 1,
+        "pioneiro": 1,
+        "grammy": "vitoria",
+        "bpm": 120
+      },
+      "ovrManual": 99,
+      "fx": "fx-daftpunk",
+      "peso": 0.5
     }
   ]
 }

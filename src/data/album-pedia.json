@@ -4209,5 +4209,22 @@
   "w": 720,
   "h": 720,
   "ordem": 254
+ },
+ {
+  "nome": "Daft Punk",
+  "slug": "daft-punk",
+  "pais": "fr",
+  "paisNome": "França",
+  "genero": "French House",
+  "grupo": "House",
+  "rank": "ÍCONE",
+  "djmag": null,
+  "texto": "Thomas Bangalter e Guy-Manuel de Homem-Christo, os robôs de Paris que levaram o french house ao mundo.",
+  "faixa": "One More Time",
+  "foto": "assets/album/fotos/daft-punk.webp",
+  "thumb": "assets/djs/thumbs/daft-punk.webp",
+  "w": 720,
+  "h": 720,
+  "ordem": 255
  }
 ]

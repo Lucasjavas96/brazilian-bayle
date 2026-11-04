@@ -342,7 +342,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
       noindex: !full,
       jsonld: [{ "@context": "https://schema.org", "@type": "Person", name: p.nome, alternateName: p.nome_civil && p.nome_civil !== NI ? p.nome_civil : undefined, jobTitle: "DJ", genre: list(p.estilos), image: img ? `${SITE}/${img}` : undefined, sameAs: list((p.fontes || []).map(f => f.url)).slice(0, 3) }],
     }, `
-<article class="sec paper page-head wiki-article" aria-labelledby="t-dj" data-dj="${s}">
+<article class="sec paper page-head wiki-article${p.especial ? " wiki-especial" : ""}" aria-labelledby="t-dj" data-dj="${s}">
   <div class="wrap">
     <nav class="crumbs mono" aria-label="Você está em"><a href="/djindex">DJ Index</a> <span aria-hidden="true">›</span> ${esc(p.nome)}</nav>
     <div class="wiki-grid">
@@ -358,6 +358,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
       <div class="wiki-main">
         <p class="mono g">${kind}</p>
         <h1 class="display" id="t-dj">${esc(p.nome)}</h1>
+        ${p.especial ? `<p class="wiki-especial-selo mono">${esc(p.especial.selo)}</p><p class="wiki-especial-frase">${esc(p.especial.frase)}</p>` : ""}
         ${p.resumo ? `<p class="lead">${esc(p.resumo)}</p>` : ""}
         ${sec("h-hist", "Trajetória como DJ", hist)}
         ${sec("h-faixas", "Faixas marcantes", ul(p.faixas_marcantes))}

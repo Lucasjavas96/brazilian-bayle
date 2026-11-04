@@ -19,7 +19,8 @@ const COUNTRIES = {
 const MIN_PAGE = 3; // abaixo disso, o país vai para o Resto do Mundo
 
 const slugify = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const tier = o => o >= 90 ? ["lendaria", "Lendária"] : o >= 85 ? ["epica", "Épica"] : o >= 80 ? ["rara", "Rara"] : ["comum", "Comum"];
+// faixas aprovadas pelo Lucas em 04/11/2026: Lendária 90+, Épica 78 a 89, Rara 74 a 77, Comum até 73 (60% do álbum)
+const tier = o => o >= 90 ? ["lendaria", "Lendária"] : o >= 78 ? ["epica", "Épica"] : o >= 74 ? ["rara", "Rara"] : ["comum", "Comum"];
 
 // OVR fixado: sobe todos os atributos 1 ponto por vez (teto 99), mantendo o perfil do DJ, até o OVR da régua
 // (15% SOM, HAR, ENE, SOF + 20% HYP e LEG) chegar ao valor fixado.
@@ -59,7 +60,7 @@ module.exports = function albumData(ROOT) {
     const [cls, rar] = tier(ovr);
     d.id = c.slug;
     cards[c.slug] = { slug: c.slug, nome: c.nome, num: d.num, flag: c.pais, paisNome: c.paisNome, genero: c.genero, tag: c.tag, bpm: c.bpm,
-      rank: c.rank, foto: c.foto, pos: c.pos, zoom: c.zoom || "", origin: c.origin || "", texto: c.texto, faixa: c.faixa, ovr, attrs: n, cls, rar };
+      rank: c.rank, foto: c.foto, pos: c.pos, zoom: c.zoom || "", origin: c.origin || "", texto: c.texto, faixa: c.faixa, ovr, attrs: n, cls, rar, ...(c.fx ? { fx: c.fx } : {}), ...(c.peso ? { peso: c.peso } : {}) };
   }));
   const missing = cartas.filter(c => !cards[c.slug]).map(c => c.nome);
   if (missing.length) throw new Error("album: carta sem DJ na lista: " + missing.join(", "));
