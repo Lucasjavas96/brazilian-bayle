@@ -2,6 +2,20 @@
   "scope": "Curadoria inicial de eventos importantes em dez casas; não é calendário anual exaustivo nem ranking oficial de casas. Datas passadas até 24/10/2026, mais as festas do Green Valley e do Surreal Park informadas pela Brazilian Bayle (as futuras só aceitam avaliação a partir do dia).",
   "events": [
     {
+      "id": "d-edge-rio-2026-01-02",
+      "date": "2026-01-02",
+      "venue": "D-EDGE Rio",
+      "name": "Cinthie",
+      "lineup": [
+        "Bruna Val",
+        "Cinthie",
+        "Leo Janeiro",
+        "Trato Sound System"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2332041).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "greenvalley-2026-01-03",
       "date": "2026-01-03",
       "venue": "Greenvalley",
@@ -14,6 +28,35 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://ingressoja.com.br/greenvalley-temporada-verao-eletronica/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-rio-2026-01-09",
+      "date": "2026-01-09",
+      "venue": "D-EDGE Rio",
+      "name": "Techbox with André Buljat",
+      "lineup": [
+        "Andre Buljat",
+        "Dessanti",
+        "Damatta",
+        "Panchy",
+        "Vick"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2332246).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-09",
+      "date": "2026-01-09",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Mavik",
+        "Gabão",
+        "Adriana Recchi",
+        "Glaucia Maismax"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343120).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "p12-2026-01-09",
@@ -41,6 +84,34 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "d-edge-rio-2026-01-10",
+      "date": "2026-01-10",
+      "venue": "D-EDGE Rio",
+      "name": "Mark N' Friends",
+      "lineup": [
+        "DJ Marky"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2332238).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-10",
+      "date": "2026-01-10",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave — AAA (Aline Até Amanhecer)",
+      "lineup": [
+        "SAGA",
+        "Woooo",
+        "Soulfie",
+        "Aline Rocha",
+        "Teclas",
+        "Tonaco",
+        "Rivvo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343125).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "greenvalley-2026-01-10",
       "date": "2026-01-10",
       "venue": "Greenvalley",
@@ -56,6 +127,60 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://ingressoja.com.br/greenvalley-temporada-verao-eletronica/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-11",
+      "date": "2026-01-11",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "DJ Murphy",
+        "Mandraks",
+        "Gabi Bessa"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343136).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-15",
+      "date": "2026-01-15",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Avante",
+        "Kair",
+        "Transvegana"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343157).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-01-16",
+      "date": "2026-01-16",
+      "venue": "D-EDGE Rio",
+      "name": "Fatsync",
+      "lineup": [
+        "BAPP",
+        "Fatsync",
+        "Patricia Andrade",
+        "Ray Costa"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2344804).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-16",
+      "date": "2026-01-16",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Diogo Accioly",
+        "Phonique",
+        "Joyce Muniz",
+        "Italovincenzzo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343158).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-01-16",
@@ -76,6 +201,40 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://www.ingresse.com/16-jan-trotamundo-classmatic-dimmish/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-rio-2026-01-17",
+      "date": "2026-01-17",
+      "venue": "D-EDGE Rio",
+      "name": "Duna with Soldera",
+      "lineup": [
+        "Awka",
+        "Badaro",
+        "Fleming",
+        "Heloah",
+        "Jordi Iven",
+        "NAZA",
+        "Rogério Soldera",
+        "Theuss"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2344811).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-17",
+      "date": "2026-01-17",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "ENNE",
+        "Fatsync",
+        "Drunky Daniels",
+        "Andre Buljat",
+        "DYED",
+        "Konnin"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343160).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "greenvalley-2026-01-17",
@@ -105,6 +264,46 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "d-edge-sao-paulo-2026-01-18",
+      "date": "2026-01-18",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Sheldon",
+        "nocapz",
+        "GAS"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343162).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-01-19",
+      "date": "2026-01-19",
+      "venue": "D-EDGE Rio",
+      "name": "Zero Gravity",
+      "lineup": [
+        "Dimmish",
+        "Julio Torres",
+        "Majoness",
+        "Marta Supernova"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2344816).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-22",
+      "date": "2026-01-22",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Sterium",
+        "Victor Lou",
+        "Adria"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343188).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-01-23",
       "date": "2026-01-23",
       "venue": "Club Vibe",
@@ -113,6 +312,34 @@
         "Detlef"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-01-23",
+      "date": "2026-01-23",
+      "venue": "D-EDGE Rio",
+      "name": "Ratier N' Friends",
+      "lineup": [
+        "Renato Ratier",
+        "Bhaskar",
+        "The Checkup",
+        "Vivi Seixas"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2332243).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-23",
+      "date": "2026-01-23",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic — 94A Showcase",
+      "lineup": [
+        "TTAI",
+        "Carvalho",
+        "Abbud",
+        "Trallez"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343192).",
       "checked_at": "2026-11-04"
     },
     {
@@ -127,6 +354,63 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-01-24",
+      "date": "2026-01-24",
+      "venue": "D-EDGE Rio",
+      "name": "Flumma com Damon Jee",
+      "lineup": [
+        "Damon Jee",
+        "Barsotti",
+        "Carol Mattos",
+        "Hollanda"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2344827).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-24",
+      "date": "2026-01-24",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Gedrah",
+        "Gui Accula",
+        "D-Nox",
+        "Ed Lopes",
+        "DPR",
+        "Paula Tape",
+        "Villa"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343195).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-25",
+      "date": "2026-01-25",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Adnan Sharif",
+        "JULA",
+        "Andre Torquato"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343199).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-29",
+      "date": "2026-01-29",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Miracle",
+        "Eric Olliver",
+        "Rockstead"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343206).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-01-30",
       "date": "2026-01-30",
       "venue": "Club Vibe",
@@ -138,6 +422,170 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-01-30",
+      "date": "2026-01-30",
+      "venue": "D-EDGE Rio",
+      "name": "Gabe",
+      "lineup": [
+        "Gabe"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2344832).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-30",
+      "date": "2026-01-30",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Theuss",
+        "Badaro",
+        "Awka",
+        "From House to Disco",
+        "L_cio",
+        "2M"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343208).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-01-31",
+      "date": "2026-01-31",
+      "venue": "D-EDGE Rio",
+      "name": "Lady of the House",
+      "lineup": [
+        "CAMZ",
+        "Carola",
+        "Joyce Muniz",
+        "Marian Flow",
+        "Analu",
+        "Bia Portela",
+        "Elisa Amaral",
+        "TTAI"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2344833).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-01-31",
+      "date": "2026-01-31",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave — Marky & Friends",
+      "lineup": [
+        "DJ Marky",
+        "DJ Andy",
+        "Cyrax",
+        "Bervon",
+        "Nassur",
+        "Nati M",
+        "Ingrid",
+        "Brenda Ferraz"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2343212).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-05",
+      "date": "2026-02-05",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Sheldon",
+        "Viot",
+        "Tiago Cruz"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2362869).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-02-06",
+      "date": "2026-02-06",
+      "venue": "D-EDGE Rio",
+      "name": "Rara Djs Convida",
+      "lineup": [
+        "Rara Djs",
+        "DVDE",
+        "Sô Lyma",
+        "TropiCals",
+        "MANIA DJs"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2356510).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-06",
+      "date": "2026-02-06",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Diogo Accioly",
+        "Krystal Klear",
+        "Ney Faustini"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2362871).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-02-07",
+      "date": "2026-02-07",
+      "venue": "D-EDGE Rio",
+      "name": "Blazy",
+      "lineup": [
+        "Blazy",
+        "Pryzma",
+        "V. Falabella",
+        "Gottinari",
+        "Caroles"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2352769).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-07",
+      "date": "2026-02-07",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Lary Lima",
+        "Perote",
+        "Fel C",
+        "Gui Boendia",
+        "Di Domenico",
+        "Juliana Mendez",
+        "Jhonny Sanchez"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2362879).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-08",
+      "date": "2026-02-08",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Pedräda",
+        "Fgon",
+        "ISZA"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2363753).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-12",
+      "date": "2026-02-12",
+      "venue": "D-EDGE São Paulo",
+      "name": "D-Rete Inside",
+      "lineup": [
+        "Lu.cian",
+        "Drunky Daniels",
+        "Malóne",
+        "Renato Ratier",
+        "Marian"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2368480).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-02-13",
       "date": "2026-02-13",
       "venue": "Club Vibe",
@@ -146,6 +594,37 @@
         "Louie Cut"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-02-13",
+      "date": "2026-02-13",
+      "venue": "D-EDGE Rio",
+      "name": "HE.SHE.THEY",
+      "lineup": [
+        "Badsista",
+        "Gabrielle Kwarteng",
+        "Omoloko",
+        "Pedro Gariani"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2350529).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-13",
+      "date": "2026-02-13",
+      "venue": "D-EDGE São Paulo",
+      "name": "D-Rete Inside",
+      "lineup": [
+        "Adnan Sharif",
+        "Gui Boratto",
+        "Gabriel Brasil",
+        "Cour T",
+        "DPR",
+        "Rhadoo",
+        "Tunis"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2368487).",
       "checked_at": "2026-11-04"
     },
     {
@@ -235,6 +714,38 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "d-edge-rio-2026-02-15",
+      "date": "2026-02-15",
+      "venue": "D-EDGE Rio",
+      "name": "Bloco do Tubarão",
+      "lineup": [
+        "Victor Lou",
+        "Brisotti",
+        "Flux Zone",
+        "Sterium",
+        "Viot"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2352773).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-15",
+      "date": "2026-02-15",
+      "venue": "D-EDGE São Paulo",
+      "name": "D-Rete Inside",
+      "lineup": [
+        "Rigooni",
+        "Riascode",
+        "Tim Engelhardt",
+        "PUKA",
+        "Coppola",
+        "Simas & Gggguerra",
+        "Redfern"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2368491).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "laroc-2026-02-15",
       "date": "2026-02-15",
       "venue": "Laroc",
@@ -281,6 +792,44 @@
         "Inndrive"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-02-16",
+      "date": "2026-02-16",
+      "venue": "D-EDGE Rio",
+      "name": "D.RETE",
+      "lineup": [
+        "Aleakim",
+        "Alexiz BcX",
+        "All of me",
+        "Beno",
+        "Bruna Val",
+        "Cacal",
+        "Dj Chance da Silva",
+        "Ciribelli",
+        "Day9",
+        "Dekin",
+        "Dessanti",
+        "DJ Due",
+        "Emekate",
+        "Felipe Poeta",
+        "Filhos Crew",
+        "Icehead",
+        "Jonetta",
+        "Kair",
+        "Lorio",
+        "Miguel Arcanjo",
+        "Myla",
+        "Quimera",
+        "Reiko",
+        "Sheldon",
+        "Suisso",
+        "The Menendez Brothers",
+        "Vick",
+        "Zopelar"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2361517).",
       "checked_at": "2026-11-04"
     },
     {
@@ -331,6 +880,47 @@
       "checked_at": "2026-11-06"
     },
     {
+      "id": "d-edge-sao-paulo-2026-02-19",
+      "date": "2026-02-19",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "João Braga & Luca Braga",
+        "Sodree",
+        "NA7AN"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2363771).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-02-20",
+      "date": "2026-02-20",
+      "venue": "D-EDGE Rio",
+      "name": "4FE Technival",
+      "lineup": [
+        "Alucas do Trópico Sul",
+        "Cesare vs Disorder",
+        "Gabi Fischer",
+        "Guizei",
+        "NOT_ME_"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2361530).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-20",
+      "date": "2026-02-20",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Marcio S",
+        "Bauhouse",
+        "Rodrigo Ferrari"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2363775).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-02-21",
       "date": "2026-02-21",
       "venue": "Club Vibe",
@@ -339,6 +929,65 @@
         "Classmatic"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-02-21",
+      "date": "2026-02-21",
+      "venue": "D-EDGE Rio",
+      "name": "Selvagem",
+      "lineup": [
+        "Facchinetti",
+        "Martha Pinel",
+        "DJ Meme",
+        "Private Panter",
+        "Seed Selector",
+        "Trepanado",
+        "Zopelar"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2361506).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-21",
+      "date": "2026-02-21",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Spuri",
+        "Luc",
+        "DJ Murphy",
+        "Teclas",
+        "Emi Galvan",
+        "Ingrid",
+        "Bruno Mattos"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2363787).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-22",
+      "date": "2026-02-22",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Renan Mendes",
+        "FIT",
+        "Garance"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2363792).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-26",
+      "date": "2026-02-26",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Adria",
+        "Becker"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2363798).",
       "checked_at": "2026-11-04"
     },
     {
@@ -355,6 +1004,68 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-02-27",
+      "date": "2026-02-27",
+      "venue": "D-EDGE Rio",
+      "name": "10 e Meio Club Edition",
+      "lineup": [
+        "Benan",
+        "Dig",
+        "Luiz Dias",
+        "Malu",
+        "Offbeat",
+        "Reeis"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2379207).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-27",
+      "date": "2026-02-27",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Thiörk",
+        "The Checkup",
+        "Leo Janeiro"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2363803).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-02-28",
+      "date": "2026-02-28",
+      "venue": "D-EDGE Rio",
+      "name": "Red Night",
+      "lineup": [
+        "Banu",
+        "DiskoTekaa",
+        "Renan Mendes",
+        "Transvegana",
+        "AIKO"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2379203).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-02-28",
+      "date": "2026-02-28",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Balanka",
+        "Duarte",
+        "Volac",
+        "Cactunes",
+        "KAWZ",
+        "Galucci",
+        "Cesare vs Disorder",
+        "Barton Think"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2363813).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "greenvalley-2026-02-28",
       "date": "2026-02-28",
       "venue": "Greenvalley",
@@ -366,6 +1077,31 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://betimelapse.com.br/eventos/greenvalley-rufus-du-sol",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-rio-2026-03-06",
+      "date": "2026-03-06",
+      "venue": "D-EDGE Rio",
+      "name": "Toman",
+      "lineup": [
+        "Toman"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2361520).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-03-07",
+      "date": "2026-03-07",
+      "venue": "D-EDGE Rio",
+      "name": "Banana Gold Showcase",
+      "lineup": [
+        "Bernardo Campos",
+        "Lysia",
+        "Beno",
+        "Perpettuo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2384672).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "laroc-2026-03-07",
@@ -392,6 +1128,65 @@
         "wAFF"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-03-13",
+      "date": "2026-03-13",
+      "venue": "D-EDGE Rio",
+      "name": "Lapsus Music Showcase",
+      "lineup": [
+        "CJ Jeff",
+        "Supernova",
+        "Filhos Crew",
+        "Lu.cian"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2387063).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-13",
+      "date": "2026-03-13",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Cesare vs Disorder",
+        "Toman",
+        "Jame C"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393778).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-03-14",
+      "date": "2026-03-14",
+      "venue": "D-EDGE Rio",
+      "name": "Innersounds",
+      "lineup": [
+        "Elle",
+        "Emi Galvan",
+        "Gadas",
+        "Rafz",
+        "Teclas"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2387048).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-14",
+      "date": "2026-03-14",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Gui Accula",
+        "Mpozzetti",
+        "Meriva",
+        "Guys from Desert",
+        "Pierg",
+        "Salttor",
+        "Breno Mos"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393781).",
       "checked_at": "2026-11-04"
     },
     {
@@ -423,6 +1218,59 @@
       "checked_at": "2026-11-06"
     },
     {
+      "id": "d-edge-sao-paulo-2026-03-15",
+      "date": "2026-03-15",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Gullyt",
+        "Solare",
+        "Romina"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393783).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-19",
+      "date": "2026-03-19",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Sheldon",
+        "Jamback",
+        "Ianni"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393785).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-03-20",
+      "date": "2026-03-20",
+      "venue": "D-EDGE Rio",
+      "name": "Jamback",
+      "lineup": [
+        "Jamback",
+        "Adnan Sharif",
+        "Dessanti",
+        "Marian Flow"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2396042).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-20",
+      "date": "2026-03-20",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "JOSS",
+        "Germek",
+        "Diogo Accioly"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393786).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-03-21",
       "date": "2026-03-21",
       "venue": "Club Vibe",
@@ -431,6 +1279,35 @@
         "Hi Profile"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-03-21",
+      "date": "2026-03-21",
+      "venue": "D-EDGE Rio",
+      "name": "Marky",
+      "lineup": [
+        "DJ Marky",
+        "DJ Meme",
+        "Danny Dee"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2396039).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-21",
+      "date": "2026-03-21",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Anderson Noise",
+        "Chris Liebing",
+        "DJ Murphy",
+        "Ed Lopes",
+        "Fmenezs",
+        "Gromma"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393789).",
       "checked_at": "2026-11-04"
     },
     {
@@ -451,6 +1328,90 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "d-edge-sao-paulo-2026-03-22",
+      "date": "2026-03-22",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Teclas",
+        "Luciano Scheffer",
+        "USH"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393790).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-26",
+      "date": "2026-03-26",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Human Heart",
+        "Wrecked Machines",
+        "Special M"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393793).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-03-27",
+      "date": "2026-03-27",
+      "venue": "D-EDGE Rio",
+      "name": "Illusionize",
+      "lineup": [
+        "Illusionize"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2396044).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-27",
+      "date": "2026-03-27",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Valentina Luz",
+        "Gabão"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393795).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-03-28",
+      "date": "2026-03-28",
+      "venue": "D-EDGE Rio",
+      "name": "Locals",
+      "lineup": [
+        "Alexiz BcX",
+        "Balahaus",
+        "Cent",
+        "Magri",
+        "Meskita",
+        "Sô Lyma"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2396045).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-28",
+      "date": "2026-03-28",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Ayla",
+        "Ashibah",
+        "Pedroz",
+        "Pietropaolo",
+        "SALT",
+        "Rafa Ferreira",
+        "Sabadini",
+        "Light the Jazz",
+        "Andre Torquato"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393788).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "matahari-2026-03-28",
       "date": "2026-03-28",
       "venue": "Matahari",
@@ -458,6 +1419,19 @@
       "lineup": [],
       "source": "https://linktr.ee/matahari",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-03-29",
+      "date": "2026-03-29",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Guilherme VAC",
+        "Lost in the Supermarket",
+        "Erotic Breakfast"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2393797).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-04-03",
@@ -495,6 +1469,23 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-04-04",
+      "date": "2026-04-04",
+      "venue": "D-EDGE Rio",
+      "name": "DE26",
+      "lineup": [
+        "Moodymann",
+        "Carl Craig",
+        "KiNK",
+        "Renato Ratier",
+        "Leo Janeiro",
+        "simo not simon",
+        "Vivi Seixas"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2387059).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "warung-2026-04-04",
       "date": "2026-04-04",
       "venue": "Warung",
@@ -506,6 +1497,20 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://warungclub.com.br/agenda/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-09",
+      "date": "2026-04-09",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Zaaitar",
+        "Abbud",
+        "Nardini",
+        "Sterium"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2411775).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "club-vibe-2026-04-10",
@@ -524,6 +1529,148 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-04-10",
+      "date": "2026-04-10",
+      "venue": "D-EDGE Rio",
+      "name": "Fezzo",
+      "lineup": [
+        "Fezzo",
+        "Caroles",
+        "Pat Andrade",
+        "Witz"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2413673).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-10",
+      "date": "2026-04-10",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "P.R.ADO",
+        "Analu",
+        "Ianni",
+        "She Mllr"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2411796).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-11",
+      "date": "2026-04-11",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Balanka",
+        "Solardo",
+        "Vinter",
+        "Teclas",
+        "Eloy"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2411798).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-04-12",
+      "date": "2026-04-12",
+      "venue": "D-EDGE Rio",
+      "name": "MA.TA",
+      "lineup": [
+        "Ricardo Albuquerque",
+        "Zambelli",
+        "Bandeira",
+        "Heloah",
+        "WHU"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2413676).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-12",
+      "date": "2026-04-12",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Cherolainne",
+        "DJ Murphy"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2411800).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-16",
+      "date": "2026-04-16",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Bauhouse",
+        "Aline Rocha",
+        "Adria",
+        "Perote",
+        "Breaking Beatzz",
+        "Almanac"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2414084).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-04-17",
+      "date": "2026-04-17",
+      "venue": "D-EDGE Rio",
+      "name": "Red Room",
+      "lineup": [
+        "Rod Brito",
+        "Underdogs",
+        "Adria"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2413681).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-17",
+      "date": "2026-04-17",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Cesare vs Disorder",
+        "Camila Jun",
+        "Windy City Classics"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2414091).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-04-18",
+      "date": "2026-04-18",
+      "venue": "D-EDGE Rio",
+      "name": "Drop",
+      "lineup": [
+        "Abbud",
+        "AC360",
+        "Dessanti",
+        "Moonshn"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2417796).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-18",
+      "date": "2026-04-18",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "TATO",
+        "Chemical Surf",
+        "Fancy Inc",
+        "JULA",
+        "Guillen",
+        "Camilo Rocha"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2414104).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "warung-2026-04-18",
       "date": "2026-04-18",
       "venue": "Warung",
@@ -535,6 +1682,19 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://warungclub.com.br/agenda/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-19",
+      "date": "2026-04-19",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Adnan Sharif",
+        "Rodrigo Lobbão",
+        "Ale F"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2414107).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "laroc-2026-04-20",
@@ -552,6 +1712,93 @@
       "checked_at": "2026-11-06"
     },
     {
+      "id": "d-edge-sao-paulo-2026-04-23",
+      "date": "2026-04-23",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Memachine",
+        "Badaro",
+        "Paola B"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2415165).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-04-24",
+      "date": "2026-04-24",
+      "venue": "D-EDGE Rio",
+      "name": "Entropia",
+      "lineup": [
+        "Greggio",
+        "Junix",
+        "Rekah",
+        "V.Tin",
+        "Doguez"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2413682).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-24",
+      "date": "2026-04-24",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "DRU",
+        "Olga Korol",
+        "Pedro Saigh",
+        "Martino Boga"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2415173).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-04-25",
+      "date": "2026-04-25",
+      "venue": "D-EDGE Rio",
+      "name": "Botanic",
+      "lineup": [
+        "Botanic Soundsystem",
+        "Pedro Carnevalli",
+        "Vidal",
+        "Olga Korol"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2424720).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-25",
+      "date": "2026-04-25",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Bervon",
+        "Sam Paganini",
+        "Rafael Melo",
+        "Diogo Accioly",
+        "Unknown Territories",
+        "Possat",
+        "Raisa Koh Sante",
+        "Gabi Bessa"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2415180).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-26",
+      "date": "2026-04-26",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Discotecaio",
+        "Drunky Daniels",
+        "Rey Vercosa"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2415183).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-04-30",
       "date": "2026-04-30",
       "venue": "Club Vibe",
@@ -560,6 +1807,66 @@
         "Bhaskar"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-04-30",
+      "date": "2026-04-30",
+      "venue": "D-EDGE Rio",
+      "name": "Collab com Banana Gold, Cocada e Aureum",
+      "lineup": [
+        "Retromigration",
+        "Rara Djs",
+        "Beno",
+        "Bruce Leroys",
+        "Lysia"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2421011).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-04-30",
+      "date": "2026-04-30",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving — Véspera de feriado",
+      "lineup": [
+        "LIVV",
+        "Jean Mark",
+        "Kiko Franco",
+        "Nico Bernardini",
+        "BBM",
+        "Blémmes",
+        "Rick Legnani",
+        "Sheldon",
+        "nocapz"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2415224).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-05-01",
+      "date": "2026-05-01",
+      "venue": "D-EDGE Rio",
+      "name": "Kiko Franco",
+      "lineup": [
+        "Kiko Franco"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2424741).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-05-01-2",
+      "date": "2026-05-01",
+      "venue": "D-EDGE Rio",
+      "name": "Neblina",
+      "lineup": [
+        "Alex Justino",
+        "Ciribelli",
+        "Day9",
+        "Myla",
+        "Lorio"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2424736).",
       "checked_at": "2026-11-04"
     },
     {
@@ -641,6 +1948,34 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-05-08",
+      "date": "2026-05-08",
+      "venue": "D-EDGE Rio",
+      "name": "Just Groove",
+      "lineup": [
+        "Coppola",
+        "Dessanti",
+        "Filhos Crew",
+        "Fran Bortolossi"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2432225).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-08",
+      "date": "2026-05-08",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic — Jardineira Showcase",
+      "lineup": [
+        "Seed Selector",
+        "Milton Chuquer",
+        "Nana Kohat",
+        "Vasconcelos"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438731).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-05-09",
       "date": "2026-05-09",
       "venue": "Club Vibe",
@@ -655,6 +1990,44 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-sao-paulo-2026-05-09",
+      "date": "2026-05-09",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Nana Torres",
+        "Ragie Ban",
+        "DJ Glen",
+        "Marcio S"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438734).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-10",
+      "date": "2026-05-10",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Villain Mode"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438738).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-14",
+      "date": "2026-05-14",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Diogo Accioly",
+        "Marco Resmann",
+        "YOUniverse"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438746).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-05-15",
       "date": "2026-05-15",
       "venue": "Club Vibe",
@@ -663,6 +2036,32 @@
         "Junior C"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-05-15",
+      "date": "2026-05-15",
+      "venue": "D-EDGE Rio",
+      "name": "Ruback",
+      "lineup": [
+        "Ruback"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2432227).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-15",
+      "date": "2026-05-15",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Adria",
+        "Vanjee",
+        "Rafael Onid",
+        "Lamache",
+        "Galvin"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438759).",
       "checked_at": "2026-11-04"
     },
     {
@@ -677,6 +2076,36 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-05-16",
+      "date": "2026-05-16",
+      "venue": "D-EDGE Rio",
+      "name": "Drop",
+      "lineup": [
+        "Bruna Val",
+        "Dion",
+        "Icehead",
+        "Manto Crew",
+        "Miguel Arcanjo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2441774).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-16",
+      "date": "2026-05-16",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Thiago Haddad",
+        "Ed Lopes",
+        "Raksa",
+        "Curol",
+        "Leticia Mello"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438760).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "surreal-park-2026-05-16",
       "date": "2026-05-16",
       "venue": "Surreal Park",
@@ -686,6 +2115,32 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://www.blueticket.com.br/evento/40439 Obs.: Projeto autoral de set prolongado",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-17",
+      "date": "2026-05-17",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Lu.cian",
+        "Anne Koch",
+        "Lofi Department"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438762).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-21",
+      "date": "2026-05-21",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Rodrigo S",
+        "Meriva",
+        "Onsoul"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438764).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "club-vibe-2026-05-22",
@@ -699,6 +2154,69 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-05-22",
+      "date": "2026-05-22",
+      "venue": "D-EDGE Rio",
+      "name": "Hot Beats Music Conference",
+      "lineup": [
+        "Renato Ratier",
+        "Eli Iwasa",
+        "Marta Supernova",
+        "Aline Rocha",
+        "From House to Disco",
+        "Leo Janeiro",
+        "Roland Leesker",
+        "The Checkup"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2441776).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-22",
+      "date": "2026-05-22",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic — Saara with Philou",
+      "lineup": [
+        "NAWE",
+        "Philou",
+        "Guss",
+        "Sumthin"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438767).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-05-23",
+      "date": "2026-05-23",
+      "venue": "D-EDGE Rio",
+      "name": "Hot Beats Music Conference Road To Balance x Eletronic Groove",
+      "lineup": [
+        "BLANCAh",
+        "Kevin Diserna",
+        "Mai Lawson",
+        "Morttagua",
+        "NAZA"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2441780).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-23",
+      "date": "2026-05-23",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Estella Boersma",
+        "DJ Murphy",
+        "Vic Emotion",
+        "Eze Cafo",
+        "Teclas",
+        "Noctis"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438782).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "matahari-2026-05-23",
       "date": "2026-05-23",
       "venue": "Matahari",
@@ -706,6 +2224,32 @@
       "lineup": [],
       "source": "https://linktr.ee/matahari",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-24",
+      "date": "2026-05-24",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Spuri",
+        "Melon Blush",
+        "Laurent F"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438785).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-28",
+      "date": "2026-05-28",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Mojjo",
+        "Kanio",
+        "Louie Cut"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438790).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "club-vibe-2026-05-29",
@@ -721,6 +2265,34 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-05-29",
+      "date": "2026-05-29",
+      "venue": "D-EDGE Rio",
+      "name": "Blessed with Pacs",
+      "lineup": [
+        "Antonn",
+        "Doguez",
+        "PACS",
+        "Ed Lopes",
+        "Junix"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2441782).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-29",
+      "date": "2026-05-29",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Ray",
+        "Albuquerque",
+        "Maz"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438792).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-05-30",
       "date": "2026-05-30",
       "venue": "Club Vibe",
@@ -732,6 +2304,35 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-sao-paulo-2026-05-30",
+      "date": "2026-05-30",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave — Elysium Showcase",
+      "lineup": [
+        "FIT",
+        "Cristian Sarde",
+        "Doriva Rozek",
+        "Gescu",
+        "Darick Gyorgy"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438794).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-05-31",
+      "date": "2026-05-31",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Marcelo Nassi",
+        "Kitamura",
+        "Witz",
+        "Nuke'm"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438798).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-06-03",
       "date": "2026-06-03",
       "venue": "Club Vibe",
@@ -740,6 +2341,22 @@
         "Daniel Tamenpi"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-04",
+      "date": "2026-06-04",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Caproni",
+        "Sheldon",
+        "Diogo Accioly",
+        "Madre",
+        "John Hood",
+        "Synthemesc"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453869).",
       "checked_at": "2026-11-04"
     },
     {
@@ -755,6 +2372,35 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://warungclub.com.br/proximas-datas/warung-closing-weekend/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-rio-2026-06-05",
+      "date": "2026-06-05",
+      "venue": "D-EDGE Rio",
+      "name": "Nick Curly",
+      "lineup": [
+        "Nick Curly",
+        "Ciribelli",
+        "Emekate",
+        "Marie Bouret",
+        "Rara Djs"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2452519).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-05",
+      "date": "2026-06-05",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Machado",
+        "Arkhen",
+        "SAMÜ",
+        "Higashi"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453875).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "warung-2026-06-05",
@@ -781,6 +2427,34 @@
         "Pricila Diaz"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-06-06",
+      "date": "2026-06-06",
+      "venue": "D-EDGE Rio",
+      "name": "Maz All Night Long",
+      "lineup": [
+        "Maz"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2424747).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-06",
+      "date": "2026-06-06",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Paulete Lindacelva",
+        "Dion",
+        "Roi Perez",
+        "Ella De Vuono",
+        "Jonathan Fratamico",
+        "Teclas",
+        "Blasquez & Miss Renats"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453884).",
       "checked_at": "2026-11-04"
     },
     {
@@ -813,6 +2487,33 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "d-edge-sao-paulo-2026-06-07",
+      "date": "2026-06-07",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Duarte",
+        "Adnan Sharif",
+        "Galvik",
+        "Fugaz"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453893).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-11",
+      "date": "2026-06-11",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "S4NTIS",
+        "Ianni",
+        "Dig"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453899).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-06-12",
       "date": "2026-06-12",
       "venue": "Club Vibe",
@@ -828,6 +2529,30 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-06-12",
+      "date": "2026-06-12",
+      "venue": "D-EDGE Rio",
+      "name": "Organic Pieces",
+      "lineup": [
+        "Magdalena"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2463495).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-12",
+      "date": "2026-06-12",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Marian Flow",
+        "Nick Curly",
+        "Bhaskar"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453908).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-06-13",
       "date": "2026-06-13",
       "venue": "Club Vibe",
@@ -836,6 +2561,40 @@
         "Fabe"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-06-13",
+      "date": "2026-06-13",
+      "venue": "D-EDGE Rio",
+      "name": "Mau",
+      "lineup": [
+        "Mau Lopes",
+        "Ponkan",
+        "Caca",
+        "TropiCals"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2463501).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-13",
+      "date": "2026-06-13",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave — aniversário do DJ Marky",
+      "lineup": [
+        "DJ Fabz",
+        "Solah",
+        "DJ Marky",
+        "DJ Andy",
+        "Level 2",
+        "DUNK",
+        "Juliana Thome",
+        "Baldacci",
+        "Ingrid",
+        "Denis Miranda"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453913).",
       "checked_at": "2026-11-04"
     },
     {
@@ -856,6 +2615,34 @@
       "checked_at": "2026-11-06"
     },
     {
+      "id": "d-edge-sao-paulo-2026-06-14",
+      "date": "2026-06-14",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Bervon",
+        "Dan C",
+        "Ale F",
+        "Kari Bazzo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453917).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-18",
+      "date": "2026-06-18",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Ronaldo Cunha",
+        "Ayla",
+        "Bigfett",
+        "Skazi"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453920).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-06-19",
       "date": "2026-06-19",
       "venue": "Club Vibe",
@@ -867,6 +2654,30 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-06-19",
+      "date": "2026-06-19",
+      "venue": "D-EDGE Rio",
+      "name": "Tangram with Magdalena",
+      "lineup": [
+        "Magdalena"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2466831).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-19",
+      "date": "2026-06-19",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Andre Torquato",
+        "M-High",
+        "Lu.cian"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453928).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-06-20",
       "date": "2026-06-20",
       "venue": "Club Vibe",
@@ -875,6 +2686,43 @@
         "HOO"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-06-20",
+      "date": "2026-06-20",
+      "venue": "D-EDGE Rio",
+      "name": "Great DJs",
+      "lineup": [
+        "Balahaus",
+        "Benny",
+        "Day9",
+        "Dezan",
+        "Gustavo Tata",
+        "Juh Tabet",
+        "Letchia",
+        "Magri",
+        "Moses",
+        "Umbra"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2463504).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-20",
+      "date": "2026-06-20",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Mavik",
+        "Aninha",
+        "Solare",
+        "Monic",
+        "Bakka",
+        "TATO",
+        "Juliana Mendez"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453939).",
       "checked_at": "2026-11-04"
     },
     {
@@ -905,6 +2753,32 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "d-edge-sao-paulo-2026-06-21",
+      "date": "2026-06-21",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Anderson Noise",
+        "Kugmas"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453945).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-25",
+      "date": "2026-06-25",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Zaro",
+        "Departamento",
+        "Rafael Cerato",
+        "Adria"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453950).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-06-26",
       "date": "2026-06-26",
       "venue": "Club Vibe",
@@ -916,6 +2790,93 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-06-26",
+      "date": "2026-06-26",
+      "venue": "D-EDGE Rio",
+      "name": "Departamento",
+      "lineup": [
+        "Departamento",
+        "Dessanti",
+        "Benan",
+        "Elisa Amaral"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2466825).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-26",
+      "date": "2026-06-26",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Letícia Stempi",
+        "Gabe",
+        "Carol Fávero",
+        "Tomba Trio"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453953).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-06-27",
+      "date": "2026-06-27",
+      "venue": "D-EDGE Rio",
+      "name": "D-Housers Pride",
+      "lineup": [
+        "Danny Banny",
+        "Femmenino",
+        "MANIA DJs",
+        "Suisso"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2474466).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-27",
+      "date": "2026-06-27",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Gui Accula",
+        "Tonaco",
+        "Gedrah",
+        "Lary Lima",
+        "Duram",
+        "Gobbato",
+        "Gabrizer",
+        "Pacheco",
+        "Anastacia",
+        "Vitor Allb",
+        "Nádia Sacchi"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453972).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-06-28",
+      "date": "2026-06-28",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "BAPP",
+        "Cesare vs Disorder",
+        "Renan Mendes"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453975).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-07-03",
+      "date": "2026-07-03",
+      "venue": "D-EDGE Rio",
+      "name": "Chemical Surf",
+      "lineup": [
+        "Chemical Surf"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2474468).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-07-04",
       "date": "2026-07-04",
       "venue": "Club Vibe",
@@ -924,6 +2885,17 @@
         "Bruno Furlan"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-07-04",
+      "date": "2026-07-04",
+      "venue": "D-EDGE Rio",
+      "name": "Simo Goes To the Club",
+      "lineup": [
+        "simo not simon"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2474464).",
       "checked_at": "2026-11-04"
     },
     {
@@ -945,6 +2917,20 @@
       "checked_at": "2026-11-06"
     },
     {
+      "id": "d-edge-sao-paulo-2026-07-09",
+      "date": "2026-07-09",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Taroba",
+        "Adria",
+        "Adana Twins",
+        "From House to Disco"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484019).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-07-10",
       "date": "2026-07-10",
       "venue": "Club Vibe",
@@ -953,6 +2939,65 @@
         "Departamento"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-07-10",
+      "date": "2026-07-10",
+      "venue": "D-EDGE Rio",
+      "name": "Ratier N' Friends",
+      "lineup": [
+        "Renato Ratier",
+        "Brisotti",
+        "Paula Miranda",
+        "Marcelo Careca"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2477142).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-10",
+      "date": "2026-07-10",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "nocapz",
+        "NILU",
+        "Diogo Accioly"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484021).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-07-11",
+      "date": "2026-07-11",
+      "venue": "D-EDGE Rio",
+      "name": "D-Cassete",
+      "lineup": [
+        "Tikos Groove",
+        "Rafael Nazareth",
+        "Marcelo VRE",
+        "Pauly"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2477145).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-11",
+      "date": "2026-07-11",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "No One Knows",
+        "Sarria",
+        "Riko & Gugga",
+        "Cactunes",
+        "Aguila",
+        "Geøvhän",
+        "Teclas",
+        "BACKFOR3"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484028).",
       "checked_at": "2026-11-04"
     },
     {
@@ -965,6 +3010,34 @@
       "checked_at": "2026-10-24"
     },
     {
+      "id": "d-edge-sao-paulo-2026-07-12",
+      "date": "2026-07-12",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Abbud",
+        "Drunky Daniels",
+        "Rodrigo Cury"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484032).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-16",
+      "date": "2026-07-16",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Arbex",
+        "Chisari",
+        "Acid Chochi",
+        "Popis",
+        "Paula Chalup"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484035).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-07-17",
       "date": "2026-07-17",
       "venue": "Club Vibe",
@@ -973,6 +3046,19 @@
         "Bruno Be"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-17",
+      "date": "2026-07-17",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Deeft",
+        "Miguel Bastida",
+        "Classmatic"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484038).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1001,6 +3087,26 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-sao-paulo-2026-07-18",
+      "date": "2026-07-18",
+      "venue": "D-EDGE São Paulo",
+      "name": "Unlimited — aniversário de Adnan Sharif, Anderson Noise e Jula",
+      "lineup": [
+        "JULA",
+        "Adnan Sharif",
+        "Anderson Noise",
+        "Villain Mode",
+        "Paola Vigorito",
+        "Miss Belini",
+        "Gabriel Brasil",
+        "Bervon",
+        "Victor Arruda",
+        "Unktech"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484039).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "greenvalley-2026-07-18",
       "date": "2026-07-18",
       "venue": "Greenvalley",
@@ -1020,6 +3126,19 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "d-edge-sao-paulo-2026-07-23",
+      "date": "2026-07-23",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Praise",
+        "Rigooni",
+        "Pedräda"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484041).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-07-24",
       "date": "2026-07-24",
       "venue": "Club Vibe",
@@ -1028,6 +3147,20 @@
         "Zerb"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-24",
+      "date": "2026-07-24",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Rod Brito",
+        "ETTA",
+        "SONE",
+        "Zaro"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484044).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1042,6 +3175,93 @@
       "checked_at": "2026-10-24"
     },
     {
+      "id": "d-edge-rio-2026-07-25",
+      "date": "2026-07-25",
+      "venue": "D-EDGE Rio",
+      "name": "Me Gusta",
+      "lineup": [
+        "Beranger",
+        "Ryfer",
+        "Ciribelli",
+        "Emekate",
+        "Moonshn",
+        "Synced DJs"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2477146).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-25",
+      "date": "2026-07-25",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Iaell",
+        "Anønimat",
+        "Perote",
+        "Klarø",
+        "Angello",
+        "Cahio"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484049).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-26",
+      "date": "2026-07-26",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Carol Seubert",
+        "Breno Mos",
+        "LAAU"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484052).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-30",
+      "date": "2026-07-30",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "João Braga",
+        "Luca Braga",
+        "Tim Baresko",
+        "Afonso Caravaggio",
+        "FLOR"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484055).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-07-31",
+      "date": "2026-07-31",
+      "venue": "D-EDGE Rio",
+      "name": "Blessed",
+      "lineup": [
+        "Bigfett",
+        "Doguez",
+        "Jou Nielsen",
+        "tYz",
+        "Zaaitar"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2493353).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-07-31",
+      "date": "2026-07-31",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Mary Gripa",
+        "Gabão"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2484059).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-08-01",
       "date": "2026-08-01",
       "venue": "Club Vibe",
@@ -1050,6 +3270,79 @@
         "Kamilo Sanclemente"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-08-01",
+      "date": "2026-08-01",
+      "venue": "D-EDGE Rio",
+      "name": "Wrecked Machines",
+      "lineup": [
+        "Wrecked Machines",
+        "All of me",
+        "Delts",
+        "Gezzi",
+        "Hazzel",
+        "Joka"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2500387).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-06",
+      "date": "2026-08-06",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Meca",
+        "Sheldon",
+        "Lucas Coelho",
+        "Julio Torres"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2504409).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-07",
+      "date": "2026-08-07",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Elisa Amaral",
+        "Yuri",
+        "Coppola"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2504412).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-08-08",
+      "date": "2026-08-08",
+      "venue": "D-EDGE Rio",
+      "name": "Innersounds",
+      "lineup": [
+        "Antrim",
+        "Gadas",
+        "Neoclassic",
+        "Rafz",
+        "Reiko"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2500388).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-08",
+      "date": "2026-08-08",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Luchi & Raizer",
+        "Ignacio",
+        "L_cio",
+        "Entropia",
+        "Speto"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2504424).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1064,6 +3357,59 @@
       "checked_at": "2026-11-06"
     },
     {
+      "id": "d-edge-sao-paulo-2026-08-09",
+      "date": "2026-08-09",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "VEGA",
+        "GYZA"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2504430).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-13",
+      "date": "2026-08-13",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Diana Lima",
+        "ELOY",
+        "Luke ZM",
+        "Acrobatik"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506358).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-08-14",
+      "date": "2026-08-14",
+      "venue": "D-EDGE Rio",
+      "name": "DRT com Duarte & Kolombo",
+      "lineup": [
+        "Duarte",
+        "Kolombo",
+        "ENNE",
+        "Fiuzza"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2500390).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-14",
+      "date": "2026-08-14",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Buga",
+        "Moreira",
+        "N.A.S.S.I"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506361).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-08-15",
       "date": "2026-08-15",
       "venue": "Club Vibe",
@@ -1076,6 +3422,39 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-08-15",
+      "date": "2026-08-15",
+      "venue": "D-EDGE Rio",
+      "name": "Neblina with Temudo",
+      "lineup": [
+        "Temudo",
+        "Myla",
+        "Lorio"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2500392).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-15",
+      "date": "2026-08-15",
+      "venue": "D-EDGE São Paulo",
+      "name": "Unlimited",
+      "lineup": [
+        "Hoffman",
+        "Lourene",
+        "Mary Mesk",
+        "Mari Anna",
+        "Bruno Lino",
+        "DPR",
+        "Rafael Onid",
+        "Cesare vs Disorder",
+        "Pizzoli",
+        "Ota Blind"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506370).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "surreal-park-2026-08-15",
       "date": "2026-08-15",
       "venue": "Surreal Park",
@@ -1085,6 +3464,22 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Parcial. Fonte: https://daletour.com.br/excursoes/excursao-all-night-lou-surreal-park Obs.: Long set; eventual convidado não identificado",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-20",
+      "date": "2026-08-20",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "DREW",
+        "Walow",
+        "Kauan Navarro",
+        "Rafael Paste",
+        "N1NOX",
+        "Mazinho"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506372).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "club-vibe-2026-08-21",
@@ -1100,6 +3495,34 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-08-21",
+      "date": "2026-08-21",
+      "venue": "D-EDGE Rio",
+      "name": "Dogma with Yamagucci",
+      "lineup": [
+        "Yamagucci",
+        "Underdogs",
+        "Filhos Crew",
+        "Gutto Serta"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2500395).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-21",
+      "date": "2026-08-21",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Diogo Accioly",
+        "Phonique",
+        "Adnan Sharif",
+        "Lu.cian"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506376).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-08-22",
       "date": "2026-08-22",
       "venue": "Club Vibe",
@@ -1109,6 +3532,48 @@
         "HNGT"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-22",
+      "date": "2026-08-22",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave — Marky & Friends",
+      "lineup": [
+        "DJ Marky",
+        "Hugh Hardie",
+        "DJ MS2",
+        "Marcelo Vasami",
+        "Teclas",
+        "Rafael Melo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506384).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-23",
+      "date": "2026-08-23",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Bruna Strait",
+        "Stormyx",
+        "Sonnero"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506387).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-27",
+      "date": "2026-08-27",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Ana Jablonski",
+        "Akula Hampton",
+        "Guilherme VAC"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506405).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1124,6 +3589,51 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-08-28",
+      "date": "2026-08-28",
+      "venue": "D-EDGE Rio",
+      "name": "Techbox with Jord",
+      "lineup": [
+        "JORD",
+        "Dessanti",
+        "Cerry",
+        "TINA",
+        "Dekin"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2500398).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-28",
+      "date": "2026-08-28",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Anderson Noise",
+        "Rødhåd",
+        "DJ Murphy",
+        "LION",
+        "Spuri",
+        "Ingrid",
+        "The Boyz Music"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506415).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-08-28-2",
+      "date": "2026-08-28",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "PUKA",
+        "Fatsync",
+        "Balanka"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506410).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-08-29",
       "date": "2026-08-29",
       "venue": "Club Vibe",
@@ -1132,6 +3642,24 @@
         "Pandora"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-08-29",
+      "date": "2026-08-29",
+      "venue": "D-EDGE Rio",
+      "name": "Locals B2B",
+      "lineup": [
+        "Damatta",
+        "INDK",
+        "Nath Saad",
+        "Pri Bretas",
+        "Balahaus",
+        "Gabriel Velmont",
+        "Witz",
+        "Lu"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2509894).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1144,6 +3672,46 @@
       "checked_at": "2026-10-24"
     },
     {
+      "id": "d-edge-sao-paulo-2026-08-30",
+      "date": "2026-08-30",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Ana de Araujo",
+        "Fel C",
+        "Handek"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2506417).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-03",
+      "date": "2026-09-03",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Laurent F",
+        "Li Daud",
+        "Marcello V.O.R",
+        "Mutema"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529010).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-04",
+      "date": "2026-09-04",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Leo Janeiro",
+        "simo not simon",
+        "Bauhouse"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529016).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-09-05",
       "date": "2026-09-05",
       "venue": "Club Vibe",
@@ -1153,6 +3721,38 @@
         "Simas"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-09-05",
+      "date": "2026-09-05",
+      "venue": "D-EDGE Rio",
+      "name": "10 e Meio with LouLou Players",
+      "lineup": [
+        "LouLou Players",
+        "Dig",
+        "Reeis",
+        "Luiz Dias",
+        "Sheldon"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2523720).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-05",
+      "date": "2026-09-05",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Vic Emotion",
+        "Teclas",
+        "Paul Deep",
+        "Luciano Scheffer",
+        "Diogo Accioly",
+        "Jordi Iven",
+        "Ella Candeu"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529022).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1168,6 +3768,19 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Parcial. Fonte: https://frexcursoes.com.br/excursoes/excursao-greenvalley-1 Obs.: SCENARIOS é coletivo; fonte secundária menciona Matthias & Barbieri",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-06",
+      "date": "2026-09-06",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Lomike",
+        "SONI",
+        "Romina"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529026).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "p12-2026-09-06",
@@ -1195,6 +3808,19 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-sao-paulo-2026-09-10",
+      "date": "2026-09-10",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Synthemesc",
+        "Sheldon",
+        "Ianni"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529030).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-09-11",
       "date": "2026-09-11",
       "venue": "Club Vibe",
@@ -1203,6 +3829,32 @@
         "Antdot"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-09-11",
+      "date": "2026-09-11",
+      "venue": "D-EDGE Rio",
+      "name": "Ashibah",
+      "lineup": [
+        "Ashibah",
+        "Marian Flow",
+        "Caroles"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2523724).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-11",
+      "date": "2026-09-11",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "BAPP",
+        "Miguel Bastida",
+        "Drunky Daniels"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529032).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1222,6 +3874,65 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-09-12",
+      "date": "2026-09-12",
+      "venue": "D-EDGE Rio",
+      "name": "Toy Tonics",
+      "lineup": [
+        "Stump Valley",
+        "ALOT",
+        "Marta Supernova",
+        "TropiCals",
+        "Bauhouse"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2523726).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-12",
+      "date": "2026-09-12",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Taroba",
+        "Adria",
+        "Malu",
+        "Carola",
+        "Carol Fávero",
+        "Barja",
+        "She Mllr"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529037).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-13",
+      "date": "2026-09-13",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "DUE",
+        "Transvegana",
+        "GAS"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529042).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-17",
+      "date": "2026-09-17",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Ammit",
+        "Lost my Keys",
+        "DJ Murphy",
+        "Vallas Martins"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529060).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-09-18",
       "date": "2026-09-18",
       "venue": "Club Vibe",
@@ -1233,6 +3944,34 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-09-18",
+      "date": "2026-09-18",
+      "venue": "D-EDGE Rio",
+      "name": "Ratier & Friends with Archie Hamilton",
+      "lineup": [
+        "Renato Ratier",
+        "Archie Hamilton",
+        "Emekate"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2523729).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-18",
+      "date": "2026-09-18",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Cesare vs Disorder",
+        "Olga Korol",
+        "Per Hammar",
+        "Gartzzea",
+        "Mano Santana"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529065).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-09-19",
       "date": "2026-09-19",
       "venue": "Club Vibe",
@@ -1241,6 +3980,42 @@
         "FM From B"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-09-19",
+      "date": "2026-09-19",
+      "venue": "D-EDGE Rio",
+      "name": "Selvagem",
+      "lineup": [
+        "Carrot Green",
+        "Trepanado",
+        "Elisa Amaral",
+        "Filipe Shock",
+        "The Twelves"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2523731).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-19",
+      "date": "2026-09-19",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Ray",
+        "Julieta Kühnle",
+        "Gui Boratto",
+        "Junior C",
+        "John Hood",
+        "Lost in the Supermarket",
+        "Baldacci",
+        "ZXNX",
+        "Ana Jablonski",
+        "KNAI",
+        "Caio Muratore"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529071).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1288,6 +4063,47 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "d-edge-sao-paulo-2026-09-20",
+      "date": "2026-09-20",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Dessanti",
+        "JOTA",
+        "Gabi Fischer",
+        "Milky"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529078).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-09-24",
+      "date": "2026-09-24",
+      "venue": "D-EDGE Rio",
+      "name": "ECHO by Alphatheta",
+      "lineup": [
+        "Fatsync",
+        "DJ Zullu",
+        "Guto Loureiro",
+        "Nino Leal"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2523734).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-24",
+      "date": "2026-09-24",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Blémmes",
+        "Meriva",
+        "Jovique"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529086).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-09-25",
       "date": "2026-09-25",
       "venue": "Club Vibe",
@@ -1296,6 +4112,36 @@
         "Patrice Bäumel"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-09-25",
+      "date": "2026-09-25",
+      "venue": "D-EDGE Rio",
+      "name": "Manto",
+      "lineup": [
+        "Bernardo Campos",
+        "Darmont",
+        "Heloah",
+        "Keene",
+        "Ryfer",
+        "Djenko",
+        "tYz"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2540029).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-25",
+      "date": "2026-09-25",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Sarah Stenzel",
+        "Pete Tong",
+        "Cour T"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529090).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1314,6 +4160,68 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-09-26",
+      "date": "2026-09-26",
+      "venue": "D-EDGE Rio",
+      "name": "4Finest with Demi Riquíssimo",
+      "lineup": [
+        "Demi Riquisimo",
+        "Capetini",
+        "Lycra Preta",
+        "NOT_ME_",
+        "Phyto",
+        "Vivi Seixas"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2523736).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-26",
+      "date": "2026-09-26",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave — Bioma Showcase",
+      "lineup": [
+        "Moonphazes",
+        "HNGT",
+        "Acid Asian",
+        "Bervon",
+        "Ana Caoli",
+        "Bioma DJs",
+        "Gromma",
+        "Ingrid",
+        "TUXO"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529092).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-09-27",
+      "date": "2026-09-27",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Gabriel Brasil",
+        "Adnan Sharif",
+        "Bruce Leroys"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529094).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-01",
+      "date": "2026-10-01",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "The Russels",
+        "AZZO",
+        "Meszo",
+        "Noctis"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2550285).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-10-02",
       "date": "2026-10-02",
       "venue": "Club Vibe",
@@ -1322,6 +4230,34 @@
         "GIU"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-10-02",
+      "date": "2026-10-02",
+      "venue": "D-EDGE Rio",
+      "name": "Juicce",
+      "lineup": [
+        "Juicce",
+        "Bruna Strait",
+        "The Pups",
+        "Discarada"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2547686).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-02",
+      "date": "2026-10-02",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Miss Belini",
+        "BACKFOR3",
+        "SOL",
+        "D.MARCO"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2550289).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1340,6 +4276,35 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-10-03",
+      "date": "2026-10-03",
+      "venue": "D-EDGE Rio",
+      "name": "MA.TA",
+      "lineup": [
+        "Bandeira",
+        "Matthew & Flo",
+        "Unfazed",
+        "Zambelli"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2538690).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-03",
+      "date": "2026-10-03",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Gedrah",
+        "Vivi Santana",
+        "Wes Razzy",
+        "Ed Lopes",
+        "Vylow"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2550293).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "matahari-2026-10-03",
       "date": "2026-10-03",
       "venue": "Matahari",
@@ -1347,6 +4312,30 @@
       "lineup": [],
       "source": "https://linktr.ee/matahari",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-04",
+      "date": "2026-10-04",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Diogo Accioly"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2550305).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-08",
+      "date": "2026-10-08",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Dzawi",
+        "Analu",
+        "Malan"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557240).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "club-vibe-2026-10-09",
@@ -1360,6 +4349,34 @@
         "Dora Furlan"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-10-09",
+      "date": "2026-10-09",
+      "venue": "D-EDGE Rio",
+      "name": "Just Groove with Amine Edge",
+      "lineup": [
+        "Amine Edge & DANCE",
+        "BAPP",
+        "Dessanti",
+        "Larissa Arcana",
+        "Leo Melo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2547688).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-09",
+      "date": "2026-10-09",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "N.A.S.S.I",
+        "Coppola",
+        "Seed Selector"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557175).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1392,6 +4409,37 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-10-10",
+      "date": "2026-10-10",
+      "venue": "D-EDGE Rio",
+      "name": "Inception",
+      "lineup": [
+        "Day9",
+        "Danny Daze",
+        "Limbo Path",
+        "Find My Jam"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2547691).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-10",
+      "date": "2026-10-10",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Spuri",
+        "Vladimir Dubyshkin",
+        "DJ Murphy",
+        "Gabriel Evoke",
+        "Hel Mello",
+        "Milani",
+        "Delete the Pattern"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557180).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "greenvalley-2026-10-10",
       "date": "2026-10-10",
       "venue": "Greenvalley",
@@ -1405,6 +4453,33 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://betimelapse.com.br/eventos/greenvalley-elderbrook-2026",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-11",
+      "date": "2026-10-11",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Thiago Haddad",
+        "Danilo Stellet",
+        "Gullyt"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557185).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-15",
+      "date": "2026-10-15",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Anastacia",
+        "Dan C",
+        "Bervon",
+        "Pablito"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557245).",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "club-vibe-2026-10-16",
@@ -1432,6 +4507,20 @@
       "checked_at": "2026-10-24"
     },
     {
+      "id": "d-edge-sao-paulo-2026-10-16",
+      "date": "2026-10-16",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Guss",
+        "Ray",
+        "Ale F",
+        "Kari Bazzo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557192).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-10-17",
       "date": "2026-10-17",
       "venue": "Club Vibe",
@@ -1440,6 +4529,36 @@
         "ZAC"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-10-17",
+      "date": "2026-10-17",
+      "venue": "D-EDGE Rio",
+      "name": "D-Housers",
+      "lineup": [
+        "Mau Lopes",
+        "Dj Chance da Silva",
+        "Miguel Arcanjo",
+        "Aleakim"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2547702).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-17",
+      "date": "2026-10-17",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Daniel Ranieri",
+        "Rocio Portillo",
+        "Teclas",
+        "Abbud",
+        "Discotecaio",
+        "Villa"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557237).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1455,6 +4574,32 @@
       "checked_at": "2026-10-24"
     },
     {
+      "id": "d-edge-sao-paulo-2026-10-18",
+      "date": "2026-10-18",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "BAPP",
+        "Miracle",
+        "Tulio"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557300).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-22",
+      "date": "2026-10-22",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "SONE",
+        "Memachine",
+        "WAND7R"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557302).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-10-23",
       "date": "2026-10-23",
       "venue": "Club Vibe",
@@ -1463,6 +4608,21 @@
         "Liu"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-10-23",
+      "date": "2026-10-23",
+      "venue": "D-EDGE Rio",
+      "name": "Ratier & Friends",
+      "lineup": [
+        "Renato Ratier",
+        "Neverdogs",
+        "Thariel",
+        "Petri",
+        "Lu"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2568096).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1494,6 +4654,65 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "d-edge-rio-2026-10-24",
+      "date": "2026-10-24",
+      "venue": "D-EDGE Rio",
+      "name": "Quebra Coco",
+      "lineup": [
+        "Dj Nepal",
+        "Bibi Gracio",
+        "Negralha",
+        "Pedroza",
+        "Saddam",
+        "DJ Tamy"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2568098).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-24",
+      "date": "2026-10-24",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Thariel",
+        "Petri",
+        "Renato Ratier",
+        "Neverdogs",
+        "Rafa Ferreira",
+        "Salttor",
+        "Thay Girão"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557348).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-25",
+      "date": "2026-10-25",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Anderson Noise",
+        "appo"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557350).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-10-29",
+      "date": "2026-10-29",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Zoldan",
+        "Riko & Guga",
+        "Solara",
+        "Nespatti"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2557368).",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-10-30",
       "date": "2026-10-30",
       "venue": "Club Vibe",
@@ -1504,6 +4723,19 @@
         "Jack Baron"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-10-30",
+      "date": "2026-10-30",
+      "venue": "D-EDGE Rio",
+      "name": "Heels of Love",
+      "lineup": [
+        "Eli Iwasa",
+        "Jame C",
+        "Sô Lyma"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2568099).",
       "checked_at": "2026-11-04"
     },
     {
@@ -1531,6 +4763,22 @@
         "Phm Dias"
       ],
       "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "d-edge-rio-2026-10-31",
+      "date": "2026-10-31",
+      "venue": "D-EDGE Rio",
+      "name": "Entropia",
+      "lineup": [
+        "All of me",
+        "Bervon",
+        "Anton",
+        "Doguez",
+        "Elle",
+        "Kafer"
+      ],
+      "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2568100).",
       "checked_at": "2026-11-04"
     },
     {
