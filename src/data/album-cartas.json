@@ -6727,6 +6727,1645 @@
         "festivais": 3,
         "bpm": 126
       }
+    },
+    {
+      "slug": "gigi-d-agostino",
+      "nome": "Gigi D'Agostino",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Italo dance",
+      "tag": "DANCE",
+      "bpm": "130–140",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Turim, 1999: L'Amour Toujours virou clássico da dance e deu origem ao estilo Lento Violento.",
+      "faixa": "L'Amour Toujours",
+      "foto": "/assets/album/fotos/gigi-d-agostino.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://www.allmusic.com/artist/mn0000663867"
+      ],
+      "sinais": {
+        "ouvintes": 10922496,
+        "inicio": 1986,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "genx",
+      "nome": "GenX",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Bass house",
+      "tag": "BASS",
+      "bpm": "126–130",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Pedro Eugenio, de Floripa, produz desde 2017 e estourou com Pirate, ao lado do DJ Liu.",
+      "faixa": "Pirate",
+      "foto": "/assets/album/fotos/genx.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://set79.com/dj/Liu"
+      ],
+      "sinais": {
+        "inicio": 2017
+      }
+    },
+    {
+      "slug": "avicii",
+      "nome": "Avicii",
+      "pais": "se",
+      "paisNome": "Suécia",
+      "genero": "Progressive house",
+      "tag": "PROG",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Tim Bergling levou o EDM ao pop com Levels e o álbum True. Seguiu vivo no álbum póstumo TIM.",
+      "faixa": "Levels",
+      "foto": "/assets/album/fotos/avicii.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://kworb.net/spotify/listeners.html",
+        "https://app.artist.tools/artist/1vCWHaC5f2uS3yhpwWbIA6"
+      ],
+      "sinais": {
+        "ouvintes": 37458383,
+        "inicio": 2006,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "doozie",
+      "nome": "Doozie",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–127",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "House de baixos marcados. EP Around pela Repopulate Mars e turnê europeia com Vintage Culture.",
+      "faixa": "Around",
+      "foto": "/assets/album/fotos/doozie.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.band.com.br/entretenimento/doozie-amplia-presenca-internacional-com-ep-e-turne-ao-lado-de-vintage-culture",
+        "https://www.traxsource.com/title/2795729/around"
+      ],
+      "sinais": {}
+    },
+    {
+      "slug": "albuquerque",
+      "nome": "Albuquerque",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Curitibano, residente do Warung desde 2013. Comanda os selos Radiola e Sonido Profundo.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/albuquerque.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://magneticmag.com/2023/11/albuquerques-musical-evolution/",
+        "https://www.viberate.com/artist/albuquerque"
+      ],
+      "sinais": {
+        "selo": 1,
+        "residencia": 1
+      }
+    },
+    {
+      "slug": "ben-sterling",
+      "nome": "Ben Sterling",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Londrino na ativa desde 2016. Estreou na Hot Creations em 2019 com o EP The Energy.",
+      "faixa": "The Energy",
+      "foto": "/assets/album/fotos/ben-sterling.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://en.wikipedia.org/wiki/Ben_Sterling"
+      ],
+      "sinais": {
+        "inicio": 2016,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "simas",
+      "nome": "Simas",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Produtor da nova geração do house. Benja foi relançada pela Dirtybird e toca nos sets de Claude VonStroke.",
+      "faixa": "Benja",
+      "foto": "/assets/album/fotos/simas.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [],
+      "sinais": {}
+    },
+    {
+      "slug": "einmusik",
+      "nome": "Einmusik",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic techno",
+      "tag": "TECHNO",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Berlim, melodic techno e melodic house. Fundou a Einmusika Recordings e gravou para a Cercle em 2019.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/einmusik.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.viberate.com/artist/einmusik"
+      ],
+      "sinais": {
+        "inicio": 2001,
+        "selo": 1,
+        "boilerCercle": 1
+      }
+    },
+    {
+      "slug": "corren-cavini",
+      "nome": "Corren Cavini",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Melodic house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "De Haarlem, lançou por This Never Happened e Purified Records. EP A Place To Call Home em 2025.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/corren-cavini.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/corren-cavini/2UgCkNOjEjL0uKDwewjet8"
+      ],
+      "sinais": {
+        "ouvintes": 54844,
+        "inicio": 2011
+      }
+    },
+    {
+      "slug": "leff",
+      "nome": "Leff",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Melodic house",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Do litoral paulista, foi residente do Café de la Musique. Lançou Sometimes, com Jox, em 2025.",
+      "faixa": "Sometimes",
+      "foto": "/assets/album/fotos/leff.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [],
+      "sinais": {
+        "inicio": 2020
+      }
+    },
+    {
+      "slug": "viot",
+      "nome": "Viot",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Tech house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Mineiro de tech house com lançamentos na Hot Creations e Solid Grooves. Fundou a Casa Bonita Records.",
+      "faixa": "Space Cowboy",
+      "foto": "/assets/album/fotos/viot.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/viot/7fld8KFMgCmJlsVOJ1oo4M"
+      ],
+      "sinais": {
+        "ouvintes": 192148,
+        "inicio": 2021,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "sterium",
+      "nome": "Sterium",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Tech house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Paranaense de tech house que criou a Bongo Recordings e lançou Girl e Freak Like Me.",
+      "faixa": "Freak Like Me",
+      "foto": "/assets/album/fotos/sterium.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://soundcharts.com/en/artist/11e83feb-c8e7-7c40-aec7-aa1c026db3d8",
+        "https://www.viberate.com/artist/sterium"
+      ],
+      "sinais": {
+        "ouvintes": 87000,
+        "selo": 1,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "carla-elektra",
+      "nome": "Carla Elektra",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e tech house",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Curitibana da noite paulistana, toca com vocais ao vivo e tem o programa Raízes em Ibiza.",
+      "faixa": "Feel Good",
+      "foto": "/assets/album/fotos/carla-elektra.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://soundcharts.com/es/artist/0eea53db-0efa-4254-9cea-964a41485d53",
+        "https://www.soundbetter.com/profiles/572056-carla-elektra"
+      ],
+      "sinais": {
+        "inicio": 2008,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "solare",
+      "nome": "Solare",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e deep house",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Juliana Arcangelo, DJ e cantora de Florianópolis. Fez o warm-up de Boris Brejcha no Green Valley.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/solare.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.beatport.com/artist/solare-br/1168440"
+      ],
+      "sinais": {
+        "inicio": 2018,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "carol-favero",
+      "nome": "Carol Fávero",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Tech house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "De Juiz de Fora, foi a primeira brasileira a lançar pela StereoHype, selo de James Hype, em 2021.",
+      "faixa": "Dance With The Groove",
+      "foto": "/assets/album/fotos/carol-favero.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/carol-favero/07C0sQMH55r5E8RqMpDlyd",
+        "https://www.deezer.com/de/artist/98102202"
+      ],
+      "sinais": {
+        "ouvintes": 11066,
+        "inicio": 2016,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "raiza-koh-sante",
+      "nome": "Raiza Koh Santé",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e techno",
+      "tag": "HOUSE",
+      "bpm": "120–130",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ do underground paulistano e idealizadora da FÜZE, label de festas e coletivos.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/raiza-koh-sante.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [],
+      "sinais": {
+        "selo": 1,
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "mary-gripa",
+      "nome": "Mary Gripa",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Afro house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Sul-mato-grossense de afro house que começou em 2023 após ver Black Coffee e tocou no D-EDGE.",
+      "faixa": "Unusual Catwalks",
+      "foto": "/assets/album/fotos/mary-gripa.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [],
+      "sinais": {
+        "inicio": 2023,
+        "bpm": 121
+      }
+    },
+    {
+      "slug": "stormyx",
+      "nome": "Stormyx",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Eletrônica underground",
+      "tag": "HOUSE",
+      "bpm": "120–130",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ paulistana, presença recorrente no D-EDGE desde 2025 em NAVE, Superafter e Unlimited.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/stormyx.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://ra.co/events/2320546"
+      ],
+      "sinais": {
+        "inicio": 2025,
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "ekanta",
+      "nome": "Ekanta",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Psytrance",
+      "tag": "PSY",
+      "bpm": "140–148",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Nome histórico do psytrance brasileiro, ajudou a formar a cena nacional e o Universo Paralello.",
+      "faixa": "Juremix",
+      "foto": "/assets/album/fotos/ekanta.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://billboard.com.br/ekanta-celebra-expansao-do-trance-e-um-sonho/",
+        "https://viberate.com/artist/ekanta"
+      ],
+      "sinais": {
+        "inicio": 1998,
+        "pioneiro": 1,
+        "bpm": 145
+      }
+    },
+    {
+      "slug": "carbon-c",
+      "nome": "Carbon C",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Full-on",
+      "tag": "PSY",
+      "bpm": "138–145",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Projeto de psytrance de Camila Soares, da Paraíba. Vagalume Records e palco 303 do Universo Paralello.",
+      "faixa": "We Are One",
+      "foto": "/assets/album/fotos/carbon-c.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://soundcloud.com/carboncmusic"
+      ],
+      "sinais": {
+        "bpm": 142
+      }
+    },
+    {
+      "slug": "lary-lima",
+      "nome": "Lary Lima",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Melodic house",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Mineira de melodic house e indie dance, ampliou a presença no D-EDGE em 2026.",
+      "foto": "/assets/album/fotos/lary-lima.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [],
+      "sinais": {
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "jessica-brankka",
+      "nome": "Jessica Brankka",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Afro house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Nascida em Curitiba, estreou na Crosstown Rebels com Musk e fez EP com Floyd Lavine.",
+      "faixa": "Musk",
+      "foto": "/assets/album/fotos/jessica-brankka.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://dvoxmag.com/with-new-music-brazilian-jessica-brankka-arrives-for-her-debut-at-pacha-ibiza/",
+        "https://electronicgroove.com/floyd-lavine-teams-up-with-jessica-brankka-for-ep-on-frau-blau/"
+      ],
+      "sinais": {
+        "inicio": 2019,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "gabss",
+      "nome": "Gabss",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e indie dance",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "De Brusque, fez LOST com Vintage Culture, #1 do Beatport, e criou a Parrots Records.",
+      "faixa": "LOST",
+      "foto": "/assets/album/fotos/gabss.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.beatportal.com/articles/1246241-vintage-culture-and-gabss-land-a-beatport-number-1-with-lost-q-a",
+        "https://grayarea.co/magazine/gabss-the-producer-behind-one-of-2026-s-biggest-records"
+      ],
+      "sinais": {
+        "inicio": 2014,
+        "selo": 1,
+        "hino": 1,
+        "beatport": "geral",
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "solarce-brothers",
+      "nome": "Solarce Brothers",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House, disco e funk",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Irmãos de BH que criaram a festa Ceerca em 2024 e misturam house com disco, jazz e soul.",
+      "foto": "/assets/album/fotos/solarce-brothers.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.amsterdam-dance-event.nl/en/artists-speakers/solarce-brothers/2803185/"
+      ],
+      "sinais": {
+        "inicio": 2024,
+        "selo": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "curol",
+      "nome": "Curol",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Afro house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "De BH, tem Deixa Fluir em 1º no Traxsource e fundou a Nature Recordings.",
+      "faixa": "Deixa Fluir",
+      "foto": "/assets/album/fotos/curol.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.technoairlines.com/blog/deixa-fluir-by-curol-brunn-and-tosz-tops-afro-house-charts-on-traxsource",
+        "https://www.traxsource.com/title/1850799/oxum"
+      ],
+      "sinais": {
+        "inicio": 2018,
+        "selo": 1,
+        "hino": 1,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "adalamoon",
+      "nome": "Adalamoon",
+      "pais": "mx",
+      "paisNome": "México",
+      "genero": "Psytrance e full-on",
+      "tag": "PSY",
+      "bpm": "140–145",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "De Guadalajara, começou como DJ Moon e produz como Adalamoon desde cerca de 2012.",
+      "foto": "/assets/album/fotos/adalamoon.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://soundcloud.com/radiozora/moon"
+      ],
+      "sinais": {
+        "inicio": 2000,
+        "bpm": 143
+      }
+    },
+    {
+      "slug": "alex-dittrich",
+      "nome": "Alex Dittrich",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e tech house",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ e produtor catarinense de house e acid house, ligado à Sintoniza Records.",
+      "faixa": "Look at Me",
+      "foto": "/assets/album/fotos/alex-dittrich.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/4qR3fSinETEMhWfZwCyHPM",
+        "https://trommelmusic.com/music/premiere-1-alex-dittrich-look-at-me-bliss014",
+        "https://soundcloud.com/alexdittrich"
+      ],
+      "sinais": {
+        "ouvintes": 444,
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "alex-stein",
+      "nome": "Alex Stein",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Peak-time techno",
+      "tag": "TECHNO",
+      "bpm": "130–138",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Paulistano criado entre Brasil e Alemanha, com EP na Drumcode e lançamentos na Terminal M.",
+      "faixa": "The Chant",
+      "foto": "/assets/album/fotos/alex-stein.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/0SCFEgshN89tlgOPM7lbSB",
+        "https://dvoxmag.com/alex-stein-shares-the-chant-his-first-ep-on-all-time-favourite-label-drumcode/",
+        "https://ra.co/dj/alexstein"
+      ],
+      "sinais": {
+        "ouvintes": 191600,
+        "bpm": 134
+      }
+    },
+    {
+      "slug": "aline-rocha",
+      "nome": "Aline Rocha",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e disco house",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Cerca de 20 anos de pista, do D-Edge ao palco Freedom do Tomorrowland 2026.",
+      "faixa": "Berimbau",
+      "foto": "/assets/album/fotos/aline-rocha.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/23hlYNjktCHEfyavJaK3Ug",
+        "https://billboard.com.br/aline-rocha-emocao-tomorrowland/",
+        "https://www.amsterdam-dance-event.nl/en/artists-speakers/aline-rocha/1765603",
+        "https://whenwedip.com/2026/04/interview-aline-rocha/"
+      ],
+      "sinais": {
+        "ouvintes": 9500,
+        "inicio": 2005,
+        "festivais": 1,
+        "headlines": 0,
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "altruism",
+      "nome": "Altruism",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Psytrance e full-on",
+      "tag": "PSY",
+      "bpm": "142–148",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Projeto da DJ Thatha, nascido no underground mineiro em 1999 e na Nano Records desde 2011.",
+      "faixa": "Endless Smile",
+      "foto": "/assets/album/fotos/altruism.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/6L29hqhEPpMUQXjPKrs0bC",
+        "https://nanomusic.net/playlist/terra/",
+        "https://www.viberate.com/artist/altruism"
+      ],
+      "sinais": {
+        "ouvintes": 93500,
+        "inicio": 1999,
+        "bpm": 145
+      }
+    },
+    {
+      "slug": "andre-buljat",
+      "nome": "Andre Buljat",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "House e tech house",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Alemão nascido em Bonn em 1984, vive em Barcelona e toca house, tech house e minimal.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/andre-buljat.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/6mfehV53dGn1KAGAHoOPqu",
+        "https://www.viberate.com/artist/andre-buljat",
+        "https://m.soundcloud.com/andre-buljat"
+      ],
+      "sinais": {
+        "ouvintes": 341,
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "aninha",
+      "nome": "Aninha",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House underground",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Veterana do underground brasileiro, com passagem pelo Warung e D-Edge e cofundadora da AIA Records.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/aninha.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/6dCjFLvBI3cNlTIUWSXRrf"
+      ],
+      "sinais": {
+        "ouvintes": 1300,
+        "selo": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "antonio-oliva",
+      "nome": "Antonio Oliva",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ de house em atividade desde 2014, do projeto On'A Beat, com Fernando Arruda.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/antonio-oliva.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/510dLIYjkXDWXgiB5MOiNZ"
+      ],
+      "sinais": {
+        "ouvintes": 475,
+        "inicio": 2014,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "apollonia",
+      "nome": "Apollonia",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Underground house",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Trio de Dan Ghenacia, Dyed Soundorom e Shonky, famoso pelos sets B2B2B longos, muitas vezes em vinil.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/apollonia.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/1EH5e0qIfvYQMVmG76oW1K",
+        "https://edmdancedirectory.com/news/apollonia-all-night-long-offbcn-26-barcelona-2026-tickets-and-lineup-barcelona"
+      ],
+      "sinais": {
+        "ouvintes": 8900,
+        "inicio": 2012,
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "artistikk",
+      "nome": "Artistikk",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Progressive e afro house",
+      "tag": "PROG",
+      "bpm": "120–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Produtor de progressive house e afro house, ligado à Timeless Moment e presente no ADE 2026.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/artistikk.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/65wSLdFct8lG11Xk9b4fAD",
+        "https://www.iamsterdam.com/en/whats-on/calendar/nightlife/clubbing/ade-2026-opening-jhonatan-ospina-x-house-mag"
+      ],
+      "sinais": {
+        "ouvintes": 37300,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "ayybo",
+      "nome": "AYYBO",
+      "pais": "us",
+      "paisNome": "EUA",
+      "genero": "Tech house e bass house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "De Anaheim, Califórnia, estourou em 2022 com HYPNOSIS e já passou do CRSSD Festival.",
+      "faixa": "HYPNOSIS",
+      "foto": "/assets/album/fotos/ayybo.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/0YVquC9RaJLYFNmlJFzkTV",
+        "https://festivalabroad.com/artists/ayybo",
+        "https://set79.com/tracklist/soundcloud.com/ayybo/ayybo-crssd-festival-2026"
+      ],
+      "sinais": {
+        "ouvintes": 1700000,
+        "inicio": 2021,
+        "hino": 1,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "bakka",
+      "nome": "Bakka",
+      "pais": "bo",
+      "paisNome": "Bolívia",
+      "genero": "Melodic e progressive",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Nascido na Bolívia e radicado no sul do Brasil, lançou por This Never Happened, Armada e Sprout.",
+      "faixa": "So High",
+      "foto": "/assets/album/fotos/bakka.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/5VQhfKlaFyzx7Kz1VEF2u8",
+        "https://edmidentity.com/2023/03/06/this-is-home-079-bakka-brazil",
+        "https://www.traxsource.com/title/1632381/v"
+      ],
+      "sinais": {
+        "ouvintes": 266000,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "bapp",
+      "nome": "BAPP",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e tech house",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Projeto de Tiago Bernardes, DJ desde 2002. Já tocou no D-Edge, no Surreal Park e no ADE.",
+      "faixa": "Baque",
+      "foto": "/assets/album/fotos/bapp.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.mixgraph.io/artists/bapp"
+      ],
+      "sinais": {
+        "inicio": 2002,
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "blancah",
+      "nome": "BLANCAh",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Melodic techno",
+      "tag": "TECHNO",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Produtora de Florianópolis de melodic techno e progressive, com passagens por D-Edge e Warung.",
+      "faixa": "The Garden Of Morning Calm",
+      "foto": "/assets/album/fotos/blancah.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://playbpm.com.br/lancamentos/nacionais/blancah-the-garden-of-morning-calm",
+        "https://www.viberate.com/artist/blancah"
+      ],
+      "sinais": {
+        "inicio": 2000,
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "boghosian",
+      "nome": "Boghosian",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e deep house",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ paulistano de house e deep house, com passagens por Warung e D-Edge desde 1999.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/boghosian.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.bandsintown.com/a/1437864",
+        "https://www.viberate.com/artist/boghosian"
+      ],
+      "sinais": {
+        "inicio": 1999,
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "botanic-soundsystem",
+      "nome": "Botanic Soundsystem",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Underground house",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Projeto de Døriva e Leo Andreazza, com programação própria no Surreal Park desde 2022.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/botanic-soundsystem.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://mixmagcaribbean.com/read/surreal-park-carnival-2026-jamie-jones-seth-troxler-miss-monique-and-arpiar-confirmed-across-three-stages-news"
+      ],
+      "sinais": {
+        "inicio": 2022,
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "bruna-strait",
+      "nome": "Bruna Strait",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Tech house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ carioca de tech house. Tocou no Lollapalooza Brasil 2026 e lançou \"Something Beautiful\".",
+      "faixa": "Something Beautiful",
+      "foto": "/assets/album/fotos/bruna-strait.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.cnnbrasil.com.br/pop/musica/lollapalooza-brasil-2026-confira-o-line-up-completo-da-proxima-edicao/",
+        "https://www.frontstagefestivals.com/artist/bruna-strait"
+      ],
+      "sinais": {
+        "inicio": 2015,
+        "festivais": 1,
+        "headlines": 0,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "burn-in-noise",
+      "nome": "Burn In Noise",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Psytrance e full-on",
+      "tag": "PSY",
+      "bpm": "140–146",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Projeto de Gustavo Manfroni, de psytrance e full-on, com shows em mais de 40 países.",
+      "faixa": "Tiny Impulses",
+      "foto": "/assets/album/fotos/burn-in-noise.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://events.musicofourdesire.com/artist/burn-in-noise",
+        "https://www.beatport.com/track/tiny-impulses/18634572/"
+      ],
+      "sinais": {
+        "bpm": 145
+      }
+    },
+    {
+      "slug": "camelphat",
+      "nome": "CamelPhat",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Melodic e tech house",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla de Liverpool. \"Cola\", com Elderbrook, foi indicada ao Grammy e estourou o som deles em 2017.",
+      "faixa": "Cola",
+      "foto": "/assets/album/fotos/camelphat.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/camelphat/240wlM8vDrf6S4zCyzGj2W"
+      ],
+      "sinais": {
+        "ouvintes": 6200000,
+        "hino": 1,
+        "grammy": "indicacao",
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "carl-craig",
+      "nome": "Carl Craig",
+      "pais": "us",
+      "paisNome": "EUA",
+      "genero": "Detroit techno",
+      "tag": "TECHNO",
+      "bpm": "125–135",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor de Detroit, fundou a Planet E em 1991 e é nome de peso da segunda geração do techno.",
+      "faixa": "At Les",
+      "foto": "/assets/album/fotos/carl-craig.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/carl-craig/17dbJyUCrxh4I7iyUrjaHU",
+        "https://en.wikipedia.org/wiki/Carl_Craig"
+      ],
+      "sinais": {
+        "ouvintes": 182405,
+        "inicio": 1989,
+        "selo": 1,
+        "pioneiro": 1,
+        "essential": 1,
+        "bpm": 130
+      }
+    },
+    {
+      "slug": "carola",
+      "nome": "Carola",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e tech house",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ de Porto Alegre, primeira mulher no selo STMPD de Martin Garrix, em 2020. Toca desde 2012.",
+      "faixa": "Funk Drunk",
+      "foto": "/assets/album/fotos/carola.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://www.musicmetricsvault.com/artists/carola/1ms2l3rB6iHHxtPvR9kxgW",
+        "https://www.setlist.fm/setlists/carola-5bf1cf40.html",
+        "https://mixmag.net/feature/carola-brazil-dj-women-house-techno-producers"
+      ],
+      "sinais": {
+        "ouvintes": 143856,
+        "inicio": 2012,
+        "festivais": 1,
+        "headlines": 0,
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "chambord",
+      "nome": "Chambord",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Organic house",
+      "tag": "HOUSE",
+      "bpm": "112–122",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla francesa de organic house que tocou no Burning Man e fundou a Around Midnight em 2022.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/chambord.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://whenwedip.com/2022/05/premiere-chambord-radiohead"
+      ],
+      "sinais": {
+        "selo": 1,
+        "bpm": 118
+      }
+    },
+    {
+      "slug": "claudinho-brasil",
+      "nome": "Claudinho Brasil",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Progressive psytrance",
+      "tag": "PSY",
+      "bpm": "135–140",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ e produtor de progressive psytrance, 1º no Beatport psytrance com \"O Fortuna\", com Harmonika.",
+      "faixa": "O Fortuna",
+      "foto": "/assets/album/fotos/claudinho-brasil.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://beatport.com/artist/claudinho-brasil/49281",
+        "https://www.viberate.com/artist/claudinho-brasil"
+      ],
+      "sinais": {
+        "inicio": 2005,
+        "beatport": "genero",
+        "bpm": 138
+      }
+    },
+    {
+      "slug": "d-nox",
+      "nome": "D-Nox",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Progressive house",
+      "tag": "PROG",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Alemão de Berlim no progressive desde 1993. Criou a Sprout Music e levou o DJ Award de 2010.",
+      "faixa": "Secret Games",
+      "foto": "/assets/album/fotos/d-nox.webp",
+      "foto_fonte": "Mesma foto do DJ Index",
+      "fontes": [
+        "https://open.spotify.com/artist/1TqcQwnBqloJrKkGs4l4LT",
+        "https://www.viberate.com/artist/d-nox"
+      ],
+      "sinais": {
+        "ouvintes": 111400,
+        "inicio": 1993,
+        "selo": 1,
+        "premios": 1
+      }
+    },
+    {
+      "slug": "deep-dish",
+      "nome": "Deep Dish",
+      "pais": "us",
+      "paisNome": "EUA",
+      "genero": "Progressive house",
+      "tag": "PROG",
+      "bpm": "122–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla de Washington, D.C. formada em 1991 por Dubfire e Sharam. Referência do house e vencedora de um Grammy.",
+      "faixa": "Flashdance",
+      "foto": "/assets/album/fotos/deep-dish.webp",
+      "foto_fonte": "https://open.spotify.com/artist/720JYpdCgHuTmDeryW0wEA",
+      "fontes": [
+        "https://open.spotify.com/artist/720JYpdCgHuTmDeryW0wEA"
+      ],
+      "sinais": {
+        "ouvintes": 771500,
+        "inicio": 1991,
+        "hino": 1,
+        "grammy": "vitoria",
+        "bpm": 125
+      }
+    },
+    {
+      "slug": "deeper-purpose",
+      "nome": "Deeper Purpose",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Tech house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Stephen Galloway, de Croydon. Residente do Egg London e do XOYO, fundou o selo In 2 Deep em 2024.",
+      "faixa": "Party Diva",
+      "foto": "/assets/album/fotos/deeper-purpose.webp",
+      "foto_fonte": "https://open.spotify.com/artist/10Bo1ofGMWr6hFD7OM7W7r",
+      "fontes": [
+        "https://open.spotify.com/artist/10Bo1ofGMWr6hFD7OM7W7r",
+        "https://ra.co/dj/deeperpurpose/biography",
+        "https://dancingastronaut.com/2023/09/meet-the-underground-talent-of-imagine-festival-deeper-purpose/"
+      ],
+      "sinais": {
+        "ouvintes": 369000,
+        "selo": 1,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "desiree",
+      "nome": "DESIREE",
+      "pais": "za",
+      "paisNome": "África do Sul",
+      "genero": "Afro house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtora de Joanesburgo no afro house desde 2018. Já tocou no Hï Ibiza e no Watergate.",
+      "faixa": "Femme Tech",
+      "foto": "/assets/album/fotos/desiree.webp",
+      "foto_fonte": "https://open.spotify.com/artist/6TZbLCcOCv1DJvN28x3FBa",
+      "fontes": [
+        "https://open.spotify.com/artist/6TZbLCcOCv1DJvN28x3FBa",
+        "https://viberate.com/artist/desiree"
+      ],
+      "sinais": {
+        "ouvintes": 136900,
+        "inicio": 2018,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "devochka",
+      "nome": "Devochka",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Bass house",
+      "tag": "BASS",
+      "bpm": "124–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ mineira de bass house. Tocou no palco Perry's do Lollapalooza Brasil em 2018.",
+      "faixa": "Take Over",
+      "foto": "/assets/album/fotos/devochka.webp",
+      "foto_fonte": "https://open.spotify.com/artist/02xYwCW4WypA3nRQv6qEcX",
+      "fontes": [
+        "https://open.spotify.com/artist/02xYwCW4WypA3nRQv6qEcX",
+        "https://www.beatport.com/artist/devochka/240126"
+      ],
+      "sinais": {
+        "ouvintes": 94300,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "dimmish",
+      "nome": "Dimmish",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "Minimal deep tech",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor italiano de groove minimalista, com lançamentos pela Solid Grooves e pela No Art.",
+      "faixa": "Rituals",
+      "foto": "/assets/album/fotos/dimmish.webp",
+      "foto_fonte": "https://open.spotify.com/artist/3BPvVhOECwv7HSHVZaq3BG",
+      "fontes": [
+        "https://open.spotify.com/artist/3BPvVhOECwv7HSHVZaq3BG"
+      ],
+      "sinais": {
+        "ouvintes": 46700,
+        "bpm": 126
+      }
+    },
+    {
+      "slug": "dj-murphy",
+      "nome": "DJ Murphy",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "130–138",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Marcos Santos, nome histórico do techno brasileiro. Residente do D-Edge, com lançamentos pela Naked Lunch.",
+      "faixa": "Circuito",
+      "foto": "/assets/album/fotos/dj-murphy.webp",
+      "foto_fonte": "https://open.spotify.com/artist/0YfLVLBaiKaPsXwjEV3pUU",
+      "fontes": [
+        "https://open.spotify.com/artist/0YfLVLBaiKaPsXwjEV3pUU",
+        "https://www.beatport.com:443/artist/dj-murphy/14001",
+        "https://magneticmag.com/2023/11/pioneers-in-taking-brazil-to-the-world-anderson-noise-and-dj-murphy-collaborate-on-the-ep-eyelevation-on-kaligo-records/"
+      ],
+      "sinais": {
+        "ouvintes": 3100,
+        "bpm": 134
+      }
+    },
+    {
+      "slug": "elderbrook",
+      "nome": "Elderbrook",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "Deep house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Londrino que une vocais próprios e house. \"Cola\", com o CamelPhat, foi indicada ao Grammy.",
+      "faixa": "Cola",
+      "foto": "/assets/album/fotos/elderbrook.webp",
+      "foto_fonte": "https://open.spotify.com/artist/2vf4pRsEY6LpL5tKmqWb64",
+      "fontes": [
+        "https://open.spotify.com/artist/2vf4pRsEY6LpL5tKmqWb64",
+        "https://en.wikipedia.org/wiki/Elderbrook"
+      ],
+      "sinais": {
+        "ouvintes": 10100000,
+        "inicio": 2015,
+        "hino": 1,
+        "grammy": "indicacao",
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "ezequiel-arias",
+      "nome": "Ezequiel Arias",
+      "pais": "ar",
+      "paisNome": "Argentina",
+      "genero": "Progressive house",
+      "tag": "PROG",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor de Córdoba, com lançamentos pela Anjunadeep e apoio de Hernán Cattáneo e Above & Beyond.",
+      "faixa": "SF to Córdoba",
+      "foto": "/assets/album/fotos/ezequiel-arias.webp",
+      "foto_fonte": "https://open.spotify.com/artist/6GyqhF3pwKcbo3U3Ncm8TJ",
+      "fontes": [
+        "https://open.spotify.com/artist/6GyqhF3pwKcbo3U3Ncm8TJ"
+      ],
+      "sinais": {
+        "ouvintes": 150000,
+        "inicio": 2017,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "fernanda-pistelli",
+      "nome": "Fernanda Pistelli",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Psytech",
+      "tag": "PSY",
+      "bpm": "135–145",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ brasileira de psytech e progressive techno. Ganhou projeção depois do Universo Paralello.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/fernanda-pistelli.webp",
+      "foto_fonte": "https://open.spotify.com/artist/5igzfD3v4xlpL3Pap8zYek",
+      "fontes": [
+        "https://open.spotify.com/artist/5igzfD3v4xlpL3Pap8zYek"
+      ],
+      "sinais": {
+        "ouvintes": 11100,
+        "inicio": 2015,
+        "bpm": 140
+      }
+    },
+    {
+      "slug": "gms",
+      "nome": "GMS",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Psytrance",
+      "tag": "PSY",
+      "bpm": "142–148",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dupla de Amsterdã formada em 1995, entre os nomes mais influentes do psytrance mundial.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/gms.webp",
+      "foto_fonte": "https://commons.wikimedia.org/wiki/File:GMS_Press_2009.jpg",
+      "fontes": [
+        "https://commons.wikimedia.org/wiki/File:GMS_Press_2009.jpg"
+      ],
+      "sinais": {
+        "inicio": 1995
+      }
+    },
+    {
+      "slug": "len-faki",
+      "nome": "Len Faki",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Techno",
+      "tag": "TECHNO",
+      "bpm": "135–142",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Alemão de Stuttgart, residente do Berghain desde 2004 e fundador do selo Figure.",
+      "faixa": "My Black Sheep",
+      "foto": "/assets/album/fotos/len-faki.webp",
+      "foto_fonte": "https://commons.wikimedia.org/wiki/File:2015-07-19_6937_Len_Faki_(Sea_You).jpg",
+      "fontes": [
+        "https://www.technoairlines.com/artist/len-faki"
+      ],
+      "sinais": {
+        "selo": 1,
+        "residencia": 1
+      }
+    },
+    {
+      "slug": "morttagua",
+      "nome": "Morttagua",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Melodic techno",
+      "tag": "TECHNO",
+      "bpm": "120–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Carioca de melodic techno e progressive house, fundador do selo Timeless Moment.",
+      "faixa": "The Mantra",
+      "foto": "/assets/album/fotos/morttagua.webp",
+      "foto_fonte": "https://open.spotify.com/artist/1XVL802tNy6tucST8spKOv",
+      "fontes": [
+        "https://open.spotify.com/artist/1XVL802tNy6tucST8spKOv",
+        "https://www.viberate.com/artist/morttagua/"
+      ],
+      "sinais": {
+        "ouvintes": 29800,
+        "inicio": 2013,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "neelix",
+      "nome": "Neelix",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Progressive psytrance",
+      "tag": "PSY",
+      "bpm": "136–142",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Hamburguês do psytrance alemão, no som desde 1996, com melodias e vocais.",
+      "faixa": "Wonders",
+      "foto": "/assets/album/fotos/neelix.webp",
+      "foto_fonte": "https://open.spotify.com/artist/5X3rdmEE2Mif6kFQkb2PxB",
+      "fontes": [
+        "https://open.spotify.com/artist/5X3rdmEE2Mif6kFQkb2PxB",
+        "https://shazam.com/artist/neelix/134229098"
+      ],
+      "sinais": {
+        "ouvintes": 761700,
+        "inicio": 1996
+      }
+    },
+    {
+      "slug": "nic-fanciulli",
+      "nome": "Nic Fanciulli",
+      "pais": "gb-eng",
+      "paisNome": "Inglaterra",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Residente do Club Class, em Maidstone, fundou a Saved Records e lançou My Heart (2017).",
+      "faixa": "Lucky Heather",
+      "foto": "/assets/album/fotos/nic-fanciulli.webp",
+      "foto_fonte": "https://open.spotify.com/artist/7btR5VXutQv39SDEzcfXEk",
+      "fontes": [
+        "https://open.spotify.com/artist/7btR5VXutQv39SDEzcfXEk",
+        "https://en.wikipedia.org/wiki/Nic_Fanciulli"
+      ],
+      "sinais": {
+        "ouvintes": 934200,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "patrice-baumel",
+      "nome": "Patrice Bäumel",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic techno",
+      "tag": "TECHNO",
+      "bpm": "122–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Alemão radicado nos Países Baixos, ex-residente do Trouw, em Amsterdã.",
+      "faixa": "Transmission",
+      "foto": "/assets/album/fotos/patrice-baumel.webp",
+      "foto_fonte": "https://open.spotify.com/artist/5OvpF1A65DXs93M9NfPIjT",
+      "fontes": [
+        "https://open.spotify.com/artist/5OvpF1A65DXs93M9NfPIjT",
+        "https://kompakt.fm/artists/patrice_baeumel"
+      ],
+      "sinais": {
+        "ouvintes": 181800
+      }
+    },
+    {
+      "slug": "per-hammar",
+      "nome": "Per Hammar",
+      "pais": "se",
+      "paisNome": "Suécia",
+      "genero": "Minimal house",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Underground de Malmö, de minimal house e dub techno. Fundou a Dirty Hands.",
+      "faixa": "Iffy",
+      "foto": "/assets/album/fotos/per-hammar.webp",
+      "foto_fonte": "https://open.spotify.com/artist/64ro37ZAxFkXIJ2pxOdqCX",
+      "fontes": [
+        "https://open.spotify.com/artist/64ro37ZAxFkXIJ2pxOdqCX",
+        "https://www.skiddle.com/artists/per-hammar-123576706/"
+      ],
+      "sinais": {
+        "ouvintes": 27900,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "phaxe",
+      "nome": "Phaxe",
+      "pais": "dk",
+      "paisNome": "Dinamarca",
+      "genero": "Progressive psytrance",
+      "tag": "PSY",
+      "bpm": "134–140",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Dinamarquês de psytrance progressivo melódico, no Universo Paralello e no Boom.",
+      "faixa": "Freetown",
+      "foto": "/assets/album/fotos/phaxe.webp",
+      "foto_fonte": "https://open.spotify.com/artist/4Pgbnc1zRPquMFR4iPH3MN",
+      "fontes": [
+        "https://open.spotify.com/artist/4Pgbnc1zRPquMFR4iPH3MN",
+        "https://www.ukfestivalguides.com/artists/phaxe/"
+      ],
+      "sinais": {
+        "ouvintes": 703300,
+        "inicio": 2007
+      }
+    },
+    {
+      "slug": "phonique",
+      "nome": "Phonique",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Deep house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Michael Vater, de Berlim, deep house pela Dessous e dono de The Red Dress (2004).",
+      "faixa": "The Red Dress",
+      "foto": "/assets/album/fotos/phonique.webp",
+      "foto_fonte": "https://open.spotify.com/artist/3pVm0ttbAah6dTDher8dSz",
+      "fontes": [
+        "https://open.spotify.com/artist/3pVm0ttbAah6dTDher8dSz",
+        "https://electronicgroove.com/eg-artists/bar-25-music-series-phonique-2022/"
+      ],
+      "sinais": {
+        "ouvintes": 277200,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "rufus-du-sol",
+      "nome": "RÜFÜS DU SOL",
+      "pais": "au",
+      "paisNome": "Austrália",
+      "genero": "Melodic house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Trio de Sydney formado em 2010. Venceu o Grammy com Alive.",
+      "faixa": "Innerbloom",
+      "foto": "/assets/album/fotos/rufus-du-sol.webp",
+      "foto_fonte": "https://open.spotify.com/artist/5Pb27ujIyYb33zBqVysBkj",
+      "fontes": [
+        "https://open.spotify.com/artist/5Pb27ujIyYb33zBqVysBkj",
+        "https://readdork.com/artists/r-f-s-du-sol"
+      ],
+      "sinais": {
+        "ouvintes": 12600000,
+        "inicio": 2010,
+        "hino": 1,
+        "grammy": "vitoria"
+      }
+    },
+    {
+      "slug": "sasha",
+      "nome": "Sasha",
+      "pais": "gb-wls",
+      "paisNome": "País de Gales",
+      "genero": "Progressive house",
+      "tag": "PROG",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Galês de 1969, pioneiro do progressive house e DJ número 1 da DJ Mag em 2000.",
+      "faixa": "Xpander",
+      "foto": "/assets/album/fotos/sasha.webp",
+      "foto_fonte": "https://open.spotify.com/artist/6u4jLGLPuarS3i2XWHVxoS",
+      "fontes": [
+        "https://open.spotify.com/artist/6u4jLGLPuarS3i2XWHVxoS",
+        "https://www.allmusic.com/artist/p214634"
+      ],
+      "sinais": {
+        "ouvintes": 397500,
+        "pioneiro": 1,
+        "hino": 1
+      }
+    },
+    {
+      "slug": "silvie-loto",
+      "nome": "Silvie Loto",
+      "pais": "it",
+      "paisNome": "Itália",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Florentina de house e techno, lançou pela Bpitch Control e tocou no Circoloco.",
+      "faixa": "Solstice",
+      "foto": "/assets/album/fotos/silvie-loto.webp",
+      "foto_fonte": "https://open.spotify.com/artist/79pt77aQRjnLUoKOGUi7Um",
+      "fontes": [
+        "https://open.spotify.com/artist/79pt77aQRjnLUoKOGUi7Um",
+        "https://www.technoairlines.com/artist/silvie-loto"
+      ],
+      "sinais": {
+        "ouvintes": 8500
+      }
+    },
+    {
+      "slug": "zac",
+      "nome": "ZAC",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Progressive house",
+      "tag": "PROG",
+      "bpm": "122–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Brasileiro de progressive house e melodic techno, com faixas ao lado de Bakka e Ashibah.",
+      "faixa": "Free Falling",
+      "foto": "/assets/album/fotos/zac.webp",
+      "foto_fonte": "https://open.spotify.com/artist/5xUXAwPZ98FzFgjTNOIPyv",
+      "fontes": [
+        "https://open.spotify.com/artist/5xUXAwPZ98FzFgjTNOIPyv",
+        "https://www.bandsintown.com/e/108496037-zac-at-spin"
+      ],
+      "sinais": {
+        "ouvintes": 506700
+      }
     }
   ]
 }
