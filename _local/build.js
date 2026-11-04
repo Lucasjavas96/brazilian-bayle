@@ -175,6 +175,7 @@ ${meta.nav === "conta" ? '<script src="/account.js" defer></script>' : ""}
 ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
 ${/^\/djindex\/./.test(meta.path) ? '<script src="/djedit.js" defer></script><script src="/djindex.js" defer></script>' : ""}
 ${meta.nav === "moderacao" ? '<script src="/moderation.js" defer></script>' : ""}
+${meta.path === "/djindex" ? '<script src="/djhero.js" defer></script>' : ""}
 ${meta.nav === "after" ? '<script src="/after.js" defer></script>' : ""}
 ${meta.nav === "album" ? '<script src="/album.js" defer></script>' : ""}
 ${meta.nav === "temperatura" ? '<script src="/temperatura.js" defer></script>' : ""}
@@ -296,11 +297,15 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const gid = g => slugify(g);
   const listed = sorted.filter(d => !d.curitiba);
   const done = listed.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length || PROFILES[slugify(d.nome)]?.fonte_texto).length; // verbete pesquisado = tem fonte listada ou texto da Bayle
+  // marca d'água do hero: as 5 primeiras são fixas (Daft Punk, Alok, Miss Monique, GENX, Greggio); o resto o djhero.js embaralha
+  const HERO_DJS = ["daft-punk", "alok", "miss-monique", "genx", "greggio", "vintage-culture", "mano-le-tough", "max-styler", "gigi-dagostino", "avicii", "boris-brejcha", "eli-iwasa"]
+    .map(s => ["assets/album/fotos/" + s + ".webp", "assets/djs/" + s + ".webp"].find(p => fs.existsSync(path.join(ROOT, p)))).filter(Boolean);
   writePage("djindex", {
     path: "/djindex", nav: "djindex", title: "DJ Index · Conheça os DJs",
     description: "A enciclopédia da pista global: os principais DJs do Brasil e do mundo, organizados por gênero, com origem, início de carreira e trajetória de cada artista.",
   }, `
-<section class="sec dark page-head wiki" aria-labelledby="t-wiki">
+<section class="sec dark page-head wiki dxw-host" aria-labelledby="t-wiki">
+  <div class="dxw" aria-hidden="true"><div class="dxw-portrait">${HERO_DJS.map((s, i) => `<img${i ? "" : " class=\"on\""} src="/${s}" alt="" width="600" height="600"${i ? " loading=\"lazy\"" : ""}>`).join("")}</div></div>
   <div class="wrap">
     <p class="mono y">DJ Index · ${listed.length} DJs · ${done} verbetes completos</p>
     <h1 class="display" id="t-wiki">Conheça os <em>DJs</em></h1>
@@ -379,7 +384,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "djhero.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 // Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
 fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
 for (const f of ["index.html", "quiz.css", "quiz.js", "trilha1.json", "extra.css", "extra.js"]) fs.copyFileSync(path.join(ROOT, "quiz-src", f), path.join(OUT, "quiz", f));
