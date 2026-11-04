@@ -171,7 +171,293 @@
     {
       "id": "vibe",
       "nome": "Club Vibe",
-      "festas": []
+      "festas": [
+        {
+          "data": "23/01",
+          "nome": "Detlef by Trivø — Summer Edition",
+          "evento": "club-vibe-2026-01-23"
+        },
+        {
+          "data": "24/01",
+          "nome": "Gromma & Friends",
+          "evento": "club-vibe-2026-01-24"
+        },
+        {
+          "data": "30/01",
+          "nome": "Vermont",
+          "evento": "club-vibe-2026-01-30"
+        },
+        {
+          "data": "13/02",
+          "nome": "Louie Cut",
+          "evento": "club-vibe-2026-02-13"
+        },
+        {
+          "data": "14/02",
+          "nome": "First Class × NØISY",
+          "evento": "club-vibe-2026-02-14"
+        },
+        {
+          "data": "16/02",
+          "nome": "Bloco da Vibe",
+          "evento": "club-vibe-2026-02-16"
+        },
+        {
+          "data": "21/02",
+          "nome": "Classmatic",
+          "evento": "club-vibe-2026-02-21"
+        },
+        {
+          "data": "27/02",
+          "nome": "Victor Lou — O Retorno do Shark",
+          "evento": "club-vibe-2026-02-27"
+        },
+        {
+          "data": "13/03",
+          "nome": "wAFF by Trivø Music Label",
+          "evento": "club-vibe-2026-03-13"
+        },
+        {
+          "data": "21/03",
+          "nome": "Hi Profile",
+          "evento": "club-vibe-2026-03-21"
+        },
+        {
+          "data": "04/04",
+          "nome": "Cour T — All Night Dope",
+          "evento": "club-vibe-2026-04-04"
+        },
+        {
+          "data": "10/04",
+          "nome": "ROOM",
+          "evento": "club-vibe-2026-04-10"
+        },
+        {
+          "data": "30/04",
+          "nome": "Bhaskar",
+          "evento": "club-vibe-2026-04-30"
+        },
+        {
+          "data": "02/05",
+          "nome": "Dubfire",
+          "evento": "club-vibe-2026-05-02"
+        },
+        {
+          "data": "08/05",
+          "nome": "Marco Franco Birthday",
+          "evento": "club-vibe-2026-05-08"
+        },
+        {
+          "data": "09/05",
+          "nome": "Trivø — 2 anos",
+          "evento": "club-vibe-2026-05-09"
+        },
+        {
+          "data": "15/05",
+          "nome": "Junior C",
+          "evento": "club-vibe-2026-05-15"
+        },
+        {
+          "data": "16/05",
+          "nome": "Sem Rótulo",
+          "evento": "club-vibe-2026-05-16"
+        },
+        {
+          "data": "22/05",
+          "nome": "Volkoder",
+          "evento": "club-vibe-2026-05-22"
+        },
+        {
+          "data": "29/05",
+          "nome": "Marsha",
+          "evento": "club-vibe-2026-05-29"
+        },
+        {
+          "data": "30/05",
+          "nome": "Petroski — House Long Set",
+          "evento": "club-vibe-2026-05-30"
+        },
+        {
+          "data": "03/06",
+          "nome": "HI-FI — Só Pedrada Musical",
+          "evento": "club-vibe-2026-06-03"
+        },
+        {
+          "data": "06/06",
+          "nome": "Noise Factory Showcase",
+          "evento": "club-vibe-2026-06-06"
+        },
+        {
+          "data": "12/06",
+          "nome": "CTRL Groove + Dusk",
+          "evento": "club-vibe-2026-06-12"
+        },
+        {
+          "data": "13/06",
+          "nome": "Copa na Vibe — Utopia",
+          "evento": "club-vibe-2026-06-13"
+        },
+        {
+          "data": "19/06",
+          "nome": "Copa na Vibe",
+          "evento": "club-vibe-2026-06-19"
+        },
+        {
+          "data": "20/06",
+          "nome": "Love Is in the Air",
+          "evento": "club-vibe-2026-06-20"
+        },
+        {
+          "data": "26/06",
+          "nome": "Ashibah",
+          "evento": "club-vibe-2026-06-26"
+        },
+        {
+          "data": "04/07",
+          "nome": "Bruno Furlan",
+          "evento": "club-vibe-2026-07-04"
+        },
+        {
+          "data": "10/07",
+          "nome": "Departamento — All Night Long",
+          "evento": "club-vibe-2026-07-10"
+        },
+        {
+          "data": "17/07",
+          "nome": "Fight Club",
+          "evento": "club-vibe-2026-07-17"
+        },
+        {
+          "data": "18/07",
+          "nome": "First Class",
+          "evento": "club-vibe-2026-07-18"
+        },
+        {
+          "data": "24/07",
+          "nome": "Zerb — Special Set",
+          "evento": "club-vibe-2026-07-24"
+        },
+        {
+          "data": "01/08",
+          "nome": "Musafir",
+          "evento": "club-vibe-2026-08-01"
+        },
+        {
+          "data": "15/08",
+          "nome": "Juicce by Trivø",
+          "evento": "club-vibe-2026-08-15"
+        },
+        {
+          "data": "21/08",
+          "nome": "20 Anos de Baile — Fran Bortolossi",
+          "evento": "club-vibe-2026-08-21"
+        },
+        {
+          "data": "22/08",
+          "nome": "Acid Asian",
+          "evento": "club-vibe-2026-08-22"
+        },
+        {
+          "data": "28/08",
+          "nome": "Casa Bonita",
+          "evento": "club-vibe-2026-08-28"
+        },
+        {
+          "data": "29/08",
+          "nome": "Pandora",
+          "evento": "club-vibe-2026-08-29"
+        },
+        {
+          "data": "05/09",
+          "nome": "T.B.G",
+          "evento": "club-vibe-2026-09-05"
+        },
+        {
+          "data": "07/09",
+          "nome": "Feriado na Vibe",
+          "evento": "club-vibe-2026-09-07"
+        },
+        {
+          "data": "11/09",
+          "nome": "Antdot",
+          "evento": "club-vibe-2026-09-11"
+        },
+        {
+          "data": "12/09",
+          "nome": "Sinteze — Óscar All Night Long",
+          "evento": "club-vibe-2026-09-12"
+        },
+        {
+          "data": "18/09",
+          "nome": "25 anos de Club Vibe",
+          "evento": "club-vibe-2026-09-18"
+        },
+        {
+          "data": "19/09",
+          "nome": "Laguna",
+          "evento": "club-vibe-2026-09-19"
+        },
+        {
+          "data": "25/09",
+          "nome": "25 anos de Club Vibe",
+          "evento": "club-vibe-2026-09-25"
+        },
+        {
+          "data": "26/09",
+          "nome": "Deeper Purpose by Trivø",
+          "evento": "club-vibe-2026-09-26"
+        },
+        {
+          "data": "02/10",
+          "nome": "GIU Sounds Cool",
+          "evento": "club-vibe-2026-10-02"
+        },
+        {
+          "data": "03/10",
+          "nome": "Frame — Riascode",
+          "evento": "club-vibe-2026-10-03"
+        },
+        {
+          "data": "09/10",
+          "nome": "Revenge — Analu",
+          "evento": "club-vibe-2026-10-09"
+        },
+        {
+          "data": "10/10",
+          "nome": "Marola Grooves — 2 anos",
+          "evento": "club-vibe-2026-10-10"
+        },
+        {
+          "data": "16/10",
+          "nome": "BRY Ortega — Live Experience",
+          "evento": "club-vibe-2026-10-16"
+        },
+        {
+          "data": "17/10",
+          "nome": "ZAC",
+          "evento": "club-vibe-2026-10-17"
+        },
+        {
+          "data": "23/10",
+          "nome": "Liu",
+          "evento": "club-vibe-2026-10-23"
+        },
+        {
+          "data": "24/10",
+          "nome": "Vermont",
+          "evento": "club-vibe-2026-10-24"
+        },
+        {
+          "data": "30/10",
+          "nome": "Illusionize by Trivø",
+          "evento": "club-vibe-2026-10-30"
+        },
+        {
+          "data": "31/10",
+          "nome": "After Hours",
+          "evento": "club-vibe-2026-10-31"
+        }
+      ]
     },
     {
       "id": "laroc",

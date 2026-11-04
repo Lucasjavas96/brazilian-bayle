@@ -105,6 +105,50 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-01-23",
+      "date": "2026-01-23",
+      "venue": "Club Vibe",
+      "name": "Detlef by Trivø — Summer Edition",
+      "lineup": [
+        "Detlef"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-01-24",
+      "date": "2026-01-24",
+      "venue": "Club Vibe",
+      "name": "Gromma & Friends",
+      "lineup": [
+        "Gromma"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-01-30",
+      "date": "2026-01-30",
+      "venue": "Club Vibe",
+      "name": "Vermont",
+      "lineup": [
+        "Vermont"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-02-13",
+      "date": "2026-02-13",
+      "venue": "Club Vibe",
+      "name": "Louie Cut",
+      "lineup": [
+        "Louie Cut"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "warung-2026-02-13",
       "date": "2026-02-13",
       "venue": "Warung",
@@ -120,6 +164,17 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://warungclub.com.br/agenda-antigas/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "club-vibe-2026-02-14",
+      "date": "2026-02-14",
+      "venue": "Club Vibe",
+      "name": "First Class × NØISY",
+      "lineup": [
+        "Linkage"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "greenvalley-2026-02-14",
@@ -171,6 +226,18 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-02-16",
+      "date": "2026-02-16",
+      "venue": "Club Vibe",
+      "name": "Bloco da Vibe",
+      "lineup": [
+        "Bruna Strait",
+        "Inndrive"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "greenvalley-2026-02-16",
       "date": "2026-02-16",
       "venue": "Greenvalley",
@@ -185,6 +252,30 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-02-21",
+      "date": "2026-02-21",
+      "venue": "Club Vibe",
+      "name": "Classmatic",
+      "lineup": [
+        "Classmatic"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-02-27",
+      "date": "2026-02-27",
+      "venue": "Club Vibe",
+      "name": "Victor Lou — O Retorno do Shark",
+      "lineup": [
+        "Victor Lou",
+        "BUJA",
+        "Annëto"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "greenvalley-2026-02-28",
       "date": "2026-02-28",
       "venue": "Greenvalley",
@@ -196,6 +287,28 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://betimelapse.com.br/eventos/greenvalley-rufus-du-sol",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "club-vibe-2026-03-13",
+      "date": "2026-03-13",
+      "venue": "Club Vibe",
+      "name": "wAFF by Trivø Music Label",
+      "lineup": [
+        "wAFF"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-03-21",
+      "date": "2026-03-21",
+      "venue": "Club Vibe",
+      "name": "Hi Profile",
+      "lineup": [
+        "Hi Profile"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-03-21",
@@ -248,6 +361,17 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-04-04",
+      "date": "2026-04-04",
+      "venue": "Club Vibe",
+      "name": "Cour T — All Night Dope",
+      "lineup": [
+        "Cour T"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "warung-2026-04-04",
       "date": "2026-04-04",
       "venue": "Warung",
@@ -261,6 +385,22 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-04-10",
+      "date": "2026-04-10",
+      "venue": "Club Vibe",
+      "name": "ROOM",
+      "lineup": [
+        "Danz",
+        "Purkott",
+        "Ayres",
+        "Marquez",
+        "FRL",
+        "Sintrone"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "warung-2026-04-18",
       "date": "2026-04-18",
       "venue": "Warung",
@@ -272,6 +412,28 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://warungclub.com.br/agenda/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "club-vibe-2026-04-30",
+      "date": "2026-04-30",
+      "venue": "Club Vibe",
+      "name": "Bhaskar",
+      "lineup": [
+        "Bhaskar"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-05-02",
+      "date": "2026-05-02",
+      "venue": "Club Vibe",
+      "name": "Dubfire",
+      "lineup": [
+        "Dubfire"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "greenvalley-2026-05-02",
@@ -316,6 +478,56 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-05-08",
+      "date": "2026-05-08",
+      "venue": "Club Vibe",
+      "name": "Marco Franco Birthday",
+      "lineup": [
+        "Kiko Franco",
+        "Marco Franco",
+        "Omertá",
+        "Mono DJs"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-05-09",
+      "date": "2026-05-09",
+      "venue": "Club Vibe",
+      "name": "Trivø — 2 anos",
+      "lineup": [
+        "Brisotti",
+        "Nicolau Marinho",
+        "BUJA",
+        "Ayres"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-05-15",
+      "date": "2026-05-15",
+      "venue": "Club Vibe",
+      "name": "Junior C",
+      "lineup": [
+        "Junior C"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-05-16",
+      "date": "2026-05-16",
+      "venue": "Club Vibe",
+      "name": "Sem Rótulo",
+      "lineup": [
+        "Renato Cohen"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "surreal-park-2026-05-16",
       "date": "2026-05-16",
       "venue": "Surreal Park",
@@ -327,6 +539,17 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-05-22",
+      "date": "2026-05-22",
+      "venue": "Club Vibe",
+      "name": "Volkoder",
+      "lineup": [
+        "Volkoder"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "matahari-2026-05-23",
       "date": "2026-05-23",
       "venue": "Matahari",
@@ -334,6 +557,41 @@
       "lineup": [],
       "source": "https://linktr.ee/matahari",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "club-vibe-2026-05-29",
+      "date": "2026-05-29",
+      "venue": "Club Vibe",
+      "name": "Marsha",
+      "lineup": [
+        "Fezzo",
+        "Zaark",
+        "Inntraw"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-05-30",
+      "date": "2026-05-30",
+      "venue": "Club Vibe",
+      "name": "Petroski — House Long Set",
+      "lineup": [
+        "Petroski"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-06-03",
+      "date": "2026-06-03",
+      "venue": "Club Vibe",
+      "name": "HI-FI — Só Pedrada Musical",
+      "lineup": [
+        "Daniel Tamenpi"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "warung-2026-06-04",
@@ -365,6 +623,18 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-06-06",
+      "date": "2026-06-06",
+      "venue": "Club Vibe",
+      "name": "Noise Factory Showcase",
+      "lineup": [
+        "Flux Zone",
+        "Pricila Diaz"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "greenvalley-2026-06-06",
       "date": "2026-06-06",
       "venue": "Greenvalley",
@@ -394,6 +664,54 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-06-12",
+      "date": "2026-06-12",
+      "venue": "Club Vibe",
+      "name": "CTRL Groove + Dusk",
+      "lineup": [
+        "Duallys",
+        "Dusk",
+        "Ale",
+        "Pelon",
+        "Bellow"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-06-13",
+      "date": "2026-06-13",
+      "venue": "Club Vibe",
+      "name": "Copa na Vibe — Utopia",
+      "lineup": [
+        "Fabe"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-06-19",
+      "date": "2026-06-19",
+      "venue": "Club Vibe",
+      "name": "Copa na Vibe",
+      "lineup": [
+        "D-Nox"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-06-20",
+      "date": "2026-06-20",
+      "venue": "Club Vibe",
+      "name": "Love Is in the Air",
+      "lineup": [
+        "HOO"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "surreal-park-2026-06-20",
       "date": "2026-06-20",
       "venue": "Surreal Park",
@@ -421,6 +739,39 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-06-26",
+      "date": "2026-06-26",
+      "venue": "Club Vibe",
+      "name": "Ashibah",
+      "lineup": [
+        "Ashibah"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-07-04",
+      "date": "2026-07-04",
+      "venue": "Club Vibe",
+      "name": "Bruno Furlan",
+      "lineup": [
+        "Bruno Furlan"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-07-10",
+      "date": "2026-07-10",
+      "venue": "Club Vibe",
+      "name": "Departamento — All Night Long",
+      "lineup": [
+        "Departamento"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "matahari-2026-07-11",
       "date": "2026-07-11",
       "venue": "Matahari",
@@ -428,6 +779,17 @@
       "lineup": [],
       "source": "https://linktr.ee/matahari",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "club-vibe-2026-07-17",
+      "date": "2026-07-17",
+      "venue": "Club Vibe",
+      "name": "Fight Club",
+      "lineup": [
+        "Bruno Be"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-07-17",
@@ -442,6 +804,17 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://radiodj.com.br/botanic-celebra-quatro-anos-no-surreal-park-e-traz-apollonia-ao-brasil-em-formacao-completa/",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "club-vibe-2026-07-18",
+      "date": "2026-07-18",
+      "venue": "Club Vibe",
+      "name": "First Class",
+      "lineup": [
+        "Jame C"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "greenvalley-2026-07-18",
@@ -463,6 +836,17 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-07-24",
+      "date": "2026-07-24",
+      "venue": "Club Vibe",
+      "name": "Zerb — Special Set",
+      "lineup": [
+        "Zerb"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "ame-club-2026-07-25",
       "date": "2026-07-25",
       "venue": "Ame Club",
@@ -472,6 +856,29 @@
       ],
       "source": "https://www.ingresse.com/ame-club-apresenta-anna/",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "club-vibe-2026-08-01",
+      "date": "2026-08-01",
+      "venue": "Club Vibe",
+      "name": "Musafir",
+      "lineup": [
+        "Kamilo Sanclemente"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-08-15",
+      "date": "2026-08-15",
+      "venue": "Club Vibe",
+      "name": "Juicce by Trivø",
+      "lineup": [
+        "Juicce",
+        "MØK"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-08-15",
@@ -485,6 +892,54 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-08-21",
+      "date": "2026-08-21",
+      "venue": "Club Vibe",
+      "name": "20 Anos de Baile — Fran Bortolossi",
+      "lineup": [
+        "Fran Bortolossi",
+        "Albuquerque",
+        "2ouble"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-08-22",
+      "date": "2026-08-22",
+      "venue": "Club Vibe",
+      "name": "Acid Asian",
+      "lineup": [
+        "Acid Asian",
+        "HNGT"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-08-28",
+      "date": "2026-08-28",
+      "venue": "Club Vibe",
+      "name": "Casa Bonita",
+      "lineup": [
+        "Brisotti",
+        "Viot"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-08-29",
+      "date": "2026-08-29",
+      "venue": "Club Vibe",
+      "name": "Pandora",
+      "lineup": [
+        "Pandora"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "matahari-2026-08-29",
       "date": "2026-08-29",
       "venue": "Matahari",
@@ -492,6 +947,18 @@
       "lineup": [],
       "source": "https://linktr.ee/matahari",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "club-vibe-2026-09-05",
+      "date": "2026-09-05",
+      "venue": "Club Vibe",
+      "name": "T.B.G",
+      "lineup": [
+        "Crewcutz",
+        "Simas"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "greenvalley-2026-09-05",
@@ -517,6 +984,69 @@
       ],
       "source": "https://p12.ingresse.com/",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "club-vibe-2026-09-07",
+      "date": "2026-09-07",
+      "venue": "Club Vibe",
+      "name": "Feriado na Vibe",
+      "lineup": [
+        "Ricck",
+        "Vanessa Queiroz",
+        "DJ Gaspar",
+        "Jeder Dias Cruz"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-09-11",
+      "date": "2026-09-11",
+      "venue": "Club Vibe",
+      "name": "Antdot",
+      "lineup": [
+        "Antdot"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-09-12",
+      "date": "2026-09-12",
+      "venue": "Club Vibe",
+      "name": "Sinteze — Óscar All Night Long",
+      "lineup": [
+        "Óscar",
+        "Sheldon",
+        "Wendel Cubas",
+        "Eliezer Maia",
+        "Dotwave",
+        "ØKTN"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-09-18",
+      "date": "2026-09-18",
+      "venue": "Club Vibe",
+      "name": "25 anos de Club Vibe",
+      "lineup": [
+        "ANNA"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-09-19",
+      "date": "2026-09-19",
+      "venue": "Club Vibe",
+      "name": "Laguna",
+      "lineup": [
+        "FM From B"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-09-19",
@@ -563,6 +1093,58 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-09-25",
+      "date": "2026-09-25",
+      "venue": "Club Vibe",
+      "name": "25 anos de Club Vibe",
+      "lineup": [
+        "Patrice Bäumel"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-09-26",
+      "date": "2026-09-26",
+      "venue": "Club Vibe",
+      "name": "Deeper Purpose by Trivø",
+      "lineup": [
+        "Deeper Purpose",
+        "Inntraw",
+        "Wellington",
+        "Kobbaia",
+        "Alexandre Rodrigues"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-10-02",
+      "date": "2026-10-02",
+      "venue": "Club Vibe",
+      "name": "GIU Sounds Cool",
+      "lineup": [
+        "GIU"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-10-03",
+      "date": "2026-10-03",
+      "venue": "Club Vibe",
+      "name": "Frame — Riascode",
+      "lineup": [
+        "Riascode",
+        "Zaro",
+        "Marco Franco",
+        "Saber",
+        "Werneck"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "matahari-2026-10-03",
       "date": "2026-10-03",
       "venue": "Matahari",
@@ -570,6 +1152,20 @@
       "lineup": [],
       "source": "https://linktr.ee/matahari",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "club-vibe-2026-10-09",
+      "date": "2026-10-09",
+      "venue": "Club Vibe",
+      "name": "Revenge — Analu",
+      "lineup": [
+        "Analu",
+        "Prodzy",
+        "Ayumi",
+        "Dora Furlan"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "surreal-park-2026-10-09",
@@ -584,6 +1180,21 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://site.blueticket.com.br/evento/41806/09-out-agape",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "club-vibe-2026-10-10",
+      "date": "2026-10-10",
+      "venue": "Club Vibe",
+      "name": "Marola Grooves — 2 anos",
+      "lineup": [
+        "Ale Schmitz",
+        "Aninha",
+        "Botanic Soundsystem",
+        "Dani Dan",
+        "Gromma"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "greenvalley-2026-10-10",
@@ -601,6 +1212,20 @@
       "checked_at": "2026-11-03"
     },
     {
+      "id": "club-vibe-2026-10-16",
+      "date": "2026-10-16",
+      "venue": "Club Vibe",
+      "name": "BRY Ortega — Live Experience",
+      "lineup": [
+        "Bry Ortega",
+        "Acrobatik",
+        "ØKTN",
+        "Óscar"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "d-edge-rio-2026-10-16",
       "date": "2026-10-16",
       "venue": "D-EDGE Rio",
@@ -610,6 +1235,17 @@
       ],
       "source": "https://www.blueticket.com.br/evento/42012/d-edge-rio-apresenta-victor-lou",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "club-vibe-2026-10-17",
+      "date": "2026-10-17",
+      "venue": "Club Vibe",
+      "name": "ZAC",
+      "lineup": [
+        "ZAC"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "laroc-2026-10-17",
@@ -631,8 +1267,8 @@
       "lineup": [
         "Liu"
       ],
-      "source": "https://www.blueticket.com.br/evento/41491",
-      "checked_at": "2026-10-24"
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "d-edge-sao-paulo-2026-10-23",
@@ -646,6 +1282,34 @@
       ],
       "source": "https://site.blueticket.com.br/evento/41985/freak-chic-d-edge-sp-pres-p1-dimmish-adnan-sharif-bauhouse",
       "checked_at": "2026-10-24"
+    },
+    {
+      "id": "club-vibe-2026-10-24",
+      "date": "2026-10-24",
+      "venue": "Club Vibe",
+      "name": "Vermont",
+      "lineup": [
+        "Vermont",
+        "Hugo Lannes",
+        "Felini",
+        "Matheus Koubik",
+        "Ale Vaz"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "club-vibe-2026-10-30",
+      "date": "2026-10-30",
+      "venue": "Club Vibe",
+      "name": "Illusionize by Trivø",
+      "lineup": [
+        "Illusionize",
+        "Liame",
+        "Jack Baron"
+      ],
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "d-edge-sao-paulo-2026-10-30",
@@ -662,29 +1326,17 @@
       "checked_at": "2026-11-04"
     },
     {
-      "id": "club-vibe-2026-10-30",
-      "date": "2026-10-30",
-      "venue": "Club Vibe",
-      "name": "Illusionize",
-      "lineup": [
-        "Illusionize"
-      ],
-      "source": "Line-up informado pela Brazilian Bayle.",
-      "checked_at": "2026-11-04"
-    },
-    {
-      "id": "pedreira-2026-10-31",
+      "id": "club-vibe-2026-10-31",
       "date": "2026-10-31",
-      "venue": "Pedreira",
-      "name": "Solomun + Vintage Culture",
+      "venue": "Club Vibe",
+      "name": "After Hours",
       "lineup": [
-        "Solomun",
-        "Vintage Culture",
-        "Doozie",
-        "Albuquerque"
+        "Gabss",
+        "Solarce Brothers",
+        "Phm Dias"
       ],
-      "source": "Line-up informado pela Brazilian Bayle, conforme a programação publicada pela plataforma Timelapse.",
-      "checked_at": "2026-11-03"
+      "source": "Line-ups do Club Vibe informados pela Brazilian Bayle (tabela de 2026, com fontes de divulgação, ingressos e imprensa). Marcações de line-up possivelmente incompleto mantidas fora do site.",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "d-edge-sao-paulo-2026-10-31",
@@ -709,30 +1361,17 @@
       "checked_at": "2026-11-04"
     },
     {
-      "id": "club-vibe-2026-10-31",
+      "id": "pedreira-2026-10-31",
       "date": "2026-10-31",
-      "venue": "Club Vibe",
-      "name": "Gabss + Solarce Brothers",
+      "venue": "Pedreira",
+      "name": "Solomun + Vintage Culture",
       "lineup": [
-        "Gabss",
-        "Solarce Brothers"
+        "Solomun",
+        "Vintage Culture",
+        "Doozie",
+        "Albuquerque"
       ],
-      "source": "Line-up informado pela Brazilian Bayle.",
-      "checked_at": "2026-11-04"
-    },
-    {
-      "id": "surreal-park-2026-11-01",
-      "date": "2026-11-01",
-      "venue": "Surreal Park",
-      "name": "Beltools · Beltran & Ben Sterling",
-      "lineup": [
-        "Beltran",
-        "Ben Sterling",
-        "Analu",
-        "gggguerra",
-        "Simas"
-      ],
-      "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://dropdaily.com.br/agenda/clubs-pistas/beltools-surreal-park-beltran-ben-sterling-1-novembro/",
+      "source": "Line-up informado pela Brazilian Bayle, conforme a programação publicada pela plataforma Timelapse.",
       "checked_at": "2026-11-03"
     },
     {
@@ -776,6 +1415,21 @@
       ],
       "source": "Line-up informado pela Brazilian Bayle.",
       "checked_at": "2026-11-04"
+    },
+    {
+      "id": "surreal-park-2026-11-01",
+      "date": "2026-11-01",
+      "venue": "Surreal Park",
+      "name": "Beltools · Beltran & Ben Sterling",
+      "lineup": [
+        "Beltran",
+        "Ben Sterling",
+        "Analu",
+        "gggguerra",
+        "Simas"
+      ],
+      "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://dropdaily.com.br/agenda/clubs-pistas/beltools-surreal-park-beltran-ben-sterling-1-novembro/",
+      "checked_at": "2026-11-03"
     },
     {
       "id": "surreal-park-2026-11-20",
