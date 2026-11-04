@@ -86,11 +86,11 @@ const DJS = [
   ["Elekfantz","Indie dance"],["L_cio","House"],["Patife","Drum & bass"],["Leo Janeiro","House"],["Breaking Beattz","Bass house"],
   ["Gabe","House"],["JetLag Music","House"],["Shapeless","Techno"],["Eli Iwasa","Techno"],["Bruno Be","House"],
   ["Mau Mau","House"],["Sevek","Brazilian bass"],["Bruno Martini","Brazilian bass"],["Victor Lou","Tech house"],["Pontifexx","Brazilian bass"],
-  ["Wehbba","Techno"],["Selvagem","Disco"],["Tropkillaz","Trap"],["DJ Marky","Drum & bass"],["Anderson Noise","Techno"],
+  ["Wehbba","Techno"],["Selvagem","Disco"],["DJ Marky","Drum & bass"],["Anderson Noise","Techno"],
   ["Groove Delight","Tech house"],["Renato Ratier","Techno"],["Mila Journée","Melodic house"],["Ney Faustini","House"],["Renato Cohen","Techno"],
   ["Vinne","Bass house"],["Volkoder","Bass house"],["Dashdot","Deep house"],["Maz","Afro house"],["Malifoo","Brazilian bass"],
   ["Greggio","Tech house"],["GenX","Música eletrônica"],
-  ["Doozie","House"],["Albuquerque","House"],["Analu","House"],["gggguerra","House"],["Simas","House"],
+  ["Doozie","House"],["Albuquerque","House"],["gggguerra","House"],["Simas","House"],
   ["Solomun","House"],["Ben Sterling","Tech house"]];
 let officialRows = [];
 const MIN_VOTES = 30;

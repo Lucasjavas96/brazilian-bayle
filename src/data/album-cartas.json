@@ -1707,35 +1707,6 @@
       }
     },
     {
-      "slug": "tropkillaz",
-      "nome": "Tropkillaz",
-      "pais": "br",
-      "paisNome": "Brasil",
-      "genero": "Trap / Bass",
-      "tag": "BASS",
-      "bpm": "140–150",
-      "rank": "CENA BR",
-      "pos": "center 25%",
-      "texto": "Dupla de Zegon e Laudz formada em 2012 em São Paulo, com 3 indicações ao Latin Grammy.",
-      "faixa": "Bola Rebola",
-      "foto": "/assets/album/fotos/tropkillaz.webp",
-      "foto_fonte": "https://open.spotify.com/artist/5bzWtCkjIAMgN93gLt56SO",
-      "fontes": [
-        "https://open.spotify.com/artist/5bzWtCkjIAMgN93gLt56SO",
-        "https://cms.latingrammy.com/en/artists/tropkillaz-36942/",
-        "https://www.wikidata.org/wiki/Q20049197",
-        "https://www.folhape.com.br/cultura/lollapalooza-brasil-2025-veja-line-up-completa-do-festival/400607/",
-        "https://festivaly.eu/pl/artysci/tropkillaz/18206"
-      ],
-      "sinais": {
-        "ouvintes": 2700000,
-        "inicio": 2012,
-        "grammy": "indicacao",
-        "festivais": 1,
-        "bpm": 140
-      }
-    },
-    {
       "slug": "dj-marky",
       "nome": "DJ Marky",
       "pais": "br",
@@ -6925,25 +6896,6 @@
       }
     },
     {
-      "slug": "leff",
-      "nome": "Leff",
-      "pais": "br",
-      "paisNome": "Brasil",
-      "genero": "Melodic house",
-      "tag": "HOUSE",
-      "bpm": "120–124",
-      "rank": "CENA BR",
-      "pos": "center 25%",
-      "texto": "Do litoral paulista, foi residente do Café de la Musique. Lançou Sometimes, com Jox, em 2025.",
-      "faixa": "Sometimes",
-      "foto": "/assets/album/fotos/leff.webp",
-      "foto_fonte": "Mesma foto do DJ Index",
-      "fontes": [],
-      "sinais": {
-        "inicio": 2020
-      }
-    },
-    {
       "slug": "viot",
       "nome": "Viot",
       "pais": "br",
@@ -7060,46 +7012,6 @@
       }
     },
     {
-      "slug": "raiza-koh-sante",
-      "nome": "Raiza Koh Santé",
-      "pais": "br",
-      "paisNome": "Brasil",
-      "genero": "House e techno",
-      "tag": "HOUSE",
-      "bpm": "120–130",
-      "rank": "CENA BR",
-      "pos": "center 25%",
-      "texto": "DJ do underground paulistano e idealizadora da FÜZE, label de festas e coletivos.",
-      "faixa": null,
-      "foto": "/assets/album/fotos/raiza-koh-sante.webp",
-      "foto_fonte": "Mesma foto do DJ Index",
-      "fontes": [],
-      "sinais": {
-        "selo": 1,
-        "bpm": 125
-      }
-    },
-    {
-      "slug": "mary-gripa",
-      "nome": "Mary Gripa",
-      "pais": "br",
-      "paisNome": "Brasil",
-      "genero": "Afro house",
-      "tag": "HOUSE",
-      "bpm": "118–124",
-      "rank": "CENA BR",
-      "pos": "center 25%",
-      "texto": "Sul-mato-grossense de afro house que começou em 2023 após ver Black Coffee e tocou no D-EDGE.",
-      "faixa": "Unusual Catwalks",
-      "foto": "/assets/album/fotos/mary-gripa.webp",
-      "foto_fonte": "Mesma foto do DJ Index",
-      "fontes": [],
-      "sinais": {
-        "inicio": 2023,
-        "bpm": 121
-      }
-    },
-    {
       "slug": "stormyx",
       "nome": "Stormyx",
       "pais": "br",
@@ -7164,24 +7076,6 @@
       ],
       "sinais": {
         "bpm": 142
-      }
-    },
-    {
-      "slug": "lary-lima",
-      "nome": "Lary Lima",
-      "pais": "br",
-      "paisNome": "Brasil",
-      "genero": "Melodic house",
-      "tag": "HOUSE",
-      "bpm": "120–124",
-      "rank": "CENA BR",
-      "pos": "center 25%",
-      "texto": "Mineira de melodic house e indie dance, ampliou a presença no D-EDGE em 2026.",
-      "foto": "/assets/album/fotos/lary-lima.webp",
-      "foto_fonte": "Mesma foto do DJ Index",
-      "fontes": [],
-      "sinais": {
-        "bpm": 122
       }
     },
     {

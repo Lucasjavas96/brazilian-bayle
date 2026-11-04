@@ -36,12 +36,6 @@
     "pais": "Reino Unido"
   },
   {
-    "nome": "Analu",
-    "estilo": "House",
-    "grupo": "House",
-    "pais": "Brasil"
-  },
-  {
     "nome": "gggguerra",
     "estilo": "House",
     "grupo": "House",
@@ -66,12 +60,6 @@
     "pais": "Holanda"
   },
   {
-    "nome": "Leff",
-    "estilo": "Melodic house",
-    "grupo": "House",
-    "pais": "Brasil"
-  },
-  {
     "nome": "Viot",
     "estilo": "Tech house",
     "grupo": "House",
@@ -80,12 +68,6 @@
   {
     "nome": "Sterium",
     "estilo": "Tech house",
-    "grupo": "House",
-    "pais": "Brasil"
-  },
-  {
-    "nome": "Goes",
-    "estilo": "House",
     "grupo": "House",
     "pais": "Brasil"
   },
@@ -131,20 +113,6 @@
     "br": true
   },
   {
-    "nome": "Raiza Koh Santé",
-    "estilo": "House",
-    "grupo": "House",
-    "pais": "Brasil",
-    "br": true
-  },
-  {
-    "nome": "Mary Gripa",
-    "estilo": "Afro house",
-    "grupo": "House",
-    "pais": "Brasil",
-    "br": true
-  },
-  {
     "nome": "Stormyx",
     "estilo": "Música eletrônica underground",
     "grupo": "House",
@@ -168,13 +136,6 @@
   {
     "nome": "Paola Vigorito",
     "estilo": "House",
-    "grupo": "House",
-    "pais": "Brasil",
-    "br": true
-  },
-  {
-    "nome": "Lary Lima",
-    "estilo": "Melodic house",
     "grupo": "House",
     "pais": "Brasil",
     "br": true
@@ -237,12 +198,6 @@
     "pais": "México"
   },
   {
-    "nome": "Adria",
-    "estilo": "Indie dance",
-    "grupo": "House",
-    "pais": "Brasil"
-  },
-  {
     "nome": "Agustin Clark",
     "estilo": "House",
     "grupo": "House",
@@ -263,12 +218,6 @@
   {
     "nome": "Aline Rocha",
     "estilo": "House",
-    "grupo": "House",
-    "pais": "Brasil"
-  },
-  {
-    "nome": "Aloss",
-    "estilo": "Música eletrônica de pista",
     "grupo": "House",
     "pais": "Brasil"
   },
@@ -405,22 +354,10 @@
     "pais": "Brasil"
   },
   {
-    "nome": "Conti & Mandi",
-    "estilo": "House",
-    "grupo": "House",
-    "pais": "Brasil"
-  },
-  {
     "nome": "D-Nox",
     "estilo": "Progressive house",
     "grupo": "House",
     "pais": "Alemanha"
-  },
-  {
-    "nome": "Dani Puerta",
-    "estilo": "Música eletrônica",
-    "grupo": "Eletrônica",
-    "pais": "A confirmar"
   },
   {
     "nome": "Deep Dish",
@@ -625,12 +562,6 @@
     "estilo": "House",
     "grupo": "House",
     "pais": "Itália"
-  },
-  {
-    "nome": "South Birds",
-    "estilo": "Música eletrônica",
-    "grupo": "Eletrônica",
-    "pais": "A confirmar"
   },
   {
     "nome": "ZAC",
