@@ -269,7 +269,6 @@
     "slug": "anna",
     "nome": "ANNA",
     "nome_civil": "Ana Miranda",
-    "nascimento": "Amparo (SP)",
     "origem": "Amparo, São Paulo, Brasil",
     "estilos": [
       "Techno",
@@ -458,7 +457,6 @@
     "slug": "cat-dealers",
     "nome": "Cat Dealers",
     "nome_civil": "Luiz Guilherme Cardoso (Lugui) e Pedro Henrique Cardoso (Pedrão)",
-    "nascimento": "não informado",
     "origem": "Rio de Janeiro, Rio de Janeiro",
     "estilos": [
       "house",
@@ -734,15 +732,15 @@
   {
     "slug": "chemical-surf",
     "nome": "Chemical Surf",
-    "nome_civil": "Hugo Sanches e Lucas Sanches (nomes completos não informados)",
-    "nascimento": "não informado",
-    "origem": "Maringá, Paraná (radicados em Santa Catarina desde 2014)",
+    "nome_civil": "Hugo Sanches e Lucas Sanches",
+    "origem": "Maringá, Paraná, Brasil (radicados em Santa Catarina desde 2014)",
     "estilos": [
-      "tech house",
-      "progressive house",
-      "electronica"
+      "Tech house",
+      "Progressive house",
+      "Electronica",
+      "House"
     ],
-    "ativo_desde": "2005 (segundo a Wikipédia; outras fontes indicam datas diferentes)",
+    "ativo_desde": "2005",
     "gravadoras": [
       "Spinnin' Records",
       "STMPD RCRDS",
@@ -751,55 +749,67 @@
       "Armada Music",
       "Sony Music",
       "Smash The House",
+      "Bunny Tiger",
       "R.I.P. Genres Records (selo próprio)"
     ],
-    "resumo": "Chemical Surf é a dupla dos irmãos Hugo e Lucas Sanches, natural de Maringá (PR) e radicada em Santa Catarina. Conhecida por não se prender a um gênero, tem em \"Hey Hey Hey\" seu maior sucesso e lançamentos por selos como Spinnin' Records e STMPD RCRDS.",
+    "resumo": "Chemical Surf é a dupla dos irmãos Hugo e Lucas Sanches, natural de Maringá (PR) e radicada em Santa Catarina. Avessa a rótulos, transita entre tech house, progressive house e electronica, tem em \"Hey Hey Hey\" (2017) seu maior sucesso e lança por Spinnin' Records, STMPD RCRDS e pelo selo próprio R.I.P. Genres Records.",
     "historia": [
-      "Os irmãos Hugo e Lucas Sanches são naturais de Maringá, no Paraná, e se mudaram para Santa Catarina em 2014. A Wikipédia registra o início das atividades da dupla em 2005; reportagens publicadas em 2022 falam em quase 20 anos de carreira.",
-      "O nome da dupla ganhou alcance internacional com \"Hey Hey Hey\" (2017), que passou de 100 milhões de reproduções somadas nas plataformas digitais. No mesmo período vieram \"Feeling Good\", com Vintage Culture, e \"I Wanna Do\" (2019), com Dubdisko. A dupla lançou faixas por selos como Spinnin' Records e STMPD RCRDS, de Martin Garrix, que contratou os irmãos depois de incluir músicas deles em seus sets.",
-      "Entre 2020 e 2021 vieram o EP \"Terremoto\", \"Pow Pow Pow\", com Kaskade, e \"Siliwa Hay\", com Steve Aoki, além de uma parceria com Gabriel O Pensador. Em julho de 2021 a dupla passou a ser representada pela agência norte-americana CAA. Os irmãos também fundaram o selo R.I.P. Genres Records, cujo nome resume a proposta de liberdade criativa sem rótulos de gênero.",
-      "Em 2022 a dupla tocou pela quarta vez como atração do palco Perry's no Lollapalooza Brasil, estreou no Tomorrowland, na Bélgica, a convite de Dimitri Vegas & Like Mike, e se apresentou no Rock in Rio. Também passou por eventos como Creamfields Chile, Ultra Brasil e EDC Brasil."
+      "Chemical Surf é o projeto dos irmãos Hugo e Lucas Sanches, nascidos em Maringá, no Paraná. A Wikipédia registra o início das atividades em 2005, e reportagens de 2022 falam em quase 20 anos de carreira. Os primeiros EPs digitais apareceram a partir de 2013, como Paperdoll, Kick Drum e I'll Try, seguidos em 2014 por Walking Back e What Matters. Naquele mesmo ano, a dupla trocou Maringá por Santa Catarina.",
+      "O alcance internacional veio com \"Hey Hey Hey\", lançada em maio de 2017, que passou de 100 milhões de reproduções somadas nas plataformas e virou a faixa mais conhecida dos irmãos. No mesmo ano saiu \"Feeling Good\", com Vintage Culture, e em 2019 vieram \"I Wanna Do\", com Dubdisko, e \"Pararam\". Os créditos da dupla incluem selos como Spinnin' Records, Musical Freedom, Dim Mak, Armada Music e Sony Music.",
+      "A ligação com a STMPD RCRDS, de Martin Garrix, começou depois que o holandês tocou uma faixa da dupla em seu set: os irmãos foram convidados ao estúdio do selo em Amsterdã e, em abril de 2020, lançaram por ele o EP Terremoto. Vieram também \"Pow Pow Pow\", com Kaskade, \"Siliwa Hay\", com Steve Aoki, e uma parceria com Gabriel O Pensador. Em julho de 2021 passaram a ser agenciados pela norte-americana CAA e, em novembro, fizeram turnê pelos Estados Unidos.",
+      "Em 2022, a dupla foi anunciada pela quarta vez como atração do palco Perry's no Lollapalooza Brasil, estreou no Tomorrowland, na Bélgica, a convite de Dimitri Vegas & Like Mike, e tocou no palco New Dance Order do Rock in Rio. No fim do ano saiu \"Without You\", com Ghabe e Mevil, pelo R.I.P. Genres Records, selo dos irmãos cujo nome resume a defesa da liberdade criativa sem gêneros predefinidos, e \"Lapada\", com Ghabe e Leiru, pela Spinnin'.",
+      "Em dezembro de 2023, os irmãos tocaram pelo terceiro ano seguido no Soundstorm, festival de Riad, na Arábia Saudita. O currículo de palcos inclui ainda Ultra Brasil, EDC Brasil, Creamfields Chile, Ushuaïa e Amnesia, em Ibiza. A produção seguiu ativa: em 2025 saíram \"Take Me Home\" e um EP de remixes de \"Hey Hey Hey\" por Said e por Sharam Jey com Frey, e em 2026 vieram \"Second Floor\", \"Latin Tricks\" e \"Rhythm in My Veins\".",
+      "A marca da Chemical Surf é a recusa em se prender a um único estilo: o catálogo vai do tech house ao progressive e a faixas de apelo pop, sempre com foco na pista. Com mais de 400 milhões de reproduções acumuladas e parcerias com Tiësto, Afrojack, R3hab, Kaskade e Steve Aoki, a dupla está entre os nomes brasileiros de maior circulação internacional da música eletrônica."
     ],
     "referencias_musicais": [],
     "faixas_marcantes": [
       "Hey Hey Hey (2017)",
       "Feeling Good (com Vintage Culture, 2017)",
-      "I Wanna Do (2019)",
-      "Terremoto (2020)",
-      "Pow Pow Pow (2020)",
-      "Siliwa Hay (2021)"
+      "I Wanna Do (com Dubdisko, 2019)",
+      "Pararam (2019)",
+      "Terremoto (EP, 2020)",
+      "Pow Pow Pow (com Kaskade)",
+      "Siliwa Hay (com Steve Aoki)",
+      "Lapada (com Ghabe e Leiru, 2022)"
     ],
     "marcos": [
+      "2005: início das atividades da dupla",
       "2014: mudança de Maringá para Santa Catarina",
       "2017: lançamento de \"Hey Hey Hey\", maior sucesso da dupla",
-      "2021: contratação pela agência CAA",
-      "2022: quarta participação no Lollapalooza Brasil, Tomorrowland Bélgica e Rock in Rio",
-      "Fundação do selo R.I.P. Genres Records (ano não informado)"
+      "2020: EP Terremoto pela STMPD RCRDS, de Martin Garrix",
+      "2021: contratação pela agência CAA e turnê nos Estados Unidos",
+      "2022: Lollapalooza Brasil (quarta vez no palco Perry's), estreia no Tomorrowland Bélgica e Rock in Rio",
+      "2022: \"Without You\", com Ghabe e Mevil, pelo selo próprio R.I.P. Genres Records",
+      "2023: terceiro ano seguido no festival Soundstorm, em Riad"
     ],
     "fontes": [
       {
-        "titulo": "Chemical Surf - Wikipédia",
+        "titulo": "Chemical Surf, Wikipédia",
         "url": "https://pt.wikipedia.org/wiki/Chemical_Surf"
       },
       {
-        "titulo": "Chemical Surf - Wikipedia (inglês)",
+        "titulo": "Chemical Surf, Wikipedia (inglês)",
         "url": "https://en.wikipedia.org/wiki/Chemical_Surf"
       },
       {
-        "titulo": "A Gazeta - Chemical Surf volta à estrada com direito a turnê nos EUA",
+        "titulo": "Chemical Surf volta à estrada com direito a turnê nos EUA, A Gazeta",
         "url": "https://www.agazeta.com.br/hz/cultura/chemical-surf-volta-a-estrada-com-direito-a-turne-nos-eua-1021"
       },
       {
-        "titulo": "A Gazeta - Atração no Lollapalooza, Chemical Surf garante mais dois grandes festivais em 2022",
+        "titulo": "Atração no Lollapalooza, Chemical Surf garante mais dois grandes festivais em 2022, A Gazeta",
         "url": "https://www.agazeta.com.br/hz/cultura/atracao-no-lollapalooza-chemical-surf-garante-mais-dois-grandes-festivais-em-2022-0322"
       },
       {
-        "titulo": "Jornal de Brasília - Chemical Surf chega com novo single pela R.I.P. Genres Records",
+        "titulo": "Chemical Surf chega com novo single pela R.I.P. Genres Records, Jornal de Brasília",
         "url": "https://jornaldebrasilia.com.br/blogs-e-colunas/analice-nicolau/chemical-surf-chega-com-novo-single-pela-r-i-p-genres-records-em-parceria-com-ghabe-e-mevil-confira-without-you/"
       },
       {
-        "titulo": "NSC Total - Uma entrevista exclusiva com a dupla Chemical Surf",
-        "url": "https://www.nsctotal.com.br/?p=5569146"
+        "titulo": "Chemical Surf comenta sobre sua passagem no Soundstorm Music, Play BPM",
+        "url": "https://playbpm.com.br/entrevistas/chemical-surf-comenta-sobre-sua-passagem-no-soundstorm-music"
+      },
+      {
+        "titulo": "Chemical Surf, discografia, Deezer",
+        "url": "https://www.deezer.com/artist/4747778"
       }
     ],
     "foto": null
@@ -11438,7 +11448,6 @@
     "slug": "b-jones",
     "nome": "B Jones",
     "nome_civil": "Beatriz Martínez",
-    "nascimento": "1983, Andújar, província de Jaén, Espanha",
     "origem": "Ibiza, Espanha (cresceu no sul da Espanha)",
     "estilos": [
       "EDM",
@@ -12092,7 +12101,7 @@
     "slug": "dj-tennis",
     "nome": "DJ Tennis",
     "nome_civil": "Manfredi Romano",
-    "nascimento": "27 de dezembro de 1970, Parma",
+    "nascimento": "27 de dezembro de 1970",
     "origem": "Parma, Itália",
     "estilos": [
       "House",
@@ -12102,28 +12111,71 @@
     ],
     "ativo_desde": "final da década de 1980",
     "gravadoras": [
-      "Life and Death"
+      "Life and Death (selo próprio)",
+      "Kompakt",
+      "!K7",
+      "Running Back",
+      "Circoloco Records",
+      "Cercle Records",
+      "AUS Music",
+      "Cocoon",
+      "Fabric Records"
     ],
-    "resumo": "DJ e produtor italiano, curador e empresário musical. Fundou a agência DAZE em 1995 e, em 2010, a gravadora Life and Death, com Greg Oreck, e passou a se dedicar ao DJ Tennis.",
+    "resumo": "DJ Tennis é o nome artístico do italiano Manfredi Romano, DJ, produtor e empresário musical. Fundador da agência Daze (1995) e do selo Life and Death (2010), com Greg Oreck, mistura house, techno, indie dance e psicodelia em sets que passaram por Tomorrowland, Burning Man, Glastonbury e Time Warp.",
     "historia": [
-      "Manfredi Romano cresceu entre Nova Jersey, Sicília e Parma, desenvolvendo interesse por música independente, rock alternativo e cultura underground. Durante os estudos de ciência da computação na Universidade de Pisa, na década de 1980, participou de bandas, trabalhou em rádio e organizou eventos. Também tocava discos em um clube de tênis, atividade que originou seu nome artístico.",
-      "Em 1995, fundou a DAZE, agência italiana de contratação de DJs e artistas de música eletrônica. Durante muitos anos, trabalhou nos bastidores da indústria musical, produzindo eventos e organizando turnês de bandas. Sua experiência incluiu trabalhos relacionados à cena indie e post-rock, com referências como Tortoise e Godspeed You! Black Emperor.",
-      "Em 2010, decidiu concentrar-se em sua carreira como DJ e produtor. No mesmo ano, fundou a gravadora Life and Death, ao lado de Greg Oreck. A gravadora tornou-se importante para a expansão do indie dance e do melodic house, trabalhando com artistas que exploram sonoridades menos convencionais.",
-      "DJ Tennis passou a se apresentar internacionalmente em festivais como Tomorrowland, Burning Man, Glastonbury e Time Warp. Possui forte histórico como curador, empresário musical e promotor de eventos, e seus sets valorizam diversidade musical, progressão atmosférica e referências alternativas."
+      "Manfredi Romano nasceu em 1970 e cresceu entre Nova Jersey, a Sicília e Parma. Adolescente em Palermo no começo dos anos 1980, ouvia new wave e punk. Em 1988 mudou-se para Pisa para estudar ciência da computação e passou a frequentar a Wide Records, loja e distribuidora de post-punk, música industrial e experimental. Também tocava em bandas, apresentava um programa de rádio de indie rock e vendia discos em shows em ocupações pela Itália.",
+      "O nome artístico vem do esporte: ele discotecava no clube de tênis onde jogava como semiprofissional. Os contatos feitos com as bandas o levaram a trabalhar como tour manager e a agendar artistas norte-americanos pela Europa. Em 1995 fundou em Milão a Daze, agência de contratação de DJs, e depois criou os festivais Elita, em Milão, e Dissonanze, em Roma. Por anos atuou sobretudo nos bastidores, também compondo para teatro, cinema e publicidade.",
+      "Em dezembro de 2010 lançou com Greg Oreck, do Thugfucker, o selo Life and Death, cujo primeiro artista foi o próprio Thugfucker, e passou a se dedicar à carreira de DJ e produtor. Em 2012 saíram \"Make It Good\", pelo selo, e \"The Outcast\", com PillowTalk, pela alemã Kompakt. Vieram depois \"Local\" (2014), o EP Divisions Chirality (2016) e, em 2017, \"Certain Angles\", com Fink, e o volume 59 da série DJ-Kicks, ambos pela !K7.",
+      "Em 2019 lançou o EP Gordon Starck pela Running Back e formou com o duo israelense Red Axes o projeto Redrago. Em 2021 \"Atlanta\" e \"On My Own Now\", com Ashee e Lady Donli, saíram pela Circoloco Records. Em 2022 vieram Repeater, pela AUS Music, e \"Cinecittà\", com Carlita e Alex Metric, pela Cercle. Com Carlita criou ainda o Astra Club, formato que junta DJ sets e shows. Como remixer, trabalhou com Ludovico Einaudi, Keinemusik, Loco Dice, Diplo e Röyksopp.",
+      "Em 2023 lançou \"Take It, Take It\" pela Cocoon e, em 2024, \"Dale Dale\", com Luke Alessi, além do programa de culinária Munchietown, com convidados da música e da gastronomia. Em 2025 saiu \"Playa Paradiso\", com Eliza Rose, pela Life and Death, depois remixada por Paul Woolford, e o álbum Blink To Check It's Real, do projeto tenashee, com Ashee. Em fevereiro de 2026 a casa londrina Fabric lançou a mixagem fabric presents DJ Tennis.",
+      "DJ Tennis cita como influências The Beach Boys, Talk Talk, Radiohead, Aphex Twin e Plastikman, e descreve sua produção como herdeira da psicodelia sombria e melancólica que vai dos anos 1960 ao IDM do início dos anos 2000. Nas pistas, os sets misturam house, techno e indie dance com progressões atmosféricas, e a Life and Death se firmou como uma das referências do indie dance e do melodic house."
     ],
     "faixas_marcantes": [
-      "The Outcast (com PillowTalk)",
-      "Divisions",
-      "I Can Tell",
-      "Atlanta",
-      "Dale Dale (com Luke Alessi)",
-      "Playa Paradiso (com Eliza Rose)"
+      "Make It Good (2012)",
+      "The Outcast (com PillowTalk, 2012)",
+      "Certain Angles (com Fink, 2017)",
+      "DJ-Kicks (mix, 2017)",
+      "Atlanta (2021)",
+      "Cinecittà (com Carlita e Alex Metric, 2022)",
+      "Dale Dale (com Luke Alessi, 2024)",
+      "Playa Paradiso (com Eliza Rose, 2025)"
     ],
     "marcos": [
-      "1995: fundação da agência DAZE",
-      "2010: fundação da Life and Death, com Greg Oreck, e foco na carreira de DJ"
+      "1995: funda em Milão a agência Daze",
+      "2010: funda o selo Life and Death, com Greg Oreck",
+      "2012: lança \"The Outcast\", com PillowTalk, pela Kompakt",
+      "2017: assina o volume 59 da série DJ-Kicks, pela !K7",
+      "2021: \"Atlanta\" sai pela Circoloco Records",
+      "2024: estreia o programa de culinária Munchietown",
+      "2025: lança \"Playa Paradiso\", com Eliza Rose",
+      "2026: mixagem fabric presents DJ Tennis"
     ],
-    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
+    "referencias_musicais": [
+      "The Beach Boys",
+      "Talk Talk",
+      "Radiohead",
+      "Aphex Twin",
+      "Plastikman"
+    ],
+    "fontes": [
+      {
+        "titulo": "DJ Tennis, Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/DJ_Tennis"
+      },
+      {
+        "titulo": "DJ Tennis, Amsterdam Dance Event",
+        "url": "https://www.amsterdam-dance-event.nl/artists/dj-tennis/1426/"
+      },
+      {
+        "titulo": "From Punk To Present: DJ Tennis Talks, The Ransom Note",
+        "url": "https://www.theransomnote.com/?p=24114"
+      },
+      {
+        "titulo": "DJ Tennis, discografia, Deezer",
+        "url": "https://www.deezer.com/artist/5564476"
+      }
+    ]
   },
   {
     "slug": "enrico-sangiuliano",
@@ -12508,8 +12560,8 @@
     "slug": "joseph-capriati",
     "nome": "Joseph Capriati",
     "nome_civil": "Giuseppe Capriati",
-    "nascimento": "25 de julho de 1987, Caserta",
-    "origem": "Caserta, Itália",
+    "nascimento": "25 de julho de 1987, Caserta (Itália)",
+    "origem": "Caserta, Campânia, Itália",
     "estilos": [
       "Techno",
       "Tech house",
@@ -12517,36 +12569,65 @@
     ],
     "ativo_desde": "1998",
     "gravadoras": [
-      "Drumcode",
+      "Globox",
+      "Analytic Trail",
       "CLR",
-      "Redimension"
+      "Drumcode",
+      "Redimension (selo próprio)",
+      "Metamorfosi Records (com Insomniac)"
     ],
-    "resumo": "DJ de Caserta que começou a mixar aos 11 anos. Lançou pela Drumcode e pela CLR, fundou a Redimension em 2016 e é conhecido por sets que passam de 12 horas.",
+    "resumo": "Joseph Capriati, nome artístico de Giuseppe Capriati, é DJ e produtor de techno nascido em Caserta, perto de Nápoles. Revelado pela cena napolitana, lançou por Drumcode e CLR, fundou o selo Redimension em 2016 e transformou o álbum Metamorfosi (2020) em uma marca de festas com residências em Ibiza.",
     "historia": [
-      "Joseph Capriati começou sua carreira muito jovem, desenvolvendo interesse pela música eletrônica na região de Caserta, próxima a Nápoles. Aos 11 anos, já experimentava técnicas de mixagem e começou a tocar em pequenos eventos locais. Posteriormente, frequentou festas de techno e aproximou-se da cena underground napolitana. Durante a adolescência, recebeu orientação de produtores como Rino Cerrone e Markantonio, que desempenharam papel importante em sua formação profissional.",
-      "Em 2006, lançou o EP Formaldehyde, um de seus primeiros registros em vinil. O reconhecimento internacional começou a crescer em 2007, com apresentações em outros países. A partir de 2009, passou a lançar produções pela Drumcode, gravadora de Adam Beyer, e pela CLR, de Chris Liebing.",
-      "Em 2010, lançou seu primeiro álbum, Save My Soul, seguido por Self Portrait (2013), que ampliou sua reputação internacional. Uma característica importante de Capriati é sua capacidade de realizar apresentações muito longas, incluindo sets que ultrapassam 12 horas.",
-      "Em 2016, fundou a gravadora Redimension e, em 2020, lançou o álbum Metamorfosi, incorporando influências de house, techno e outros estilos eletrônicos. Posteriormente, expandiu a marca Metamorfosi para uma série de eventos e residências internacionais, incluindo Ibiza."
+      "Joseph Capriati nasceu em Caserta, na Campânia, em 1987, e começou a mixar em 1998, aos 11 anos, primeiro atraído pelo house e pelo hip hop. Entre 1999 e 2004 tocou em clubes do sul da Itália e foi se aproximando do techno. Foi residente do clube Disco Seven, em Caserta, e em 2005 começou a produzir, aprendendo os programas no estúdio de um amigo. Teve como mentores os napolitanos Rino Cerrone e Markantonio, com quem formou o trio Neapolitan Gangsta.",
+      "O primeiro disco, o EP em vinil Formaldehyde, saiu pela Globox, selo de Sasha Carassi; as fontes divergem entre 2006 e 2007 para o lançamento. A estreia internacional como DJ veio em 2007, e no fim daquele ano ele estreou na Analytic Trail com \"C'est la Vie\". Em 2008 lançou por selos como CMYK, Loose e Alchemy, de Mauro Picotto, e \"Molotov\" foi escolhida por Richie Hawtin para abrir seus sets de turnê.",
+      "Em 2009 estreou na CLR, de Chris Liebing, com o Login EP, e na Drumcode, de Adam Beyer, com \"Sidechains\" e \"Kontrol Room\". O primeiro álbum, Save My Soul, saiu em julho de 2010 pela Analytic Trail. O segundo, Self Portrait, chegou em 2013 pela Drumcode, mesmo ano do single \"Awake\" com \"Fratello\" no lado B. Em 2015 assinou a coletânea fabric 80 e, em 2016, lançou \"Parallels\" com Adam Beyer e fundou o próprio selo, a Redimension.",
+      "Capriati ficou conhecido também pelas maratonas na cabine. Em novembro de 2017 tocou 25 horas e meia no Heart, em Miami, e em abril de 2019 passou das 27 horas no festival Sunwaves, na Romênia. É presença constante no Monegros Festival, na Espanha, desde 2011, e no Time Warp, em Mannheim, desde 2016, além de ter tocado em casas como Berghain, Awakenings e Fabric.",
+      "O terceiro álbum, Metamorfosi, saiu em setembro de 2020 pela Redimension e abriu o techno a influências de house e disco, com participações de Louie Vega e Eric Kupper. O nome virou uma série de festas, com residência no Amnesia Ibiza a partir de 2022 e depois no Hï Ibiza. Em 2022 organizou um evento beneficente para a Unicef no estádio Diego Armando Maradona, em Nápoles. Em 2025 lançou a mixagem Global Underground #47: Montreal e o selo Metamorfosi Records, em parceria com a Insomniac.",
+      "Com 20 anos de estrada completados em 2026, Joseph Capriati representa a escola napolitana do techno, cena que desde os anos 1990 tem em produtores como Rino Cerrone e Markantonio suas referências e que serviu de formação para ele. Seu estilo combina groove forte, sets longos e abertura crescente ao house. A fase recente inclui \"Mantra\", com Indira Paganotto (2024), \"Control\", com Gennaro, e \"It's Time\", com Cloonee (2026)."
     ],
     "faixas_marcantes": [
-      "Awake",
-      "Solar System",
-      "Fratello",
-      "Parallels",
-      "Always and Forever",
-      "Goa",
-      "Psycology"
+      "Save My Soul (álbum, 2010)",
+      "Psycology (2011)",
+      "Awake (2013)",
+      "Fratello (2013)",
+      "Self Portrait (álbum, 2013)",
+      "Parallels (com Adam Beyer, 2016)",
+      "Goa (2020)",
+      "Mantra (com Indira Paganotto, 2024)"
     ],
     "marcos": [
-      "1998: começa a mixar, aos 11 anos",
-      "2006: EP Formaldehyde",
-      "2009: primeiros lançamentos pela Drumcode e pela CLR",
-      "2010: álbum Save My Soul",
-      "2013: álbum Self Portrait",
-      "2016: fundação da Redimension",
-      "2020: álbum Metamorfosi"
+      "1998: começa a mixar, aos 11 anos, em Caserta",
+      "2009: estreia na CLR e na Drumcode",
+      "2010: primeiro álbum, Save My Soul, pela Analytic Trail",
+      "2013: álbum Self Portrait, pela Drumcode",
+      "2016: funda o selo Redimension",
+      "2019: set de mais de 27 horas no festival Sunwaves, na Romênia",
+      "2020: álbum Metamorfosi",
+      "2022: residência Metamorfosi no Amnesia Ibiza"
     ],
-    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
+    "referencias_musicais": [
+      "Rino Cerrone",
+      "Markantonio"
+    ],
+    "fontes": [
+      {
+        "titulo": "Joseph Capriati, Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/Joseph_Capriati"
+      },
+      {
+        "titulo": "Joseph Capriati, Amsterdam Dance Event",
+        "url": "https://www.amsterdam-dance-event.nl/artists/joseph-capriati/1864/"
+      },
+      {
+        "titulo": "Joseph Capriati, biografia, Last.fm",
+        "url": "https://last.fm/music/Joseph+Capriati/+wiki"
+      },
+      {
+        "titulo": "Joseph Capriati, discografia, Deezer",
+        "url": "https://www.deezer.com/artist/164467"
+      }
+    ]
   },
   {
     "slug": "gigi-d-agostino",
@@ -13920,7 +14001,6 @@
     "slug": "fisher",
     "nome": "FISHER",
     "nome_civil": "Paul Nicholas Fisher",
-    "nascimento": "5 de novembro de 1986, Gold Coast, Queensland, Austrália",
     "origem": "Gold Coast, Queensland, Austrália",
     "estilos": [
       "Tech house",
@@ -14846,7 +14926,7 @@
     "slug": "avicii",
     "nome": "Avicii",
     "nome_civil": "Tim Bergling",
-    "nascimento": "8 de setembro de 1989, Estocolmo, Suécia",
+    "nascimento": "8 de setembro de 1989, Estocolmo (Suécia)",
     "origem": "Estocolmo, Suécia",
     "estilos": [
       "Progressive house",
@@ -14855,32 +14935,66 @@
       "Folktronica"
     ],
     "ativo_desde": "2006",
-    "resumo": "Produtor e DJ sueco de Estocolmo, um dos nomes que levaram o EDM ao pop mundial. Lançou \"Levels\" em 2011 e o álbum True em 2013. Morreu em 2018, aos 28 anos, e o álbum póstumo TIM saiu em 2019.",
+    "resumo": "Avicii, nome artístico do sueco Tim Bergling (1989-2018), foi DJ e produtor de Estocolmo e um dos nomes que levaram a música eletrônica de pista ao pop mundial. Estourou com \"Levels\" (2011), misturou house com folk e country no álbum True (2013), de \"Wake Me Up\", e teve o álbum póstumo TIM lançado em 2019.",
     "historia": [
-      "Avicii começou a produzir música eletrônica durante a adolescência, inspirado por Daft Punk e outros produtores europeus. Utilizando softwares de produção, passou a publicar músicas e remixes em fóruns e plataformas digitais. Em 2008, ganhou reconhecimento inicial na indústria eletrônica e começou a realizar apresentações internacionais.",
-      "O primeiro grande sucesso chegou em 2010 com \"Seek Bromance\", lançado sob o nome Tim Berg. Em 2011, lançou \"Levels\", que se tornou uma das músicas mais importantes da história do EDM. Seu primeiro álbum, True (2013), ampliou significativamente sua influência ao combinar elementos de house com folk, country e soul.",
-      "O maior sucesso dessa fase foi \"Wake Me Up\", parceria com Aloe Blacc, que alcançou o topo das paradas em diversos países. Posteriormente, lançou Stories (2015), incluindo músicas como \"Waiting for Love\" e \"For a Better Day\". Devido a problemas de saúde e ao desgaste provocado pela agenda de apresentações, anunciou sua aposentadoria das turnês em 2016, mantendo a atividade como produtor.",
-      "Avicii faleceu em 2018, deixando diversas produções inacabadas. Parte delas foi concluída e lançada no álbum póstumo TIM, em 2019.",
-      "Avicii foi um dos grandes responsáveis pela transformação do EDM em música pop global e pela incorporação de instrumentos e elementos orgânicos ao progressive house."
+      "Tim Bergling nasceu em Estocolmo em 1989 e começou a produzir aos 16 anos, aprendendo sozinho a usar o FL Studio. Publicava remixes no fórum de Laidback Luke com o apelido Timberman e adotou o nome Avicii, grafia adaptada de Avīci, o nível mais baixo do inferno no budismo, porque o nome verdadeiro já estava em uso no MySpace. Em maio de 2007 assinou com o selo Dejfitts Plays e, depois de vencer um concurso da BBC Radio 1 em 2008, passou a ser empresariado por Arash Pournouri.",
+      "Em abril de 2010, como Tim Berg, lançou o instrumental \"Bromance\" pela sueca Joia Records; em outubro, a versão com vocais, \"Seek Bromance\", saiu pela Ministry of Sound e entrou no top 20 de vários países. Em outubro de 2011 veio \"Levels\", que chegou ao top 10 em 15 países e virou sua faixa assinatura. Em 2012 foi indicado ao Grammy por \"Sunshine\", com David Guetta, tornou-se o primeiro DJ a ser atração principal no Radio City Music Hall e ficou em 3º no Top 100 da DJ Mag, posição que repetiu em 2013.",
+      "No Ultra de 2013, apresentou com banda ao vivo as faixas do álbum True, que fundia eletrônica com folk, country, soul e blues. \"Wake Me Up\", com Aloe Blacc, chegou ao 1º lugar em 22 países, e o disco, lançado em setembro, trouxe ainda \"Hey Brother\" e \"Addicted to You\". Naquele ano fez sua primeira turnê sul-americana, com passagem pelo Brasil. Em 2014 assinou com Carlos Santana, Wyclef Jean e Alexandre Pires \"Dar um Jeito (We Will Find a Way)\", hino da Copa do Mundo no Brasil.",
+      "Em 2014 também coescreveu \"A Sky Full of Stars\", do Coldplay, e lançou o EP The Days / Nights. O segundo álbum, Stories, saiu em outubro de 2015 com \"Waiting for Love\" e \"For a Better Day\". Em março de 2016 anunciou que deixaria de fazer turnês e fez o último show em 28 de agosto, no Ushuaïa Ibiza. Seguiu produzindo: assinou com a Universal Music Sweden e, em agosto de 2017, lançou o EP Avīci (01), com \"Without You\" e \"Lonely Together\". Morreu em abril de 2018, aos 28 anos.",
+      "O álbum TIM, em que trabalhava antes de morrer, saiu em junho de 2019, puxado por \"SOS\", com renda destinada à Tim Bergling Foundation. Em 2021, a Ericsson Globe, em Estocolmo, foi rebatizada de Avicii Arena, e em 2022 abriu na cidade o museu interativo Avicii Experience. O documentário Avicii: I'm Tim estreou em 2024, e a coletânea Avicii Forever saiu em 2025. \"Wake Me Up\" recebeu certificado de diamante nos Estados Unidos em 2020.",
+      "Avicii citava como base da produção os suecos Eric Prydz, Axwell, Steve Angello e Sebastian Ingrosso, além de Swedish House Mafia e Daft Punk. Da fórmula de quatro acordes, sub-grave e melodia simples do progressive house, chegou a canções com violões, vozes convidadas e refrões pop. Artistas como Kygo, Martin Garrix e Gryffin o apontam como inspiração."
     ],
     "faixas_marcantes": [
-      "Levels",
-      "Wake Me Up",
-      "Hey Brother",
-      "The Nights",
-      "Waiting for Love",
-      "Without You",
-      "Seek Bromance",
-      "Silhouettes",
-      "Addicted to You",
-      "SOS"
+      "Seek Bromance (como Tim Berg, 2010)",
+      "Levels (2011)",
+      "I Could Be the One (com Nicky Romero, 2012)",
+      "Wake Me Up (com Aloe Blacc, 2013)",
+      "Hey Brother (2013)",
+      "Waiting for Love (2015)",
+      "Without You (2017)",
+      "SOS (2019)"
     ],
     "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
     "foto": {
       "credito": "The Perfect World Foundation, via Wikimedia Commons",
       "licenca": "CC BY 3.0",
       "pagina": "https://commons.wikimedia.org/wiki/File:Avicii_2014_003.jpg"
-    }
+    },
+    "gravadoras": [
+      "Dejfitts Plays",
+      "Joia Records",
+      "Ministry of Sound",
+      "PRMD",
+      "Universal Music Sweden"
+    ],
+    "marcos": [
+      "2007: assina com o selo Dejfitts Plays",
+      "2011: lança \"Levels\"",
+      "2012: primeiro DJ a ser atração principal no Radio City Music Hall, em Nova York",
+      "2013: álbum True e \"Wake Me Up\", nº 1 em 22 países",
+      "2014: \"Dar um Jeito (We Will Find a Way)\", hino da Copa do Mundo no Brasil",
+      "2016: último show, no Ushuaïa Ibiza, após anunciar o fim das turnês",
+      "2019: álbum póstumo TIM",
+      "2021: a Ericsson Globe, em Estocolmo, é rebatizada de Avicii Arena"
+    ],
+    "referencias_musicais": [
+      "Eric Prydz",
+      "Axwell",
+      "Steve Angello",
+      "Sebastian Ingrosso",
+      "Swedish House Mafia",
+      "Daft Punk"
+    ],
+    "fontes": [
+      {
+        "titulo": "Avicii, Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/Avicii"
+      },
+      {
+        "titulo": "Avicii, Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/Avicii"
+      }
+    ]
   },
   {
     "slug": "lilly-palmer",
@@ -15798,36 +15912,73 @@
     "slug": "calvin-harris",
     "nome": "Calvin Harris",
     "nome_civil": "Adam Richard Wiles",
-    "nascimento": "17 de janeiro de 1984, Dumfries, Escócia",
-    "origem": "Dumfries, Escócia",
+    "nascimento": "17 de janeiro de 1984, Dumfries (Escócia)",
+    "origem": "Dumfries, Escócia, Reino Unido",
     "estilos": [
-      "EDM",
+      "House",
       "Electro house",
-      "Progressive house",
-      "Funk house",
-      "Dance-pop"
+      "EDM",
+      "Dance-pop",
+      "Progressive house"
     ],
     "ativo_desde": "1999",
-    "resumo": "Produtor e DJ escocês de Dumfries, um dos DJs de maior sucesso comercial do mundo. Lançou I Created Disco em 2007, estourou com 18 Months (2012) e fez parcerias com Rihanna e Dua Lipa.",
+    "resumo": "Calvin Harris, nome artístico do escocês Adam Richard Wiles, é DJ, produtor e compositor nascido em Dumfries. Estreou com I Created Disco (2007), dominou as paradas com 18 Months (2012) e parcerias com Rihanna e Dua Lipa, e em 2026 entrou para o Guinness ao tocar para 1,6 milhão de pessoas no pré-Carnaval de São Paulo.",
     "historia": [
-      "Calvin Harris nasceu em Dumfries, no sul da Escócia, e começou a se interessar pela música eletrônica durante a adolescência. Em 1999, já produzia músicas utilizando equipamentos instalados em seu quarto. Para financiar suas primeiras produções, trabalhou em supermercados e em uma fábrica de processamento de peixes.",
-      "Em 2002, lançou suas primeiras músicas sob o pseudônimo Stouffer, incluindo \"Da Bongos\" e \"Brighter Days\". Posteriormente, mudou-se para Londres para tentar desenvolver sua carreira, mas enfrentou dificuldades profissionais e financeiras. Ao retornar à Escócia, passou a publicar produções na plataforma MySpace, chamando a atenção da gravadora EMI.",
-      "Em 2007, lançou seu primeiro álbum, I Created Disco, que apresentou sucessos como \"Acceptable in the 80s\" e \"The Girls\". Seu reconhecimento internacional cresceu com Ready for the Weekend (2009) e, especialmente, 18 Months (2012), que incluiu colaborações com Rihanna, Ellie Goulding e Florence Welch.",
-      "Nos anos seguintes, tornou-se um dos DJs de maior sucesso comercial do mundo, com residências em Las Vegas e Ibiza. Em 2017, lançou Funk Wav Bounces Vol. 1, explorando influências de funk, disco e R&B.",
-      "Foi um dos principais responsáveis pela integração entre EDM, house e música pop internacional, com grande influência sobre a produção comercial da década de 2010."
+      "Adam Richard Wiles nasceu em Dumfries, no sul da Escócia, em 1984. Interessou-se por música eletrônica na adolescência e, em 1999, já gravava demos no quarto. Para comprar equipamento, trabalhou repondo prateleiras em supermercados e numa fábrica de processamento de peixe. Em 2002, aos 18 anos, lançou \"Da Bongos\" e \"Brighter Days\" pelo selo Prima Facie, sob o nome Stouffer, e se mudou para Londres em busca da cena local.",
+      "Sem trabalho na capital, onde só saiu \"Let Me Know\", com Ayah Marar, numa coletânea dos Unabombers, voltou a Dumfries e passou a publicar faixas no MySpace. A repercussão levou a contratos em 2006 com o grupo Three Six Zero, com a editora EMI e com a Sony BMG. Em junho de 2007 saiu I Created Disco, feito inteiramente por ele num computador Amiga, com \"Acceptable in the 80s\" e \"The Girls\". Em 2008 produziu \"Dance wiv Me\", de Dizzee Rascal, número 1 no Reino Unido.",
+      "Ready for the Weekend (2009) estreou em 1º lugar no Reino Unido e trouxe \"I'm Not Alone\", seu primeiro número 1 como artista principal. Em 2010 criou o selo Fly Eye Records e deixou de cantar com frequência nas próprias faixas. \"Feel So Close\" (2011) abriu caminho nos Estados Unidos, e \"We Found Love\", com Rihanna, ficou dez semanas no topo da Billboard Hot 100. O álbum 18 Months (2012) bateu o recorde britânico de singles no top 10 tirados de um mesmo disco.",
+      "A partir de 2012 manteve residências em Las Vegas, primeiro no Wynn e depois no grupo Hakkasan, e liderou a lista de DJs mais bem pagos da Forbes de 2013 a 2018. Motion (2014) trouxe \"Summer\", a música mais ouvida no Spotify naquele ano, \"Blame\" e \"Outside\". Vieram \"How Deep Is Your Love\" (2015), \"This Is What You Came For\" (2016), o álbum Funk Wav Bounces Vol. 1 (2017), com influências de funk e R&B, e \"One Kiss\" (2018), com Dua Lipa.",
+      "Ganhou os prêmios Brit de produtor britânico e de single do ano em 2019 e o de artista dance britânico em 2024. Lançou Funk Wav Bounces Vol. 2 em 2022, \"Miracle\", com Ellie Goulding, em 2023, e a coletânea 96 Months em 2024. Em 8 de fevereiro de 2026 tocou num trio elétrico na Rua da Consolação, no pré-Carnaval de São Paulo, para um público estimado em 1,6 milhão de pessoas, marca reconhecida pelo Guinness como o maior público de um set de DJ de um único artista.",
+      "Em julho de 2026 fez a estreia no Tomorrowland, na Bélgica, fechando o Mainstage, e em outubro anunciou a primeira turnê própria pela América do Norte. Calvin Harris cita Jamiroquai e Fatboy Slim como inspirações e foi um dos principais responsáveis pela aproximação entre a música eletrônica de pista e o pop internacional na década de 2010."
     ],
     "faixas_marcantes": [
-      "Summer",
-      "Feel So Close",
-      "We Found Love (com Rihanna)",
-      "This Is What You Came For (com Rihanna)",
-      "One Kiss (com Dua Lipa)",
-      "Blame",
-      "Outside",
-      "How Deep Is Your Love",
-      "I'm Not Alone"
+      "Acceptable in the 80s (2007)",
+      "I'm Not Alone (2009)",
+      "Feel So Close (2011)",
+      "We Found Love (com Rihanna, 2011)",
+      "Summer (2014)",
+      "How Deep Is Your Love (com Disciples, 2015)",
+      "This Is What You Came For (com Rihanna, 2016)",
+      "One Kiss (com Dua Lipa, 2018)"
     ],
-    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
+    "gravadoras": [
+      "Sony BMG",
+      "Fly Eye Records (selo próprio)",
+      "Prima Facie (como Stouffer)"
+    ],
+    "marcos": [
+      "2002: primeiros lançamentos, como Stouffer",
+      "2007: álbum de estreia, I Created Disco",
+      "2009: \"I'm Not Alone\" chega ao 1º lugar no Reino Unido",
+      "2011: \"We Found Love\", com Rihanna, lidera a Billboard Hot 100",
+      "2012: álbum 18 Months",
+      "2013: primeiro de seis anos seguidos no topo da lista de DJs mais bem pagos da Forbes",
+      "2026: recorde do Guinness com 1,6 milhão de pessoas em São Paulo (8 de fevereiro)",
+      "2026: estreia no Tomorrowland, na Bélgica"
+    ],
+    "referencias_musicais": [
+      "Jamiroquai",
+      "Fatboy Slim"
+    ],
+    "fontes": [
+      {
+        "titulo": "Calvin Harris, Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/Calvin_Harris"
+      },
+      {
+        "titulo": "Calvin Harris, Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/Calvin_Harris"
+      },
+      {
+        "titulo": "Com público recorde, Carnaval de Rua de São Paulo coloca DJ Calvin Harris no Guinness, Prefeitura de São Paulo",
+        "url": "https://prefeitura.sp.gov.br/web/sampa-news/w/com-p%C3%BAblico-recorde-carnaval-de-rua-de-s%C3%A3o-paulo-coloca-dj-calvin-harris-no-guinness"
+      },
+      {
+        "titulo": "Calvin Harris Closes Tomorrowland 2026 Weekend One, Techno Airlines",
+        "url": "https://www.technoairlines.com/blog/calvin-harris-tomorrowland-2026-mainstage-debut"
+      }
+    ]
   },
   {
     "slug": "barry-can-t-swim",
@@ -15899,30 +16050,71 @@
     "slug": "hernan-cattaneo",
     "nome": "Hernán Cattáneo",
     "nome_civil": "Hernán Cattáneo",
-    "nascimento": "4 de março de 1965, bairro de Caballito, Buenos Aires, Argentina",
-    "origem": "bairro de Caballito, Buenos Aires, Argentina",
+    "nascimento": "4 de março de 1965, Caballito, Buenos Aires (Argentina)",
+    "origem": "Buenos Aires, Argentina",
     "estilos": [
       "Progressive house",
       "Deep house",
-      "Melodic house"
+      "Melodic house",
+      "House"
     ],
-    "ativo_desde": "1979",
-    "resumo": "DJ argentino de progressive house, nascido em Buenos Aires em 1965. Foi residente da festa Clubland, na Pacha Buenos Aires, ganhou projeção com a Perfecto, de Paul Oakenfold, e criou o programa Resident.",
+    "ativo_desde": "década de 1980",
+    "resumo": "Hernán Cattáneo, chamado de \"El Maestro\", é DJ e produtor argentino de Buenos Aires e um dos nomes centrais do progressive house. Revelado na festa Clubland, da Pacha Buenos Aires, ganhou o mundo ao lado de Paul Oakenfold, fundou o selo Sudbeat em 2009 e comanda há mais de duas décadas o programa Resident.",
     "historia": [
-      "Hernán Cattáneo cresceu em Buenos Aires e desenvolveu interesse pela música internacional ainda adolescente, especialmente por bandas como Depeche Mode, New Order e Level 42. Aos 12 anos, ganhou seus primeiros toca-discos e começou a experimentar mixagens. Aos 14, já tocava em festas privadas e eventos sociais.",
-      "Em 1987, conheceu produções de Chicago house e Detroit techno, estilos que transformaram sua identidade musical. Durante os anos seguintes, passou a atuar em clubes argentinos e programas de rádio dedicados à música eletrônica. Na década de 1990, tornou-se residente da festa Clubland, realizada na Pacha Buenos Aires, onde teve contato com DJs internacionais como Paul Oakenfold e Danny Tenaglia.",
-      "O relacionamento com Oakenfold foi decisivo para sua expansão internacional. Posteriormente, passou a realizar apresentações na Europa e lançou trabalhos pela gravadora Perfecto. Ao longo da carreira, produziu diversas compilações e mixagens para séries como Renaissance: The Masters Series e Balance. Também desenvolveu o programa Resident, considerado uma referência para fãs de progressive house.",
-      "É reconhecido internacionalmente pela seleção musical, construção harmônica e capacidade de conduzir longos sets de progressive house. Sua importância histórica está principalmente no DJing e na curadoria, e os mixes e compilações são tão relevantes quanto as produções autorais."
+      "Hernán Cattáneo nasceu em 1965 no bairro de Caballito, em Buenos Aires. Na adolescência ouvia Simply Red, Level 42, Depeche Mode e New Order e acompanhava as novidades pela revista Billboard. Viu um DJ tocar pela primeira vez aos 15 anos, numa festa da escola. O techno de Detroit de Derrick May, Kevin Saunderson e Juan Atkins o fez querer seguir a profissão, e em 1987 conheceu o house de Chicago e Frankie Knuckles, sua maior influência.",
+      "Começou animando festas de 15 anos e eventos em Caballito e no Club Italiano. No fim dos anos 1980 trabalhou em discotecas como Sabash, em Villa Gesell, e Cinema, em Buenos Aires, e no início dos anos 1990 entrou para a equipe da rádio FM Z95, pioneira na difusão da música eletrônica na Argentina. Foi eleito DJ do ano no país em 1996 e 1997. Na segunda metade da década assumiu a residência da Clubland, na Pacha Buenos Aires; as fontes citam 1996 e 1998 como ano de início.",
+      "Na Pacha dividiu a cabine com Paul Oakenfold, Sasha, Danny Tenaglia e John Digweed. Oakenfold o convidou para abrir suas turnês mundiais, que o levaram a lugares como o Burning Man e o Red Rocks, nos Estados Unidos, e o contratou para a Perfecto Records, por onde saíram \"Deep Funk\" (2001), \"Satellites\" (2002) e \"Hubbub\" (2003), além da mixagem South America (2002). Vieram também residências na Cream de Liverpool e de Ibiza.",
+      "Em 2004 lançou o primeiro volume da série Renaissance: The Masters Series e, em 2006, Sequential, tido como um de seus trabalhos mais representativos. Entre 2001 e 2011 apareceu todos os anos no Top 100 da DJ Mag, com o 6º lugar em 2004 como melhor posição. Desde os anos 2000 apresenta um programa semanal de rádio, que virou o podcast Resident, com dez faixas inéditas por episódio e mais de 780 edições. Em 2009 fundou a Sudbeat, selo dedicado a novos produtores argentinos e sul-americanos.",
+      "Pela Sudbeat saíram suas parcerias com Soundexile, como \"Teleport\" e \"Altair\", esta remixada por Guy J em 2014, e pela Balance Music mixou Balance 026 (2014), Balance Presents Sudbeat (2017) e Balance Presents Sunsetstrip (2019). Em 2018 apresentou o espetáculo sinfônico Connected no Teatro Colón, com orquestra regida por Gerardo Gardelin, lançado na Netflix em 2021, e venceu o DJ Awards de progressive house em Ibiza. Desde 2019 comanda o Sunsetstrip, série de sets ao ar livre.",
+      "Conhecido por sets de 14 e até 24 horas e por longos B2Bs com Nick Warren, Danny Howells e Sasha, Cattáneo havia somado mais de 4 mil apresentações em mais de 300 cidades até 2025. Lançou em 2021 a autobiografia El sueño del DJ e recebeu em 2025 o Diploma ao Mérito dos Prêmios Konex. Seus sets misturam progressive house com house, techno e deep house, com ênfase na melodia e na construção gradual."
     ],
     "faixas_marcantes": [
-      "Satellites (com Soundexile)",
-      "Altair",
-      "Teleport (com John Tonks)",
-      "Balance 026",
-      "Renaissance: The Masters Series",
-      "Sunsetstrip"
+      "Satellites (2002)",
+      "Hubbub (com Cass e Mangan, 2003)",
+      "Renaissance: The Masters Series, Vol. 1 (mix, 2004)",
+      "Sequential (mix, 2006)",
+      "Teleport (com Soundexile)",
+      "Altair (com Soundexile)",
+      "Balance 026 (mix, 2014)",
+      "Balance Presents Sunsetstrip (mix, 2019)"
     ],
-    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
+    "gravadoras": [
+      "Sudbeat (selo próprio)",
+      "Perfecto Records",
+      "Renaissance",
+      "Balance Music",
+      "Bedrock"
+    ],
+    "marcos": [
+      "1996: eleito DJ do ano na Argentina, título repetido em 1997",
+      "2002: mixagem South America, pela Perfecto",
+      "2004: estreia na série Renaissance: The Masters Series e 6º lugar no Top 100 da DJ Mag",
+      "2009: funda o selo Sudbeat",
+      "2018: espetáculo sinfônico Connected no Teatro Colón e DJ Awards de progressive house",
+      "2019: lança o formato Sunsetstrip, em Buenos Aires",
+      "2021: autobiografia El sueño del DJ e estreia de Connected na Netflix",
+      "2025: Diploma ao Mérito dos Prêmios Konex"
+    ],
+    "referencias_musicais": [
+      "Frankie Knuckles",
+      "Derrick May",
+      "Kevin Saunderson",
+      "Juan Atkins",
+      "Inner City",
+      "Depeche Mode",
+      "New Order"
+    ],
+    "fontes": [
+      {
+        "titulo": "Hernán Cattáneo, Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/Hern%C3%A1n_Catt%C3%A1neo"
+      },
+      {
+        "titulo": "Hernán Cattáneo, Wikipedia (espanhol)",
+        "url": "https://es.wikipedia.org/wiki/Hern%C3%A1n_Catt%C3%A1neo"
+      }
+    ]
   },
   {
     "slug": "funk-tribu",
@@ -16023,32 +16215,64 @@
     "slug": "peggy-gou",
     "nome": "Peggy Gou",
     "nome_civil": "Kim Min-ji (김민지)",
-    "nascimento": "3 de julho de 1991, Incheon, Coreia do Sul",
-    "origem": "Incheon, Coreia do Sul",
+    "nascimento": "3 de julho de 1991, Incheon (Coreia do Sul)",
+    "origem": "Incheon, Coreia do Sul (radicada em Berlim, Alemanha)",
     "estilos": [
       "House",
       "Deep house",
       "Techno",
+      "Disco",
       "Dance"
     ],
     "ativo_desde": "2009",
-    "resumo": "DJ e produtora sul-coreana de Incheon, radicada em Berlim. Ganhou projeção em 2018 com \"It Makes You Forget (Itgehane)\", fundou a Gudu Records em 2019 e estourou em 2023 com \"(It Goes Like) Nanana\".",
+    "resumo": "Peggy Gou, nome artístico de Kim Min-ji, é DJ, produtora e cantora sul-coreana nascida em Incheon e radicada em Berlim. Estreou em disco pela Rekids em 2016, fundou a Gudu Records em 2019 e chegou ao topo das paradas com \"(It Goes Like) Nanana\" (2023), single do álbum I Hear You (2024).",
     "historia": [
-      "Peggy Gou nasceu na Coreia do Sul e começou a estudar piano aos oito anos. Aos 15, mudou-se para Londres para estudar inglês e posteriormente frequentou o London College of Fashion, desenvolvendo inicialmente uma carreira ligada à moda. Seu interesse pelo DJing começou em 2009, quando aprendeu técnicas básicas de mixagem com um amigo. Durante os anos seguintes, passou a estudar produção musical e a frequentar clubes europeus, aproximando-se do house e do techno underground.",
-      "Em 2013, mudou-se para Berlim para se dedicar à carreira musical. Sua projeção começou em 2016 com o lançamento de quatro EPs, incluindo The Art of War, que atraíram a atenção da cena eletrônica europeia. O reconhecimento internacional aumentou em 2018 com o EP Once, especialmente a faixa \"It Makes You Forget (Itgehane)\", na qual incorporou vocais em coreano.",
-      "Em 2019, fundou a gravadora Gudu Records e lançou sua participação na série DJ-Kicks, consolidando sua reputação como DJ e curadora musical. Em 2023, alcançou sucesso mundial com \"(It Goes Like) Nanana\", que ultrapassou os limites do circuito underground. No ano seguinte, lançou seu primeiro álbum, I Hear You (2024).",
-      "Combina house clássico, influências de disco e techno com uma estética visual fortemente vinculada à moda e à cultura contemporânea."
+      "Peggy Gou nasceu Kim Min-ji em Incheon, na Coreia do Sul, em 1991, e começou a estudar piano clássico aos oito anos. Aos 14 foi para Londres estudar inglês, voltou à Coreia aos 18 e retornou à capital inglesa para cursar moda no London College of Fashion. Depois de formada, trabalhou como correspondente em Londres da Harper's Bazaar coreana. Em 2009 aprendeu a discotecar com um amigo coreano e fez a primeira apresentação no Cirque Le Soir, no Soho.",
+      "Por um tempo tocou semanalmente no The Book Club, no leste de Londres. Em 2013 aprendeu a usar o Ableton Live e começou a produzir, concluindo em 2014 a primeira faixa, \"Hungboo\", batizada com o nome do herói de um conto popular coreano. Mudou-se então para Berlim e, em janeiro de 2016, estreou em disco com The Art of War Part 1, pela Rekids, do produtor Radio Slave. Outros EPs vieram no mesmo ano, entre eles Seek for Maktoop.",
+      "Em 2017 fez a primeira turnê norte-americana, estreou no Boiler Room em Nova York e tornou-se a primeira DJ coreana a tocar no Berghain, em Berlim. Em 2018 passou a lançar pela Ninja Tune e pela Phonica e saiu o EP Once, o primeiro em que canta. Nesse ano, \"It Makes You Forget (Itgehane)\", com vocais em coreano, venceu o prêmio de melhor faixa no AIM Independent Music Awards e entrou na trilha do jogo FIFA 19.",
+      "O ano de 2019 consolidou a carreira: entrou na lista 30 Under 30 Ásia da Forbes, lançou em fevereiro a marca de moda Kirin, com apoio de Virgil Abloh, e em março fundou a Gudu Records. Em junho saiu DJ-Kicks: Peggy Gou, pela !K7, que chegou ao 9º lugar da parada de vendas de álbuns dance e eletrônicos da Billboard. Também lançou \"Starry Night\" e estreou no Top 100 DJs da DJ Mag, na 80ª posição. Em 2021 vieram \"Nabi\", com Oh Hyuk, e \"I Go\".",
+      "Em junho de 2023, já pela XL Recordings, lançou \"(It Goes Like) Nanana\", que sampleia \"9 PM (Till I Come)\", do ATB, e alcançou o 1º lugar na Holanda e o 5º no Reino Unido. Depois vieram \"I Believe in Love Again\", com Lenny Kravitz, e \"1+1=11\", até o álbum de estreia, I Hear You, de 7 de junho de 2024. \"Nanana\" venceu como melhor faixa dance no BBC Radio 1 Dance Awards, e em 2025 ela chegou ao 12º lugar no Top 100 da DJ Mag e assinou \"D.A.N.C.E.\" para o filme F1.",
+      "Presença frequente em festivais como Coachella, Glastonbury, Dekmantel, Primavera Sound e Sónar, Peggy Gou combina house clássico, disco e techno com vocais em coreano e uma estética ligada à moda. Em 2026 remixou \"Where Do We Go\", de Ayra Starr, e lançou com a cantora nigeriana o single \"Wo, man\", pela XL."
     ],
     "faixas_marcantes": [
-      "(It Goes Like) Nanana",
-      "Starry Night",
-      "It Makes You Forget (Itgehane)",
-      "I Go",
-      "1+1=11",
-      "I Believe in Love Again (com Lenny Kravitz)",
-      "Back to One"
+      "It Makes You Forget (Itgehane) (2018)",
+      "Starry Night (2019)",
+      "DJ-Kicks: Peggy Gou (mix, 2019)",
+      "I Go (2021)",
+      "(It Goes Like) Nanana (2023)",
+      "I Believe in Love Again (com Lenny Kravitz, 2023)",
+      "1+1=11 (2024)",
+      "I Hear You (álbum, 2024)"
     ],
-    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
+    "gravadoras": [
+      "Rekids",
+      "Ninja Tune",
+      "Phonica",
+      "!K7",
+      "Gudu Records (selo próprio)",
+      "XL Recordings"
+    ],
+    "marcos": [
+      "2009: aprende a discotecar e faz a primeira apresentação, em Londres",
+      "2016: estreia em disco com The Art of War Part 1, pela Rekids",
+      "2017: primeira DJ coreana a tocar no Berghain, em Berlim",
+      "2018: \"It Makes You Forget (Itgehane)\" vence como melhor faixa no AIM Independent Music Awards",
+      "2019: funda a Gudu Records e lança DJ-Kicks pela !K7",
+      "2023: \"(It Goes Like) Nanana\", pela XL, chega ao 1º lugar na Holanda",
+      "2024: lança o álbum de estreia, I Hear You",
+      "2025: 12º lugar no Top 100 DJs da DJ Mag"
+    ],
+    "fontes": [
+      {
+        "titulo": "Peggy Gou, Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/Peggy_Gou"
+      },
+      {
+        "titulo": "Peggy Gou, Wikipédia",
+        "url": "https://pt.wikipedia.org/wiki/Peggy_Gou"
+      }
+    ]
   },
   {
     "slug": "mahmut-orhan",
@@ -16149,8 +16373,8 @@
     "slug": "dubfire",
     "nome": "Dubfire",
     "nome_civil": "Ali Shirazinia",
-    "nascimento": "19 de abril de 1971, Irã",
-    "origem": "Irã",
+    "nascimento": "19 de abril de 1971, Teerã (Irã)",
+    "origem": "Teerã, Irã (criado em Washington, D.C., Estados Unidos)",
     "estilos": [
       "Techno",
       "Minimal techno",
@@ -16158,28 +16382,74 @@
       "Progressive house"
     ],
     "ativo_desde": "1991",
-    "resumo": "DJ e produtor nascido no Irã e criado nos Estados Unidos, perto de Washington. Formou o Deep Dish em 1991, com Sharam, e a dupla ganhou um Grammy em 2002. Como Dubfire, desde 2006 a 2007, é referência do techno underground.",
+    "resumo": "Dubfire é o nome artístico de Ali Shirazinia, DJ e produtor nascido em Teerã e criado na região de Washington, D.C. Metade da dupla Deep Dish, que ganhou o Grammy pelo remix de \"Thank You\", de Dido, ele se firmou a partir de 2007 no techno e no minimal com faixas como \"RibCage\" e com o selo SCI+TEC.",
     "historia": [
-      "Dubfire nasceu no Irã e mudou-se com a família para os Estados Unidos aos sete anos. Cresceu na região de Washington, D.C., em contato com rock, punk, hip-hop, new wave e música eletrônica experimental. Durante a juventude, tocou guitarra em bandas locais e passou a frequentar lojas de discos especializadas em música alternativa. Seu interesse pelo house cresceu no final dos anos 1980.",
-      "Em 1990, conheceu Sharam Tayebi, também de origem iraniana. No ano seguinte, os dois formaram a dupla Deep Dish, que se tornou uma das referências internacionais do progressive house. Durante os anos 1990 e início dos anos 2000, Deep Dish conquistou reconhecimento com produções e remixes para artistas internacionais. Em 2002, recebeu um Grammy por seu remix de \"Thank You\", de Dido.",
-      "No auge da carreira da dupla, Ali decidiu explorar outras sonoridades e desenvolveu o projeto solo Dubfire. A partir de 2006 e 2007, passou a lançar produções de techno minimalista, como \"RibCage\", \"Roadkill\" e \"Emissions\", que foram importantes para sua consolidação na cena underground.",
-      "Em 2007, fundou a gravadora SCI+TEC Digital Audio e posteriormente desenvolveu apresentações audiovisuais como HYBRID e EVOLV.",
-      "Construiu duas carreiras internacionais distintas, uma no progressive house com Deep Dish e outra no techno underground como Dubfire."
+      "Ali Shirazinia nasceu em Teerã, em 1971, e mudou-se para os Estados Unidos aos sete anos. Cresceu na região de Washington, D.C., tocando guitarra em bandas da escola e ouvindo hip hop, jazz, dub, new wave e música industrial, além do punk local de grupos como Fugazi e Minor Threat. Na loja Yesterday And Today Records conheceu Kraftwerk, Ministry, Depeche Mode, Nitzer Ebb e Einstürzende Neubauten, base do gosto que levaria ao house no fim dos anos 1980.",
+      "Em 1990 conheceu Sharam Tayebi, outro iraniano radicado em Washington, e no ano seguinte os dois formaram o Deep Dish. O remix de \"Hideaway\", de De'Lacy, em 1995, chamou a atenção para a dupla, que lançou o álbum Junk Science em 1998, criou o selo Deep Dish Records e remixou Madonna e Janet Jackson. Em 2002 venceu o Grammy de melhor gravação remixada por \"Thank You\", de Dido, e entre 2001 e 2006 esteve sempre no top 20 da DJ Mag.",
+      "Em 2006 os dois partiram para carreiras solo, e Ali passou a usar só o nome Dubfire, já trocando o progressive house por techno e minimal. Em 2007 lançou o selo SCI+TEC e emplacou \"Roadkill\", \"RibCage\", primeiro lançamento da Desolat de Loco Dice, \"Emissions\", pela Minus de Richie Hawtin, e \"I Feel Speed\", versão de uma faixa do Love and Rockets cantada por ele. Também refez \"Spastik\", de Plastikman, e lançou pela Cocoon de Sven Väth.",
+      "O reconhecimento veio rápido: duas faixas entre as dez mais tocadas do ranking anual do Resident Advisor de 2007, o título de Player of the Year da revista International DJ em 2008 e prêmios do Beatport de melhor artista de minimal e de techno. Gravou com Oliver Huntemann, remixou Radio Slave e, em 2014, lançou \"Exit\", com Miss Kittin. Em meados da década estreou o HYBRID, show audiovisual que rodou o mundo e gerou a coletânea HYBRID: A Decade of Dubfire, de 2017.",
+      "Em 2022 lançou pelo SCI+TEC seu primeiro álbum solo, EVOLV, com 11 faixas e uma narrativa de ficção científica sobre um ser híbrido de homem e máquina, base de um novo show ao vivo. Paralelamente, o Deep Dish voltou a se reunir: em 2014 lançou o single \"Quincy\" e tocou no Ultra Music Festival, em 2024 anunciou o retorno definitivo com a turnê The Future e em 2025 lançou \"Midnight\", com Eynka e Wrabel, seguindo em turnê em 2026.",
+      "Dubfire construiu duas carreiras internacionais distintas: uma no progressive house e nos remixes para o pop com o Deep Dish, outra no techno e no minimal como artista solo e dono do SCI+TEC, selo que completou dez anos em 2017 com a coletânea SCI+TEC '10'. O contraste entre as fases resume a trajetória de um artista formado no punk e na música industrial de Washington, que encontrou no techno espaço para experimentar com som e imagem."
     ],
     "faixas_marcantes": [
-      "RibCage",
-      "Roadkill",
-      "Emissions",
-      "I Feel Speed",
-      "Exit",
-      "Grindhouse (Dubfire Terror Planet Remix)",
-      "Spastik (Dubfire Rework)",
+      "RibCage (2007)",
+      "Roadkill (2007)",
+      "Emissions (2007)",
+      "I Feel Speed (2007)",
+      "Spastik (Dubfire Rework, 2007)",
+      "Exit (com Miss Kittin, 2014)",
       "Say Hello (Deep Dish)",
-      "Flashdance (Deep Dish)",
-      "Dreams (Deep Dish)",
-      "Dubai (Deep Dish)"
+      "EVOLV (álbum, 2022)"
     ],
-    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve."
+    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
+    "gravadoras": [
+      "SCI+TEC (selo próprio)",
+      "Deep Dish Records",
+      "Desolat",
+      "Minus",
+      "Cocoon"
+    ],
+    "marcos": [
+      "1991: forma o Deep Dish com Sharam Tayebi",
+      "1995: remix de \"Hideaway\", de De'Lacy, revela a dupla",
+      "2002: Deep Dish vence o Grammy pelo remix de \"Thank You\", de Dido",
+      "2007: funda o selo SCI+TEC e lança \"RibCage\", \"Roadkill\" e \"Emissions\"",
+      "2008: eleito Player of the Year pela revista International DJ",
+      "2017: coletânea HYBRID: A Decade of Dubfire",
+      "2022: primeiro álbum solo, EVOLV",
+      "2024: Deep Dish anuncia retorno definitivo com a turnê The Future"
+    ],
+    "referencias_musicais": [
+      "Kraftwerk",
+      "Depeche Mode",
+      "Nitzer Ebb",
+      "Ministry",
+      "Einstürzende Neubauten",
+      "Fugazi",
+      "Minor Threat"
+    ],
+    "fontes": [
+      {
+        "titulo": "Dubfire, Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/Dubfire"
+      },
+      {
+        "titulo": "Dubfire, Wikipedia (alemão)",
+        "url": "https://de.wikipedia.org/wiki/Dubfire"
+      },
+      {
+        "titulo": "Deep Dish (duo), Wikipedia (inglês)",
+        "url": "https://en.wikipedia.org/wiki/Deep_Dish_(band)"
+      },
+      {
+        "titulo": "Dubfire, Insomniac",
+        "url": "https://www.insomniac.com/?p=651"
+      },
+      {
+        "titulo": "How superstar producer Dubfire takes his sound beyond the dancefloor on debut LP, EVOLV, MusicTech",
+        "url": "https://musictech.com/features/interviews/dubfire-debut-lp-evolv/"
+      }
+    ]
   },
   {
     "slug": "nicole-moudaber",
@@ -17084,30 +17354,85 @@
   {
     "slug": "carol-favero",
     "nome": "Carol Fávero",
-    "nascimento": "Juiz de Fora, Minas Gerais, Brasil",
+    "nascimento": "Juiz de Fora (MG)",
     "origem": "Juiz de Fora, Minas Gerais, Brasil",
     "estilos": [
-      "House",
       "Tech house",
+      "House",
       "Bass house"
     ],
     "ativo_desde": "2016",
-    "resumo": "DJ e produtora de Juiz de Fora, de house, tech house e bass house. Começou como DJ em 2016 e foi a primeira brasileira a lançar pela StereoHype, selo de James Hype, em 2021.",
+    "resumo": "Carol Fávero é DJ e produtora de Juiz de Fora (MG) dedicada ao tech house e ao house. Lançou pela StereoHype, selo de James Hype, em 2021, e em 2023 tornou-se a primeira brasileira a lançar pela australiana Club Sweat Records.",
     "historia": [
-      "Carol Fávero nasceu em Juiz de Fora e começou sua trajetória profissional trabalhando com eventos. Seu interesse pela música eletrônica cresceu com a influência de DJs residentes do Privilège, especialmente Marquinhus SP e Sandro Valente. Em 2016, começou a atuar como DJ. Três anos depois, passou a dedicar-se também à produção musical, desenvolvendo faixas próprias de house e tech house.",
-      "Seus primeiros lançamentos profissionais ganharam força em 2020, recebendo apoio de artistas como Alok, James Hype, KVSH, Ashibah e Dubdogz. Em 2021, tornou-se a primeira artista brasileira a lançar pela StereoHype, gravadora de James Hype. Suas produções entraram em rankings do Beatport, ampliando seu reconhecimento entre DJs nacionais e internacionais.",
-      "Posteriormente, realizou apresentações em clubes e festivais como Privilège, Park.Art, Universo Paralello e D-EDGE. Também ganhou maior visibilidade com sua participação no remix de \"Acorda Pedrinho\", em colaboração com KVSH, produção que circulou amplamente nas redes sociais e pistas brasileiras. Em setembro de 2026, apresentou-se em B2B com Carola no D-EDGE São Paulo, antes de integrar o Unlimited de outubro.",
-      "Combina groove de house com basslines mais intensas, construindo sets orientados ao tech house contemporâneo."
+      "Carol Fávero nasceu em Juiz de Fora, na Zona da Mata mineira, e começou a vida profissional trabalhando com eventos. O interesse pela música eletrônica cresceu na pista do Privilège, clube da cidade, e ela credita aos residentes Marquinhus SP e Sandro Valente a forma como passou a enxergar o house e suas vertentes. Estreou como DJ em 2016 e, três anos depois, começou a produzir as próprias faixas.",
+      "Os primeiros singles saíram entre o fim de 2020 e o início de 2021, como \"Groove\", \"Ring\" e \"Sunday Best\", por selos nacionais como Blaah!, Braslive e HubRecords. Em julho de 2020, a coluna de Cesar Romero na Tribuna de Minas registrou seu primeiro set internacional, transmitido por uma festa da rádio boliviana TerrAfter. No mesmo período, ela passou a dividir line-ups com nomes como Vintage Culture, KVSH, Mochakk e Cat Dealers.",
+      "A virada veio em 2021, quando lançou pela StereoHype, gravadora de James Hype. \"Dance With The Groove\" estreou em três paradas do Beatport: 8º lugar no Hype Tech House, 27º no Hype Top 100 e 37º no Top 100 de tech house, a primeira vez dela nos rankings da plataforma. Seguiram-se faixas como \"Porn Music\", \"Good Girl\", \"Losing Control\", com Molothav, e \"Feeling This (Calabria)\", com Voltech.",
+      "Em 2023, \"Need It\" saiu pela Club Sweat Records, e Carol tornou-se a primeira brasileira no catálogo do selo australiano, por onde voltaria a lançar em 2025 com \"I Got You\", \"Dream of You\" e \"Get Up\". No mesmo ano fez sua primeira turnê internacional, com datas em Las Vegas e Tampa, nos Estados Unidos. No Brasil, tocou em palcos como Privilège, Ame Laroc, Elrow, Carnaval do Bem, Ultra Brasil, Park.Art e Universo Paralello.",
+      "Em novembro de 2025, a DJ Carola incluiu \"I Got U\" numa seleção da Mixmag com 16 faixas de mulheres da cena house e techno brasileira e a apontou como uma das figuras mais fortes do tech house nacional. Em 2026, Carol tocou no D-EDGE, em São Paulo, na Freak Chic de junho, ao lado de Gabe e Letícia Stempi, e em B2B com Carola na Nave de 12 de setembro, antes de integrar o Unlimited de outubro. No mesmo ano lançou \"SUNSHINE\", com 3Beat, e o EP Dopamine.",
+      "O som de Carol Fávero combina o groove do house com linhas de baixo mais pesadas, típicas do tech house e do bass house contemporâneos, em sets pensados para a pista. Produtora prolífica, mantém desde 2020 um ritmo constante de singles e é um dos nomes femininos de destaque da nova geração do tech house brasileiro."
     ],
     "faixas_marcantes": [
-      "Acorda Pedrinho (Remix)"
+      "Dance With The Groove (2021)",
+      "Put Your Records On (2021)",
+      "Losing Control (com Molothav, 2022)",
+      "Feeling This (Calabria) (com Voltech, 2022)",
+      "Need It (2023)",
+      "I Got You (2025)",
+      "SUNSHINE (com 3Beat, 2026)",
+      "Dopamine (EP, 2026)"
     ],
     "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
     "foto": {
       "credito": "Foto de divulgação, via Deezer",
       "licenca": "Divulgação",
       "pagina": "https://www.deezer.com/artist/98102202"
-    }
+    },
+    "gravadoras": [
+      "StereoHype",
+      "Club Sweat Records",
+      "Blaah!",
+      "Braslive",
+      "HubRecords"
+    ],
+    "marcos": [
+      "2016: começa a carreira de DJ",
+      "2020: primeiro single, \"Groove\", e primeiro set internacional, pela rádio boliviana TerrAfter",
+      "2021: \"Dance With The Groove\" sai pela StereoHype e estreia em três paradas do Beatport",
+      "2023: \"Need It\" faz dela a primeira brasileira a lançar pela Club Sweat Records",
+      "2023: primeira turnê internacional, com datas em Las Vegas e Tampa (EUA)",
+      "2025: \"I Got U\" entra na seleção de Carola para a Mixmag",
+      "2026: B2B com Carola no D-EDGE (12 de setembro) e EP Dopamine"
+    ],
+    "referencias_musicais": [
+      "Marquinhus SP",
+      "Sandro Valente"
+    ],
+    "fontes": [
+      {
+        "titulo": "Carol Fávero, biografia e discografia, Deezer",
+        "url": "https://www.deezer.com/de/artist/98102202"
+      },
+      {
+        "titulo": "Carol Fávero: Dance With The Groove, Play BPM",
+        "url": "https://playbpm.com.br/lancamentos/nacionais/carol-favero-dance-with-the-groove"
+      },
+      {
+        "titulo": "16 tracks from women energising Brazil's house and techno scene, curated by Carola, Mixmag",
+        "url": "https://mixmag.net/feature/carola-brazil-dj-women-house-techno-producers"
+      },
+      {
+        "titulo": "Coluna Cesar Romero (19/07/2020), Tribuna de Minas",
+        "url": "https://tribunademinas.com.br/colunas/cesar-romero/19-07-2020/390326.html?amp=1"
+      },
+      {
+        "titulo": "Freak Chic D-EDGE SP (26/06/2026), Visite São Paulo",
+        "url": "https://visitesaopaulo.com/evento/freak-chic-d-edge-sp-pres-p1-gabe-carol-favero-leticia-stempi-lounge-tomba-trio-2026/"
+      },
+      {
+        "titulo": "Nave D-EDGE SP (12/09/2026), Visite São Paulo",
+        "url": "https://visitesaopaulo.com/evento/nave-d-edge-sp-pres-p1-adria-b2b-malu-carola-b2b-carol-favero-taroba-p2-barja-long-set-lounge-she-mllr-2026/"
+      }
+    ]
   },
   {
     "slug": "raiza-koh-sante",
@@ -17340,7 +17665,7 @@
   {
     "slug": "viot",
     "nome": "Viot",
-    "nome_civil": "Lauro Viotti Alexandre",
+    "nome_civil": "Lauro Viotti",
     "origem": "Minas Gerais, Brasil",
     "estilos": [
       "Tech house",
@@ -17349,30 +17674,71 @@
       "House com influências brasileiras"
     ],
     "ativo_desde": "2021",
-    "resumo": "DJ e produtor mineiro de tech house que mistura referências brasileiras ao house internacional. Lançou por Hot Creations, Solid Grooves e Black Book, tem \"Space Cowboy\" e \"Blitz (Você Não Soube Me Amar)\" e fundou a Casa Bonita Records.",
+    "resumo": "Viot é o nome artístico de Lauro Viotti, DJ e produtor de tech house de Minas Gerais que mistura bossa nova, rap nacional, pop, house e techno. Ganhou projeção com \"Space Cowboy\" (2022), estreou na Hot Creations com \"FMF\" (2023) e fundou com Brisotti o selo Casa Bonita, por onde lançou \"Blitz (Você Não Soube Me Amar)\" e \"Lucro\", com BaianaSystem.",
     "historia": [
-      "Viot é um DJ e produtor mineiro que ganhou reconhecimento pela capacidade de incorporar referências da cultura brasileira ao house contemporâneo. Suas produções combinam elementos de bossa nova, hip-hop nacional, pop, disco, house e techno, construindo uma identidade musical que vai além do tech house convencional.",
-      "O projeto ganhou força a partir de 2021, com lançamentos que chamaram a atenção de artistas como Jamie Jones, Michael Bibi, The Martinez Brothers, Marco Carola e FISHER. Nos anos seguintes, passou a publicar produções por gravadoras como Hot Creations, Solid Grooves, Black Book Records, Higher Ground e Catch & Release.",
-      "Um dos marcos foi \"Space Cowboy\", que alcançou destaque no Beatport. Sua faixa \"Blitz (Você Não Soube Me Amar)\", desenvolvida com referências da banda Blitz, ampliou o reconhecimento do projeto. Também colaborou com BaianaSystem em \"Lucro\", com Maz em \"Ocean\" e com Vintage Culture em \"Anthem\".",
-      "Além das produções, apresentou-se em eventos como Tomorrowland Brasil, Só Track Boa, Hï Ibiza, Ushuaïa Ibiza e UNVRS. Em parceria com Brisotti, fundou a Casa Bonita Records, gravadora dedicada à aproximação entre música eletrônica e identidade cultural brasileira.",
-      "É um dos produtores da nova geração brasileira que mais exploram referências nacionais dentro da estética internacional do tech house."
+      "Viot é o projeto do DJ e produtor mineiro Lauro Viotti, que ganhou espaço na música eletrônica ao aproximar o house contemporâneo da cultura brasileira. Suas faixas misturam bossa nova, rap nacional, pop, disco, house e techno, e o resultado vai além do tech house convencional. Entre os primeiros trabalhos estão \"L'amour\", com Gabe, de 2021, e um remix de \"Como Eu Te Quero\" com Gabe e o rapper Black Alien.",
+      "A projeção internacional começou com \"Space Cowboy\", lançada em julho de 2022 pela Catch & Release, que chegou ao 68º lugar do Top 100 geral do Beatport. Em agosto de 2023 Viot estreou na Hot Creations, selo de Jamie Jones, com \"FMF\", parceria com Vitor Vinter que ganhou remix de Bruno Furlan. Em outubro saiu o EP Pop It Low, com Trallez, pela Black Book Records, e em janeiro de 2024 \"Betty\", pela Revival New York. O catálogo inclui ainda Solid Grooves, Higher Ground e Nervous.",
+      "Suas faixas entraram nos sets de Jamie Jones, Michael Bibi, The Martinez Brothers, Marco Carola, Mochakk, Diplo, Loco Dice, FISHER, Vintage Culture, BLOND:ISH e Carlita. Em junho de 2024 assinou a mixagem Select Cuts do site When We Dip e, em dezembro, apareceu ao lado de Vintage Culture em \"Anthem\", da coletânea Vintage Culture & Friends, Vol. 6.",
+      "Em novembro de 2024 saiu \"Blitz (Você Não Soube Me Amar)\", releitura feita com a banda Blitz que chegou ao 51º lugar no Beatport e inaugurou a Casa Bonita, gravadora que Viot fundou com Brisotti para aproximar a música eletrônica da identidade cultural brasileira. Pelo selo saiu também \"Lucro\", com BaianaSystem, em setembro de 2025. No mesmo ano lançou \"Ocean\", com Maz e Anduze, pela Dawn Patrol, e em 2026 vieram \"Flower\", \"Flex/Cardio\" e \"The Ride\".",
+      "Nos palcos, Viot passou por Tomorrowland Brasil, Só Track Boa, Hï Ibiza, Ants no Ushuaïa Ibiza, Taraka, no Equador, Brunch Electronik, Green Valley e Laroc, e estreou no UNVRS, em Ibiza, a convite de Carl Cox. É um dos produtores da nova geração brasileira que mais exploram referências nacionais dentro da estética internacional do tech house."
     ],
     "faixas_marcantes": [
-      "Space Cowboy",
-      "Blitz (Você Não Soube Me Amar)",
-      "Lucro (com BaianaSystem)",
-      "Ocean (com Maz)",
-      "Anthem (com Vintage Culture)",
-      "Betty",
-      "FMF",
-      "Pop It Low"
+      "Space Cowboy (2022)",
+      "FMF (com Vinter, 2023)",
+      "Pop It Low (com Trallez, 2023)",
+      "Betty (2024)",
+      "Anthem (com Vintage Culture, 2024)",
+      "Blitz (Você Não Soube Me Amar) (com Blitz, 2024)",
+      "Ocean (com Maz e Anduze, 2025)",
+      "Lucro (com BaianaSystem, 2025)"
     ],
     "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
     "foto": {
       "credito": "Foto de divulgação, via Deezer",
       "licenca": "Divulgação",
       "pagina": "https://soundcloud.com/viotmusic"
-    }
+    },
+    "gravadoras": [
+      "Casa Bonita (selo próprio, com Brisotti)",
+      "Hot Creations",
+      "Solid Grooves",
+      "Black Book Records",
+      "Catch & Release",
+      "Revival New York",
+      "Higher Ground",
+      "Nervous Records",
+      "Dawn Patrol Records"
+    ],
+    "marcos": [
+      "2022: \"Space Cowboy\" chega ao 68º lugar do Top 100 geral do Beatport",
+      "2023: estreia na Hot Creations com \"FMF\", parceria com Vitor Vinter",
+      "2023: EP Pop It Low, com Trallez, pela Black Book Records",
+      "2024: \"Anthem\", com Vintage Culture",
+      "2024: \"Blitz (Você Não Soube Me Amar)\" inaugura o selo Casa Bonita",
+      "2025: lança \"Lucro\", com BaianaSystem"
+    ],
+    "fontes": [
+      {
+        "titulo": "Viot, Volumo",
+        "url": "https://volumo.com/artist/167162-viot"
+      },
+      {
+        "titulo": "Viot, Vitor Vinter e Bruno Furlan comentam EP lançado pela Hot Creations, Play BPM",
+        "url": "https://playbpm.com.br/lancamentos/nacionais/viot-vitor-vinter-e-bruno-furlan-comentam-ep-lancado-pela-hot-creations"
+      },
+      {
+        "titulo": "Select Cuts 305: Viot, When We Dip",
+        "url": "https://whenwedip.com/2024/06/select-cuts-305-viot"
+      },
+      {
+        "titulo": "Viot, Music Metrics Vault",
+        "url": "https://www.musicmetricsvault.com/artists/viot/7fld8KFMgCmJlsVOJ1oo4M"
+      },
+      {
+        "titulo": "VIOT, discografia, Deezer",
+        "url": "https://www.deezer.com/artist/6324212"
+      }
+    ]
   },
   {
     "slug": "sterium",
@@ -17647,37 +18013,82 @@
   {
     "slug": "gabss",
     "nome": "Gabss",
-    "nome_civil": "Gabriel dos Santos",
     "estilos": [
       "House",
-      "Tech house",
       "Indie dance",
+      "Tech house",
       "Acid",
       "Progressive house"
     ],
     "ativo_desde": "2014",
-    "resumo": "DJ e produtor brasileiro com mais de dez anos de atuação, de house e tech house. Lançou \"LOST\" com Vintage Culture, em 2023, e criou a Parrots Records.",
+    "resumo": "Gabss é DJ e produtor brasileiro de house e indie dance com mais de uma década de carreira. Assina com Vintage Culture \"LOST\", lançada em dezembro de 2025, que chegou ao 1º lugar geral do Beatport no início de 2026, e lança por selos como STMPD RCRDS, Nervous Records, Black Book e EXE Audio.",
     "historia": [
-      "Gabss é um DJ e produtor brasileiro com mais de dez anos de atuação na música eletrônica. Durante sua trajetória, desenvolveu experiência não apenas como DJ, mas também como produtor de eventos e gestor de gravadoras. Suas primeiras produções ganharam espaço em selos como Aia Records, Totoyov Records e Namata Records, além de gravadoras internacionais como ENCASA Records e Bella Vie Music Records. Também criou a Parrots Records, desenvolvendo showcases em cidades como Curitiba, Brusque e Balneário Camboriú.",
-      "Seu crescimento profissional foi impulsionado por apresentações em clubes como El Fortin, Matahari e outros estabelecimentos brasileiros. Posteriormente, passou a receber apoio de artistas internacionais como The Martinez Brothers e Marco Carola, que incorporaram suas produções aos próprios sets.",
-      "Em 2023, lançou \"LOST\", colaboração com Vintage Culture que se tornou um dos principais marcos de sua carreira e ampliou sua projeção internacional. Durante os anos seguintes, passou a trabalhar com gravadoras como Hellbent, Maccabi House e Rawthentic. Também desenvolveu um catálogo que explora house, tech house e sonoridades mais experimentais. Em outubro de 2026, apresentou-se no Club Vibe, em Curitiba, ao lado da dupla Solarce Brothers.",
-      "Combina house underground com referências de acid, techno e progressive, mantendo uma abordagem musical energética."
+      "Antes da música eletrônica, Gabss fazia batidas de rap para amigos na garagem de casa e planejava ser produtor de hip hop. Ao longo de mais de dez anos de carreira, atuou não só como DJ, mas também como produtor de eventos e gestor de gravadora. Os primeiros lançamentos saíram por selos como Aia Records, Totoyov Records e Namata Records e por casas estrangeiras como ENCASA Records e Bella Vie Music Records.",
+      "Criou a Parrots Records, com showcases em cidades como Curitiba, Brusque e Balneário Camboriú, e por ela lançou, em 2022, \"Stoned\". Tocou em clubes como El Fortin e Matahari e circulou por Brasil, Argentina, Bolívia e Paraguai. O catálogo cresceu a partir de 2023 com o EP Boladão, com Fezzo, o EP Batucada e faixas como \"Its Acid\" e \"Acid Kiss\", seguidos em 2024 pelo EP Time, \"Proposta\" e \"Lollipop\", com passagens por selos como Hellbent, Maccabi House e Rawthentic.",
+      "Em 2025 saíram \"Danger\", com Fezzo, o EP Pensamento, \"Dynamite\", com Sebastian, e \"Electricity\", e \"She Freaks\", pela EXE Audio, chegou ao top 3 da parada de indie dance do Beatport. Gabss terminou o ano como o 10º artista de indie dance mais vendido do Beatport no mundo, entrou na lista de 101 produtores do ano do 1001Tracklists e tocou na festa de dez anos do Só Track Boa.",
+      "\"LOST\" nasceu como um edit de Gabss para a faixa de Frank Ocean, do álbum Channel Orange (2012), e circulou em clubes e festivais ao longo de 2025 até sair oficialmente em 19 de dezembro pela Affairs, selo de Vintage Culture, como parceria dos dois. No início de 2026, a faixa chegou ao 1º lugar geral do Beatport. Em março veio \"Side To Side\", pela STMPD RCRDS, de Martin Garrix, seguida por \"So Good\", o EP Blind e \"Bottles\", com Balanka.",
+      "Em 2026 fez sua primeira passagem pelos Estados Unidos, com datas no Brooklyn, em Orlando, Washington, Vail e Miami, e suas faixas foram tocadas por nomes como Maceo Plex, Solomun, Michael Bibi, Jamie Jones, CamelPhat, Loco Dice, The Martinez Brothers e Mochakk. Em outubro de 2026 tocou no Club Vibe, em Curitiba, ao lado da dupla Solarce Brothers. Seu som combina house underground com acid, indie dance, techno e progressive, em sets energéticos que ele prefere estender por pelo menos duas horas."
     ],
     "faixas_marcantes": [
-      "LOST (com Vintage Culture)",
-      "Runaway Love (com GIU)",
-      "Arcade",
-      "Danger (com FEZZO)",
-      "Side to Side",
-      "So Good",
-      "Vibrate"
+      "LOST (com Vintage Culture, 2025)",
+      "She Freaks (2025)",
+      "Danger (com Fezzo, 2025)",
+      "Dynamite (com Sebastian, 2025)",
+      "Vibrate (2026)",
+      "Side To Side (2026)",
+      "So Good (2026)",
+      "Bottles (com Balanka, 2026)"
     ],
     "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
     "foto": {
       "credito": "Gray Area Magazine, divulgação",
       "licenca": "Divulgação",
       "pagina": "https://grayarea.co/magazine/gabss-the-producer-behind-one-of-2026-s-biggest-records"
-    }
+    },
+    "gravadoras": [
+      "Affairs",
+      "STMPD RCRDS",
+      "Nervous Records",
+      "Black Book Records",
+      "EXE Audio",
+      "When Stars Align",
+      "Maccabi House",
+      "Parrots Records (selo próprio)"
+    ],
+    "marcos": [
+      "2014: início da carreira",
+      "2022: lança \"Stoned\" pelo selo Parrots Records",
+      "2025: 10º artista de indie dance mais vendido do Beatport no ano",
+      "2025: \"LOST\", com Vintage Culture, sai pela Affairs (19 de dezembro)",
+      "2026: \"LOST\" chega ao 1º lugar geral do Beatport",
+      "2026: \"Side To Side\" pela STMPD RCRDS e primeira turnê nos Estados Unidos"
+    ],
+    "fontes": [
+      {
+        "titulo": "Gabss: The Producer Behind One of 2026's Biggest Records, Gray Area",
+        "url": "https://grayarea.co/magazine/gabss-the-producer-behind-one-of-2026-s-biggest-records"
+      },
+      {
+        "titulo": "From Beatport #1 to STMPD: Brazil's Gabss moves with Side To Side, Beatportal",
+        "url": "https://www.beatportal.com/articles/1361330-from-beatport-1-to-stmpd-brazils-gabss-moves-with-side-to-side-into-a-wider-global-circuit"
+      },
+      {
+        "titulo": "Entre o underground e o mainstream, Vintage Culture lança Lost, Billboard Brasil",
+        "url": "https://billboard.com.br/vintage-culture-lost-entrevista/"
+      },
+      {
+        "titulo": "Gabss and Vintage Culture release collaborative single Lost, Electronic Groove",
+        "url": "https://electronicgroove.com/gabss-and-vintage-culture-release-collaborative-single-lost/"
+      },
+      {
+        "titulo": "Gabss, Volumo",
+        "url": "https://volumo.com/artist/57193-gabss"
+      },
+      {
+        "titulo": "Gabss, discografia, Deezer",
+        "url": "https://www.deezer.com/artist/423421391"
+      }
+    ]
   },
   {
     "slug": "solarce-brothers",
@@ -17686,31 +18097,75 @@
     "origem": "Belo Horizonte, Minas Gerais, Brasil",
     "estilos": [
       "House",
-      "Disco house",
-      "Funk house",
-      "Música eletrônica de influência brasileira"
+      "Tech house",
+      "Minimal",
+      "Disco house"
     ],
     "ativo_desde": "2024",
-    "resumo": "Dupla de irmãos de Belo Horizonte, Davi e Luca, de house com disco, jazz, funk e soul. Têm residência na festa Finesse, criaram a Ceerca e participaram de um evento do Mochakk Calling em Amsterdã, em 2026.",
+    "resumo": "Solarce Brothers é a dupla dos irmãos Davi e Luca, de Belo Horizonte (MG), que faz house com referências de disco, jazz, soul e música brasileira. Lançou por selos como Moon Harbour, Nervous Records e MOTRAXX, de Mochakk, criou a festa Ceerca em 2024 e em 2026 tocou no Nuits Sonores, na França, e no Mochakk Calling do ADE, em Amsterdã.",
     "historia": [
-      "Solarce Brothers é uma dupla formada pelos irmãos Davi e Luca, cuja identidade musical combina house com influências de disco, jazz, funk e soul. A formação artística foi desenvolvida a partir da cena eletrônica de Belo Horizonte, onde os irmãos passaram a se apresentar em festas e clubes ligados à música underground.",
-      "A proposta do projeto é reunir referências antigas e contemporâneas, incorporando elementos da cultura brasileira às produções e seleções. Durante a carreira, compartilharam line-ups com Anderson Noise, Eli Iwasa, Gabe e Viot, além de participar de eventos realizados em diferentes regiões do país.",
-      "A dupla conquistou residência na festa Finesse, além de apresentações recorrentes na Smile, evento tradicional da cena de Belo Horizonte. Também criou a própria festa, Ceerca, que registrou ingressos esgotados em sua primeira edição. Em 2025, passou a integrar com maior frequência programações do D-EDGE e de outros clubes nacionais. Durante 2026, ampliou sua presença internacional. Em outubro, participou de um evento do projeto Mochakk Calling em Amsterdã, ao lado de Mochakk e outros artistas. No final do mesmo mês, apresentou-se no Club Vibe, em Curitiba, com Gabss.",
-      "Combinação de house e referências de funk, jazz, disco e soul, com forte influência da cultura musical brasileira."
+      "Solarce Brothers é uma dupla formada pelos irmãos Davi e Luca, de Belo Horizonte. Segundo o perfil publicado pelo Amsterdam Dance Event, os dois têm formação em música clássica e estudam house desde muito jovens. A proposta do projeto é juntar referências antigas e contemporâneas: disco, jazz, funk e soul aparecem ao lado de elementos da cultura brasileira, numa leitura do house que transita também pelo tech house e pelo minimal.",
+      "Os primeiros lançamentos saíram em 2024. Em outubro vieram \"Green Juice\", pela norte-americana Nervous Records, e \"Salty Pepper\", pela Nature Recordings; em novembro, o EP Prometo, com a faixa-título e \"Lumana\", pela alemã Moon Harbour, misturando percussão tropical, vocais soul e grooves profundos. Em janeiro de 2025, \"Outdoors\" saiu pela LTF Records, selo de Franky Rizardo, como o primeiro lançamento brasileiro do catálogo. A dupla também gravou por Clover Club, Nothing But e NAIMA.",
+      "Na cena de Belo Horizonte, os irmãos conquistaram residência na festa Finesse e tocaram com frequência na Smile, evento tradicional da cidade. Em 2024 lançaram a própria festa, Ceerca, cujas primeiras edições esgotaram. Dividiram line-ups com Honey Dijon, Mochakk, Chaos in the CBD, Vintage Culture e Seth Troxler, além de nomes brasileiros como Anderson Noise, Eli Iwasa, Gabe e Viot, e em 2025 passaram a aparecer com mais frequência na programação do D-EDGE e de outros clubes do país.",
+      "As produções ganharam apoio de Mochakk, Toman, Maz e The Martinez Brothers, e a aproximação com Mochakk marcou 2026. Em 15 de maio a dupla tocou no festival Nuits Sonores, em Lyon, numa noite com curadoria do DJ paulista. \"One Woman Man\", parceria com Jame C, foi a faixa central da coletânea MOTRAXX Volume 2, do selo de Mochakk, que em outubro lançou também \"Corazón\", outra colaboração dos três.",
+      "No ADE de 2026, os irmãos participaram em 21 de outubro do debate Brazil Calling, sobre a nova geração brasileira na música eletrônica global, ao lado de Mochakk, Eli Iwasa e nocapz, e abriram em 23 de outubro o Mochakk Calling no Gashouder, em B2B com Juliana X. No fim do mesmo mês tocaram no Club Vibe, em Curitiba, com Gabss. O som da dupla combina house e minimal com influências de funk, jazz, disco e soul e forte presença da musicalidade brasileira."
     ],
     "faixas_marcantes": [
-      "Cerca",
-      "Prometo EP",
-      "Green Juice",
-      "Outdoors",
-      "Fascinado"
+      "Green Juice (2024)",
+      "Salty Pepper (2024)",
+      "Prometo (2024)",
+      "Lumana (2024)",
+      "Outdoors (2025)",
+      "Fascinado",
+      "One Woman Man (com Jame C)",
+      "Corazón (com Jame C, 2026)"
     ],
     "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
     "foto": {
       "credito": "Foto de divulgação, via Beatport",
       "licenca": "Divulgação",
       "pagina": "https://www.beatport.com/artist/solarce-brothers/1184450"
-    }
+    },
+    "gravadoras": [
+      "Moon Harbour",
+      "Nervous Records",
+      "Nature Recordings",
+      "LTF Records",
+      "MOTRAXX",
+      "Clover Club",
+      "Nothing But",
+      "NAIMA"
+    ],
+    "marcos": [
+      "2024: lançam a festa Ceerca, com primeiras edições esgotadas",
+      "2024: EP Prometo pela Moon Harbour",
+      "2025: \"Outdoors\" é o primeiro lançamento brasileiro da LTF Records",
+      "2026: tocam no Nuits Sonores, em Lyon, em noite com curadoria de Mochakk (15 de maio)",
+      "2026: \"Corazón\", com Jame C, pela MOTRAXX",
+      "2026: debate Brazil Calling e set no Mochakk Calling do ADE, no Gashouder (23 de outubro)"
+    ],
+    "fontes": [
+      {
+        "titulo": "Solarce Brothers (BR), Amsterdam Dance Event",
+        "url": "https://www.amsterdam-dance-event.nl/en/artists-speakers/solarce-brothers/2803185/"
+      },
+      {
+        "titulo": "Solarce Brothers, Nuits Sonores",
+        "url": "https://nuits-sonores.com/?p=26017"
+      },
+      {
+        "titulo": "ADE: Gashouder presents Mochakk Calling, Festivalfans",
+        "url": "https://festivalfans.nl/event/ade-gashouder-presents-mochakk-calling/"
+      },
+      {
+        "titulo": "Mochakk builds on MOTRAXX with Volume 2, press release",
+        "url": "https://the-media-nanny_5.prowly.com/449536-mochakk-builds-on-motraxx-with-volume-2-spotlighting-brazils-fast-rising-artists"
+      },
+      {
+        "titulo": "Solarce Brothers, discografia, Deezer",
+        "url": "https://www.deezer.com/artist/253477642"
+      }
+    ]
   },
   {
     "slug": "curol",
