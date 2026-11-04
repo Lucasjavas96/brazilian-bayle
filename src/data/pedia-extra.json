@@ -265,9 +265,10 @@
   },
   {
     "nome": "Badaro",
-    "estilo": "Música eletrônica underground",
+    "estilo": "House",
     "grupo": "House",
-    "pais": "Hungria"
+    "pais": "Brasil",
+    "br": true
   },
   {
     "nome": "Bakka",
