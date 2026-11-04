@@ -8366,6 +8366,360 @@
       "sinais": {
         "ouvintes": 506700
       }
+    },
+    {
+      "slug": "leticia-stempi",
+      "nome": "Letícia Stempi",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e acid house",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Gaúcha de house e acid house, fundou a ANTI-DOPE e tocou no Greenvalley Gramado e na Warung Tour.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/leticia-stempi.webp",
+      "foto_fonte": "https://soundcloud.com/leticiastempi",
+      "fontes": [
+        "https://set79.com/dj/Let%C3%ADcia%20Stempi",
+        "https://de.ra.co/events/2557376"
+      ],
+      "sinais": {
+        "inicio": 2021,
+        "selo": 1,
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "paola-vigorito",
+      "nome": "Paola Vigorito",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e deep house",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Residente da festa Cio e do Casa Clube, lançou In Dub We Trust pela Me Gusta Records.",
+      "faixa": "In Dub We Trust",
+      "foto": "/assets/album/fotos/paola-vigorito.webp",
+      "foto_fonte": "https://soundcloud.com/paolavigorito",
+      "fontes": [],
+      "sinais": {
+        "inicio": 2017,
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "tiago-kuhnen",
+      "nome": "Tiago Kuhnen",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House e afro house",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Catarinense de Jurerê, toca house e afro house em beach clubs de Florianópolis.",
+      "foto": "/assets/album/fotos/tiago-kuhnen.webp",
+      "foto_fonte": "https://soundcloud.com/tiago-kuhnen-159071724",
+      "fontes": [],
+      "sinais": {
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "2ouble",
+      "nome": "2ouble",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "Música eletrônica",
+      "tag": "HOUSE",
+      "bpm": "120–128",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Na programação da festa Old Is Cool + Rebobina, ao lado de DJ Marky, Aninha e Kaka Franco.",
+      "foto": "/assets/album/fotos/2ouble.webp",
+      "foto_fonte": "https://soundcloud.com/dj2ouble",
+      "fontes": [],
+      "sinais": {}
+    },
+    {
+      "slug": "agustin-clark",
+      "nome": "Agustin Clark",
+      "pais": "uy",
+      "paisNome": "Uruguai",
+      "genero": "House e minimal house",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Uruguaio do circuito underground de Uruguai, Argentina e Barcelona, tocou no INPUT.",
+      "foto": "/assets/album/fotos/agustin-clark.webp",
+      "foto_fonte": "https://soundcloud.com/agustinclark_uy",
+      "fontes": [],
+      "sinais": {
+        "bpm": 123
+      }
+    },
+    {
+      "slug": "dyed-soundorom",
+      "nome": "Dyed Soundorom",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Deep house",
+      "tag": "HOUSE",
+      "bpm": "120–125",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Francês de Paris e Ibiza no deep e underground house. Forma o trio Apollonia com Dan Ghenacia e Shonky.",
+      "faixa": "Tapioka",
+      "foto": "/assets/album/fotos/dyed-soundorom.webp",
+      "foto_fonte": "https://br.pinterest.com/search/pins/?q=Dyed%20Soundorom",
+      "fontes": [
+        "https://open.spotify.com/artist/47Vd7Tq85XedkSFBCa3kIw",
+        "https://djmag.com/content/apollonia-kings-white-isle-chat-revolution-underground"
+      ],
+      "sinais": {
+        "ouvintes": 31300,
+        "bpm": 122
+      }
+    },
+    {
+      "slug": "guy-gerber",
+      "nome": "Guy Gerber",
+      "pais": "il",
+      "paisNome": "Israel",
+      "genero": "Melodic house",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Israelense fundador do selo Rumors, referência em melodic house hipnótico e residente em Ibiza.",
+      "faixa": "Sea of Sand",
+      "foto": "/assets/album/fotos/guy-gerber.webp",
+      "foto_fonte": "https://br.pinterest.com/search/pins/?q=Guy%20Gerber%20dj",
+      "fontes": [
+        "https://www.technoairlines.com/artist/guy-gerber"
+      ],
+      "sinais": {
+        "inicio": 2002,
+        "selo": 1
+      }
+    },
+    {
+      "slug": "guy-j",
+      "nome": "Guy J",
+      "pais": "il",
+      "paisNome": "Israel",
+      "genero": "Progressive house",
+      "tag": "PROG",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Israelense do progressive house, fundador do Lost & Found e do Early Morning, ligado ao Bedrock.",
+      "faixa": "Nirvana",
+      "foto": "/assets/album/fotos/guy-j.webp",
+      "foto_fonte": "https://br.pinterest.com/search/pins/?q=Guy%20J%20dj",
+      "fontes": [
+        "https://www.technoairlines.com/artist/guy-j",
+        "https://top101producers.com/2025"
+      ],
+      "sinais": {
+        "inicio": 2007,
+        "selo": 1,
+        "top1001": 88
+      }
+    },
+    {
+      "slug": "julian-fijma",
+      "nome": "Julian Fijma",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "Minimal house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ holandês de minimal e tech house, ligado às festas Paradise de Jamie Jones.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/julian-fijma.webp",
+      "foto_fonte": "https://soundcloud.com/julianfijma",
+      "fontes": [
+        "https://kworb.net/spotify/listeners7.html",
+        "https://musicbrainz.org/artist/2f1712fc-6837-4375-af69-f262a5330d2e"
+      ],
+      "sinais": {
+        "ouvintes": 959603
+      }
+    },
+    {
+      "slug": "kink",
+      "nome": "KiNK",
+      "pais": "bg",
+      "paisNome": "Bulgária",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Búlgaro de Sófia, eleito melhor ato ao vivo pelos leitores do RA em 2015 e 2016.",
+      "faixa": "Valentine's Groove",
+      "foto": "/assets/album/fotos/kink.webp",
+      "foto_fonte": "https://soundcloud.com/kink",
+      "fontes": [
+        "https://www.technoairlines.com/artist/kink"
+      ],
+      "sinais": {}
+    },
+    {
+      "slug": "lolu-menayed",
+      "nome": "Lolu Menayed",
+      "pais": "ar",
+      "paisNome": "Argentina",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ e produtora de Buenos Aires, fundadora dos selos DIGHOP Records e 44CUPIDS Records.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/lolu-menayed.webp",
+      "foto_fonte": "https://soundcloud.com/lolu_menayed",
+      "fontes": [
+        "https://musicbrainz.org/artist/aa592cfe-7b19-40cd-af96-132e479f593c"
+      ],
+      "sinais": {}
+    },
+    {
+      "slug": "m-high",
+      "nome": "M-High",
+      "pais": "nl",
+      "paisNome": "Holanda",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Multi-instrumentista e produtor de Amsterdã, da PIV Records, com passagens pelo fabric.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/m-high.webp",
+      "foto_fonte": "https://soundcloud.com/mhighmusic",
+      "fontes": [
+        "https://musicbrainz.org/artist/2d48a4f8-4549-4bf8-80f5-d072fce65a4f"
+      ],
+      "sinais": {}
+    },
+    {
+      "slug": "magdalena",
+      "nome": "Magdalena",
+      "pais": "de",
+      "paisNome": "Alemanha",
+      "genero": "Melodic house",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ alemã de melodic house, da cena de Hamburgo e da marca Diynamic, com passagem por Ibiza.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/magdalena.webp",
+      "foto_fonte": "https://br.pinterest.com/search/pins/?q=Magdalena%20dj",
+      "fontes": [
+        "https://musicbrainz.org/artist/8d1a44f4-8abc-4046-81bd-ac15fc1bb991"
+      ],
+      "sinais": {}
+    },
+    {
+      "slug": "mano-le-tough",
+      "nome": "Mano Le Tough",
+      "pais": "ie",
+      "paisNome": "Irlanda",
+      "genero": "Melodic house",
+      "tag": "HOUSE",
+      "bpm": "118–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Irlandês radicado em Berlim, cofundador do selo Maeve e autor do álbum Changing Days.",
+      "faixa": "Primative People",
+      "foto": "/assets/album/fotos/mano-le-tough.webp",
+      "foto_fonte": "https://br.pinterest.com/search/pins/?q=Mano%20Le%20Tough",
+      "fontes": [
+        "https://www.technoairlines.com/artist/mano-le-tough"
+      ],
+      "sinais": {
+        "inicio": 2009
+      }
+    },
+    {
+      "slug": "marten-lou",
+      "nome": "Marten Lou",
+      "pais": "fr",
+      "paisNome": "França",
+      "genero": "Melodic house",
+      "tag": "HOUSE",
+      "bpm": "120–124",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Produtor de Paris de melodic e afro house, no Tomorrowland 2025 e com 2,9 milhões de ouvintes.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/marten-lou.webp",
+      "foto_fonte": "https://br.pinterest.com/search/pins/?q=Marten%20Lou%20dj",
+      "fontes": [
+        "https://kworb.net/spotify/listeners7.html",
+        "https://www.technoairlines.com/artist/marten-lou"
+      ],
+      "sinais": {
+        "ouvintes": 2921945,
+        "festivais": 1
+      }
+    },
+    {
+      "slug": "max-styler",
+      "nome": "Max Styler",
+      "pais": "us",
+      "paisNome": "EUA",
+      "genero": "Tech house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Californiano que assinou com a Dim Mak aos 18 e foi o número 1 do Top 101 Producers 2025.",
+      "faixa": "On Repeat",
+      "foto": "/assets/album/fotos/max-styler.webp",
+      "foto_fonte": "https://br.pinterest.com/search/pins/?q=Max%20Styler%20dj",
+      "fontes": [
+        "https://kworb.net/spotify/listeners7.html",
+        "https://top101producers.com/2025",
+        "https://www.technoairlines.com/artist/max-styler"
+      ],
+      "sinais": {
+        "ouvintes": 2043208,
+        "inicio": 2012,
+        "top1001": 1,
+        "festivais": 5
+      }
+    },
+    {
+      "slug": "miane",
+      "nome": "Miane",
+      "pais": "es",
+      "paisNome": "Espanha",
+      "genero": "Tech house",
+      "tag": "HOUSE",
+      "bpm": "124–128",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "DJ de Málaga baseada em Ibiza, primeira espanhola a lançar pela Hot Creations.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/miane.webp",
+      "foto_fonte": "https://soundcloud.com/miane_wav",
+      "fontes": [
+        "https://musicbrainz.org/artist/f23f4b2b-e1a8-4271-b9e1-6928d4ce5a68"
+      ],
+      "sinais": {
+        "inicio": 2020
+      }
     }
   ]
 }

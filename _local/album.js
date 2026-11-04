@@ -14,7 +14,7 @@ const COUNTRIES = {
   "Coreia do Sul": ["COR", "kr"], "Bósnia": ["BOS", "ba"], "Turquia": ["TUR", "tr"], "Dinamarca": ["DIN", "dk"], "Israel": ["ISR", "il"],
   "Portugal": ["POR", "pt"], "Japão": ["JAP", "jp"], "Rússia": ["RUS", "ru"], "Chile": ["CHI", "cl"], "Grécia": ["GRE", "gr"],
   "Líbano": ["LIB", "lb"], "Irã": ["IRA", "ir"], "Haiti": ["HAI", "ht"], "Irlanda do Norte": ["IRN", "gb-nir"], "Irlanda": ["IRL", "ie"],
-  "Polônia": ["POL", "pl"], "Finlândia": ["FIN", "fi"], "Bolívia": ["BOL", "bo"], "México": ["MEX", "mx"],
+  "Polônia": ["POL", "pl"], "Finlândia": ["FIN", "fi"], "Bulgária": ["BUL", "bg"], "Uruguai": ["URU", "uy"], "Bolívia": ["BOL", "bo"], "México": ["MEX", "mx"],
 };
 const MIN_PAGE = 3; // abaixo disso, o país vai para o Resto do Mundo
 
