@@ -121,7 +121,7 @@ function podiumCard(pos, name, style, note, label) {
   return `<div class="pod pc p${pos}" style="--c:var(--pc${pos})">
     <div class="pc-score"><span class="pc-n" aria-label="${label}">${note}</span></div>
     <div class="pc-ph"><img src="/assets/djs/${slug(name)}.webp" alt="${name}" width="500" height="500" loading="lazy" decoding="async"><p class="pc-wm"><b>Brazilian <em>Bayle</em></b></p><img class="pc-papa" src="/assets/papagaio-bayle.png" alt="" width="96" height="192" loading="lazy" decoding="async"></div>
-    <div class="pc-t"><p class="pc-name"><a href="/djpedia/${slug(name)}">${name}</a></p><p class="pc-st mono">${pos}º lugar · ${style}</p></div>
+    <div class="pc-t"><p class="pc-name"><a href="/djindex/${slug(name)}">${name}</a></p><p class="pc-st mono">${pos}º lugar · ${style}</p></div>
   </div>`;
 }
 function renderPodium() {
@@ -174,7 +174,7 @@ function mountBoard(stage) {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
-        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djpedia/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
+        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djindex/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
         <td class="b-score"><span class="led${Number.isFinite(d.pos) || d.votos > 0 ? "" : " led-wait"}">${scoreCell(d)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
@@ -347,6 +347,7 @@ renderPodium();
   $('[data-vote-back]', nav).onclick = () => { if (step === 2 && criterion > 0) { criterion--; showCriterion(); } else showStep(step - 1); };
   $('[data-vote-next]', nav).onclick = nextStep;
   form.classList.add('vote-wizard'); showStep(0, false);
+  { const wantDj = new URLSearchParams(location.search).get('dj'), p = PARTIES.find(x => x.id === party.value); if (p && wantDj && p.dj.includes(wantDj)) { dj = wantDj; renderLineup(); showStep(2, false); setTimeout(() => document.getElementById('votar')?.scrollIntoView({ block: 'start' }), 700); } }
 
   form.onsubmit = async e => {
     e.preventDefault(); say("", "");
@@ -683,7 +684,7 @@ function mountGe(el) {
     $("tbody", el).innerHTML = list.map(d => {
       const prev = st.last[d.name];
       const mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="ge-mv up" aria-label="subiu ${prev - d.pos}">▲</span>` : `<span class="ge-mv dn" aria-label="caiu ${d.pos - prev}">▼</span>`) : `<span class="ge-mv" aria-hidden="true">•</span>`;
-      const s = slug(d.name), href = hasPedia(d.name) ? `/djpedia/${s}` : null, tag = href ? "a" : "span";
+      const s = slug(d.name), href = hasPedia(d.name) ? `/djindex/${s}` : null, tag = href ? "a" : "span";
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
         <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${reviewBtn(d)}${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
@@ -784,6 +785,6 @@ refreshOfficialRanking();
     .sort((a, b) => a.date.localeCompare(b.date) || a.venue.localeCompare(b.venue));
   box.innerHTML = list.map(e => {
     const [nome, cidade] = PLACE[e.venue] || [e.venue, ""], d = new Date(e.date + "T12:00:00");
-    return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${hasPedia(n) ? `<a href="/djpedia/${slug(n)}">${esc(n)}</a>` : esc(n)}</li>`).join("")}</ul><div class="wk-actions"><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a><a class="btn btn-silver" href="/spotted">Publicar Spotted</a></div></article>`;
+    return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${hasPedia(n) ? `<a href="/djindex/${slug(n)}">${esc(n)}</a>` : esc(n)}</li>`).join("")}</ul><div class="wk-actions"><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a><a class="btn btn-silver" href="/spotted">Publicar Spotted</a></div></article>`;
   }).join("");
 })();
