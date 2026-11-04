@@ -1,0 +1,16 @@
+{
+  "fonte": "Anúncio Greenvalley Summer 2027 (28/10/2026) e greenvalleybr.com; 21/11 pela NSC Total (16/10/2026).",
+  "festas": [
+    { "id": "greenvalley-2026-11-21", "date": "2026-11-21", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Aniversário de 19 anos", "name": "PAWSA", "lineup": ["PAWSA", "Bhaskar", "Jackson", "Carol Seubert"], "photo": "/assets/album/fotos/pawsa.webp" },
+    { "id": "greenvalley-2026-12-28", "date": "2026-12-28", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Greenvalley Summer", "name": "Miss Monique", "lineup": ["Miss Monique", "Victor Ruiz", "Tao Andra", "Luch"], "photo": "/assets/album/fotos/miss-monique.webp" },
+    { "id": "greenvalley-2026-12-29", "date": "2026-12-29", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Greenvalley Summer", "name": "Monolink", "lineup": ["Monolink", "Deep Dish", "Rafael", "Volkoder"], "photo": "/assets/album/fotos/monolink.webp" },
+    { "id": "greenvalley-2026-12-30", "date": "2026-12-30", "venue": "Arena Open", "cidade": "ao lado do Green Valley", "tag": "DNA Art Car · Arena Open", "name": "Vintage Culture", "lineup": ["Vintage Culture"], "partial": true, "photo": "/assets/djs/vintage-culture.webp" },
+    { "id": "greenvalley-2026-12-31", "date": "2026-12-31", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Réveillon 2027 · Deck da lagoa", "name": "Réveillon Greenvalley", "lineup": ["Jean Claude Ades", "MBalla", "South Birds", "Tiago Kuhnen"] },
+    { "id": "greenvalley-2027-01-02", "date": "2027-01-02", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Greenvalley Summer", "name": "ARTBAT", "lineup": ["ARTBAT", "Departamento", "Adam Sellouk", "Plastik Funk", "Röket"], "photo": "/assets/album/fotos/artbat.webp" },
+    { "id": "greenvalley-2027-01-06", "date": "2027-01-06", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Greenvalley Summer", "name": "Marco Carola + Franky Rizardo", "lineup": ["Marco Carola", "Franky Rizardo"], "partial": true, "photo": "/assets/album/fotos/marco-carola.webp" },
+    { "id": "greenvalley-2027-01-09", "date": "2027-01-09", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Greenvalley Summer", "name": "Black Coffee", "lineup": ["Black Coffee"], "partial": true, "photo": "/assets/album/fotos/black-coffee.webp" },
+    { "id": "greenvalley-2027-02-06", "date": "2027-02-06", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Carnaval Greenvalley", "name": "Adriatique", "lineup": ["Adriatique", "Ben Sterling", "Jessica Brankka"], "photo": "/assets/album/fotos/adriatique.webp" },
+    { "id": "greenvalley-2027-02-07", "date": "2027-02-07", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Carnaval Greenvalley", "name": "Vintage Culture", "lineup": ["Vintage Culture", "Doozie", "Miss Natalia"], "photo": "/assets/album/fotos/vintage-culture.webp" },
+    { "id": "greenvalley-2027-02-08", "date": "2027-02-08", "venue": "Green Valley", "cidade": "Camboriú/SC", "tag": "Carnaval Greenvalley", "name": "Fisher", "lineup": ["Fisher", "Little Fritter", "NoCapz", "Bruna Strait"], "photo": "/assets/album/fotos/fisher.webp" }
+  ]
+}
