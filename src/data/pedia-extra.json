@@ -563,5 +563,95 @@
     "grupo": "House",
     "pais": "Brasil",
     "br": true
+  },
+  {
+    "nome": "Derrick May",
+    "estilo": "Detroit techno",
+    "grupo": "Techno",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Kevin Saunderson",
+    "estilo": "Detroit techno",
+    "grupo": "Techno",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Juan Atkins",
+    "estilo": "Detroit techno",
+    "grupo": "Techno",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Robert Hood",
+    "estilo": "Minimal techno",
+    "grupo": "Techno",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Octave One",
+    "estilo": "Detroit techno",
+    "grupo": "Techno",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Frankie Knuckles",
+    "estilo": "Chicago house",
+    "grupo": "House",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Larry Heard",
+    "estilo": "Deep house",
+    "grupo": "House",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Marshall Jefferson",
+    "estilo": "Chicago house",
+    "grupo": "House",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Green Velvet",
+    "estilo": "Techno",
+    "grupo": "Tech house",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Felix da Housecat",
+    "estilo": "Electroclash",
+    "grupo": "House",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Derrick Carter",
+    "estilo": "Chicago house",
+    "grupo": "House",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "DJ Sneak",
+    "estilo": "Filter house",
+    "grupo": "House",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "The Blessed Madonna",
+    "estilo": "House e disco",
+    "grupo": "House",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "Danny Tenaglia",
+    "estilo": "Progressive house",
+    "grupo": "House",
+    "pais": "Estados Unidos"
+  },
+  {
+    "nome": "David Morales",
+    "estilo": "House",
+    "grupo": "House",
+    "pais": "Estados Unidos"
   }
 ]
