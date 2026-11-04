@@ -2631,3 +2631,30 @@ background: repeating-linear-gradient(0deg, rgba(255,60,60,.0) 0 3px, rgba(255,8
 @media(max-width:1100px){.tp-row{grid-template-columns:70px minmax(0,1fr)}.tp-row>div:nth-child(3),.tp-row .tp-vote,.tp-row .tp-closed{grid-column:1/-1}}
 @media(max-width:600px){.tp-row{grid-template-columns:minmax(0,1fr);gap:12px;padding:14px}.tp-row-date{text-align:left;display:flex;align-items:baseline;gap:8px}.tp-row-date b{font-size:34px;display:inline}.tp-row-main{padding-left:66px}.tp-row-av{width:54px;height:54px}.tp-row-main h3{overflow-wrap:anywhere}}
 @media(max-width:520px){.tp-vote{grid-template-columns:1fr 1fr}.tp-vote .tp-b1{grid-column:1/-1}}
+@keyframes djcTwinkle{0%,100%{opacity:.15;transform:rotate(45deg) scale(.6)}50%{opacity:1;transform:rotate(45deg) scale(1)}}
+@keyframes djcSweep{0%{background-position:-150% 0}60%,100%{background-position:250% 0}}
+.djc.lendaria{--frame:repeating-conic-gradient(from 22deg at 50% 50%,#ffffff 0 9deg,#d8ecff 9deg 18deg,#9fc4ff 18deg 27deg,#eef7ff 27deg 36deg);--accent:#d8ecff;--glow:rgba(190,225,255,.9);--plate:linear-gradient(180deg,#0f1b33,#060b16)}
+.djc.lendaria .djc-face{clip-path:polygon(9% 0,91% 0,100% 6.5%,100% 93.5%,91% 100%,9% 100%,0 93.5%,0 6.5%);border-radius:0}
+.djc.lendaria .djc-front{padding:3.4cqw}
+.djc.lendaria .djc-inner{clip-path:polygon(7% 0,93% 0,100% 5%,100% 95%,93% 100%,7% 100%,0 95%,0 5%);border-radius:0;
+background:linear-gradient(135deg,rgba(255,255,255,.07) 25%,transparent 25% 50%,rgba(255,255,255,.04) 50% 75%,transparent 75%) 0 0/9cqw 9cqw,linear-gradient(180deg,#0d1730,#03060d)}
+.djc.lendaria .djc-name{border-radius:.6cqw}
+.djc.lendaria .djc-name h3{background:linear-gradient(180deg,#fff 20%,#9fc4ff 60%,#fff 100%);-webkit-background-clip:text;background-clip:text}
+.djc.lendaria .djc-art{clip-path:polygon(6% 0,94% 0,100% 8%,100% 92%,94% 100%,6% 100%,0 92%,0 8%);border-radius:0}
+.djc.lendaria .djc-front:after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;mix-blend-mode:overlay;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.95) 48%,rgba(160,210,255,.6) 52%,transparent 65%) 0 0/250% 100% no-repeat;animation:djcSweep 3.2s ease-in-out infinite}
+.djc.lendaria .djc-gem{position:absolute;z-index:7;width:6.5cqw;height:6.5cqw;transform:rotate(45deg);pointer-events:none;
+background:conic-gradient(from 45deg,#fff,#bfe0ff,#ffffff,#8fb8ff,#fff,#d9f0ff,#fff);box-shadow:0 0 2.5cqw #cfe8ff,0 0 6cqw rgba(160,210,255,.7);animation:djcTwinkle 2.2s ease-in-out infinite}
+.djc.lendaria .g1{left:2.4cqw;top:2.4cqw}.djc.lendaria .g2{right:2.4cqw;top:2.4cqw;animation-delay:.5s}.djc.lendaria .g3{left:2.4cqw;bottom:2.4cqw;animation-delay:1s}.djc.lendaria .g4{right:2.4cqw;bottom:2.4cqw;animation-delay:1.5s}
+.djc.lendaria .djc-spark{position:absolute;inset:0;z-index:6;pointer-events:none;
+background:conic-gradient(from 0deg at 20% 30%,transparent 0 40deg,#fff 44deg 46deg,transparent 50deg 130deg,#fff 134deg 136deg,transparent 140deg 220deg,#fff 224deg 226deg,transparent 230deg 310deg,#fff 314deg 316deg,transparent 320deg);
+-webkit-mask:radial-gradient(circle at 20% 30%,#000 0 4cqw,transparent 5cqw);mask:radial-gradient(circle at 20% 30%,#000 0 4cqw,transparent 5cqw);animation:djcSpark 1.8s ease-in-out infinite}
+.djc.lendaria .djc-foil{opacity:calc(.06 + var(--o)*.4);background:repeating-conic-gradient(from 0deg at var(--mx) var(--my),#fff 0 6deg,#a8d4ff 6deg 12deg,#ffd9f4 12deg 18deg,#c7ffe9 18deg 24deg);-webkit-mask:none;mask:none}
+@keyframes djcSpark{0%,100%{opacity:.15}50%{opacity:1}}
+.djc-lend{position:absolute;z-index:3;top:9.5cqw;right:-9.5cqw;width:50cqw;transform:rotate(45deg);text-align:center;padding:1.5cqw 0;pointer-events:none;font:800 3.5cqw/1 "JetBrains Mono",monospace;letter-spacing:.32em;text-indent:.32em;color:#0b1a33;background:linear-gradient(90deg,#8fb8ff,#fff 30%,#d8ecff 50%,#fff 70%,#8fb8ff);box-shadow:0 .5cqw 1.6cqw rgba(0,0,0,.55),0 0 2.5cqw rgba(190,225,255,.8);overflow:hidden}
+.djc-lend:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.95) 50%,transparent 65%) 0 0/250% 100% no-repeat;animation:djcSweep 2.8s ease-in-out infinite}
+.djc-spark,.djc-gem{pointer-events:none}
+@media (prefers-reduced-motion:reduce){.djc-gem,.djc-spark,.djc-lend:after,.djc.lendaria .djc-front:after{animation:none}}
+.djc.lendaria.fx-daftpunk { --frame: conic-gradient(from var(--dp), #f2f2f2, #9a9a9a, #ffd36b, #ffffff, #7fe7ff, #c9a2ff, #ff8fd0, #f2f2f2); --accent: #ffe08a; --glow: rgba(255,214,120,.85); --plate: linear-gradient(180deg, #0b0b0b, #000); animation: dpGira 4s linear infinite; }
+.djc.lendaria.fx-daftpunk .djc-inner { background: linear-gradient(180deg, #0b0b0b, #000); }
+.djc.lendaria.fx-daftpunk .djc-name h3 { background: linear-gradient(90deg, #fff, #ffd36b, #7fe7ff, #ff8fd0, #fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.djc.lendaria.fx-daftpunk .djc-lend { background: linear-gradient(90deg, #ffd36b, #fff, #7fe7ff, #ff8fd0, #ffd36b); color: #111; }
