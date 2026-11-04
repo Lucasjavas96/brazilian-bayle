@@ -1799,6 +1799,18 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "ame-club-2026-04-30",
+      "date": "2026-04-30",
+      "venue": "Ame Club",
+      "name": "Korolova + Markus Schulz",
+      "lineup": [
+        "Korolova",
+        "Markus Schulz"
+      ],
+      "source": "Divulgação do Ame Club e imprensa: https://alataj.com.br/noticias/ame-club-segue-trazendo-grandes-atracoes-para-valinhos-korolova-markus-schulz-e-hernan-cattaneo-sao-os-proximos ; https://wegoout.com.br/eventos/ame-club-korolova",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-04-30",
       "date": "2026-04-30",
       "venue": "Club Vibe",
@@ -1973,6 +1985,19 @@
         "Vasconcelos"
       ],
       "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2438731).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "ame-club-2026-05-09",
+      "date": "2026-05-09",
+      "venue": "Ame Club",
+      "name": "Hernan Cattaneo",
+      "lineup": [
+        "Hernán Cattáneo",
+        "D-Nox",
+        "Curol"
+      ],
+      "source": "Divulgação do Ame Club e imprensa: https://wegoout.com.br/eventos/hernan-cattaneo-ame-club ; https://www.housemag.com.br/d-nox-divide-a-cabine-com-hernan-cattaneo-no-ame-club-e-embala-sequencia-intensa-de-datas-nos-proximos-meses/",
       "checked_at": "2026-11-04"
     },
     {
@@ -2675,6 +2700,21 @@
         "Lu.cian"
       ],
       "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2453928).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "ame-club-2026-06-20",
+      "date": "2026-06-20",
+      "venue": "Ame Club",
+      "name": "Adam Beyer — abertura da temporada de inverno",
+      "lineup": [
+        "Adam Beyer",
+        "Renato Ratier",
+        "Roddy Lima",
+        "DJ Glen",
+        "Nana Torres"
+      ],
+      "source": "Divulgação do Ame Club e imprensa: https://grve.com.br/2026/06/roddy-lima-toca-no-ame-club/ ; https://ingressomais.com.br/adam-beyer-ame-club-ingressos/",
       "checked_at": "2026-11-04"
     },
     {
@@ -3634,6 +3674,19 @@
       "checked_at": "2026-11-04"
     },
     {
+      "id": "ame-club-2026-08-29",
+      "date": "2026-08-29",
+      "venue": "Ame Club",
+      "name": "Agents Of Time",
+      "lineup": [
+        "Agents of Time",
+        "Binaryh",
+        "Bigfett"
+      ],
+      "source": "Divulgação do Ame Club e imprensa: https://wegoout.com.br/eventos/ame-club-agents-of-time ; https://www.1001tracklists.com/tracklist/2uz22n8t/binaryh-ame-club-valinhos-brazil-2026-08-29.html",
+      "checked_at": "2026-11-04"
+    },
+    {
       "id": "club-vibe-2026-08-29",
       "date": "2026-08-29",
       "venue": "Club Vibe",
@@ -3855,6 +3908,20 @@
         "Drunky Daniels"
       ],
       "source": "Resident Advisor, agenda do D-EDGE São Paulo (https://ra.co/events/2529032).",
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "ame-club-2026-09-12",
+      "date": "2026-09-12",
+      "venue": "Ame Club",
+      "name": "BLOND:ISH",
+      "lineup": [
+        "Blond:ish",
+        "Greggio",
+        "Camila Jun",
+        "Rafael Cerato"
+      ],
+      "source": "Divulgação do Ame Club e imprensa: https://playbpm.com.br/noticias/greggio-estreia-no-ame-club/ ; https://blondish.world/tour/2026-09-12-ame-club-sao-paulo-brazil/",
       "checked_at": "2026-11-04"
     },
     {
@@ -4453,6 +4520,23 @@
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://betimelapse.com.br/eventos/greenvalley-elderbrook-2026",
       "checked_at": "2026-11-03"
+    },
+    {
+      "id": "ame-club-2026-10-11",
+      "date": "2026-10-11",
+      "venue": "Ame Club",
+      "name": "Âme Mélodique 2026",
+      "lineup": [
+        "Elderbrook",
+        "Nils Hoffmann",
+        "Giuseppe Ottaviani",
+        "Scorz",
+        "Silvio Soul",
+        "Rigooni",
+        "Rob TS"
+      ],
+      "source": "Divulgação do Ame Club e imprensa: https://djsound.com.br/?p=16375 ; https://technobeatscloud.com/en/events/event/ame-melodique-ame-club-2026-10-11",
+      "checked_at": "2026-11-04"
     },
     {
       "id": "d-edge-sao-paulo-2026-10-11",

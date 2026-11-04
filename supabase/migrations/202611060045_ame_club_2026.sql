@@ -1,0 +1,11 @@
+-- Festas de 2026 do Ame Club com line-up confirmado em fonte pública. ANNA (25/07) e Nora En Pure (01/11) já existiam e não mudam.
+begin;
+insert into brb_private.event_catalog(id,event_date,venue,title,lineup,source) values
+('ame-club-2026-04-30','2026-04-30','Ame Club','Korolova + Markus Schulz','["Korolova","Markus Schulz"]'::jsonb,'Divulgação do Ame Club e imprensa: https://alataj.com.br/noticias/ame-club-segue-trazendo-grandes-atracoes-para-valinhos-korolova-markus-schulz-e-hernan-cattaneo-sao-os-proximos ; https://wegoout.com.br/eventos/ame-club-korolova'),
+('ame-club-2026-05-09','2026-05-09','Ame Club','Hernan Cattaneo','["Hernán Cattáneo","D-Nox","Curol"]'::jsonb,'Divulgação do Ame Club e imprensa: https://wegoout.com.br/eventos/hernan-cattaneo-ame-club ; https://www.housemag.com.br/d-nox-divide-a-cabine-com-hernan-cattaneo-no-ame-club-e-embala-sequencia-intensa-de-datas-nos-proximos-meses/'),
+('ame-club-2026-06-20','2026-06-20','Ame Club','Adam Beyer — abertura da temporada de inverno','["Adam Beyer","Renato Ratier","Roddy Lima","DJ Glen","Nana Torres"]'::jsonb,'Divulgação do Ame Club e imprensa: https://grve.com.br/2026/06/roddy-lima-toca-no-ame-club/ ; https://ingressomais.com.br/adam-beyer-ame-club-ingressos/'),
+('ame-club-2026-08-29','2026-08-29','Ame Club','Agents Of Time','["Agents of Time","Binaryh","Bigfett"]'::jsonb,'Divulgação do Ame Club e imprensa: https://wegoout.com.br/eventos/ame-club-agents-of-time ; https://www.1001tracklists.com/tracklist/2uz22n8t/binaryh-ame-club-valinhos-brazil-2026-08-29.html'),
+('ame-club-2026-09-12','2026-09-12','Ame Club','BLOND:ISH','["Blond:ish","Greggio","Camila Jun","Rafael Cerato"]'::jsonb,'Divulgação do Ame Club e imprensa: https://playbpm.com.br/noticias/greggio-estreia-no-ame-club/ ; https://blondish.world/tour/2026-09-12-ame-club-sao-paulo-brazil/'),
+('ame-club-2026-10-11','2026-10-11','Ame Club','Âme Mélodique 2026','["Elderbrook","Nils Hoffmann","Giuseppe Ottaviani","Scorz","Silvio Soul","Rigooni","Rob TS"]'::jsonb,'Divulgação do Ame Club e imprensa: https://djsound.com.br/?p=16375 ; https://technobeatscloud.com/en/events/event/ame-melodique-ame-club-2026-10-11')
+on conflict(id) do update set title=excluded.title,lineup=excluded.lineup,source=excluded.source;
+commit;
