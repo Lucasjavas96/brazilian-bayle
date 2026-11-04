@@ -8720,6 +8720,106 @@
       "sinais": {
         "inicio": 2020
       }
+    },
+    {
+      "slug": "gggguerra",
+      "nome": "gggguerra",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "DJ brasileiro que tocou no palco Bells do Beltools, no Surreal Park, em 1º de novembro de 2026.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/gggguerra.webp",
+      "foto_fonte": "https://www.instagram.com/gggguerra/",
+      "fontes": [],
+      "sinais": {}
+    },
+    {
+      "slug": "halfcab",
+      "nome": "Halfcab",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House underground",
+      "tag": "HOUSE",
+      "bpm": "122–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Fernando Sanches, DJ de house em SP e no Rio, com festas da BOMA e showcase da Beleza no ADE 2026.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/halfcab.webp",
+      "foto_fonte": "https://www.instagram.com/halfcabstudio/",
+      "fontes": [
+        "https://de.ra.co/dj/halfcab"
+      ],
+      "sinais": {
+        "inicio": 2018,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "miss-natalia",
+      "nome": "Miss Natália",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Tocou no Green Valley e no Laroc e é a principal artista da label N.N.P.",
+      "foto": "/assets/album/fotos/miss-natalia.webp",
+      "foto_fonte": "https://www.instagram.com/djmissnatalia/",
+      "fontes": [],
+      "sinais": {
+        "inicio": 2016,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "a-rpia-r",
+      "nome": "[a:rpia:r]",
+      "pais": "ro",
+      "paisNome": "Romênia",
+      "genero": "Romanian minimal",
+      "tag": "MINIMAL",
+      "bpm": "120–126",
+      "rank": "UNDERGROUND",
+      "pos": "center 25%",
+      "texto": "Coletivo de Rhadoo, Raresh e Petre Inspirescu que levou o minimal romeno ao mundo.",
+      "foto": "/assets/album/fotos/a-rpia-r.webp",
+      "foto_fonte": "https://www.instagram.com/arpiar__/",
+      "fontes": [
+        "https://de.ra.co/events/2048958"
+      ],
+      "sinais": {
+        "inicio": 2006,
+        "selo": 1,
+        "pioneiro": 1,
+        "bpm": 124
+      }
+    },
+    {
+      "slug": "beatric",
+      "nome": "Beatric",
+      "pais": "br",
+      "paisNome": "Brasil",
+      "genero": "House",
+      "tag": "HOUSE",
+      "bpm": "120–126",
+      "rank": "CENA BR",
+      "pos": "center 25%",
+      "texto": "Vencedora do Sprout, abriu a programação de quatro anos da Botanic, no Surreal Park, em julho de 2026.",
+      "faixa": null,
+      "foto": "/assets/album/fotos/beatric.webp",
+      "foto_fonte": "https://soundcloud.com/elenabeatric",
+      "fontes": [],
+      "sinais": {
+        "bpm": 123
+      }
     }
   ]
 }
