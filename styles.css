@@ -2788,3 +2788,24 @@ body.rv-lock{overflow:hidden}
 .md-none{margin:0;font-size:11px;color:#6f6f6a}
 .md-post .md-actions{margin:0;padding:10px 12px 12px;gap:6px}
 .md-post .md-actions .btn{min-height:32px;padding:0 10px;font-size:12px}
+
+/* DJ Index: Avaliar DJ (pop-up das festas) e Opinião da pista */
+.av-lead{color:rgba(255,255,255,.78);font-size:15px;line-height:1.5;margin:0 0 14px}
+.av-list{display:grid;gap:10px}
+.av-item{display:grid;gap:2px;padding:14px 16px;border:1px solid rgba(255,212,0,.45);border-radius:14px;background:rgba(255,212,0,.06);color:#fff;text-decoration:none}
+a.av-item:hover,a.av-item:focus-visible{background:rgba(255,212,0,.16);border-color:var(--y)}
+.av-item.is-off{opacity:.55;border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
+.av-when{font-size:11px;color:var(--y);text-transform:uppercase}
+.av-name{font-size:17px;line-height:1.25}
+.av-venue{font-size:13px;color:rgba(255,255,255,.7)}
+.av-go{margin-top:6px;font-size:11px;color:var(--y)}
+.av-item.is-off .av-go{color:rgba(255,255,255,.6)}
+.wiki-sec .pista-list{display:grid;gap:12px}
+.wiki-sec .pista-count{font-size:11px;color:var(--muted);margin:0}
+.pista-item{border:1px solid var(--line);border-left:4px solid var(--y);border-radius:12px;padding:14px 16px;background:rgba(0,0,0,.03)}
+.pista-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}
+.pista-top b{color:var(--ink)}
+.pista-top span{font-size:12px;color:var(--muted)}
+.wiki-sec .pista-item p{font-size:16px;line-height:1.55;margin:0;color:var(--ink);overflow-wrap:anywhere}
+.pista-item small{display:block;margin-top:8px;font-size:10px;color:var(--muted)}
+.pista-link{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}

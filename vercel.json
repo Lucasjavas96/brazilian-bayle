@@ -6,6 +6,16 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/djpedia",
+      "destination": "/djindex",
+      "permanent": true
+    },
+    {
+      "source": "/djpedia/:slug",
+      "destination": "/djindex/:slug",
+      "permanent": true
+    },
+    {
       "source": "/criticos",
       "destination": "/spotted",
       "permanent": true

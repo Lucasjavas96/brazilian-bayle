@@ -22,7 +22,7 @@ const NAV = [
   ["quiz", "/quiz/", "Quiz Bailinho"],
   ["agenda", "/agenda", "Agenda"],
   ["manifesto", "/manifesto", "Manifesto"],
-  ["djpedia", "/djpedia", "DJ Index"],
+  ["djindex", "/djindex", "DJ Index"],
   ["curitiba", "/curitiba", "Bayle Curitibano"],
   ["loja", "/loja", "Loja"],
   ["moderacao", "/moderacao", "Moderação", "owner"], // só aparece para o owner (session-menu.js)
@@ -174,7 +174,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 ${meta.nav === "gestao" ? '<script src="/management.js" defer></script>' : ""}
 ${meta.nav === "conta" ? '<script src="/account.js" defer></script>' : ""}
 ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
-${/^\/djpedia\/./.test(meta.path) ? '<script src="/djedit.js" defer></script>' : ""}
+${/^\/djindex\/./.test(meta.path) ? '<script src="/djedit.js" defer></script><script src="/djindex.js" defer></script>' : ""}
 ${meta.nav === "moderacao" ? '<script src="/moderation.js" defer></script>' : ""}
 ${meta.nav === "after" ? '<script src="/after.js" defer></script>' : ""}
 ${meta.nav === "album" ? '<script src="/album.js" defer></script>' : ""}
@@ -268,7 +268,7 @@ const writePage = (rel, meta, body) => {
 };
 const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => fs.existsSync(path.join(ROOT, f)));
 {
-  fs.rmSync(path.join(OUT, "djpedia"), { recursive: true, force: true });
+  fs.rmSync(path.join(OUT, "djindex"), { recursive: true, force: true });
   const sorted = [...DJLIST].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
   // gênero principal = o primeiro da ficha; dentro de cada gênero, a ordem do ranking (notas da pré-temporada do app.js)
   const cap = g => g ? g[0].toUpperCase() + g.slice(1).toLowerCase() : "Outros";
@@ -296,8 +296,8 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const gid = g => slugify(g);
   const listed = sorted.filter(d => !d.curitiba);
   const done = listed.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length || PROFILES[slugify(d.nome)]?.fonte_texto).length; // verbete pesquisado = tem fonte listada ou texto da Bayle
-  writePage("djpedia", {
-    path: "/djpedia", nav: "djpedia", title: "DJ Index · Conheça os DJs",
+  writePage("djindex", {
+    path: "/djindex", nav: "djindex", title: "DJ Index · Conheça os DJs",
     description: "A enciclopédia da pista global: os principais DJs do Brasil e do mundo, organizados por gênero, com origem, início de carreira e trajetória de cada artista.",
   }, `
 <section class="sec dark page-head wiki" aria-labelledby="t-wiki">
@@ -310,7 +310,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
       ${letters.map(l => `<section class="wiki-letter wiki-genre" id="genero-${gid(l)}" aria-labelledby="h-${gid(l)}">
         <h2 class="wiki-l" id="h-${gid(l)}">${l}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
         <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.fontes?.length || p?.fonte_texto;
-          return `<li id="${s}"><a class="wiki-item${full ? "" : " is-soon"}" href="/djpedia/${s}">
+          return `<li id="${s}"><a class="wiki-item${full ? "" : " is-soon"}" href="/djindex/${s}">
             ${DJ_PHOTOS[s] ? `<img class="wiki-portrait" src="/${DJ_PHOTOS[s].thumb}?v=2" alt="${esc(d.nome)}" width="384" height="288" loading="lazy" decoding="async">` : `<span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>`}
             <span class="wiki-name">${esc(d.nome)}</span>
             <span class="wiki-meta">${d.curitiba ? "Bayle Curitibano" : (p?.origem && p.origem !== NI ? p.origem + " · " : "") + d.estilo}</span>
@@ -336,15 +336,15 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
       : `<p>Ainda não reunimos fontes confiáveis sobre a trajetória de ${esc(p.nome)}. Este verbete está em construção, e os campos sem informação aparecem como "não informado".</p>`;
     const kind = d.curitiba ? "Bayle Curitibano" : d.extra ? `DJ Index · ${esc(d.pais)}` : d.album ? `Bayle All Stars Album · ${esc(d.album.paisNome)}` : `Brasileirão dos DJs · ${esc(d.estilo)}`;
     const credit = DJ_PHOTOS[s]?.source.startsWith("https:") ? `<a href="${esc(DJ_PHOTOS[s].source)}" target="_blank" rel="noopener">Perfil público do artista</a>` : img && foto ? `${esc(foto.credito)} · ${foto.pagina ? `<a href="${esc(foto.pagina)}" target="_blank" rel="noopener">${esc(foto.licenca)}</a>` : esc(foto.licenca)}` : "";
-    writePage(`djpedia/${s}`, {
-      path: `/djpedia/${s}`, nav: "djpedia", title: `${p.nome} · DJ Index`,
+    writePage(`djindex/${s}`, {
+      path: `/djindex/${s}`, nav: "djindex", title: `${p.nome} · DJ Index`,
       description: (p.resumo || `${p.nome}, DJ ${d.curitiba ? "da cena de Curitiba" : "brasileiro"} no DJ Index da Brazilian Bayle.`).slice(0, 158),
       noindex: !full,
       jsonld: [{ "@context": "https://schema.org", "@type": "Person", name: p.nome, alternateName: p.nome_civil && p.nome_civil !== NI ? p.nome_civil : undefined, jobTitle: "DJ", genre: list(p.estilos), image: img ? `${SITE}/${img}` : undefined, sameAs: list((p.fontes || []).map(f => f.url)).slice(0, 3) }],
     }, `
 <article class="sec paper page-head wiki-article" aria-labelledby="t-dj" data-dj="${s}">
   <div class="wrap">
-    <nav class="crumbs mono" aria-label="Você está em"><a href="/djpedia">DJ Index</a> <span aria-hidden="true">›</span> ${esc(p.nome)}</nav>
+    <nav class="crumbs mono" aria-label="Você está em"><a href="/djindex">DJ Index</a> <span aria-hidden="true">›</span> ${esc(p.nome)}</nav>
     <div class="wiki-grid">
       <aside class="wiki-box" aria-label="Ficha de ${esc(p.nome)}">
         <figure class="wiki-photo">${img
@@ -353,7 +353,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
         </figure>
         <p class="wiki-box-name">${esc(p.nome)}</p>
         <dl>${box.map(([k, val]) => `<div><dt>${k}</dt><dd${val === NI ? ' class="ni"' : ""}>${esc(val)}</dd></div>`).join("")}</dl>
-        ${d.curitiba || d.extra ? "" : d.album ? `<a class="btn btn-k" href="/album">Ver no Bayle All Stars Album</a>` : `<a class="btn btn-k" href="/ranking#votar">Avaliar ${esc(p.nome)}</a><a class="link-arrow mono" href="/ranking#tabela">Ver no ranking →</a>`}
+        <button type="button" class="btn btn-k" data-avaliar="${esc(p.nome)}">Avaliar DJ</button>${d.curitiba || d.extra || d.album ? "" : `<a class="link-arrow mono" href="/ranking#tabela">Ver no ranking →</a>`}
       </aside>
       <div class="wiki-main">
         <p class="mono g">${kind}</p>
@@ -364,6 +364,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
         ${sec("h-marcos", "Marcos da carreira", ul(p.marcos))}
         ${sec("h-infl", "Influências musicais", ul(p.referencias_musicais))}
         ${sec("h-fontes", "Referências", `<p>Texto enviado pela Brazilian Bayle, reunido de todas as fontes públicas.</p>`)}
+        ${sec("h-pista", "Opinião da pista", `<div class="pista-list" data-dj-reviews="${esc(p.nome)}" aria-live="polite"><p>Carregando a opinião da pista…</p></div>`)}
         ${credit ? `<p class="example-note mono">Crédito da imagem: ${credit}</p>` : ""}
         <p class="example-note mono">Última revisão: outubro de 2026</p>
       </div>
@@ -377,7 +378,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "moderation.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 // Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
 fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
 for (const f of ["index.html", "quiz.css", "quiz.js", "trilha1.json", "extra.css", "extra.js"]) fs.copyFileSync(path.join(ROOT, "quiz-src", f), path.join(OUT, "quiz", f));
@@ -392,7 +393,7 @@ const isBrazilian = d => { const s = slugify(d.nome), p = PROFILES[s] || {}; if 
 fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_BR="+JSON.stringify([...new Set(DJLIST.filter(isBrazilian).map(d=>slugify(d.nome)))])+";window.BRB_PEDIA="+JSON.stringify([...new Set(DJLIST.filter(d=>!d.curitiba).map(d=>slugify(d.nome)))])+";window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";window.BRB_CLUBS="+JSON.stringify(readJson("clubes.json").clubes)+";");
 // Content hashes prevent old CSS and card scripts being mixed after a deploy.
 const crypto = require('crypto');
-const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','points-badge.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','moderation.js','events-2026.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
+const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','points-badge.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','djindex.js','moderation.js','events-2026.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
 function versionHtml(dir) {
   for (const entry of fs.readdirSync(dir,{withFileTypes:true})) {
     const file = path.join(dir,entry.name);
@@ -415,6 +416,8 @@ RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
+RewriteRule ^djpedia/?$ /djindex [R=301,L]
+RewriteRule ^djpedia/(.+)$ /djindex/$1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
