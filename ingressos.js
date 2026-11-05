@@ -12,7 +12,7 @@
     return { id: f.id, name: f.name, club: f.venue, date: f.date.slice(8) + "/" + f.date.slice(5, 7) + "/" + f.date.slice(0, 4) }; };
   let data = { listings: [], requests: [] };
   const refresh = async () => { try { data = await BRB.tickets("list"); } catch (e) { /* sem conexão */ } };
-  const needLogin = async () => { const { data: s } = await BRB.auth.getSession(); if (s.session) return false; location.assign("/conta?next=" + encodeURIComponent("/temperatura")); return true; };
+  const needLogin = async () => { const { data: s } = await BRB.auth.getSession(); if (s.session) return false; location.assign("/conta?next=" + encodeURIComponent("/intermediacao")); return true; };
 
   const ov = document.createElement("div"); ov.className = "p2p-ov"; ov.hidden = true;
   ov.innerHTML = '<div class="p2p-modal" role="dialog" aria-modal="true" aria-labelledby="p2pT"><button class="p2p-x" type="button" aria-label="Fechar">×</button><div class="p2p-body"></div></div>';

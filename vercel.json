@@ -6,6 +6,11 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/temperatura",
+      "destination": "/intermediacao",
+      "permanent": true
+    },
+    {
       "source": "/djpedia",
       "destination": "/djindex",
       "permanent": true

@@ -54,7 +54,16 @@
       <header class="tp-club-head"><h2 class="display" id="tc-${esc(c.id)}">${esc(c.nome)}</h2><p class="mono dim">${esc(c.cidade)} · ${list.length} festa${list.length > 1 ? "s" : ""}</p></header>
       <div class="tp-list">${months(list)}</div></section>`).join("") || `<p class="dim">Nenhuma festa anunciada por enquanto.</p>`;
   }
-  if (nav && SECS.length > 1) nav.innerHTML = SECS.map(({ c, list }) => `<a href="#clube-${esc(c.id)}">${esc(c.nome)} <span>${list.length}</span></a>`).join("");
+  if (nav && SECS.length > 1) {
+    const sorted = SECS.slice().sort((a, b) => a.c.nome.localeCompare(b.c.nome, "pt-BR"));
+    nav.innerHTML = '<button type="button" class="tp-pick-btn" aria-expanded="false" aria-controls="tpPickList"><span>Escolher clube</span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></button><ul class="tp-pick-list" id="tpPickList" hidden>' + sorted.map(({ c, list }) => '<li><a href="#clube-' + esc(c.id) + '">' + esc(c.nome) + ' <span>' + list.length + "</span></a></li>").join("") + "</ul>";
+    const btn = nav.querySelector(".tp-pick-btn"), menu = nav.querySelector(".tp-pick-list");
+    const setOpen = o => { menu.hidden = !o; btn.setAttribute("aria-expanded", String(o)); };
+    btn.addEventListener("click", () => setOpen(menu.hidden));
+    menu.addEventListener("click", e => { if (e.target.closest("a")) setOpen(false); });
+    document.addEventListener("click", e => { if (!nav.contains(e.target)) setOpen(false); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") { setOpen(false); btn.focus(); } });
+  }
 
   async function load() {
     try { const r = await BRB.interest("list"); counts = r.counts || {}; mine = r.mine || {}; }
@@ -67,7 +76,7 @@
     if (!b || busy) return;
     const { id, v } = b.dataset;
     const { data } = await BRB.auth.getSession();
-    if (!data.session) { location.assign("/conta?next=" + encodeURIComponent("/temperatura")); return; }
+    if (!data.session) { location.assign("/conta?next=" + encodeURIComponent("/intermediacao")); return; }
     const choice = mine[id] === v ? null : v;
     busy = true; b.disabled = true;
     try {

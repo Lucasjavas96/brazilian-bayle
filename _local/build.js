@@ -15,7 +15,7 @@ const YEAR = 2026;
 const NAV = [
   ["conta", "/conta", "Login / Cadastro"],
   ["ranking", "/ranking", "Avaliação dos DJs"],
-  ["temperatura", "/temperatura", "Intermediação de ingressos"],
+  ["temperatura", "/intermediacao", "Intermediação de ingressos"],
   ["spotted", "/spotted", "Spotted Bayle"],
   ["after", "/after", "Onde é o after?"],
   ["album", "/album", "Bayle All Stars Album"],
@@ -422,6 +422,7 @@ RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
+RewriteRule ^temperatura/?$ /intermediacao [R=301,L]
 RewriteRule ^djpedia/?$ /djindex [R=301,L]
 RewriteRule ^djpedia/(.+)$ /djindex/$1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
