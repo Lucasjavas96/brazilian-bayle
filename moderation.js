@@ -1,264 +1,195 @@
-/* Moderação do Spotted: só o owner. A permissão é checada no servidor (brb_owner); aqui é só a tela. */
+/* Portal de moderação (só o owner). A permissão é checada no servidor; aqui é só a tela. */
 (() => {
   const list = document.getElementById("mdList"); if (!list) return;
-  const status = document.getElementById("mdStatus"), filterBar = document.getElementById("mdFilter");
+  const $ = s => document.querySelector(s);
+  const status = $("#mdStatus"), tabsEl = $("#mdTabs"), tb = $("#mdTb"), more = $("#mdMore"), title = $("#mdTitle"), sub = $("#mdSub"), modal = $("#mdModal");
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-  const LABEL = { published: "Publicado", review: "Em análise", hidden: "Oculto" };
-  const tabs = document.getElementById("mdTabs");
-  let posts = [], apps = [], members = [], venues = [], perfs = [], actUsers = [], actEvents = [], accounts = [], actView = "users", actQ = "", actUid = "", actName = "", filter = "todos", tab = "posts", cursor = null, request = 0;
-  const more = document.getElementById("mdMore");
-  const toast = m => { const t = document.createElement("div"); t.className = "af-toast"; t.setAttribute("role", "status"); t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2800); };
-  const when = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
+  const when = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" });
+  const day = d => new Date(d).toLocaleDateString("pt-BR");
+  const brl = n => "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const toast = m => { const t = $("#mdToast"); t.textContent = m; t.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("on"), 2800); };
 
-  const shown = () => posts.filter(p => filter === "todos" || (filter === "denunciado" ? p.reports > 0 : p.status === filter));
-
+  const SECS = { posts: ["Posts do Spotted", "Publique, oculte, edite ou exclua as postagens do mural."], apps: ["Candidaturas", "Pedidos para virar BRB Clubber."], members: ["Membros", "Contas ativas e BRB Clubbers aprovados."], venues: ["Locais do ranking", "Cada DJ vale pelo melhor local onde tem show confirmado."], activity: ["Atividade", "Contas e ações registradas no site."], tickets: ["Intermediação de ingressos", "Fila do suporte: acompanhe cada pedido até o repasse."] };
+  const BADGE = { published: ["Publicado", "ok"], review: ["Em análise", "warn"], hidden: ["Oculto", "mute"], pending: ["Em análise", "warn"], approved: ["Aprovada", "ok"], rejected: ["Recusada", "mute"], removed: ["Membro excluído", "mute"],
+    solicitada: ["Aguardando pagamento", "warn"], pagamento_confirmado: ["Dinheiro recebido", "info"], ingresso_transferido: ["Ingresso transferido", "info"], concluida: ["Concluída", "ok"], cancelada: ["Cancelada", "mute"] };
+  const badge = s => { const b = BADGE[s]; return b ? `<span class="mx-b ${b[1]}">${b[0]}</span>` : esc(s); };
   const FIELDS = [["email", "E-mail"], ["telefone", "Celular"], ["instagram", "Instagram"], ["cidade", "De onde vem"]];
+  const TK_NEXT = { solicitada: ["pagamento_confirmado", "Confirmar pagamento"], pagamento_confirmado: ["ingresso_transferido", "Ingresso transferido"], ingresso_transferido: ["concluida", "Concluir e repassar"] };
+
+  let tab = "posts", filter = "todos", q = "", cursor = null, request = 0;
+  let posts = [], apps = [], members = [], accounts = [], venues = [], perfs = [], tickets = [], actUsers = [], actEvents = [], actView = "users", actQ = "", actUid = "", actName = "";
+
+  /* ---------- janelas ---------- */
+  const openM = html => { modal.innerHTML = `<div class="mx-modal" role="dialog" aria-modal="true">${html}</div>`; modal.hidden = false; };
+  const closeM = () => { modal.hidden = true; modal.innerHTML = ""; };
+  modal.addEventListener("click", e => { if (e.target === modal || e.target.closest("[data-close]")) closeM(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeM(); });
+  const ask = (heading, text, ok, danger = true) => new Promise(res => {
+    openM(`<h3>${esc(heading)}</h3><p class="mx-sub">${text}</p><div class="mx-fa"><button type="button" class="mx-btn" data-close>Cancelar</button><button type="button" class="mx-btn ${danger ? "danger solid" : "primary"}" data-yes>${esc(ok)}</button></div>`);
+    modal.querySelector("[data-yes]").addEventListener("click", () => { closeM(); res(true); }, { once: true });
+    modal.querySelector("[data-close]").addEventListener("click", () => res(false), { once: true });
+  });
+
+  /* ---------- peças ---------- */
+  const btn = (attr, label, cls = "") => `<button type="button" class="mx-btn ${cls}" ${attr}>${label}</button>`;
+  const th = (...h) => `<thead><tr>${h.map(x => `<th${x === "Ações" ? ' class="ac"' : ""}>${x}</th>`).join("")}</tr></thead>`;
+  const wrap = (head, rows) => `<div class="mx-tw"><table class="mx-t">${head}<tbody>${rows}</tbody></table></div>`;
+  const empty = t => `<div class="mx-tw"><div class="mx-empty">${t}</div></div>`;
+  const nick = (n, anon) => anon ? `Anônimo${n ? " (@" + esc(n) + ")" : ""}` : "@" + esc(n || "?");
+  const info = (...kv) => `<dl class="mx-dl">${kv.filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>`;
+
+  /* ---------- seções ---------- */
+  function renderPosts() {
+    const rows = posts.filter(p => (filter === "todos" || (filter === "denunciado" ? p.reports > 0 : p.status === filter)) && (!q || [p.title, p.party, p.nick, p.body].join(" ").toLowerCase().includes(q.toLowerCase())));
+    if (!rows.length) return empty("Nada para moderar neste filtro.");
+    return wrap(th("Post", "Festa", "Data", "Interação", "Status", "Ações"), rows.map(p => {
+      const cms = p.comments || [];
+      return `<tr data-id="${esc(p.id)}"><td><div class="mx-cell">${p.img ? `<img class="mx-th" src="${esc(p.img)}" alt="" loading="lazy">` : `<span class="mx-th mx-tx">Aa</span>`}<div><b>${esc(p.title)}</b><small>${nick(p.nick, p.anon)}${p.is_demo ? " · demonstração" : ""}</small></div></div></td>
+        <td>${esc(p.party)}</td><td>${day(p.created_at)}</td>
+        <td>${cms.length} coment.${p.reports ? ` · <span class="mx-rep">${p.reports} denúncia${p.reports > 1 ? "s" : ""}</span>` : ""}</td><td>${badge(p.status)}</td>
+        <td class="ac"><div class="mx-acts">${btn('data-act="edit"', "Editar")}${p.status === "hidden" ? btn('data-st="published"', "Mostrar") : btn('data-st="hidden"', "Ocultar")}${btn('data-act="del"', "Excluir", "danger")}${p.status !== "published" ? btn('data-st="published"', "Publicar", "primary") : ""}${p.status !== "review" ? btn('data-st="review"', "Em análise") : ""}${cms.length ? btn('data-act="coms"', "Comentários") : ""}</div></td></tr>`;
+    }).join(""));
+  }
+
   function renderApps() {
-    list.innerHTML = apps.length ? apps.map(a => {
-      const d = a.data || {}, quero = [].concat(d.quero || []).filter(Boolean);
-      return `<article class="md-card" data-app="${esc(a.id)}">
-        <div class="md-head"><span class="md-badge ${a.status === "approved" ? "published" : a.status === "rejected" || a.status === "removed" ? "hidden" : "review"}">${({ pending: "Em análise", approved: "Aprovada", rejected: "Recusada", removed: "Membro excluído" })[a.status] || esc(a.status)}</span><span class="mono dim">${when(a.created_at)}</span></div>
-        <h3>${esc(d.nome || "Sem nome")}</h3>
-        <p class="mono dim">${FIELDS.map(([k, l]) => d[k] ? l + ": " + esc(d[k]) : "").filter(Boolean).join(" · ")}</p>
-        ${quero.length ? `<ul class="md-coms">${quero.map(q => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}
-        ${d.motivo ? `<p class="md-body">${esc(d.motivo)}</p>` : ""}
-        <div class="md-actions">
-          ${a.status !== "approved" ? `<button type="button" class="btn btn-y af-sm" data-ast="approved">Aprovar</button>` : ""}
-          ${a.status !== "rejected" ? `<button type="button" class="btn btn-ghost af-sm" data-ast="rejected">Recusar</button>` : ""}
-          ${a.status !== "pending" ? `<button type="button" class="btn btn-ghost af-sm" data-ast="pending">Voltar para análise</button>` : ""}
-        </div></article>`;
-    }).join("") : `<p class="af-empty">Nenhuma candidatura recebida ainda.</p>`;
+    const rows = apps.filter(a => (filter === "todos" || a.status === filter) && (!q || JSON.stringify(a.data || {}).toLowerCase().includes(q.toLowerCase())));
+    if (!rows.length) return empty("Nenhuma candidatura neste filtro.");
+    return wrap(th("Candidato", "Instagram", "De onde vem", "Recebida em", "Status", "Ações"), rows.map(a => {
+      const d = a.data || {};
+      return `<tr data-app="${esc(a.id)}"><td><b>${esc(d.nome || "Sem nome")}</b><small>${esc(d.email || "")}</small></td><td>${esc(d.instagram || "")}</td><td>${esc(d.cidade || "")}</td><td>${when(a.created_at)}</td><td>${badge(a.status)}</td>
+        <td class="ac"><div class="mx-acts">${btn('data-act="appview"', "Ver")}${a.status !== "approved" ? btn('data-ast="approved"', "Aprovar", "primary") : ""}${a.status !== "rejected" ? btn('data-ast="rejected"', "Recusar") : ""}${a.status !== "pending" ? btn('data-ast="pending"', "Voltar p/ análise") : ""}</div></td></tr>`;
+    }).join(""));
   }
 
   function renderMembers() {
-    const acc = accounts.length ? accounts.map(x => `<article class="md-card">
-        <div class="md-head"><span class="md-badge published">E-mail confirmado</span>${x.clubber ? '<span class="md-badge review">BRB Clubber</span>' : ""}<span class="mono dim">criou em ${fullWhen(x.created_at)}</span></div>
-        <h3>${esc(x.nome || (x.nick ? "@" + x.nick : x.email))}</h3>
-        <p class="mono dim">${x.nick ? "@" + esc(x.nick) + " · " : ""}${esc(x.email)} · último acesso: ${x.last_sign_in_at ? fullWhen(x.last_sign_in_at) : "nunca"}</p>
-        <p class="mono dim">${x.votes} avaliaç${x.votes === 1 ? "ão" : "ões"} · ${x.posts} post${x.posts === 1 ? "" : "s"} · ${x.comments} comentário${x.comments === 1 ? "" : "s"}</p><p class="mono dim">Pontos ganhos: <b>${x.points}</b>${x.points !== x.points_expected ? ` (pela regra: ${x.points_expected})` : ""} · giros disponíveis: <b>${x.spins}</b></p></article>`).join("") : '<p class="af-empty">Nenhuma conta com e-mail confirmado ainda.</p>';
-    const clubbers = members.length ? members.map(m => {
-      const d = m.data || {};
-      return `<article class="md-card" data-member="${esc(m.id)}">
-        <div class="md-head"><span class="md-badge published">BRB Clubber</span><span class="mono dim">${m.mailed_at ? "E-mail enviado em " + when(m.mailed_at) : "E-mail ainda não enviado"}</span></div>
-        <h3>${esc(d.nome || "Sem nome")}</h3>
-        <p class="mono dim">${FIELDS.map(([k, l]) => d[k] ? l + ": " + esc(d[k]) : "").filter(Boolean).join(" · ")}</p>
-        <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-mail>${m.mailed_at ? "Reenviar e-mail de aprovação" : "Enviar e-mail de aprovação"}</button><button type="button" class="btn btn-ghost af-sm md-danger" data-remove>Excluir membro</button></div></article>`;
-    }).join("") : '<p class="af-empty">Nenhum BRB Clubber aprovado ainda.</p>';
-    list.innerHTML = `<h3 class="mono" style="margin:0 0 10px">Contas ativas (${accounts.length})</h3>${acc}<h3 class="mono" style="margin:26px 0 10px">BRB Clubbers aprovados (${members.length})</h3>${clubbers}`;
+    const ok = x => !q || JSON.stringify(x).toLowerCase().includes(q.toLowerCase());
+    const acc = accounts.filter(ok), mem = members.filter(ok);
+    const a = acc.length ? wrap(th("Conta", "Criada em", "Último acesso", "Avaliações", "Posts", "Pontos", "Tipo"), acc.map(x => `<tr><td><b>${esc(x.nome || (x.nick ? "@" + x.nick : x.email))}</b><small>${x.nick ? "@" + esc(x.nick) + " · " : ""}${esc(x.email)}</small></td><td>${when(x.created_at)}</td><td>${x.last_sign_in_at ? when(x.last_sign_in_at) : "nunca"}</td><td>${x.votes}</td><td>${x.posts}</td><td>${x.points}${x.points !== x.points_expected ? `<small>pela regra: ${x.points_expected}</small>` : ""}<small>${x.spins} giro(s)</small></td><td>${x.clubber ? '<span class="mx-b info">BRB Clubber</span>' : '<span class="mx-b mute">Conta</span>'}</td></tr>`).join("")) : empty("Nenhuma conta com e-mail confirmado.");
+    const m = mem.length ? wrap(th("BRB Clubber", "Contato", "E-mail de aprovação", "Ações"), mem.map(x => { const d = x.data || {};
+      return `<tr data-member="${esc(x.id)}"><td><b>${esc(d.nome || "Sem nome")}</b></td><td>${FIELDS.map(([k, l]) => d[k] ? `<small>${l}: ${esc(d[k])}</small>` : "").join("")}</td><td>${x.mailed_at ? "Enviado em " + when(x.mailed_at) : '<span class="mx-b warn">Ainda não enviado</span>'}</td><td class="ac"><div class="mx-acts">${btn("data-mail", x.mailed_at ? "Reenviar e-mail" : "Enviar e-mail", "primary")}${btn("data-remove", "Excluir membro", "danger")}</div></td></tr>`; }).join("")) : empty("Nenhum BRB Clubber aprovado ainda.");
+    return `<h3 class="mx-h3">Contas ativas (${acc.length})</h3>${a}<h3 class="mx-h3">BRB Clubbers aprovados (${mem.length})</h3>${m}`;
   }
 
   function renderVenues() {
-    const v = venues, names = typeof DJS !== "undefined" ? DJS.map(d => d[0]) : [];
-    const confirmed = perfs.filter(p => p.status === "confirmed");
-    list.innerHTML = `<article class="md-card" id="vnForm">
-      <h3>Confirmar um show</h3>
-      <p class="mono dim">Só cadastre show que você conferiu em fonte (agenda do clube, ingresso, post oficial). Um DJ vale pelo melhor local confirmado; mais shows no mesmo local não mudam a nota. A Pedreira só vale para evento de música eletrônica.</p>
-      <div class="md-actions" style="flex-wrap:wrap;gap:10px;align-items:flex-end">
-        <label class="mono dim">DJ<br><input class="md-in" list="vnDjs" id="vnDj" placeholder="Nome do DJ" autocomplete="off"><datalist id="vnDjs">${names.map(n => `<option value="${esc(n)}">`).join("")}</datalist></label>
-        <label class="mono dim">Local<br><select class="md-in" id="vnRank">${v.filter(x => x.editorial_rank).map(x => `<option value="${x.editorial_rank}">${x.editorial_rank}º · ${esc(x.name)} (${esc(x.city)}/${esc(x.state)})</option>`).join("")}</select></label>
-        <label class="mono dim">Data do show<br><input class="md-in" type="date" id="vnDate"></label>
-        <label class="mono dim">Fonte (link, opcional)<br><input class="md-in" type="url" id="vnSrc" placeholder="https://"></label>
-        <button type="button" class="btn btn-y af-sm" id="vnAdd">Confirmar show</button>
-      </div></article>
-      <h3 class="mono" style="margin:22px 0 8px">Shows confirmados (${confirmed.length})</h3>
-      ${confirmed.length ? confirmed.map(p => `<article class="md-card" data-perf="${esc(p.id)}"><div class="md-head"><span class="md-badge published">${p.rank}º · ${esc(p.venue)}</span><span class="mono dim">${esc(p.date)}</span></div><h3>${esc(p.dj)}</h3>${p.source ? `<p class="mono dim"><a href="${esc(p.source)}" target="_blank" rel="noopener noreferrer">Fonte</a></p>` : ""}<div class="md-actions"><button type="button" class="btn btn-ghost af-sm md-danger" data-perf-del>Remover</button></div></article>`).join("") : `<p class="af-empty">Nenhum show confirmado ainda. Enquanto não houver, todo DJ fica com o fator de local mínimo.</p>`}`;
+    const names = window.BRB_DJNAMES || [], confirmed = perfs.filter(p => p.status === "confirmed" && (!q || (p.dj + " " + p.venue).toLowerCase().includes(q.toLowerCase())));
+    return `<div class="mx-card"><b class="mx-sub">Confirmar um show</b><p class="mx-status">Só cadastre show que você conferiu em fonte (agenda do clube, ingresso, post oficial). Um DJ vale pelo melhor local confirmado; a Pedreira só vale para evento de música eletrônica.</p>
+      <div class="mx-fgrid"><label>DJ<input class="mx-in" list="vnDjs" id="vnDj" placeholder="Nome do DJ" autocomplete="off"><datalist id="vnDjs">${names.map(n => `<option value="${esc(n)}">`).join("")}</datalist></label>
+      <label>Local<select class="mx-in" id="vnRank">${venues.filter(x => x.editorial_rank).map(x => `<option value="${x.editorial_rank}">${x.editorial_rank}º · ${esc(x.name)} (${esc(x.city)}/${esc(x.state)})</option>`).join("")}</select></label>
+      <label>Data do show<input class="mx-in" type="date" id="vnDate"></label><label>Fonte (link, opcional)<input class="mx-in" type="url" id="vnSrc" placeholder="https://"></label>${btn('id="vnAdd"', "Confirmar show", "primary")}</div></div>
+      <h3 class="mx-h3">Shows confirmados (${confirmed.length})</h3>
+      ${confirmed.length ? wrap(th("DJ", "Local", "Data do show", "Fonte", "Ações"), confirmed.map(p => `<tr data-perf="${esc(p.id)}"><td><b>${esc(p.dj)}</b></td><td>${p.rank}º · ${esc(p.venue)}</td><td>${esc(p.date)}</td><td>${p.source ? `<a href="${esc(p.source)}" target="_blank" rel="noopener noreferrer">Fonte</a>` : ""}</td><td class="ac"><div class="mx-acts">${btn("data-perf-del", "Remover", "danger")}</div></td></tr>`).join("")) : empty("Nenhum show confirmado ainda. Enquanto não houver, todo DJ fica com o fator de local mínimo.")}`;
   }
 
-  const fullWhen = d => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" });
   function renderActivity() {
-    const bar = `<div class="md-actions" style="flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px">
-      <button type="button" class="btn ${actView === "users" ? "btn-y" : "btn-ghost"} af-sm" data-av="users">Usuários</button>
-      <button type="button" class="btn ${actView === "feed" ? "btn-y" : "btn-ghost"} af-sm" data-av="feed">Todas as ações</button>
-      <input class="md-in" id="actQ" placeholder="Buscar por e-mail ou @" value="${esc(actQ)}" autocomplete="off">
-      <button type="button" class="btn btn-ghost af-sm" id="actGo">Buscar</button>
-      <button type="button" class="btn btn-ghost af-sm" id="actRestore">Restaurar ocultos</button>
-      ${actUid ? `<button type="button" class="btn btn-ghost af-sm" id="actClear">Tirar o filtro de @${esc(actName)}</button>` : ""}</div>`;
+    const bar = `<div class="mx-tb"><div class="mx-seg"><button type="button" data-av="users" aria-pressed="${actView === "users"}">Usuários</button><button type="button" data-av="feed" aria-pressed="${actView === "feed"}">Todas as ações</button></div>
+      <input class="mx-in" id="actQ" placeholder="Buscar por e-mail ou @" value="${esc(actQ)}" autocomplete="off">${btn('id="actGo"', "Buscar")}${btn('id="actRestore"', "Restaurar ocultos")}${actUid ? btn('id="actClear"', "Tirar o filtro de @" + esc(actName)) : ""}</div>`;
     let body;
-    if (actView === "users") {
-      body = actUsers.length ? actUsers.map(x => `<article class="md-card" data-uid="${esc(x.id)}" data-uname="${esc(x.nick || x.email)}">
-        <div class="md-head"><span class="md-badge ${x.confirmed ? "published" : "review"}">${x.confirmed ? "E-mail confirmado" : "E-mail não confirmado"}</span><span class="mono dim">criou em ${fullWhen(x.created_at)}</span></div>
-        <h3>${x.nick ? "@" + esc(x.nick) : "Sem @ ainda"}</h3>
-        <p class="mono dim">${esc(x.email)} · último acesso: ${x.last_sign_in_at ? fullWhen(x.last_sign_in_at) : "nunca"}</p>
-        <p class="mono dim">${x.votes} avaliaç${x.votes === 1 ? "ão" : "ões"} · ${x.posts} post${x.posts === 1 ? "" : "s"} · ${x.comments} comentário${x.comments === 1 ? "" : "s"}</p>
-        <p class="mono dim">Pontos ganhos: <b>${x.points}</b>${x.points !== x.points_expected ? ` (pela regra: ${x.points_expected})` : ""} · giros disponíveis: <b>${x.spins}</b></p>
-        <div class="md-actions"><button type="button" class="btn btn-y af-sm" data-uact>Ver as ações dessa conta</button><button type="button" class="btn btn-ghost af-sm md-danger" data-dismiss="${esc(x.key)}">Excluir</button></div></article>`).join("") : '<p class="af-empty">Nenhuma conta encontrada.</p>';
-    } else {
-      body = actEvents.length ? `<div class="act-feed">${actEvents.map(e => `<div class="act-row"><span class="mono dim act-when">${fullWhen(e.at)}</span><span class="act-who"><b>${e.nick ? "@" + esc(e.nick) : "?"}</b><small class="mono dim">${esc(e.email)}</small></span><span class="md-badge act-type">${esc(e.type)}</span><span class="act-detail">${esc(e.detail)}</span><button type="button" class="btn btn-ghost af-sm md-danger act-del" data-dismiss="${esc(e.key)}">Excluir</button></div>`).join("")}</div>` : '<p class="af-empty">Nenhuma ação registrada neste filtro.</p>';
-    }
-    list.innerHTML = bar + body;
+    if (actView === "users") body = actUsers.length ? wrap(th("Usuário", "Criada em", "Último acesso", "Atividade", "Pontos", "Ações"), actUsers.map(x => `<tr data-uid="${esc(x.id)}" data-uname="${esc(x.nick || x.email)}"><td><b>${x.nick ? "@" + esc(x.nick) : "Sem @ ainda"}</b><small>${esc(x.email)}</small>${x.confirmed ? "" : '<small><span class="mx-b warn">E-mail não confirmado</span></small>'}</td><td>${when(x.created_at)}</td><td>${x.last_sign_in_at ? when(x.last_sign_in_at) : "nunca"}</td><td>${x.votes} aval. · ${x.posts} posts · ${x.comments} coment.</td><td>${x.points}${x.points !== x.points_expected ? `<small>pela regra: ${x.points_expected}</small>` : ""}<small>${x.spins} giro(s)</small></td><td class="ac"><div class="mx-acts">${btn("data-uact", "Ver ações", "primary")}${btn(`data-dismiss="${esc(x.key)}"`, "Excluir", "danger")}</div></td></tr>`).join("")) : empty("Nenhuma conta encontrada.");
+    else body = actEvents.length ? wrap(th("Quando", "Quem", "Ação", "Detalhe", "Ações"), actEvents.map(e => `<tr><td>${when(e.at)}</td><td><b>${e.nick ? "@" + esc(e.nick) : "?"}</b><small>${esc(e.email)}</small></td><td><span class="mx-b mute">${esc(e.type)}</span></td><td>${esc(e.detail)}</td><td class="ac"><div class="mx-acts">${btn(`data-dismiss="${esc(e.key)}"`, "Excluir", "danger")}</div></td></tr>`).join("")) : empty("Nenhuma ação registrada neste filtro.");
+    return bar + body;
   }
 
-  let tickets = [];
-  const TK = { solicitada: "Aguardando o pagamento do comprador ao suporte", pagamento_confirmado: "Dinheiro recebido: vendedor autorizado a transferir o ingresso", ingresso_transferido: "Ingresso transferido: falta repassar o dinheiro ao vendedor", concluida: "Concluída", cancelada: "Cancelada" };
-  const TK_NEXT = { solicitada: ["pagamento_confirmado", "Confirmar recebimento do dinheiro"], pagamento_confirmado: ["ingresso_transferido", "Vendedor transferiu o ingresso"], ingresso_transferido: ["concluida", "Repassei o dinheiro ao vendedor"] };
-  const brl = n => "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   function renderTickets() {
-    list.innerHTML = tickets.length ? tickets.map(t => `<article class="md-card" data-tid="${esc(t.id)}"><div class="md-info">
-      <h3>${esc(t.event)} · ${esc(t.type)} · ${brl(t.price)}</h3>
-      <p class="mono dim">${esc(t.venue)} · ${esc(String(t.event_date).split("-").reverse().join("/"))} · pedido de ${fullWhen(t.created_at)}</p>
-      <p><b>${esc(TK[t.status] || t.status)}</b></p>
-      <p class="mono dim">Comprador: ${t.buyer_nick ? "@" + esc(t.buyer_nick) : "sem @"} · ${esc(t.buyer_email)}</p>
-      <p class="mono dim">Vendedor: ${t.seller_nick ? "@" + esc(t.seller_nick) : "sem @"} · ${esc(t.seller_email)}</p>
-      <p class="mono dim">Intermediação (5%): ${brl(t.fee)}</p></div>
-      <div class="md-actions">${TK_NEXT[t.status] ? `<button type="button" class="btn btn-y af-sm" data-tk="${TK_NEXT[t.status][0]}">${TK_NEXT[t.status][1]}</button><button type="button" class="btn btn-ghost af-sm md-danger" data-tk="cancelada">Cancelar pedido</button>` : ""}</div></article>`).join("") : `<p class="af-empty">Nenhum pedido de intermediação ainda.</p>`;
+    const rows = tickets.filter(t => !q || JSON.stringify(t).toLowerCase().includes(q.toLowerCase()));
+    if (!rows.length) return empty("Nenhum pedido de intermediação ainda.");
+    return wrap(th("Festa", "Valor", "Comprador", "Vendedor", "Etapa", "Ações"), rows.map(t => `<tr data-tid="${esc(t.id)}"><td><b>${esc(t.event)}</b><small>${esc(t.venue)} · ${esc(String(t.event_date).split("-").reverse().join("/"))} · ${esc(t.type)}</small></td><td>${brl(t.price)}<small>taxa 5%: ${brl(t.fee)}</small></td><td>${t.buyer_nick ? "@" + esc(t.buyer_nick) : "sem @"}<small>${esc(t.buyer_email)}</small></td><td>${t.seller_nick ? "@" + esc(t.seller_nick) : "sem @"}<small>${esc(t.seller_email)}</small></td><td>${badge(t.status)}<small>pedido de ${when(t.created_at)}</small></td>
+      <td class="ac"><div class="mx-acts">${TK_NEXT[t.status] ? btn(`data-tk="${TK_NEXT[t.status][0]}"`, TK_NEXT[t.status][1], "primary") + btn('data-tk="cancelada"', "Cancelar", "danger") : ""}</div></td></tr>`).join(""));
   }
 
+  /* ---------- barra de ferramentas e desenho ---------- */
+  function toolbar() {
+    const f = { posts: [["todos", "Todos os status"], ["published", "Publicados"], ["denunciado", "Denunciados"], ["review", "Em análise"], ["hidden", "Ocultos"]], apps: [["todos", "Todos os status"], ["pending", "Em análise"], ["approved", "Aprovadas"], ["rejected", "Recusadas"]] }[tab];
+    if (tab === "activity") { tb.hidden = true; return; }
+    tb.hidden = false;
+    tb.innerHTML = `<input class="mx-in" type="search" id="mdQ" placeholder="Buscar nesta seção" value="${esc(q)}">${f ? `<select class="mx-in" id="mdF">${f.map(([v, l]) => `<option value="${v}"${filter === v ? " selected" : ""}>${l}</option>`).join("")}</select>` : ""}${btn('id="mdRefresh"', "Atualizar")}`;
+  }
   function render() {
-    list.classList.toggle("md-grid", tab === "posts");
-    if (tab === "tickets") return renderTickets();
-    if (tab === "activity") return renderActivity();
-    if (tab === "venues") return renderVenues();
-    if (tab === "members") return renderMembers();
-    if (tab === "apps") return renderApps();
-    const rows = shown();
-    list.innerHTML = rows.length ? rows.map(p => {
-      const who = p.anon ? `Anônimo${p.nick ? " (@" + esc(p.nick) + ")" : ""}` : "@" + esc(p.nick || "?"), cms = p.comments || [];
-      return `<article class="md-card md-post" data-id="${esc(p.id)}">
-      <div class="md-thumb">${p.img ? `<img src="${esc(p.img)}" alt="Foto do post" loading="lazy">` : `<p>${esc(p.body || "Sem foto")}</p>`}<span class="md-badge ${esc(p.status)}">${LABEL[p.status] || esc(p.status)}</span>${p.reports ? `<span class="md-rep mono">${p.reports} denúncia${p.reports > 1 ? "s" : ""}</span>` : ""}</div>
-      <div class="md-info">
-        <h3>${esc(p.title)}</h3>
-        <p class="md-who">${who}</p>
-        <dl class="md-meta"><div><dt>Festa</dt><dd>${esc(p.party)}</dd></div><div><dt>Data</dt><dd>${when(p.created_at)}</dd></div>${p.is_demo ? `<div><dt>Tipo</dt><dd>Demonstração</dd></div>` : ""}</dl>
-        ${p.img && p.body ? `<p class="md-body">${esc(p.body)}</p>` : ""}
-        ${cms.length ? `<details class="md-cdet"><summary>${cms.length} comentário${cms.length > 1 ? "s" : ""}</summary><ul class="md-coms">${cms.map(c => `<li><b>${c.anon ? "Anônimo" : "@" + esc(c.nick || "?")}</b> ${esc(c.body)} <button type="button" class="md-link mono" data-cdel="${esc(c.id)}">Apagar</button></li>`).join("")}</ul></details>` : `<p class="md-none mono">Sem comentários</p>`}
-      </div>
-      <div class="md-actions">
-        ${p.status !== "published" ? `<button type="button" class="btn btn-y af-sm" data-st="published">Publicar</button>` : ""}
-        ${p.status !== "review" ? `<button type="button" class="btn btn-ghost af-sm" data-st="review">Em análise</button>` : ""}
-        ${p.status !== "hidden" ? `<button type="button" class="btn btn-ghost af-sm" data-st="hidden">Ocultar</button>` : ""}
-        ${p.status === "hidden" ? `<button type="button" class="btn btn-ghost af-sm md-danger" data-erase>Apagar</button>` : ""}
-      </div></article>`; }).join("") : `<p class="af-empty">Nada para moderar neste filtro.</p>`;
+    title.textContent = SECS[tab][0]; sub.textContent = SECS[tab][1];
+    tabsEl.querySelectorAll("[data-tab]").forEach(b => b.toggleAttribute("aria-current", b.dataset.tab === tab));
+    if (tab !== "activity") toolbar(); else tb.hidden = true;
+    list.innerHTML = ({ posts: renderPosts, apps: renderApps, members: renderMembers, venues: renderVenues, activity: renderActivity, tickets: renderTickets })[tab]();
+  }
+  const setCount = (k, n) => { const e = document.querySelector(`[data-count="${k}"]`); if (e) { e.textContent = n; e.hidden = !n; } };
+
+  async function load(append = false) {
+    const rev = ++request, section = tab;
+    more.disabled = true; more.hidden = true;
+    try {
+      if (section === "members") { const [d, a] = await Promise.all([BRB.members(), BRB.activity("members", { limit: 500 })]); if (rev !== request) return; accounts = a.accounts || []; members = d.members || []; status.textContent = `${accounts.length} conta(s) com e-mail confirmado, ${members.length} BRB Clubber(s) aprovado(s).`; }
+      else if (section === "activity") { const d = await BRB.activity(actView, { q: actQ, user_id: actUid || undefined, limit: 300 }); if (rev !== request) return; if (actView === "users") actUsers = d.users || []; else actEvents = d.events || []; status.textContent = actView === "users" ? `${actUsers.length} conta(s), as mais novas primeiro.` : `${actEvents.length} ação(ões) registrada(s), as mais recentes primeiro.`; }
+      else if (section === "venues") { const d = await BRB.rankingAdmin("list"); if (rev !== request) return; venues = d.venues || []; perfs = d.performances || []; status.textContent = ""; }
+      else if (section === "tickets") { const d = await BRB.ticketsAdmin("list"); if (rev !== request) return; tickets = d.requests || []; const open = tickets.filter(t => t.status !== "concluida" && t.status !== "cancelada").length; status.textContent = tickets.length ? `${tickets.length} pedido(s), ${open} em andamento.` : ""; }
+      else {
+        const d = await BRB.moderation(section, section === "posts" ? "todos" : "todos", append ? cursor : null); if (rev !== request) return;
+        if (section === "apps") apps = append ? apps.concat(d.items) : d.items; else posts = append ? posts.concat(d.items) : d.items;
+        cursor = d.next; more.hidden = !cursor;
+        const rows = section === "apps" ? apps : posts; status.textContent = `${rows.length} de ${d.total} ${section === "apps" ? "candidaturas" : "posts"} carregados.`;
+        if (section === "apps") setCount("apps", apps.filter(a => a.status === "pending").length); else setCount("posts", posts.filter(p => p.status === "review" || p.reports > 0).length);
+      }
+      tabsEl.hidden = false; render();
+    } catch (e) { if (rev !== request) return; status.textContent = e.message; }
+    finally { if (rev === request) more.disabled = false; }
   }
 
-  async function load(append=false) {
-    const revision=++request, section=tab;
-    more.disabled=true;
-    try {
-      if(section==='members'){
-        const [data,acc]=await Promise.all([BRB.members(),BRB.activity('members',{limit:500})]);
-        if(revision!==request)return;
-        accounts=acc.accounts||[];members=data.members||[];cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
-        status.textContent=`${accounts.length} conta${accounts.length===1?'':'s'} com e-mail confirmado, ${members.length} BRB Clubber${members.length===1?'':'s'} aprovado${members.length===1?'':'s'}.`;
-        render();return;
-      }
-      if(section==='activity'){
-        const data=await BRB.activity(actView,{q:actQ,user_id:actUid||undefined,limit:300});
-        if(revision!==request)return;
-        if(actView==='users')actUsers=data.users||[];else actEvents=data.events||[];
-        cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
-        status.textContent=actView==='users'?`${actUsers.length} conta${actUsers.length===1?'':'s'} (as mais novas primeiro).`:`${actEvents.length} ${actEvents.length===1?'ação registrada':'ações registradas'} (as mais recentes primeiro)${actUid?', só de @'+actName:''}.`;
-        render();return;
-      }
-      if(section==='tickets'){
-        const data=await BRB.ticketsAdmin('list');
-        if(revision!==request)return;
-        tickets=data.requests||[];cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
-        const open=tickets.filter(t=>t.status!=='concluida'&&t.status!=='cancelada').length;
-        status.textContent=tickets.length?`${tickets.length} pedido${tickets.length===1?'':'s'} de intermediação, ${open} em andamento.`:'Nenhum pedido de intermediação ainda.';
-        render();return;
-      }
-      if(section==='venues'){
-        const data=await BRB.rankingAdmin('list');
-        if(revision!==request)return;
-        venues=data.venues||[];perfs=data.performances||[];cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
-        status.textContent='Locais do ranking: cada DJ vale pelo melhor local onde tem show confirmado.';
-        render();return;
-      }
-      const data=await BRB.moderation(section,filter,append?cursor:null);
-      if(revision!==request)return;
-      if(section==='apps')apps=append?apps.concat(data.items):data.items;
-      else posts=append?posts.concat(data.items):data.items;
-      cursor=data.next;tabs.hidden=false;filterBar.hidden=tab!=='posts';more.hidden=!cursor;
-      const rows=section==='apps'?apps:posts;
-      status.textContent=`${rows.length} de ${data.total} ${section==='apps'?'candidaturas':'posts'} neste filtro.`;
-      render();
-    } catch(e) {
-      if(revision!==request)return;
-      status.textContent=e.message;more.hidden=true;
-      if(!append){posts=[];apps=[];members=[];render();}
-    } finally {if(revision===request)more.disabled=false;}
+  /* ---------- eventos ---------- */
+  more.addEventListener("click", () => load(true));
+  tabsEl.addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (!b) return; tab = b.dataset.tab; filter = "todos"; q = ""; cursor = null; list.innerHTML = ""; load(); });
+  tb.addEventListener("input", e => { if (e.target.id === "mdQ") { q = e.target.value; const p = e.target.selectionStart; render(); const i = $("#mdQ"); i.focus(); i.setSelectionRange(p, p); } });
+  tb.addEventListener("change", e => { if (e.target.id === "mdF") { filter = e.target.value; render(); } });
+  tb.addEventListener("click", e => { if (e.target.closest("#mdRefresh")) load(); });
+
+  function editPost(p) {
+    openM(`<h3>Editar postagem</h3><p class="mx-sub">${nick(p.nick, p.anon)}</p><form class="mx-form"><label>Título<input name="title" value="${esc(p.title)}" maxlength="120" required></label><label>Nome da festa<input name="party" value="${esc(p.party)}" maxlength="160" required></label><label>Data<input name="date" type="date" value="${new Date(p.created_at).toISOString().slice(0, 10)}" required></label><div class="mx-fa"><button type="button" class="mx-btn" data-close>Cancelar</button><button class="mx-btn primary" type="submit">Salvar alterações</button></div></form>`);
+    modal.querySelector("form").addEventListener("submit", async e => { e.preventDefault(); const f = new FormData(e.target), b = e.target.querySelector("[type=submit]");
+      try { b.disabled = true; await BRB.postEdit(p.id, f.get("title"), f.get("party"), f.get("date")); closeM(); toast("Postagem atualizada."); await load(); } catch (err) { toast(err.message); b.disabled = false; } });
   }
-  more.onclick=()=>load(true);
-  tabs.addEventListener('click',e=>{
-    const b=e.target.closest('[data-tab]');if(!b)return;
-    tab=b.dataset.tab;tabs.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
-    load();
+  function showComments(p) {
+    openM(`<h3>Comentários · ${esc(p.title)}</h3><ul class="mx-coms">${(p.comments || []).map(c => `<li><div><b>${c.anon ? "Anônimo" : "@" + esc(c.nick || "?")}</b><br>${esc(c.body)}</div>${btn(`data-cdel="${esc(c.id)}"`, "Apagar", "danger")}</li>`).join("")}</ul><div class="mx-fa"><button type="button" class="mx-btn" data-close>Fechar</button></div>`);
+  }
+  function showApp(a) {
+    const d = a.data || {}, quero = [].concat(d.quero || []).filter(Boolean);
+    openM(`<h3>${esc(d.nome || "Sem nome")}</h3><p class="mx-sub">${badge(a.status)} · recebida em ${when(a.created_at)}</p>${info(...FIELDS.map(([k, l]) => [l, esc(d[k])]), ["O que quer", quero.map(esc).join("<br>")], ["Motivo", esc(d.motivo)])}<div class="mx-fa"><button type="button" class="mx-btn" data-close>Fechar</button></div>`);
+  }
+  modal.addEventListener("click", async e => {
+    const c = e.target.closest("[data-cdel]"); if (!c) return;
+    try { c.disabled = true; await BRB.commentDelete(c.dataset.cdel); toast("Comentário apagado."); closeM(); await load(); } catch (err) { toast(err.message); c.disabled = false; }
   });
+
   list.addEventListener("keydown", e => { if (tab === "activity" && e.key === "Enter" && e.target.id === "actQ") { actQ = e.target.value.trim(); load(); } });
   list.addEventListener("click", async e => {
-    if (tab === "tickets") {
-      const b = e.target.closest("[data-tk]"); if (!b) return;
-      const card = b.closest("[data-tid]"), st = b.dataset.tk;
-      if (st === "cancelada" && !confirm("Cancelar este pedido? O ingresso volta a ficar à venda.")) return;
-      try { b.disabled = true; await BRB.ticketsAdmin("advance", { id: card.dataset.tid, status: st }); toast("Pedido atualizado."); await load(); } catch (err) { toast(err.message); b.disabled = false; }
-      return;
-    }
-    if (tab === "activity") {
-      const dm = e.target.closest("[data-dismiss]"), rs = e.target.closest("#actRestore");
-      if (dm) { if (!confirm("Excluir esta linha do painel? Só some daqui: a conta e os dados da pessoa continuam. Dá para trazer de volta em Restaurar ocultos.")) return; try { dm.disabled = true; await BRB.activity("dismiss", { key: dm.dataset.dismiss }); toast("Linha excluída do painel."); await load(); } catch (err) { toast(err.message); dm.disabled = false; } return; }
-      if (rs) { try { await BRB.activity("restore"); toast("Linhas ocultas restauradas."); await load(); } catch (err) { toast(err.message); } return; }
-      const v = e.target.closest("[data-av]"), go = e.target.closest("#actGo"), clr = e.target.closest("#actClear"), ua = e.target.closest("[data-uact]");
-      const qi = document.getElementById("actQ"); if (qi) actQ = qi.value.trim();
-      if (v) { actView = v.dataset.av; load(); }
-      else if (go) load();
-      else if (clr) { actUid = ""; actName = ""; load(); }
-      else if (ua) { const c = ua.closest("[data-uid]"); actUid = c.dataset.uid; actName = c.dataset.uname; actView = "feed"; load(); }
-      return;
-    }
-    if (tab === "venues") {
-      const add = e.target.closest("#vnAdd"), del = e.target.closest("[data-perf-del]");
-      try {
-        if (add) {
-          const dj = document.getElementById("vnDj").value.trim(), rank = Number(document.getElementById("vnRank").value), date = document.getElementById("vnDate").value, source = document.getElementById("vnSrc").value.trim();
-          if (!dj || !date) return toast("Informe o DJ e a data do show.");
-          add.disabled = true; await BRB.rankingAdmin("confirm", { dj, rank, date, source }); toast("Show confirmado."); await load();
-        } else if (del) {
-          if (!confirm("Remover este show confirmado? A nota do DJ é recalculada.")) return;
-          del.disabled = true; await BRB.rankingAdmin("remove", { id: del.closest("[data-perf]").dataset.perf }); toast("Show removido."); await load();
-        }
-      } catch (err) { toast(err.message); (add || del).disabled = false; }
-      return;
-    }
-    const memberCard = e.target.closest("[data-member]");
-    if (memberCard) {
-      const rm = e.target.closest("[data-remove]");
-      if (rm) {
-        if (!confirm("Excluir este membro? Ele perde o selo BRB Clubber e não poderá mais comentar no Spotted.")) return;
-        try { rm.disabled = true; await BRB.removeMember(memberCard.dataset.member); toast("Membro excluído."); await load(); }
-        catch (err) { toast(err.message); rm.disabled = false; }
-        return;
-      }
-      const b = e.target.closest("[data-mail]"); if (!b) return;
-      if (!confirm("Enviar o e-mail de parabéns para este membro?")) return;
-      try { b.disabled = true; await BRB.sendApprovalMail(memberCard.dataset.member); toast("E-mail enviado."); await load(); }
-      catch (err) { toast(err.message); b.disabled = false; }
-      return;
-    }
-    const appCard = e.target.closest("[data-app]");
-    if (appCard) {
-      const b = e.target.closest("[data-ast]"); if (!b) return;
-      try { b.disabled = true; await BRB.owner("submission_status", { id: appCard.dataset.app, status: b.dataset.ast }); toast("Candidatura atualizada."); await load(); }
-      catch (err) { toast(err.message); b.disabled = false; }
-      return;
-    }
-    const card = e.target.closest(".md-card"); if (!card) return;
-    const id = card.dataset.id, btn = e.target.closest("button"); if (!btn) return;
-    try {
-      if (btn.dataset.st) {
-        btn.disabled = true; await BRB.owner("post_status", { id, status: btn.dataset.st }); toast("Status atualizado."); await load();
-      } else if (btn.hasAttribute("data-erase")) {
-        if (!confirm("Apagar este post de vez? Isso não pode ser desfeito.")) return;
-        btn.disabled = true; await BRB.owner("post_delete", { id }); toast("Post apagado."); await load();
-      } else if (btn.dataset.cdel) {
-        if (!confirm("Apagar este comentário?")) return;
-        btn.disabled = true; await BRB.commentDelete(btn.dataset.cdel); toast("Comentário apagado."); await load();
-      }
-    } catch (err) { toast(err.message); btn.disabled = false; }
-  });
-  filterBar.addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
-    if (b.id === "mdRefresh") return load();
-    filter = b.dataset.f; filterBar.querySelectorAll("[data-f]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); load();
+    try {
+      if (tab === "posts") {
+        const row = b.closest("[data-id]"); if (!row) return; const p = posts.find(x => x.id === row.dataset.id); if (!p) return;
+        if (b.dataset.st) { b.disabled = true; await BRB.owner("post_status", { id: p.id, status: b.dataset.st }); toast(b.dataset.st === "hidden" ? "Oculto no Spotted Bayle." : b.dataset.st === "published" ? "Publicado no Spotted Bayle." : "Marcado como em análise."); await load(); }
+        else if (b.dataset.act === "edit") editPost(p);
+        else if (b.dataset.act === "coms") showComments(p);
+        else if (b.dataset.act === "del") { if (await ask("Excluir permanentemente?", `“${esc(p.title)}” será apagado do Spotted Bayle e do banco, junto com os comentários e as reações. Esta ação não pode ser desfeita. Para só tirar do ar, use <b>Ocultar</b>.`, "Excluir permanentemente")) { await BRB.owner("post_delete", { id: p.id }); toast("Postagem excluída permanentemente."); await load(); } }
+      } else if (tab === "apps") {
+        const row = b.closest("[data-app]"); if (!row) return;
+        if (b.dataset.act === "appview") return showApp(apps.find(x => x.id === row.dataset.app));
+        if (b.dataset.ast) { b.disabled = true; await BRB.owner("submission_status", { id: row.dataset.app, status: b.dataset.ast }); toast("Candidatura atualizada."); await load(); }
+      } else if (tab === "members") {
+        const row = b.closest("[data-member]"); if (!row) return;
+        if (b.hasAttribute("data-remove")) { if (await ask("Excluir este membro?", "Ele perde o selo BRB Clubber e não poderá mais comentar no Spotted.", "Excluir membro")) { b.disabled = true; await BRB.removeMember(row.dataset.member); toast("Membro excluído."); await load(); } }
+        else if (b.hasAttribute("data-mail")) { if (await ask("Enviar o e-mail de aprovação?", "A pessoa recebe o e-mail de parabéns do BRB Clubbers.", "Enviar e-mail", false)) { b.disabled = true; await BRB.sendApprovalMail(row.dataset.member); toast("E-mail enviado."); await load(); } }
+      } else if (tab === "venues") {
+        if (b.id === "vnAdd") { const dj = $("#vnDj").value.trim(), rank = Number($("#vnRank").value), date = $("#vnDate").value, source = $("#vnSrc").value.trim(); if (!dj || !date) return toast("Informe o DJ e a data do show."); b.disabled = true; await BRB.rankingAdmin("confirm", { dj, rank, date, source }); toast("Show confirmado."); await load(); }
+        else if (b.hasAttribute("data-perf-del")) { if (await ask("Remover este show confirmado?", "A nota do DJ é recalculada.", "Remover")) { b.disabled = true; await BRB.rankingAdmin("remove", { id: b.closest("[data-perf]").dataset.perf }); toast("Show removido."); await load(); } }
+      } else if (tab === "activity") {
+        const qi = $("#actQ"); if (qi) actQ = qi.value.trim();
+        if (b.dataset.dismiss) { if (await ask("Excluir esta linha do painel?", "Só some daqui: a conta e os dados da pessoa continuam. Dá para trazer de volta em Restaurar ocultos.", "Excluir linha")) { b.disabled = true; await BRB.activity("dismiss", { key: b.dataset.dismiss }); toast("Linha excluída do painel."); await load(); } }
+        else if (b.id === "actRestore") { await BRB.activity("restore"); toast("Linhas ocultas restauradas."); await load(); }
+        else if (b.dataset.av) { actView = b.dataset.av; load(); }
+        else if (b.id === "actGo") load();
+        else if (b.id === "actClear") { actUid = ""; actName = ""; load(); }
+        else if (b.hasAttribute("data-uact")) { const c = b.closest("[data-uid]"); actUid = c.dataset.uid; actName = c.dataset.uname; actView = "feed"; load(); }
+      } else if (tab === "tickets") {
+        const row = b.closest("[data-tid]"); if (!row || !b.dataset.tk) return;
+        if (b.dataset.tk === "cancelada" && !(await ask("Cancelar este pedido?", "O ingresso volta a ficar à venda.", "Cancelar pedido"))) return;
+        b.disabled = true; await BRB.ticketsAdmin("advance", { id: row.dataset.tid, status: b.dataset.tk }); toast("Pedido atualizado."); await load();
+      }
+    } catch (err) { toast(err.message); b.disabled = false; }
   });
 
   (async () => {

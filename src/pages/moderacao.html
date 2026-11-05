@@ -5,29 +5,26 @@
   "description": "Área restrita ao owner da Brazilian Bayle.",
   "noindex": true
 } -->
-
-<section class="sec dark page-head md" aria-labelledby="t-md">
-  <div class="wrap">
-    <p class="mono gold">👑 Owner · área restrita</p>
-    <h1 class="display" id="t-md">Moderação do <em>Spotted</em></h1>
-    <p class="lead dim">Todos os posts do Spotted (publicados, denunciados, em análise ou ocultos) e as candidaturas ao BRB Clubbers. Nada some para sempre sem passar por aqui: ocultar é reversível, e só um post já oculto pode ser apagado de vez.</p>
-    <div class="md-tabs" id="mdTabs" role="group" aria-label="Seção" hidden>
-      <button type="button" data-tab="posts" aria-pressed="true">Posts do Spotted <span class="owner-badge" data-count="posts" hidden></span></button>
-      <button type="button" data-tab="apps" aria-pressed="false">Candidaturas <span class="owner-badge" data-count="apps" hidden></span></button>
-      <button type="button" data-tab="members" aria-pressed="false">Membros</button>
-      <button type="button" data-tab="venues" aria-pressed="false">Locais do ranking</button>
-      <button type="button" data-tab="activity" aria-pressed="false">Atividade</button>
-      <button type="button" data-tab="tickets" aria-pressed="false">Intermediação de ingressos <span class="owner-badge" data-count="tickets" hidden></span></button>
-    </div>
-    <p id="mdStatus" class="mono dim" role="status">Verificando seu acesso…</p>
-    <div class="md-filter" id="mdFilter" role="group" aria-label="Filtrar" hidden>
-      <button type="button" class="chip" data-f="todos" aria-pressed="true">Todos</button>
-      <button type="button" class="chip" data-f="published" aria-pressed="false">Publicados</button>
-      <button type="button" class="chip" data-f="denunciado" aria-pressed="false">Denunciados</button>
-      <button type="button" class="chip" data-f="review" aria-pressed="false">Em análise</button>
-      <button type="button" class="chip" data-f="hidden" aria-pressed="false">Ocultos</button>
-      <button type="button" class="chip" id="mdRefresh">Atualizar</button>
-    </div>
-    <div class="md-list" id="mdList"></div><button type="button" class="btn btn-line-light" id="mdMore" hidden>Carregar mais</button>
-  </div>
-</section>
+<div class="mx-shell">
+  <aside class="mx-side">
+    <a class="mx-brand" href="/"><b>Brazilian Bayle</b><small>Moderação</small></a>
+    <nav class="mx-nav" id="mdTabs" aria-label="Seções" hidden>
+      <button type="button" data-tab="posts" aria-current="true"><span>Posts do Spotted</span><i data-count="posts" hidden></i></button>
+      <button type="button" data-tab="apps"><span>Candidaturas</span><i data-count="apps" hidden></i></button>
+      <button type="button" data-tab="members"><span>Membros</span></button>
+      <button type="button" data-tab="venues"><span>Locais do ranking</span></button>
+      <button type="button" data-tab="activity"><span>Atividade</span></button>
+      <button type="button" data-tab="tickets"><span>Intermediação de ingressos</span></button>
+    </nav>
+    <a class="mx-back" href="/">← Voltar ao site</a>
+  </aside>
+  <main class="mx-main" id="conteudo">
+    <header class="mx-ph"><h1 id="mdTitle">Moderação</h1><p id="mdSub">Área restrita ao owner.</p></header>
+    <p id="mdStatus" class="mx-status" role="status">Verificando seu acesso…</p>
+    <div class="mx-tb" id="mdTb" hidden></div>
+    <div id="mdList"></div>
+    <button type="button" class="mx-btn mx-more" id="mdMore" hidden>Carregar mais</button>
+  </main>
+</div>
+<div class="mx-ov" id="mdModal" hidden></div>
+<div class="mx-toast" id="mdToast" role="status"></div>
