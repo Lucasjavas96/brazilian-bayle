@@ -7,6 +7,7 @@ RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
+RewriteRule ^temperatura/?$ /intermediacao [R=301,L]
 RewriteRule ^djpedia/?$ /djindex [R=301,L]
 RewriteRule ^djpedia/(.+)$ /djindex/$1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
