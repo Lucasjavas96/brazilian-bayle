@@ -29,7 +29,7 @@
 <meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=77a1de157f9d">
+<link rel="stylesheet" href="/styles.css?v=ae386f50aab9">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brazilian Bayle","url":"https://brazilianbayle.com.br","logo":"https://brazilianbayle.com.br/assets/icon-512.png","email":"contato@brazilianbayle.com.br","sameAs":["https://instagram.com/brazilianbayle"],"areaServed":"BR","description":"O Ranking da Pista Brasileira: todo DJ que toca aqui entra, a pista dá a nota. Votação da comunidade e o network BRB Clubbers."}</script>
 </head>
@@ -91,6 +91,7 @@
         <div><b id="abColadas">0</b><span>de <i id="abTotal">340</i> coladas</span></div>
         <div><b id="abGiros">0</b><span>giros disponíveis</span></div>
         <div><b id="abRep">0</b><span>repetidas</span></div>
+        <div><b id="abPontos">0</b><span>pontos no <a href="#ranking">ranking</a></span></div>
       </div>
       <div class="cta-row">
         <a href="#roleta" class="btn btn-y">Girar a jog wheel</a>
@@ -126,6 +127,37 @@
         <p class="mono ab-small">No celular, gire com o dedo. No computador, clique e arraste, ou use o botão.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- RANKING -->
+<section class="ab-rank-sec" id="ranking" aria-labelledby="t-rank">
+  <div class="wrap">
+    <div class="ab-jog-head">
+      <h2 class="display" id="t-rank">Ranking dos <em>colecionadores</em></h2>
+      <p class="dim">Cada figurinha nova vale pontos, e quanto mais rara, mais vale. Quem somar mais pontos lidera. No empate, fica na frente quem chegou primeiro.</p>
+    </div>
+    <div class="ab-rank-me" id="abRankMe" aria-live="polite"></div>
+    <ol class="ab-rank" id="abRank" aria-label="Ranking dos colecionadores"></ol>
+    <p class="ab-rank-status mono" id="abRankStatus" role="status">Carregando o ranking…</p>
+    <details class="ab-rank-rules">
+      <summary>Como funciona a pontuação</summary>
+      <table>
+        <thead><tr><th>Figurinha</th><th>Pontos</th><th>Exemplo</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rar-comum">Comum</span></td><td>OVR × 1</td><td>OVR 70 = 70 pontos</td></tr>
+          <tr><td><span class="rar-rara">Rara</span></td><td>OVR × 1,5</td><td>OVR 80 = 120 pontos</td></tr>
+          <tr><td><span class="rar-epica">Épica</span></td><td>OVR × 3</td><td>OVR 86 = 258 pontos</td></tr>
+          <tr><td><span class="rar-lendaria">Lendária</span></td><td>OVR × 5</td><td>OVR 94 = 470 pontos</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>Só a primeira figurinha de cada DJ pontua. Repetidas não somam.</li>
+        <li>Página completa: quem cola todos os DJs de um país ganha mais 20% dos pontos daquela página.</li>
+        <li>Álbum completo: mais 5.000 pontos.</li>
+        <li>Quando a nota (OVR) ou a raridade de uma carta muda, os pontos de todo mundo são recalculados.</li>
+      </ul>
+    </details>
   </div>
 </section>
 
@@ -227,7 +259,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="/assets/vendor/supabase-2.49.8.js" defer></script>
 <script src="/backend-config.js" defer></script>
-<script src="/backend.js?v=3c202186528f" defer></script>
+<script src="/backend.js?v=da263b595a97" defer></script>
 <script src="/events-2026.js?v=55e324c006fb" defer></script>
 <script src="/app.js?v=6418b3b0f06f" defer></script>
 <script src="/media-guard.js" defer></script>
@@ -242,7 +274,7 @@
 
 
 
-<script src="/album.js?v=791f26f43448" defer></script>
+<script src="/album.js?v=f8e365e12556" defer></script>
 
 </body>
 </html>

@@ -11,6 +11,11 @@
       if (error) throw new Error(error.message || 'Não foi possível atualizar seu álbum.');
       return data;
     },
+    async albumRanking() {
+      const { data, error } = await client.rpc('brb_album_ranking');
+      if (error) throw new Error(error.message || 'Não foi possível carregar o ranking.');
+      return data;
+    },
     async content(prefix = '') {
       const { data, error } = await client.rpc('brb_content', { prefix });
       if (error) throw new Error(error.message || 'Não foi possível carregar o conteúdo.');
