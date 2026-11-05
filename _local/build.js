@@ -53,6 +53,7 @@ function layout(meta, body) {
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+${meta.path === "/" ? '<meta name="facebook-domain-verification" content="a76rwocxwk5m6wwuu0yvz7ujgvik4l" />' : ""}
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(meta.description)}">
