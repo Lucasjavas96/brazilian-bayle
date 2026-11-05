@@ -323,6 +323,7 @@
       const me = r.eu;
       $("#abRankMe").innerHTML = !userId ? '<p>Entre na sua conta para aparecer no ranking.</p>'
         : me && me.pos ? `<p><b class="ab-rk-big">${me.pos}º</b> lugar com <b>${fmtPts(me.pontos)}</b> pontos e ${me.cartas} de ${total} figurinhas.</p>`
+        : me && me.pontos > 0 ? '<p>Sua conta é da equipe da Brazilian Bayle e não entra no ranking.</p>'
         : '<p>Gire a jog wheel e cole sua primeira figurinha para entrar no ranking.</p>';
       st.textContent = top.length ? `${r.jogadores} colecionador${r.jogadores === 1 ? "" : "es"} no ranking. Aparecem os 100 primeiros.` : "Ninguém pontuou ainda. A primeira figurinha colada já coloca você em 1º lugar.";
     } catch (error) { if (gen === rankGen) st.textContent = "Não foi possível carregar o ranking. Tente atualizar a página."; }
