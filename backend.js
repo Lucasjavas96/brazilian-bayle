@@ -88,6 +88,11 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar os pedidos.');
       return data;
     },
+    async postEdit(id, title, party, date) {
+      const { data, error } = await client.rpc('brb_post_edit', { post_id: id, new_title: title, new_party: party, new_date: date });
+      if (error) throw new Error(error.message || 'Não foi possível salvar a postagem.');
+      return data;
+    },
     async removeMember(id) {
       const { data, error } = await client.rpc('brb_members', { action: 'remove', payload: { id } });
       if (error) throw new Error(error.message || 'Não foi possível excluir o membro.');
