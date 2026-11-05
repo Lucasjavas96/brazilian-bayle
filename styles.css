@@ -3025,3 +3025,26 @@ body.p2p-lock{overflow:hidden}
 .tp-pick-list a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:12px;color:#fff;text-decoration:none;font:600 15px/1.2 'Inter Tight',system-ui,sans-serif}
 .tp-pick-list a:hover,.tp-pick-list a:focus-visible{background:rgba(255,212,0,.14);color:var(--y)}
 .tp-pick-list a span{font:600 11px/1 'JetBrains Mono',monospace;color:var(--y)}
+/* ===== Visual das raridades escolhido pelo Lucas (05/11/2026): Comum = Cartão Cru, Rara = Ouro Clássico, Épica = Elétrica. Lendária sem mudança. ===== */
+@keyframes rxGlow { 0%, 100% { box-shadow: 0 0 2.5cqw var(--halo), 0 0 7cqw var(--halo); } 50% { box-shadow: 0 0 4cqw var(--halo), 0 0 12cqw var(--halo); } }
+@keyframes rxSweep { 0%, 30% { background-position: 160% 0; } 80%, 100% { background-position: -60% 0; } }
+@keyframes rxBolt { 0%, 70% { transform: translateX(-130%) skewX(-20deg); opacity: 0; } 75% { opacity: 1; } 100% { transform: translateX(130%) skewX(-20deg); opacity: 0; } }
+/* comum: cartão cru, sem brilho */
+.djc.comum { --frame: #e8e2d3; --accent: #d8d0bd; --glow: rgba(0,0,0,0); --plate: linear-gradient(180deg, #1c1a16, #11100d); }
+.djc.comum .djc-inner { box-shadow: 0 0 0 .5cqw #1a1814; }
+.djc.comum .djc-name h3 { background: none; color: #f1ead9; -webkit-text-fill-color: #f1ead9; }
+.djc.comum .djc-foil, .djc.comum .djc-glare { display: none; }
+/* rara: ouro clássico escovado, um reflexo passando */
+.djc.rara { --frame: repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 .2cqw, transparent .2cqw .5cqw), linear-gradient(135deg, #7c5a22 0%, #f1d48a 28%, #a9843f 52%, #f6e3ae 76%, #7c5a22 100%); --accent: #f1d48a; --glow: rgba(241,212,138,.45); --plate: linear-gradient(180deg, #2a2112, #0f0c07); }
+.djc.rara .djc-front:before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 40%, rgba(255,250,220,.55) 50%, transparent 60%) 0 0 / 260% 100%; animation: rxSweep 6s ease-in-out infinite; }
+.djc.rara .djc-foil { opacity: calc(var(--o) * .3); }
+/* épica: elétrica, azul pulsando, raio cruzando a carta e halo */
+.djc.epica { --frame: linear-gradient(135deg, #031a4a 0%, #1e7bff 30%, #00e5ff 50%, #1e7bff 70%, #031a4a 100%); --accent: #7fe9ff; --glow: rgba(0,200,255,.85); --halo: rgba(0,190,255,.6); --plate: linear-gradient(180deg, #071733, #030915); }
+.djc.epica .djc-front { overflow: hidden; animation: rxGlow 1.6s ease-in-out infinite; }
+.djc.epica .djc-front:before { content: ""; position: absolute; inset: -10% 0; width: 35%; pointer-events: none; z-index: 7; mix-blend-mode: screen;
+  background: linear-gradient(90deg, transparent, rgba(140,240,255,0) 20%, rgba(200,250,255,.95) 50%, rgba(140,240,255,0) 80%, transparent); animation: rxBolt 3.4s ease-in infinite; }
+.djc.epica .djc-name h3, .djc.epica .djc-stat b { text-shadow: 0 0 1.6cqw #00e5ff; }
+.djc.epica .djc-foil { opacity: calc(.12 + var(--o) * .45); }
+.ab-st.comum { --frame-c: #e8e2d3; } .ab-st.rara { --frame-c: #f1d48a; } .ab-st.epica { --frame-c: #00e5ff; }
+.rar-comum { color: #e8e2d3; } .rar-rara { color: #f1d48a; } .rar-epica { color: #7fe9ff; }
+@media (prefers-reduced-motion: reduce) { .djc.rara .djc-front:before, .djc.epica .djc-front, .djc.epica .djc-front:before { animation: none; } }
