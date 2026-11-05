@@ -31,7 +31,7 @@
         "bpm": 128,
         "premios": 2
       },
-      "ovrManual": 93
+      "ovrManual": 91
     },
     {
       "slug": "vintage-culture",
@@ -61,7 +61,7 @@
         "bpm": 124,
         "premios": 2
       },
-      "ovrManual": 92
+      "ovrManual": 95
     },
     {
       "slug": "ferry-corsten",
@@ -88,7 +88,8 @@
         "festivais": 0,
         "bpm": 138,
         "premios": 2
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "alan-walker",
@@ -112,7 +113,8 @@
         "headlines": 1,
         "bpm": 128,
         "premios": 1
-      }
+      },
+      "ovrManual": 89
     },
     {
       "slug": "ellen-allien",
@@ -136,7 +138,8 @@
         "boilerCercle": 1,
         "festivais": 0,
         "bpm": 130
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "duke-dumont",
@@ -160,7 +163,8 @@
         "essential": 1,
         "festivais": 3,
         "bpm": 124
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "dj-stingray",
@@ -182,7 +186,8 @@
         "boilerCercle": 1,
         "festivais": 0,
         "bpm": 135
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "sub-zero-project",
@@ -205,7 +210,8 @@
         "festivais": 3,
         "headlines": 1,
         "bpm": 150
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "illusionize",
@@ -227,7 +233,8 @@
         "inicio": 2014,
         "festivais": 2,
         "bpm": 126
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "dubvision",
@@ -250,7 +257,8 @@
         "festivais": 1,
         "headlines": 1,
         "bpm": 128
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "alok",
@@ -295,7 +303,7 @@
         "headlines": 4,
         "bpm": 124
       },
-      "ovrManual": 94
+      "ovrManual": 98
     },
     {
       "slug": "cat-dealers",
@@ -325,7 +333,8 @@
         "festivais": 3,
         "headlines": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "chemical-surf",
@@ -350,7 +359,8 @@
         "ouvintes": 592777,
         "inicio": 2005,
         "bpm": 126
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "victor-ruiz",
@@ -380,7 +390,8 @@
         "beatport": "genero",
         "festivais": 2,
         "bpm": 130
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "classmatic",
@@ -408,7 +419,8 @@
         "inicio": 2017,
         "festivais": 1,
         "bpm": 127
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "fancy-inc",
@@ -436,7 +448,8 @@
         "hino": 1,
         "beatport": "genero",
         "bpm": 124
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "felguk",
@@ -461,7 +474,8 @@
         "inicio": 2007,
         "beatport": "geral",
         "bpm": 128
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "antdot",
@@ -494,7 +508,8 @@
         "beatport": "genero",
         "festivais": 4,
         "bpm": 122
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "rooftime",
@@ -520,7 +535,8 @@
         "ouvintes": 1631666,
         "inicio": 2018,
         "bpm": 124
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "binaryh",
@@ -545,7 +561,8 @@
         "ouvintes": 67187,
         "inicio": 2016,
         "bpm": 124
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "elekfantz",
@@ -572,7 +589,8 @@
         "inicio": 2012,
         "hino": 1,
         "bpm": 120
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "l-cio",
@@ -602,7 +620,8 @@
         "boilerCercle": 1,
         "festivais": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "patife",
@@ -629,7 +648,8 @@
         "inicio": 1997,
         "pioneiro": 1,
         "bpm": 174
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "leo-janeiro",
@@ -658,7 +678,8 @@
         "selo": 1,
         "festivais": 1,
         "bpm": 123
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "mochakk",
@@ -693,7 +714,8 @@
         "festivais": 3,
         "headlines": 0,
         "bpm": 126
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "dubdogz",
@@ -722,7 +744,8 @@
         "selo": 1,
         "festivais": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "zerb",
@@ -753,7 +776,8 @@
         "festivais": 3,
         "headlines": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "gui-boratto",
@@ -786,7 +810,8 @@
         "boilerCercle": 1,
         "festivais": 0,
         "bpm": 124
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "greg",
@@ -816,7 +841,8 @@
         "beatport": "geral",
         "festivais": 0,
         "bpm": 126
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "breaking-beattz",
@@ -844,7 +870,8 @@
         "selo": 1,
         "festivais": 0,
         "bpm": 128
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "gabe",
@@ -873,7 +900,8 @@
         "festivais": 2,
         "headlines": 0,
         "bpm": 126
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "jetlag-music",
@@ -900,7 +928,8 @@
         "inicio": 2014,
         "festivais": 0,
         "bpm": 124
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "shapeless",
@@ -926,7 +955,8 @@
         "inicio": 2015,
         "festivais": 0,
         "bpm": 124
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "eli-iwasa",
@@ -957,7 +987,8 @@
         "festivais": 2,
         "headlines": 0,
         "bpm": 125
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "bruno-be",
@@ -987,7 +1018,8 @@
         "festivais": 1,
         "headlines": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "mau-mau",
@@ -1017,7 +1049,8 @@
         "premios": 1,
         "festivais": 0,
         "bpm": 127
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "ashibah",
@@ -1045,7 +1078,8 @@
         "festivais": 2,
         "headlines": 0,
         "bpm": 124
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "liu",
@@ -1075,7 +1109,8 @@
         "inicio": 2015,
         "festivais": 3,
         "bpm": 126
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "kvsh",
@@ -1101,7 +1136,8 @@
         "inicio": 2014,
         "festivais": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "ownboss",
@@ -1131,7 +1167,8 @@
         "top1001": 65,
         "beatport": "genero",
         "bpm": 126
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "beltran",
@@ -1163,7 +1200,8 @@
         "beatport": "geral",
         "festivais": 2,
         "bpm": 128
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "sevek",
@@ -1192,7 +1230,8 @@
         "hino": 1,
         "beatport": "genero",
         "bpm": 124
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "bruno-martini",
@@ -1222,7 +1261,8 @@
         "hino": 1,
         "festivais": 2,
         "bpm": 120
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "victor-lou",
@@ -1249,7 +1289,8 @@
         "inicio": 2015,
         "festivais": 1,
         "bpm": 128
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "pontifexx",
@@ -1277,7 +1318,8 @@
         "inicio": 2017,
         "festivais": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "renato-ratier",
@@ -1306,7 +1348,8 @@
         "selo": 1,
         "residencia": 1,
         "bpm": 125
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "mila-journee",
@@ -1332,7 +1375,8 @@
         "ouvintes": 205600,
         "inicio": 2017,
         "bpm": 122
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "ney-faustini",
@@ -1360,7 +1404,8 @@
         "boilerCercle": 1,
         "premios": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "renato-cohen",
@@ -1390,7 +1435,8 @@
         "pioneiro": 1,
         "premios": 1,
         "bpm": 130
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "vinne",
@@ -1417,7 +1463,8 @@
         "inicio": 2015,
         "festivais": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "anna",
@@ -1455,7 +1502,8 @@
         "headlines": 2,
         "bpm": 130,
         "premios": 1
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "bhaskar",
@@ -1485,7 +1533,8 @@
         "inicio": 2003,
         "festivais": 4,
         "bpm": 124
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "ruback",
@@ -1515,7 +1564,8 @@
         "top1001": 58,
         "festivais": 2,
         "bpm": 126
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "mojjo",
@@ -1540,7 +1590,8 @@
         "ouvintes": 404200,
         "inicio": 2011,
         "bpm": 124
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "volkoder",
@@ -1568,7 +1619,8 @@
         "festivais": 1,
         "bpm": 126,
         "premios": 2
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "dashdot",
@@ -1593,7 +1645,8 @@
         "ouvintes": 265100,
         "inicio": 2012,
         "bpm": 122
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "maz",
@@ -1623,7 +1676,8 @@
         "beatport": "genero",
         "festivais": 2,
         "bpm": 120
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "malifoo",
@@ -1650,7 +1704,8 @@
         "inicio": 2016,
         "festivais": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "wehbba",
@@ -1677,7 +1732,8 @@
         "inicio": 2006,
         "boilerCercle": 1,
         "bpm": 130
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "selvagem",
@@ -1704,7 +1760,8 @@
         "inicio": 2011,
         "selo": 1,
         "bpm": 118
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "dj-marky",
@@ -1735,7 +1792,8 @@
         "essential": 1,
         "bpm": 174,
         "premios": 6
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "anderson-noise",
@@ -1765,7 +1823,8 @@
         "pioneiro": 1,
         "bpm": 130,
         "premios": 2
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "groove-delight",
@@ -1793,7 +1852,8 @@
         "ouvintes": 279200,
         "inicio": 2013,
         "bpm": 126
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "themba",
@@ -1818,7 +1878,8 @@
         "ouvintes": 954500,
         "inicio": 2003,
         "bpm": 124
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "paul-van-dyk",
@@ -1848,7 +1909,8 @@
         "grammy": "indicacao",
         "premios": 3,
         "bpm": 138
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "claptone",
@@ -1876,7 +1938,8 @@
         "hino": 1,
         "premios": 2,
         "bpm": 123
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "zedd",
@@ -1903,7 +1966,8 @@
         "hino": 1,
         "grammy": "vitoria",
         "bpm": 128
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "boris-brejcha",
@@ -1930,7 +1994,7 @@
         "selo": 1,
         "bpm": 125
       },
-      "ovrManual": 96
+      "ovrManual": 90
     },
     {
       "slug": "atb",
@@ -1956,7 +2020,8 @@
         "inicio": 1993,
         "hino": 1,
         "bpm": 135
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "adam-port",
@@ -1982,7 +2047,8 @@
         "hino": 1,
         "selo": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "ben-bohmer",
@@ -2006,7 +2072,8 @@
         "ouvintes": 3800000,
         "inicio": 2015,
         "bpm": 122
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "dixon",
@@ -2030,7 +2097,8 @@
         "selo": 1,
         "ra": 1,
         "bpm": 123
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "fjaak",
@@ -2056,7 +2124,8 @@
         "boilerCercle": 1,
         "festivais": 1,
         "bpm": 135
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "helena-hauff",
@@ -2082,7 +2151,8 @@
         "essential": 1,
         "emoty": 1,
         "bpm": 135
-      }
+      },
+      "ovrManual": 60
     },
     {
       "slug": "klangkuenstler",
@@ -2108,7 +2178,8 @@
         "selo": 1,
         "festivais": 1,
         "bpm": 155
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "kobosil",
@@ -2132,7 +2203,8 @@
         "ouvintes": 538700,
         "inicio": 2008,
         "bpm": 140
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "loco-dice",
@@ -2156,7 +2228,8 @@
         "inicio": 1994,
         "selo": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "monolink",
@@ -2180,7 +2253,8 @@
         "ouvintes": 2200000,
         "inicio": 2014,
         "bpm": 122
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "purple-disco-machine",
@@ -2206,7 +2280,8 @@
         "hino": 1,
         "grammy": "vitoria",
         "bpm": 122
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "rampa",
@@ -2231,7 +2306,8 @@
         "inicio": 2009,
         "selo": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "stephan-bodzin",
@@ -2254,7 +2330,8 @@
         "inicio": 2005,
         "selo": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "sven-vath",
@@ -2282,7 +2359,8 @@
         "residencia": 1,
         "premios": 3,
         "bpm": 130
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "timmy-trumpet",
@@ -2309,7 +2387,8 @@
         "hino": 1,
         "premios": 2,
         "bpm": 132
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "fisher",
@@ -2337,7 +2416,8 @@
         "grammy": "indicacao",
         "premios": 4,
         "bpm": 126
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "dom-dolla",
@@ -2365,7 +2445,8 @@
         "grammy": "indicacao",
         "premios": 2,
         "bpm": 126
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "sonny-fodera",
@@ -2391,7 +2472,8 @@
         "inicio": 2007,
         "selo": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "mall-grab",
@@ -2415,7 +2497,8 @@
         "ouvintes": 2436452,
         "inicio": 2015,
         "bpm": 124
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "dimitri-vegas-like-mike",
@@ -2444,7 +2527,8 @@
         "residencia": 1,
         "premios": 1,
         "bpm": 128
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "charlotte-de-witte",
@@ -2473,7 +2557,8 @@
         "boilerCercle": 1,
         "premios": 3,
         "bpm": 135
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "lost-frequencies",
@@ -2500,7 +2585,8 @@
         "hino": 1,
         "selo": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "amelie-lens",
@@ -2526,7 +2612,8 @@
         "inicio": 2014,
         "selo": 1,
         "bpm": 135
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "mattn",
@@ -2549,7 +2636,8 @@
       "sinais": {
         "djmag": 92,
         "bpm": 128
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "black-coffee",
@@ -2581,7 +2669,8 @@
         "ra": 91,
         "premios": 4,
         "bpm": 122
-      }
+      },
+      "ovrManual": 93
     },
     {
       "slug": "shimza",
@@ -2613,7 +2702,8 @@
         "headlines": 0,
         "premios": 2,
         "bpm": 124
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "culoe-de-song",
@@ -2638,7 +2728,8 @@
         "inicio": 2007,
         "boilerCercle": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "da-capo",
@@ -2666,7 +2757,8 @@
         "headlines": 0,
         "premios": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "keinemusik",
@@ -2697,7 +2789,8 @@
         "festivais": 1,
         "headlines": 0,
         "bpm": 122
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "plastik-funk",
@@ -2726,7 +2819,8 @@
         "festivais": 2,
         "headlines": 0,
         "bpm": 126
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "marlon-hoffstadt",
@@ -2754,7 +2848,8 @@
         "festivais": 3,
         "headlines": 1,
         "bpm": 128
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "and-me",
@@ -2779,7 +2874,8 @@
         "inicio": 2007,
         "selo": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "ame",
@@ -2810,7 +2906,8 @@
         "festivais": 2,
         "headlines": 0,
         "bpm": 122
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "ben-klock",
@@ -2842,7 +2939,8 @@
         "festivais": 5,
         "headlines": 0,
         "bpm": 132
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "kevin-de-vries",
@@ -2871,7 +2969,8 @@
         "festivais": 4,
         "headlines": 2,
         "bpm": 130
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "marcel-dettmann",
@@ -2901,7 +3000,8 @@
         "festivais": 2,
         "headlines": 0,
         "bpm": 132
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "objekt",
@@ -2926,7 +3026,8 @@
         "inicio": 2011,
         "essential": 1,
         "bpm": 130
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "david-guetta",
@@ -2954,7 +3055,7 @@
         "hino": 1,
         "djmag": 1
       },
-      "ovrManual": 92
+      "ovrManual": 97
     },
     {
       "slug": "hugel",
@@ -2977,7 +3078,8 @@
         "ouvintes": 37186751,
         "hino": 1,
         "djmag": 48
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "dj-snake",
@@ -3004,7 +3106,8 @@
         "headlines": 1,
         "hino": 1,
         "djmag": 60
-      }
+      },
+      "ovrManual": 89
     },
     {
       "slug": "b-jones",
@@ -3027,7 +3130,8 @@
         "ouvintes": 370867,
         "selo": 1,
         "djmag": 74
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "nico-moreno",
@@ -3052,7 +3156,8 @@
         "ouvintes": 1000000,
         "festivais": 2,
         "djmag": 82
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "mosimann",
@@ -3074,7 +3179,8 @@
       "sinais": {
         "ouvintes": 1300000,
         "djmag": 85
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "folamour",
@@ -3095,7 +3201,8 @@
       ],
       "sinais": {
         "ouvintes": 741248
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "i-hate-models",
@@ -3118,7 +3225,8 @@
       "sinais": {
         "ouvintes": 464803,
         "festivais": 1
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "laurent-garnier",
@@ -3142,7 +3250,8 @@
         "ouvintes": 208800,
         "inicio": 1987,
         "pioneiro": 1
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "malaa",
@@ -3163,7 +3272,8 @@
       ],
       "sinais": {
         "ouvintes": 565451
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "tchami",
@@ -3185,7 +3295,8 @@
       "sinais": {
         "ouvintes": 2200000,
         "selo": 1
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "trym",
@@ -3204,7 +3315,8 @@
       "fontes": [
         "https://open.spotify.com/track/10AH8YLYFX2uUZR5N7ZGsc"
       ],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 78
     },
     {
       "slug": "martin-garrix",
@@ -3234,7 +3346,8 @@
         "hino": 1,
         "selo": 1,
         "djmag": 2
-      }
+      },
+      "ovrManual": 89
     },
     {
       "slug": "armin-van-buuren",
@@ -3264,7 +3377,8 @@
         "selo": 1,
         "pioneiro": 1,
         "djmag": 7
-      }
+      },
+      "ovrManual": 92
     },
     {
       "slug": "don-diablo",
@@ -3287,7 +3401,8 @@
         "ouvintes": 6152220,
         "selo": 1,
         "djmag": 12
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "afrojack",
@@ -3314,7 +3429,8 @@
         "headlines": 1,
         "selo": 1,
         "djmag": 15
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "w-and-w",
@@ -3338,7 +3454,8 @@
         "ouvintes": 11738663,
         "inicio": 2007,
         "selo": 1
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "reinier-zonneveld",
@@ -3364,7 +3481,8 @@
         "festivais": 1,
         "selo": 1,
         "bpm": 135
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "tiesto",
@@ -3394,7 +3512,8 @@
         "selo": 1,
         "pioneiro": 1,
         "grammy": "indicacao"
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "nicky-romero",
@@ -3420,7 +3539,8 @@
         "inicio": 2008,
         "festivais": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "hardwell",
@@ -3449,7 +3569,8 @@
         "headlines": 1,
         "hino": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "oliver-heldens",
@@ -3477,7 +3598,8 @@
         "hino": 1,
         "selo": 1,
         "pioneiro": 1
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "maddix",
@@ -3502,7 +3624,8 @@
         "djmag": 52,
         "ouvintes": 4663699,
         "festivais": 2
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "mau-p",
@@ -3524,7 +3647,8 @@
       "sinais": {
         "djmag": 55,
         "ouvintes": 5077294
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "bassjackers",
@@ -3546,7 +3670,8 @@
       "sinais": {
         "djmag": 58,
         "ouvintes": 3339758
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "chris-stussy",
@@ -3569,7 +3694,8 @@
       "sinais": {
         "djmag": 59,
         "festivais": 2
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "quintino",
@@ -3591,7 +3717,8 @@
       "sinais": {
         "djmag": 76,
         "ouvintes": 1338078
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "lucas-and-steve",
@@ -3613,7 +3740,8 @@
       "sinais": {
         "djmag": 77,
         "ouvintes": 2287221
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "marnik",
@@ -3635,7 +3763,8 @@
       "sinais": {
         "djmag": 88,
         "ouvintes": 4332383
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "nils-van-zandt",
@@ -3657,7 +3786,8 @@
       "sinais": {
         "djmag": 93,
         "ouvintes": 873910
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "cuebrick",
@@ -3676,7 +3806,8 @@
       "fontes": [],
       "sinais": {
         "djmag": 96
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "ki-ki",
@@ -3699,7 +3830,8 @@
         "djmag": 100,
         "ouvintes": 1639820,
         "bpm": 150
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "job-jobse",
@@ -3722,7 +3854,8 @@
       "sinais": {
         "selo": 1,
         "festivais": 1
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "joris-voorn",
@@ -3747,7 +3880,8 @@
         "ouvintes": 1820000,
         "festivais": 2,
         "selo": 1
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "nicky-elisabeth",
@@ -3767,7 +3901,8 @@
         "https://mixmag.net/feature/nicky-elisabeth-playlist-interview-anjunadeep",
         "https://www.amsterdam-dance-event.nl/en/artists-speakers/nicky-elisabeth/25861/"
       ],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 63
     },
     {
       "slug": "fred-again",
@@ -3791,7 +3926,8 @@
         "ouvintes": 27215618,
         "hino": 1,
         "grammy": "indicacao"
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "michael-bibi",
@@ -3816,7 +3952,8 @@
         "ouvintes": 733700,
         "festivais": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "josh-baker",
@@ -3840,7 +3977,8 @@
         "djmag": 40,
         "ouvintes": 2100000,
         "festivais": 1
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "joel-corry",
@@ -3865,7 +4003,8 @@
         "ouvintes": 7251099,
         "festivais": 1,
         "hino": 1
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "james-hype",
@@ -3890,7 +4029,8 @@
         "ouvintes": 11584366,
         "festivais": 1,
         "hino": 1
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "ben-nicky",
@@ -3913,7 +4053,8 @@
         "djmag": 66,
         "ouvintes": 869076,
         "bpm": 140
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "cloonee",
@@ -3938,7 +4079,8 @@
         "ouvintes": 13132971,
         "festivais": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "pawsa",
@@ -3960,7 +4102,8 @@
       "sinais": {
         "djmag": 86,
         "ouvintes": 6734323
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "above-and-beyond",
@@ -3988,7 +4131,8 @@
         "selo": 1,
         "hino": 1,
         "pioneiro": 1
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "prospa",
@@ -4012,7 +4156,8 @@
         "djmag": 94,
         "ouvintes": 12045749,
         "festivais": 1
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "ben-ufo",
@@ -4037,7 +4182,8 @@
         "selo": 1,
         "pioneiro": 1,
         "essential": 1
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "chris-lake",
@@ -4059,7 +4205,8 @@
       "sinais": {
         "ouvintes": 8709962,
         "selo": 1
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "chris-lorenzo",
@@ -4084,7 +4231,8 @@
         "ouvintes": 4800000,
         "festivais": 1,
         "hino": 1
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "dax-j",
@@ -4109,7 +4257,8 @@
         "selo": 1,
         "festivais": 1,
         "bpm": 140
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "giuseppe-ottaviani",
@@ -4131,7 +4280,8 @@
       "sinais": {
         "djmag": 78,
         "bpm": 138
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "deborah-de-luca",
@@ -4153,7 +4303,8 @@
       ],
       "sinais": {
         "djmag": 81
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "999999999",
@@ -4180,7 +4331,8 @@
         "festivais": 1,
         "hino": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "dj-tennis",
@@ -4204,7 +4356,8 @@
         "ouvintes": 563815,
         "festivais": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "enrico-sangiuliano",
@@ -4226,7 +4379,8 @@
       ],
       "sinais": {
         "ouvintes": 1100000
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "marco-carola",
@@ -4250,7 +4404,8 @@
         "selo": 1,
         "pioneiro": 1,
         "residencia": 1
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "mathame",
@@ -4272,7 +4427,8 @@
       ],
       "sinais": {
         "festivais": 1
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "meduza",
@@ -4300,7 +4456,8 @@
         "festivais": 3,
         "hino": 1,
         "grammy": "indicacao"
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "tale-of-us",
@@ -4324,7 +4481,8 @@
         "inicio": 2009,
         "selo": 1,
         "pioneiro": 1
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "calvin-harris",
@@ -4352,7 +4510,8 @@
         "festivais": 1,
         "hino": 1,
         "grammy": "indicacao"
-      }
+      },
+      "ovrManual": 89
     },
     {
       "slug": "peggy-gou",
@@ -4377,7 +4536,8 @@
         "ouvintes": 6031807,
         "festivais": 1,
         "hino": 1
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "mahmut-orhan",
@@ -4402,7 +4562,8 @@
         "ouvintes": 2000000,
         "festivais": 1,
         "hino": 1
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "kolsch",
@@ -4427,7 +4588,8 @@
         "djmag": 65,
         "ouvintes": 972186,
         "festivais": 2
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "padre-guilherme",
@@ -4450,7 +4612,8 @@
       "sinais": {
         "djmag": 79,
         "ouvintes": 53000
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "yousuke-yukimatsu",
@@ -4470,7 +4633,8 @@
       "sinais": {
         "djmag": 95,
         "bpm": 155
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "barry-cant-swim",
@@ -4491,7 +4655,8 @@
       ],
       "sinais": {
         "ouvintes": 4240000
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "dubfire",
@@ -4515,7 +4680,8 @@
         "ouvintes": 165700,
         "inicio": 1991,
         "selo": 1
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "hernan-cattaneo",
@@ -4538,7 +4704,8 @@
         "ouvintes": 254000,
         "selo": 1,
         "pioneiro": 1
-      }
+      },
+      "ovrManual": 81
     },
     {
       "slug": "kygo",
@@ -4566,7 +4733,8 @@
         "hino": 1,
         "selo": 1,
         "pioneiro": 1
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "nicole-moudaber",
@@ -4590,7 +4758,8 @@
         "ouvintes": 299200,
         "inicio": 2008,
         "selo": 1
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "nina-kraviz",
@@ -4619,7 +4788,8 @@
         "festivais": 3,
         "selo": 1,
         "boilerCercle": 1
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "overmono",
@@ -4644,7 +4814,8 @@
         "ouvintes": 1100000,
         "inicio": 2015,
         "festivais": 1
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "ricardo-villalobos",
@@ -4671,7 +4842,8 @@
         "festivais": 1,
         "pioneiro": 1,
         "boilerCercle": 1
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "yotto",
@@ -4695,7 +4867,8 @@
         "ouvintes": 1300000,
         "festivais": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "swedish-house-mafia",
@@ -4724,7 +4897,8 @@
         "festivais": 2,
         "headlines": 2,
         "hino": 1
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "alesso",
@@ -4758,7 +4932,8 @@
         "headlines": 2,
         "hino": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "eric-prydz",
@@ -4790,7 +4965,8 @@
         "headlines": 2,
         "hino": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "adam-beyer",
@@ -4821,7 +4997,8 @@
         "inicio": 1993,
         "festivais": 7,
         "selo": 1
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "dj-seinfeld",
@@ -4847,7 +5024,8 @@
         "festivais": 1,
         "selo": 1,
         "pioneiro": 1
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "lilly-palmer",
@@ -4873,7 +5051,8 @@
         "ouvintes": 904100,
         "inicio": 2020,
         "festivais": 1
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "nora-en-pure",
@@ -4902,7 +5081,8 @@
         "festivais": 2,
         "hino": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "adriatique",
@@ -4929,7 +5109,8 @@
         "inicio": 2009,
         "festivais": 2,
         "selo": 1
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "korolova",
@@ -4957,7 +5138,8 @@
         "ouvintes": 1300000,
         "inicio": 2012,
         "festivais": 2
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "miss-monique",
@@ -4990,7 +5172,8 @@
         "festivais": 5,
         "selo": 1,
         "boilerCercle": 1
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "artbat",
@@ -5021,7 +5204,8 @@
         "festivais": 3,
         "headlines": 2,
         "selo": 1
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "r3hab",
@@ -5047,7 +5231,8 @@
         "inicio": 2008,
         "festivais": 1,
         "selo": 1
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "disclosure",
@@ -5076,7 +5261,8 @@
         "grammy": "indicacao",
         "boilerCercle": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "four-tet",
@@ -5104,7 +5290,8 @@
         "essential": 1,
         "boilerCercle": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 80
     },
     {
       "slug": "gorgon-city",
@@ -5132,7 +5319,8 @@
         "hino": 1,
         "selo": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "hot-since-82",
@@ -5159,7 +5347,8 @@
         "selo": 1,
         "essential": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "interplanetary-criminal",
@@ -5183,7 +5372,8 @@
         "ouvintes": 4100000,
         "inicio": 2012,
         "bpm": 132
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "jamie-xx",
@@ -5208,7 +5398,8 @@
         "inicio": 2006,
         "boilerCercle": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "joshwa",
@@ -5231,7 +5422,8 @@
       "sinais": {
         "ouvintes": 1500000,
         "bpm": 126
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "massano",
@@ -5256,7 +5448,8 @@
         "selo": 1,
         "essential": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "max-dean",
@@ -5282,7 +5475,8 @@
         "selo": 1,
         "festivais": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "nia-archives",
@@ -5306,7 +5500,8 @@
         "ouvintes": 1300000,
         "inicio": 2020,
         "bpm": 170
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "palms-trax",
@@ -5331,7 +5526,8 @@
         "inicio": 2013,
         "essential": 1,
         "bpm": 120
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "patrick-topping",
@@ -5358,7 +5554,8 @@
         "selo": 1,
         "essential": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "paula-temple",
@@ -5383,7 +5580,8 @@
         "inicio": 2002,
         "selo": 1,
         "bpm": 140
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "sammy-virji",
@@ -5408,7 +5606,8 @@
         "inicio": 2015,
         "headlines": 1,
         "bpm": 132
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "skream",
@@ -5435,7 +5634,8 @@
         "selo": 1,
         "pioneiro": 1,
         "bpm": 130
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "anyma",
@@ -5464,7 +5664,8 @@
         "headlines": 2,
         "selo": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "joseph-capriati",
@@ -5490,7 +5691,8 @@
         "inicio": 2006,
         "selo": 1,
         "bpm": 132
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "innellea",
@@ -5515,7 +5717,8 @@
         "ouvintes": 874600,
         "festivais": 2,
         "bpm": 124
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "deadmau5",
@@ -5546,7 +5749,8 @@
         "selo": 1,
         "grammy": "indicacao",
         "bpm": 128
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "excision",
@@ -5572,7 +5776,8 @@
         "festivais": 1,
         "selo": 1,
         "bpm": 140
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "jayda-g",
@@ -5597,7 +5802,8 @@
         "inicio": 2016,
         "grammy": "indicacao",
         "bpm": 122
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "kaytranada",
@@ -5622,7 +5828,8 @@
         "inicio": 2010,
         "grammy": "vitoria",
         "bpm": 110
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "rezz",
@@ -5649,7 +5856,8 @@
         "selo": 1,
         "grammy": "indicacao",
         "bpm": 110
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "richie-hawtin",
@@ -5678,7 +5886,8 @@
         "selo": 1,
         "pioneiro": 1,
         "bpm": 128
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "indira-paganotto",
@@ -5704,7 +5913,8 @@
         "ouvintes": 445700,
         "festivais": 2,
         "bpm": 140
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "wade",
@@ -5728,7 +5938,8 @@
         "djmag": 72,
         "festivais": 2,
         "bpm": 126
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "hector-oaks",
@@ -5750,7 +5961,8 @@
       "sinais": {
         "selo": 1,
         "bpm": 134
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "steve-aoki",
@@ -5781,7 +5993,8 @@
         "selo": 1,
         "grammy": "indicacao",
         "bpm": 128
-      }
+      },
+      "ovrManual": 89
     },
     {
       "slug": "kshmr",
@@ -5807,7 +6020,8 @@
         "inicio": 2003,
         "selo": 1,
         "bpm": 128
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "john-summit",
@@ -5839,7 +6053,8 @@
         "selo": 1,
         "beatport": "geral",
         "bpm": 126
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "skrillex",
@@ -5870,7 +6085,8 @@
         "pioneiro": 1,
         "grammy": "vitoria",
         "bpm": 140
-      }
+      },
+      "ovrManual": 96
     },
     {
       "slug": "the-martinez-brothers",
@@ -5899,7 +6115,8 @@
         "selo": 1,
         "boilerCercle": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "illenium",
@@ -5926,7 +6143,8 @@
         "festivais": 1,
         "hino": 1,
         "bpm": 140
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "gordo",
@@ -5949,7 +6167,8 @@
         "djmag": 50,
         "ouvintes": 5668545,
         "bpm": 126
-      }
+      },
+      "ovrManual": 86
     },
     {
       "slug": "marshmello",
@@ -5975,7 +6194,8 @@
         "hino": 1,
         "selo": 1,
         "bpm": 140
-      }
+      },
+      "ovrManual": 89
     },
     {
       "slug": "sara-landry",
@@ -6002,7 +6222,8 @@
         "festivais": 3,
         "selo": 1,
         "bpm": 150
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "the-chainsmokers",
@@ -6028,7 +6249,8 @@
         "hino": 1,
         "grammy": "vitoria",
         "bpm": 100
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "honey-dijon",
@@ -6053,7 +6275,8 @@
         "ouvintes": 604664,
         "grammy": "vitoria",
         "bpm": 124
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "avalon-emerson",
@@ -6075,7 +6298,8 @@
       "sinais": {
         "ouvintes": 180088,
         "bpm": 124
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "diplo",
@@ -6101,7 +6325,8 @@
         "selo": 1,
         "grammy": "vitoria",
         "bpm": 128
-      }
+      },
+      "ovrManual": 88
     },
     {
       "slug": "gryffin",
@@ -6123,7 +6348,8 @@
       "sinais": {
         "ouvintes": 8398364,
         "bpm": 124
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "jeff-mills",
@@ -6149,7 +6375,8 @@
         "selo": 1,
         "pioneiro": 1,
         "bpm": 130
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "kaskade",
@@ -6175,7 +6402,8 @@
         "festivais": 1,
         "hino": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 84
     },
     {
       "slug": "kerri-chandler",
@@ -6201,7 +6429,8 @@
         "selo": 1,
         "pioneiro": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "lane-8",
@@ -6224,7 +6453,8 @@
         "ouvintes": 2300000,
         "selo": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "louie-vega",
@@ -6249,7 +6479,8 @@
         "selo": 1,
         "pioneiro": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "maceo-plex",
@@ -6272,7 +6503,8 @@
         "ouvintes": 612900,
         "selo": 1,
         "bpm": 128
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "mk",
@@ -6299,7 +6531,8 @@
         "festivais": 1,
         "selo": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "moodymann",
@@ -6325,7 +6558,8 @@
         "selo": 1,
         "pioneiro": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "seth-troxler",
@@ -6354,7 +6588,8 @@
         "selo": 1,
         "ra": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "seven-lions",
@@ -6384,7 +6619,8 @@
         "selo": 1,
         "beatport": "genero",
         "bpm": 140
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "subtronics",
@@ -6413,7 +6649,8 @@
         "festivais": 3,
         "selo": 1,
         "bpm": 140
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "jamie-jones",
@@ -6443,7 +6680,8 @@
         "residencia": 1,
         "ra": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "solomun",
@@ -6476,7 +6714,7 @@
         "premios": 2,
         "bpm": 122
       },
-      "ovrManual": 94
+      "ovrManual": 90
     },
     {
       "slug": "vini-vici",
@@ -6507,7 +6745,8 @@
         "hino": 1,
         "beatport": "genero",
         "bpm": 142
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "argy",
@@ -6535,7 +6774,8 @@
         "festivais": 4,
         "selo": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 83
     },
     {
       "slug": "bicep",
@@ -6563,7 +6803,8 @@
         "hino": 1,
         "essential": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "francis-mercier",
@@ -6590,7 +6831,8 @@
         "festivais": 2,
         "selo": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 77
     },
     {
       "slug": "funk-tribu",
@@ -6619,7 +6861,8 @@
         "festivais": 4,
         "hino": 1,
         "bpm": 150
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "kettama",
@@ -6647,7 +6890,8 @@
         "inicio": 2015,
         "festivais": 5,
         "bpm": 130
-      }
+      },
+      "ovrManual": 82
     },
     {
       "slug": "vtss",
@@ -6672,7 +6916,8 @@
         "ouvintes": 224900,
         "festivais": 2,
         "bpm": 140
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "greggio",
@@ -6697,7 +6942,8 @@
         "beatport": "geral",
         "festivais": 3,
         "bpm": 126
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "gigi-d-agostino",
@@ -6722,7 +6968,7 @@
         "inicio": 1986,
         "hino": 1
       },
-      "ovrManual": 90
+      "ovrManual": 87
     },
     {
       "slug": "genx",
@@ -6743,7 +6989,8 @@
       ],
       "sinais": {
         "inicio": 2017
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "avicii",
@@ -6768,7 +7015,7 @@
         "inicio": 2006,
         "hino": 1
       },
-      "ovrManual": 91
+      "ovrManual": 94
     },
     {
       "slug": "doozie",
@@ -6788,7 +7035,8 @@
         "https://www.band.com.br/entretenimento/doozie-amplia-presenca-internacional-com-ep-e-turne-ao-lado-de-vintage-culture",
         "https://www.traxsource.com/title/2795729/around"
       ],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 72
     },
     {
       "slug": "albuquerque",
@@ -6811,7 +7059,8 @@
       "sinais": {
         "selo": 1,
         "residencia": 1
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "ben-sterling",
@@ -6833,7 +7082,8 @@
       "sinais": {
         "inicio": 2016,
         "selo": 1
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "simas",
@@ -6850,7 +7100,8 @@
       "foto": "/assets/album/fotos/simas.webp",
       "foto_fonte": "Mesma foto do DJ Index",
       "fontes": [],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 61
     },
     {
       "slug": "einmusik",
@@ -6873,7 +7124,8 @@
         "inicio": 2001,
         "selo": 1,
         "boilerCercle": 1
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "corren-cavini",
@@ -6895,7 +7147,8 @@
       "sinais": {
         "ouvintes": 54844,
         "inicio": 2011
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "viot",
@@ -6918,7 +7171,8 @@
         "ouvintes": 192148,
         "inicio": 2021,
         "selo": 1
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "sterium",
@@ -6942,7 +7196,8 @@
         "ouvintes": 87000,
         "selo": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "carla-elektra",
@@ -6965,7 +7220,8 @@
       "sinais": {
         "inicio": 2008,
         "bpm": 124
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "solare",
@@ -6987,7 +7243,8 @@
       "sinais": {
         "inicio": 2018,
         "bpm": 122
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "carol-favero",
@@ -7011,7 +7268,8 @@
         "ouvintes": 11066,
         "inicio": 2016,
         "bpm": 126
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "stormyx",
@@ -7033,7 +7291,8 @@
       "sinais": {
         "inicio": 2025,
         "bpm": 125
-      }
+      },
+      "ovrManual": 60
     },
     {
       "slug": "ekanta",
@@ -7057,7 +7316,8 @@
         "inicio": 1998,
         "pioneiro": 1,
         "bpm": 145
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "carbon-c",
@@ -7078,7 +7338,8 @@
       ],
       "sinais": {
         "bpm": 142
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "jessica-brankka",
@@ -7101,7 +7362,8 @@
       "sinais": {
         "inicio": 2019,
         "bpm": 122
-      }
+      },
+      "ovrManual": 78
     },
     {
       "slug": "gabss",
@@ -7127,7 +7389,8 @@
         "hino": 1,
         "beatport": "geral",
         "bpm": 122
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "solarce-brothers",
@@ -7149,7 +7412,8 @@
         "inicio": 2024,
         "selo": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "curol",
@@ -7174,7 +7438,8 @@
         "selo": 1,
         "hino": 1,
         "bpm": 122
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "adalamoon",
@@ -7195,7 +7460,8 @@
       "sinais": {
         "inicio": 2000,
         "bpm": 143
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "alex-dittrich",
@@ -7219,7 +7485,8 @@
       "sinais": {
         "ouvintes": 444,
         "bpm": 125
-      }
+      },
+      "ovrManual": 60
     },
     {
       "slug": "alex-stein",
@@ -7243,7 +7510,8 @@
       "sinais": {
         "ouvintes": 191600,
         "bpm": 134
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "aline-rocha",
@@ -7271,7 +7539,8 @@
         "festivais": 1,
         "headlines": 0,
         "bpm": 123
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "altruism",
@@ -7296,7 +7565,8 @@
         "ouvintes": 93500,
         "inicio": 1999,
         "bpm": 145
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "andre-buljat",
@@ -7320,7 +7590,8 @@
       "sinais": {
         "ouvintes": 341,
         "bpm": 125
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "aninha",
@@ -7343,7 +7614,8 @@
         "ouvintes": 1300,
         "selo": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "antonio-oliva",
@@ -7366,7 +7638,8 @@
         "ouvintes": 475,
         "inicio": 2014,
         "bpm": 124
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "apollonia",
@@ -7390,7 +7663,8 @@
         "ouvintes": 8900,
         "inicio": 2012,
         "bpm": 123
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "artistikk",
@@ -7413,7 +7687,8 @@
       "sinais": {
         "ouvintes": 37300,
         "bpm": 122
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "ayybo",
@@ -7439,7 +7714,8 @@
         "inicio": 2021,
         "hino": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "bakka",
@@ -7463,7 +7739,8 @@
       "sinais": {
         "ouvintes": 266000,
         "bpm": 122
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "bapp",
@@ -7485,7 +7762,8 @@
       "sinais": {
         "inicio": 2002,
         "bpm": 125
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "blancah",
@@ -7508,7 +7786,8 @@
       "sinais": {
         "inicio": 2000,
         "bpm": 123
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "boghosian",
@@ -7531,7 +7810,8 @@
       "sinais": {
         "inicio": 1999,
         "bpm": 123
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "botanic-soundsystem",
@@ -7553,7 +7833,8 @@
       "sinais": {
         "inicio": 2022,
         "bpm": 125
-      }
+      },
+      "ovrManual": 60
     },
     {
       "slug": "bruna-strait",
@@ -7578,7 +7859,8 @@
         "festivais": 1,
         "headlines": 0,
         "bpm": 126
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "burn-in-noise",
@@ -7600,7 +7882,8 @@
       ],
       "sinais": {
         "bpm": 145
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "camelphat",
@@ -7624,7 +7907,8 @@
         "hino": 1,
         "grammy": "indicacao",
         "bpm": 124
-      }
+      },
+      "ovrManual": 79
     },
     {
       "slug": "carl-craig",
@@ -7651,7 +7935,8 @@
         "pioneiro": 1,
         "essential": 1,
         "bpm": 130
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "carola",
@@ -7678,7 +7963,8 @@
         "festivais": 1,
         "headlines": 0,
         "bpm": 125
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "chambord",
@@ -7700,7 +7986,8 @@
       "sinais": {
         "selo": 1,
         "bpm": 118
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "claudinho-brasil",
@@ -7724,7 +8011,8 @@
         "inicio": 2005,
         "beatport": "genero",
         "bpm": 138
-      }
+      },
+      "ovrManual": 85
     },
     {
       "slug": "d-nox",
@@ -7749,7 +8037,8 @@
         "inicio": 1993,
         "selo": 1,
         "premios": 1
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "deep-dish",
@@ -7774,7 +8063,8 @@
         "hino": 1,
         "grammy": "vitoria",
         "bpm": 125
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "deeper-purpose",
@@ -7799,7 +8089,8 @@
         "ouvintes": 369000,
         "selo": 1,
         "bpm": 126
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "desiree",
@@ -7823,7 +8114,8 @@
         "ouvintes": 136900,
         "inicio": 2018,
         "bpm": 122
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "devochka",
@@ -7846,7 +8138,8 @@
       "sinais": {
         "ouvintes": 94300,
         "bpm": 126
-      }
+      },
+      "ovrManual": 68
     },
     {
       "slug": "dimmish",
@@ -7868,7 +8161,8 @@
       "sinais": {
         "ouvintes": 46700,
         "bpm": 126
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "dj-murphy",
@@ -7892,7 +8186,8 @@
       "sinais": {
         "ouvintes": 3100,
         "bpm": 134
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "elderbrook",
@@ -7918,7 +8213,8 @@
         "hino": 1,
         "grammy": "indicacao",
         "bpm": 122
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "ezequiel-arias",
@@ -7941,7 +8237,8 @@
         "ouvintes": 150000,
         "inicio": 2017,
         "bpm": 122
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "fernanda-pistelli",
@@ -7964,7 +8261,8 @@
         "ouvintes": 11100,
         "inicio": 2015,
         "bpm": 140
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "gms",
@@ -7985,7 +8283,8 @@
       ],
       "sinais": {
         "inicio": 1995
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "len-faki",
@@ -8007,7 +8306,8 @@
       "sinais": {
         "selo": 1,
         "residencia": 1
-      }
+      },
+      "ovrManual": 76
     },
     {
       "slug": "morttagua",
@@ -8031,7 +8331,8 @@
         "ouvintes": 29800,
         "inicio": 2013,
         "selo": 1
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "neelix",
@@ -8054,7 +8355,8 @@
       "sinais": {
         "ouvintes": 761700,
         "inicio": 1996
-      }
+      },
+      "ovrManual": 75
     },
     {
       "slug": "nic-fanciulli",
@@ -8077,7 +8379,8 @@
       "sinais": {
         "ouvintes": 934200,
         "selo": 1
-      }
+      },
+      "ovrManual": 73
     },
     {
       "slug": "patrice-baumel",
@@ -8099,7 +8402,8 @@
       ],
       "sinais": {
         "ouvintes": 181800
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "per-hammar",
@@ -8122,7 +8426,8 @@
       "sinais": {
         "ouvintes": 27900,
         "selo": 1
-      }
+      },
+      "ovrManual": 63
     },
     {
       "slug": "phaxe",
@@ -8145,7 +8450,8 @@
       "sinais": {
         "ouvintes": 703300,
         "inicio": 2007
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "phonique",
@@ -8168,7 +8474,8 @@
       "sinais": {
         "ouvintes": 277200,
         "hino": 1
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "rufus-du-sol",
@@ -8193,7 +8500,8 @@
         "inicio": 2010,
         "hino": 1,
         "grammy": "vitoria"
-      }
+      },
+      "ovrManual": 87
     },
     {
       "slug": "sasha",
@@ -8217,7 +8525,8 @@
         "ouvintes": 397500,
         "pioneiro": 1,
         "hino": 1
-      }
+      },
+      "ovrManual": 74
     },
     {
       "slug": "silvie-loto",
@@ -8239,7 +8548,8 @@
       ],
       "sinais": {
         "ouvintes": 8500
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "zac",
@@ -8261,7 +8571,8 @@
       ],
       "sinais": {
         "ouvintes": 506700
-      }
+      },
+      "ovrManual": 69
     },
     {
       "slug": "leticia-stempi",
@@ -8285,7 +8596,8 @@
         "inicio": 2021,
         "selo": 1,
         "bpm": 123
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "paola-vigorito",
@@ -8305,7 +8617,8 @@
       "sinais": {
         "inicio": 2017,
         "bpm": 123
-      }
+      },
+      "ovrManual": 60
     },
     {
       "slug": "2ouble",
@@ -8321,7 +8634,8 @@
       "foto": "/assets/album/fotos/2ouble.webp",
       "foto_fonte": "https://soundcloud.com/dj2ouble",
       "fontes": [],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 60
     },
     {
       "slug": "agustin-clark",
@@ -8339,7 +8653,8 @@
       "fontes": [],
       "sinais": {
         "bpm": 123
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "dyed-soundorom",
@@ -8362,7 +8677,8 @@
       "sinais": {
         "ouvintes": 31300,
         "bpm": 122
-      }
+      },
+      "ovrManual": 65
     },
     {
       "slug": "guy-gerber",
@@ -8384,7 +8700,8 @@
       "sinais": {
         "inicio": 2002,
         "selo": 1
-      }
+      },
+      "ovrManual": 72
     },
     {
       "slug": "guy-j",
@@ -8408,7 +8725,8 @@
         "inicio": 2007,
         "selo": 1,
         "top1001": 88
-      }
+      },
+      "ovrManual": 71
     },
     {
       "slug": "julian-fijma",
@@ -8430,7 +8748,8 @@
       ],
       "sinais": {
         "ouvintes": 959603
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "kink",
@@ -8449,7 +8768,8 @@
       "fontes": [
         "https://www.technoairlines.com/artist/kink"
       ],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 72
     },
     {
       "slug": "lolu-menayed",
@@ -8468,7 +8788,8 @@
       "fontes": [
         "https://musicbrainz.org/artist/aa592cfe-7b19-40cd-af96-132e479f593c"
       ],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 63
     },
     {
       "slug": "m-high",
@@ -8487,7 +8808,8 @@
       "fontes": [
         "https://musicbrainz.org/artist/2d48a4f8-4549-4bf8-80f5-d072fce65a4f"
       ],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 66
     },
     {
       "slug": "magdalena",
@@ -8506,7 +8828,8 @@
       "fontes": [
         "https://musicbrainz.org/artist/8d1a44f4-8abc-4046-81bd-ac15fc1bb991"
       ],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 69
     },
     {
       "slug": "mano-le-tough",
@@ -8527,7 +8850,8 @@
       ],
       "sinais": {
         "inicio": 2009
-      }
+      },
+      "ovrManual": 66
     },
     {
       "slug": "marten-lou",
@@ -8550,7 +8874,8 @@
       "sinais": {
         "ouvintes": 2921945,
         "festivais": 1
-      }
+      },
+      "ovrManual": 67
     },
     {
       "slug": "max-styler",
@@ -8576,7 +8901,8 @@
         "inicio": 2012,
         "top1001": 1,
         "festivais": 5
-      }
+      },
+      "ovrManual": 70
     },
     {
       "slug": "miane",
@@ -8597,7 +8923,8 @@
       ],
       "sinais": {
         "inicio": 2020
-      }
+      },
+      "ovrManual": 64
     },
     {
       "slug": "gggguerra",
@@ -8614,7 +8941,8 @@
       "foto": "/assets/album/fotos/gggguerra.webp",
       "foto_fonte": "https://www.instagram.com/gggguerra/",
       "fontes": [],
-      "sinais": {}
+      "sinais": {},
+      "ovrManual": 60
     },
     {
       "slug": "halfcab",
@@ -8636,7 +8964,8 @@
       "sinais": {
         "inicio": 2018,
         "bpm": 124
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "a-rpia-r",
@@ -8659,7 +8988,8 @@
         "selo": 1,
         "pioneiro": 1,
         "bpm": 124
-      }
+      },
+      "ovrManual": 62
     },
     {
       "slug": "beatric",
@@ -8678,7 +9008,8 @@
       "fontes": [],
       "sinais": {
         "bpm": 123
-      }
+      },
+      "ovrManual": 61
     },
     {
       "slug": "daft-punk",
