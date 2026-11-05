@@ -88,8 +88,24 @@
     list.innerHTML = bar + body;
   }
 
+  let tickets = [];
+  const TK = { solicitada: "Aguardando o pagamento do comprador ao suporte", pagamento_confirmado: "Dinheiro recebido: vendedor autorizado a transferir o ingresso", ingresso_transferido: "Ingresso transferido: falta repassar o dinheiro ao vendedor", concluida: "Concluída", cancelada: "Cancelada" };
+  const TK_NEXT = { solicitada: ["pagamento_confirmado", "Confirmar recebimento do dinheiro"], pagamento_confirmado: ["ingresso_transferido", "Vendedor transferiu o ingresso"], ingresso_transferido: ["concluida", "Repassei o dinheiro ao vendedor"] };
+  const brl = n => "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function renderTickets() {
+    list.innerHTML = tickets.length ? tickets.map(t => `<article class="md-card" data-tid="${esc(t.id)}"><div class="md-info">
+      <h3>${esc(t.event)} · ${esc(t.type)} · ${brl(t.price)}</h3>
+      <p class="mono dim">${esc(t.venue)} · ${esc(String(t.event_date).split("-").reverse().join("/"))} · pedido de ${fullWhen(t.created_at)}</p>
+      <p><b>${esc(TK[t.status] || t.status)}</b></p>
+      <p class="mono dim">Comprador: ${t.buyer_nick ? "@" + esc(t.buyer_nick) : "sem @"} · ${esc(t.buyer_email)}</p>
+      <p class="mono dim">Vendedor: ${t.seller_nick ? "@" + esc(t.seller_nick) : "sem @"} · ${esc(t.seller_email)}</p>
+      <p class="mono dim">Intermediação (5%): ${brl(t.fee)}</p></div>
+      <div class="md-actions">${TK_NEXT[t.status] ? `<button type="button" class="btn btn-y af-sm" data-tk="${TK_NEXT[t.status][0]}">${TK_NEXT[t.status][1]}</button><button type="button" class="btn btn-ghost af-sm md-danger" data-tk="cancelada">Cancelar pedido</button>` : ""}</div></article>`).join("") : `<p class="af-empty">Nenhum pedido de intermediação ainda.</p>`;
+  }
+
   function render() {
     list.classList.toggle("md-grid", tab === "posts");
+    if (tab === "tickets") return renderTickets();
     if (tab === "activity") return renderActivity();
     if (tab === "venues") return renderVenues();
     if (tab === "members") return renderMembers();
@@ -133,6 +149,14 @@
         status.textContent=actView==='users'?`${actUsers.length} conta${actUsers.length===1?'':'s'} (as mais novas primeiro).`:`${actEvents.length} ${actEvents.length===1?'ação registrada':'ações registradas'} (as mais recentes primeiro)${actUid?', só de @'+actName:''}.`;
         render();return;
       }
+      if(section==='tickets'){
+        const data=await BRB.ticketsAdmin('list');
+        if(revision!==request)return;
+        tickets=data.requests||[];cursor=null;tabs.hidden=false;filterBar.hidden=true;more.hidden=true;
+        const open=tickets.filter(t=>t.status!=='concluida'&&t.status!=='cancelada').length;
+        status.textContent=tickets.length?`${tickets.length} pedido${tickets.length===1?'':'s'} de intermediação, ${open} em andamento.`:'Nenhum pedido de intermediação ainda.';
+        render();return;
+      }
       if(section==='venues'){
         const data=await BRB.rankingAdmin('list');
         if(revision!==request)return;
@@ -162,6 +186,13 @@
   });
   list.addEventListener("keydown", e => { if (tab === "activity" && e.key === "Enter" && e.target.id === "actQ") { actQ = e.target.value.trim(); load(); } });
   list.addEventListener("click", async e => {
+    if (tab === "tickets") {
+      const b = e.target.closest("[data-tk]"); if (!b) return;
+      const card = b.closest("[data-tid]"), st = b.dataset.tk;
+      if (st === "cancelada" && !confirm("Cancelar este pedido? O ingresso volta a ficar à venda.")) return;
+      try { b.disabled = true; await BRB.ticketsAdmin("advance", { id: card.dataset.tid, status: st }); toast("Pedido atualizado."); await load(); } catch (err) { toast(err.message); b.disabled = false; }
+      return;
+    }
     if (tab === "activity") {
       const dm = e.target.closest("[data-dismiss]"), rs = e.target.closest("#actRestore");
       if (dm) { if (!confirm("Excluir esta linha do painel? Só some daqui: a conta e os dados da pessoa continuam. Dá para trazer de volta em Restaurar ocultos.")) return; try { dm.disabled = true; await BRB.activity("dismiss", { key: dm.dataset.dismiss }); toast("Linha excluída do painel."); await load(); } catch (err) { toast(err.message); dm.disabled = false; } return; }
