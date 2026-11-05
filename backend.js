@@ -16,6 +16,11 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar o conteúdo.');
       return data;
     },
+    async after(action, payload = {}) {
+      const { data, error } = await client.rpc('brb_after', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível atualizar os afters.');
+      return data;
+    },
     async commentsFor(ids) {
       const { data, error } = await client.rpc('brb_comments_for', { ids });
       if (error) throw new Error(error.message || 'Não foi possível carregar os comentários.');
@@ -71,6 +76,16 @@
     async interest(action = 'list', payload = {}) {
       const { data, error } = await client.rpc('brb_interest', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível registrar sua resposta.');
+      return data;
+    },
+    async tickets(action = 'list', payload = {}) {
+      const { data, error } = await client.rpc('brb_tickets', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível concluir. Tente novamente.');
+      return data;
+    },
+    async ticketsAdmin(action = 'list', payload = {}) {
+      const { data, error } = await client.rpc('brb_tickets_admin', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível carregar os pedidos.');
       return data;
     },
     async removeMember(id) {

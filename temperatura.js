@@ -36,7 +36,7 @@
       <div class="tp-row-main">${f.photo ? `<img class="tp-row-av" src="${esc(f.photo)}" alt="" loading="lazy" width="62" height="62">` : `<span class="tp-row-av tp-row-ini" aria-hidden="true">${esc(f.name.slice(0, 1))}</span>`}
       <p class="tp-kick">${esc(f.tag || f.venue + " · " + f.cidade)}</p><h3>${esc(f.name)}</h3>
       <p>${f.lineup.slice(0, 12).map(esc).join(" · ")}${f.lineup.length > 12 ? ` · e mais ${f.lineup.length - 12} atrações` : ""}${f.partial ? ` · <em>mais atrações a anunciar</em>` : ""}</p></div>
-      <div>${tube}${line}</div>${vote}</article>`;
+      <div>${tube}${line}</div>${past ? vote : `<div class="tp-act"><button type="button" class="tp-p2p" data-p2p="${esc(f.id)}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2.2a2.8 2.8 0 0 0 0 5.6V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2.2a2.8 2.8 0 0 0 0-5.6V7Zm10 1.2h1.6v1.6H13V8.2Zm0 3h1.6v1.6H13v-1.6Zm0 3h1.6v1.6H13v-1.6Z"/></svg><span>Vender ingresso P2P</span></button>${vote}</div>`}</article>`;
   }
 
   function months(list) {
