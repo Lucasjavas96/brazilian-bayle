@@ -82,3 +82,18 @@
   render();
   load();
 })();
+
+/* Fundo do hero: três painéis inclinados com fotos de festas, trocando em fade (cada painel no seu tempo) */
+(() => {
+  const hero = document.getElementById("tpHero");
+  if (!hero) return;
+  const FOTOS = [2037, 2038, 2039, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051].map(n => "/assets/temperatura/festa-" + n + ".webp");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const rot = (a, n) => a.map((_, i) => a[(i + n) % a.length]);
+  hero.innerHTML = '<div class="h-panels">' + [0, 1, 2].map(p => '<div class="h-panel"><div class="h-panel-in">' + rot(FOTOS, p * 5).map((s, i) => '<figure class="fx' + (i ? "" : " on") + '"><img src="' + s + '" alt="" ' + (i ? 'loading="lazy"' : "") + ' decoding="async"></figure>').join("") + "</div></div>").join("") + "</div>";
+  if (reduce) return;
+  hero.querySelectorAll(".h-panel-in").forEach((box, p) => {
+    const k = [...box.children]; let i = 0;
+    setTimeout(() => setInterval(() => { k[i].classList.remove("on"); i = (i + 1) % k.length; k[i].classList.add("on"); }, 7500), p * 2500);
+  });
+})();
