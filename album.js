@@ -7,6 +7,21 @@
   const albumError = error => /JWT|expired|session/i.test(error?.message || '') ? 'Sua sessão expirou. Entre novamente para continuar.' : error?.message || 'Não foi possível carregar seu álbum. Tente novamente.';
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const flag = f => f ? `/assets/flags/${f}.webp` : "";
+  /* pontos do ranking (mesma conta do servidor, brb_private.album_score): OVR × raridade, só a 1ª cópia,
+     +20% por página completa e +5.000 pelo álbum completo. O placar oficial vem do servidor. */
+  const MULT = { comum: 1, rara: 1.5, epica: 3, lendaria: 5 };
+  const cardPts = c => Math.round(c.ovr * (MULT[c.cls] || 1));
+  const fmtPts = n => Number(n || 0).toLocaleString("pt-BR");
+  function myPoints() {
+    let pts = 0, got = 0, all = 0;
+    DATA.pages.forEach(p => {
+      const ids = p.djs.map(d => d.id).filter(id => id && CARDS[id]);
+      const page = ids.reduce((a, id) => a + cardPts(CARDS[id]), 0), mine = ids.filter(id => S.coladas[id]);
+      pts += mine.reduce((a, id) => a + cardPts(CARDS[id]), 0); got += mine.length; all += ids.length;
+      if (ids.length && mine.length === ids.length) pts += Math.round(page * .2);
+    });
+    return pts + (all && got === all ? 5000 : 0);
+  }
 
   /* ---------- carta grande (frente estilo FIFA por raridade, verso com a arte do álbum) ---------- */
   const STAT_NAMES = { SOM: "Som", HAR: "Harmonia", ENE: "Energia", SOF: "Sofisticação", HYP: "Hype", LEG: "Legado" };
@@ -87,7 +102,7 @@
     // só conta cartas que ainda estão no álbum (uma carta retirada, como o Vhoor, pode seguir no inventário de quem a tirou)
     const mine = Object.entries(S.coladas).filter(([s]) => CARDS[s]);
     const got = mine.length, reps = mine.reduce((a, [, n]) => a + n - 1, 0);
-    $("#abColadas").textContent = got; $("#abTotal").textContent = DATA.total; $("#abRep").textContent = reps;
+    $("#abPontos").textContent = fmtPts(myPoints()); $("#abColadas").textContent = got; $("#abTotal").textContent = DATA.total; $("#abRep").textContent = reps;
     const giros = S.giros >= 99999 ? "∞" : S.giros; $("#abGiros").textContent = giros; $("#abGiros2").textContent = giros;
     $("#abSpin").disabled = !ready || spinning || S.giros <= 0;
     jog.setAttribute("aria-disabled", String(!ready || spinning || S.giros <= 0));
@@ -256,6 +271,7 @@
     const from = $(".djc", rv).getBoundingClientRect();
     rv.hidden = true; rv.className = "ab-reveal";
     const generation = epoch; // Already awarded atomically by the server.
+    rankingSoon();
     if (dup) { sfx.slap(); counts(); toast(`${c.nome} foi para as repetidas.`); $("#abReps").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" }); return }
     const target = $(`#slot-${slug}`);
     target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
@@ -289,6 +305,29 @@
   $("#abModal").addEventListener("click", e => { if (e.target.id === "abModal") closeModal() });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#abModal").hidden) closeModal() });
 
+  /* ---------- ranking dos colecionadores ---------- */
+  let rankTimer = null, rankGen = 0;
+  const rankingSoon = () => { clearTimeout(rankTimer); rankTimer = setTimeout(loadRanking, 900); };
+  async function loadRanking() {
+    const gen = ++rankGen, st = $("#abRankStatus");
+    if (!BRB.albumRanking) { st.textContent = "O ranking ainda não está disponível."; return; }
+    try {
+      const r = await BRB.albumRanking();
+      if (gen !== rankGen) return;
+      const total = r.total || DATA.total, top = r.top || [];
+      $("#abRank").innerHTML = top.map(p => `<li class="ab-rk${p.eu ? " me" : ""}${p.pos <= 3 ? " ab-rk-top ab-rk-" + p.pos : ""}">
+        <span class="ab-rk-pos mono">${p.pos}º</span>
+        <span class="ab-rk-nick">@${esc(p.nick)}${p.completo ? ' <i class="ab-rk-done mono">álbum completo</i>' : ""}</span>
+        <span class="ab-rk-cards mono"><span class="ab-rk-bar" style="--p:${Math.min(100, p.cartas / total * 100).toFixed(1)}%"></span>${p.cartas}/${total}</span>
+        <b class="ab-rk-pts">${fmtPts(p.pontos)}<small> pts</small></b></li>`).join("");
+      const me = r.eu;
+      $("#abRankMe").innerHTML = !userId ? '<p>Entre na sua conta para aparecer no ranking.</p>'
+        : me && me.pos ? `<p><b class="ab-rk-big">${me.pos}º</b> lugar com <b>${fmtPts(me.pontos)}</b> pontos e ${me.cartas} de ${total} figurinhas.</p>`
+        : '<p>Gire a jog wheel e cole sua primeira figurinha para entrar no ranking.</p>';
+      st.textContent = top.length ? `${r.jogadores} colecionador${r.jogadores === 1 ? "" : "es"} no ranking. Aparecem os 100 primeiros.` : "Ninguém pontuou ainda. A primeira figurinha colada já coloca você em 1º lugar.";
+    } catch (error) { if (gen === rankGen) st.textContent = "Não foi possível carregar o ranking. Tente atualizar a página."; }
+  }
+
   async function loadAlbum(session) {
     const generation = ++epoch;
     userId = session?.user?.id || null; ready = false; spinning = false; pendingId = null;
@@ -296,12 +335,12 @@
     $$('.ab-fly').forEach(node => node.remove()); jog.classList.remove('grab');
     $("#abReveal").hidden = true; closeModal(); jog.classList.remove('spinning');
     renderAlbum(); $("#abLogin").hidden = false;
-    if (!userId) { albumMessage('Entre para ter seu próprio álbum e continuar de onde parou em qualquer dispositivo.'); return; }
+    if (!userId) { loadRanking(); albumMessage('Entre para ter seu próprio álbum e continuar de onde parou em qualquer dispositivo.'); return; }
     albumMessage('Carregando seu álbum…');
     try {
       const state = await BRB.album('state');
       if (generation !== epoch) return;
-      S = state; ready = true; renderAlbum(); $("#abLogin").hidden = true;
+      S = state; ready = true; renderAlbum(); $("#abLogin").hidden = true; loadRanking();
       albumMessage('Seu álbum está sincronizado com sua conta.');
     } catch (error) { if (generation === epoch) albumMessage(albumError(error)); }
   }
