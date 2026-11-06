@@ -3083,3 +3083,12 @@ body.p2p-lock{overflow:hidden}
 }
 .ab-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 680px; }
 @media (max-width: 640px) { .ab-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ===== Álbum: cabeçalho das páginas = escudo de seleção (escolha do Lucas, 06/11/2026) ===== */
+.ab-page::before { display: none; }
+.ab-page-head, .ab-page-head.world { background: radial-gradient(120% 140% at 0% 0%, #1d1d1a, #0b0b0a 60%); border-bottom: 0; padding-bottom: 24px; }
+.ab-escudo { width: 66px; height: 66px; border-radius: 50%; padding: 3px; flex: none; background: linear-gradient(140deg, #f7e2a0, #b98a2c 45%, #f1d48a 70%, #8a6420); box-shadow: 0 6px 16px rgba(0,0,0,.6); }
+.ab-escudo img, .ab-escudo svg { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #0b0b0a; box-sizing: border-box; }
+.ab-faixa { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; display: flex; }
+.ab-faixa i { flex: 1; }
+@media (max-width: 600px) { .ab-escudo { width: 52px; height: 52px; } }

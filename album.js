@@ -7,6 +7,16 @@
   const albumError = error => /JWT|expired|session/i.test(error?.message || '') ? 'Sua sessão expirou. Entre novamente para continuar.' : error?.message || 'Não foi possível carregar seu álbum. Tente novamente.';
   const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const flag = f => f ? `/assets/flags/${f}.webp` : "";
+  /* cabeçalho das páginas = escudo de seleção (escolha do Lucas, 06/11/2026): bandeira em SVG redonda + faixa com as cores do país */
+  const ESCUDO = f => `/assets/flags-svg/${f}.svg`;
+  const CORES = { za: ["#007749", "#ffb612", "#000", "#de3831", "#002395"], de: ["#000", "#d00", "#ffce00"], ar: ["#74acdf", "#fff", "#f6b40e"],
+    au: ["#012169", "#fff", "#e4002b"], be: ["#000", "#fdda24", "#ef3340"], br: ["#009c3b", "#ffdf00", "#002776"], ca: ["#d52b1e", "#fff", "#d52b1e"],
+    dk: ["#c8102e", "#fff"], es: ["#aa151b", "#f1bf00", "#aa151b"], us: ["#b22234", "#fff", "#3c3b6e"], fr: ["#002395", "#fff", "#ed2939"],
+    nl: ["#ae1c28", "#fff", "#21468b"], "gb-eng": ["#fff", "#ce1124"], il: ["#0038b8", "#fff"], it: ["#009246", "#fff", "#ce2b37"],
+    "gb-wls": ["#fff", "#00ab39", "#d21034"], se: ["#006aa7", "#fecc00"], ua: ["#0057b7", "#ffd700"] };
+  const MUNDO = ["#009c3b", "#002776", "#b02a2a", "#ffd400"];
+  const GLOBO = '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#1c5fa8"/><path d="M32 2a30 30 0 0 1 0 60M32 2a30 30 0 0 0 0 60M4 22h56M4 42h56M32 2c-10 8-10 52 0 60M32 2c10 8 10 52 0 60" fill="none" stroke="#bfe3ff" stroke-width="2"/></svg>';
+  const faixa = f => `<div class="ab-faixa" aria-hidden="true">${(CORES[f] || MUNDO).map(c => `<i style="background:${c}"></i>`).join("")}</div>`;
   /* pontos do ranking (mesma conta do servidor, brb_private.album_score): OVR × raridade, só a 1ª cópia,
      +20% por página completa e +5.000 pelo álbum completo. O placar oficial vem do servidor. */
   const MULT = { comum: 1, rara: 1.5, epica: 3, lendaria: 5 };
@@ -88,11 +98,11 @@
   function renderAlbum() {
     let k = 0;
     $("#abNav").innerHTML = DATA.pages.map(p => `<a href="#pg-${p.sigla}" class="ab-chip">${p.flag ? `<img src="${flag(p.flag)}" alt="" loading="lazy">` : '<span class="ab-globe" aria-hidden="true">🌍</span>'}${esc(p.sigla)}</a>`).join("");
-    $("#abPages").innerHTML = DATA.pages.map(p => `<section class="ab-page" id="pg-${p.sigla}" aria-labelledby="h-${p.sigla}" ${p.flag ? `style="--flag:url(${flag(p.flag)})"` : ""}>
+    $("#abPages").innerHTML = DATA.pages.map(p => `<section class="ab-page" id="pg-${p.sigla}" aria-labelledby="h-${p.sigla}" >
       <header class="ab-page-head${p.flag ? "" : " world"}">
-        ${p.flag ? `<img class="ab-flag" src="${flag(p.flag)}" alt="Bandeira: ${esc(p.nome)}" loading="lazy">` : '<span class="ab-flag ab-flag-world" aria-hidden="true"></span>'}
+        <div class="ab-escudo">${p.flag ? `<img src="${ESCUDO(p.flag)}" alt="Bandeira: ${esc(p.nome)}" loading="lazy">` : GLOBO}</div>
         <div><p class="mono ab-gold">${esc(p.sigla)} · Seleção</p><h3 id="h-${p.sigla}">${esc(p.nome)}</h3></div>
-        <p class="ab-count mono" data-count="${p.sigla}"></p>
+        <p class="ab-count mono" data-count="${p.sigla}"></p>${faixa(p.flag)}
       </header>
       <div class="ab-grid">${p.djs.map(d => slot({ ...d, page: !!p.flag }, k++)).join("")}</div>
     </section>`).join("");
