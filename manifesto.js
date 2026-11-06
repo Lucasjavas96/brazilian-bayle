@@ -6,7 +6,11 @@
   const vid = fig => fig.querySelector("video");
   const play = fig => { const v = vid(fig); if (v) { v.play().catch(() => {}); } };
   const pause = fig => { const v = vid(fig); if (v) v.pause(); };
-  document.querySelectorAll(".mf-bg").forEach(bg => {
+  document.querySelectorAll(".mf-mosaic").forEach(m => {
+    const sec = m.closest(".mf-b"), n = m.children.length, fit = () => { const r = sec.getBoundingClientRect(); if (r.width > 0 && r.height > 0) m.style.setProperty("--cols", Math.max(2, Math.round(Math.sqrt(n * r.width / r.height)))); };
+    fit(); new ResizeObserver(fit).observe(sec);
+  });
+  document.querySelectorAll(".mf-bg:not(.mf-mosaic)").forEach(bg => {
     const sec = bg.closest(".mf-b"), figs = [...bg.querySelectorAll(".mf-s")], fl = sec.querySelector(".mf-flash");
     let i = 0, timer = null;
     const flash = () => { if (!fl || reduce) return; fl.classList.remove("go"); void fl.offsetWidth; fl.classList.add("go"); };
