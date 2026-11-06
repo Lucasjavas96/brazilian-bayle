@@ -162,12 +162,15 @@ ${body.trim()}
 
 ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="site-snd" type="button" id="site-snd" aria-pressed="false" aria-label="Ligar a música" title="Música"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="w1" d="M16.5 8.5a5 5 0 0 1 0 7"/><path class="w2" d="M19 6a8.5 8.5 0 0 1 0 12"/><path class="x" d="M17 9l5 6M22 9l-5 6"/></svg></button>
+<audio id="site-aud" src="/assets/musica-fundo.m4a" loop preload="none"></audio>
 <script src="/assets/vendor/supabase-2.49.8.js" defer></script>
 <script src="/backend-config.js" defer></script>
 <script src="/backend.js" defer></script>
 <script src="/events-2026.js" defer></script>
 <script src="/app.js" defer></script>
 <script src="/media-guard.js" defer></script>
+<script src="/music.js" defer></script>
 <script src="/card-effects.js" defer></script>
 <script src="/support.js" defer></script>
 <script src="/session-menu.js" defer></script>
@@ -387,7 +390,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "ingressos.js", "djhero.js", "manifesto.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "music.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "ingressos.js", "djhero.js", "manifesto.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.copyFileSync(path.join(ROOT, "moderacao.css"), path.join(OUT, "moderacao.css"));
 // Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
 fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
