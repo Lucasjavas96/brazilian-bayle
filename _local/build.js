@@ -180,6 +180,7 @@ ${meta.nav === "moderacao" ? '<script src="/moderation.js" defer></script>' : ""
 ${meta.path === "/djindex" ? '<script src="/djhero.js" defer></script>' : ""}
 ${meta.nav === "after" ? '<script src="/after.js" defer></script>' : ""}
 ${meta.nav === "album" ? '<script src="/album.js" defer></script>' : ""}
+${meta.nav === "manifesto" ? '<script src="/manifesto.js" defer></script>' : ""}
 ${meta.nav === "temperatura" ? '<script src="/temperatura.js" defer></script><script src="/ingressos.js" defer></script>' : ""}
 </body>
 </html>
@@ -386,7 +387,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "ingressos.js", "djhero.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "ingressos.js", "djhero.js", "manifesto.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.copyFileSync(path.join(ROOT, "moderacao.css"), path.join(OUT, "moderacao.css"));
 // Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
 fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
