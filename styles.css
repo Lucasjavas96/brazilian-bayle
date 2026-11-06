@@ -2892,3 +2892,6 @@ background: linear-gradient(90deg, transparent, rgba(140,240,255,0) 20%, rgba(20
 .mf .mf-flashy .mf-bg{width:80%}
 .mf .mf-flashy .mf-big.mf-pos{left:var(--mtx,var(--tx,50%));top:var(--mty,var(--ty,50%));font-size:calc(9cqw * var(--mts,var(--ts,1)))}
 }
+.mf .mf-end{min-height:auto;aspect-ratio:calc(100 / var(--he,56));justify-content:center}
+@media(max-width:700px){.mf .mf-end{aspect-ratio:auto}}
+@media(min-width:701px){.mf .mf-tx.dv{display:block;position:absolute;left:var(--dx,50%);top:var(--dy,50%);transform:translate(-50%,-50%) scale(var(--ds,1));transform-origin:center;width:calc(var(--dw,80%) / var(--ds,1));z-index:2;text-align:center;margin:0}}
