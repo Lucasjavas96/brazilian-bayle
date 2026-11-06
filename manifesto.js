@@ -7,7 +7,7 @@
   const play = fig => { const v = vid(fig); if (v) { v.play().catch(() => {}); } };
   const pause = fig => { const v = vid(fig); if (v) v.pause(); };
   document.querySelectorAll(".mf-mosaic").forEach(m => {
-    const sec = m.closest(".mf-b"), n = m.children.length, fit = () => { const r = sec.getBoundingClientRect(); if (r.width > 0 && r.height > 0) m.style.setProperty("--cols", Math.max(2, Math.round(Math.sqrt(n * r.width / r.height)))); };
+    const sec = m.closest(".mf-b"), fit = () => { const n = +m.dataset.n || m.children.length, r = sec.getBoundingClientRect(); if (!(r.width > 0 && r.height > 0)) return; const c = Math.max(2, Math.round(Math.sqrt(n * r.width / r.height))), rw = Math.ceil(n / c), t = c * rw; m.style.setProperty("--cols", c); m.style.setProperty("--rows", rw); [...m.children].forEach((f, i) => { f.hidden = i >= t; }); };
     fit(); new ResizeObserver(fit).observe(sec);
   });
   document.querySelectorAll(".mf-bg:not(.mf-mosaic)").forEach(bg => {
