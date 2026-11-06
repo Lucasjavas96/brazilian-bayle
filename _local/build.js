@@ -123,13 +123,13 @@ ${body.trim()}
   </main>
 
   <footer class="foot">
-    <div class="wrap foot-join">
+    ${meta.nofootjoin ? "" : `<div class="wrap foot-join">
       <h2 class="display foot-title">Faça parte de tudo <em>isso.</em></h2>
       <div class="foot-cta">
         <a href="/clube#candidatura" class="btn btn-y">Quero ser BRB Clubber</a>
         <a href="/ranking#votar" class="btn btn-ghost">Avaliar um DJ</a>
       </div>
-    </div>
+    </div>`}
     <div class="wrap foot-cols">
       <div>
         <h3 class="mono">Navegue</h3>

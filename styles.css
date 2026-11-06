@@ -3186,3 +3186,14 @@ body.p2p-lock{overflow:hidden}
 @media(max-width:700px){.mf .mf-end{aspect-ratio:auto}}
 /* texto livre da seção final no computador */
 @media(min-width:701px){.mf .mf-tx.dv{display:block;position:absolute;left:var(--dx,50%);top:var(--dy,50%);transform:translate(-50%,-50%) scale(var(--ds,1));transform-origin:center;width:calc(var(--dw,80%) / var(--ds,1));z-index:2;text-align:center;margin:0}}
+
+/* Manifesto: seção final em tela cheia (sem laterais vazias) */
+.mf .mf-end{max-width:none}
+/* Manifesto: "O que já temos" com dois quadros de DJs que piscam e trocam (cada DJ ~0,8 s) */
+.mf-duo{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:#000}
+.mf-dp{position:relative;overflow:hidden;min-height:0}
+.mf-dp img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 25%;opacity:.6;filter:grayscale(.5) contrast(1.1)}
+.mf-dp::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,212,0,.5),rgba(0,156,59,.3));mix-blend-mode:multiply;pointer-events:none}
+.mf-dp img.go{animation:mfduo .8s linear forwards}
+@keyframes mfduo{0%{opacity:.95;filter:grayscale(0) contrast(1.1) brightness(2.6)}14%{opacity:.75;filter:grayscale(.5) contrast(1.1) brightness(1)}62%{opacity:.65;filter:grayscale(.5) contrast(1.1) brightness(1)}100%{opacity:0;filter:grayscale(.5) contrast(1.1) brightness(1)}}
+@media(prefers-reduced-motion:reduce){.mf-dp img.go{animation:none}}
