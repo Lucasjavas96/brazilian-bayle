@@ -6,6 +6,9 @@
   const vid = fig => fig.querySelector("video");
   const play = fig => { const v = vid(fig); if (v) { v.play().catch(() => {}); } };
   const pause = fig => { const v = vid(fig); if (v) v.pause(); };
+  /* celular: a seção nunca fica mais baixa que o texto dela (evita texto cortado em telas estreitas) */
+  const needFit = () => { const mob = matchMedia("(max-width:700px)").matches; document.querySelectorAll(".mf-b").forEach(s => s.style.removeProperty("--need")); if (!mob) return; document.querySelectorAll(".mf-tx.mv").forEach(t => { const s = t.closest(".mf-b"), h = t.getBoundingClientRect().height; s.style.setProperty("--need", Math.ceil(h + 56) + "px"); }); };
+  needFit(); addEventListener("resize", needFit); addEventListener("load", needFit); if (document.fonts && document.fonts.ready) document.fonts.ready.then(needFit);
   document.querySelectorAll(".mf-flashy[data-fx]").forEach(s => new IntersectionObserver(es => es.forEach(e => s.classList.toggle("fx-on", e.isIntersecting)), { threshold: .35 }).observe(s));
   document.querySelectorAll(".mf-mosaic").forEach(m => {
     const sec = m.closest(".mf-b"), fit = () => { const n = +m.dataset.n || m.children.length, r = sec.getBoundingClientRect(); if (!(r.width > 0 && r.height > 0)) return; const c = Math.max(2, Math.round(Math.sqrt(n * r.width / r.height))), rw = Math.ceil(n / c), t = c * rw; m.style.setProperty("--cols", c); m.style.setProperty("--rows", rw); [...m.children].forEach((f, i) => { f.hidden = i >= t; }); };
