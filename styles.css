@@ -2939,3 +2939,4 @@ background: linear-gradient(90deg, transparent, rgba(140,240,255,0) 20%, rgba(20
 .p2p-pick li.is-off{opacity:.6}.p2p-pick li.is-off label{cursor:default}
 .p2p-pick .p2p-btn{margin-top:8px}
 .p2p-big:disabled{opacity:.4;cursor:not-allowed}
+.fq-grid.fq-words li b,.fq-grid.fq-words li:last-child b{font-size:min(36px,17cqw);overflow-wrap:anywhere}
