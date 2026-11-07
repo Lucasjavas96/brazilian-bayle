@@ -301,6 +301,15 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
     groups[b].length - groups[a].length || a.localeCompare(b, "pt-BR"));
   const gid = g => slugify(g);
+  // subgêneros que cada seção abriga (aparecem ao lado do título, em letra menor)
+  const SUBGENRES = {
+    "House": ["Deep house", "Melodic house", "Progressive house", "Afro house", "Electro house", "Minimal house", "Bass house", "Brazilian bass", "UK garage", "Future house", "Indie dance", "Acid house"],
+    "Techno": ["Melodic techno", "Minimal techno", "Hard techno", "Acid techno", "Detroit techno", "Peak-time techno", "Industrial techno", "Progressive techno"],
+    "Tech house": ["Deep tech", "Minimal tech", "Bass house", "Minimal house"],
+    "Trance": ["Psytrance", "Progressive trance", "Full-on", "Progressive psytrance", "Goa trance", "Uplifting trance", "Psychedelic trance", "Vocal trance"],
+    "EDM": ["Electro house", "Big room", "Progressive house", "Dance-pop", "Future bass", "Dutch house", "Moombahton", "Trap", "Hardstyle"],
+    "Disco": ["Nu disco", "Disco house", "French house", "Balearic"],
+  };
   const listed = sorted;
   const done = listed.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length || PROFILES[slugify(d.nome)]?.fonte_texto).length; // verbete pesquisado = tem fonte listada ou texto da Bayle
   // marca d'água do hero: as 5 primeiras são fixas (Daft Punk, Alok, Miss Monique, GENX, Greggio); o resto o djhero.js embaralha
@@ -319,7 +328,7 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
     <div class="catalog-search"><label for="wikiSearch" class="mono">Buscar DJ</label><input type="search" id="wikiSearch" placeholder="Nome, gênero ou cidade" autocomplete="off" aria-controls="wikiResults"><p id="wikiCount" class="hint" role="status"></p></div>
     <div class="wiki-list" id="wikiResults">
       ${letters.map(l => `<section class="wiki-letter wiki-genre" id="genero-${gid(l)}" aria-labelledby="h-${gid(l)}">
-        <h2 class="wiki-l" id="h-${gid(l)}">${l}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
+        <h2 class="wiki-l" id="h-${gid(l)}">${l}${SUBGENRES[l] ? `<span class="wiki-sub">${SUBGENRES[l].join(" · ")}</span>` : ""}<small class="mono">${groups[l].length} DJ${groups[l].length > 1 ? "s" : ""}</small></h2>
         <ul>${groups[l].map(d => { const s = slugify(d.nome), p = PROFILES[s], full = p?.fontes?.length || p?.fonte_texto;
           return `<li id="${s}"><a class="wiki-item${full ? "" : " is-soon"}" href="/djindex/${s}">
             ${DJ_PHOTOS[s] ? `<img class="wiki-portrait" src="/${DJ_PHOTOS[s].thumb}?v=2" alt="${esc(d.nome)}" width="384" height="288" loading="lazy" decoding="async">` : `<span class="ge-badge" aria-hidden="true">${ini(d.nome)}</span>`}

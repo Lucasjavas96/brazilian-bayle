@@ -3224,3 +3224,6 @@ body.p2p-lock{overflow:hidden}
 .av-op-msg{font-size:11px;color:rgba(255,255,255,.7);margin:0;min-height:1.4em}
 .av-op-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .av-op .pista-link{color:rgba(255,255,255,.8);font-size:13px}
+/* DJ Index: subgêneros ao lado do título da seção */
+.wiki-genre .wiki-l{flex-wrap:wrap;row-gap:6px}
+.wiki-genre .wiki-l .wiki-sub{font-family:'Inter Tight','Inter Tight Fallback',system-ui,sans-serif;font-weight:500;font-size:clamp(12px,1.4vw,14px);line-height:1.35;letter-spacing:0;color:#fff;max-width:min(100%,640px)}
