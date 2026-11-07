@@ -3172,7 +3172,7 @@ body.p2p-lock{overflow:hidden}
 @media(max-width:700px){
   .mf-s .mfr-fill{width:var(--mfw,var(--fw));height:var(--mfh,var(--fh));left:var(--mfl,var(--fl));top:var(--mft,var(--ft));object-position:var(--mfo,var(--fo))}
   /* texto do celular: livre quando o bloco tem a marca .mv */
-  .mf .mf-tx.mv{display:block;position:absolute;--vw:min(var(--cw,86%),90%);left:clamp(calc(var(--vw) / 2 + 5%),var(--cx,50%),calc(100% - var(--vw) / 2 - 5%));top:var(--cy,50%);transform:translate(-50%,-50%) scale(var(--cs,1));transform-origin:center;width:calc(var(--vw) / var(--cs,1));z-index:2;text-align:center;margin:0}
+  .mf .mf-tx.mv{display:block;position:absolute;--vw:min(var(--cw,86%),90%);left:clamp(calc(var(--vw) / 2 + 5%),var(--cx,50%),calc(100% - var(--vw) / 2 - 5%));top:clamp(calc(var(--th,0px) / 2 + 20px),var(--cy,50%),calc(100% - var(--th,0px) / 2 - 20px));transform:translate(-50%,-50%) scale(var(--cs,1));transform-origin:center;width:calc(var(--vw) / var(--cs,1));z-index:2;text-align:center;margin:0}
   .mf .mf-full:not(.mf-flashy){min-height:max(calc(var(--mh,100) * 2.164vw),var(--need,0px))}
   .mf .mf-thin.mf-tall{aspect-ratio:auto;min-height:max(calc(var(--mh,32) * 2.164vw),var(--need,0px))}
   .mf .mf-end{min-height:max(calc(var(--mh,45) * 2.164vw),var(--need,0px))}
