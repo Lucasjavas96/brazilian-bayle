@@ -964,5 +964,12 @@
     "source": "Divulgação",
     "width": 720,
     "height": 720
+  },
+  "beatric": {
+    "path": "assets/djs/beatric.webp",
+    "thumb": "assets/djs/thumbs/beatric.webp",
+    "source": "Divulgação",
+    "width": 720,
+    "height": 720
   }
 }

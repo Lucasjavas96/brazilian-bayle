@@ -21392,56 +21392,12 @@
         "titulo": "Surreal Park inaugura em Camboriú e surpreende o público presente, Wonderland in Rave",
         "url": "https://wonderlandinrave.com/surreal-park-inaugura-em-camboriu-e-surpreende-o-publico-presente"
       }
-    ]
-  },
-  {
-    "slug": "bioma-djs",
-    "nome": "Bioma DJs",
-    "estilos": [
-      "House",
-      "Minimal"
     ],
-    "resumo": "Bioma DJs é o projeto de DJs ligado à Bioma, festa-selo brasileira de house e minimal citada entre os núcleos que assinam pistas do Surreal Park, em Camboriú (SC). Em 2026 tocou na festa de quatro anos da Botanic, com o trio francês Apollonia, e na Nave, do D-EDGE, em São Paulo, ao lado do DJ curitibano Gromma.",
-    "historia": [
-      "Bioma DJs é um projeto brasileiro de house e minimal ligado à Bioma, uma das festas-selo que ocupam com frequência as pistas do Surreal Park, em Camboriú, no litoral de Santa Catarina. Em balanço publicado pela Play BPM em dezembro de 2023, quando o complexo completava dois anos, a Bioma foi citada entre as festas-selo que assinam noites na casa, ao lado de Botanic, Moon Influences, Seas e Laguna Music.",
-      "O Surreal Park é o complexo de música eletrônica idealizado por Renato Ratier, nome ligado ao D-Edge, de São Paulo. Inaugurado em dezembro de 2021 com mais de 16 DJs, o espaço reúne pistas de identidade própria, como o Bells, marcado por um sino gigante, o Nomad, montado como uma tenda cigana, o intimista Raw Room, a Church, instalada numa igreja, e o palco principal Ritual, com capacidade para cerca de oito mil pessoas.",
-      "Em 17 de julho de 2026, os Bioma DJs estiveram no line-up da celebração de quatro anos da Botanic no Surreal Park, noite que trouxe o trio francês Apollonia ao Brasil em formação completa, com Beatric, vencedora do concurso Sprout, no warm-up. Em 26 de setembro de 2026 tocaram na Nave, festa do D-EDGE, na Barra Funda, em São Paulo, na pista 2, ao lado de Ana Caoli e de Gromma, DJ de house de Curitiba; na pista principal estavam Acid Asian, Bervon, HNGT e Moonphazes.",
-      "Além das grandes atrações internacionais, o Surreal Park abre espaço para talentos regionais por meio dessas festas-selo, que levam curadoria e residentes próprios às pistas do complexo. É nesse circuito de núcleos que os Bioma DJs se apresentam como representantes da Bioma, dividindo o calendário com convidados nacionais e estrangeiros e levando o nome da festa também a clubes de outras cidades, como o D-EDGE.",
-      "No som, o projeto é associado ao house e ao minimal. O house mantém o pulso constante de quatro tempos herdado das pistas de Chicago, enquanto o minimal, aparentado do techno, trabalha com poucos elementos, linhas de baixo repetitivas e variações sutis de timbre ao longo de sets extensos, em que a tensão vem mais da repetição e dos detalhes do que de grandes quebras."
-    ],
-    "fonte_texto": "Texto enviado pela Brazilian Bayle, reunido de fontes públicas. Os links de cada fonte entram em breve.",
-    "origem": "Brasil",
-    "marcos": [
-      "2023: a Bioma é citada pela Play BPM entre as festas-selo que assinam pistas do Surreal Park",
-      "2026: toca na festa de quatro anos da Botanic, com Apollonia, no Surreal Park (17 de julho)",
-      "2026: toca na pista 2 da Nave, no D-EDGE, em São Paulo, com Ana Caoli e Gromma (26 de setembro)"
-    ],
-    "fontes": [
-      {
-        "titulo": "Surreal Park celebra dois anos de trajetória, Play BPM",
-        "url": "https://playbpm.com.br/colunas/fala-ai/play-bpm/surreal-park-celebra-dois-anos-de-trajetoria"
-      },
-      {
-        "titulo": "Botanic celebra quatro anos no Surreal Park e traz Apollonia ao Brasil em formação completa, Rádio DJ",
-        "url": "https://radiodj.com.br/botanic-celebra-quatro-anos-no-surreal-park-e-traz-apollonia-ao-brasil-em-formacao-completa/"
-      },
-      {
-        "titulo": "Nave D-EDGE SP, line-up de 26/09/2026, Ingresse",
-        "url": "https://www.ingresse.com/nave260926/"
-      },
-      {
-        "titulo": "Bioma DJs, eventos, Toontz",
-        "url": "https://toontz.com/artist/bioma-djs/"
-      },
-      {
-        "titulo": "Gromma, Viberate",
-        "url": "https://www.viberate.com/artist/gromma/"
-      },
-      {
-        "titulo": "Surreal Park inaugura em Camboriú e surpreende o público presente, Wonderland in Rave",
-        "url": "https://wonderlandinrave.com/surreal-park-inaugura-em-camboriu-e-surpreende-o-publico-presente"
-      }
-    ]
+    "foto": {
+      "credito": "Avatar oficial do perfil BEATRIC, via SoundCloud",
+      "licenca": "Divulgação",
+      "pagina": "https://soundcloud.com/elenabeatric"
+    }
   },
   {
     "slug": "blancah",
