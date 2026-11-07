@@ -3232,3 +3232,16 @@ body.p2p-lock{overflow:hidden}
 .p2p-h3{font:800 clamp(22px,4vw,28px)/1.1 'Syne','Inter Tight',sans-serif;text-transform:uppercase;margin:28px 0 12px}
 .p2p-h3 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;text-transform:none;color:var(--y)}
 .tp-n{margin:2px 0 0;text-align:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+
+/* Intermediação: botão da festa que abre a janela dos anunciados, e a lista de escolha (sem nome do vendedor) */
+.tp-ver{appearance:none;width:100%;padding:13px 16px;border-radius:999px;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:700 14px/1 'Inter Tight',system-ui,sans-serif;cursor:pointer}
+.tp-ver:hover{border-color:var(--y);color:var(--y)}
+.p2p-pick{list-style:none;margin:16px 0 14px;padding:0;display:grid;gap:8px}
+.p2p-pick label{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(255,255,255,.05);cursor:pointer}
+.p2p-pick label:has(input:checked){border-color:var(--y);background:rgba(255,212,0,.12)}
+.p2p-pick input{accent-color:#FFD400;width:18px;height:18px;flex:none}
+.p2p-tk{flex:1;display:grid}.p2p-tk small{color:rgba(255,255,255,.62);font-size:12px}
+.p2p-pick strong{font:900 22px 'Big Shoulders','Syne',sans-serif;color:var(--y)}
+.p2p-pick li.is-off{opacity:.6}.p2p-pick li.is-off label{cursor:default}
+.p2p-pick .p2p-btn{margin-top:8px}
+.p2p-big:disabled{opacity:.4;cursor:not-allowed}

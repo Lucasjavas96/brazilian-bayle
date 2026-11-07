@@ -32,8 +32,7 @@
       '<label class="p2p-field"><span>Valor do ingresso</span><div class="p2p-money"><b>R$</b><input name="price" inputmode="decimal" placeholder="0,00" autocomplete="off" required></div></label>' +
       '<div class="p2p-fee" aria-live="polite"><span>Intermediação da Brazilian Bayle: <b>5%</b> do valor do ingresso</span><strong data-fee>R$ 0,00</strong></div>' +
       '<p class="p2p-err" role="alert" hidden></p><button class="p2p-big" type="submit">Anunciar ingresso</button></form>' +
-      '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button></div>' + listing(f));
-    bindListing(f);
+      '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button><button class="p2p-link" type="button" data-buy>Ver ingressos anunciados</button></div>');
     const form = body.querySelector("form"), fee = body.querySelector("[data-fee]"), err = body.querySelector(".p2p-err");
     const val = () => parseFloat(String(form.price.value).replace(/\./g, "").replace(",", "."));
     form.price.addEventListener("input", () => { form.price.value = form.price.value.replace(/[^\d.,]/g, ""); const v = val(); fee.textContent = v > 0 ? brl(v * FEE) : "R$ 0,00"; });
@@ -49,44 +48,26 @@
       } catch (x) { err.textContent = x.message; err.hidden = false; btn.disabled = false; }
     });
     body.querySelector("[data-how]").addEventListener("click", () => how(f, () => sell(f)));
+    body.querySelector("[data-buy]").addEventListener("click", () => buy(f));
   }
 
-  /* ingressos anunciados para esta festa, com o botão para outra pessoa solicitar a intermediação */
-  function listing(f) {
+  /* janela dos ingressos anunciados: só o ingresso (tipo e valor), sem o nome de quem vende; um botão embaixo solicita a intermediação */
+  function buy(f) {
     const list = data.listings.filter(l => l.event === f.id), reqs = new Set(data.requests.map(r => r.listing));
-    return '<h3 class="p2p-h3">Ingressos <em>anunciados</em></h3><ul class="p2p-list">' + (list.length ? list.map(l => "<li><div><b>" + esc(l.type) + '</b><span class="mono">' + (l.mine ? "seu anúncio" : nick(l.nick)) + "</span></div><strong>" + brl(l.price) + "</strong>" +
-      (l.mine ? (l.status === "ativo" ? '<button class="p2p-btn ghost" type="button" data-cancel="' + esc(l.id) + '">Cancelar anúncio</button>' : '<span class="p2p-own mono">Em intermediação</span>')
-        : reqs.has(l.id) ? '<span class="p2p-own mono">Você já solicitou a intermediação</span>'
-        : l.status === "ativo" ? '<button class="p2p-btn ghost" type="button" data-req="' + esc(l.id) + '">Solicitar intermediação</button>' : '<span class="p2p-own mono">Em intermediação</span>') + "</li>").join("")
-      : '<li class="p2p-empty">Ninguém anunciou ingresso para esta festa ainda.</li>') + "</ul>";
-  }
-  function bindListing(f) {
-    const list = data.listings.filter(l => l.event === f.id);
-    body.querySelectorAll("[data-req]").forEach(b => b.addEventListener("click", () => request(f, list.find(l => l.id === b.dataset.req), () => sell(f))));
-    body.querySelectorAll("[data-cancel]").forEach(b => b.addEventListener("click", async () => { b.disabled = true; try { data = await BRB.tickets("cancel", { id: b.dataset.cancel }); say("Anúncio cancelado."); sell(f); } catch (e) { say(e.message); b.disabled = false; } }));
-  }
-
-  function done(f, l) {
-    open(head(f) + '<h2 class="display" id="p2pT">Ingresso <em>anunciado</em></h2><p class="p2p-sub">' + esc(f.name) + "</p>" +
-      '<div class="p2p-ok"><b>' + esc(l.type) + " · " + brl(l.price) + "</b><p>Seu anúncio está no ar. Quando alguém pedir a intermediação, o suporte da Brazilian Bayle avisa você e conduz cada passo.</p></div>" +
-      '<div class="p2p-fee"><span>Intermediação da Brazilian Bayle: <b>5%</b> do valor do ingresso</span><strong>' + brl(l.price * FEE) + "</strong></div>" +
-      '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button><button class="p2p-link" type="button" data-again>Anunciar outro ingresso</button></div>');
-    body.querySelector("[data-how]").addEventListener("click", () => how(f, () => done(f, l)));
-    body.querySelector("[data-again]").addEventListener("click", () => sell(f));
-  }
-
-  function how(f, back, l) {
-    const price = l ? " (" + brl(l.price) + ")" : "";
-    open('<button class="p2p-back mono" type="button">← Voltar</button><h2 class="display" id="p2pT">Como funciona <em>o processo</em></h2>' +
-      '<p class="p2p-note big"><b>Importante:</b> o suporte da Brazilian Bayle intermedia a troca de ingressos entre as duas pessoas. O dinheiro e o ingresso só andam depois de cada confirmação do suporte.</p>' +
-      '<ol class="p2p-steps">' +
-      '<li><span class="mono">1</span><div><b>Quem compra paga o suporte, não o vendedor</b><p>O comprador transfere o dinheiro' + price + ' para o suporte da Brazilian Bayle. O suporte envia por mensagem os dados para o pagamento.</p></div></li>' +
-      '<li><span class="mono">2</span><div><b>O suporte confirma o recebimento</b><p>Assim que o dinheiro chega, a Brazilian Bayle confirma o recebimento e avisa o vendedor.</p></div></li>' +
-      '<li><span class="mono">3</span><div><b>O vendedor transfere o ingresso</b><p>Com o recebimento confirmado, o dono do ingresso está autorizado a transferir o ingresso para o comprador. Antes do aviso do suporte, ele não transfere nada.</p></div></li>' +
-      '<li><span class="mono">4</span><div><b>O suporte repassa o dinheiro</b><p>Com o ingresso transferido, o suporte da Brazilian Bayle faz a transferência do dinheiro para o vendedor e a troca está concluída.</p></div></li></ol>' +
-      '<div class="p2p-fee"><span>Preço da intermediação: <b>5%</b> do valor do ingresso</span><strong>' + (l ? brl(l.price * FEE) : "5%") + "</strong></div>" +
-      '<div class="p2p-two"><div><b>Se você compra</b><p>Pague só ao suporte da Brazilian Bayle. Nunca pague direto ao vendedor.</p></div><div><b>Se você vende</b><p>Só transfira o ingresso depois do aviso do suporte de que o dinheiro foi recebido.</p></div></div>');
-    body.querySelector(".p2p-back").addEventListener("click", back);
+    const item = l => { const mine = l.mine, asked = reqs.has(l.id), off = mine || asked || l.status !== "ativo";
+      return '<li class="' + (off ? "is-off" : "") + '"><label><input type="radio" name="tk" value="' + esc(l.id) + '"' + (off ? " disabled" : "") + '><span class="p2p-tk"><b>' + esc(l.type) + "</b><small>" +
+        (mine ? "Seu anúncio" : asked ? "Você já solicitou" : l.status !== "ativo" ? "Em intermediação" : "Disponível") + "</small></span><strong>" + brl(l.price) + "</strong></label>" +
+        (mine && l.status === "ativo" ? '<button class="p2p-btn ghost" type="button" data-cancel="' + esc(l.id) + '">Cancelar anúncio</button>' : "") + "</li>"; };
+    open('<button class="p2p-back mono" type="button">← Voltar</button>' + head(f) + '<h2 class="display" id="p2pT">Ingressos <em>anunciados</em></h2><p class="p2p-sub">' + esc(f.name) + "</p>" +
+      (list.length ? '<ul class="p2p-pick">' + list.map(item).join("") + '</ul><button class="p2p-big" type="button" data-go disabled>Solicitar intermediação</button>' : '<p class="p2p-empty">Ninguém anunciou ingresso para esta festa ainda.</p>') +
+      '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button></div>');
+    body.querySelector(".p2p-back").addEventListener("click", () => sell(f));
+    body.querySelector("[data-how]").addEventListener("click", () => how(f, () => buy(f)));
+    const go = body.querySelector("[data-go]");
+    let sel = null;
+    body.querySelectorAll('input[name="tk"]').forEach(r => r.addEventListener("change", () => { sel = r.value; if (go) go.disabled = false; }));
+    if (go) go.addEventListener("click", () => { const l = list.find(x => x.id === sel); if (l) request(f, l, () => buy(f)); });
+    body.querySelectorAll("[data-cancel]").forEach(b => b.addEventListener("click", async () => { b.disabled = true; try { data = await BRB.tickets("cancel", { id: b.dataset.cancel }); say("Anúncio cancelado."); marcar(); buy(f); } catch (e) { say(e.message); b.disabled = false; } }));
   }
 
   function request(f, l, back) {
@@ -109,10 +90,12 @@
 
   /* quantos ingressos anunciados em cada festa, abaixo do botão da festa */
   const marcar = () => { const n = {}; data.listings.forEach(l => { if (l.status === "ativo") n[l.event] = (n[l.event] || 0) + 1; });
-    document.querySelectorAll("[data-p2p-n]").forEach(el => { const k = n[el.dataset.p2pN] || 0; el.hidden = !k; el.textContent = k ? k + (k > 1 ? " ingressos anunciados" : " ingresso anunciado") : ""; }); };
+    document.querySelectorAll("[data-ver-n]").forEach(el => { const k = n[el.dataset.verN] || 0; el.textContent = k ? "Ver ingressos anunciados (" + k + ")" : "Ver ingressos anunciados"; }); };
   refresh().then(marcar);
 
   box.addEventListener("click", async e => {
+    const v = e.target.closest("[data-ver]");
+    if (v) { const f = festaOf(v.dataset.ver); if (!f) return; await refresh(); marcar(); buy(f); return; }
     const b = e.target.closest("[data-p2p]"); if (!b) return;
     const f = festaOf(b.dataset.p2p); if (!f) return;
     await refresh(); marcar(); sell(f);
