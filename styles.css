@@ -3185,7 +3185,7 @@ body.p2p-lock{overflow:hidden}
 @media(min-width:701px){.mf .mf-end{min-height:auto;aspect-ratio:calc(100 / var(--he,56));justify-content:center}}
 @media(max-width:700px){.mf .mf-end{aspect-ratio:auto}}
 /* texto livre da seção final no computador */
-@media(min-width:701px){.mf .mf-tx.dv{display:block;position:absolute;left:var(--dx,50%);top:var(--dy,50%);transform:translate(-50%,-50%) scale(var(--ds,1));transform-origin:center;width:calc(var(--dw,80%) / var(--ds,1));z-index:2;text-align:center;margin:0}}
+@media(min-width:701px){.mf .mf-tx.dv{display:block;position:absolute;left:var(--dx,50%);top:clamp(calc(var(--th,0px) / 2 + 20px),var(--dy,50%),calc(100% - var(--th,0px) / 2 - 20px));transform:translate(-50%,-50%) scale(var(--ds,1));transform-origin:center;width:calc(var(--dw,80%) / var(--ds,1));z-index:2;text-align:center;margin:0}}
 
 /* Manifesto: seção final em tela cheia (sem laterais vazias) */
 .mf .mf-end{max-width:none}
@@ -3211,3 +3211,8 @@ body.p2p-lock{overflow:hidden}
   .mf .mf-go .btn{flex:0 1 auto;min-height:calc(48px * var(--bs,.8));padding:0 calc(24px * var(--bs,.8));font-size:calc(14px * var(--bs,.8))}
   .mf .mf-go .go-d,.mf .mf-go .go-dt{display:none}
 }
+
+/* Manifesto: lista da seção "O que já temos" */
+.mf .mf-ls{list-style:none;margin:16px auto 0;padding:0;width:fit-content;max-width:100%;text-align:left}
+.mf .mf-ls li{position:relative;padding-left:22px;margin:0 0 10px;max-width:none}
+.mf .mf-ls li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--y,#FFD400)}
