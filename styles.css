@@ -2916,3 +2916,10 @@ background: linear-gradient(90deg, transparent, rgba(140,240,255,0) 20%, rgba(20
 .mf .mf-ls{list-style:none;margin:16px auto 0;padding:0;width:fit-content;max-width:100%;text-align:left}
 .mf .mf-ls li{position:relative;padding-left:22px;margin:0 0 10px;max-width:none}
 .mf .mf-ls li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--y,#FFD400)}
+.av-op{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18)}
+.av-sub{font-size:clamp(18px,3vw,22px);margin:0 0 8px}
+.av-op-form{display:grid;gap:10px}
+.av-op-form textarea{min-height:110px;resize:vertical}
+.av-op-msg{font-size:11px;color:rgba(255,255,255,.7);margin:0;min-height:1.4em}
+.av-op-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.av-op .pista-link{color:rgba(255,255,255,.8);font-size:13px}
