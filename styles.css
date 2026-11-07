@@ -3204,3 +3204,10 @@ body.p2p-lock{overflow:hidden}
 .site-snd.on{color:var(--y,#FFD400);border-color:rgba(255,212,0,.6);opacity:1}
 .site-snd .x{display:block}.site-snd.on .x{display:none}
 .site-snd .w1,.site-snd .w2{display:none}.site-snd.on .w1,.site-snd.on .w2{display:block}
+
+/* Manifesto no celular: só 2 botões (Avaliação dos DJs e Loja), com tamanho ajustável (--bs) */
+@media(max-width:700px){
+  .mf .mf-go{justify-content:center;gap:calc(10px * var(--bs,.8))}
+  .mf .mf-go .btn{flex:0 1 auto;min-height:calc(48px * var(--bs,.8));padding:0 calc(24px * var(--bs,.8));font-size:calc(14px * var(--bs,.8))}
+  .mf .mf-go .go-d,.mf .mf-go .go-dt{display:none}
+}
