@@ -285,18 +285,18 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const SECTION = { "House": "House", "Deep house": "House", "Afro house": "House", "Bass house": "House", "Brazilian bass": "House", "Bass": "House", "Big room": "EDM", "Edm": "EDM", "EDM": "EDM", "Electro": "EDM", "Pop": "EDM", "Disco": "Disco", "Garage": "House", "Indie": "House", "Progressive": "House", "Eletrônica": "House",
     "Techno": "Techno", "Hard techno": "Techno", "Breaks": "Techno", "Drum and bass": "Techno", "Jungle": "Techno", "Dubstep": "Techno",
     "Tech house": "Tech house", "Trance": "Trance", "Psytrance": "Trance" };
-  const SECTION_OVERRIDE = { "dj-stingray-313": "Techno", excision: "Techno", rezz: "Techno", skrillex: "Techno", subtronics: "Techno", "ben-ufo": "Techno", illenium: "Trance", "seven-lions": "Trance", "gigi-d-agostino": "Trance" };
+  const SECTION_OVERRIDE = { "dj-stingray-313": "Techno", excision: "Techno", rezz: "Techno", skrillex: "Techno", subtronics: "Techno", "ben-ufo": "Techno", illenium: "Trance", "seven-lions": "Trance", "gigi-d-agostino": "Trance", makka: "Trance", felpo: "Techno", oktn: "Techno" };
   const rawGenre = d => d.curitiba ? "Bayle Curitibano" : d.extra ? d.grupo : d.album ? d.grupo : cap((PROFILES[slugify(d.nome)]?.estilos || [])[0] || d.estilo);
   // quando o verbete diz que o primeiro estilo é tech house, techno ou trance, a seção segue o verbete
   const byStyle = d => { const e = String((PROFILES[slugify(d.nome)]?.estilos || [])[0] || "").toLowerCase();
     return /tech house/.test(e) ? "Tech house" : /trance/.test(e) ? "Trance" : /techno|schranz|gabber|hardcore/.test(e) ? "Techno" : /disco/.test(e) ? "Disco" : /big room|edm|electro house|dance-pop|dance pop|pop dance|pop eletrônico|future bass|hardstyle|trap|mainstage/.test(e) ? "EDM" : ""; };
-  const genreOf = d => d.curitiba ? "Bayle Curitibano" : SECTION_OVERRIDE[slugify(d.nome)] || byStyle(d) || SECTION[rawGenre(d)] || "House";
+  const genreOf = d => d.curitiba ? SECTION_OVERRIDE[slugify(d.nome)] || "House" : SECTION_OVERRIDE[slugify(d.nome)] || byStyle(d) || SECTION[rawGenre(d)] || "House";
   const rank = rankingOrder();
   const pos = d => d.curitiba ? 1000 + DJLIST.indexOf(d) : d.extra ? 3000 + DJLIST.indexOf(d) : d.album ? 2000 + d.album.ordem : (rank.indexOf(d.nome) + 1 || 999);
   const groups = {};
   [...DJLIST].sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d));
   Object.values(groups).forEach(g => g.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }))); // cada seção em ordem alfabética
-  const FIRST = ["Bayle Curitibano", "House", "Techno", "Tech house", "Trance", "EDM", "Disco"];
+  const FIRST = ["House", "Techno", "Tech house", "Trance", "EDM", "Disco"];
   const letters = Object.keys(groups).sort((a, b) =>
     ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
     groups[b].length - groups[a].length || a.localeCompare(b, "pt-BR"));
