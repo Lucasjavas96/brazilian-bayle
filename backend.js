@@ -73,6 +73,11 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar as resenhas.');
       return data || [];
     },
+    async opinion(action, payload = {}) {
+      const { data, error } = await client.rpc('brb_dj_opinion', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível salvar sua opinião.');
+      return data;
+    },
     async activity(action, payload = {}) {
       const { data, error } = await client.rpc('brb_activity', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível carregar a atividade.');

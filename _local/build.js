@@ -294,14 +294,14 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
   const rank = rankingOrder();
   const pos = d => d.curitiba ? 1000 + DJLIST.indexOf(d) : d.extra ? 3000 + DJLIST.indexOf(d) : d.album ? 2000 + d.album.ordem : (rank.indexOf(d.nome) + 1 || 999);
   const groups = {};
-  [...DJLIST].filter(d => !d.curitiba).sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d)); // Bayle Curitibano fora do índice (as páginas seguem, o /curitiba aponta para elas)
+  [...DJLIST].sort((a, b) => pos(a) - pos(b)).forEach(d => (groups[genreOf(d)] ||= []).push(d));
   Object.values(groups).forEach(g => g.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }))); // cada seção em ordem alfabética
-  const FIRST = ["House", "Techno", "Tech house", "Trance", "EDM", "Disco"];
+  const FIRST = ["Bayle Curitibano", "House", "Techno", "Tech house", "Trance", "EDM", "Disco"];
   const letters = Object.keys(groups).sort((a, b) =>
     ((FIRST.indexOf(a) + 1 || 99) - (FIRST.indexOf(b) + 1 || 99)) ||
     groups[b].length - groups[a].length || a.localeCompare(b, "pt-BR"));
   const gid = g => slugify(g);
-  const listed = sorted.filter(d => !d.curitiba);
+  const listed = sorted;
   const done = listed.filter(d => PROFILES[slugify(d.nome)]?.fontes?.length || PROFILES[slugify(d.nome)]?.fonte_texto).length; // verbete pesquisado = tem fonte listada ou texto da Bayle
   // marca d'água do hero: as 5 primeiras são fixas (Daft Punk, Alok, Miss Monique, GENX, Greggio); o resto o djhero.js embaralha
   const HERO_DJS = ["daft-punk", "alok", "miss-monique", "genx", "greggio", "vintage-culture", "mano-le-tough", "max-styler", "gigi-dagostino", "avicii", "boris-brejcha", "eli-iwasa"]
@@ -375,7 +375,6 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
         ${sec("h-faixas", "Faixas marcantes", ul(p.faixas_marcantes))}
         ${sec("h-marcos", "Marcos da carreira", ul(p.marcos))}
         ${sec("h-infl", "Influências musicais", ul(p.referencias_musicais))}
-        ${sec("h-fontes", "Referências", `<p>Texto enviado pela Brazilian Bayle, reunido de todas as fontes públicas.</p>`)}
         ${sec("h-pista", "Opinião da pista", `<div class="pista-list" data-dj-reviews="${esc(p.nome)}" aria-live="polite"><p>Carregando a opinião da pista…</p></div>`)}
         ${credit ? `<p class="example-note mono">Crédito da imagem: ${credit}</p>` : ""}
         <p class="example-note mono">Última revisão: outubro de 2026</p>
