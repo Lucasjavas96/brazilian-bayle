@@ -29,7 +29,7 @@
       + (list.length
         ? `<p class="av-lead">Em qual festa você viu ${esc(name)} tocar? Escolha uma para dar as notas e escrever sua resenha.</p><div class="av-list">${list.map(item).join("")}</div>`
         : `<p class="rv-empty">Ainda não há festa cadastrada com ${esc(name)} no line-up. Assim que aparecer uma, você poderá avaliar por aqui.</p><p class="av-lead"><a class="link-arrow mono" href="/ranking#votar">Ver todas as festas →</a></p>`)
-      + `<div class="av-op" data-av-op="${esc(name)}"><h3 class="av-sub display">Ou deixe uma opinião solta</h3><p class="av-lead">Não precisa ter visto o DJ numa festa cadastrada. Sua opinião aparece no mural da opinião da pista no verbete.</p><div data-av-op-body><p class="av-lead">Carregando…</p></div></div>`
+      + `<div class="av-op" data-av-op="${esc(name)}"><h3 class="av-sub display">Tem opinião? Lança pro nosso network!</h3><p class="av-lead">Viu em festa, ouviu em set ou só conhece de fama: fala pra nós o que você pensa!</p><div data-av-op-body><p class="av-lead">Carregando…</p></div></div>`
       + `</div>`;
     document.body.appendChild(box); document.body.classList.add("rv-lock"); box.querySelector("[data-av-close]").focus();
     loadOpinionBox(name);
