@@ -2859,7 +2859,7 @@ background: linear-gradient(90deg, transparent, rgba(140,240,255,0) 20%, rgba(20
 .mf .mf-flashy{background:#0a0b0a}
 .mf .mf-flashy .mf-bg{left:auto;right:0;width:52%;background:transparent;-webkit-mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.55) 30%,#000 70%);mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.55) 30%,#000 70%)}
 .mf .mf-flashy .mf-bg::after{display:none}
-@media(max-width:700px){.mf .mf-flashy .mf-bg{width:80%}}
+@media(max-width:700px){.mf .mf-flashy .mf-bg{width:72%}}
 .mfr-fill,.mfr-fit,.mfr-blur{max-width:none;max-height:none}
 .mf .mf-thin.mf-tall{min-height:auto;aspect-ratio:calc(100 / var(--ha,26))}
 .mf-flashy[data-fx] .mf-bg{opacity:0}
@@ -2885,10 +2885,10 @@ background: linear-gradient(90deg, transparent, rgba(140,240,255,0) 20%, rgba(20
 @media(max-width:700px){
 .mf-s .mfr-fill{width:var(--mfw,var(--fw));height:var(--mfh,var(--fh));left:var(--mfl,var(--fl));top:var(--mft,var(--ft));object-position:var(--mfo,var(--fo))}
 .mf .mf-tx.mv{display:block;position:absolute;--vw:min(var(--cw,86%),90%);left:clamp(calc(var(--vw) / 2 + 5%),var(--cx,50%),calc(100% - var(--vw) / 2 - 5%));top:var(--cy,50%);transform:translate(-50%,-50%) scale(var(--cs,1));transform-origin:center;width:calc(var(--vw) / var(--cs,1));z-index:2;text-align:center;margin:0}
-.mf .mf-full:not(.mf-flashy){min-height:max(calc(var(--mh,100) * 1svh),var(--need,0px))}
-.mf .mf-thin.mf-tall{aspect-ratio:auto;min-height:max(calc(var(--mh,32) * 1svh),var(--need,0px))}
-.mf .mf-end{min-height:max(calc(var(--mh,45) * 1svh),var(--need,0px))}
-.mf .mf-flashy{aspect-ratio:auto;min-height:calc(var(--mh,60) * 1svh)}
+.mf .mf-full:not(.mf-flashy){min-height:max(calc(var(--mh,100) * 2.164vw),var(--need,0px))}
+.mf .mf-thin.mf-tall{aspect-ratio:auto;min-height:max(calc(var(--mh,32) * 2.164vw),var(--need,0px))}
+.mf .mf-end{min-height:max(calc(var(--mh,45) * 2.164vw),var(--need,0px))}
+.mf .mf-flashy{aspect-ratio:auto;min-height:max(calc(var(--mh,60) * 2.164vw),var(--need,0px))}
 .mf .mf-flashy .mf-bg{width:80%}
 .mf .mf-flashy .mf-big.mf-pos{left:var(--mtx,var(--tx,50%));top:var(--mty,var(--ty,50%));font-size:calc(9cqw * var(--mts,var(--ts,1)))}
 }
