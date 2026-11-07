@@ -89,8 +89,7 @@
   }
 
   /* quantos ingressos anunciados em cada festa, abaixo do botão da festa */
-  const marcar = () => { const n = {}; data.listings.forEach(l => { if (l.status === "ativo") n[l.event] = (n[l.event] || 0) + 1; });
-    document.querySelectorAll("[data-ver-n]").forEach(el => { const k = n[el.dataset.verN] || 0; el.textContent = k ? "Ver ingressos anunciados (" + k + ")" : "Ver ingressos anunciados"; }); };
+  const marcar = () => {}; /* sem contagem nos botões da festa */
   refresh().then(marcar);
 
   box.addEventListener("click", async e => {
