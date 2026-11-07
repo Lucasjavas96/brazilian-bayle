@@ -1,5 +1,5 @@
-/* Temperatura da Pista: agenda das festas anunciadas, uma seção por clube, com termômetro de interesse.
-   Clubes e festas em window.BRB_TEMP (src/data/temperatura.json, via build); contagem e respostas em brb_interest. */
+/* Temperatura da Pista: agenda das festas anunciadas, uma seção por clube.
+   Clubes e festas em window.BRB_TEMP (src/data/temperatura.json, via build). A venda e a compra de ingresso ficam em ingressos.js. */
 (() => {
   const box = document.getElementById("tpAgenda"), nav = document.getElementById("tpClubs");
   if (!box) return;
@@ -9,34 +9,20 @@
   const MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
   const MESF = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
   const DIA = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
-  const OPTS = [["c", "tp-b1", "Vou com certeza"], ["q", "tp-b2", "Quero ir"], ["n", "tp-b3", "Não vou"]];
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
   const dt = d => new Date(d + "T12:00:00");
   const today = new Date().toLocaleDateString("sv-SE", { timeZone: "America/Sao_Paulo" });
   const fmt = n => n.toLocaleString("pt-BR");
   const say = m => (typeof toast === "function" ? toast(m) : alert(m));
-  let counts = {}, mine = {}, busy = false;
 
-  /* vou com certeza esquenta mais que quero ir; não vou esfria. 12° (ninguém vai) a 42° (todos vão com certeza) */
-  function temp(id) {
-    const k = counts[id] || { c: 0, q: 0, n: 0 }, tot = k.c + k.q + k.n;
-    if (!tot) return { ...k, tot, deg: null, tier: "Sem respostas", color: "rgba(255,255,255,.35)", pct: 0 };
-    const deg = Math.round(12 + ((2 * k.c + k.q) / (2 * tot)) * 30);
-    const [tier, color] = deg >= 34 ? ["Fervendo", "var(--boil)"] : deg >= 28 ? ["Quente", "var(--hot)"] : deg >= 22 ? ["Morna", "var(--warm)"] : ["Gelada", "var(--cold)"];
-    return { ...k, tot, deg, tier, color, pct: Math.round(((deg - 12) / 30) * 100) };
-  }
 
   function row(f) {
-    const d = dt(f.date), t = temp(f.id), past = f.date < today;
-    const tube = `<div class="tp-vt"><span class="tp-vbulb"><span class="tp-vtube" style="--w:${t.pct}%;--bh:${t.pct ? Math.round(10000 / t.pct) : 100}%"><i></i></span></span><div><span class="tp-deg">${t.deg === null ? "—" : t.deg + "°"}</span><br><span class="tp-tier">${t.tier}</span></div></div>`;
-    const line = t.tot ? `<p class="tp-counts"><b>${fmt(t.c)}</b> vão · <b>${fmt(t.q)}</b> querem ir · <b>${fmt(t.n)}</b> não vão</p>` : `<p class="tp-counts">Ninguém respondeu ainda.</p>`;
-    const vote = past ? `<p class="tp-closed mono">Festa encerrada</p>` : `<div class="tp-vote" role="group" aria-label="Você vai em ${esc(f.name)}?">${OPTS.map(([v, cls, l]) =>
-      `<button type="button" class="tp-b ${cls}" data-id="${esc(f.id)}" data-v="${v}" aria-pressed="${mine[f.id] === v}">${l}</button>`).join("")}</div>`;
-    return `<article class="tp-row" style="--heat:${t.color}"><div class="tp-row-date"><b>${String(d.getDate()).padStart(2, "0")}</b><span>${MES[d.getMonth()]} · ${DIA[d.getDay()]}</span></div>
+    const d = dt(f.date), past = f.date < today;
+    return `<article class="tp-row"><div class="tp-row-date"><b>${String(d.getDate()).padStart(2, "0")}</b><span>${MES[d.getMonth()]} · ${DIA[d.getDay()]}</span></div>
       <div class="tp-row-main">${f.photo ? `<img class="tp-row-av" src="${esc(f.photo)}" alt="" loading="lazy" width="62" height="62">` : `<span class="tp-row-av tp-row-ini" aria-hidden="true">${esc(f.name.slice(0, 1))}</span>`}
       <p class="tp-kick">${esc(f.tag || f.venue + " · " + f.cidade)}</p><h3>${esc(f.name)}</h3>
       <p>${f.lineup.slice(0, 12).map(esc).join(" · ")}${f.lineup.length > 12 ? ` · e mais ${f.lineup.length - 12} atrações` : ""}${f.partial ? ` · <em>mais atrações a anunciar</em>` : ""}</p></div>
-      <div>${tube}${line}</div>${past ? vote : `<div class="tp-act"><button type="button" class="tp-p2p" data-p2p="${esc(f.id)}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2.2a2.8 2.8 0 0 0 0 5.6V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2.2a2.8 2.8 0 0 0 0-5.6V7Zm10 1.2h1.6v1.6H13V8.2Zm0 3h1.6v1.6H13v-1.6Zm0 3h1.6v1.6H13v-1.6Z"/></svg><span>Vender ingresso P2P</span></button>${vote}</div>`}</article>`;
+      ${past ? `<p class="tp-closed mono">Festa encerrada</p>` : `<div class="tp-act"><button type="button" class="tp-p2p" data-p2p="${esc(f.id)}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2.2a2.8 2.8 0 0 0 0 5.6V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2.2a2.8 2.8 0 0 0 0-5.6V7Zm10 1.2h1.6v1.6H13V8.2Zm0 3h1.6v1.6H13v-1.6Zm0 3h1.6v1.6H13v-1.6Z"/></svg><span>Vender ingresso P2P</span></button><p class="tp-n mono" data-p2p-n="${esc(f.id)}" hidden></p></div>`}</article>`;
   }
 
   function months(list) {
@@ -65,31 +51,7 @@
     document.addEventListener("keydown", e => { if (e.key === "Escape") { setOpen(false); btn.focus(); } });
   }
 
-  async function load() {
-    try { const r = await BRB.interest("list"); counts = r.counts || {}; mine = r.mine || {}; }
-    catch (e) { /* sem conexão: mostra a agenda sem a contagem */ }
-    render();
-  }
-
-  box.addEventListener("click", async e => {
-    const b = e.target.closest(".tp-b[data-v]");
-    if (!b || busy) return;
-    const { id, v } = b.dataset;
-    const { data } = await BRB.auth.getSession();
-    if (!data.session) { location.assign("/conta?next=" + encodeURIComponent("/intermediacao")); return; }
-    const choice = mine[id] === v ? null : v;
-    busy = true; b.disabled = true;
-    try {
-      const r = await BRB.interest("set", { event: id, choice });
-      if (r && r.login === false) { say("Confirme seu e-mail para responder."); return; }
-      counts = r.counts || counts; mine = r.mine || {};
-      if (choice) say(choice === "c" ? "Fechou! Você vai." : choice === "q" ? "Anotado: você quer ir." : "Anotado: você não vai.");
-    } catch (err) { say(err.message); }
-    finally { busy = false; render(); }
-  });
-
   render();
-  load();
 })();
 
 /* Fundo do hero: três painéis inclinados com fotos de festas, trocando em fade (cada painel no seu tempo) */
