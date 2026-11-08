@@ -33,9 +33,8 @@ let tt; function toast(t) { const el = $("#toast"); if (!el) return; el.textCont
 /* ---------- faixa ---------- */
 (() => {
   const el = $("#ticker"); if (!el) return;
-  const t = ["After do Solomun · 31.10", "BRB Clubbers", "O melhor network de música eletrônica do Brasil", "Todo DJ que toca na pista brasileira",
-    "Os 5 melhores tocam na Final", "Avalie a performance dos DJs", "A pista é brasileira e sempre vai ser"];
-  el.innerHTML = [...t, ...t].map(x => `<span>${x}</span>`).join("");
+  const t = ["A pista é brasileira e sempre vai ser", "Avalie a performance dos DJs", "Vai tomando e agradecendo", "O melhor network de música eletrônica do Brasil"];
+  el.innerHTML = [...t, ...t, ...t, ...t].map(x => `<span>${x}</span>`).join("");
 })();
 
 /* ---------- vídeo do topo ---------- */
