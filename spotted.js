@@ -216,7 +216,7 @@
   const ownerPost = p => !p.anon && !!ownerNick && String(p.nick).toLowerCase() === ownerNick;
   const author = p => p.anon ? ANON : "@" + p.nick;
   const ownerTag = '<i class="sp-owner mono"><span aria-hidden="true">👑</span> Owner</i>';
-  const clubberTag = '<i class="sp-clubber mono">BRB Clubber <span aria-hidden="true">🦜</span></i>';
+  const clubberTag = '<i class="sp-clubber mono">BB Network <span aria-hidden="true">🦜</span></i>';
   const clubberNick = n => { const k = String(n || "").replace(/^@/, "").toLowerCase(); return !!k && clubbers.has(k) && k !== ownerNick; };
   const whoName = w => ownerNick && String(w).toLowerCase() === "@" + ownerNick ? `${ownerTag}<b class="sp-own-name">${esc(w)}</b>` : clubberNick(w) ? `${clubberTag}<b>${esc(w)}</b>` : `<b>${esc(w)}</b>`;
 
