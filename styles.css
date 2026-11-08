@@ -3250,8 +3250,8 @@ body.p2p-lock{overflow:hidden}
 .fq-grid.fq-words li b,.fq-grid.fq-words li:last-child b{font-size:min(36px,17cqw);overflow-wrap:anywhere}
 
 /* home: grande objetivo em duas colunas (título à esquerda, frases à direita), caixa compacta e centralizada */
-.final-quad.fq2{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3.5vw,44px);align-items:center;padding:clamp(20px,3vw,32px) clamp(20px,3.5vw,40px);max-width:960px;margin-left:auto;margin-right:auto}
-.fq2 .display{font-size:clamp(26px,3.4vw,42px);line-height:1.02;margin:8px 0 0}
+.final-quad.fq2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,3.5vw,44px);align-items:center;padding:clamp(20px,3vw,32px) clamp(20px,3.5vw,40px);max-width:960px;margin-left:auto;margin-right:auto}
+.fq2 .display{font-size:clamp(24px,2.7vw,34px);line-height:1.04;margin:8px 0 0;overflow-wrap:break-word}
 .fq2-i{font-size:clamp(15px,1.5vw,17px);line-height:1.5;color:rgba(255,255,255,.88);margin:0 0 10px}
 .fq2-l{list-style:none;margin:0;padding:0}
 .fq2-l li{position:relative;padding:9px 0 9px 24px;border-top:1px solid rgba(255,255,255,.14);font-size:clamp(14px,1.45vw,16px);line-height:1.45;color:rgba(255,255,255,.88)}
