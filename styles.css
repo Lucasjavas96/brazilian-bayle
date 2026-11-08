@@ -2955,7 +2955,7 @@ background: linear-gradient(90deg, transparent, rgba(140,240,255,0) 20%, rgba(20
 .bbn-hero-bg{position:absolute;inset:0}
 .bbn-hero-bg video{width:100%;height:100%;object-fit:cover;opacity:.38}
 .bbn-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,11,10,.94) 20%,rgba(10,11,10,.6) 60%,rgba(10,11,10,.8))}
-.bbn-hero .wrap{position:relative}
+.bbn-hero .wrap{position:relative;width:100%}
 .bbn-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .bbn-cta .btn{margin-top:0}
 .bbn-ben .display,.bbn-mos .display{margin:10px 0 26px}
