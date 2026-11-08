@@ -787,3 +787,6 @@ refreshOfficialRanking();
     return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${hasPedia(n) ? `<a href="/djindex/${slug(n)}">${esc(n)}</a>` : esc(n)}</li>`).join("")}</ul><div class="wk-actions"><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a><a class="btn btn-silver" href="/spotted">Publicar Spotted</a></div></article>`;
   }).join("");
 })();
+
+/* BB Network: quem prefere menos movimento não recebe vídeo em loop. */
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.bbn-t video,.bbn-hero-bg video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });

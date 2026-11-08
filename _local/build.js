@@ -19,7 +19,7 @@ const NAV = [
   ["spotted", "/spotted", "Spotted Bayle"],
   ["after", "/after", "Onde é o after?"],
   ["album", "/album", "Bayle All Stars Album"],
-  ["clube", "/clube", "BRB Clubbers"],
+  ["clube", "/clube", "BB Network"],
   ["manifesto", "/manifesto", "Manifesto"],
   ["djindex", "/djindex", "DJ Index"],
   ["curitiba", "/curitiba", "Bayle Curitibano"],
@@ -38,7 +38,7 @@ const ORG = {
   email: EMAIL,
   sameAs: [IG],
   areaServed: "BR",
-  description: "O Ranking da Pista Brasileira: todo DJ que toca aqui entra, a pista dá a nota. Votação da comunidade e o network BRB Clubbers.",
+  description: "O Ranking da Pista Brasileira: todo DJ que toca aqui entra, a pista dá a nota. Votação da comunidade e o network BB Network.",
 };
 
 function layout(meta, body) {
@@ -126,7 +126,7 @@ ${body.trim()}
     ${meta.nofootjoin ? "" : `<div class="wrap foot-join">
       <h2 class="display foot-title">Faça parte de tudo <em>isso.</em></h2>
       <div class="foot-cta">
-        <a href="/clube#candidatura" class="btn btn-y">Quero ser BRB Clubber</a>
+        <a href="/clube#candidatura" class="btn btn-y">Quero fazer parte do BB Network</a>
         <a href="/ranking#votar" class="btn btn-ghost">Avaliar um DJ</a>
       </div>
     </div>`}

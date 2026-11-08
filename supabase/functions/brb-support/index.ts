@@ -1,7 +1,7 @@
 import nodemailer from 'npm:nodemailer@10.2.1';
 
 const origins = new Set(['https://brazilianbayle.com.br','https://www.brazilianbayle.com.br','https://brazilian-bayle.vercel.app']);
-const topics: Record<string,string> = {conta:'Conta e acesso',votacao:'Festas e votação',album:'Álbum de DJs',spotted:'Spotted e moderação',clube:'BRB Clubbers',outro:'Outro assunto'};
+const topics: Record<string,string> = {conta:'Conta e acesso',votacao:'Festas e votação',album:'Álbum de DJs',spotted:'Spotted e moderação',clube:'BB Network',outro:'Outro assunto'};
 const transport = nodemailer.createTransport({host:'smtp.hostinger.com',port:465,secure:true,connectionTimeout:12000,socketTimeout:15000,auth:{user:Deno.env.get('BRB_SMTP_USER'),pass:Deno.env.get('BRB_SMTP_PASSWORD')}});
 async function rpc(name:string,body:unknown) {
  const key=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;

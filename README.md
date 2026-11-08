@@ -1,6 +1,6 @@
 # Brazilian Bayle — site
 
-O campeonato brasileiro de DJs e o network BRB Clubbers.
+O campeonato brasileiro de DJs e o network BB Network.
 
 - No ar: https://brazilian-bayle.vercel.app
 - Instagram: [@brazilianbayle](https://instagram.com/brazilianbayle)
