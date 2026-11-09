@@ -799,3 +799,16 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     setTimeout(() => setInterval(() => { if (document.hidden) return; k[i].classList.remove("on"); i = (i + 1) % k.length; k[i].classList.add("on"); }, +box.dataset.fade || 7000), n * 2200);
   });
 })();
+
+/* ---------- fundo do BB Network na home: várias fotos trocando em fade ---------- */
+(() => {
+  document.querySelectorAll(".club-scenes").forEach(box => {
+    const imgs = [...box.querySelectorAll("img")]; if (!imgs.length) return;
+    const section = box.closest(".club-teaser"); let i = 0, loaded = false;
+    imgs[0].classList.add("on");
+    const load = () => { if (loaded) return; loaded = true; imgs.forEach(im => { if (im.dataset.src) im.src = im.dataset.src; }); };
+    if ("IntersectionObserver" in window) new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { load(); o.disconnect(); } }, { rootMargin: "400px" }).observe(box); else load();
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || imgs.length < 2) return;
+    setInterval(() => { if (document.hidden || (section && section.classList.contains("paused"))) return; imgs[i].classList.remove("on"); i = (i + 1) % imgs.length; imgs[i].classList.add("on"); }, 6000);
+  });
+})();
