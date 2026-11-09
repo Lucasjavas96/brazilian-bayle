@@ -3286,10 +3286,11 @@ body.p2p-lock{overflow:hidden}
 @media(max-width:860px){.bbn-ben-cols{grid-template-columns:minmax(0,1fr)}.bbn-mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}.bbn-hero{min-height:0;padding-top:12px}.bbn-cta .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.bbn-hero-bg video{display:none}.bbn-hero-bg{background:url(/assets/real-after-1-800.webp) center/cover;opacity:.38}}
 
-/* Manifesto no computador: "O que já temos" com todo o texto (título, abertura e os 5 pontos) do lado direito */
+/* Manifesto no computador: "O que já temos" com os dois quadros de DJs na metade esquerda e todo o texto na metade direita */
 @media(min-width:701px){
-  .mf .mf-b.mf-temos:not(.mf-open):not(.mf-end){display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding-right:clamp(32px,6vw,96px)}
-  .mf .mf-b.mf-temos .mf-tx > *{grid-column:auto;grid-row:auto;align-self:flex-end;width:min(46%,560px);max-width:none;margin-left:0;margin-right:0;text-align:left}
-  .mf .mf-b.mf-temos .mf-tx > .mf-ls{width:min(46%,560px);margin-top:16px}
-  .mf .mf-b.mf-temos .mf-bg::after{background:linear-gradient(90deg,rgba(8,9,8,.12) 0%,rgba(8,9,8,.62) 100%)}
+  .mf .mf-b.mf-temos:not(.mf-open):not(.mf-end){display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:#0a0b0a;padding-left:calc(50% + clamp(24px,4vw,64px));padding-right:clamp(24px,5vw,80px)}
+  .mf .mf-b.mf-temos .mf-bg{right:50%}
+  .mf .mf-b.mf-temos .mf-bg::after{display:none}
+  .mf .mf-b.mf-temos .mf-tx > *{grid-column:auto;grid-row:auto;align-self:flex-start;width:100%;max-width:560px;margin-left:0;margin-right:0;text-align:left}
+  .mf .mf-b.mf-temos .mf-tx > .mf-ls{margin-top:16px}
 }
