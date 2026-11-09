@@ -265,9 +265,8 @@ align-items:center;justify-content:space-between;gap:10px;padding:0 10px 0 14px}
 }
 .club-teaser{isolation:isolate;overflow:hidden;min-height:540px}
 .club-scenes{position:absolute;inset:0;z-index:-2;background:#121212}
-.club-scenes img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:club-scene 18s linear infinite}
-.club-scenes img:nth-child(2){animation-delay:6s}
-.club-scenes img:nth-child(3){animation-delay:12s}
+.club-scenes img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1.6s ease}
+.club-scenes img.on{opacity:1}
 .club-teaser:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.55));pointer-events:none}
 .club-teaser.paused .club-scenes img{animation-play-state:paused}
 @keyframes club-scene{0%,38%{opacity:1}44%,94%{opacity:0}100%{opacity:1}}
