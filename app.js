@@ -790,3 +790,12 @@ refreshOfficialRanking();
 
 /* BB Network: quem prefere menos movimento não recebe vídeo em loop. */
 if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.bbn-t video,.bbn-hero-bg video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+
+/* ---------- fundos de fotos da home: troca em fade ---------- */
+(() => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll(".hb-bg").forEach((box, n) => {
+    const k = [...box.children]; if (k.length < 2) return; let i = 0;
+    setTimeout(() => setInterval(() => { if (document.hidden) return; k[i].classList.remove("on"); i = (i + 1) % k.length; k[i].classList.add("on"); }, +box.dataset.fade || 7000), n * 2200);
+  });
+})();
