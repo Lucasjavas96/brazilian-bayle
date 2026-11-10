@@ -420,7 +420,7 @@ simpleForm({
     ["eaPhone", () => phoneOk($("#aPhone").value), "Informe o celular com DDD.", "#aPhone"],
     ["eaConsent", () => $("#aConsent").checked, "Confirme que tem 18 anos ou mais e aceite os termos.", "#aConsent"],
   ],
-  done: () => "<b>Candidatura recebida.</b> Seus dados foram enviados à equipe para análise. Cada e-mail só pode se candidatar uma vez. A seleção não garante aprovação automática.",
+  done: () => "<b>Recebemos o seu pedido para entrar no network.</b> A equipe vai olhar e te responde por e-mail em breve.",
 });
 /* Candidatura guiada: mantém os campos e a validação do formulário original. */
 (() => {
