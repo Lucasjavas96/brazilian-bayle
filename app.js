@@ -788,8 +788,21 @@ refreshOfficialRanking();
   }).join("");
 })();
 
-/* BB Network: quem prefere menos movimento não recebe vídeo em loop. */
-if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.bbn-t video,.bbn-hero-bg video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+/* BB Network: vídeos do fundo do topo em rodízio; quem prefere menos movimento não recebe vídeo. */
+(() => {
+  const box = document.querySelector('.bbn-hero-bg'); if (!box) return;
+  const vs = [...box.querySelectorAll('video')]; if (!vs.length) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { vs.forEach(v => { v.removeAttribute('autoplay'); v.pause(); }); return; }
+  const secs = +box.dataset.secs || 5;
+  const load = v => { if (v && !v.getAttribute('src') && v.dataset.src) { v.src = v.dataset.src; v.preload = 'auto'; } };
+  const show = n => {
+    vs.forEach((v, k) => { const on = k === n; v.classList.toggle('on', on); if (on) { load(v); v.currentTime = 0; v.play().catch(() => {}); } else setTimeout(() => { if (!v.classList.contains('on')) v.pause(); }, 1300); });
+    load(vs[(n + 1) % vs.length]);
+    if (vs.length > 1) setTimeout(() => show((n + 1) % vs.length), secs * 1000);
+  };
+  show(0);
+})();
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.bbn-t video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
 
 /* ---------- fundos de fotos da home: troca em fade ---------- */
 (() => {

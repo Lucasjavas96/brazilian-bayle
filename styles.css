@@ -3262,9 +3262,12 @@ body.p2p-lock{overflow:hidden}
 @media(max-width:420px){.fq2 .display{font-size:clamp(20px,6.6vw,26px);overflow-wrap:anywhere}}
 
 /* BB Network: página /clube no layout Vitrine */
-.bbn-hero{position:relative;overflow:hidden;min-height:76vh;display:grid;align-items:center}
+.bbn-hero{position:relative;overflow:hidden;display:block;padding-bottom:clamp(40px,6vw,80px)}
+.bbn-hero>.wrap.club-grid{min-height:72vh}
+.bbn-hero-photos{position:relative;margin-top:clamp(28px,4vw,56px)}
 .bbn-hero-bg{position:absolute;inset:0}
-.bbn-hero-bg video{width:100%;height:100%;object-fit:cover;opacity:.38}
+.bbn-hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease}
+.bbn-hero-bg video.on{opacity:.27}
 .bbn-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,11,10,.94) 20%,rgba(10,11,10,.6) 60%,rgba(10,11,10,.8))}
 .bbn-hero .wrap{position:relative;width:100%}
 .bbn-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
@@ -3282,7 +3285,7 @@ body.p2p-lock{overflow:hidden}
 .bbn-t.big{grid-column:span 2;grid-row:span 2}.bbn-t.wide{grid-column:span 2}
 .bbn-t img,.bbn-t video{width:100%;height:100%;object-fit:cover;display:block}
 .bbn-t .mono{position:absolute;left:12px;bottom:10px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:rgba(0,0,0,.65);padding:4px 8px;border-radius:99px;color:#e7d5a5}
-@media(max-width:860px){.bbn-ben-cols{grid-template-columns:minmax(0,1fr)}.bbn-mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}.bbn-hero{min-height:0;padding-top:12px}.bbn-cta .btn{width:100%}}
+@media(max-width:860px){.bbn-ben-cols{grid-template-columns:minmax(0,1fr)}.bbn-mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}.bbn-hero{padding-top:12px}.bbn-cta .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.bbn-hero-bg video{display:none}.bbn-hero-bg{background:url(/assets/real-after-1-800.webp) center/cover;opacity:.38}}
 
 /* Manifesto no computador: "O que já temos". Os dois quadros de DJs cobrem a seção inteira (um de cada lado); o título fica à esquerda e a abertura com a lista ficam à direita */
