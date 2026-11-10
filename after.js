@@ -13,14 +13,13 @@
   };
   // festas da agenda; "outra" libera texto e data livres
   const FESTAS = [
-    { id: "solomun", nome: "After do Solomun", data: "31/10", depois: "Dom, 01/11" },
     { id: "festa", nome: "Brazilian Bayle, a Festa", data: "05/12", depois: "Dom, 06/12" },
   ];
   const CRIT = [["som", "Som"], ["espaco", "Espaço"], ["fraternidade", "Fraternidade"]];
 
   const seed = [];
 
-  let S = { user: null, ready: false, tab: "procurar", q: "", modo: "todos", sel: null, rate: null, afters: seed, joins: {}, reqs: {}, rated: {}, fotos: [], err: {}, outra: false };
+  let S = { user: null, canPost: false, owner: false, loading: true, loadErr: "", ready: false, tab: "procurar", q: "", modo: "todos", sel: null, rate: null, afters: seed, joins: {}, reqs: {}, rated: {}, fotos: [], err: {}, outra: false };
 
   /* ---------- sessão (mesma conta do Spotted) ---------- */
   async function loadUser() {
@@ -33,8 +32,29 @@
       if (a?.nextLevel === "aal2" && a.currentLevel !== "aal2") return null;
       let nick = session.user.user_metadata?.nick;
       try { const p = await B.rpc("profile_get"); if (p?.nick) nick = p.nick; } catch (e) { /* segue com o apelido salvo */ }
+      try {
+        const c = await B.content(""), k = String(nick || "").toLowerCase();
+        S.owner = !!c?.me_owner;
+        S.canPost = !!c?.me_owner || (!!k && (c?.clubber_nicks || []).map(n => String(n).toLowerCase()).includes(k));
+      } catch (e) { S.canPost = false; }
       return nick || "clubber";
     } catch (e) { return null; }
+  }
+
+  /* ---------- dados (Supabase: brb_after) ---------- */
+  async function load() {
+    try {
+      const d = await window.BRB.after("list");
+      S.afters = (d.items || []).map(x => ({ ...x, notas: x.notas || [], fotos: x.fotos || [], endereco: x.endereco || "" }));
+      S.joins = {}; S.reqs = {}; S.rated = {};
+      S.afters.forEach(x => { if (x.my) S.joins[x.id] = x.my; if (x.rated) S.rated[x.id] = true; if (x.reqs?.length) S.reqs[x.id] = x.reqs; });
+      S.loadErr = "";
+    } catch (e) { S.loadErr = "Não foi possível carregar os afters agora. Tente de novo em instantes."; }
+    S.loading = false;
+  }
+  async function act(action, payload, okMsg) {
+    try { const r = await window.BRB.after(action, payload); await load(); render(); if (okMsg) toast(okMsg); return r || true; }
+    catch (e) { toast(e.message || "Não foi possível concluir."); return null; }
   }
 
   /* ---------- helpers ---------- */
@@ -74,7 +94,7 @@
   /* ---------- abas ---------- */
   function procurarHTML() {
     const l = filtered();
-    if (!S.afters.length) return `<div class="af-grid af-solo"><div class="af-side"><div id="afMap">${mapHTML()}</div></div><div class="af-list" id="afList"><p class="af-empty">Ainda não há afters cadastrados. Os afters da Brazilian Bayle aparecem aqui assim que forem divulgados.</p></div></div>`;
+    if (S.loading || S.loadErr || !S.afters.length) return `<div class="af-grid af-solo"><div class="af-side"><div id="afMap">${mapHTML()}</div></div><div class="af-list" id="afList"><p class="af-empty">${S.loading ? "Carregando os afters…" : S.loadErr || "Ainda não há afters cadastrados. Os afters aparecem aqui assim que forem divulgados."}</p>${!S.loading && !S.loadErr && S.canPost ? '<button type="button" class="btn btn-y af-full" data-tab="oferecer">Cadastrar o primeiro after</button>' : ""}</div></div>`;
     return `<div class="af-grid">
       <div class="af-side">
         <label class="af-field"><span class="af-sr">Buscar</span><input type="text" id="afQ" placeholder="Busque por festa ou bairro" value="${esc(S.q)}" autocomplete="off"></label>
@@ -83,10 +103,11 @@
       </div>
       <div class="af-list" id="afList">${listHTML(l)}</div></div>`;
   }
-  const listHTML = l => l.length ? l.map(cardHTML).join("") : '<p class="af-empty">Nenhum after encontrado. Tente outro bairro ou ofereça o seu.</p>';
+  const listHTML = l => l.length ? l.map(cardHTML).join("") : '<p class="af-empty">Nenhum after encontrado. Tente outro bairro.</p>';
 
   function oferecerHTML() {
-    if (!S.user) return login("Entre para oferecer um after. Você decide quem entra e o endereço só aparece para quem for confirmado.");
+    if (!S.user) return login("Entre para cadastrar um after. Você decide quem entra e o endereço só aparece para quem for confirmado.");
+    if (!S.canPost) return `<div class="af-auth"><p class="mono gold">Só para o BB Network</p><p>Apenas membros do BB Network podem cadastrar afters. Você pode ver os afters disponíveis e pedir uma vaga normalmente.</p><a class="btn account-primary" href="/clube">Quero fazer parte do BB Network</a> <button type="button" class="btn btn-ghost" data-tab="procurar">Ver afters disponíveis</button></div>`;
     const e = S.err;
     return `<form class="af-form" id="afForm" novalidate>
       <label class="af-field"><span>Depois de qual festa?</span>
@@ -132,6 +153,7 @@
     else if (mine(a)) cta = '<button type="button" class="btn btn-ghost af-full" disabled>Este after é seu</button>';
     else if (j === "confirmado" && a.status === "encerrado") cta = S.rated[a.id] ? '<button type="button" class="btn btn-ghost af-full" disabled>Você já avaliou</button>' : `<button type="button" class="btn btn-y af-full" data-rate="${a.id}">Avaliar este after</button>`;
     else if (j === "confirmado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>Você está dentro</button>';
+    else if (j === "recusado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>Pedido não aprovado</button>';
     else if (j === "pendente") cta = `<button type="button" class="btn btn-ghost af-full" disabled>Pedido enviado, aguardando o anfitrião</button>`;
     else if (a.status === "encerrado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>After encerrado</button>';
     else if (left(a) <= 0) cta = '<button type="button" class="btn btn-ghost af-full" disabled>Lotado</button>';
@@ -145,7 +167,15 @@
       <div class="af-addr">${revealed ? `<b>Endereço</b>${esc(a.endereco)}` : "<b>Endereço protegido</b>Aparece aqui quando você for confirmado."}</div>
       <h3>Avaliações ${m != null ? `<span class="af-star">${starsTxt(m)}</span> ${fmt(m)}` : ""}</h3>
       <div class="af-rates">${CRIT.map(([k, t]) => { const v = avg(a, k); return `<div class="af-rate"><span>${t}</span><div class="af-meter"><i style="width:${v ? v * 20 : 0}%"></i></div><span>${v ? fmt(v) : "-"}</span></div>`; }).join("")}</div>
-      ${cta}</div>`;
+      ${cta}${S.owner ? `<button type="button" class="af-link mono" data-remove="${a.id}">Remover este after (owner)</button>` : ""}</div>`;
+  }
+
+  /* pop-up de cadastro: nome da festa, local, horário, vagas, fotos e como as pessoas entram */
+  function formSheetHTML() {
+    return `<div class="af-sheet" role="dialog" aria-modal="true" aria-label="Cadastrar after">
+      <button type="button" class="af-close mono" data-closeform>Fechar</button>
+      <h2>Cadastrar after</h2><p class="af-meta">Conte depois de qual festa é, onde fica e quem pode entrar.</p>
+      ${oferecerHTML()}</div>`;
   }
 
   function rateHTML() {
@@ -163,8 +193,8 @@
     if (!S.ready) return;
     document.querySelectorAll(".af-seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tab === S.tab)));
     const who = $("#afWho"); who.hidden = !S.user; if (S.user) who.textContent = "Logado como @" + S.user;
-    app.innerHTML = S.tab === "procurar" ? procurarHTML() : S.tab === "oferecer" ? oferecerHTML() : meusHTML();
-    const scrim = $("#afScrim"), open = S.rate ? rateHTML() : S.sel ? sheetHTML() : "";
+    app.innerHTML = S.tab === "meus" ? meusHTML() : procurarHTML();
+    const scrim = $("#afScrim"), open = S.rate ? rateHTML() : S.sel ? sheetHTML() : S.tab === "oferecer" ? formSheetHTML() : "";
     scrim.hidden = !open; scrim.innerHTML = open; document.body.classList.toggle("af-lock", !!open);
     if (open) { (lastFocus = lastFocus || document.activeElement); $(".af-close", scrim)?.focus(); }
     else if (lastFocus) { lastFocus.focus?.(); lastFocus = null; }
@@ -175,6 +205,7 @@
   }
 
   function publish() {
+    if (!S.canPost) return toast("Só membros do BB Network podem cadastrar afters.");
     const sel = $("#fFesta").value, outra = sel === "outra";
     const nome = outra ? $("#fNome").value.trim() : "", data = outra ? $("#fData").value.trim() : "", end = $("#fEnd").value.trim();
     S.err = {};
@@ -189,40 +220,45 @@
       return;
     }
     const f = FESTAS.find(x => x.id === sel), hh = ($("#fHora").value || "04:00").replace(":", "h");
-    const modo = document.querySelector("input[name=modo]:checked").value, id = Date.now();
-    S.afters = [{ id, festa: outra ? nome : f.nome, bairro: $("#fBairro").value, endereco: end, hora: (outra ? "Depois de " + data : f.depois) + " · " + hh,
-      vagas: Math.max(1, Math.min(200, parseInt($("#fVagas").value) || 10)), ocupadas: 0, modo, host: S.user, desc: $("#fDesc").value.trim(), fotos: S.fotos.slice(), hue: Math.floor(Math.random() * 360), status: "aberto", notas: [] }, ...S.afters];
-    if (modo === "aprovacao") S.reqs[id] = [{ nome: "lari", status: "pendente" }, { nome: "gabriel", status: "pendente" }];
-    S.fotos = []; S.outra = false; S.tab = "meus"; render(); toast("After publicado");
+    const btn = $("#afForm [type=submit]"); if (btn) btn.disabled = true;
+    act("create", { festa: outra ? nome : f.nome, bairro: $("#fBairro").value, endereco: end, hora: (outra ? "Depois de " + data : f.depois) + " · " + hh,
+      vagas: parseInt($("#fVagas").value) || 10, modo: document.querySelector("input[name=modo]:checked").value, desc: $("#fDesc").value.trim(), fotos: S.fotos.slice() }, "After publicado")
+      .then(ok => { if (ok) { S.fotos = []; S.outra = false; S.tab = "meus"; render(); } else if (btn) btn.disabled = false; });
   }
 
   /* ---------- eventos ---------- */
-  document.addEventListener("click", e => {
+  document.addEventListener("click", async e => {
     const t = e.target, g = sel => t.closest(sel);
     const tab = g("[data-tab]"); if (tab) { S.tab = tab.dataset.tab; S.err = {}; S.fotos = []; S.outra = false; render(); return; }
-    if (t.id === "afScrim") { S.sel = null; S.rate = null; render(); return; }
-    const need = (el, k) => { if (!el) return null; const id = +el.dataset[k]; return S.afters.find(x => x.id === id); };
+    if (t.id === "afScrim") { S.sel = null; S.rate = null; if (S.tab === "oferecer") { S.tab = "procurar"; S.err = {}; S.fotos = []; S.outra = false; } render(); return; }
+    const find = id => S.afters.find(x => x.id === id);
     let el;
     if ((el = g("[data-modo]"))) { S.modo = el.dataset.modo; render(); }
-    else if ((el = g("[data-open]"))) { S.sel = +el.dataset.open; render(); }
+    else if ((el = g("[data-open]"))) { S.sel = el.dataset.open; render(); }
     else if (g("[data-close]")) { S.sel = null; render(); }
     else if ((el = g("[data-join]"))) {
-      const a = need(el, "join"); if (!S.user || !a) return;
-      if (a.modo === "livre") { S.joins[a.id] = "confirmado"; a.ocupadas++; toast("Você está dentro. Endereço liberado."); } else { S.joins[a.id] = "pendente"; toast("Pedido enviado ao anfitrião"); }
-      render();
-    } else if ((el = g("[data-demo]"))) { const a = need(el, "demo"); S.joins[a.id] = "confirmado"; a.ocupadas++; toast("Anfitrião aprovou você"); render(); }
-    else if ((el = g("[data-approve]"))) { const a = need(el, "approve"), r = S.reqs[a.id][+el.dataset.i]; if (left(a) <= 0) return toast("Sem vagas livres"); r.status = "aprovado"; a.ocupadas++; render(); }
-    else if ((el = g("[data-deny]"))) { const a = need(el, "deny"); S.reqs[a.id][+el.dataset.i].status = "recusado"; render(); }
-    else if ((el = g("[data-end]"))) { need(el, "end").status = "encerrado"; render(); toast("After encerrado. Os participantes já podem avaliar."); }
-    else if ((el = g("[data-rate]"))) { S.rate = { id: +el.dataset.rate, som: 0, espaco: 0, fraternidade: 0 }; S.sel = null; render(); }
+      const a = find(el.dataset.join); if (!S.user || !a) return; el.disabled = true;
+      await act("join", { id: a.id }, a.modo === "livre" ? "Você está dentro. Endereço liberado." : "Pedido enviado ao anfitrião");
+    }
+    else if ((el = g("[data-approve]")) || (el = g("[data-deny]"))) {
+      const ok = !!el.dataset.approve, a = find(el.dataset.approve || el.dataset.deny), r = a && (S.reqs[a.id] || [])[+el.dataset.i]; if (!r) return; el.disabled = true;
+      await act("decide", { id: a.id, uid: r.uid, status: ok ? "aprovado" : "recusado" }, ok ? "Pessoa aprovada" : "Pedido recusado");
+    }
+    else if ((el = g("[data-end]"))) { el.disabled = true; await act("end", { id: el.dataset.end }, "After encerrado. Os participantes já podem avaliar."); }
+    else if ((el = g("[data-remove]"))) { if (!confirm("Remover este after do site?")) return; S.sel = null; await act("remove", { id: el.dataset.remove }, "After removido."); }
+    else if ((el = g("[data-rate]"))) { S.rate = { id: el.dataset.rate, som: 0, espaco: 0, fraternidade: 0 }; S.sel = null; render(); }
     else if ((el = g("[data-star]"))) { S.rate[el.dataset.star] = +el.dataset.n; render(); }
-    else if (g("[data-sendrate]")) { const r = S.rate, x = S.afters.find(q => q.id === r.id); x.notas.push({ som: r.som, espaco: r.espaco, fraternidade: r.fraternidade }); S.rated[r.id] = true; S.rate = null; S.sel = r.id; render(); toast("Obrigado pela avaliação"); }
+    else if (g("[data-sendrate]")) {
+      const r = S.rate; el = g("[data-sendrate]"); el.disabled = true;
+      if (await act("rate", { id: r.id, som: r.som, espaco: r.espaco, fraternidade: r.fraternidade })) { S.rate = null; S.sel = r.id; render(); toast("Obrigado pela avaliação"); } else el.disabled = false;
+    }
     else if (g("[data-closerate]")) { S.rate = null; render(); }
+    else if (g("[data-closeform]")) { S.tab = "procurar"; S.err = {}; S.fotos = []; S.outra = false; render(); }
   });
   document.addEventListener("keydown", e => {
     const pin = e.target.closest?.("g.af-pin");
-    if (pin && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); S.sel = +pin.dataset.open; render(); }
-    if (e.key === "Escape" && (S.sel || S.rate)) { S.sel = null; S.rate = null; render(); }
+    if (pin && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); S.sel = pin.dataset.open; render(); }
+    if (e.key === "Escape" && (S.sel || S.rate || S.tab === "oferecer")) { S.sel = null; S.rate = null; if (S.tab === "oferecer") { S.tab = "procurar"; S.err = {}; S.fotos = []; S.outra = false; } render(); }
   });
   document.addEventListener("input", e => { if (e.target.id === "afQ") { S.q = e.target.value; refreshList(); } });
   document.addEventListener("submit", e => { if (e.target.id === "afForm") { e.preventDefault(); publish(); } });
@@ -230,11 +266,21 @@
     if (e.target.id === "fFesta") { S.outra = e.target.value === "outra"; $("#fOutra").hidden = !S.outra; }
     if (e.target.id === "fFotos") {
       S.fotos = []; const prev = $("#afPrev"); prev.innerHTML = "";
-      [...e.target.files].slice(0, 6).forEach(f => { const r = new FileReader(); r.onload = () => { S.fotos.push(r.result); const im = document.createElement("img"); im.src = r.result; im.alt = "Prévia da foto"; prev.appendChild(im); }; r.readAsDataURL(f); });
+      [...e.target.files].slice(0, 6).forEach(f => {
+        const url = URL.createObjectURL(f), im = new Image();
+        im.onload = () => { // reduz para até 900px e guarda em webp, para não pesar
+          const k = Math.min(1, 900 / Math.max(im.width, im.height)), c = document.createElement("canvas");
+          c.width = Math.round(im.width * k); c.height = Math.round(im.height * k); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height);
+          const out = c.toDataURL("image/webp", .78); URL.revokeObjectURL(url); S.fotos.push(out);
+          const p = document.createElement("img"); p.src = out; p.alt = "Prévia da foto"; prev.appendChild(p);
+        };
+        im.src = url;
+      });
     }
   });
 
+  if (location.hash === "#cadastrar") S.tab = "oferecer"; /* link "Cadastrar after" da home */
   S.ready = true; render();
-  loadUser().then(u => { S.user = u; render(); });
-  window.BRB?.auth?.onAuthStateChange?.(() => setTimeout(() => loadUser().then(u => { if (u !== S.user) { S.user = u; render(); } }), 0));
+  loadUser().then(u => { S.user = u; return load(); }).then(render);
+  window.BRB?.auth?.onAuthStateChange?.(() => setTimeout(() => loadUser().then(async u => { if (u !== S.user) { S.user = u; await load(); render(); } }), 0));
 })();
