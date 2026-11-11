@@ -3364,3 +3364,5 @@ body.mm-lock{overflow:hidden}
 .mm-sheet details{border-top:1px solid rgba(255,255,255,.12);padding:10px 0}.mm-sheet summary{cursor:pointer;font-weight:700}.mm-sheet details p{margin:8px 0 0;font-size:14.5px}
 .mm-ok{margin-top:18px;width:100%}
 @media(max-width:700px){.mm-cards{grid-template-columns:1fr}.mm-ex li{flex-direction:column;align-items:flex-start;gap:4px}}
+
+.ge-voters{display:block;margin-top:3px;font-size:10.5px;letter-spacing:.04em;color:rgba(255,255,255,.65);font-weight:500}
