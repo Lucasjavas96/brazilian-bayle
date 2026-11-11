@@ -1,9 +1,9 @@
 // Referência do MMR competitivo dos DJs. O banco (migração 202611110065) aplica a mesma conta em SQL.
 // Rode com: node tests/mmr.js
-const CONFIG = { initialMmr: 500, minVotes: 20, closeDays: 7, confPrior: 30, confCap: 1000, confNorm: 1.03, progBase: 500 };
+const CONFIG = { initialMmr: 500, minVotes: 1, confPrior: 30, confCap: 1000, confNorm: 1.03, progBase: 500 };
 const TIERS = { A: { pontos: 100, corte: 8.5 }, B: { pontos: 80, corte: 8.0 }, C: { pontos: 55, corte: 7.5 }, D: { pontos: 35, corte: 7.0 }, E: { pontos: 20, corte: 6.5 } };
 const DIVISIONS = [["Bronze", 0], ["Prata", 400], ["Ouro", 600], ["Diamante", 800], ["Master", 1000], ["Lendário", 1200]];
-const CLUBS = [["Green Valley", "A", ["greenvalley"]], ["Laroc", "A", ["laroc"]], ["Pedreira Paulo Leminski", "A", ["pedreira"]],
+const CLUBS = [["Green Valley", "A", ["greenvalley"]], ["Laroc", "A", ["laroc"]], ["Pedreira Paulo Leminski", "A", ["pedreira"]], ["Parque Villa-Lobos", "A", ["parquevillalobos", "parquevilalobos"]], ["Arena Open", "A", ["arenaopen"]],
   ["Surreal Park", "B", ["surreal"]], ["D-EDGE São Paulo", "B", ["dedgesaopaulo", "dedgesp"]], ["Warung", "B", ["warung"]], ["Ame Club", "B", ["ameclub"]], ["P12 Jurerê", "B", ["p12"]],
   ["Club Vibe", "C", ["clubvibe"]], ["Park Art Superclub", "C", ["parkart"]], ["D-EDGE Rio", "C", ["dedgerio"]],
   ["Terraza Music Park", "D", ["terraza"]], ["CAOS", "D", ["caos"]], ["Matahari", "D", ["matahari"]], ["Privilège Búzios", "D", ["privilege"]]];
@@ -33,8 +33,8 @@ const division = mmr => [...DIVISIONS].reverse().find(([, min]) => mmr >= min)[0
 function processar(perfs, today, c = CONFIG) {
   const by = new Map(), hist = [];
   for (const p of [...perfs].sort((a, b) => a.dj.localeCompare(b.dj) || a.date.localeCompare(b.date) || a.party.localeCompare(b.party))) {
-    const cur = by.get(p.dj) ?? c.initialMmr, { tier } = clubTier(p.venue), closed = new Date(p.date).getTime() + c.closeDays * 864e5 < new Date(today).getTime();
-    const status = p.votes < c.minVotes ? "provisorio" : !closed ? "aberta" : "oficial";
+    const cur = by.get(p.dj) ?? c.initialMmr, { tier } = clubTier(p.venue);
+    const status = p.votes < c.minVotes ? "provisorio" : "oficial";
     const r = status === "oficial" ? delta(cur, tier, p.media, p.votes, c) : { variacao: 0, variacaoTeorica: 0, mmrNovo: cur };
     by.set(p.dj, r.mmrNovo); hist.push({ ...p, tier, status, mmrAntes: cur, ...r });
   }
@@ -70,7 +70,7 @@ if (require.main === module) {
   ok("parâmetros inválidos são recusados", (() => { try { delta(500, "A", 11, 10); } catch { return true; } return false; })());
   // Tiers dos clubes
   for (const [v, t] of [["Green Valley", "A"], ["Greenvalley", "A"], ["Laroc", "A"], ["Pedreira", "A"], ["Surreal Park", "B"], ["D-EDGE São Paulo", "B"], ["D-EDGE Rio", "C"], ["Warung", "B"], ["Ame Club", "B"], ["P12", "B"], ["Club Vibe", "C"], ["Park Art", "C"],
-    ["Terraza Music Park", "D"], ["CAOS", "D"], ["Matahari", "D"], ["Privilège Búzios", "D"], ["Parque Villa-Lobos", "E"], ["Arena Open", "E"], ["", "E"]]) eq(`tier de "${v}"`, clubTier(v).tier, t);
+    ["Terraza Music Park", "D"], ["CAOS", "D"], ["Matahari", "D"], ["Privilège Búzios", "D"], ["Parque Villa-Lobos", "A"], ["Parque Vila Lobos", "A"], ["Arena Open", "A"], ["Clube Qualquer", "E"], ["", "E"]]) eq(`tier de "${v}"`, clubTier(v).tier, t);
   ok("D-EDGE SP e D-EDGE Rio são tiers diferentes", clubTier("D-EDGE São Paulo").tier !== clubTier("D-EDGE Rio").tier);
   // Histórico cronológico e idempotência
   const P = (dj, date, party, venue, votes, media) => ({ dj, date, party, venue, votes, media });
@@ -79,9 +79,11 @@ if (require.main === module) {
   eq("1ª apresentação +53", h.hist[0].variacao, 53); ok("MMR antes da 2ª = depois da 1ª", h.hist[1].mmrAntes === h.hist[0].mmrNovo);
   eq("idempotente: processar de novo dá o mesmo", JSON.stringify(processar(base, "2026-11-11")), JSON.stringify(h));
   eq("a ordem de entrada não muda o resultado", processar([...base].reverse(), "2026-11-11").by.get("X"), h.by.get("X"));
-  eq("menos de 20 votos: provisório, não altera o MMR", processar([P("Y", "2026-08-01", "a", "Laroc", 19, 10)], "2026-11-11").by.get("Y"), 500);
-  eq("20 votos já pontua", processar([P("Y", "2026-08-01", "a", "Laroc", 20, 10)], "2026-11-11").hist[0].status, "oficial");
-  eq("votação aberta não pontua", processar([P("Y", "2026-11-09", "a", "Laroc", 200, 10)], "2026-11-11").hist[0].status, "aberta");
+  eq("1 voto já pontua", processar([P("Y", "2026-08-01", "a", "Laroc", 1, 10)], "2026-11-11").hist[0].status, "oficial");
+  ok("1 voto dá pelo menos +1", processar([P("Y", "2026-08-01", "a", "Laroc", 1, 10)], "2026-11-11").by.get("Y") >= 501);
+  eq("5 votos, média 10, tier A", processar([P("Y", "2026-08-01", "a", "Laroc", 5, 10)], "2026-11-11").by.get("Y"), 504);
+  eq("sem prazo: apresentação de ontem pontua", processar([P("Y", "2026-11-10", "a", "Laroc", 3, 10)], "2026-11-11").hist[0].status, "oficial");
+  eq("sem prazo: apresentação antiga pontua", processar([P("Y", "2020-01-01", "a", "Laroc", 3, 10)], "2026-11-11").hist[0].status, "oficial");
   eq("correção de nota reprocessa sem duplicar pontos", processar([{ ...base[0], media: 9 }, ...base.slice(1)], "2026-11-11").hist.length, 4);
   // Divisões e desempate
   for (const [m, d] of [[0, "Bronze"], [399, "Bronze"], [400, "Prata"], [599, "Prata"], [600, "Ouro"], [799, "Ouro"], [800, "Diamante"], [999, "Diamante"], [1000, "Master"], [1199, "Master"], [1200, "Lendário"], [2500, "Lendário"]]) eq(`divisão com ${m}`, division(m), d);

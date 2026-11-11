@@ -98,7 +98,7 @@ const reviewBtn = d => d.votos > 0 ? `<button type="button" class="rv-btn mono" 
 const hasPedia = n => !window.BRB_PEDIA || window.BRB_PEDIA.includes(slug(n));
 const djNote = d => d.unrated ? "Sem avaliação" : !Number.isFinite(d.pos) ? `${d.votos} avaliaç${d.votos === 1 ? "ão" : "ões"}` : `${d.divisao || ""} · ${d.votos.toLocaleString("pt-BR")} ${d.votos === 1 ? "votante" : "votantes"}`;
 const mmrTxt = d => Math.round(d.mmr).toLocaleString("pt-BR");
-const provBadge = d => Number.isFinite(d.pos) && d.provisorio ? '<span class="prov-b mono" title="Ainda sem apresentação oficial: precisa de 20 votantes e a votação encerrada (7 dias após a festa)">provisório</span>' : "";
+const provBadge = d => Number.isFinite(d.pos) && d.provisorio ? '<span class="prov-b mono" title="Ainda sem apresentação pontuada">provisório</span>' : "";
 const scoreCell = d => Number.isFinite(d.pos) ? mmrTxt(d) : d.votos > 0 ? fmt2(d.m) : "Sem avaliação";
 function table() {
  const rated=new Set(officialRows.map(row=>row.name));
@@ -831,11 +831,11 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
 
 /* ---------- Entender o MMR: pop-up didático da metodologia ---------- */
 (() => {
-  const TIERS = { A: { p: 100, c: 8.5, n: "Elite", clubs: "Green Valley, Laroc e Pedreira Paulo Leminski" }, B: { p: 80, c: 8, n: "Premium", clubs: "Surreal Park, D-EDGE São Paulo, Warung, Ame Club e P12 Jurerê" }, C: { p: 55, c: 7.5, n: "Alta relevância", clubs: "Club Vibe, Park Art Superclub e D-EDGE Rio" }, D: { p: 35, c: 7, n: "Relevância regional", clubs: "Terraza Music Park, CAOS, Matahari e Privilège Búzios" }, E: { p: 20, c: 6.5, n: "Demais clubes", clubs: "Todos os clubes que não estão nas categorias acima" } };
+  const TIERS = { A: { p: 100, c: 8.5, n: "Elite", clubs: "Green Valley, Laroc, Pedreira Paulo Leminski, Parque Villa-Lobos e Arena Open" }, B: { p: 80, c: 8, n: "Premium", clubs: "Surreal Park, D-EDGE São Paulo, Warung, Ame Club e P12 Jurerê" }, C: { p: 55, c: 7.5, n: "Alta relevância", clubs: "Club Vibe, Park Art Superclub e D-EDGE Rio" }, D: { p: 35, c: 7, n: "Relevância regional", clubs: "Terraza Music Park, CAOS, Matahari e Privilège Búzios" }, E: { p: 20, c: 6.5, n: "Demais clubes", clubs: "Todos os clubes que não estão nas categorias acima" } };
   const DIV = [["Bronze", "0 a 399"], ["Prata", "400 a 599"], ["Ouro", "600 a 799"], ["Diamante", "800 a 999"], ["Master", "1.000 a 1.199"], ["Lendário", "1.200 ou mais"]];
   const conf = n => Math.min(1, (n / (n + 30)) * (Math.log1p(n) / Math.log1p(1000)) * 1.03);
   const delta = (mmr, tier, media, n) => { const t = TIERS[tier], d = Math.max(-1, Math.min(1, (media - t.c) / (10 - t.c))), k = d > 0 ? Math.min(1, 500 / Math.max(500, mmr)) : 1; return d === 0 ? 0 : Math.sign(d) * Math.min(t.p, Math.max(1, Math.floor(Math.abs(t.p * d * conf(n) * k) + 0.5))); };
-  const pct = v => Math.round(v * 100) + "%", n1 = v => String(v).replace(".", ","), sg = v => v > 0 ? "+" + v : v < 0 ? "−" + Math.abs(v) : "0";
+  const pct = v => v < 0.01 ? "menos de 1%" : Math.round(v * 100) + "%", n1 = v => String(v).replace(".", ","), sg = v => v > 0 ? "+" + v : v < 0 ? "−" + Math.abs(v) : "0";
   let box = null, back = null;
   function html() {
     const ex = [["A", 100, 10], ["A", 100, 9], ["A", 100, 8], ["B", 100, 7], ["E", 100, 9], ["A", 1000, 10]];
@@ -852,8 +852,8 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
       <h3>Os clubes e as categorias</h3>
       <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Categoria</th><th>Clubes</th><th>Máximo de pontos</th><th>Nota de corte</th></tr></thead><tbody>${Object.entries(TIERS).map(([k, t]) => `<tr><td><b class="mm-lv">${k}</b></td><td>${t.clubs}</td><td>±${t.p}</td><td>${n1(t.c.toFixed(1))}</td></tr>`).join("")}</tbody></table></div>
       <h3>Quantas pessoas votaram (a confiança)</h3>
-      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Votantes na apresentação</th><th>Confiança</th><th>Quanto do máximo é possível</th></tr></thead><tbody>${[20, 30, 100, 500, 1000].map(n => `<tr><td>${n.toLocaleString("pt-BR")}${n === 1000 ? " ou mais" : ""}</td><td><b>${pct(conf(n))}</b></td><td>até ${pct(conf(n))} do máximo do clube</td></tr>`).join("")}</tbody></table></div>
-      <p class="mm-note">A confiança vale para os dois lados: média ruim com muita gente tira muitos pontos, e média ótima com muita gente dá muitos. Muita gente votando nunca transforma uma média abaixo do corte em ganho.</p>
+      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Votantes na apresentação</th><th>Confiança</th><th>Quanto do máximo é possível</th></tr></thead><tbody>${[1, 5, 20, 100, 500, 1000].map(n => `<tr><td>${n.toLocaleString("pt-BR")}${n === 1000 ? " ou mais" : ""}</td><td><b>${pct(conf(n))}</b></td><td>até ${pct(conf(n))} do máximo do clube</td></tr>`).join("")}</tbody></table></div>
+      <p class="mm-note">A confiança vale para os dois lados: média ruim com muita gente tira muitos pontos, e média ótima com muita gente dá muitos. Muita gente votando nunca transforma uma média abaixo do corte em ganho. Mesmo com um único votante o DJ já ganha ou perde pelo menos 1 ponto.</p>
       <h3>Quanto mais alto, mais difícil subir</h3>
       <div class="mm-scroll"><table class="mm-t"><thead><tr><th>MMR do DJ</th><th>Ganhos contam</th></tr></thead><tbody>${[[500, 1], [600, 600 ? 500 / 600 : 1], [800, 500 / 800], [1000, 0.5], [1500, 500 / 1500]].map(([m, k]) => `<tr><td>${m.toLocaleString("pt-BR")}${m === 500 ? " ou menos" : ""}</td><td><b>${pct(k)}</b></td></tr>`).join("")}</tbody></table></div>
       <p class="mm-note">Só os ganhos diminuem. As perdas contam sempre por inteiro. Assim ninguém chega ao topo só acumulando apresentações.</p>
@@ -864,10 +864,9 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
       <h3>Divisões</h3>
       <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Divisão</th><th>MMR</th></tr></thead><tbody>${DIV.map(([d, r]) => `<tr><td><b>${d}</b></td><td>${r}</td></tr>`).join("")}</tbody></table></div>
       <h3>Perguntas rápidas</h3>
-      <details><summary>Quando os pontos entram?</summary><p>A apresentação só pontua depois que a votação encerra (7 dias depois da festa) e se tiver pelo menos <b>20 votantes</b>. Antes disso ela aparece como <b>avaliação provisória</b>, sem ganhar nem perder pontos.</p></details>
-      <details><summary>O que é o selo “provisório”?</summary><p>É o DJ que ainda não tem nenhuma apresentação oficial. Ele aparece com 500 pontos até a primeira votação ser encerrada e validada.</p></details>
+      <details><summary>Quando os pontos entram?</summary><p>Na hora. Cada avaliação já mexe no MMR do DJ, mesmo que só uma pessoa tenha votado. Não há prazo: dá para avaliar qualquer apresentação, de qualquer DJ, não importa há quanto tempo ela aconteceu.</p></details>
       <details><summary>Dá para perder pontos?</summary><p>Sim. Média abaixo da nota de corte do clube tira pontos, e quanto mais gente votar, maior o impacto.</p></details>
-      <details><summary>Quem pode avaliar?</summary><p>Contas com e-mail confirmado, avaliando DJs em festas cadastradas que já aconteceram. Cada pessoa avalia cada apresentação uma vez, e reavaliar vale a avaliação mais recente. <a href="/regulamento#formula">Veja o regulamento completo.</a></p></details>
+      <details><summary>Quem pode avaliar?</summary><p>Contas com e-mail confirmado, avaliando DJs em festas cadastradas que já aconteceram, sem prazo. Cada pessoa avalia cada apresentação uma vez, e reavaliar vale a avaliação mais recente. <a href="/regulamento#formula">Veja o regulamento completo.</a></p></details>
       <button type="button" class="btn btn-y mm-ok" data-mm-close>Entendi</button>
     </div>`;
   }
