@@ -83,3 +83,26 @@
     loadReviews();
   }
 })();
+
+/* DJ Index: MMR do DJ (posição, divisão, última variação e histórico), lido do ranking oficial. Só aparece para quem já tem avaliação. */
+(() => {
+  const art = document.querySelector("article[data-dj]"), cfg = typeof BRB_CONFIG !== "undefined" ? BRB_CONFIG : null;
+  if (!art || !cfg) return;
+  const name = art.querySelector(".wiki-box-name")?.textContent?.trim();
+  if (!name) return;
+  const esc = t => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const n1 = v => Number(v).toFixed(1).replace(".", ","), n2 = v => Number(v).toFixed(2).replace(".", ","), sg = v => v > 0 ? "+" + v : v < 0 ? "−" + Math.abs(v) : "0";
+  const ST = { oficial: "Oficial", provisorio: "Avaliação provisória", aberta: "Votação aberta" };
+  fetch(cfg.url + "/rest/v1/rpc/brb_dj_mmr", { method: "POST", headers: { apikey: cfg.publishableKey, "Content-Type": "application/json" }, body: JSON.stringify({ p_dj: name }) })
+    .then(r => r.ok ? r.json() : Promise.reject()).then(({ ranking: r, historico: h }) => {
+      if (!r) return;
+      const d = new Date().toISOString().slice(0, 10), fd = s => s.slice(8) + "/" + s.slice(5, 7) + "/" + s.slice(0, 4);
+      const rows = h.map(x => `<tr><td>${fd(x.data)}</td><td>${esc(x.clube)} <small>(${x.tier})</small></td><td>${x.votantes}</td><td>${n2(x.media)}</td><td class="${x.status === "oficial" ? (x.variacao > 0 ? "up" : x.variacao < 0 ? "dn" : "") : ""}">${x.status === "oficial" ? sg(x.variacao) : "—"}</td><td>${x.mmr_depois}</td><td>${ST[x.status] || x.status}</td></tr>`).join("");
+      const sec = document.createElement("section"); sec.className = "mmr-prof"; sec.setAttribute("aria-labelledby", "h-mmr");
+      sec.innerHTML = `<h2 id="h-mmr">MMR no ranking</h2><div class="mmr-top"><span class="mmr-big">${Math.round(r.mmr).toLocaleString("pt-BR")}</span><span class="mmr-chip mono">${esc(r.divisao)}</span><span>${r.pos}º no ranking geral${r.provisorio ? " · provisório" : ""}</span>${r.ultima != null ? `<span>Última apresentação: <b>${sg(r.ultima)}</b></span>` : ""}</div>`
+        + `<div class="mmr-grid"><div>Apresentações oficiais<b>${r.sets}</b></div><div>Apresentações avaliadas<b>${r.festas}</b></div><div>Votos válidos<b>${r.votos}</b></div><div>Média geral<b>${n2(r.m)}</b></div><div>Som<b>${n1(r.som)}</b></div><div>Harmonia<b>${n1(r.harmonia)}</b></div><div>Vibe<b>${n1(r.energia)}</b></div><div>Sofisticação<b>${n1(r.sofisticacao)}</b></div></div>`
+        + (rows ? `<div class="mmr-scroll"><table class="mmr-hist"><thead><tr><th>Data</th><th>Clube</th><th>Votantes</th><th>Média</th><th>Variação</th><th>MMR depois</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>` : "")
+        + `<p class="mono"><button type="button" class="pista-link" data-mmr-info>Entender a metodologia do MMR</button></p>`;
+      (art.querySelector(".lead") || art.querySelector("h1")).insertAdjacentElement("afterend", sec);
+    }).catch(() => {});
+})();

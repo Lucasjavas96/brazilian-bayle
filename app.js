@@ -96,9 +96,9 @@ const MIN_VOTES = 30;
 const isBR = n => (window.BRB_BR || []).includes(slug(n));
 const reviewBtn = d => d.votos > 0 ? `<button type="button" class="rv-btn mono" data-reviews="${d.name.replace(/"/g, "&quot;")}">Ver resenhas</button>` : "";
 const hasPedia = n => !window.BRB_PEDIA || window.BRB_PEDIA.includes(slug(n));
-const djNote = d => d.unrated ? "Sem avaliação" : !Number.isFinite(d.pos) ? `${d.votos} avaliaç${d.votos === 1 ? "ão" : "ões"}` : `${d.provisorio ? "Provisório · " : ""}Nota ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.sets} apresentaç${d.sets === 1 ? "ão" : "ões"}${d.venue_name ? " · Melhor palco: " + d.venue_name : ""}`;
+const djNote = d => d.unrated ? "Sem avaliação" : !Number.isFinite(d.pos) ? `${d.votos} avaliaç${d.votos === 1 ? "ão" : "ões"}` : `${d.divisao || ""} · ${d.votos.toLocaleString("pt-BR")} ${d.votos === 1 ? "votante" : "votantes"}`;
 const mmrTxt = d => Math.round(d.mmr).toLocaleString("pt-BR");
-const provBadge = d => Number.isFinite(d.pos) && d.provisorio ? '<span class="prov-b mono" title="Menos de 30 avaliadores: a posição ainda é provisória">provisório</span>' : "";
+const provBadge = d => Number.isFinite(d.pos) && d.provisorio ? '<span class="prov-b mono" title="Ainda sem apresentação pontuada">provisório</span>' : "";
 const scoreCell = d => Number.isFinite(d.pos) ? mmrTxt(d) : d.votos > 0 ? fmt2(d.m) : "Sem avaliação";
 function table() {
  const rated=new Set(officialRows.map(row=>row.name));
@@ -689,7 +689,7 @@ function mountGe(el) {
       return `<tr class="${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
         <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}</span></${tag}>${reviewBtn(d)}</th>
-        <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}${provBadge(d)}${d.votos > 0 ? `<span class="ge-voters mono">${d.votos.toLocaleString("pt-BR")} ${d.votos === 1 ? "votante" : "votantes"}</span>` : ""}</td>
+        <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}${provBadge(d)}${d.divisao ? `<span class="ge-div mono">${d.divisao}${d.ultima ? ` · <b class="${d.ultima > 0 ? "up" : "dn"}">${d.ultima > 0 ? "+" : "−"}${Math.abs(d.ultima)}</b>` : ""}</span>` : ""}${d.votos > 0 ? `<span class="ge-voters mono">${d.votos.toLocaleString("pt-BR")} ${d.votos === 1 ? "votante" : "votantes"}</span>` : ""}</td>
         <td>${d.votos > 0 && Number.isFinite(d.m) ? fmt2(d.m) : "—"}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
@@ -831,40 +831,42 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
 
 /* ---------- Entender o MMR: pop-up didático da metodologia ---------- */
 (() => {
-  const NIV = [["A", "Green Valley, Laroc, Surreal Park e Pedreira Paulo Leminski", 100, 8, "8,0"], ["B", "D-EDGE São Paulo, Warung, Ame Club e P12 Jurerê", 80, 7.5, "7,5"], ["C", "Club Vibe, Park Art Superclub e D-EDGE Rio", 55, 7, "7,0"], ["D", "Terraza Music Park, CAOS, Matahari, Privilège Búzios e os demais clubes", 35, 6.5, "6,5"]];
-  const reach = (n, t) => Math.min(2, Math.max(0.3, 1 + 0.5 * Math.log2(n / t)));
-  const pts = (tier, nota, n, t) => { const [, , teto, corte] = NIV.find(x => x[0] === tier); const b = nota >= corte ? teto * (nota - corte) / (10 - corte) : Math.max(-teto, teto * (nota - corte) / 2); return b * reach(n, t); };
-  const x = n => n.toFixed(2).replace(".", ","), sg = n => (Math.round(n) > 0 ? "+" : Math.round(n) < 0 ? "−" : "") + Math.abs(Math.round(n));
+  const TIERS = { A: { p: 100, c: 8.5, n: "Elite", clubs: "Green Valley, Laroc, Pedreira Paulo Leminski, Parque Villa-Lobos e Arena Open" }, B: { p: 80, c: 8, n: "Premium", clubs: "Surreal Park, D-EDGE São Paulo, Warung, Ame Club e P12 Jurerê" }, C: { p: 55, c: 7.5, n: "Alta relevância", clubs: "Club Vibe, Park Art Superclub e D-EDGE Rio" }, D: { p: 35, c: 7, n: "Relevância regional", clubs: "Terraza Music Park, CAOS, Matahari e Privilège Búzios" }, E: { p: 20, c: 6.5, n: "Demais clubes", clubs: "Todos os clubes que não estão nas categorias acima" } };
+  const DIV = [["Bronze", "0 a 399"], ["Prata", "400 a 599"], ["Ouro", "600 a 799"], ["Diamante", "800 a 999"], ["Master", "1.000 a 1.199"], ["Lendário", "1.200 ou mais"]];
+  const conf = n => Math.min(1, (n / (n + 30)) * (Math.log1p(n) / Math.log1p(1000)) * 1.03);
+  const delta = (mmr, tier, media, n) => { const t = TIERS[tier], d = Math.max(-1, Math.min(1, (media - t.c) / (10 - t.c))), k = d > 0 ? Math.min(1, 500 / Math.max(500, mmr)) : 1; return d === 0 ? 0 : Math.sign(d) * Math.min(t.p, Math.max(1, Math.floor(Math.abs(t.p * d * conf(n) * k) + 0.5))); };
+  const pct = v => v < 0.01 ? "menos de 1%" : Math.round(v * 100) + "%", n1 = v => String(v).replace(".", ","), sg = v => v > 0 ? "+" + v : v < 0 ? "−" + Math.abs(v) : "0";
   let box = null, back = null;
-  const typical = () => { const r = (typeof officialRows !== "undefined" ? officialRows : []).find(v => v.tipico); return r ? Math.max(1, Math.round(+r.tipico)) : 10; };
   function html() {
-    const t = typical(), ex = [[2 * t, 9, "A", "no Laroc"], [2 * t, 6, "A", "no Laroc"], [t, 9.5, "D", "em um clube pequeno (nível D)"], [4 * t, 8, "A", "no Green Valley"]];
-    const alc = [[Math.max(1, Math.round(t / 4)), "bem menos que o normal"], [Math.max(1, Math.round(t / 2)), "metade do normal"], [t, "o normal do site"], [2 * t, "o dobro do normal"], [4 * t, "4 vezes o normal ou mais"]];
+    const ex = [["A", 100, 10], ["A", 100, 9], ["A", 100, 8], ["B", 100, 7], ["E", 100, 9], ["A", 1000, 10]];
     return `<div class="mm-sheet" role="dialog" aria-modal="true" aria-labelledby="mmT">
       <button type="button" class="mm-x" data-mm-close aria-label="Fechar">×</button>
       <p class="mono y">Metodologia de pontuação</p><h2 class="display" id="mmT">Entenda o <em>MMR</em></h2>
-      <p class="mm-lead">O <b>MMR</b> é a pontuação do DJ, no estilo do ranking da FIFA. Todo DJ começa com <b>1.000 pontos</b> e <b>ganha ou perde pontos a cada apresentação</b>, conforme o que a pista achou. <b>A posição no ranking é definida pelo MMR.</b> A <b>Nota</b> que aparece ao lado é só a média das notas.</p>
+      <p class="mm-lead">O <b>MMR</b> é o placar do DJ, como num ranking de jogo competitivo. Todo DJ começa com <b>500 pontos</b> e <b>ganha ou perde pontos a cada apresentação</b>, conforme o que a pista achou. <b>A posição no ranking é definida pelo MMR.</b> A <b>Nota</b> ao lado é só a média das notas.</p>
       <h3>O que muda os pontos de um DJ</h3>
       <div class="mm-cards">
-        <div><b>1. A média das notas</b><p>Cada clube tem uma <b>nota de corte</b>. Acima dela o DJ ganha pontos, abaixo ela tira. A nota 10 dá o máximo de pontos do clube.</p></div>
-        <div><b>2. O clube</b><p>Quanto mais importante o clube, mais pontos a apresentação vale, <b>para o bem e para o mal</b>, e mais alta precisa ser a nota para pontuar.</p></div>
-        <div><b>3. Quantas pessoas votaram</b><p>Mais gente votando faz a apresentação pesar mais, seja elogio ou crítica. O sistema compara com o <b>normal do site</b>, hoje de cerca de <b>${t} votos</b> por apresentação.</p></div>
+        <div><b>1. A média das notas</b><p>Cada clube tem uma <b>nota de corte</b>. Acima dela o DJ ganha pontos, igual a ela não muda nada, abaixo ela tira pontos. Quanto mais longe do corte, maior o efeito.</p></div>
+        <div><b>2. O clube</b><p>O clube define a <b>nota de corte</b> e o <b>máximo de pontos</b> que uma apresentação pode dar ou tirar. Clube mais importante exige mais e vale mais.</p></div>
+        <div><b>3. Quantas pessoas votaram</b><p>Mais votantes deixam o resultado mais confiável, e por isso <b>mexem mais nos pontos</b>, para ganhar e para perder. Com 1.000 votantes a confiança é total.</p></div>
       </div>
-      <h3>Os clubes e os níveis</h3>
-      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Nível</th><th>Clubes</th><th>Nota 10 vale</th><th>Começa a ganhar acima de</th></tr></thead><tbody>${NIV.map(n => `<tr><td><b class="mm-lv">${n[0]}</b></td><td>${n[1]}</td><td>${n[2]} pontos</td><td>${n[4]}</td></tr>`).join("")}</tbody></table></div>
-      <p class="mm-note">Abaixo da nota de corte o DJ perde pontos. Duas notas abaixo do corte é o prejuízo máximo (o mesmo valor do máximo de pontos do clube).</p>
-      <h3>Quantas pessoas votaram (o “alcance”)</h3>
-      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Votos na apresentação</th><th>Em relação ao normal</th><th>Multiplicador</th></tr></thead><tbody>${alc.map(a => `<tr><td>${a[0]}${a === alc[4] ? " ou mais" : ""}</td><td>${a[1]}</td><td><b>×${x(reach(a[0], t))}</b></td></tr>`).join("")}</tbody></table></div>
-      <p class="mm-note">O multiplicador vale para os dois lados. Muita gente dando nota baixa tira muitos pontos, e muita gente elogiando soma muitos. O “normal do site” acompanha o crescimento: quando mais gente passar a votar, a régua sobe junto.</p>
+      <h3>Os clubes e as categorias</h3>
+      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Categoria</th><th>Clubes</th><th>Máximo de pontos</th><th>Nota de corte</th></tr></thead><tbody>${Object.entries(TIERS).map(([k, t]) => `<tr><td><b class="mm-lv">${k}</b></td><td>${t.clubs}</td><td>±${t.p}</td><td>${n1(t.c.toFixed(1))}</td></tr>`).join("")}</tbody></table></div>
+      <h3>Quantas pessoas votaram (a confiança)</h3>
+      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Votantes na apresentação</th><th>Confiança</th><th>Quanto do máximo é possível</th></tr></thead><tbody>${[1, 5, 20, 100, 500, 1000].map(n => `<tr><td>${n.toLocaleString("pt-BR")}${n === 1000 ? " ou mais" : ""}</td><td><b>${pct(conf(n))}</b></td><td>até ${pct(conf(n))} do máximo do clube</td></tr>`).join("")}</tbody></table></div>
+      <p class="mm-note">A confiança vale para os dois lados: média ruim com muita gente tira muitos pontos, e média ótima com muita gente dá muitos. Muita gente votando nunca transforma uma média abaixo do corte em ganho. Mesmo com um único votante o DJ já ganha ou perde pelo menos 1 ponto.</p>
+      <h3>Quanto mais alto, mais difícil subir</h3>
+      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>MMR do DJ</th><th>Ganhos contam</th></tr></thead><tbody>${[[500, 1], [600, 600 ? 500 / 600 : 1], [800, 500 / 800], [1000, 0.5], [1500, 500 / 1500]].map(([m, k]) => `<tr><td>${m.toLocaleString("pt-BR")}${m === 500 ? " ou menos" : ""}</td><td><b>${pct(k)}</b></td></tr>`).join("")}</tbody></table></div>
+      <p class="mm-note">Só os ganhos diminuem. As perdas contam sempre por inteiro. Assim ninguém chega ao topo só acumulando apresentações.</p>
       <h3>Como a conta é feita</h3>
-      <ol class="mm-steps"><li>A <b>média das notas</b> da apresentação (som, harmonia, vibe e sofisticação) vira pontos pelo clube: de 0 na nota de corte até o máximo na nota 10.</li><li>Esses pontos são multiplicados pelo <b>alcance</b> (quantas pessoas votaram).</li><li>O resultado é somado ou subtraído dos pontos do DJ. Valem as apresentações dos <b>últimos 12 meses</b>.</li></ol>
-      <h3>Exemplos de apresentações</h3>
-      <ul class="mm-ex">${ex.map(e => { const p = pts(e[2], e[1], e[0], t); return `<li><span>${e[0]} pessoas deram média <b>${e[1].toFixed(1).replace(".", ",")}</b> ${e[3]}</span><b class="${p > 0.5 ? "up" : p < -0.5 ? "dn" : ""}">${Math.abs(p) < 0.5 ? "0 pontos (é a nota de corte)" : sg(p) + " pontos"}</b></li>`; }).join("")}</ul>
+      <ol class="mm-steps"><li>A <b>média</b> dos quatro critérios (som, harmonia, vibe e sofisticação) é comparada com a nota de corte do clube. O resultado vai de −100% (média muito abaixo) até +100% (nota 10).</li><li>Esse resultado é multiplicado pelo <b>máximo de pontos do clube</b>, pela <b>confiança</b> (quantos votaram) e, se for ganho, pelo fator da <b>progressão</b>.</li><li>O valor é arredondado e somado ou subtraído do MMR. Acima do corte rende pelo menos 1 ponto, abaixo tira pelo menos 1, e o MMR nunca fica negativo.</li></ol>
+      <h3>Exemplos (DJ começando com 500)</h3>
+      <ul class="mm-ex">${ex.map(([t, n, m]) => { const d = delta(500, t, m, n); return `<li><span>${n.toLocaleString("pt-BR")} votantes deram média <b>${n1(m.toFixed(1))}</b> em clube da categoria ${t}</span><b class="${d > 0 ? "up" : d < 0 ? "dn" : ""}">${sg(d)} pontos</b></li>`; }).join("")}</ul>
+      <h3>Divisões</h3>
+      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Divisão</th><th>MMR</th></tr></thead><tbody>${DIV.map(([d, r]) => `<tr><td><b>${d}</b></td><td>${r}</td></tr>`).join("")}</tbody></table></div>
       <h3>Perguntas rápidas</h3>
-      <details><summary>Por que todo DJ começa em 1.000?</summary><p>É só o ponto zero da régua. Quem vai bem em clube importante se separa logo nas primeiras apresentações.</p></details>
-      <details><summary>E se poucas pessoas votaram?</summary><p>A apresentação pesa menos, mas já conta desde o primeiro voto. Até o DJ ter 30 avaliadores no total, ele aparece com o selo <b>provisório</b>.</p></details>
+      <details><summary>Quando os pontos entram?</summary><p>Na hora. Cada avaliação já mexe no MMR do DJ, mesmo que só uma pessoa tenha votado. Não há prazo: dá para avaliar qualquer apresentação, de qualquer DJ, não importa há quanto tempo ela aconteceu.</p></details>
       <details><summary>Dá para perder pontos?</summary><p>Sim. Média abaixo da nota de corte do clube tira pontos, e quanto mais gente votar, maior o impacto.</p></details>
-      <details><summary>Quem pode avaliar?</summary><p>Contas com e-mail confirmado, avaliando apresentações de DJs em festas cadastradas que já aconteceram. Cada pessoa avalia cada apresentação uma vez, e reavaliar vale a avaliação mais recente. <a href="/regulamento">Veja o regulamento completo.</a></p></details>
+      <details><summary>Quem pode avaliar?</summary><p>Contas com e-mail confirmado, avaliando DJs em festas cadastradas que já aconteceram, sem prazo. Cada pessoa avalia cada apresentação uma vez, e reavaliar vale a avaliação mais recente. <a href="/regulamento#formula">Veja o regulamento completo.</a></p></details>
       <button type="button" class="btn btn-y mm-ok" data-mm-close>Entendi</button>
     </div>`;
   }
