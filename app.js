@@ -94,7 +94,8 @@ const DJS = [
 let officialRows = [];
 const MIN_VOTES = 30;
 const isBR = n => (window.BRB_BR || []).includes(slug(n));
-const reviewBtn = d => d.votos > 0 ? `<button type="button" class="rv-btn mono" data-reviews="${d.name.replace(/"/g, "&quot;")}">Ver resenhas</button>` : "";
+let reviewCounts = {};
+const reviewBtn = d => (reviewCounts[d.name] || 0) > 0 ? `<button type="button" class="rv-btn mono" data-reviews="${d.name.replace(/"/g, "&quot;")}">Ver resenhas (${reviewCounts[d.name]})</button>` : "";
 const hasPedia = n => !window.BRB_PEDIA || window.BRB_PEDIA.includes(slug(n));
 const djNote = d => d.unrated ? "Sem avaliação" : !Number.isFinite(d.pos) ? `${d.votos} avaliaç${d.votos === 1 ? "ão" : "ões"}` : `${d.divisao || ""} · ${d.votos.toLocaleString("pt-BR")} ${d.votos === 1 ? "votante" : "votantes"}`;
 const mmrTxt = d => Math.round(d.mmr).toLocaleString("pt-BR");
@@ -122,7 +123,7 @@ function podiumCard(pos, name, style, note, label, prov) {
   return `<div class="pod pc p${pos}" style="--c:var(--pc${pos})">
     <div class="pc-score"><span class="pc-n" aria-label="${label}">${note}</span></div>
     <div class="pc-ph"><img src="/assets/djs/${slug(name)}.webp" alt="${name}" width="500" height="500" loading="lazy" decoding="async"><p class="pc-wm"><b>Brazilian <em>Bayle</em></b></p><img class="pc-papa" src="/assets/papagaio-bayle.png" alt="" width="96" height="192" loading="lazy" decoding="async"></div>
-    <div class="pc-t"><p class="pc-name"><a href="/djindex/${slug(name)}">${name}</a></p><p class="pc-st mono">${pos}º lugar · ${style}${prov ? " · provisório" : ""}</p></div>
+    <div class="pc-t"><p class="pc-name"><a href="/djindex/${slug(name)}">${name}</a></p><p class="pc-st mono">${pos}º lugar${prov ? " · provisório" : ""}</p></div>
   </div>`;
 }
 function renderPodium() {
@@ -175,7 +176,7 @@ function mountBoard(stage) {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
-        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djindex/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}</td>
+        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djindex/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}</td>
         <td class="b-score"><span class="led${Number.isFinite(d.pos) || d.votos > 0 ? "" : " led-wait"}">${scoreCell(d)}</span>${Number.isFinite(d.pos) ? `<span class="b-nota mono">nota ${fmt2(d.m)}</span>` : ""}${provBadge(d)}<button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
@@ -688,7 +689,7 @@ function mountGe(el) {
       const s = slug(d.name), href = hasPedia(d.name) ? `/djindex/${s}` : null, tag = href ? "a" : "span";
       return `<tr class="${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
-        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}</span></${tag}>${reviewBtn(d)}</th>
+        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span></${tag}>${reviewBtn(d)}</th>
         <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}${provBadge(d)}${d.divisao ? `<span class="ge-div mono">${d.divisao}${d.ultima ? ` · <b class="${d.ultima > 0 ? "up" : "dn"}">${d.ultima > 0 ? "+" : "−"}${Math.abs(d.ultima)}</b>` : ""}</span>` : ""}${d.votos > 0 ? `<span class="ge-voters mono">${d.votos.toLocaleString("pt-BR")} ${d.votos === 1 ? "votante" : "votantes"}</span>` : ""}</td>
         <td>${d.votos > 0 && Number.isFinite(d.m) ? fmt2(d.m) : "—"}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
@@ -747,6 +748,7 @@ async function refreshOfficialRanking(){
  try{
   const result=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_ranking',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,'Content-Type':'application/json'},body:'{}'});
   if(!result.ok)throw Error('ranking');
+  try{const rc=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_review_counts',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,'Content-Type':'application/json'},body:'{}'});if(rc.ok)reviewCounts=await rc.json();}catch{}
   const rows=await result.json();officialRows=rows.map(row=>({...row,pos:row.pos!=null?row.pos:Infinity,emAvaliacao:row.pos==null,media:row.m,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
   boards.forEach(board=>board.render());renderPodium();note.textContent=rows.length?'Ranking atualizado com avaliações válidas.':'Ainda não há avaliações. Seja uma das primeiras pessoas a avaliar uma apresentação.';
  }catch{note.textContent='Não foi possível carregar o ranking agora. Tente novamente mais tarde.';}
