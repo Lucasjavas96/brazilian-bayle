@@ -96,13 +96,15 @@ const MIN_VOTES = 30;
 const isBR = n => (window.BRB_BR || []).includes(slug(n));
 const reviewBtn = d => d.votos > 0 ? `<button type="button" class="rv-btn mono" data-reviews="${d.name.replace(/"/g, "&quot;")}">Ver resenhas</button>` : "";
 const hasPedia = n => !window.BRB_PEDIA || window.BRB_PEDIA.includes(slug(n));
-const djNote = d => d.unrated ? "Sem avaliação" : !Number.isFinite(d.pos) ? `${d.votos} avaliaç${d.votos === 1 ? "ão" : "ões"}` : `Média ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.venue_name ? "Local: " + d.venue_name : "Sem local validado"}`;
-const scoreCell = d => Number.isFinite(d.pos) ? fmt2(d.nota) : d.votos > 0 ? fmt2(d.m) : "Sem avaliação";
+const djNote = d => d.unrated ? "Sem avaliação" : !Number.isFinite(d.pos) ? `${d.votos} avaliaç${d.votos === 1 ? "ão" : "ões"}` : `${d.provisorio ? "Provisório · " : ""}Nota ${fmt2(d.m)} · ${d.votos.toLocaleString("pt-BR")} avaliadores · ${d.sets} apresentaç${d.sets === 1 ? "ão" : "ões"}${d.venue_name ? " · Melhor palco: " + d.venue_name : ""}`;
+const mmrTxt = d => Math.round(d.mmr).toLocaleString("pt-BR");
+const provBadge = d => Number.isFinite(d.pos) && d.provisorio ? '<span class="prov-b mono" title="Menos de 30 avaliadores: a posição ainda é provisória">provisório</span>' : "";
+const scoreCell = d => Number.isFinite(d.pos) ? mmrTxt(d) : d.votos > 0 ? fmt2(d.m) : "Sem avaliação";
 function table() {
  const rated=new Set(officialRows.map(row=>row.name));
  const today=new Date().toLocaleDateString('sv-SE',{timeZone:'America/Sao_Paulo'}),known=new Set([...DJS.map(d=>d[0]),...rated]);
  const pedia=new Set(window.BRB_PEDIA||[]),played=[];(window.BRB_EVENTS||[]).filter(e=>e.date<=today).forEach(e=>(e.lineup||[]).forEach(n=>{if(!known.has(n)&&pedia.has(slug(n))){known.add(n);played.push([n,'Eletrônica']);}}));
- return [...officialRows.map(row=>({...row})),...[...DJS,...played].filter(([name])=>!rated.has(name)).map(([name,style])=>({name,style,pos:Infinity,nota:null,som:null,harmonia:null,energia:null,sofisticacao:null,votos:0,festas:0,unrated:true}))];
+ return [...officialRows.map(row=>({...row})),...[...DJS,...played].filter(([name])=>!rated.has(name)).map(([name,style])=>({name,style,pos:Infinity,nota:null,media:null,som:null,harmonia:null,energia:null,sofisticacao:null,votos:0,festas:0,unrated:true}))];
 }
 const meter = v => { const full = Math.floor(v), half = v - full >= .5; return `<span class="meter" aria-hidden="true">${Array.from({ length: 10 }, (_, i) => `<i class="${i < full ? "on" : i === full && half ? "half" : ""}"></i>`).join("")}</span>` };
 const pad = n => Number.isFinite(n) ? String(n).padStart(2, "0") : "—";
@@ -116,11 +118,11 @@ function rankAward(position) {
     : '<path d="M6 2h5l2 7-5 2-2-9zm12 0h-5l-2 7 5 2 2-9z" opacity=".65"/><circle cx="12" cy="15" r="7"/><circle cx="12" cy="15" r="5" fill="none" stroke="#000" stroke-opacity=".3"/><text x="12" y="18" text-anchor="middle" fill="#141414" font-size="9" font-family="sans-serif" font-weight="700">' + position + '</text>';
   return `<svg class="rank-award" viewBox="0 0 24 24" role="img" aria-label="${label}" fill="currentColor">${shape}</svg>`;
 }
-function podiumCard(pos, name, style, note, label) {
+function podiumCard(pos, name, style, note, label, prov) {
   return `<div class="pod pc p${pos}" style="--c:var(--pc${pos})">
     <div class="pc-score"><span class="pc-n" aria-label="${label}">${note}</span></div>
     <div class="pc-ph"><img src="/assets/djs/${slug(name)}.webp" alt="${name}" width="500" height="500" loading="lazy" decoding="async"><p class="pc-wm"><b>Brazilian <em>Bayle</em></b></p><img class="pc-papa" src="/assets/papagaio-bayle.png" alt="" width="96" height="192" loading="lazy" decoding="async"></div>
-    <div class="pc-t"><p class="pc-name"><a href="/djindex/${slug(name)}">${name}</a></p><p class="pc-st mono">${pos}º lugar · ${style}</p></div>
+    <div class="pc-t"><p class="pc-name"><a href="/djindex/${slug(name)}">${name}</a></p><p class="pc-st mono">${pos}º lugar · ${style}${prov ? " · provisório" : ""}</p></div>
   </div>`;
 }
 function renderPodium() {
@@ -132,7 +134,7 @@ function renderPodium() {
    el.innerHTML = DJS.slice(0,3).map(([name,style],index)=>podiumCard(index+1,name,style,"—","Sem avaliação")).join("");return;
   }
   el.setAttribute('aria-label','Os três primeiros da classificação');
-  el.innerHTML = official.slice(0, 3).map(d => podiumCard(d.pos, d.name, d.style, fmt2(d.nota), "nota " + fmt2(d.nota))).join("");
+  el.innerHTML = official.slice(0, 3).map(d => podiumCard(d.pos, d.name, d.style, mmrTxt(d), "MMR " + mmrTxt(d), d.provisorio)).join("");
 }
 
 /* ---------- tabela ---------- */
@@ -141,7 +143,7 @@ function mountBoard(stage) {
   const limit = +stage.dataset.limit || 0, sortable = stage.hasAttribute("data-sortable");
   const st = { sort: "nota", last: {}, flash: null, expanded: false };
   stage.classList.add('board-summary');
-  const head = [["nota", "Nota"], ...CRIT, ["votos", "Votos"]];
+  const head = [["nota", "MMR"], ...CRIT, ["votos", "Votos"]];
   stage.innerHTML = `<table class="board">
     <caption class="sr-only">Brasileirão dos DJs, classificação por avaliações válidas${limit ? `, ${limit} primeiros` : ""}</caption>
     <thead><tr><th scope="col">#</th><th scope="col" class="l">DJ</th>${head.map(([k, l]) => `<th scope="col"${k === "nota" ? ' aria-sort="descending"' : ""} data-k="${k}">${sortable ? `<button type="button" data-sort="${k}">${l}</button>` : l}</th>`).join("")}</tr></thead>
@@ -174,7 +176,7 @@ function mountBoard(stage) {
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
         <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djindex/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
-        <td class="b-score"><span class="led${Number.isFinite(d.pos) || d.votos > 0 ? "" : " led-wait"}">${scoreCell(d)}</span><button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
+        <td class="b-score"><span class="led${Number.isFinite(d.pos) || d.votos > 0 ? "" : " led-wait"}">${scoreCell(d)}</span>${Number.isFinite(d.pos) ? `<span class="b-nota mono">nota ${fmt2(d.m)}</span>` : ""}${provBadge(d)}<button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
     }).join("");
@@ -654,7 +656,7 @@ const GE_EXTRA = (() => { const r = rnd(7); return Object.fromEntries(DJS.map(([
 function mountGe(el) {
   const sortable = el.hasAttribute("data-sortable");
   const st = { sort: "nota", last: {}, tab: "br" };
-  const cols = [["nota", "Nota", "Nota geral"], ["votos", "Votos", "Votos"], ["festas", "Festas", "Festas avaliadas"],
+  const cols = [["nota", "MMR", "Pontos MMR: definem a posição"], ["media", "Nota", "Média das notas"], ["votos", "Votos", "Votos"], ["festas", "Festas", "Festas avaliadas"],
     ...CRIT.map(([k, l]) => [k, l, l])];
   el.innerHTML = `<div class="ge-card">
     <div class="ge-scroll" tabindex="0" role="region" aria-label="Tabela de classificação, deslize para ver todas as colunas">
@@ -668,6 +670,7 @@ function mountGe(el) {
     </table></div>
     <div class="ge-legend">
       <span><i class="ge-zone"></i>Zona da Final · 1º ao 5º</span>
+      <button type="button" class="mm-open" data-mmr-info>Entender a metodologia do MMR</button>
     </div></div>`;
   el.insertAdjacentHTML("afterbegin", `<div class="rk-tabs" role="group" aria-label="Escolha o ranking"><button type="button" data-gtab="br" aria-pressed="true"><span aria-hidden="true">🇧🇷</span> DJs brasileiros</button><button type="button" data-gtab="int" aria-pressed="false"><span aria-hidden="true">🌍</span> DJs internacionais</button></div>`);
   el.querySelector(".rk-tabs").onclick = e => { const b = e.target.closest("[data-gtab]"); if (!b) return; st.tab = b.dataset.gtab; st.last = {}; el.querySelectorAll("[data-gtab]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); render(); };
@@ -687,7 +690,8 @@ function mountGe(el) {
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
         <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${reviewBtn(d)}${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
-        <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}</td>
+        <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}${provBadge(d)}</td>
+        <td>${d.votos > 0 && Number.isFinite(d.m) ? fmt2(d.m) : "—"}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
     }).join("");
@@ -744,7 +748,7 @@ async function refreshOfficialRanking(){
  try{
   const result=await fetch(BRB_CONFIG.url+'/rest/v1/rpc/brb_ranking',{method:'POST',headers:{apikey:BRB_CONFIG.publishableKey,'Content-Type':'application/json'},body:'{}'});
   if(!result.ok)throw Error('ranking');
-  const rows=await result.json();officialRows=rows.map(row=>({...row,pos:row.eligible&&row.pos!=null?row.pos:Infinity,emAvaliacao:!row.eligible,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
+  const rows=await result.json();officialRows=rows.map(row=>({...row,pos:row.pos!=null?row.pos:Infinity,emAvaliacao:row.pos==null,media:row.m,style:DJS.find(d=>d[0]===row.name)?.[1]||'Eletrônica'}));
   boards.forEach(board=>board.render());renderPodium();note.textContent=rows.length?'Ranking atualizado com avaliações válidas.':'Ainda não há avaliações. Seja uma das primeiras pessoas a avaliar uma apresentação.';
  }catch{note.textContent='Não foi possível carregar o ranking agora. Tente novamente mais tarde.';}
 }
@@ -824,4 +828,49 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     if (matchMedia("(prefers-reduced-motion: reduce)").matches || imgs.length < 2) return;
     setInterval(() => { if (document.hidden || (section && section.classList.contains("paused"))) return; imgs[i].classList.remove("on"); i = (i + 1) % imgs.length; imgs[i].classList.add("on"); }, 6000);
   });
+})();
+
+/* ---------- Entender o MMR: pop-up didático da metodologia ---------- */
+(() => {
+  const NIV = [["A", "Green Valley, Laroc, Surreal Park e Pedreira Paulo Leminski", 100, 8, "8,0"], ["B", "D-EDGE São Paulo, Warung, Ame Club e P12 Jurerê", 80, 7.5, "7,5"], ["C", "Club Vibe, Park Art Superclub e D-EDGE Rio", 55, 7, "7,0"], ["D", "Terraza Music Park, CAOS, Matahari, Privilège Búzios e os demais clubes", 35, 6.5, "6,5"]];
+  const reach = (n, t) => Math.min(2, Math.max(0.3, 1 + 0.5 * Math.log2(n / t)));
+  const pts = (tier, nota, n, t) => { const [, , teto, corte] = NIV.find(x => x[0] === tier); const b = nota >= corte ? teto * (nota - corte) / (10 - corte) : Math.max(-teto, teto * (nota - corte) / 2); return b * reach(n, t); };
+  const x = n => n.toFixed(2).replace(".", ","), sg = n => (Math.round(n) > 0 ? "+" : Math.round(n) < 0 ? "−" : "") + Math.abs(Math.round(n));
+  let box = null, back = null;
+  const typical = () => { const r = (typeof officialRows !== "undefined" ? officialRows : []).find(v => v.tipico); return r ? Math.max(1, Math.round(+r.tipico)) : 10; };
+  function html() {
+    const t = typical(), ex = [[2 * t, 9, "A", "no Laroc"], [2 * t, 6, "A", "no Laroc"], [t, 9.5, "D", "em um clube pequeno (nível D)"], [4 * t, 8, "A", "no Green Valley"]];
+    const alc = [[Math.max(1, Math.round(t / 4)), "bem menos que o normal"], [Math.max(1, Math.round(t / 2)), "metade do normal"], [t, "o normal do site"], [2 * t, "o dobro do normal"], [4 * t, "4 vezes o normal ou mais"]];
+    return `<div class="mm-sheet" role="dialog" aria-modal="true" aria-labelledby="mmT">
+      <button type="button" class="mm-x" data-mm-close aria-label="Fechar">×</button>
+      <p class="mono y">Metodologia de pontuação</p><h2 class="display" id="mmT">Entenda o <em>MMR</em></h2>
+      <p class="mm-lead">O <b>MMR</b> é a pontuação do DJ, no estilo do ranking da FIFA. Todo DJ começa com <b>1.000 pontos</b> e <b>ganha ou perde pontos a cada apresentação</b>, conforme o que a pista achou. <b>A posição no ranking é definida pelo MMR.</b> A <b>Nota</b> que aparece ao lado é só a média das notas.</p>
+      <h3>O que muda os pontos de um DJ</h3>
+      <div class="mm-cards">
+        <div><b>1. A média das notas</b><p>Cada clube tem uma <b>nota de corte</b>. Acima dela o DJ ganha pontos, abaixo ela tira. A nota 10 dá o máximo de pontos do clube.</p></div>
+        <div><b>2. O clube</b><p>Quanto mais importante o clube, mais pontos a apresentação vale, <b>para o bem e para o mal</b>, e mais alta precisa ser a nota para pontuar.</p></div>
+        <div><b>3. Quantas pessoas votaram</b><p>Mais gente votando faz a apresentação pesar mais, seja elogio ou crítica. O sistema compara com o <b>normal do site</b>, hoje de cerca de <b>${t} votos</b> por apresentação.</p></div>
+      </div>
+      <h3>Os clubes e os níveis</h3>
+      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Nível</th><th>Clubes</th><th>Nota 10 vale</th><th>Começa a ganhar acima de</th></tr></thead><tbody>${NIV.map(n => `<tr><td><b class="mm-lv">${n[0]}</b></td><td>${n[1]}</td><td>${n[2]} pontos</td><td>${n[4]}</td></tr>`).join("")}</tbody></table></div>
+      <p class="mm-note">Abaixo da nota de corte o DJ perde pontos. Duas notas abaixo do corte é o prejuízo máximo (o mesmo valor do máximo de pontos do clube).</p>
+      <h3>Quantas pessoas votaram (o “alcance”)</h3>
+      <div class="mm-scroll"><table class="mm-t"><thead><tr><th>Votos na apresentação</th><th>Em relação ao normal</th><th>Multiplicador</th></tr></thead><tbody>${alc.map(a => `<tr><td>${a[0]}${a === alc[4] ? " ou mais" : ""}</td><td>${a[1]}</td><td><b>×${x(reach(a[0], t))}</b></td></tr>`).join("")}</tbody></table></div>
+      <p class="mm-note">O multiplicador vale para os dois lados. Muita gente dando nota baixa tira muitos pontos, e muita gente elogiando soma muitos. O “normal do site” acompanha o crescimento: quando mais gente passar a votar, a régua sobe junto.</p>
+      <h3>Como a conta é feita</h3>
+      <ol class="mm-steps"><li>A <b>média das notas</b> da apresentação (som, harmonia, vibe e sofisticação) vira pontos pelo clube: de 0 na nota de corte até o máximo na nota 10.</li><li>Esses pontos são multiplicados pelo <b>alcance</b> (quantas pessoas votaram).</li><li>O resultado é somado ou subtraído dos pontos do DJ. Valem as apresentações dos <b>últimos 12 meses</b>.</li></ol>
+      <h3>Exemplos de apresentações</h3>
+      <ul class="mm-ex">${ex.map(e => { const p = pts(e[2], e[1], e[0], t); return `<li><span>${e[0]} pessoas deram média <b>${e[1].toFixed(1).replace(".", ",")}</b> ${e[3]}</span><b class="${p > 0.5 ? "up" : p < -0.5 ? "dn" : ""}">${Math.abs(p) < 0.5 ? "0 pontos (é a nota de corte)" : sg(p) + " pontos"}</b></li>`; }).join("")}</ul>
+      <h3>Perguntas rápidas</h3>
+      <details><summary>Por que todo DJ começa em 1.000?</summary><p>É só o ponto zero da régua. Quem vai bem em clube importante se separa logo nas primeiras apresentações.</p></details>
+      <details><summary>E se poucas pessoas votaram?</summary><p>A apresentação pesa menos, mas já conta desde o primeiro voto. Até o DJ ter 30 avaliadores no total, ele aparece com o selo <b>provisório</b>.</p></details>
+      <details><summary>Dá para perder pontos?</summary><p>Sim. Média abaixo da nota de corte do clube tira pontos, e quanto mais gente votar, maior o impacto.</p></details>
+      <details><summary>Quem pode avaliar?</summary><p>Contas com e-mail confirmado, avaliando apresentações de DJs em festas cadastradas que já aconteceram. Cada pessoa avalia cada apresentação uma vez, e reavaliar vale a avaliação mais recente. <a href="/regulamento">Veja o regulamento completo.</a></p></details>
+      <button type="button" class="btn btn-y mm-ok" data-mm-close>Entendi</button>
+    </div>`;
+  }
+  const close = () => { if (!box) return; box.remove(); box = null; document.body.classList.remove("mm-lock"); back?.focus?.(); back = null; };
+  const open = trigger => { close(); back = trigger; box = document.createElement("div"); box.className = "mm-scrim"; box.innerHTML = html(); document.body.appendChild(box); document.body.classList.add("mm-lock"); box.querySelector(".mm-x").focus(); };
+  document.addEventListener("click", e => { const b = e.target.closest("[data-mmr-info]"); if (b) { open(b); return; } if (box && (e.target.closest("[data-mm-close]") || e.target.classList?.contains("mm-scrim"))) close(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && box) close(); });
 })();
