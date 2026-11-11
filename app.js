@@ -175,7 +175,7 @@ function mountBoard(stage) {
       const prev = st.last[d.name], mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="mv up" aria-label="subiu ${prev - d.pos}">▲${prev - d.pos}</span>` : `<span class="mv dn" aria-label="caiu ${d.pos - prev}">▼${d.pos - prev}</span>`) : "";
       return `<tr data-rank="${d.pos}" class="${d.pos <= 5 ? "z5" : ""}${d.pos === 5 ? " cut" : ""}${d.name === st.flash ? " flash" : ""}">
         <td class="b-pos">${rankAward(d.pos)}<span class="num3d">${pad(d.pos)}</span></td>
-        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djindex/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}${d.pos <= 5 ? `<span class="sr-only">, zona da Final</span>` : ""}</td>
+        <td class="b-dj l">${d.pos <= 3 ? `<span class="rank-honor">${d.pos === 1 ? 'Líder do ranking' : d.pos + 'º lugar · pódio'}</span>` : ''}${hasPedia(d.name) ? `<a class="b-name" href="/djindex/${slug(d.name)}"><b>${d.name}</b></a>` : `<span class="b-name"><b>${d.name}</b></span>`}${mv}<span class="mono">${d.style}</span><span class="mono dj-meta">${djNote(d)}</span>${reviewBtn(d)}</td>
         <td class="b-score"><span class="led${Number.isFinite(d.pos) || d.votos > 0 ? "" : " led-wait"}">${scoreCell(d)}</span>${Number.isFinite(d.pos) ? `<span class="b-nota mono">nota ${fmt2(d.m)}</span>` : ""}${provBadge(d)}<button type="button" class="dj-details" data-dj-details aria-expanded="false" aria-label="Detalhes de ${d.name}">Ver detalhes +</button></td>
         ${CRIT.map(([k, l]) => `<td class="b-crit" data-label="${l}">${meter(d[k])}<span class="v">${fmt1(d[k])}</span></td>`).join("")}
         <td class="b-votes">${d.votos.toLocaleString("pt-BR")}</td></tr>`;
@@ -669,7 +669,6 @@ function mountGe(el) {
       <tbody></tbody>
     </table></div>
     <div class="ge-legend">
-      <span><i class="ge-zone"></i>Zona da Final · 1º ao 5º</span>
       <button type="button" class="mm-open" data-mmr-info>Entender a metodologia do MMR</button>
     </div></div>`;
   el.insertAdjacentHTML("afterbegin", `<div class="rk-tabs" role="group" aria-label="Escolha o ranking"><button type="button" data-gtab="br" aria-pressed="true"><span aria-hidden="true">🇧🇷</span> DJs brasileiros</button><button type="button" data-gtab="int" aria-pressed="false"><span aria-hidden="true">🌍</span> DJs internacionais</button></div>`);
@@ -689,7 +688,7 @@ function mountGe(el) {
       const s = slug(d.name), href = hasPedia(d.name) ? `/djindex/${s}` : null, tag = href ? "a" : "span";
       return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
-        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${reviewBtn(d)}${d.pos <= 5 ? '<span class="sr-only">, zona da Final</span>' : ""}</th>
+        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${reviewBtn(d)}</th>
         <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}${provBadge(d)}</td>
         <td>${d.votos > 0 && Number.isFinite(d.m) ? fmt2(d.m) : "—"}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
