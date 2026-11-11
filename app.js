@@ -686,10 +686,10 @@ function mountGe(el) {
       const prev = st.last[d.name];
       const mv = prev && prev !== d.pos ? (prev > d.pos ? `<span class="ge-mv up" aria-label="subiu ${prev - d.pos}">▲</span>` : `<span class="ge-mv dn" aria-label="caiu ${d.pos - prev}">▼</span>`) : `<span class="ge-mv" aria-hidden="true">•</span>`;
       const s = slug(d.name), href = hasPedia(d.name) ? `/djindex/${s}` : null, tag = href ? "a" : "span";
-      return `<tr class="${d.pos <= 5 ? "zf" : ""}${d.pos === 5 ? " cut" : ""}${d.name === flash ? " flash" : ""}">
+      return `<tr class="${d.name === flash ? " flash" : ""}">
         <td class="ge-pos"><b>${Number.isFinite(d.pos)?d.pos:"—"}</b>${mv}</td>
-        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style} · ${djNote(d)}</span></${tag}>${reviewBtn(d)}</th>
-        <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}${provBadge(d)}</td>
+        <th scope="row" class="ge-dj"><${tag}${href ? ` href="${href}"` : ""}><img class="ge-badge ge-portrait" src="/assets/djs/thumbs/${s}.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="ge-name">${d.name}</span><span class="ge-style">${d.style}</span></${tag}>${reviewBtn(d)}</th>
+        <td class="ge-nota${Number.isFinite(d.pos) || d.votos > 0 ? "" : " ge-wait"}">${scoreCell(d)}${provBadge(d)}${d.votos > 0 ? `<span class="ge-voters mono">${d.votos.toLocaleString("pt-BR")} ${d.votos === 1 ? "votante" : "votantes"}</span>` : ""}</td>
         <td>${d.votos > 0 && Number.isFinite(d.m) ? fmt2(d.m) : "—"}</td>
         <td>${d.votos.toLocaleString("pt-BR")}</td><td>${d.festas}</td>
         ${CRIT.map(([k]) => `<td>${fmt1(d[k])}</td>`).join("")}</tr>`;
