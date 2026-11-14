@@ -64,7 +64,7 @@
   function renderMembers() {
     const ok = x => !q || JSON.stringify(x).toLowerCase().includes(q.toLowerCase());
     const acc = accounts.filter(ok), mem = members.filter(ok);
-    const a = acc.length ? wrap(th("Conta", "Criada em", "Último acesso", "Avaliações", "Posts", "Pontos", "Tipo"), acc.map(x => `<tr><td><b>${esc(x.nome || (x.nick ? "@" + x.nick : x.email))}</b><small>${x.nick ? "@" + esc(x.nick) + " · " : ""}${esc(x.email)}</small></td><td>${when(x.created_at)}</td><td>${x.last_sign_in_at ? when(x.last_sign_in_at) : "nunca"}</td><td>${x.votes}</td><td>${x.posts}</td><td>${x.points}${x.points !== x.points_expected ? `<small>pela regra: ${x.points_expected}</small>` : ""}<small>${x.spins} giro(s)</small></td><td>${x.clubber ? '<span class="mx-b info">BB Network</span>' : '<span class="mx-b mute">Conta</span>'}</td></tr>`).join("")) : empty("Nenhuma conta com e-mail confirmado.");
+    const a = acc.length ? wrap(th("Conta", "Criada em", "Último acesso", "Avaliações", "Posts", "Pontos", "Tipo", "Ações"), acc.map(x => `<tr data-uid="${esc(x.id)}" data-uname="${esc(x.nick || x.email)}"><td><b>${esc(x.nome || (x.nick ? "@" + x.nick : x.email))}</b><small>${x.nick ? "@" + esc(x.nick) + " · " : ""}${esc(x.email)}</small></td><td>${when(x.created_at)}</td><td>${x.last_sign_in_at ? when(x.last_sign_in_at) : "nunca"}</td><td>${x.votes}</td><td>${x.posts}</td><td>${x.points}${x.points !== x.points_expected ? `<small>pela regra: ${x.points_expected}</small>` : ""}<small>${x.spins} giro(s)</small></td><td>${x.clubber ? '<span class="mx-b info">BB Network</span>' : ''}${x.is_staff ? '<span class="mx-b ok">Administrador</span>' : (x.clubber ? '' : '<span class="mx-b mute">Conta</span>')}</td><td class="ac"><div class="mx-acts">${x.is_staff ? btn('data-staff-remove', "Remover administrador", "danger") : btn('data-staff-add', "Promover a administrador", "primary")}</div></td></tr>`).join("")) : empty("Nenhuma conta com e-mail confirmado.");
     const m = mem.length ? wrap(th("BB Network", "Contato", "E-mail de aprovação", "Ações"), mem.map(x => { const d = x.data || {};
       return `<tr data-member="${esc(x.id)}"><td><b>${esc(d.nome || "Sem nome")}</b></td><td>${FIELDS.map(([k, l]) => d[k] ? `<small>${l}: ${esc(d[k])}</small>` : "").join("")}</td><td>${x.mailed_at ? "Enviado em " + when(x.mailed_at) : '<span class="mx-b warn">Ainda não enviado</span>'}</td><td class="ac"><div class="mx-acts">${btn("data-mail", x.mailed_at ? "Reenviar e-mail" : "Enviar e-mail", "primary")}${btn("data-remove", "Excluir membro", "danger")}</div></td></tr>`; }).join("")) : empty("Nenhum membro do BB Network aprovado ainda.");
     return `<h3 class="mx-h3">Contas ativas (${acc.length})</h3>${a}<h3 class="mx-h3">Membros do BB Network (${mem.length})</h3>${m}`;
@@ -170,6 +170,16 @@
         if (b.dataset.act === "appview") return showApp(apps.find(x => x.id === row.dataset.app));
         if (b.dataset.ast) { b.disabled = true; await BRB.owner("submission_status", { id: row.dataset.app, status: b.dataset.ast }); toast("Candidatura atualizada."); await load(); }
       } else if (tab === "members") {
+        const acctRow = b.closest("[data-uid]");
+        if (acctRow && (b.hasAttribute("data-staff-add") || b.hasAttribute("data-staff-remove"))) {
+          const enable = b.hasAttribute("data-staff-add"), uid = acctRow.dataset.uid, name = acctRow.dataset.uname;
+          const okGo = enable
+            ? await ask("Promover a administrador?", `@${esc(name)} passa a ter acesso ao painel de gestão (/gestao): posts, candidaturas e suporte.`, "Promover", false)
+            : await ask("Remover administrador?", `@${esc(name)} perde o acesso ao painel de gestão (/gestao).`, "Remover administrador");
+          if (!okGo) return;
+          b.disabled = true; await BRB.owner("staff_set", { user_id: uid, enable }); toast(enable ? "Promovido a administrador." : "Administrador removido."); await load();
+          return;
+        }
         const row = b.closest("[data-member]"); if (!row) return;
         if (b.hasAttribute("data-remove")) { if (await ask("Excluir este membro?", "Ele perde o selo do BB Network e não poderá mais comentar no Spotted.", "Excluir membro")) { b.disabled = true; await BRB.removeMember(row.dataset.member); toast("Membro excluído."); await load(); } }
         else if (b.hasAttribute("data-mail")) { if (await ask("Enviar o e-mail de aprovação?", "A pessoa recebe o e-mail de parabéns do BB Network.", "Enviar e-mail", false)) { b.disabled = true; await BRB.sendApprovalMail(row.dataset.member); toast("E-mail enviado."); await load(); } }
