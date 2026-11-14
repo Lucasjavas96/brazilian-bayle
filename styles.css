@@ -3404,8 +3404,6 @@ body.mm-lock{overflow:hidden}
 .page-loja .outfit-shop .shop-product-category{grid-column:1;grid-row:2;color:inherit;text-transform:uppercase}
 .outfit-shop .shop-product-category::before{content:"● ";font-size:.75em}
 .page-loja .outfit-shop .shop-sizes{grid-column:1/-1;color:var(--ink)}
-.page-loja .outfit-shop .shop-products[data-editorial] .shop-product:nth-child(6){align-self:start;width:76%}
-.page-loja .outfit-shop .shop-products[data-editorial] .shop-product:nth-child(7){grid-column:span 2}
 .outfit-shop .shop-product.outfit-entered{animation:outfit-reveal .65s cubic-bezier(.22,.61,.36,1) both}
 @keyframes outfit-reveal{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:767px){
