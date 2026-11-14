@@ -3446,3 +3446,20 @@ body.mm-lock{overflow:hidden}
 .outfit-brand em{font:italic clamp(18px,2.7vw,34px)/1 "Cormorant Garamond",Georgia,serif;color:var(--gold)}
 .page-loja .outfit-shop .shop-tools select option{background:var(--paper);color:var(--ink)}
 .page-loja .outfit-shop .shop-product-name{color:var(--ink)}
+
+/* Mockups da coleção própria Brazilian Bayle. */
+.page-loja .outfit-shop .shop-catalog-heading{display:flex;gap:24px;justify-content:space-between;align-items:end;padding:22px 0 28px}
+.page-loja .outfit-shop .shop-catalog-heading h2{color:var(--ink);font:700 clamp(24px,3vw,44px)/1.1 Syne,Arial,sans-serif}
+.page-loja .outfit-shop .shop-catalog-note{max-width:320px;color:var(--ink);font-size:13px}
+.page-loja .outfit-shop button.shop-photo{width:100%;padding:0;border:0;cursor:pointer;aspect-ratio:3/4;font:inherit}
+.page-loja .outfit-shop .shop-product-name{margin:0;min-height:0;font-size:13px}
+.bayle-details{border:0;border-bottom:1px solid #d2b37566;padding:6px 0;background:none;color:#d2b375;font:inherit;font-size:12px;cursor:pointer}
+.bayle-catalog-note{font-size:12px;color:#bdb4a2;margin-top:40px}
+.bayle-preview{width:min(1200px,96vw);max-width:96vw;max-height:94dvh;padding:12px;background:#050505;color:#f6f4ef;border:1px solid #d2b37555;overflow:auto}
+.bayle-preview::backdrop{background:#000d}
+.bayle-preview-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:6px 0 14px}
+.bayle-preview-top h2{font:600 18px Syne,Arial,sans-serif;margin:0}
+.bayle-preview-close{padding:8px 12px;background:none;border:1px solid #d2b375;color:#f6f4ef;cursor:pointer}
+.bayle-preview img{display:block;width:100%;height:auto}
+.outfit-intro.outfit-loading,.outfit-intro.outfit-loading .outfit-intro-stack img{animation-play-state:paused!important}
+@media(max-width:767px){.page-loja .outfit-shop .shop-catalog-heading{display:block}.page-loja .outfit-shop .shop-catalog-note{margin-top:12px}.bayle-preview-top h2{font-size:14px}.bayle-preview{padding:8px}}
