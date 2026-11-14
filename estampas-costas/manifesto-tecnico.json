@@ -1,72 +1,107 @@
 [
   {
-    "estampa": "01-work-it",
+    "arquivo": "01-work-it/01-work-it.png",
     "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
       900,
       1600
     ],
-    "svg": "raster incorporado, nao vetorizado",
-    "pdf": "imagem original, pagina a 300 dpi sem reamostragem",
-    "fundo": "preto original preservado"
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "5e43a01b9b897cea65fe69c32a0f0a7bfce8f7095aba8dcab2aacf2c13001633"
   },
   {
-    "estampa": "02-make-djs-mix-again",
+    "arquivo": "02-make-djs-mix-again/02-make-djs-mix-again.png",
     "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
       900,
       1600
     ],
-    "svg": "raster incorporado, nao vetorizado",
-    "pdf": "imagem original, pagina a 300 dpi sem reamostragem",
-    "fundo": "preto original preservado"
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "309c21a75ac2a15f6e7c8273685c38c725c5af77ff6b600a18227e86e452d8d5"
   },
   {
-    "estampa": "03-vintage-culture",
+    "arquivo": "03-vintage-culture/03-vintage-culture.png",
     "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
       900,
       1600
     ],
-    "svg": "raster incorporado, nao vetorizado",
-    "pdf": "imagem original, pagina a 300 dpi sem reamostragem",
-    "fundo": "preto original preservado"
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "febade44ba3017f0f3a0a0293c80f21bb2ebcf3591badbf263ba89ccac2bde7c"
   },
   {
-    "estampa": "04-546-im-yours",
+    "arquivo": "04-546-im-yours/04-546-im-yours.png",
     "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
       900,
       1600
     ],
-    "svg": "raster incorporado, nao vetorizado",
-    "pdf": "imagem original, pagina a 300 dpi sem reamostragem",
-    "fundo": "preto original preservado"
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "36b089ef8150d25821262faede6d817dd34d1c85154a90b8cf8a0851f2ca9143"
   },
   {
-    "estampa": "05-que-festa-boa",
+    "arquivo": "05-que-festa-boa/05-que-festa-boa.png",
     "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
       900,
       1600
     ],
-    "svg": "raster incorporado, nao vetorizado",
-    "pdf": "imagem original, pagina a 300 dpi sem reamostragem",
-    "fundo": "preto original preservado"
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "e69de95637e6b0b0114e47aea9f58801f1f6b8b6961709dd7ee62e1c342c879f"
   },
   {
-    "estampa": "06-techno-addict",
+    "arquivo": "06-techno-addict/06-techno-addict.png",
     "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
       900,
       1600
     ],
-    "svg": "raster incorporado, nao vetorizado",
-    "pdf": "imagem original, pagina a 300 dpi sem reamostragem",
-    "fundo": "preto original preservado"
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "da4d4ab61ffbf0d76a24764281e50e2ddc85f1a286df7e3bf4a500433010c1f8"
   },
   {
-    "estampa": "07-keep-following",
+    "arquivo": "07-keep-following/07-keep-following.png",
     "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
       900,
       1600
     ],
-    "svg": "raster incorporado, nao vetorizado",
-    "pdf": "imagem original, pagina a 300 dpi sem reamostragem",
-    "fundo": "preto original preservado"
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "40ef685a3f6aa9a36ee9b639560a19adb5b46a86869ec7e7de7337811a7c2a10"
   }
 ]

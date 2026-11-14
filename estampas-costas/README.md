@@ -1,11 +1,17 @@
-# Estampas das costas e logotipo oficial
+# Estampas das costas - preparacao HotPrinti
 
-Sete artes originais, cada uma em PNG, SVG e PDF. A pasta 00-papagaio-oficial inclui o SVG vetorial original recebido no ZIP logotipo (15), mais PNG e PDF originais.
+## Arquivos atuais
 
-## Nota para impressao
+Sete estampas em PNG RGBA, com transparencia real, exatamente 3543 x 5906 pixels, metadados de 300 dpi. Redimensionadas proporcionalmente, sem esticar, com margens transparentes laterais. Fundo preto externo removido; pretos internos das ilustracoes preservados. A Vintage Culture recebeu ajuste adicional no contorno inferior direito.
 
-As sete estampas foram recebidas como JPEG. Os PNGs preservam os pixels originais sem ampliacao. Seus SVGs incorporam a imagem raster e NAO sao vetores editaveis. Os PDFs preservam a mesma imagem e usam pagina correspondente a 300 dpi, sem inventar resolucao.
+A pasta `00-papagaio-oficial` foi preservada sem alteracoes e contem a logotipo oficial em SVG vetorial, PNG e PDF originais.
 
-O fundo preto original foi preservado. Estes arquivos NAO foram separados em cores nem tiveram fundo removido. A grafica deve confirmar dimensao fisica, resolucao efetiva, fundo, perfil de cor e processo antes da producao. Nao usar o mockup fotografico como matriz de impressao. Para impressao maior, obter originais de alta resolucao ou vetores das sete artes.
+## Limites de producao
 
-Ver manifesto-tecnico.json para dimensoes de cada arte.
+As sete estampas partiram de imagens de 900 x 1600 pixels. A ampliacao atende a dimensao de arquivo informada, mas nao recupera detalhes nem cria um vetor real. E necessaria prova da grafica para validar recorte, nitidez, dimensao fisica, perfil e processo DTG; nao ha garantia de aprovacao automatica.
+
+Os antigos SVGs/PDFs das sete estampas apenas incorporavam imagens raster de baixa resolucao e foram retirados desta pasta para evitar uso acidental na producao. Continuam recuperaveis no historico Git. Isso nao se aplica ao SVG vetorial do papagaio, que foi mantido.
+
+Os mockups fotograficos ficam em `../mockups` e nao devem ser usados como matrizes de impressao. Nenhum produto foi cadastrado na HotPrinti nesta atualizacao.
+
+Ver `manifesto-tecnico.json` para resolucoes e hashes dos arquivos atuais.
