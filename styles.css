@@ -3422,3 +3422,14 @@ body.mm-lock{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
  .outfit-shop *, .outfit-shop *::after{animation:none!important;transition:none!important}
 }
+.outfit-intro[hidden]{display:none}
+.outfit-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#050505;color:#eae3db;pointer-events:none;animation:outfit-intro-exit .52s 1.48s both}
+.outfit-intro-stack{position:absolute;width:clamp(106px,13vw,190px);aspect-ratio:3/4}
+.outfit-intro-stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:7px solid #eae3db;animation:outfit-intro-card .95s cubic-bezier(.16,1,.3,1) both}
+.outfit-intro-stack img:nth-child(1){--turn:-13deg}
+.outfit-intro-stack img:nth-child(2){--turn:2deg;animation-delay:.13s}
+.outfit-intro-stack img:nth-child(3){--turn:15deg;animation-delay:.26s}
+.outfit-intro strong{position:relative;font:900 clamp(56px,9vw,130px)/1 Arial,sans-serif;letter-spacing:-.08em;mix-blend-mode:difference}
+.outfit-intro span{position:absolute;left:calc(50% + min(37vw,310px));top:calc(50% - 83px);font:18px monospace}
+@keyframes outfit-intro-card{from{opacity:0;transform:translateY(45vh) rotate(-28deg) scale(.68)}to{opacity:1;transform:rotate(var(--turn))}}
+@keyframes outfit-intro-exit{from{clip-path:inset(0)}to{clip-path:inset(0 0 100%)}}
