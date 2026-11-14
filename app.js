@@ -611,20 +611,29 @@ $$(".slides").forEach(box => {
   document.querySelectorAll('[data-shop-category]').forEach(link=>link.addEventListener('click',()=>{category=link.dataset.shopCategory;document.querySelectorAll('[data-shop-category]').forEach(a=>a.removeAttribute('aria-current'));link.setAttribute('aria-current','true');update()}));
   grid.toggleAttribute('data-editorial', true);
   const intro = document.querySelector('.outfit-intro');
-  if (intro && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    intro.hidden = false;
+  if (intro) {
+    const replay = document.querySelector('.outfit-replay');
     const counter = intro.querySelector('span');
-    const start = performance.now();
-    const tick = now => {
-      const progress = Math.min(1, (now - start) / 1250);
-      counter.textContent = String(Math.round(progress * 100)).padStart(3, '0');
-      if (progress < 1 && !intro.hidden) requestAnimationFrame(tick);
+    const play = () => {
+      if (!intro.hidden) return;
+      replay.disabled = true;
+      counter.textContent = '000';
+      intro.hidden = false;
+      const start = performance.now();
+      const tick = now => {
+        const progress = Math.min(1, (now - start) / 1250);
+        counter.textContent = String(Math.round(progress * 100)).padStart(3, '0');
+        if (progress < 1 && !intro.hidden) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      setTimeout(() => {
+        intro.hidden = true;
+        replay.disabled = false;
+      }, 2100);
     };
-    requestAnimationFrame(tick);
-    intro.addEventListener('animationend', event => {
-      if (event.target === intro) intro.hidden = true;
-    });
-    setTimeout(() => { intro.hidden = true; }, 2100);
+    replay.hidden = false;
+    replay.addEventListener('click', play);
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) play();
   }
   const masthead = document.querySelector('.outfit-masthead h1');
   if (masthead && 'ResizeObserver' in window) {
