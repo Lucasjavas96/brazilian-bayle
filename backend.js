@@ -22,7 +22,7 @@
       return data;
     },
     async after(action, payload = {}) {
-      const { data, error } = await client.rpc('brb_after', { action, payload });
+      const { data, error } = action === 'edit' ? await client.rpc('brb_after_edit', { payload }) : await client.rpc('brb_after', { action, payload });
       if (error) throw new Error(error.message || 'Não foi possível atualizar os afters.');
       return data;
     },
