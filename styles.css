@@ -3055,7 +3055,7 @@ body.mm-lock{overflow:hidden}
 .outfit-brand{font-weight:900;font-size:clamp(21px,3vw,34px);letter-spacing:-.07em}
 .outfit-brand sup,.outfit-cover sup{font-size:.22em;vertical-align:super;letter-spacing:0}
 .outfit-masthead{padding:4px 24px 0;overflow:hidden}
-.outfit-masthead h1{font-family:Arial,sans-serif;font-size:28vw;line-height:.79;letter-spacing:-.071em;font-weight:900;white-space:nowrap;margin:0 0 24px;color:var(--red);animation:outfit-reveal .8s cubic-bezier(.22,.61,.36,1) both}
+.outfit-masthead h1{font-family:Arial,sans-serif;font-size:28vw;line-height:.79;letter-spacing:-.071em;font-weight:900;white-space:nowrap;margin:0 0 24px;color:var(--red);scale:var(--outfit-title-scale,1) 1;transform-origin:left center;animation:outfit-reveal .8s cubic-bezier(.22,.61,.36,1) both}
 .outfit-editorial{border-top:5px solid var(--red);display:grid;grid-template-columns:1fr 2fr .8fr auto;gap:24px;padding:24px 0 36px;font:500 13px/1.2 Arial,sans-serif;color:var(--red)}
 .outfit-editorial p{margin:16px 0 0;max-width:380px;font-size:15px}
 .outfit-editorial a{display:block;color:inherit;text-decoration:none}

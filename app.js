@@ -610,6 +610,14 @@ $$(".slides").forEach(box => {
   search.addEventListener('input',update);sort.addEventListener('change',update);
   document.querySelectorAll('[data-shop-category]').forEach(link=>link.addEventListener('click',()=>{category=link.dataset.shopCategory;document.querySelectorAll('[data-shop-category]').forEach(a=>a.removeAttribute('aria-current'));link.setAttribute('aria-current','true');update()}));
   grid.toggleAttribute('data-editorial', true);
+  const masthead = document.querySelector('.outfit-masthead h1');
+  if (masthead && 'ResizeObserver' in window) {
+    const fit = () => {
+      masthead.style.setProperty('--outfit-title-scale', masthead.clientWidth / masthead.scrollWidth);
+    };
+    new ResizeObserver(fit).observe(masthead);
+    fit();
+  }
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
