@@ -19,7 +19,7 @@
 
   const seed = [];
 
-  let S = { user: null, canPost: false, owner: false, loading: true, loadErr: "", ready: false, tab: "procurar", q: "", modo: "todos", sel: null, rate: null, afters: seed, joins: {}, reqs: {}, rated: {}, fotos: [], err: {}, outra: false, edit: null, prefill: false };
+  let S = { user: null, canPost: false, owner: false, loading: true, loadErr: "", ready: false, tab: "procurar", q: "", modo: "todos", sel: null, rate: null, afters: seed, joins: {}, reqs: {}, rated: {}, fotos: [], err: {}, outra: false, edit: null, prefill: false, full: false };
 
   /* ---------- sessão (mesma conta do Spotted) ---------- */
   async function loadUser() {
@@ -83,7 +83,7 @@
 
   function cardHTML(a) {
     const m = avgAll(a);
-    return `<button type="button" class="af-card" data-open="${a.id}">
+    return `<button type="button" class="af-card${S.sel === a.id ? " is-sel" : ""}" data-open="${a.id}">
       ${photo(a, 0, "af-ph")}
       <div class="af-bd">${badge(a)}
         <h3>Depois de: ${esc(a.festa)}</h3>
@@ -144,11 +144,8 @@
     return `<h2 class="af-h2">Que eu ofereço</h2><div class="af-list">${mH}</div><h2 class="af-h2">Que eu vou</h2>${iH}`;
   }
 
-  /* ---------- detalhe e avaliação ---------- */
-  function sheetHTML() {
-    const a = S.afters.find(x => x.id === S.sel); if (!a) return "";
-    const j = S.joins[a.id], revealed = mine(a) || j === "confirmado", m = avgAll(a);
-    const gal = (a.fotos?.length ? a.fotos : [0, 1, 2]).map((_, i) => photo(a, i)).join("");
+  /* botão principal do after (entrar, avaliar, lotado…): usado no pop-up do celular e no balão do computador */
+  function ctaFor(a, j) {
     let cta;
     if (!S.user) cta = login(a.status === "encerrado" ? "Entre para ver este after." : "Entre para pedir uma vaga neste after.");
     else if (mine(a)) cta = '<button type="button" class="btn btn-ghost af-full" disabled>Este after é seu</button>';
@@ -159,6 +156,15 @@
     else if (a.status === "encerrado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>After encerrado</button>';
     else if (left(a) <= 0) cta = '<button type="button" class="btn btn-ghost af-full" disabled>Lotado</button>';
     else cta = `<button type="button" class="btn btn-y af-full" data-join="${a.id}">${a.modo === "livre" ? "Entrar no after" : "Pedir para entrar"}</button>`;
+    return cta;
+  }
+
+  /* ---------- detalhe e avaliação ---------- */
+  function sheetHTML() {
+    const a = S.afters.find(x => x.id === S.sel); if (!a) return "";
+    const j = S.joins[a.id], revealed = mine(a) || j === "confirmado", m = avgAll(a);
+    const gal = (a.fotos?.length ? a.fotos : [0, 1, 2]).map((_, i) => photo(a, i)).join("");
+    const cta = ctaFor(a, j);
     return `<div class="af-sheet" role="dialog" aria-modal="true" aria-label="Detalhes do after">
       <button type="button" class="af-close mono" data-close>Fechar</button>
       ${badge(a)}<h2>Depois de: ${esc(a.festa)}</h2>
@@ -169,6 +175,37 @@
       <h3>Avaliações ${m != null ? `<span class="af-star">${starsTxt(m)}</span> ${fmt(m)}` : ""}</h3>
       <div class="af-rates">${CRIT.map(([k, t]) => { const v = avg(a, k); return `<div class="af-rate"><span>${t}</span><div class="af-meter"><i style="width:${v ? v * 20 : 0}%"></i></div><span>${v ? fmt(v) : "-"}</span></div>`; }).join("")}</div>
       ${cta}${canEdit(a) ? `<button type="button" class="btn btn-ghost af-full" data-edit="${a.id}">Editar este after</button>` : ""}${S.owner ? `<button type="button" class="af-link mono" data-remove="${a.id}">Remover este after (owner)</button>` : ""}</div>`;
+  }
+
+
+  /* computador: o detalhe sai num balão ao lado do card, sobre o mapa; "Ver tudo" abre o resto no próprio balão */
+  const useBalloon = () => matchMedia("(min-width:1024px)").matches && S.tab === "procurar" && !!$("#afMap");
+  function balloonHTML(a) {
+    const j = S.joins[a.id], revealed = mine(a) || j === "confirmado", m = avgAll(a);
+    const gal = (a.fotos?.length ? a.fotos : [0, 1, 2]).map((_, i) => photo(a, i, "af-bph")).join("");
+    const resto = S.full ? `<p class="af-bdesc">${esc(a.desc || "Sem descrição.")}</p>
+      <div class="af-addr">${revealed ? `<b>Endereço</b>${esc(a.endereco)}` : "<b>Endereço protegido</b>Aparece aqui quando você for confirmado."}</div>
+      <h4>Avaliações ${m != null ? `<span class="af-star">${starsTxt(m)}</span> ${fmt(m)}` : ""}</h4>
+      <div class="af-rates">${CRIT.map(([k, t]) => { const v = avg(a, k); return `<div class="af-rate"><span>${t}</span><div class="af-meter"><i style="width:${v ? v * 20 : 0}%"></i></div><span>${v ? fmt(v) : "-"}</span></div>`; }).join("")}</div>${S.owner ? `<button type="button" class="af-link mono" data-remove="${a.id}">Remover este after (owner)</button>` : ""}` : "";
+    return `<div class="af-balloon${S.full ? " full" : ""}" role="dialog" aria-label="Detalhes do after"><div class="af-bin">
+      <button type="button" class="af-bclose" data-closeb aria-label="Fechar">×</button>
+      ${badge(a)}<h2>Depois de: ${esc(a.festa)}</h2>
+      <div class="af-meta"><span>${esc(a.bairro)}</span><span>${esc(a.hora)}</span><span>${left(a)} de ${a.vagas} vagas livres</span><span>@${esc(a.host)}</span></div>
+      <div class="af-bgal">${S.full ? gal : photo(a, 0, "af-bph")}</div>${resto}
+      <div class="af-bact">${ctaFor(a, j)}<button type="button" class="btn btn-ghost" data-full>${S.full ? "Ver menos" : "Ver tudo"}</button></div>
+      ${canEdit(a) ? `<button type="button" class="af-link mono" data-edit="${a.id}">Editar este after</button>` : ""}</div></div>`;
+  }
+  function positionBalloon() {
+    const b = $(".af-balloon"), side = $("#afMap"), card = S.sel && $('.af-card[data-open="' + S.sel + '"]'); if (!b || !side || !card) return;
+    const sr = side.getBoundingClientRect(), cr = card.getBoundingClientRect(), h = b.offsetHeight;
+    const top = Math.min(Math.max(0, cr.top - sr.top), Math.max(0, sr.height - h));
+    b.style.top = top + "px";
+    b.style.setProperty("--tail", Math.min(Math.max(18, cr.top + cr.height / 2 - sr.top - top), Math.max(18, h - 30)) + "px");
+  }
+  function placeBalloon() {
+    $(".af-balloon")?.remove();
+    const a = S.sel && S.afters.find(x => x.id === S.sel), side = $("#afMap"); if (!a || !side) return;
+    side.insertAdjacentHTML("beforeend", balloonHTML(a)); positionBalloon();
   }
 
   /* pop-up de cadastro: nome da festa, local, horário, vagas, fotos e como as pessoas entram */
@@ -195,9 +232,11 @@
     document.querySelectorAll(".af-seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tab === S.tab)));
     const who = $("#afWho"); who.hidden = !S.user; if (S.user) who.textContent = "Logado como @" + S.user;
     app.innerHTML = S.tab === "meus" ? meusHTML() : procurarHTML();
-    const scrim = $("#afScrim"), open = S.rate ? rateHTML() : S.edit ? formSheetHTML() : S.sel ? sheetHTML() : S.tab === "oferecer" ? formSheetHTML() : "";
+    const balao = !!S.sel && !S.rate && !S.edit && useBalloon();
+    const scrim = $("#afScrim"), open = S.rate ? rateHTML() : S.edit ? formSheetHTML() : (S.sel && !balao) ? sheetHTML() : S.tab === "oferecer" ? formSheetHTML() : "";
     scrim.hidden = !open; scrim.innerHTML = open; document.body.classList.toggle("af-lock", !!open);
     if (S.edit && S.prefill) { S.prefill = false; fillEdit(); }
+    if (balao) placeBalloon();
     if (open) { (lastFocus = lastFocus || document.activeElement); $(".af-close", scrim)?.focus(); }
     else if (lastFocus) { lastFocus.focus?.(); lastFocus = null; }
   }
@@ -216,6 +255,7 @@
   function refreshList() {
     const l = filtered();
     $("#afMap").innerHTML = mapHTML(); $("#afList").innerHTML = listHTML(l);
+    if (S.sel && useBalloon()) placeBalloon();
   }
 
   function publish() {
@@ -250,8 +290,10 @@
     const find = id => S.afters.find(x => x.id === id);
     let el;
     if ((el = g("[data-modo]"))) { S.modo = el.dataset.modo; render(); }
-    else if ((el = g("[data-open]"))) { S.sel = el.dataset.open; render(); }
-    else if (g("[data-close]")) { S.sel = null; render(); }
+    else if ((el = g("[data-open]"))) { const mesmo = S.sel === el.dataset.open && useBalloon(); S.sel = mesmo ? null : el.dataset.open; S.full = false; render(); }
+    else if (g("[data-closeb]")) { S.sel = null; S.full = false; render(); }
+    else if (g("[data-full]")) { S.full = !S.full; render(); }
+    else if (g("[data-close]")) { S.sel = null; S.full = false; render(); }
     else if ((el = g("[data-join]"))) {
       const a = find(el.dataset.join); if (!S.user || !a) return; el.disabled = true;
       await act("join", { id: a.id }, a.modo === "livre" ? "Você está dentro. Endereço liberado." : "Pedido enviado ao anfitrião");
@@ -281,6 +323,8 @@
     if (pin && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); S.sel = pin.dataset.open; render(); }
     if (e.key === "Escape" && (S.sel || S.rate || S.edit || S.tab === "oferecer")) { S.sel = null; S.rate = null; if (S.edit) closeForm(); if (S.tab === "oferecer") { S.tab = "procurar"; S.err = {}; S.fotos = []; S.outra = false; } render(); }
   });
+  let raf = 0; const reposicionar = () => { if (raf || !S.sel) return; raf = requestAnimationFrame(() => { raf = 0; positionBalloon(); }); };
+  window.addEventListener("scroll", reposicionar, { passive: true }); window.addEventListener("resize", () => { if (S.sel) render(); });
   document.addEventListener("input", e => { if (e.target.id === "afQ") { S.q = e.target.value; refreshList(); } });
   document.addEventListener("submit", e => { if (e.target.id === "afForm") { e.preventDefault(); publish(); } });
   document.addEventListener("change", e => {
