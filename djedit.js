@@ -8,7 +8,7 @@
   const main = $(".wiki-main", art), box = $(".wiki-box dl", art), figure = $(".wiki-photo", art);
   const SECTIONS = [["historia", "h-hist", "Trajetória como DJ", "p"], ["faixas", "h-faixas", "Faixas marcantes", "ul"], ["marcos", "h-marcos", "Marcos da carreira", "ul"], ["influencias", "h-infl", "Influências musicais", "ul"]];
   const FIELDS = [["nome_civil", "Nome real"], ["nascimento", "Local de nascimento"], ["ativo_desde", "DJ desde"], ["generos", "Principais gêneros"], ["selos", "Selos"]];
-  let items = {}, isOwner = false;
+  let items = {}, isOwner = false, isOnlyEditor = false;
 
   const lines = t => String(t || "").split(/\r?\n/).map(x => x.trim()).filter(Boolean);
   const paras = t => String(t || "").split(/\r?\n\s*\r?\n/).map(x => x.replace(/\s*\r?\n\s*/g, " ").trim()).filter(Boolean);
@@ -79,7 +79,7 @@
     const inp = (k, label) => `<label class="de-f"><span>${label}</span><input type="text" data-k="${k}" value="${esc(cur[k])}" maxlength="200"></label>`;
     dlg.innerHTML = `<div class="de-box" role="dialog" aria-modal="true" aria-label="Editar verbete">
       <button type="button" class="de-x mono" data-x>Fechar</button>
-      <p class="mono gold">👑 Owner · editar verbete</p><h2>${esc($("h1", main).textContent)}</h2>
+      <p class="mono gold">${isOnlyEditor ? "✏️ Equipe" : "👑 Owner"} · editar verbete</p><h2>${esc($("h1", main).textContent)}</h2>
       <p class="de-note">As mudanças aparecem para todo mundo assim que você salvar. Campo vazio apaga o item.</p>
       <label class="de-f"><span>Foto</span><input type="file" accept="image/jpeg,image/png,image/webp" data-foto><small>Enviada em WEBP, até 900 px no maior lado.</small></label>
       <img class="de-prev" alt="" hidden>
@@ -130,7 +130,7 @@
     try {
       if (!window.BRB?.content) return;
       const c = await BRB.content(P);
-      items = c?.items || {}; isOwner = !!c?.me_owner;
+      items = c?.items || {}; isOwner = !!(c?.me_owner || c?.me_editor); isOnlyEditor = !c?.me_owner;
       apply(); if (isOwner) addButton();
     } catch (e) { /* sem conexão: a página segue com o texto original */ }
   })();
