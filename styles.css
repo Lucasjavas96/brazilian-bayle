@@ -3151,3 +3151,5 @@ body.mm-lock{overflow:hidden}
 .af-bact .af-auth{flex:1 1 100%}
 .mbar .mbar-wordmark{display:block;height:36px;width:auto;max-width:100%;margin:0 auto}
 @media(max-width:440px){.mbar .mbar-wordmark{height:30px}}
+.hero-date .hero-date-logo{display:block;height:30px;width:auto;margin-top:4px}
+.outfit-brand .outfit-wordmark{width:auto;height:clamp(26px,3.2vw,38px);object-fit:contain}
