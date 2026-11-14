@@ -612,28 +612,16 @@ $$(".slides").forEach(box => {
   grid.toggleAttribute('data-editorial', true);
   const intro = document.querySelector('.outfit-intro');
   if (intro) {
-    const replay = document.querySelector('.outfit-replay');
     const counter = intro.querySelector('span');
-    const play = () => {
-      if (!intro.hidden) return;
-      replay.disabled = true;
-      counter.textContent = '000';
-      intro.hidden = false;
-      const start = performance.now();
-      const tick = now => {
-        const progress = Math.min(1, (now - start) / 1250);
-        counter.textContent = String(Math.round(progress * 100)).padStart(3, '0');
-        if (progress < 1 && !intro.hidden) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-      setTimeout(() => {
-        intro.hidden = true;
-        replay.disabled = false;
-      }, 2100);
+    intro.hidden = false;
+    const start = performance.now();
+    const tick = now => {
+      const progress = Math.min(1, (now - start) / 1250);
+      counter.textContent = String(Math.round(progress * 100)).padStart(3, '0');
+      if (progress < 1 && !intro.hidden) requestAnimationFrame(tick);
     };
-    replay.hidden = false;
-    replay.addEventListener('click', play);
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) play();
+    requestAnimationFrame(tick);
+    setTimeout(() => { intro.hidden = true; }, 2100);
   }
   const masthead = document.querySelector('.outfit-masthead h1');
   if (masthead && 'ResizeObserver' in window) {
