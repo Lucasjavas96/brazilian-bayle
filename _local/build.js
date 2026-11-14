@@ -169,6 +169,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <script src="/backend.js" defer></script>
 <script src="/events-2026.js" defer></script>
 <script src="/app.js" defer></script>
+${["/loja","/sacola","/checkout"].includes(meta.path) ? '<script src="/commerce.js" defer></script>' : ""}
 <script src="/media-guard.js" defer></script>
 <script src="/music.js" defer></script>
 <script src="/card-effects.js" defer></script>
@@ -398,7 +399,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "spotted.js", "account.js", "media-guard.js", "music.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "ingressos.js", "djhero.js", "manifesto.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "commerce.js", "spotted.js", "account.js", "media-guard.js", "music.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "ingressos.js", "djhero.js", "manifesto.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.copyFileSync(path.join(ROOT, "moderacao.css"), path.join(OUT, "moderacao.css"));
 // Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
 fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
