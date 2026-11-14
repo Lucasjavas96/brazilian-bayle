@@ -1,11 +1,11 @@
-import {quoteSedex} from './sedex.ts';
+import {melhorEnvioConfig,quoteMelhorEnvio} from './melhor-envio.ts';
 import {InputError,UUID,priceCart,customerData,mpPayload,publicOrder,sha,validSignature} from './core.ts';
 const env=(key:string)=>Deno.env.get(key)||'';
 const origins=new Set(['https://brazilianbayle.com.br','https://www.brazilianbayle.com.br','https://brazilian-bayle.vercel.app']);
 const mode=()=>env('BRB_MP_MODE')==='production'?'production':'test';
 const token=()=>env(mode()==='test'?'BRB_MP_TEST_ACCESS_TOKEN':'BRB_MP_ACCESS_TOKEN');
 const publicKey=()=>env(mode()==='test'?'BRB_MP_TEST_PUBLIC_KEY':'BRB_MP_PUBLIC_KEY');
-const enabled=()=>env('BRB_CHECKOUT_ENABLED')==='true' && !!token() && !!publicKey() && !!env('BRB_CHECKOUT_IP_SALT');
+const enabled=()=>env('BRB_CHECKOUT_ENABLED')==='true' && !!token() && !!publicKey() && !!env('BRB_CHECKOUT_IP_SALT') && (mode()==='test' || !!melhorEnvioConfig(env));
 async function db(path:string,method='GET',body?:unknown){
  const key=env('SUPABASE_SERVICE_ROLE_KEY');const r=await fetch(env('SUPABASE_URL')+'/rest/v1/'+path,{method,headers:{apikey:key,Authorization:'Bearer '+key,'Content-Type':'application/json',Prefer:'return=representation'},...(body===undefined?{}:{body:JSON.stringify(body)})});
  if(!r.ok)throw new InputError('Não foi possível registrar o pedido. Tente novamente.',503);const text=await r.text();return text?JSON.parse(text):null;
@@ -44,7 +44,7 @@ Deno.serve(async req=>{
   if(req.method==='OPTIONS')return new Response(null,{status:204,headers});
   if(route==='config'&&req.method==='GET'){
    const products=await db('brb_shop_products?select=id,name,price_cents,sizes,active&order=id');
-   return reply({mode:mode(),enabled:enabled(),deliveryAvailable:mode()==='test'||!!env('BRB_SEDEX_TOKEN'),publicKey:publicKey(),products,installments:1});
+   return reply({mode:mode(),enabled:enabled(),deliveryAvailable:!!melhorEnvioConfig(env),publicKey:publicKey(),products,installments:1});
   }
   if(req.method!=='POST')return reply({error:'Método não permitido.'},405);
   const body=await bodyOf(req);
@@ -55,8 +55,12 @@ Deno.serve(async req=>{
    const cep=String((route==='orders'?body.customer?.postal_code:body.postal_code)||'').trim();
    if(!/^\d{5}-?\d{3}$/.test(cep))throw new InputError('Informe um CEP válido.');
    const customer=route==='orders'?customerData(body.customer):null;
-   const shipping=mode()=== 'test' ? {service:null,shipping_cents:0,transit_business_days:null} : await quoteSedex(cep.replace('-', ''),cart.lines.reduce((n,line)=>n+line.quantity,0),env)
-    .catch(()=>{throw new InputError('Não foi possível cotar SEDEX agora. Confira o CEP e tente novamente.',503);});
+   const shippingConfig=melhorEnvioConfig(env);
+   if(!shippingConfig && mode()!=='test')throw new InputError('A entrega será liberada em breve.',503);
+   const shipping=shippingConfig
+    ? await quoteMelhorEnvio(cep.replace('-', ''),cart.lines,shippingConfig)
+      .catch(()=>{throw new InputError('Não foi possível cotar SEDEX agora. Confira o CEP e tente novamente.',503);})
+    : {service:null,shipping_cents:0,delivery_business_days:null};
    const priced={...cart,shipping_cents:shipping.shipping_cents,total_cents:cart.subtotal_cents+shipping.shipping_cents};
    if(route==='quote')return reply({...priced,...shipping,currency:'BRL'});
    if(!UUID.test(body.request_id||'')||!/^[a-f0-9]{64}$/.test(body.order_secret||''))throw new InputError('Atualize a página para continuar.');
