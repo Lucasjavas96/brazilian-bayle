@@ -614,14 +614,19 @@ $$(".slides").forEach(box => {
   if (intro) {
     const counter = intro.querySelector('span');
     intro.hidden = false;
-    const start = performance.now();
-    const tick = now => {
-      const progress = Math.min(1, (now - start) / 1250);
-      counter.textContent = String(Math.round(progress * 100)).padStart(3, '0');
-      if (progress < 1 && !intro.hidden) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-    setTimeout(() => { intro.hidden = true; }, 2100);
+    intro.classList.add('outfit-loading');
+    const ready = Promise.allSettled([...intro.querySelectorAll('img')].map(image => image.decode()));
+    Promise.race([ready, new Promise(resolve => setTimeout(resolve, 3500))]).then(() => {
+      intro.classList.remove('outfit-loading');
+      const start = performance.now();
+      const tick = now => {
+        const progress = Math.min(1, (now - start) / 1250);
+        counter.textContent = String(Math.round(progress * 100)).padStart(3, '0');
+        if (progress < 1 && !intro.hidden) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      setTimeout(() => { intro.hidden = true; }, 2100);
+    });
   }
   const masthead = document.querySelector('.outfit-masthead h1');
   if (masthead && 'ResizeObserver' in window) {
@@ -905,4 +910,19 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   const open = trigger => { close(); back = trigger; box = document.createElement("div"); box.className = "mm-scrim"; box.innerHTML = html(); document.body.appendChild(box); document.body.classList.add("mm-lock"); box.querySelector(".mm-x").focus(); };
   document.addEventListener("click", e => { const b = e.target.closest("[data-mmr-info]"); if (b) { open(b); return; } if (box && (e.target.closest("[data-mm-close]") || e.target.classList?.contains("mm-scrim"))) close(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && box) close(); });
+})();
+
+/* Ampliação dos mockups de frente e costas. */
+(() => {
+  const dialog = document.querySelector('.bayle-preview');
+  if (!dialog) return;
+  const image = dialog.querySelector('img');
+  document.querySelectorAll('[data-bayle-preview]').forEach(button => button.addEventListener('click', () => {
+    dialog.querySelector('h2').textContent = button.dataset.bayleTitle;
+    image.src = '/assets/shop/bayle/' + button.dataset.baylePreview + '-completo.webp';
+    image.alt = button.dataset.bayleTitle + ': frente com logotipo e estampa nas costas';
+    dialog.showModal();
+  }));
+  dialog.querySelector('.bayle-preview-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => { if (event.target === dialog) { const r=dialog.getBoundingClientRect(); if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom) dialog.close(); } });
 })();
