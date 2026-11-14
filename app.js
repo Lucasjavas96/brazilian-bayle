@@ -605,13 +605,21 @@ $$(".slides").forEach(box => {
     let count=0; ordered.forEach(product=>{product.hidden=!((category==='Todos'||product.dataset.category===category)&&product.dataset.name.includes(query));if(!product.hidden)count++;grid.append(product)});
     document.querySelector('#shopCount').textContent=`${count} ${count===1?'peça':'peças'}`;
     document.querySelector('.shop-empty').hidden=count!==0;
+    grid.toggleAttribute('data-editorial', !query && category==='Todos' && sort.value==='featured');
   };
   search.addEventListener('input',update);sort.addEventListener('change',update);
   document.querySelectorAll('[data-shop-category]').forEach(link=>link.addEventListener('click',()=>{category=link.dataset.shopCategory;document.querySelectorAll('[data-shop-category]').forEach(a=>a.removeAttribute('aria-current'));link.setAttribute('aria-current','true');update()}));
-  const slides=[...document.querySelectorAll('.shop-campaign-slide')];let index=0;
-  const show=offset=>{index=(index+offset+slides.length)%slides.length;slides.forEach((slide,i)=>slide.hidden=i!==index);document.querySelector('[data-campaign-count]').textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`};
-  document.querySelector('[data-campaign-prev]')?.addEventListener('click',()=>show(-1));
-  document.querySelector('[data-campaign-next]')?.addEventListener('click',()=>show(1));
+  grid.toggleAttribute('data-editorial', true);
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('outfit-entered');
+        observer.unobserve(entry.target);
+      }
+    }, {threshold: 0.12});
+    products.forEach(product => observer.observe(product));
+  }
 })();
 
 /* Géométrie responsive de l'arc: mêmes photos, sans dépendance React. */
