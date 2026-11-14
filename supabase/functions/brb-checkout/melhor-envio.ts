@@ -16,11 +16,20 @@ export function melhorEnvioConfig(env: Environment) {
   return {token, email, postalCode, service, weight, width, height, length, handlingDays};
 }
 
-type Line = {id: string; quantity: number; unit_cents: number};
+type Line = {quantity: number; unit_cents: number};
 
 export async function quoteMelhorEnvio(
   cep: string, lines: Line[], config: NonNullable<ReturnType<typeof melhorEnvioConfig>>, request = fetch,
 ) {
+  // Hotprinti specifies this package for up to three shirts.
+  const units = lines.flatMap(line => Array<number>(line.quantity).fill(line.unit_cents));
+  const volumes = [];
+  for (let index = 0; index < units.length; index += 3) {
+    volumes.push({
+      insurance: units.slice(index, index + 3).reduce((total, cents) => total + cents, 0) / 100,
+      weight: config.weight, width: config.width, height: config.height, length: config.length,
+    });
+  }
   const response = await request('https://melhorenvio.com.br/api/v2/me/shipment/calculate', {
     method: 'POST',
     headers: {
@@ -33,10 +42,7 @@ export async function quoteMelhorEnvio(
       from: {postal_code: config.postalCode},
       to: {postal_code: cep},
       services: String(config.service),
-      products: lines.map(line => ({
-        id: line.id, quantity: line.quantity, insurance_value: line.unit_cents / 100,
-        weight: config.weight, width: config.width, height: config.height, length: config.length,
-      })),
+      volumes,
     }),
     signal: AbortSignal.timeout(8000),
   });
