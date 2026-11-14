@@ -14,8 +14,9 @@
  const notice=text=>{const n=el('commerceNotice');if(n){n.textContent=text;n.hidden=!text;}};
  const fallbackNames=['Work It Harder','Make DJs Mix Again','Vintage Culture','5:46 · I’m Yours','Que Festa Boa','Techno Addict','Keep Following the Bayle'];
  const ids=['01-work-it','02-make-djs-mix-again','03-vintage-culture','04-546-im-yours','05-que-festa-boa','06-techno-addict','07-keep-following'];
+ const isPublicStore = /^(www\.)?brazilianbayle\.com\.br$/.test(location.hostname);
  let config,products=ids.map((id,i)=>({id,name:fallbackNames[i],price_cents:14990,sizes:['P','M','G','GG','XG'],active:true}));
- const configuration=request('config').then(value=>{config=value;products=value.products;return value;});
+ const configuration=request('config').then(value=>{config={...value,enabled:value.enabled && (!isPublicStore || value.mode==="production")};products=value.products;document.querySelectorAll("[data-commerce-entry]").forEach(entry=>{entry.hidden=!config.enabled;});return config;});
  // Handle rejected configuration even on the shop, where the bag remains usable offline.
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
  function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
