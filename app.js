@@ -593,48 +593,37 @@ $$(".slides").forEach(box => {
   });
 })();
 
-/* Busca, categorias e ordenação do catálogo. */
+/* Loja: abertura e entrada das peças no catálogo. */
 (() => {
   const grid=document.querySelector('.shop-products'); if(!grid)return;
   const products=[...grid.querySelectorAll('.shop-product')];
-  const search=document.querySelector('#shopSearch'), sort=document.querySelector('#shopSort');
-  let category='Todos';
-  const update=()=>{
-    const query=search.value.trim().toLocaleLowerCase('pt-BR');
-    const ordered=[...products].sort((a,b)=>sort.value==='low'?Number(a.dataset.price)-Number(b.dataset.price):sort.value==='high'?Number(b.dataset.price)-Number(a.dataset.price):sort.value==='name'?a.dataset.name.localeCompare(b.dataset.name,'pt-BR'):products.indexOf(a)-products.indexOf(b));
-    let count=0; ordered.forEach(product=>{product.hidden=!((category==='Todos'||product.dataset.category===category)&&product.dataset.name.includes(query));if(!product.hidden)count++;grid.append(product)});
-    document.querySelector('#shopCount').textContent=`${count} ${count===1?'peça':'peças'}`;
-    document.querySelector('.shop-empty').hidden=count!==0;
-    grid.toggleAttribute('data-editorial', !query && category==='Todos' && sort.value==='featured');
-  };
-  search.addEventListener('input',update);sort.addEventListener('change',update);
-  document.querySelectorAll('[data-shop-category]').forEach(link=>link.addEventListener('click',()=>{category=link.dataset.shopCategory;document.querySelectorAll('[data-shop-category]').forEach(a=>a.removeAttribute('aria-current'));link.setAttribute('aria-current','true');update()}));
-  grid.toggleAttribute('data-editorial', true);
   const intro = document.querySelector('.outfit-intro');
-  if (intro) {
+  /* Abertura: só na primeira visita da sessão, nunca para quem pediu menos movimento,
+     e curta (no máximo ~2 s mesmo com rede lenta) para não esconder o catálogo. */
+  const INTRO_KEY = 'bb_loja_intro_vista';
+  const INTRO_WAIT_MAX = 600;   // espera máxima pelas fotos da abertura
+  const INTRO_COUNT_MS = 900;   // duração do contador 000→100
+  const INTRO_TOTAL_MS = 1450;  // tempo até sumir (casa com outfit-intro-exit no CSS)
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let introSeen = false;
+  try { introSeen = sessionStorage.getItem(INTRO_KEY) === '1'; } catch (_) { /* armazenamento bloqueado: mostra a abertura */ }
+  if (intro && !reduceMotion && !introSeen) {
+    try { sessionStorage.setItem(INTRO_KEY, '1'); } catch (_) { /* segue sem lembrar */ }
     const counter = intro.querySelector('span');
     intro.hidden = false;
     intro.classList.add('outfit-loading');
     const ready = Promise.allSettled([...intro.querySelectorAll('img')].map(image => image.decode()));
-    Promise.race([ready, new Promise(resolve => setTimeout(resolve, 3500))]).then(() => {
+    Promise.race([ready, new Promise(resolve => setTimeout(resolve, INTRO_WAIT_MAX))]).then(() => {
       intro.classList.remove('outfit-loading');
       const start = performance.now();
       const tick = now => {
-        const progress = Math.min(1, (now - start) / 1250);
+        const progress = Math.min(1, (now - start) / INTRO_COUNT_MS);
         counter.textContent = String(Math.round(progress * 100)).padStart(3, '0');
         if (progress < 1 && !intro.hidden) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
-      setTimeout(() => { intro.hidden = true; }, 2100);
+      setTimeout(() => { intro.hidden = true; }, INTRO_TOTAL_MS);
     });
-  }
-  const masthead = document.querySelector('.outfit-masthead h1');
-  if (masthead && 'ResizeObserver' in window) {
-    const fit = () => {
-      masthead.style.setProperty('--outfit-title-scale', masthead.clientWidth / masthead.scrollWidth);
-    };
-    new ResizeObserver(fit).observe(masthead);
-    fit();
   }
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => {
