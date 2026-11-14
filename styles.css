@@ -3487,3 +3487,7 @@ body.mm-lock{overflow:hidden}
 /* Logo oficial na loja (prévia) */
 .hero-date .hero-date-logo{display:block;height:30px;width:auto;margin-top:4px}
 .outfit-brand .outfit-wordmark{width:auto;height:clamp(26px,3.2vw,38px);object-fit:contain}
+
+/* Logo oficial no topo da loja (no lugar do BR BAYLE em texto) */
+.outfit-masthead h1.outfit-logo-h1{font-size:0;line-height:0;scale:1;margin:0 0 28px}
+.outfit-masthead .outfit-logo{display:block;width:min(100%,900px);height:auto}
