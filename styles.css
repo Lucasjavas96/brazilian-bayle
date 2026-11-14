@@ -3151,3 +3151,5 @@ body.mm-lock{overflow:hidden}
 .af-bact{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .af-bact .btn{flex:1;margin-top:0;padding:11px 14px;font-size:12px;min-width:0}
 .af-bact .af-auth{flex:1 1 100%}
+.mbar .mbar-wordmark{display:block;height:36px;width:auto;max-width:100%;margin:0 auto}
+@media(max-width:440px){.mbar .mbar-wordmark{height:30px}}
