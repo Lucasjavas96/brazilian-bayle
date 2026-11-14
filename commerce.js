@@ -16,7 +16,7 @@
  const ids=['01-work-it','02-make-djs-mix-again','03-vintage-culture','04-546-im-yours','05-que-festa-boa','06-techno-addict','07-keep-following'];
  const isPublicStore = /^(www\.)?brazilianbayle\.com\.br$/.test(location.hostname);
  let config,products=ids.map((id,i)=>({id,name:fallbackNames[i],price_cents:14990,sizes:['P','M','G','GG','XG'],active:true}));
- const configuration=request('config').then(value=>{config={...value,enabled:value.enabled && (!isPublicStore || value.mode==="production")};products=value.products;document.querySelectorAll("[data-commerce-entry]").forEach(entry=>{entry.hidden=!config.enabled;});return config;});
+ const configuration=request('config').then(value=>{config={...value,enabled:value.enabled && (!isPublicStore || value.mode==="production")};products=value.products;return config;});
  // Handle rejected configuration even on the shop, where the bag remains usable offline.
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
  function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
@@ -35,8 +35,8 @@
  if(el('cartLines')){
   let quoted=null,customer=null;
   const resetQuote=()=>{quoted=null;el('checkoutCta').hidden=true;el('quoteButton').hidden=false;el('cartShipping').textContent='A calcular';el('cartTotal').textContent='—';sessionStorage.removeItem(ORDER);};
-  const render=()=>{const items=cart();lines(el('cartLines'),items,true);el('cartEmpty').hidden=items.length>0;el('deliveryForm').hidden=!items.length;el('cartSubtotal').textContent=money(items.reduce((v,i)=>v+(products.find(p=>p.id===i.id)?.price_cents||0)*i.quantity,0));resetQuote();};
-  render();configuration.then(()=>{render();if(!config.deliveryAvailable)notice('A coleção está em preparação. A entrega será liberada em breve.');else if(config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');}).catch(()=>{});
+  const render=()=>{const items=cart();lines(el('cartLines'),items,true);el('cartEmpty').hidden=items.length>0;el('deliveryForm').hidden=!items.length || (isPublicStore && !config?.enabled);el('cartSubtotal').textContent=money(items.reduce((v,i)=>v+(products.find(p=>p.id===i.id)?.price_cents||0)*i.quantity,0));resetQuote();};
+  render();configuration.then(()=>{render();if(isPublicStore && !config.enabled){el('deliveryForm').hidden=true;notice('As vendas online serão liberadas em breve. Você já pode montar sua sacola.');}else if(!config.deliveryAvailable)notice('A coleção está em preparação. A entrega será liberada em breve.');else if(config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');}).catch(()=>{});
   el('cartLines').addEventListener('click',event=>{const b=event.target.closest('button');if(!b)return;const items=cart();if(b.dataset.remove!==undefined)items.splice(Number(b.dataset.remove),1);else if(b.dataset.minus!==undefined){const i=items[Number(b.dataset.minus)];i.quantity--;if(i.quantity===0)items.splice(Number(b.dataset.minus),1);}else if(b.dataset.plus!==undefined){const i=items[Number(b.dataset.plus)];i.quantity=Math.min(5,i.quantity+1);}save(items);render();});
   el('deliveryForm').addEventListener('input',resetQuote);
   el('deliveryForm').noValidate=true;
