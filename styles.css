@@ -3372,21 +3372,24 @@ body.mm-lock{overflow:hidden}
 /* Loja: catálogo editorial independente da navegação das outras páginas. */
 .page-loja :is(.side,.mbar,.ticker,.shop-catalog-heading){display:none}
 .page-loja .content{margin:0;padding:0}
-.page-loja .outfit-shop{--paper:#eae3db;--ink:#181512;--red:#9e241b;background:var(--paper);color:var(--ink);font-family:"Inter Tight",Arial,sans-serif}
-.page-loja .outfit-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;background:var(--paper);color:var(--red)}
+.page-loja .outfit-shop{--paper:#eae3db;--ink:#181512;--red:#df1807;background:var(--paper);color:var(--ink);font-family:"Inter Tight",Arial,sans-serif}
+.page-loja .outfit-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:100px;padding:18px 24px;background:var(--paper);color:var(--red)}
 .outfit-nav div{display:flex;gap:clamp(16px,4vw,60px)}
 .outfit-nav a{color:inherit;text-decoration:none}
 .outfit-nav a:hover{text-decoration:underline}
 .outfit-brand{font-weight:900;font-size:clamp(21px,3vw,34px);letter-spacing:-.07em}
 .outfit-brand sup,.outfit-cover sup{font-size:.22em;vertical-align:super;letter-spacing:0}
-.outfit-cover{position:relative;display:grid;align-items:end;min-height:clamp(480px,77vh,900px);isolation:isolate;overflow:hidden;background:#181512;color:#fff}
-.outfit-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;animation:outfit-image 1s ease-out both}
-.outfit-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,#000b);z-index:-1}
-.outfit-cover-copy{padding:clamp(20px,4vw,60px);animation:outfit-reveal .65s ease-out both}
-.outfit-cover-copy p{letter-spacing:.15em}
-.outfit-cover h1{font-size:clamp(60px,15vw,230px);line-height:.86;letter-spacing:-.09em;margin:.12em 0 .18em;font-weight:900}
-.outfit-cover a{color:inherit;text-underline-offset:5px}
-.page-loja .outfit-shop .shop-catalog{padding:24px 24px 90px;background:var(--paper);color:var(--red);max-width:none;scroll-margin-top:75px}
+.outfit-masthead{padding:4px 24px 0;overflow:hidden}
+.outfit-masthead h1{font-family:Arial,sans-serif;font-size:28vw;line-height:.79;letter-spacing:-.071em;font-weight:900;white-space:nowrap;margin:0 0 24px;color:var(--red);animation:outfit-reveal .8s cubic-bezier(.22,.61,.36,1) both}
+.outfit-editorial{border-top:5px solid var(--red);display:grid;grid-template-columns:1fr 2fr .8fr auto;gap:24px;padding:24px 0 36px;font:500 13px/1.2 Arial,sans-serif;color:var(--red)}
+.outfit-editorial p{margin:16px 0 0;max-width:380px;font-size:15px}
+.outfit-editorial a{display:block;color:inherit;text-decoration:none}
+.outfit-editorial a+a{margin-top:48px}
+.outfit-editorial a:hover{text-decoration:underline}
+.outfit-filters{position:relative;margin:0 0 13px}
+.outfit-filters summary{width:max-content;cursor:pointer;font-size:13px}
+.outfit-nav [aria-current=page]{text-decoration:underline;text-underline-offset:5px}
+.page-loja .outfit-shop .shop-catalog{padding:0 24px 90px;background:var(--paper);color:var(--red);max-width:none;scroll-margin-top:75px}
 .page-loja .outfit-shop .shop-tools{background:transparent;border-color:#9e241b4d;color:var(--ink);margin:0 0 24px;padding:12px 0}
 .page-loja .outfit-shop .shop-tools :is(input,select){background:transparent;border-color:#9e241b80;color:var(--ink)}
 .page-loja .outfit-shop .shop-products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(40px,8vw,125px) 24px}
@@ -3405,9 +3408,12 @@ body.mm-lock{overflow:hidden}
 .page-loja .outfit-shop .shop-products[data-editorial] .shop-product:nth-child(7){grid-column:span 2}
 .outfit-shop .shop-product.outfit-entered{animation:outfit-reveal .65s cubic-bezier(.22,.61,.36,1) both}
 @keyframes outfit-reveal{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes outfit-image{from{opacity:.45;transform:scale(1.05)}to{opacity:1;transform:scale(1)}}
 @media(max-width:767px){
- .page-loja .outfit-nav{padding:14px}
+ .page-loja .outfit-nav{padding:14px;min-height:65px}
+ .outfit-masthead{padding-inline:14px}
+ .outfit-masthead h1{font-size:27vw;margin-bottom:14px}
+ .outfit-editorial{grid-template-columns:1fr 1fr;gap:14px;padding:16px 0 22px;border-top-width:3px}
+ .outfit-editorial a+a{margin-top:14px}
  .page-loja .outfit-shop .shop-catalog{padding-inline:14px}
  .page-loja .outfit-shop .shop-products{grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 12px}
  .page-loja .outfit-shop .shop-product-info{grid-template-columns:1fr}
