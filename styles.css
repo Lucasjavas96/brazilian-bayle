@@ -3483,3 +3483,7 @@ body.mm-lock{overflow:hidden}
 /* Logo oficial no menu de cima (no lugar do texto Brazilian Bayle) */
 .mbar .mbar-wordmark{display:block;height:36px;width:auto;max-width:100%;margin:0 auto}
 @media(max-width:440px){.mbar .mbar-wordmark{height:30px}}
+
+/* Logo oficial na loja (prévia) */
+.hero-date .hero-date-logo{display:block;height:30px;width:auto;margin-top:4px}
+.outfit-brand .outfit-wordmark{width:auto;height:clamp(26px,3.2vw,38px);object-fit:contain}
