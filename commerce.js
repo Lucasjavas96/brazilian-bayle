@@ -47,10 +47,10 @@
  const configuration=request('config').then(value=>{config={...value,enabled:value.enabled && (!isPublicStore || value.mode==="production")};products=value.products;return config;});
  // Handle rejected configuration even on the shop, where the bag remains usable offline.
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
- function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
+ function lines(container,items,controls=false,allowVariantEdit=true){container.replaceChildren();for(const [index,item] of items.entries()){
   const p=products.find(p=>p.id===item.id);if(!p)continue;const div=document.createElement('div');div.className='commerce-line';
   div.innerHTML=`<img src="${escape(variantPhoto(item.id,item.color))}" alt="${escape(p.name)} · ${escape(colors[item.color]||'Preta')} · costas"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color]||'Preta')} · ${escape(item.size)} · ${item.quantity} ${item.quantity===1?'unidade':'unidades'}</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}">−</button><span aria-live="polite">${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}"${item.quantity>=5?' disabled title="Máximo de 5 por peça"':''}>+</button><button type="button" class="remove" data-remove="${index}" aria-label="Remover ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}, da sacola">Remover</button></div>`:''}</div>`;
-  if(controls && p.active){
+  if(controls && allowVariantEdit && p.active){
    const form=document.createElement('form');
    form.className='commerce-fields';
    form.dataset.variantIndex=String(index);
@@ -63,7 +63,12 @@
     for(const value of values)select.add(new Option(name==='color'?colors[value]:value,value,value===selected,value===selected));
     field.append(select);form.append(field);
    }
-   div.lastElementChild.append(form);
+   const editor=document.createElement('details'),summary=document.createElement('summary');
+   editor.className='commerce-variant-edit';
+   summary.className='bayle-details';summary.textContent='Alterar';
+   summary.setAttribute('aria-label','Alterar cor e tamanho de '+p.name);
+   editor.append(summary,form);
+   div.lastElementChild.append(editor);
   }
   container.append(div);
  }}
@@ -105,8 +110,8 @@
   };
   const render=()=>{
    const items=cart();
-   lines(el('cartLines'),items,true);
    const choosing=variantForm&&!variantForm.hidden;
+   lines(el('cartLines'),items,true,!choosing);
    el('cartEmpty').hidden=items.length>0 || choosing;
    document.querySelector('.commerce-totals').hidden=!items.length;
    el('purchaseSteps').hidden=choosing || !items.length || !config || (!config.enabled && !config.deliveryAvailable);
@@ -147,6 +152,11 @@
    cepField.value=saved.postalCode;restoring=saved;quoteForm.requestSubmit();
   }
   let restoring=null;
+  el('cartLines').addEventListener('toggle',event=>{
+   const editor=event.target;
+   if(!editor.matches('.commerce-variant-edit[open]'))return;
+   el('cartLines').querySelectorAll('.commerce-variant-edit[open]').forEach(other=>{if(other!==editor)other.open=false;});
+  },true);
   el('cartLines').addEventListener('submit',event=>event.preventDefault());
   el('cartLines').addEventListener('change',event=>{
    const form=event.target.closest('form[data-variant-index]');
@@ -168,7 +178,8 @@
    }
    save(items);render();notice('');
    const selectedIndex=match<0?index:match-(match>index?1:0);
-   el('cartLines').querySelector('form[data-variant-index="'+selectedIndex+'"]')?.elements[event.target.name]?.focus();
+   const updated=el('cartLines').querySelector('form[data-variant-index="'+selectedIndex+'"]');
+   if(updated){updated.closest('details').open=true;updated.elements[event.target.name]?.focus();}
   });
   el('cartLines').addEventListener('click',event=>{
    const button=event.target.closest('button');
