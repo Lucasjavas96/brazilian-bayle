@@ -27,3 +27,6 @@ dist
 supabase/.temp/
 __pycache__/
 *.pyc
+
+# relatórios locais do impeccable
+.impeccable/

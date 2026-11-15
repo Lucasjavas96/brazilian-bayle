@@ -85,7 +85,7 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 ${meta.preload || ""}
 ${jsonld}
 </head>
-<body class="page-${meta.nav || "x"}">
+<body class="page-${meta.nav || "x"}${meta.funnel ? " is-funnel" : ""}">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
 <!-- barra do celular -->
@@ -122,7 +122,7 @@ ${jsonld}
 ${body.trim()}
   </main>
 
-  <footer class="foot">
+  ${meta.funnel ? `<footer class="foot foot-funnel"><div class="wrap foot-bar mono"><span>© ${YEAR} Brazilian Bayle · Compra processada pelo Mercado Pago</span><nav aria-label="Ajuda e políticas"><a href="/suporte">Suporte</a><a href="/termos">Termos</a><a href="/privacidade">Privacidade</a><a href="mailto:${EMAIL}">${EMAIL}</a></nav></div></footer>` : `<footer class="foot">
     ${meta.nofootjoin ? "" : `<div class="wrap foot-join">
       <h2 class="display foot-title">Faça parte de tudo <em>isso.</em></h2>
       <div class="foot-cta">
@@ -157,7 +157,7 @@ ${body.trim()}
       <span>A pista é brasileira e sempre vai ser.</span>
     </div>
     <div class="wrap foot-dev"><span class="dev-seal mono">Powered by <b>Lucas Javas</b></span></div>
-  </footer>
+  </footer>`}
 </div>
 
 ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}

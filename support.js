@@ -5,6 +5,7 @@
  const topics={conta:['Conta e acesso','Para recuperar a senha ou reenviar a confirmação, use as opções da página Entrar/Cadastrar. Se não resolver, descreva o erro abaixo.'],votacao:['Festas e votação','O ranking considera apenas avaliações de contas confirmadas. Se faltar uma festa ou um DJ no line-up, informe nome e data.'],album:['Álbum de DJs','Entre na sua conta para acessar o álbum pessoal. Se faltarem cartas ou houver erro no sorteio, conte o que aconteceu e quando.'],spotted:['Spotted e moderação','Para reportar conteúdo, informe o título ou identificação da publicação. Não reproduza dados pessoais de outras pessoas.'],clube:['BB Network','As candidaturas são analisadas pela equipe. Informe se sua dúvida é sobre candidatura, proposta do clube ou algum contato anterior.'],outro:['Outro assunto','Conte o que você precisa e encaminharemos à equipe.']};
  let topic='',review=false,id=null,sending=false;
  find('supportLaunch').onclick=()=>dialog.showModal();
+ document.querySelectorAll('[data-support-open]').forEach(b=>b.addEventListener('click',()=>dialog.showModal()));
  find('supportClose').onclick=()=>dialog.close();
  dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
  const stage=which=>{['supportTopics','supportDetails','supportReview'].forEach(key=>find(key).hidden=key!==which);find('supportStatus').textContent='';};
