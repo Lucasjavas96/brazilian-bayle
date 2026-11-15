@@ -8,9 +8,11 @@ export function priceCart(items: any[], products: any[], shipping: number) {
   const product = products.find(p => p.id === item.id);
   if (!product || !product.active || !Number.isSafeInteger(product.price_cents) || product.price_cents <= 0) throw new InputError('Esta peça ainda não está disponível para compra.', 409);
   if (!product.sizes.includes(item.size) || !Number.isInteger(item.quantity) || item.quantity < 1 || item.quantity > 5) throw new InputError('Tamanho ou quantidade inválidos.');
-  const key = item.id + ':' + item.size; if (seen.has(key)) throw new InputError('Item repetido.'); seen.add(key);
+  const color = item.color ?? 'preta';
+  if (!['preta','off-white','cinza'].includes(color)) throw new InputError('Cor inválida.');
+  const key = item.id + ':' + item.size + ':' + color; if (seen.has(key)) throw new InputError('Item repetido.'); seen.add(key);
   count += item.quantity; subtotal += product.price_cents * item.quantity;
-  return {id: product.id, name: product.name, size: item.size, quantity: item.quantity, unit_cents: product.price_cents};
+  return {id: product.id, name: product.name, size: item.size, color, quantity: item.quantity, unit_cents: product.price_cents};
  });
  if (count > 10 || subtotal > 1000000) throw new InputError('Limite da sacola excedido.');
  return {lines, subtotal_cents: subtotal, shipping_cents: cents(shipping), total_cents: subtotal + cents(shipping)};
