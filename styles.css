@@ -3574,3 +3574,4 @@ fieldset.commerce-fields legend+*{clear:both}
 .commerce-size-guide summary{display:flex;align-items:center;min-height:44px;color:var(--gold)}
 .commerce-size-guide :is(th,td){border-bottom-color:color-mix(in srgb,var(--gold) 27%,transparent)}
 .commerce-size-guide p{color:var(--ink-soft)}
+.commerce-line form.commerce-fields{margin-top:8px}.commerce-line form.commerce-fields label{margin:6px 0}
