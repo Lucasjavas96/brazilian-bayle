@@ -2,12 +2,19 @@
 (() => {
  'use strict';
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
- const CART='brb-cart-v1', ORDER='brb-checkout-order-v1', ADDED='brb-cart-added-v1', QUOTE='brb-quote-v1';
+ const CART='brb-cart-v1', ORDER='brb-checkout-order-v1', QUOTE='brb-quote-v1';
+ const colors={preta:'Preta','off-white':'Off-white',cinza:'Cinza'};
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
+ /* Medidas da camiseta oversized (PR #11), exibidas na sacola e no checkout. */
+ const sizeGuide=document.querySelector('[data-size-guide]');
+ if(sizeGuide){
+  const measurements=[['P','56,5','72','21'],['M','60','77','22'],['G','61','77,5','22,5'],['GG','65','84','23,5'],['XG','65,5','88,5','23,5']];
+  sizeGuide.innerHTML=`<details class="commerce-size-guide"><summary>Tabela de medidas</summary><table><caption class="sr-only">Medidas da camiseta em centímetros</caption><thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead><tbody>${measurements.map(([size,width,length,sleeve])=>`<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody></table><p>Medidas da peça em cm. Compare com uma camiseta sua estendida sobre uma mesa. Pode variar até 2 cm.</p></details>`;
+ }
  const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}};
- const cart=()=>{const value=read(CART);return Array.isArray(value)?value.filter(i=>typeof i.id==='string'&&/^[0-9]{2}-[a-z0-9-]+$/.test(i.id)&&['P','M','G','GG','XG'].includes(i.size)&&Number.isInteger(i.quantity)&&i.quantity>0&&i.quantity<=5).slice(0,20):[]};
+ const cart=()=>{const value=read(CART);return Array.isArray(value)?value.filter(i=>i&&Object.hasOwn(colors,i.color??'preta')&&typeof i.id==='string'&&/^[0-9]{2}-[a-z0-9-]+$/.test(i.id)&&['P','M','G','GG','XG'].includes(i.size)&&Number.isInteger(i.quantity)&&i.quantity>0&&i.quantity<=5).slice(0,20).map(item=>({...item,color:item.color??'preta'})):[]};
  /* Harden: navegador em modo privado ou com armazenamento cheio não pode travar a compra. */
  const storage={get:(area,key)=>{try{return area.getItem(key)}catch{return null}},set:(area,key,value)=>{try{area.setItem(key,value);return true}catch{return false}},remove:(area,key)=>{try{area.removeItem(key)}catch{}}};
  const save=items=>{const ok=storage.set(localStorage,CART,JSON.stringify(items));storage.remove(sessionStorage,ORDER);count();return ok;};
@@ -41,50 +48,28 @@
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
  function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
   const p=products.find(p=>p.id===item.id);if(!p)continue;const div=document.createElement('div');div.className='commerce-line';
-  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>Preto · ${escape(item.size)} · ${item.quantity} ${item.quantity===1?'unidade':'unidades'}</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade de ${escape(p.name)}, tamanho ${escape(item.size)}">−</button><span aria-live="polite">${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade de ${escape(p.name)}, tamanho ${escape(item.size)}"${item.quantity>=5?' disabled title="Máximo de 5 por peça"':''}>+</button><button type="button" class="remove" data-remove="${index}" aria-label="Remover ${escape(p.name)}, tamanho ${escape(item.size)}, da sacola">Remover</button></div>`:''}</div>`;
+  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color]||'Preta')} · ${escape(item.size)} · ${item.quantity} ${item.quantity===1?'unidade':'unidades'}</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}">−</button><span aria-live="polite">${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}"${item.quantity>=5?' disabled title="Máximo de 5 por peça"':''}>+</button><button type="button" class="remove" data-remove="${index}" aria-label="Remover ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}, da sacola">Remover</button></div>`:''}</div>`;
   container.append(div);
  }}
  count();window.addEventListener('storage',count);
- window.addEventListener('pageshow',()=>document.querySelectorAll('[data-add-cart]').forEach(button=>{button.disabled=false;}));
- document.querySelectorAll('[data-add-cart]').forEach(button=>button.addEventListener('click',()=>{
-  const box=button.closest('.shop-buy'),select=box.querySelector('select');
-  const id=button.dataset.addCart,size=select.value;const p=products.find(p=>p.id===id);
-  /* Harden: nenhum tamanho vem marcado; sem escolha, o botão pede o tamanho em vez de comprar P. */
-  if(!size){sizeError(box,select,'Escolha o tamanho antes de comprar.');select.focus();return;}
-  if(!p||!p.active||!p.sizes.includes(size)){button.textContent='Indisponível';return;}
-  button.disabled=true;
-  const items=cart();
-  if(!items.some(item=>item.id===id && item.size===size)){
-   items.push({id,size,quantity:1});
-   if(!save(items)){button.disabled=false;button.textContent='Libere os cookies para comprar';return;}
-  }
-  storage.set(sessionStorage,ADDED,JSON.stringify({id,size}));
-  location.assign('/sacola');
- }));
- /* Tabela de medidas: uma só janela para as sete peças; destaca o tamanho já escolhido no card. */
- const guide=el('sizeGuide');
- if(guide){
-  let opener=null;
-  const heads=[...guide.querySelector('thead tr').cells];
-  const mark=size=>guide.querySelectorAll('tr').forEach(row=>[...row.cells].forEach(cell=>cell.classList.toggle('is-picked',!!size&&heads[cell.cellIndex]?.textContent===size)));
-  document.querySelectorAll('[data-size-guide]').forEach(button=>button.addEventListener('click',()=>{
-   opener=button;mark(button.closest('.shop-buy')?.querySelector('select')?.value);
-   if(typeof guide.showModal==='function')guide.showModal();else guide.setAttribute('open','');
-  }));
-  guide.querySelector('.size-guide-close').addEventListener('click',()=>guide.close());
-  guide.addEventListener('click',event=>{if(event.target===guide)guide.close();});
-  guide.addEventListener('close',()=>opener?.focus());
- }
- function sizeError(box,select,text){
-  let note=box.querySelector('.shop-buy-error');
-  if(!note){note=document.createElement('p');note.className='shop-buy-error';note.id=select.closest('[data-name]')?.dataset.name?.replace(/\W+/g,'-')+'-size-error';note.setAttribute('role','alert');box.append(note);}
-  note.textContent=text;select.setAttribute('aria-invalid','true');select.setAttribute('aria-describedby',note.id);
-  select.addEventListener('change',()=>{note.textContent='';select.removeAttribute('aria-invalid');},{once:true});
- }
  if(el('cartLines')){
   const quoteForm=el('quoteForm'),deliveryForm=el('deliveryForm'),cepField=quoteForm.elements.postal_code;
   const quoteButton=el('quoteButton'),deliveryNext=el('deliveryNext'),checkoutButton=el('checkoutCta');
   const shippingChoices=el("shippingChoices"),shippingService=el("shippingService");
+  /* Comprar na loja abre /sacola?peca=<id>: aqui a pessoa escolhe cor e tamanho. */
+  const variantForm=el('chooseVariant');
+  const productId=new URLSearchParams(location.search).get('peca');
+  let selectedProduct=null;
+  const openVariant=()=>{
+   const p=products.find(product=>product.id===productId&&product.active!==false);
+   if(!variantForm||!p){variantForm&&(variantForm.hidden=true);return;}
+   selectedProduct=p;
+   el('variantName').textContent=p.name;
+   const sizeSelect=variantForm.elements.size,current=sizeSelect.value;
+   sizeSelect.replaceChildren(new Option('Selecione',''),...p.sizes.map(size=>new Option(size,size)));
+   if(p.sizes.includes(current))sizeSelect.value=current;
+   variantForm.hidden=false;
+  };
   let quoted=null, options=[], revision=0, pendingOrder=null;
   const showFreight=()=>{deliveryForm.hidden=true;quoteForm.hidden=false;};
   const resetQuote=()=>{
@@ -96,25 +81,37 @@
   const render=()=>{
    const items=cart();
    lines(el('cartLines'),items,true);
-   el('cartEmpty').hidden=items.length>0;
+   const choosing=variantForm&&!variantForm.hidden;
+   el('cartEmpty').hidden=items.length>0 || choosing;
    document.querySelector('.commerce-totals').hidden=!items.length;
-   el('purchaseSteps').hidden=!items.length || !config || (!config.enabled && !config.deliveryAvailable);
+   el('purchaseSteps').hidden=choosing || !items.length || !config || (!config.enabled && !config.deliveryAvailable);
    el('cartSubtotal').textContent=money(items.reduce((sum,item)=>sum+(products.find(product=>product.id===item.id)?.price_cents||0)*item.quantity,0));
    resetQuote();
   };
-  render();
+  openVariant();render();
   /* Confirma a peça que acabou de entrar e oferece voltar à coleção sem perder nada. */
-  const added=(()=>{try{return JSON.parse(storage.get(sessionStorage,ADDED)||'null')}catch{return null}})();
-  storage.remove(sessionStorage,ADDED);
-  const showAdded=()=>{
-   if(!added)return;const p=products.find(product=>product.id===added.id);if(!p)return;
+  const showAdded=(p,size,color)=>{
    const n=el('commerceAdded');if(!n)return;
-   n.replaceChildren(document.createTextNode(p.name+' · tamanho '+added.size+' entrou na sacola. '));
+   n.replaceChildren(document.createTextNode(p.name+' · '+colors[color]+' · '+size+' entrou na sacola. '));
    const back=document.createElement('a');back.href='/loja#catalogo';back.textContent='Continuar vendo a coleção';n.append(back);n.hidden=false;
   };
-  showAdded();
+  variantForm?.addEventListener('submit',event=>{
+   event.preventDefault();
+   const {size,color}=Object.fromEntries(new FormData(variantForm));
+   if(!selectedProduct?.sizes.includes(size)||!Object.hasOwn(colors,color))return;
+   const items=cart(),id=selectedProduct.id;
+   if(!items.some(item=>item.id===id && item.size===size && item.color===color)){
+    items.push({id,size,color,quantity:1});
+    if(!save(items)){el('variantError').textContent='Seu navegador bloqueou o armazenamento desta página. Libere os cookies para comprar.';return;}
+   }
+   variantForm.hidden=true;
+   const url=new URL(location.href);url.searchParams.delete('peca');history.replaceState(history.state,'',url);
+   showAdded(selectedProduct,size,color);
+   render();
+   if(!el('purchaseSteps').hidden)cepField.focus();
+  });
   configuration.then(()=>{
-   render();showAdded();restoreQuote();
+   openVariant();render();restoreQuote();
    if(isPublicStore && !config.enabled && !config.deliveryAvailable)notice('As vendas online e a consulta de frete serão liberadas em breve.');
    else if(!isPublicStore && config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');
   }).catch(()=>{});

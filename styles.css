@@ -3553,35 +3553,24 @@ fieldset.commerce-fields legend{float:left;width:100%;padding:0;margin:22px 0 2p
 fieldset.commerce-fields legend+*{clear:both}
 #addressStatus{margin:6px 0 0}
 #addressStatus:empty{display:none}
-.shop-buy-error{grid-column:1/-1;margin:2px 0 0;color:#ffb4a9;font-size:13px}
-.shop-buy select[aria-invalid=true]{border-color:#ffb4a9}
 .foot-funnel{padding:28px 0 32px}
 .foot-funnel .foot-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px}
 .foot-funnel nav{display:flex;flex-wrap:wrap;gap:0 20px}
 .foot-funnel nav a{display:inline-flex;align-items:center;min-height:44px;color:inherit}
 #editCep{display:inline-flex;align-items:center;min-height:44px}
-/* Tabela de medidas (medidas da peça, fornecedora) */
-.page-loja .outfit-shop .shop-buy-head{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.page-loja .outfit-shop .shop-buy-head .shop-sale-price{grid-column:auto}
-.shop-size-link{display:inline-flex;align-items:center;min-height:44px;padding:0;background:none;border:0;color:var(--gold);font:inherit;font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.shop-size-link:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.size-guide{--paper:#050505;--ink:#f6f4ef;--ink-soft:#bdb4a2;--gold:#d2b375;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:clamp(20px,4vw,32px);background:var(--paper);color:var(--ink);border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);overflow:auto}
-.size-guide::backdrop{background:rgb(0 0 0/.72)}
-.size-guide-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
-.size-guide h2{margin:0;font:700 clamp(24px,5vw,32px)/1.15 Syne,Arial,sans-serif}
-.size-guide h2 em{font:italic 400 1.1em 'Cormorant Garamond',serif;color:var(--gold)}
-.size-guide-close{min-height:44px;padding:0 4px;background:none;border:0;color:var(--gold);font:inherit;cursor:pointer}
-.size-guide-lead{margin:8px 0 18px;color:var(--ink-soft);font-size:14px}
-.size-guide-scroll{overflow-x:auto}
-.size-guide table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.size-guide th,.size-guide td{padding:12px 8px;text-align:center;border-bottom:1px solid color-mix(in srgb,var(--gold) 22%,transparent)}
-.size-guide thead th{font:700 15px Syne,Arial,sans-serif;color:var(--gold)}
-.size-guide tbody th{text-align:left;font-weight:600;font-size:14px}
-.size-guide tbody th small{display:block;font-weight:400;font-size:12px;color:var(--ink-soft)}
-.size-guide td{font-size:16px}
-.size-guide .is-picked{background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--ink)}
-.size-guide thead th.is-picked{color:var(--ink)}
-.size-guide-tip{margin:18px 0 6px;font-size:14px;line-height:1.55}
-.size-guide-fine{margin:0;font-size:12px;color:var(--ink-soft)}
-.size-guide{position:fixed;inset:0;margin:auto;height:fit-content}
-.size-guide-close{white-space:nowrap}
+
+.commerce-size-guide{margin:20px 0;font-size:13px}
+.commerce-size-guide summary{cursor:pointer;color:#d2b375;font-weight:700}
+.commerce-size-guide table{width:100%;border-collapse:collapse;margin-top:10px;font-variant-numeric:tabular-nums}
+.commerce-size-guide :is(th,td){padding:8px 4px;text-align:center;border-bottom:1px solid #d2b37544}
+.commerce-size-guide :is(th,td):first-child{text-align:left}
+.commerce-size-guide p{margin-top:10px;line-height:1.5;color:#b8b2a5}
+
+/* Sacola: escolha de cor e tamanho (PR #12) e tabela de medidas (PR #11) */
+.commerce-variant{padding-bottom:22px;margin-bottom:8px;border-bottom:1px solid color-mix(in srgb,var(--gold) 27%,transparent)}
+.commerce-variant[hidden]{display:none}
+.commerce-variant h3{margin:0 0 4px;font:600 20px Syne,Arial,sans-serif;color:var(--gold)}
+.commerce-variant select,.commerce-panel select,.commerce-panel input{min-height:44px}
+.commerce-size-guide summary{display:flex;align-items:center;min-height:44px;color:var(--gold)}
+.commerce-size-guide :is(th,td){border-bottom-color:color-mix(in srgb,var(--gold) 27%,transparent)}
+.commerce-size-guide p{color:var(--ink-soft)}
