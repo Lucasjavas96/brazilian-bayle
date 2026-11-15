@@ -29,11 +29,11 @@
 <meta name="twitter:image" content="https://brazilianbayle.com.br/assets/og-brazilian-v3.jpg">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=162e1407e3f1">
+<link rel="stylesheet" href="/styles.css?v=17238281dce1">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brazilian Bayle","url":"https://brazilianbayle.com.br","logo":"https://brazilianbayle.com.br/assets/icon-512.png","email":"contato@brazilianbayle.com.br","sameAs":["https://instagram.com/brazilianbayle"],"areaServed":"BR","description":"O Ranking da Pista Brasileira: todo DJ que toca aqui entra, a pista dá a nota. Votação da comunidade e o network BB Network."}</script>
 </head>
-<body class="page-loja">
+<body class="page-loja is-funnel">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
 <!-- barra do celular -->
@@ -78,45 +78,10 @@
   <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 
   <main id="conteudo" tabindex="-1">
-<header class="commerce-nav"><a href="/loja" class="commerce-brand"><img src="/assets/shop/bayle/papagaio-oficial.svg" alt="Brazilian Bayle" width="28" height="48"><span>BRAZILIAN <em>Bayle</em></span></a><a href="/sacola">Sacola <span data-cart-count>0</span></a></header><section class="commerce-shell"><a class="commerce-back" href="/sacola">← Rever sacola e entrega</a><p class="commerce-kicker">02 · PAGAMENTO SEGURO</p><h1>O próximo Bayle <em>é seu.</em></h1><div id="commerceNotice" class="commerce-notice" role="status" hidden></div><div class="commerce-columns"><aside class="commerce-panel"><h2>Resumo do pedido</h2><div id="paymentLines"></div><div data-size-guide></div><div class="commerce-totals"><p>Produtos <strong id="paymentSubtotal">—</strong></p><p>Frete <strong id="paymentShipping">—</strong></p><p class="commerce-grand">Total <strong id="paymentTotal">—</strong></p></div><p class="commerce-fine">Pagamento processado pelo Mercado Pago. Os dados do cartão são preenchidos em campos protegidos.</p></aside><section class="commerce-panel"><h2>Como prefere pagar?</h2><div class="commerce-methods" role="group" aria-label="Meio de pagamento"><button type="button" data-method="pix" aria-pressed="true">Pix</button><button type="button" data-method="card" aria-pressed="false">Cartão de crédito</button></div><section id="pixPanel"><p>Pague pelo aplicativo do seu banco. O pedido só será confirmado após a aprovação do pagamento.</p><button class="commerce-primary" id="pixPay" type="button" disabled>Gerar Pix</button><div id="pixResult" hidden><img id="pixQr" alt="QR Code para pagamento Pix" width="240" height="240" hidden><label>Pix copia e cola<textarea id="pixCode" readonly rows="4"></textarea></label><button type="button" class="commerce-secondary" id="copyPix">Copiar código Pix</button><p>Aguardando confirmação do banco.</p></div></section><form id="form-checkout" hidden><label>Número do cartão<div id="form-checkout__cardNumber" class="secure-field"></div></label><div class="commerce-fields"><label>Validade<div id="form-checkout__expirationDate" class="secure-field"></div></label><label>Código de segurança<div id="form-checkout__securityCode" class="secure-field"></div></label></div><label>Nome no cartão<input id="form-checkout__cardholderName" autocomplete="cc-name" required></label><label>E-mail do titular<input id="form-checkout__cardholderEmail" type="email" autocomplete="email" required></label><label>CPF do titular<input id="form-checkout__identificationNumber" inputmode="numeric" required></label><select id="form-checkout__issuer" hidden aria-label="Emissor"></select><select id="form-checkout__installments" hidden aria-label="Parcelas"></select><select id="form-checkout__identificationType" hidden aria-label="Tipo de documento"><option value="CPF">CPF</option></select><p class="commerce-fine">Pagamento à vista, em 1 parcela.</p><button class="commerce-primary" id="cardPay" type="submit" disabled>Pagar com cartão</button></form><p id="paymentMessage" class="commerce-notice" role="status" aria-live="polite">Carregando pedido…</p><button type="button" class="commerce-secondary" id="refreshPayment" hidden>Consultar pagamento</button></section></div></section>
+<header class="commerce-nav"><a href="/loja" class="commerce-brand"><img src="/assets/shop/bayle/papagaio-oficial.svg" alt="Brazilian Bayle" width="28" height="48"><span>BRAZILIAN <em>Bayle</em></span></a><div class="commerce-nav-links"><button type="button" class="commerce-help" data-support-open aria-haspopup="dialog" aria-controls="supportDialog">Ajuda</button><a href="/sacola">Sacola (<span data-cart-count>0</span>)</a></div></header><section class="commerce-shell"><a class="commerce-back" href="/sacola">← Rever sacola e entrega</a><p class="commerce-kicker">03 · PAGAMENTO SEGURO</p><h1>O próximo Bayle <em>é seu.</em></h1><div id="commerceNotice" class="commerce-notice" role="status" hidden></div><div class="commerce-columns"><aside class="commerce-panel"><h2>Resumo do pedido</h2><div id="paymentLines"></div><div data-size-guide></div><div class="commerce-totals"><p>Produtos <strong id="paymentSubtotal">—</strong></p><p>Frete <strong id="paymentShipping">—</strong></p><p class="commerce-grand">Total <strong id="paymentTotal">—</strong></p></div><p class="commerce-fine">Pagamento processado pelo Mercado Pago. Os dados do cartão são preenchidos em campos protegidos.</p></aside><section class="commerce-panel"><h2>Como prefere pagar?</h2><div class="commerce-methods" role="group" aria-label="Meio de pagamento"><button type="button" data-method="pix" aria-pressed="true">Pix</button><button type="button" data-method="card" aria-pressed="false">Cartão de crédito</button></div><section id="pixPanel"><p>Pague pelo aplicativo do seu banco. O pedido só será confirmado após a aprovação do pagamento.</p><button class="commerce-primary" id="pixPay" type="button" disabled>Gerar Pix</button><div id="pixResult" hidden><img id="pixQr" alt="QR Code para pagamento Pix" width="240" height="240" hidden><label>Pix copia e cola<textarea id="pixCode" readonly rows="4"></textarea></label><button type="button" class="commerce-secondary" id="copyPix">Copiar código Pix</button><p>Aguardando confirmação do banco.</p></div></section><form id="form-checkout" hidden><label>Número do cartão<div id="form-checkout__cardNumber" class="secure-field"></div></label><div class="commerce-fields"><label>Validade<div id="form-checkout__expirationDate" class="secure-field"></div></label><label>Código de segurança<div id="form-checkout__securityCode" class="secure-field"></div></label></div><label>Nome no cartão<input id="form-checkout__cardholderName" autocomplete="cc-name" required></label><label>E-mail do titular<input id="form-checkout__cardholderEmail" type="email" autocomplete="email" required></label><label>CPF do titular<input id="form-checkout__identificationNumber" inputmode="numeric" required></label><select id="form-checkout__issuer" hidden aria-label="Emissor"></select><select id="form-checkout__installments" hidden aria-label="Parcelas"></select><select id="form-checkout__identificationType" hidden aria-label="Tipo de documento"><option value="CPF">CPF</option></select><p class="commerce-fine">Pagamento à vista, em 1 parcela.</p><button class="commerce-primary" id="cardPay" type="submit" disabled>Pagar com cartão</button></form><p id="paymentMessage" class="commerce-notice" role="status" aria-live="polite">Carregando pedido…</p><button type="button" class="commerce-secondary" id="refreshPayment" hidden>Consultar pagamento</button></section></div></section>
   </main>
 
-  <footer class="foot">
-    <div class="wrap foot-join">
-      <h2 class="display foot-title">Faça parte de tudo <em>isso.</em></h2>
-      <div class="foot-cta">
-        <a href="/clube#candidatura" class="btn btn-y">Quero fazer parte do BB Network</a>
-        <a href="/ranking#votar" class="btn btn-ghost">Avaliar um DJ</a>
-      </div>
-    </div>
-    <div class="wrap foot-cols">
-      <div>
-        <h3 class="mono">Navegue</h3>
-        <ul><li><a href="/conta">Login / Cadastro</a></li><li><a href="/ranking">Avaliação dos DJs</a></li><li><a href="/intermediacao">Intermediação de ingressos</a></li><li><a href="/spotted">Spotted Bayle</a></li><li><a href="/after">Onde é o after?</a></li><li><a href="/album">Bayle All Stars Album</a></li><li><a href="/clube">BB Network</a></li><li><a href="/manifesto">Manifesto</a></li><li><a href="/djindex">DJ Index</a></li><li><a href="/curitiba">Bayle Curitibano</a></li><li><a href="/loja">Loja</a></li></ul>
-      </div>
-      <div>
-        <h3 class="mono">Contato</h3>
-        <ul>
-          <li><a href="mailto:contato@brazilianbayle.com.br">contato@brazilianbayle.com.br</a></li>
-          <li><a href="https://instagram.com/brazilianbayle" target="_blank" rel="noopener">Instagram @brazilianbayle</a></li>
-          <li>Curitiba (PR)</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="mono">Legal</h3>
-        <ul>
-          <li><a href="/suporte">Suporte</a></li>
-          <li><a href="/termos">Termos de uso</a></li>
-          <li><a href="/privacidade">Política de privacidade</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="wrap foot-bar mono">
-      <span>© 2026 Brazilian Bayle · projeto independente, sem vínculo com os artistas e casas citados</span>
-      <span>A pista é brasileira e sempre vai ser.</span>
-    </div>
-    <div class="wrap foot-dev"><span class="dev-seal mono">Powered by <b>Lucas Javas</b></span></div>
-  </footer>
+  <footer class="foot foot-funnel"><div class="wrap foot-bar mono"><span>© 2026 Brazilian Bayle · Compra processada pelo Mercado Pago</span><nav aria-label="Ajuda e políticas"><a href="/suporte">Suporte</a><a href="/termos">Termos</a><a href="/privacidade">Privacidade</a><a href="mailto:contato@brazilianbayle.com.br">contato@brazilianbayle.com.br</a></nav></div></footer>
 </div>
 
 <button class="support-launch" id="supportLaunch" type="button" aria-haspopup="dialog" aria-controls="supportDialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 4h16v12H9l-5 4V4Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Precisa de ajuda?</span></button>
@@ -148,12 +113,12 @@
 <script src="/backend-config.js" defer></script>
 <script src="/backend.js?v=422a5ca5ab2f" defer></script>
 <script src="/events-2026.js?v=86dd389924fc" defer></script>
-<script src="/app.js?v=021eed251c88" defer></script>
+<script src="/app.js?v=06e7314d9e5c" defer></script>
 <script src="/commerce.js" defer></script>
 <script src="/media-guard.js" defer></script>
 <script src="/music.js" defer></script>
 <script src="/card-effects.js?v=b3f699672fd6" defer></script>
-<script src="/support.js?v=a73fff124c35" defer></script>
+<script src="/support.js?v=f8889b3b0925" defer></script>
 <script src="/session-menu.js?v=cc9a76f30558" defer></script>
 <script src="/points-badge.js?v=f3a85f162959" defer></script>
 
