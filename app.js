@@ -626,7 +626,7 @@ $$(".slides").forEach(box => {
     });
   }
   /* Camisa andando: o vídeo só baixa e toca com o card na tela, e pausa ao sair.
-     Quem pede menos movimento fica com a capa parada (costas da peça). */
+     Toca sempre: o vídeo é o produto, não enfeite. */
   const videos = [...grid.querySelectorAll('video.shop-video[data-src]')];
   const VIDEO_SECONDS = 8;        // duração do loop "andando"
   const DRAG_SECONDS = 6;         // arrastar a largura inteira do card avança 6 s do giro
@@ -640,7 +640,8 @@ $$(".slides").forEach(box => {
     if (video.dataset.loading) return;
     video.dataset.loading = '1';
     video.addEventListener('loadedmetadata', () => {
-      video.currentTime = (index * VIDEO_SECONDS / videos.length) % (video.duration || VIDEO_SECONDS);
+      /* razão áurea: pontos de início bem espalhados, sem dois vizinhos parecidos */
+      video.currentTime = ((index * 0.618 + 0.13) % 1) * (video.duration || VIDEO_SECONDS);
       play(video);
     }, {once: true});
     fetch(video.dataset.src)
@@ -649,11 +650,11 @@ $$(".slides").forEach(box => {
       .catch(() => { video.src = video.dataset.src; /* sem blob: toca direto, o arraste fica mais lento */ });
   };
   const play = video => {
-    if (reduceMotion || video.dataset.dragging || !visibleVideos.has(video)) return;
+    if (video.dataset.dragging || !visibleVideos.has(video)) return;
     const attempt = video.play();
     if (attempt) attempt.catch(() => { /* autoplay bloqueado (economia de dados): fica a capa */ });
   };
-  if (videos.length && 'IntersectionObserver' in window && !reduceMotion) {
+  if (videos.length && 'IntersectionObserver' in window) {
     const videoObserver = new IntersectionObserver(entries => {
       for (const entry of entries) {
         const video = entry.target;
