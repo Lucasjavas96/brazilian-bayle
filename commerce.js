@@ -3,6 +3,7 @@
  'use strict';
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
  const CART='brb-cart-v1', ORDER='brb-checkout-order-v1';
+ const colors={preta:'Preta','off-white':'Off-white',cinza:'Cinza'};
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
  const sizeGuide=document.querySelector('[data-size-guide]');
@@ -27,7 +28,7 @@
 
  const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}};
- const cart=()=>{const value=read(CART);return Array.isArray(value)?value.filter(i=>typeof i.id==='string'&&/^[0-9]{2}-[a-z0-9-]+$/.test(i.id)&&['P','M','G','GG','XG'].includes(i.size)&&Number.isInteger(i.quantity)&&i.quantity>0&&i.quantity<=5).slice(0,20):[]};
+ const cart=()=>{const value=read(CART);return Array.isArray(value)?value.filter(i=>i&&Object.hasOwn(colors,i.color??'preta')&&typeof i.id==='string'&&/^[0-9]{2}-[a-z0-9-]+$/.test(i.id)&&['P','M','G','GG','XG'].includes(i.size)&&Number.isInteger(i.quantity)&&i.quantity>0&&i.quantity<=5).slice(0,20).map(item=>({...item,color:item.color??'preta'})):[]};
  const save=items=>{localStorage.setItem(CART,JSON.stringify(items));sessionStorage.removeItem(ORDER);count();};
  const count=()=>document.querySelectorAll('[data-cart-count]').forEach(n=>n.textContent=String(cart().reduce((sum,i)=>sum+i.quantity,0)));
  async function request(route,body){const response=await fetch(API+'/'+route,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},cache:'no-store',...(body?{body:JSON.stringify(body)}:{})});const data=await response.json();if(!response.ok)throw new Error(data.error||'Não foi possível conectar. Tente novamente.');return data;}
@@ -41,26 +42,17 @@
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
  function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
   const p=products.find(p=>p.id===item.id);if(!p)continue;const div=document.createElement('div');div.className='commerce-line';
-  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>Preto · ${escape(item.size)} · ${item.quantity} unidade(s)</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade">−</button><span>${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade">+</button><button type="button" class="remove" data-remove="${index}">Remover</button></div>`:''}</div>`;
+  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color??'preta'])} · ${escape(item.size)} · ${item.quantity} unidade(s)</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade">−</button><span>${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade">+</button><button type="button" class="remove" data-remove="${index}">Remover</button></div>`:''}</div>`;
   container.append(div);
  }}
  count();window.addEventListener('storage',count);
- window.addEventListener('pageshow',()=>document.querySelectorAll('[data-add-cart]').forEach(button=>{button.disabled=false;}));
- document.querySelectorAll('[data-add-cart]').forEach(button=>button.addEventListener('click',()=>{
-  const id=button.dataset.addCart,size=button.closest('.shop-buy').querySelector('select').value;const p=products.find(p=>p.id===id);
-  if(!p||!p.active||!p.sizes.includes(size)){button.textContent='Indisponível';return;}
-  button.disabled=true;
-  const items=cart();
-  if(!items.some(item=>item.id===id && item.size===size)){
-   items.push({id,size,quantity:1});
-   save(items);
-  }
-  location.assign('/sacola');
- }));
  if(el('cartLines')){
   const quoteForm=el('quoteForm'),deliveryForm=el('deliveryForm'),cepField=quoteForm.elements.postal_code;
   const quoteButton=el('quoteButton'),deliveryNext=el('deliveryNext'),checkoutButton=el('checkoutCta');
   const shippingChoices=el("shippingChoices"),shippingService=el("shippingService");
+  const variantForm=el('chooseVariant');
+  const productId=new URLSearchParams(location.search).get('peca');
+  let selectedProduct;
   let quoted=null, options=[], revision=0, pendingOrder=null;
   const showFreight=()=>{deliveryForm.hidden=true;quoteForm.hidden=false;};
   const resetQuote=()=>{
@@ -72,8 +64,8 @@
   const render=()=>{
    const items=cart();
    lines(el('cartLines'),items,true);
-   el('cartEmpty').hidden=items.length>0;
-   el('purchaseSteps').hidden=!items.length || !config || (!config.enabled && !config.deliveryAvailable);
+   el('cartEmpty').hidden=items.length>0 || !variantForm.hidden;
+   el('purchaseSteps').hidden=!variantForm.hidden || !items.length || !config || (!config.enabled && !config.deliveryAvailable);
    el('cartSubtotal').textContent=money(items.reduce((sum,item)=>sum+(products.find(product=>product.id===item.id)?.price_cents||0)*item.quantity,0));
    resetQuote();
   };
@@ -83,6 +75,21 @@
    if(isPublicStore && !config.enabled && !config.deliveryAvailable)notice('As vendas online e a consulta de frete serão liberadas em breve.');
    else if(!isPublicStore && config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');
   }).catch(()=>{});
+  variantForm.addEventListener('submit',event=>{
+   event.preventDefault();
+   const {size,color}=Object.fromEntries(new FormData(variantForm));
+   if(!selectedProduct?.sizes.includes(size)||!Object.hasOwn(colors,color))return;
+   const items=cart(),id=selectedProduct.id;
+   if(!items.some(item=>item.id===id && item.size===size && item.color===color)){
+    items.push({id,size,color,quantity:1});save(items);
+   }
+   variantForm.hidden=true;
+   const url=new URL(location.href);
+   url.searchParams.delete('peca');
+   history.replaceState(history.state,'',url);
+   render();
+   if(!el('purchaseSteps').hidden)cepField.focus();
+  });
   el('cartLines').addEventListener('click',event=>{
    const button=event.target.closest('button');
    if(!button || checkoutButton.disabled)return;
