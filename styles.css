@@ -3698,8 +3698,6 @@ fieldset.commerce-fields legend+*{clear:both}
 .shop-product-name a{color:inherit;text-decoration:none}.shop-product-name a:hover{text-decoration:underline}
 .page-produto .foot-funnel{content-visibility:visible;contain-intrinsic-size:none}
 
-/* ===== Menu: papagaio do logo novo no letreiro (pedido do Lucas, 15/11/2026) ===== */
-.mbar .mbar-tag{grid-template-columns:auto auto;column-gap:9px;align-items:center}
-.mbar .mbar-tag .mbar-parrot{grid-row:1 / span 2;width:auto;height:46px;display:block}
-.mbar .mbar-tag b,.mbar .mbar-tag span{grid-column:2}
-@media (max-width:440px){.mbar .mbar-tag{max-width:150px;column-gap:6px}.mbar .mbar-tag .mbar-parrot{height:38px}}
+/* ===== Menu: letreiro só com o logo, maior (pedido do Lucas, 15/11/2026) ===== */
+.mbar .mbar-wordmark{height:54px}
+@media(max-width:440px){.mbar .mbar-wordmark{height:42px}.mbar .mbar-tag{max-width:130px}}
