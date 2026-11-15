@@ -3515,3 +3515,10 @@ body.mm-lock{overflow:hidden}
 .commerce-size-guide :is(th,td){padding:8px 4px;text-align:center;border-bottom:1px solid #d2b37544}
 .commerce-size-guide :is(th,td):first-child{text-align:left}
 .commerce-size-guide p{margin-top:10px;line-height:1.5;color:#b8b2a5}
+
+.page-loja .outfit-shop .shop-photo{aspect-ratio:3/4}
+.commerce-variant-image{display:block;width:min(100%,300px);height:auto;aspect-ratio:3/4;object-fit:cover;margin:12px 0}
+.page-sacola .commerce-line{grid-template-columns:minmax(105px,36%) minmax(0,1fr)}
+.page-sacola .commerce-line img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.page-sacola .commerce-line-controls{flex-wrap:wrap}
+@media(max-width:420px){.page-sacola .commerce-line{grid-template-columns:minmax(90px,33%) minmax(0,1fr);gap:10px}}

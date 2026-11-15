@@ -4,6 +4,7 @@
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
  const CART='brb-cart-v1', ORDER='brb-checkout-order-v1';
  const colors={preta:'Preta','off-white':'Off-white',cinza:'Cinza'};
+ const variantPhoto=(id,color)=>'/assets/shop/bayle/'+id+(color==='cinza'||color==='off-white'?'-'+color:'')+'-costas.webp';
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
  const sizeGuide=document.querySelector('[data-size-guide]');
@@ -42,7 +43,7 @@
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
  function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
   const p=products.find(p=>p.id===item.id);if(!p)continue;const div=document.createElement('div');div.className='commerce-line';
-  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color??'preta'])} · ${escape(item.size)} · ${item.quantity} unidade(s)</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade">−</button><span>${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade">+</button><button type="button" class="remove" data-remove="${index}">Remover</button></div>`:''}</div>`;
+  div.innerHTML=`<img src="${escape(variantPhoto(item.id,item.color))}" alt="${escape(p.name)} · ${escape(colors[item.color??'preta'])} · costas"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color??'preta'])} · ${escape(item.size)} · ${item.quantity} unidade(s)</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade">−</button><span>${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade">+</button><button type="button" class="remove" data-remove="${index}">Remover</button></div>`:''}</div>`;
   if(controls && p.active){
    const form=document.createElement('form');
    form.className='commerce-fields';
@@ -68,6 +69,14 @@
   const variantForm=el('chooseVariant');
   const productId=new URLSearchParams(location.search).get('peca');
   let selectedProduct;
+  const variantImage=el('variantImage');
+  function updateVariantImage(){
+   if(!selectedProduct)return;
+   const color=variantForm.elements.color.value||'preta';
+   variantImage.src=variantPhoto(selectedProduct.id,color);
+   variantImage.alt=selectedProduct.name+' · '+colors[color]+' · costas';
+  }
+  variantForm.elements.color.addEventListener('change',updateVariantImage);
   let quoted=null, options=[], revision=0, pendingOrder=null;
   const showFreight=()=>{deliveryForm.hidden=true;quoteForm.hidden=false;};
   const resetQuote=()=>{
@@ -86,6 +95,13 @@
   };
   render();
   configuration.then(()=>{
+   selectedProduct=products.find(product=>product.id===productId && product.active);
+   if(selectedProduct){
+    el('variantName').textContent=selectedProduct.name;
+    variantForm.elements.size.append(...selectedProduct.sizes.map(size=>new Option(size,size)));
+    updateVariantImage();
+    variantForm.hidden=false;
+   }else if(productId){notice('Esta camiseta está indisponível. Escolha outra na coleção.');}
    render();
    if(isPublicStore && !config.enabled && !config.deliveryAvailable)notice('As vendas online e a consulta de frete serão liberadas em breve.');
    else if(!isPublicStore && config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');
