@@ -25,12 +25,17 @@
   container.append(div);
  }}
  count();window.addEventListener('storage',count);
+ window.addEventListener('pageshow',()=>document.querySelectorAll('[data-add-cart]').forEach(button=>{button.disabled=false;}));
  document.querySelectorAll('[data-add-cart]').forEach(button=>button.addEventListener('click',()=>{
   const id=button.dataset.addCart,size=button.closest('.shop-buy').querySelector('select').value;const p=products.find(p=>p.id===id);
   if(!p||!p.active||!p.sizes.includes(size)){button.textContent='Indisponível';return;}
-  const items=cart(),existing=items.find(i=>i.id===id&&i.size===size);
-  if(existing){if(existing.quantity>=5){button.textContent='Máximo de 5 por tamanho';return;}existing.quantity++;}else items.push({id,size,quantity:1});
-  save(items);location.assign('/sacola');
+  button.disabled=true;
+  const items=cart();
+  if(!items.some(item=>item.id===id && item.size===size)){
+   items.push({id,size,quantity:1});
+   save(items);
+  }
+  location.assign('/sacola');
  }));
  if(el('cartLines')){
   const quoteForm=el('quoteForm'),deliveryForm=el('deliveryForm'),cepField=quoteForm.elements.postal_code;
