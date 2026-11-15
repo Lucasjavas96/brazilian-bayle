@@ -4,13 +4,14 @@
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
  const CART='brb-cart-v1', ORDER='brb-checkout-order-v1', QUOTE='brb-quote-v1';
  const colors={preta:'Preta','off-white':'Off-white',cinza:'Cinza'};
+ const variantPhoto=(id,color)=>'/assets/shop/bayle/'+id+(color==='cinza'||color==='off-white'?'-'+color:'')+'-costas.webp';
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
  /* Medidas da camiseta oversized (PR #11), exibidas na sacola e no checkout. */
  const sizeGuide=document.querySelector('[data-size-guide]');
  if(sizeGuide){
   const measurements=[['P','56,5','72','21'],['M','60','77','22'],['G','61','77,5','22,5'],['GG','65','84','23,5'],['XG','65,5','88,5','23,5']];
-  sizeGuide.innerHTML=`<details class="commerce-size-guide"><summary>Tabela de medidas</summary><table><caption class="sr-only">Medidas da camiseta em centímetros</caption><thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead><tbody>${measurements.map(([size,width,length,sleeve])=>`<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody></table><p>Medidas da peça em cm. Compare com uma camiseta sua estendida sobre uma mesa. Pode variar até 2 cm.</p></details>`;
+  sizeGuide.innerHTML=`<details class="commerce-size-guide" open><summary>Tabela de medidas</summary><table><caption class="sr-only">Medidas da camiseta em centímetros</caption><thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead><tbody>${measurements.map(([size,width,length,sleeve])=>`<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody></table><p>Medidas da peça em cm. Compare com uma camiseta sua estendida sobre uma mesa. Pode variar até 2 cm.</p></details>`;
  }
  const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}};
@@ -46,10 +47,10 @@
  const configuration=request('config').then(value=>{config={...value,enabled:value.enabled && (!isPublicStore || value.mode==="production")};products=value.products;return config;});
  // Handle rejected configuration even on the shop, where the bag remains usable offline.
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
- function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
+ function lines(container,items,controls=false,allowVariantEdit=true){container.replaceChildren();for(const [index,item] of items.entries()){
   const p=products.find(p=>p.id===item.id);if(!p)continue;const div=document.createElement('div');div.className='commerce-line';
-  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color]||'Preta')} · ${escape(item.size)} · ${item.quantity} ${item.quantity===1?'unidade':'unidades'}</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}">−</button><span aria-live="polite">${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}"${item.quantity>=5?' disabled title="Máximo de 5 por peça"':''}>+</button><button type="button" class="remove" data-remove="${index}" aria-label="Remover ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}, da sacola">Remover</button></div>`:''}</div>`;
-  if(controls && p.active){
+  div.innerHTML=`<img src="${escape(variantPhoto(item.id,item.color))}" alt="${escape(p.name)} · ${escape(colors[item.color]||'Preta')} · costas"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color]||'Preta')} · ${escape(item.size)} · ${item.quantity} ${item.quantity===1?'unidade':'unidades'}</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}">−</button><span aria-live="polite">${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}"${item.quantity>=5?' disabled title="Máximo de 5 por peça"':''}>+</button><button type="button" class="remove" data-remove="${index}" aria-label="Remover ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}, da sacola">Remover</button></div>`:''}</div>`;
+  if(controls && allowVariantEdit && p.active){
    const form=document.createElement('form');
    form.className='commerce-fields';
    form.dataset.variantIndex=String(index);
@@ -62,7 +63,12 @@
     for(const value of values)select.add(new Option(name==='color'?colors[value]:value,value,value===selected,value===selected));
     field.append(select);form.append(field);
    }
-   div.lastElementChild.append(form);
+   const editor=document.createElement('details'),summary=document.createElement('summary');
+   editor.className='commerce-variant-edit';
+   summary.className='bayle-details';summary.textContent='Alterar';
+   summary.setAttribute('aria-label','Alterar cor e tamanho de '+p.name);
+   editor.append(summary,form);
+   div.lastElementChild.append(editor);
   }
   container.append(div);
  }}
@@ -75,6 +81,14 @@
   const variantForm=el('chooseVariant');
   const productId=new URLSearchParams(location.search).get('peca');
   let selectedProduct=null;
+  const variantImage=el('variantImage');
+  function updateVariantImage(){
+   if(!selectedProduct||!variantImage)return;
+   const color=variantForm.elements.color.value||'preta';
+   variantImage.src=variantPhoto(selectedProduct.id,color);
+   variantImage.alt=selectedProduct.name+' · '+colors[color]+' · costas';
+  }
+  variantForm?.elements.color.addEventListener('change',updateVariantImage);
   const openVariant=()=>{
    const p=products.find(product=>product.id===productId&&product.active!==false);
    if(!variantForm||!p){variantForm&&(variantForm.hidden=true);return;}
@@ -83,6 +97,7 @@
    const sizeSelect=variantForm.elements.size,current=sizeSelect.value;
    sizeSelect.replaceChildren(new Option('Selecione',''),...p.sizes.map(size=>new Option(size,size)));
    if(p.sizes.includes(current))sizeSelect.value=current;
+   updateVariantImage();
    variantForm.hidden=false;
   };
   let quoted=null, options=[], revision=0, pendingOrder=null;
@@ -95,8 +110,11 @@
   };
   const render=()=>{
    const items=cart();
-   lines(el('cartLines'),items,true);
    const choosing=variantForm&&!variantForm.hidden;
+   const cartLines=el('cartLines');
+   cartLines.hidden=choosing;
+   el('cartTotals').hidden=choosing;
+   if(!choosing)lines(cartLines,items,true);
    el('cartEmpty').hidden=items.length>0 || choosing;
    document.querySelector('.commerce-totals').hidden=!items.length;
    el('purchaseSteps').hidden=choosing || !items.length || !config || (!config.enabled && !config.deliveryAvailable);
@@ -137,6 +155,11 @@
    cepField.value=saved.postalCode;restoring=saved;quoteForm.requestSubmit();
   }
   let restoring=null;
+  el('cartLines').addEventListener('toggle',event=>{
+   const editor=event.target;
+   if(!editor.matches('.commerce-variant-edit[open]'))return;
+   el('cartLines').querySelectorAll('.commerce-variant-edit[open]').forEach(other=>{if(other!==editor)other.open=false;});
+  },true);
   el('cartLines').addEventListener('submit',event=>event.preventDefault());
   el('cartLines').addEventListener('change',event=>{
    const form=event.target.closest('form[data-variant-index]');
@@ -158,7 +181,8 @@
    }
    save(items);render();notice('');
    const selectedIndex=match<0?index:match-(match>index?1:0);
-   el('cartLines').querySelector('form[data-variant-index="'+selectedIndex+'"]')?.elements[event.target.name]?.focus();
+   const updated=el('cartLines').querySelector('form[data-variant-index="'+selectedIndex+'"]');
+   if(updated){updated.closest('details').open=true;updated.elements[event.target.name]?.focus();}
   });
   el('cartLines').addEventListener('click',event=>{
    const button=event.target.closest('button');
