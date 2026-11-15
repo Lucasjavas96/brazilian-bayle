@@ -34,6 +34,90 @@
       "source": "/galeria",
       "destination": "/spotted",
       "permanent": true
+    },
+    {
+      "source": "/sacola",
+      "has": [
+        {
+          "type": "query",
+          "key": "peca",
+          "value": "01-work-it"
+        }
+      ],
+      "destination": "/loja/camiseta-work-it-harder",
+      "permanent": false
+    },
+    {
+      "source": "/sacola",
+      "has": [
+        {
+          "type": "query",
+          "key": "peca",
+          "value": "02-make-djs-mix-again"
+        }
+      ],
+      "destination": "/loja/camiseta-make-djs-mix-again",
+      "permanent": false
+    },
+    {
+      "source": "/sacola",
+      "has": [
+        {
+          "type": "query",
+          "key": "peca",
+          "value": "03-vintage-culture"
+        }
+      ],
+      "destination": "/loja/camiseta-vintage-culture",
+      "permanent": false
+    },
+    {
+      "source": "/sacola",
+      "has": [
+        {
+          "type": "query",
+          "key": "peca",
+          "value": "04-546-im-yours"
+        }
+      ],
+      "destination": "/loja/camiseta-546-im-yours",
+      "permanent": false
+    },
+    {
+      "source": "/sacola",
+      "has": [
+        {
+          "type": "query",
+          "key": "peca",
+          "value": "05-que-festa-boa"
+        }
+      ],
+      "destination": "/loja/camiseta-que-festa-boa",
+      "permanent": false
+    },
+    {
+      "source": "/sacola",
+      "has": [
+        {
+          "type": "query",
+          "key": "peca",
+          "value": "06-techno-addict"
+        }
+      ],
+      "destination": "/loja/camiseta-techno-addict",
+      "permanent": false
+    },
+    {
+      "source": "/sacola",
+      "has": [
+        {
+          "type": "query",
+          "key": "peca",
+          "value": "07-keep-following"
+        }
+      ],
+      "destination": "/loja/camiseta-keep-following-the-bayle",
+      "permanent": false
     }
   ],
   "headers": [

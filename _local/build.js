@@ -64,21 +64,21 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${meta.ogType || "website"}">
 <meta property="og:site_name" content="Brazilian Bayle">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(meta.description)}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE}/assets/og-brazilian-v3.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Brazilian Bayle · A pista é brasileira.">
-<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image" content="${meta.ogImage || SITE + "/assets/og-brazilian-v3.jpg"}">
+<meta property="og:image:width" content="${meta.ogImageSize ? meta.ogImageSize[0] : 1200}">
+<meta property="og:image:height" content="${meta.ogImageSize ? meta.ogImageSize[1] : 630}">
+<meta property="og:image:alt" content="${esc(meta.ogImageAlt || "Brazilian Bayle · A pista é brasileira.")}">
+<meta property="og:image:type" content="${meta.ogImage ? "image/webp" : "image/jpeg"}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(meta.description)}">
-<meta name="twitter:image" content="${SITE}/assets/og-brazilian-v3.jpg">
+<meta name="twitter:image" content="${meta.ogImage || SITE + "/assets/og-brazilian-v3.jpg"}">
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
@@ -169,7 +169,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <script src="/backend.js" defer></script>
 <script src="/events-2026.js" defer></script>
 <script src="/app.js" defer></script>
-${["/loja","/sacola","/checkout"].includes(meta.path) ? '<script src="/commerce.js" defer></script>' : ""}
+${["/loja","/sacola","/checkout"].includes(meta.path) || meta.nav === "produto" ? '<script src="/commerce.js" defer></script>' : ""}
 <script src="/media-guard.js" defer></script>
 <script src="/music.js" defer></script>
 <script src="/card-effects.js" defer></script>
@@ -274,6 +274,9 @@ const writePage = (rel, meta, body) => {
   fs.writeFileSync(out, optimize(layout(meta, body)));
   if (!meta.noindex) urls.push(meta.path);
 };
+/* ---------- Loja: uma página por camiseta (/loja/<slug>) ---------- */
+fs.rmSync(path.join(OUT, "loja"), { recursive: true, force: true });
+for (const pg of require("./produto.js")(readJson("produtos.json"), SITE)) writePage(pg.rel, pg.meta, pg.body);
 const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => fs.existsSync(path.join(ROOT, f)));
 {
   fs.rmSync(path.join(OUT, "djindex"), { recursive: true, force: true });

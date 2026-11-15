@@ -73,6 +73,64 @@
   container.append(div);
  }}
  count();window.addEventListener('storage',count);
+ /* Página de produto (/loja/<slug>): cor, tamanho, compra, frete pelo CEP e barra fixa no celular. */
+ const pdp=el('pdp');
+ if(pdp){
+  const id=pdp.dataset.product,name=pdp.dataset.name,form=el('pdpForm'),error=el('pdpError'),back=el('pdpBack');
+  const buyButtons=[...form.querySelectorAll('button[type=submit]'),el('pdpBarBuy')];
+  const selected=()=>({color:form.elements.color.value||'preta',size:form.elements.size.value||''});
+  const syncUrl=()=>{const {color,size}=selected(),url=new URL(location.href);url.searchParams.set('cor',color);size?url.searchParams.set('tamanho',size):url.searchParams.delete('tamanho');history.replaceState(history.state,'',url);};
+  const showColor=()=>{const {color}=selected();el('pdpColorName').value=colors[color];back.src=variantPhoto(id,color);back.alt='Camiseta '+name+' '+colors[color].toLowerCase()+', vista de costas';};
+  const params=new URLSearchParams(location.search);
+  if(Object.hasOwn(colors,params.get('cor')))form.elements.color.value=params.get('cor');
+  if(['P','M','G','GG','XG'].includes(params.get('tamanho')))form.elements.size.value=params.get('tamanho');
+  showColor();
+  form.addEventListener('change',event=>{error.textContent='';if(event.target.name==='color'){showColor();el('pdpSlides').scrollTo({left:0,behavior:'smooth'});}syncUrl();});
+  const askSize=()=>{error.textContent='Escolha um tamanho para continuar.';const first=form.querySelector('input[name=size]');first.closest('fieldset').scrollIntoView({behavior:'smooth',block:'center'});first.focus({preventScroll:true});};
+  form.addEventListener('submit',event=>{
+   event.preventDefault();
+   const {color,size}=selected();
+   if(!size)return askSize();
+   const items=cart(),line=items.find(item=>item.id===id&&item.size===size&&item.color===color);
+   if(line)line.quantity=Math.min(5,line.quantity+1);else items.push({id,size,color,quantity:1});
+   if(!save(items)){error.textContent='Seu navegador bloqueou o armazenamento desta página. Libere os cookies para comprar.';return;}
+   if(event.submitter?.value!=='add'){location.href='/sacola';return;}
+   const n=el('pdpAdded');n.replaceChildren(document.createTextNode(name+' · '+colors[color]+' · '+size+' entrou na sacola. '));
+   const go=document.createElement('a');go.href='/sacola';go.textContent='Ver sacola e finalizar →';n.append(go);n.hidden=false;
+  });
+  el('pdpBarBuy').addEventListener('click',()=>selected().size?form.requestSubmit(el('pdpBuy')):askSize());
+  /* Preço e disponibilidade reais do checkout. */
+  configuration.then(()=>{
+   const p=products.find(product=>product.id===id);
+   if(!p||p.active===false){buyButtons.forEach(b=>b.disabled=true);error.textContent='Esta estampa está esgotada no momento.';return;}
+   document.querySelectorAll('[data-pdp-price]').forEach(n=>n.textContent=money(p.price_cents));
+   form.querySelectorAll('input[name=size]').forEach(input=>{input.disabled=!p.sizes.includes(input.value);});
+   if(isPublicStore&&!config.enabled)error.textContent='As vendas online serão liberadas em breve.';
+  }).catch(()=>{});
+  /* Frete na própria página: usa a cor e o tamanho escolhidos (ou M) e leva o CEP para a sacola. */
+  const freight=el('pdpFreight'),cep=el('pdpCep'),result=el('pdpFreightResult');
+  cep.addEventListener('input',()=>{const d=cep.value.replace(/\D/g,'').slice(0,8);cep.value=d.length>5?d.slice(0,5)+'-'+d.slice(5):d;});
+  freight.addEventListener('submit',async event=>{
+   event.preventDefault();
+   const postal=cep.value;if(!/^\d{5}-?\d{3}$/.test(postal)){result.textContent='Digite os 8 números do CEP.';return;}
+   const button=freight.querySelector('button');button.disabled=true;result.textContent='Calculando…';
+   try{
+    const {color,size}=selected();
+    const data=await request('quote',{items:[{id,color,size:size||'M',quantity:1}],postal_code:postal});
+    const options=(data.shipping_options||[data]).filter(o=>o.service);
+    result.replaceChildren(...(options.length?options.map(o=>{const line=document.createElement('span');line.className='pdp-freight-line';line.textContent=o.service+' · '+money(o.shipping_cents)+' · até '+o.delivery_business_days+' dias úteis';return line;}):[document.createTextNode('Frete disponível para este CEP. O valor aparece na sacola.')]));
+    storage.set(sessionStorage,QUOTE,JSON.stringify({postalCode:postal,service:0,step:'freight'}));
+   }catch(err){result.textContent=err.message;}
+   finally{button.disabled=false;}
+  });
+  /* Barra fixa no celular: aparece quando o botão de compra sai da tela por cima. */
+  const bar=el('pdpBar');
+  if('IntersectionObserver' in window)new IntersectionObserver(([entry])=>{bar.hidden=entry.isIntersecting||entry.boundingClientRect.top>0;},{threshold:0}).observe(el('pdpBuy'));
+  /* Pontos da galeria no celular. */
+  const slides=el('pdpSlides'),dots=[...document.querySelectorAll('.pdp-dots i')];
+  const markDot=()=>{const i=Math.round(slides.scrollLeft/Math.max(1,slides.clientWidth));dots.forEach((d,k)=>d.classList.toggle('on',k===i));};
+  slides.addEventListener('scroll',markDot,{passive:true});markDot();
+ }
  if(el('cartLines')){
   const quoteForm=el('quoteForm'),deliveryForm=el('deliveryForm'),cepField=quoteForm.elements.postal_code;
   const quoteButton=el('quoteButton'),deliveryNext=el('deliveryNext'),checkoutButton=el('checkoutCta');

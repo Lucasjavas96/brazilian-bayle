@@ -1,0 +1,58 @@
+[
+  {
+    "id": "01-work-it",
+    "slug": "camiseta-work-it-harder",
+    "name": "Work It Harder",
+    "lede": "Quatro linhas de pista nas costas e só o papagaio no peito.",
+    "story": "WORK IT HARDER / MAKE IT BETTER em serifa branca, por cima de um capacete cromado com reflexo dourado. A assinatura Brazilian Bayle fecha o desenho em amarelo. Na frente, só o papagaio verde no peito.",
+    "art": "frase em serifa branca sobre capacete cromado"
+  },
+  {
+    "id": "02-make-djs-mix-again",
+    "slug": "camiseta-make-djs-mix-again",
+    "name": "Make DJs Mix Again",
+    "lede": "Um pedido em letras grandes, para quem sente falta de mixagem de verdade.",
+    "story": "MAKE DJS MIX AGAIN ocupa as costas em letras grandes, com as iniciais em amarelo e um sorriso no fim. A assinatura Brazilian Bayle aparece de lado, em letra cursiva. Na frente, só o papagaio verde no peito.",
+    "art": "frase em letras grandes com iniciais amarelas"
+  },
+  {
+    "id": "03-vintage-culture",
+    "slug": "camiseta-vintage-culture",
+    "name": "Vintage Culture",
+    "lede": "Homenagem ilustrada a um dos nomes da pista brasileira.",
+    "story": "Ilustração de um DJ fazendo coração com as mãos, com Vintage Culture escrito em letra de pichação logo acima e a assinatura Brazilian Bayle em amarelo. Na frente, só o papagaio verde no peito.",
+    "art": "ilustração de DJ fazendo coração com as mãos"
+  },
+  {
+    "id": "04-546-im-yours",
+    "slug": "camiseta-546-im-yours",
+    "name": "5:46 · I’m Yours",
+    "lede": "Três linhas e um horário, para quem fica até o fim.",
+    "story": "IF YOU WANT ME / IF YOU NEED ME / I’M YOURS em letras brancas e, embaixo, o horário 5:46 em dourado. Uma estampa limpa, com bastante preto em volta. Na frente, só o papagaio verde no peito.",
+    "art": "frase em três linhas e o horário 5:46"
+  },
+  {
+    "id": "05-que-festa-boa",
+    "slug": "camiseta-que-festa-boa",
+    "name": "Que Festa Boa",
+    "lede": "A frase que todo mundo diz na saída.",
+    "story": "Monograma M.D em dourado e, logo abaixo, que festa boa. escrito em letra cursiva branca. Discreta de longe, reconhecível de perto. Na frente, só o papagaio verde no peito.",
+    "art": "monograma dourado e a frase que festa boa"
+  },
+  {
+    "id": "06-techno-addict",
+    "slug": "camiseta-techno-addict",
+    "name": "Techno Addict",
+    "lede": "O papagaio da Brazilian Bayle de óculos escuros, em verde e amarelo.",
+    "story": "O papagaio da marca em verde, de óculos escuros, ocupa as costas. Embaixo, TECHNO ADDICT em letra de pichação amarela e a assinatura Brazilian Bayle. É a estampa mais colorida da coleção. Na frente, só o papagaio verde no peito.",
+    "art": "papagaio verde de óculos e Techno Addict em amarelo"
+  },
+  {
+    "id": "07-keep-following",
+    "slug": "camiseta-keep-following-the-bayle",
+    "name": "Keep Following the Bayle",
+    "lede": "Uma frase em loop, como o set que não acaba.",
+    "story": "KEEP FOLLOWING repetido cinco vezes, como um loop, até cair em THE Bayle em dourado. Na frente, só o papagaio verde no peito.",
+    "art": "Keep Following repetido em loop e Bayle em dourado"
+  }
+]
