@@ -57,19 +57,24 @@ Deno.serve(async req=>{
    const customer=route==='orders'?customerData(body.customer):null;
    const shippingConfig=melhorEnvioConfig(env);
    if(!shippingConfig && mode()!=='test')throw new InputError('A entrega será liberada em breve.',503);
-   const shipping=shippingConfig
+   const shippingOptions=shippingConfig
     ? await quoteMelhorEnvio(cep.replace('-', ''),cart.lines,shippingConfig)
-      .catch(()=>{throw new InputError('Não foi possível cotar SEDEX agora. Confira o CEP e tente novamente.',503);})
-    : {service:null,shipping_cents:0,delivery_business_days:null};
+      .catch(()=>{throw new InputError('Não foi possível cotar o frete agora. Confira o CEP e tente novamente.',503);})
+    : [{service:null,shipping_cents:0,delivery_business_days:null}];
+   if(!shippingOptions.length)throw new InputError('PAC e SEDEX indisponíveis para este CEP.',422);
+   const shipping=route==='quote' ? shippingOptions[0] :
+    shippingOptions.find(option=>option.service===(body.shipping_service??null));
+   if(!shipping)throw new InputError('Confira as opções de frete novamente.',409);
    const priced={...cart,shipping_cents:shipping.shipping_cents,total_cents:cart.subtotal_cents+shipping.shipping_cents};
-   if(route==='quote')return reply({...priced,...shipping,currency:'BRL'});
+   if(route==='quote')return reply({...priced,...shipping,shipping_options:shippingOptions,currency:'BRL'});
+   if(body.shipping_cents!==shipping.shipping_cents)throw new InputError('O valor do frete mudou. Calcule novamente.',409);
    if(!UUID.test(body.request_id||'')||!/^[a-f0-9]{64}$/.test(body.order_secret||''))throw new InputError('Atualize a página para continuar.');
    const secret_hash=await sha(body.order_secret);
    const existing=await db('brb_shop_orders?id=eq.'+body.request_id);
    if(existing[0]){if(existing[0].secret_hash!==secret_hash)throw new InputError('Pedido inválido.',409);return reply({order_id:existing[0].id,total_cents:existing[0].total_cents,status:existing[0].status});}
    const ip=req.headers.get('x-forwarded-for')?.split(',')[0].trim()||'unknown';const ip_hash=await sha(ip+env('BRB_CHECKOUT_IP_SALT'));
    const recent=await db('brb_shop_orders?select=id&ip_hash=eq.'+ip_hash+'&created_at=gt.'+new Date(Date.now()-3600000).toISOString());if(recent.length>=10)throw new InputError('Aguarde antes de criar outro pedido.',429);
-   const [order]=await db('brb_shop_orders','POST',{id:body.request_id,secret_hash,customer,items:priced.lines,subtotal_cents:priced.subtotal_cents,shipping_cents:priced.shipping_cents,total_cents:priced.total_cents,mode:mode(),ip_hash});
+   const [order]=await db('brb_shop_orders','POST',{id:body.request_id,secret_hash,customer,items:priced.lines,subtotal_cents:priced.subtotal_cents,shipping_cents:priced.shipping_cents,shipping_service:shipping.service,total_cents:priced.total_cents,mode:mode(),ip_hash});
    return reply({order_id:order.id,total_cents:order.total_cents,status:order.status},201);
   }
   if(route==='pay'){
