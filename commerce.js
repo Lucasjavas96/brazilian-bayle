@@ -5,6 +5,26 @@
  const CART='brb-cart-v1', ORDER='brb-checkout-order-v1';
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
+ const sizeGuide=document.querySelector('[data-size-guide]');
+ if(sizeGuide){
+  const measurements=[
+   ['P','56,5','72','21'],
+   ['M','60','77','22'],
+   ['G','61','77,5','22,5'],
+   ['GG','65','84','23,5'],
+   ['XG','65,5','88,5','23,5'],
+  ];
+  sizeGuide.innerHTML=`<details class="commerce-size-guide" open>
+   <summary>Medidas da camiseta oversized</summary>
+   <table aria-label="Medidas da camiseta em centímetros">
+    <thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead>
+    <tbody>${measurements.map(([size,width,length,sleeve])=>
+     `<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody>
+   </table>
+   <p>Medidas da peça em cm. Compare com uma camiseta sua estendida. Pode variar até 2 cm.</p>
+  </details>`;
+ }
+
  const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}};
  const cart=()=>{const value=read(CART);return Array.isArray(value)?value.filter(i=>typeof i.id==='string'&&/^[0-9]{2}-[a-z0-9-]+$/.test(i.id)&&['P','M','G','GG','XG'].includes(i.size)&&Number.isInteger(i.quantity)&&i.quantity>0&&i.quantity<=5).slice(0,20):[]};
