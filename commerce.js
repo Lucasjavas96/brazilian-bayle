@@ -43,6 +43,21 @@
  function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
   const p=products.find(p=>p.id===item.id);if(!p)continue;const div=document.createElement('div');div.className='commerce-line';
   div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color??'preta'])} · ${escape(item.size)} · ${item.quantity} unidade(s)</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade">−</button><span>${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade">+</button><button type="button" class="remove" data-remove="${index}">Remover</button></div>`:''}</div>`;
+  if(controls && p.active){
+   const form=document.createElement('form');
+   form.className='commerce-fields';
+   form.dataset.variantIndex=String(index);
+   for(const [name,label,values,selected] of [
+    ['color','Cor',Object.keys(colors),item.color??'preta'],['size','Tamanho',p.sizes,item.size],
+   ]){
+    const field=document.createElement('label'),select=document.createElement('select');
+    field.textContent=label;select.name=name;
+    select.setAttribute('aria-label',label+' de '+p.name);
+    for(const value of values)select.add(new Option(name==='color'?colors[value]:value,value,value===selected,value===selected));
+    field.append(select);form.append(field);
+   }
+   div.lastElementChild.append(form);
+  }
   container.append(div);
  }}
  count();window.addEventListener('storage',count);
@@ -89,6 +104,29 @@
    history.replaceState(history.state,'',url);
    render();
    if(!el('purchaseSteps').hidden)cepField.focus();
+  });
+  el('cartLines').addEventListener('submit',event=>event.preventDefault());
+  el('cartLines').addEventListener('change',event=>{
+   const form=event.target.closest('form[data-variant-index]');
+   if(!form)return;
+   const items=cart(),index=Number(form.dataset.variantIndex),item=items[index];
+   if(!item || checkoutButton.disabled){event.target.value=item?.[event.target.name]??'';return;}
+   const {size,color}=Object.fromEntries(new FormData(form));
+   const product=products.find(p=>p.id===item.id && p.active);
+   if(!product?.sizes.includes(size)||!Object.hasOwn(colors,color))return;
+   const match=items.findIndex((other,i)=>i!==index && other.id===item.id && other.size===size && other.color===color);
+   if(match<0){
+    items[index]={...item,size,color};
+   }else{
+    if(items[match].quantity+item.quantity>5){
+     event.target.value=item[event.target.name];
+     notice('O limite é de 5 peças por cor e tamanho.');return;
+    }
+    items[match].quantity+=item.quantity;items.splice(index,1);
+   }
+   save(items);render();notice('');
+   const selectedIndex=match<0?index:match-(match>index?1:0);
+   el('cartLines').querySelector('form[data-variant-index="'+selectedIndex+'"]')?.elements[event.target.name]?.focus();
   });
   el('cartLines').addEventListener('click',event=>{
    const button=event.target.closest('button');
