@@ -547,8 +547,8 @@ $$(".slides").forEach(box => {
 
 /* Entradas coordenadas: cada bloco e sua legenda seguem a ordem da seção. */
 (() => {
-  if (reduced || document.body.classList.contains('page-conta') || !('IntersectionObserver' in window)) return;
-  const headings = [...document.querySelectorAll('main h1, main h2, main h3, .foot-title')];
+  if (reduced || document.body.classList.contains('page-conta') || document.body.classList.contains('is-funnel') || !('IntersectionObserver' in window)) return; // sacola e checkout: conteúdo de compra aparece já pronto
+  const headings = [...document.querySelectorAll('main h1, main h2, main h3, .foot-title')].filter(heading => !heading.closest('dialog'));
   headings.forEach(heading => {
     const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
     const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
@@ -569,7 +569,7 @@ $$(".slides").forEach(box => {
   const blocks = '.event, .board-stage, .vote-card, .plan, .apply-form, .rev, .drop-form, .how li, .memory-arc, .club-identity, .shop-product';
   const selector = `${blocks}, main h1, main h2, main h3, main p, main figcaption, main .cta-row, main .btn, main .link-arrow, main .manifesto-link, .foot-title`;
   const items = [...document.querySelectorAll(selector)].filter(el =>
-    !el.closest('[aria-hidden="true"], .gal-stage, .gal-track, .vote-panel') &&
+    !el.closest('[aria-hidden="true"], .gal-stage, .gal-track, .vote-panel, dialog') &&
     !el.parentElement.closest(blocks) &&
     !(el.matches('.btn') && el.closest('.cta-row'))
   );
@@ -625,6 +625,104 @@ $$(".slides").forEach(box => {
       setTimeout(() => { intro.hidden = true; }, INTRO_TOTAL_MS);
     });
   }
+  /* Camisa andando: o vídeo só baixa e toca com o card na tela, e pausa ao sair.
+     Quem pede menos movimento fica com a capa parada (costas da peça). */
+  const videos = [...grid.querySelectorAll('video.shop-video[data-src]')];
+  const VIDEO_SECONDS = 8;        // duração do loop "andando"
+  const DRAG_SECONDS = 6;         // arrastar a largura inteira do card avança 6 s do giro
+  const DRAG_THRESHOLD = 6;       // px até o gesto contar como arraste, não clique
+  const RESUME_AFTER_MS = 1800;   // depois de soltar, volta a andar sozinho
+  const visibleVideos = new Set();
+  /* Cada camiseta começa num ponto diferente do loop, para não andarem em coro. */
+  /* O vídeo vem inteiro para a memória (blob): assim o arraste pula para qualquer
+     quadro na hora, sem depender de o servidor aceitar pedidos por trecho (Range). */
+  const load = (video, index) => {
+    if (video.dataset.loading) return;
+    video.dataset.loading = '1';
+    video.addEventListener('loadedmetadata', () => {
+      video.currentTime = (index * VIDEO_SECONDS / videos.length) % (video.duration || VIDEO_SECONDS);
+      play(video);
+    }, {once: true});
+    fetch(video.dataset.src)
+      .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.blob(); })
+      .then(blob => { video.src = URL.createObjectURL(blob); })
+      .catch(() => { video.src = video.dataset.src; /* sem blob: toca direto, o arraste fica mais lento */ });
+  };
+  const play = video => {
+    if (reduceMotion || video.dataset.dragging || !visibleVideos.has(video)) return;
+    const attempt = video.play();
+    if (attempt) attempt.catch(() => { /* autoplay bloqueado (economia de dados): fica a capa */ });
+  };
+  if (videos.length && 'IntersectionObserver' in window && !reduceMotion) {
+    const videoObserver = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        const video = entry.target;
+        if (entry.isIntersecting) { visibleVideos.add(video); load(video, videos.indexOf(video)); play(video); }
+        else { visibleVideos.delete(video); if (!video.paused) video.pause(); }
+      }
+    }, {rootMargin: '200px 0px', threshold: 0.01});
+    videos.forEach(video => videoObserver.observe(video));
+  }
+  /* Arrastar para girar: o cliente passa o dedo/mouse de lado e a camiseta gira junto
+     (o vídeo vai para frente ou para trás). Setas do teclado fazem o mesmo no card focado. */
+  const wrapTime = (video, time) => {
+    const duration = video.duration || VIDEO_SECONDS;
+    return ((time % duration) + duration) % duration;
+  };
+  let suppressClick = null;
+  videos.forEach((video, index) => {
+    const card = video.closest('.shop-photo');
+    let startX = 0, startTime = 0, pointerId = null, frame = 0, target = 0, resumeTimer = 0;
+    const seek = () => { frame = 0; video.currentTime = target; };
+    const scheduleResume = () => {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { delete video.dataset.dragging; card.classList.remove('is-turning'); play(video); }, RESUME_AFTER_MS);
+    };
+    card.addEventListener('pointerdown', event => {
+      if (event.button !== 0) return;
+      load(video, index);
+      pointerId = event.pointerId; startX = event.clientX; startTime = video.currentTime;
+    });
+    card.addEventListener('pointermove', event => {
+      if (event.pointerId !== pointerId) return;
+      const dx = event.clientX - startX;
+      if (!video.dataset.dragging) {
+        if (Math.abs(dx) < DRAG_THRESHOLD) return;
+        video.dataset.dragging = '1';
+        card.classList.add('is-turning');
+        card.closest('.outfit-shop')?.classList.add('has-turned');
+        card.setPointerCapture(pointerId);
+        clearTimeout(resumeTimer);
+        video.pause();
+      }
+      target = wrapTime(video, startTime + dx / card.clientWidth * DRAG_SECONDS);
+      if (!frame) frame = requestAnimationFrame(seek);
+    });
+    const end = event => {
+      if (event.pointerId !== pointerId) return;
+      pointerId = null;
+      if (!video.dataset.dragging) return;
+      suppressClick = card;
+      scheduleResume();
+    };
+    card.addEventListener('pointerup', end);
+    card.addEventListener('pointercancel', end);
+    card.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      load(video, index);
+      video.dataset.dragging = '1';
+      card.classList.add('is-turning');
+      video.pause();
+      video.currentTime = wrapTime(video, video.currentTime + (event.key === 'ArrowRight' ? .25 : -.25));
+      scheduleResume();
+    });
+  });
+  /* Soltar depois de arrastar não abre o zoom de frente e costas. */
+  document.addEventListener('click', event => {
+    if (suppressClick && suppressClick.contains(event.target)) { event.preventDefault(); event.stopImmediatePropagation(); }
+    suppressClick = null;
+  }, true);
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
@@ -906,12 +1004,36 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   const dialog = document.querySelector('.bayle-preview');
   if (!dialog) return;
   const image = dialog.querySelector('img');
-  document.querySelectorAll('[data-bayle-preview]').forEach(button => button.addEventListener('click', () => {
+  /* A foto do card "vira" o zoom de frente e costas (View Transitions);
+     sem suporte ou com menos movimento, o modal só aparece com um fade curto. */
+  const SHIRT = 'bayle-shirt';
+  const DECODE_MAX_MS = 400;
+  const canMorph = () => 'startViewTransition' in document && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let source = null;
+  let busy = false;
+  const morph = (from, to, change) => {
+    if (!canMorph() || !from || !to || busy) { change(); return; }
+    busy = true;
+    from.style.viewTransitionName = SHIRT;
+    const t = document.startViewTransition(() => { from.style.viewTransitionName = ''; to.style.viewTransitionName = SHIRT; change(); });
+    t.finished.finally(() => { to.style.viewTransitionName = ''; busy = false; });
+  };
+  const open = async button => {
+    if (busy || dialog.open) return;
+    source = button.closest('.shop-product')?.querySelector('.shop-photo') || button;
     dialog.querySelector('h2').textContent = button.dataset.bayleTitle;
-    image.src = '/assets/shop/bayle/' + button.dataset.baylePreview + '-completo.webp';
     image.alt = button.dataset.bayleTitle + ': frente com logotipo e estampa nas costas';
-    dialog.showModal();
-  }));
-  dialog.querySelector('.bayle-preview-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => { if (event.target === dialog) { const r=dialog.getBoundingClientRect(); if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom) dialog.close(); } });
+    image.src = '/assets/shop/bayle/' + button.dataset.baylePreview + '-completo.webp';
+    await Promise.race([image.decode().catch(() => {}), new Promise(r => setTimeout(r, DECODE_MAX_MS))]);
+    morph(source, image, () => dialog.showModal());
+  };
+  const close = () => {
+    if (!dialog.open || busy) return;
+    const target = source && source.isConnected ? source : null;
+    morph(image, target, () => dialog.close());
+  };
+  document.querySelectorAll('[data-bayle-preview]').forEach(button => button.addEventListener('click', () => open(button)));
+  dialog.querySelector('.bayle-preview-close').addEventListener('click', close);
+  dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
+  dialog.addEventListener('click', event => { if (event.target === dialog) { const r=dialog.getBoundingClientRect(); if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom) close(); } });
 })();

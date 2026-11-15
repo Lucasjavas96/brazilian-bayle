@@ -2,15 +2,35 @@
 (() => {
  'use strict';
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
- const CART='brb-cart-v1', ORDER='brb-checkout-order-v1';
+ const CART='brb-cart-v1', ORDER='brb-checkout-order-v1', ADDED='brb-cart-added-v1', QUOTE='brb-quote-v1';
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
  const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}};
  const cart=()=>{const value=read(CART);return Array.isArray(value)?value.filter(i=>typeof i.id==='string'&&/^[0-9]{2}-[a-z0-9-]+$/.test(i.id)&&['P','M','G','GG','XG'].includes(i.size)&&Number.isInteger(i.quantity)&&i.quantity>0&&i.quantity<=5).slice(0,20):[]};
- const save=items=>{localStorage.setItem(CART,JSON.stringify(items));sessionStorage.removeItem(ORDER);count();};
+ /* Harden: navegador em modo privado ou com armazenamento cheio não pode travar a compra. */
+ const storage={get:(area,key)=>{try{return area.getItem(key)}catch{return null}},set:(area,key,value)=>{try{area.setItem(key,value);return true}catch{return false}},remove:(area,key)=>{try{area.removeItem(key)}catch{}}};
+ const save=items=>{const ok=storage.set(localStorage,CART,JSON.stringify(items));storage.remove(sessionStorage,ORDER);count();return ok;};
  const count=()=>document.querySelectorAll('[data-cart-count]').forEach(n=>n.textContent=String(cart().reduce((sum,i)=>sum+i.quantity,0)));
- async function request(route,body){const response=await fetch(API+'/'+route,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},cache:'no-store',...(body?{body:JSON.stringify(body)}:{})});const data=await response.json();if(!response.ok)throw new Error(data.error||'Não foi possível conectar. Tente novamente.');return data;}
+ const uuid=()=>crypto.randomUUID?crypto.randomUUID():'10000000-1000-4000-8000-100000000000'.replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16));
+ const REQUEST_TIMEOUT_MS=20000;
+ /* Harden: sem internet, servidor lento, resposta que não é JSON e excesso de tentativas
+    viram mensagens que dizem o que houve e o que fazer. */
+ async function request(route,body){
+  if(navigator.onLine===false)throw new Error('Você está sem internet. Confira a conexão e tente de novo.');
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),REQUEST_TIMEOUT_MS);
+  let response;
+  try{response=await fetch(API+'/'+route,{method:body?'POST':'GET',headers:{'Content-Type':'application/json'},cache:'no-store',signal:controller.signal,...(body?{body:JSON.stringify(body)}:{})});}
+  catch(error){throw new Error(error.name==='AbortError'?'O servidor demorou para responder. Tente de novo em instantes.':'Não foi possível conectar. Confira a internet e tente de novo.');}
+  finally{clearTimeout(timer);}
+  let data=null;try{data=await response.json();}catch{}
+  if(!response.ok){
+   if(response.status===429)throw new Error('Muitas tentativas seguidas. Aguarde um minuto e tente de novo.');
+   throw new Error(data?.error||(response.status>=500?'Nosso sistema está instável agora. Tente de novo em alguns minutos.':'Não foi possível concluir. Tente de novo.'));
+  }
+  if(!data)throw new Error('Resposta inesperada do servidor. Tente de novo.');
+  return data;
+ }
  const notice=text=>{const n=el('commerceNotice');if(n){n.textContent=text;n.hidden=!text;}};
  const fallbackNames=['Work It Harder','Make DJs Mix Again','Vintage Culture','5:46 · I’m Yours','Que Festa Boa','Techno Addict','Keep Following the Bayle'];
  const ids=['01-work-it','02-make-djs-mix-again','03-vintage-culture','04-546-im-yours','05-que-festa-boa','06-techno-addict','07-keep-following'];
@@ -21,22 +41,46 @@
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
  function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
   const p=products.find(p=>p.id===item.id);if(!p)continue;const div=document.createElement('div');div.className='commerce-line';
-  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>Preto · ${escape(item.size)} · ${item.quantity} unidade(s)</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade">−</button><span>${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade">+</button><button type="button" class="remove" data-remove="${index}">Remover</button></div>`:''}</div>`;
+  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>Preto · ${escape(item.size)} · ${item.quantity} ${item.quantity===1?'unidade':'unidades'}</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade de ${escape(p.name)}, tamanho ${escape(item.size)}">−</button><span aria-live="polite">${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade de ${escape(p.name)}, tamanho ${escape(item.size)}"${item.quantity>=5?' disabled title="Máximo de 5 por peça"':''}>+</button><button type="button" class="remove" data-remove="${index}" aria-label="Remover ${escape(p.name)}, tamanho ${escape(item.size)}, da sacola">Remover</button></div>`:''}</div>`;
   container.append(div);
  }}
  count();window.addEventListener('storage',count);
  window.addEventListener('pageshow',()=>document.querySelectorAll('[data-add-cart]').forEach(button=>{button.disabled=false;}));
  document.querySelectorAll('[data-add-cart]').forEach(button=>button.addEventListener('click',()=>{
-  const id=button.dataset.addCart,size=button.closest('.shop-buy').querySelector('select').value;const p=products.find(p=>p.id===id);
+  const box=button.closest('.shop-buy'),select=box.querySelector('select');
+  const id=button.dataset.addCart,size=select.value;const p=products.find(p=>p.id===id);
+  /* Harden: nenhum tamanho vem marcado; sem escolha, o botão pede o tamanho em vez de comprar P. */
+  if(!size){sizeError(box,select,'Escolha o tamanho antes de comprar.');select.focus();return;}
   if(!p||!p.active||!p.sizes.includes(size)){button.textContent='Indisponível';return;}
   button.disabled=true;
   const items=cart();
   if(!items.some(item=>item.id===id && item.size===size)){
    items.push({id,size,quantity:1});
-   save(items);
+   if(!save(items)){button.disabled=false;button.textContent='Libere os cookies para comprar';return;}
   }
+  storage.set(sessionStorage,ADDED,JSON.stringify({id,size}));
   location.assign('/sacola');
  }));
+ /* Tabela de medidas: uma só janela para as sete peças; destaca o tamanho já escolhido no card. */
+ const guide=el('sizeGuide');
+ if(guide){
+  let opener=null;
+  const heads=[...guide.querySelector('thead tr').cells];
+  const mark=size=>guide.querySelectorAll('tr').forEach(row=>[...row.cells].forEach(cell=>cell.classList.toggle('is-picked',!!size&&heads[cell.cellIndex]?.textContent===size)));
+  document.querySelectorAll('[data-size-guide]').forEach(button=>button.addEventListener('click',()=>{
+   opener=button;mark(button.closest('.shop-buy')?.querySelector('select')?.value);
+   if(typeof guide.showModal==='function')guide.showModal();else guide.setAttribute('open','');
+  }));
+  guide.querySelector('.size-guide-close').addEventListener('click',()=>guide.close());
+  guide.addEventListener('click',event=>{if(event.target===guide)guide.close();});
+  guide.addEventListener('close',()=>opener?.focus());
+ }
+ function sizeError(box,select,text){
+  let note=box.querySelector('.shop-buy-error');
+  if(!note){note=document.createElement('p');note.className='shop-buy-error';note.id=select.closest('[data-name]')?.dataset.name?.replace(/\W+/g,'-')+'-size-error';note.setAttribute('role','alert');box.append(note);}
+  note.textContent=text;select.setAttribute('aria-invalid','true');select.setAttribute('aria-describedby',note.id);
+  select.addEventListener('change',()=>{note.textContent='';select.removeAttribute('aria-invalid');},{once:true});
+ }
  if(el('cartLines')){
   const quoteForm=el('quoteForm'),deliveryForm=el('deliveryForm'),cepField=quoteForm.elements.postal_code;
   const quoteButton=el('quoteButton'),deliveryNext=el('deliveryNext'),checkoutButton=el('checkoutCta');
@@ -44,25 +88,43 @@
   let quoted=null, options=[], revision=0, pendingOrder=null;
   const showFreight=()=>{deliveryForm.hidden=true;quoteForm.hidden=false;};
   const resetQuote=()=>{
-   revision++;quoted=null;options=[];shippingChoices.hidden=true;pendingOrder=null;showFreight();deliveryNext.hidden=true;
+   revision++;quoted=null;options=[];shippingChoices.hidden=true;pendingOrder=null;showFreight();deliveryNext.hidden=true;quoteButton.hidden=false;
    el('quoteError').textContent='';el('deliveryError').textContent='';
    el('cartShipping').textContent='A calcular';el('cartTotal').textContent='—';
-   sessionStorage.removeItem(ORDER);
+   storage.remove(sessionStorage,ORDER);
   };
   const render=()=>{
    const items=cart();
    lines(el('cartLines'),items,true);
    el('cartEmpty').hidden=items.length>0;
+   document.querySelector('.commerce-totals').hidden=!items.length;
    el('purchaseSteps').hidden=!items.length || !config || (!config.enabled && !config.deliveryAvailable);
    el('cartSubtotal').textContent=money(items.reduce((sum,item)=>sum+(products.find(product=>product.id===item.id)?.price_cents||0)*item.quantity,0));
    resetQuote();
   };
   render();
+  /* Confirma a peça que acabou de entrar e oferece voltar à coleção sem perder nada. */
+  const added=(()=>{try{return JSON.parse(storage.get(sessionStorage,ADDED)||'null')}catch{return null}})();
+  storage.remove(sessionStorage,ADDED);
+  const showAdded=()=>{
+   if(!added)return;const p=products.find(product=>product.id===added.id);if(!p)return;
+   const n=el('commerceAdded');if(!n)return;
+   n.replaceChildren(document.createTextNode(p.name+' · tamanho '+added.size+' entrou na sacola. '));
+   const back=document.createElement('a');back.href='/loja#catalogo';back.textContent='Continuar vendo a coleção';n.append(back);n.hidden=false;
+  };
+  showAdded();
   configuration.then(()=>{
-   render();
+   render();showAdded();restoreQuote();
    if(isPublicStore && !config.enabled && !config.deliveryAvailable)notice('As vendas online e a consulta de frete serão liberadas em breve.');
    else if(!isPublicStore && config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');
   }).catch(()=>{});
+  /* Harden: ao voltar do pagamento, o CEP, o frete escolhido e a etapa de entrega voltam como estavam. */
+  function restoreQuote(){
+   let saved;try{saved=JSON.parse(storage.get(sessionStorage,QUOTE)||'null')}catch{}
+   if(!saved||typeof saved.postalCode!=='string'||!cart().length||el('purchaseSteps').hidden)return;
+   cepField.value=saved.postalCode;restoring=saved;quoteForm.requestSubmit();
+  }
+  let restoring=null;
   el('cartLines').addEventListener('click',event=>{
    const button=event.target.closest('button');
    if(!button || checkoutButton.disabled)return;
@@ -72,7 +134,25 @@
    else if(button.dataset.plus!==undefined){const item=items[Number(button.dataset.plus)];item.quantity=Math.min(5,item.quantity+1);}
    save(items);render();
   });
-  cepField.addEventListener('input',resetQuote);
+  /* Harden: máscaras para CEP, CPF e celular, e CPF conferido pelos dígitos verificadores. */
+  const digits=value=>value.replace(/\D/g,'');
+  const maskField=(input,format)=>input&&input.addEventListener('input',()=>{input.value=format(digits(input.value));});
+  const validCpf=value=>{
+   const d=digits(value);
+   if(d.length!==11||/^(\d)\1{10}$/.test(d))return false;
+   const check=n=>{let sum=0;for(let i=0;i<n;i++)sum+=Number(d[i])*(n+1-i);return (sum*10%11)%10;};
+   return check(9)===Number(d[9])&&check(10)===Number(d[10]);
+  };
+  const formatCpf=d=>{d=d.slice(0,11);const parts=[d.slice(0,3),d.slice(3,6),d.slice(6,9)].filter(Boolean).join('.');return d.length>9?parts+'-'+d.slice(9):parts;};
+  const formatPhone=d=>{d=d.slice(0,11);if(!d)return '';if(d.length<3)return '('+d;const rest=d.slice(2),split=rest.length>8?5:4;return '('+d.slice(0,2)+') '+(rest.length>split?rest.slice(0,split)+'-'+rest.slice(split):rest);};
+  maskField(cepField,d=>{d=d.slice(0,8);return d.length>5?d.slice(0,5)+'-'+d.slice(5):d;});
+  maskField(deliveryForm.elements.document,formatCpf);
+  maskField(deliveryForm.elements.phone,formatPhone);
+  deliveryForm.elements.document.addEventListener('input',event=>{
+   const input=event.target;
+   input.setCustomValidity(digits(input.value).length===11&&!validCpf(input.value)?'Este CPF não é válido. Confira os números.':'');
+  });
+  cepField.addEventListener('input',()=>{resetQuote();storage.remove(sessionStorage,QUOTE);});
   quoteForm.addEventListener('submit',async event=>{
    event.preventDefault();
    if(quoteButton.disabled)return;
@@ -86,11 +166,32 @@
      option.service ? option.service+' · '+money(option.shipping_cents)+' · '+option.delivery_business_days+' dias úteis' : 'Sem frete no teste',String(index)
     )));
     shippingChoices.hidden=!options[0].service;
+    const wanted=restoring&&options[restoring.service]?String(restoring.service):'0';shippingService.value=wanted;
     selectShipping(result,postalCode);
-    deliveryNext.hidden=false;
+    deliveryNext.hidden=false;quoteButton.hidden=true;
+    lookupAddress(postalCode);
+    if(restoring?.step!=='delivery')rememberQuote('freight');
+    if(restoring?.step==='delivery'){restoring=null;openDelivery(false);}
    }catch(error){if(currentRevision===revision)el('quoteError').textContent=error.message;}
-   finally{quoteButton.disabled=false;}
+   finally{quoteButton.disabled=false;restoring=null;}
   });
+  const rememberQuote=step=>{if(quoted)storage.set(sessionStorage,QUOTE,JSON.stringify({postalCode:quoted.postalCode,service:Number(shippingService.value),step}));};
+  /* Endereço pelo CEP (ViaCEP): preenche só campos vazios; se falhar, a pessoa digita normalmente. */
+  let addressFor='';
+  async function lookupAddress(postalCode){
+   const cep=digits(postalCode);if(cep.length!==8||cep===addressFor)return;addressFor=cep;
+   const f=deliveryForm.elements,status=el('addressStatus');
+   try{
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6000);
+    const response=await fetch('https://viacep.com.br/ws/'+cep+'/json/',{signal:controller.signal});clearTimeout(timer);
+    const data=await response.json();
+    if(!response.ok||data.erro){if(status)status.textContent='Não encontramos esse CEP na base dos Correios. Preencha o endereço abaixo.';return;}
+    const fill=(name,value)=>{if(value&&!f[name].value){f[name].value=String(value).slice(0,Number(f[name].maxLength)>0?f[name].maxLength:100);}};
+    fill('street',data.logradouro);fill('neighborhood',data.bairro);fill('city',data.localidade);
+    if(data.uf&&!f.state.value&&[...f.state.options].some(o=>o.value===data.uf||o.text===data.uf))f.state.value=data.uf;
+    if(status)status.textContent=data.logradouro?'Endereço preenchido pelo CEP. Falta o número.':'Preenchemos cidade e UF pelo CEP. Complete rua e bairro.';
+   }catch{addressFor='';}
+  }
   function selectShipping(result,postalCode){
    const option=options[Number(shippingService.value)];
    if(!option)return;
@@ -100,40 +201,42 @@
    el('cartShipping').textContent=shippingService.selectedOptions[0].textContent;
    el('cartTotal').textContent=money(quoted.subtotal_cents+option.shipping_cents);
   }
-  shippingService.addEventListener('change',()=>{if(quoted)selectShipping(quoted,quoted.postalCode);});
-  deliveryNext.addEventListener('click',()=>{
+  shippingService.addEventListener('change',()=>{if(quoted){selectShipping(quoted,quoted.postalCode);rememberQuote('freight');}});
+  function openDelivery(focus=true){
    if(!quoted)return;
    checkoutButton.hidden=!config.enabled;
    el('paymentUnavailable').hidden=config.enabled;
    el('deliveryCep').textContent=quoted.postalCode;quoteForm.hidden=true;deliveryForm.hidden=false;
-   el('deliveryHeading').focus();
-  });
-  el('editCep').addEventListener('click',()=>{if(!checkoutButton.disabled){showFreight();cepField.focus();}});
+   rememberQuote('delivery');
+   if(focus)el('deliveryHeading').focus();
+  }
+  deliveryNext.addEventListener('click',()=>openDelivery(true));
+  el('editCep').addEventListener('click',()=>{if(!checkoutButton.disabled){showFreight();rememberQuote('freight');cepField.focus();}});
   deliveryForm.addEventListener('input',()=>{if(!checkoutButton.disabled)pendingOrder=null;});
   deliveryForm.addEventListener('submit',async event=>{
    event.preventDefault();
    if(!quoted || !config.enabled || checkoutButton.disabled)return;
    const customer={...Object.fromEntries(new FormData(deliveryForm)),postal_code:quoted.postalCode};
-   pendingOrder??={request_id:crypto.randomUUID(),order_secret:Array.from(crypto.getRandomValues(new Uint8Array(32))).map(value=>value.toString(16).padStart(2,'0')).join('')};
+   pendingOrder??={request_id:uuid(),order_secret:Array.from(crypto.getRandomValues(new Uint8Array(32))).map(value=>value.toString(16).padStart(2,'0')).join('')};
    checkoutButton.disabled=true;el('deliveryError').textContent='';
    try{
     const result=await request('orders',{items:cart(),customer,shipping_service:quoted.service,shipping_cents:quoted.shipping_cents,...pendingOrder});
-    sessionStorage.setItem(ORDER,JSON.stringify({order_id:result.order_id,order_secret:pendingOrder.order_secret}));
+    if(!storage.set(sessionStorage,ORDER,JSON.stringify({order_id:result.order_id,order_secret:pendingOrder.order_secret}))){el('deliveryError').textContent='Seu navegador bloqueou o armazenamento desta página (modo privado ou bloqueio de cookies). Libere e tente de novo para seguir ao pagamento.';checkoutButton.disabled=false;return;}
     location.assign('/checkout');
    }catch(error){el('deliveryError').textContent=error.message;checkoutButton.disabled=false;}
   });
  }
  if(el('paymentLines'))initPayment();
  async function initPayment(){
-  let order;try{order=JSON.parse(sessionStorage.getItem(ORDER)||'null')}catch{}
+  let order;try{order=JSON.parse(storage.get(sessionStorage,ORDER)||'null')}catch{}
   const message=text=>el('paymentMessage').textContent=text;
-  if(!order){message('Sua sacola ainda não foi confirmada. Volte para conferir as peças e a entrega.');return;}
+  if(!order||typeof order.order_id!=='string'){message('Sua sacola ainda não foi confirmada. Volte para conferir as peças e a entrega.');document.querySelector('.commerce-methods')?.setAttribute('hidden','');el('pixPanel').hidden=true;el('paymentMessage').insertAdjacentHTML('beforeend',' <a href="/sacola">Ir para a sacola</a>');return;}
   let state,busy=false,cardForm,attempt=null,retryPayment=null,pollTimer=null;
   const poll=()=>{clearTimeout(pollTimer);pollTimer=setTimeout(async()=>{try{await refresh();}catch{message('Não foi possível atualizar agora. Use Consultar pagamento.');}},5000);};
   const setBusy=value=>{busy=value;el('pixPay').disabled=value;el('cardPay').disabled=value||!cardForm;document.querySelectorAll('[data-method]').forEach(b=>b.disabled=value);};
   const show=result=>{
    state=result;el('refreshPayment').hidden=false;
-   if(result.status==='paid'){clearTimeout(pollTimer);message('Pagamento aprovado! Pedido '+order.order_id.slice(0,8).toUpperCase()+'. Você receberá a confirmação do pedido.');localStorage.removeItem(CART);count();el('pixPay').disabled=true;el('cardPay').disabled=true;document.querySelectorAll('[data-method]').forEach(b=>b.disabled=true);el('refreshPayment').hidden=true;return;}
+   if(result.status==='paid'){clearTimeout(pollTimer);message('Pagamento aprovado! Pedido '+order.order_id.slice(0,8).toUpperCase()+'. Você receberá a confirmação do pedido.');storage.remove(localStorage,CART);count();el('pixPay').disabled=true;el('cardPay').disabled=true;document.querySelectorAll('[data-method]').forEach(b=>b.disabled=true);el('refreshPayment').hidden=true;return;}
    if(['failed','canceled','expired'].includes(result.status)){attempt=null;retryPayment=null;message('O pagamento não foi concluído. Confira os dados e tente novamente.');setBusy(false);return;}
    if(result.qr_code){el('pixCode').value=result.qr_code;el('pixResult').hidden=false;if(result.qr_code_base64&&/^[A-Za-z0-9+/=]+$/.test(result.qr_code_base64)){el('pixQr').src='data:image/png;base64,'+result.qr_code_base64;el('pixQr').hidden=false;}}
    if(result.status==='pending'){message('Aguardando confirmação do pagamento. Não pague novamente.');setBusy(true);poll();}
@@ -148,7 +251,7 @@
    message('Escolha Pix ou cartão para concluir.');el('pixPay').disabled=false;
   }catch(error){message(error.message);return;}
   async function pay(payment){if(busy)return;setBusy(true);message('Processando pagamento…');
-   if(!attempt)attempt=crypto.randomUUID();retryPayment=payment;
+   if(!attempt)attempt=uuid();retryPayment=payment;
    try{show(await request('pay',{...order,attempt_id:attempt,payment}));}
    catch(error){message(error.message);el('refreshPayment').hidden=false;try{const result=await refresh();if(result.status==='created'||['failed','expired','canceled'].includes(result.status))setBusy(false);}catch{message(error.message+' Consulte o pagamento antes de tentar novamente.');}}
   }

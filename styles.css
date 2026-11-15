@@ -3378,7 +3378,9 @@ body.mm-lock{overflow:hidden}
  .page-loja .outfit-shop .shop-price{grid-column:1;grid-row:auto}
 }
 @media(prefers-reduced-motion:reduce){
- .outfit-shop *, .outfit-shop *::after{animation:none!important;transition:none!important}
+ /* Menos movimento: sem deslocamento nem zoom; trocas de estado continuam com fade curto. */
+ .outfit-shop :is(.outfit-masthead h1,.shop-product.outfit-entered){animation:none!important}
+ .page-loja .outfit-shop .shop-photo img,.outfit-shop .shop-view{transform:none!important;transition:opacity .15s linear!important}
 }
 .outfit-intro[hidden]{display:none}
 .outfit-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--paper);color:var(--gold);pointer-events:none;animation:outfit-intro-exit .4s 1s both}
@@ -3453,16 +3455,17 @@ body.mm-lock{overflow:hidden}
 .outfit-masthead.outfit-hero h1.outfit-logo-h1{position:relative;height:27vh;min-height:150px;margin:0 0 4px;font-size:0;line-height:0;scale:1}
 .outfit-masthead.outfit-hero .outfit-logo{position:absolute;left:50%;top:43%;width:360px;max-width:94%;height:auto;transform:translateX(-50%);translate:0 -50%}
 /* Sacola e checkout Brazilian Bayle. */
+:is(.commerce-nav,.commerce-shell){--paper:#050505;--ink:#f6f4ef;--ink-soft:#bdb4a2;--gold:#d2b375}
 :is(.page-sacola,.page-checkout) :is(.side,.mbar,.ticker){display:none}
 :is(.page-sacola,.page-checkout) .content{margin:0;padding:0}
-.commerce-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 5vw;border-bottom:1px solid #d2b37544;background:#050505}
-.commerce-nav a{color:#f6f4ef;text-decoration:none}.commerce-brand{display:flex;align-items:center;gap:12px;font-family:Syne,Arial,sans-serif}.commerce-brand img{object-fit:contain}.commerce-brand em{font:italic 28px 'Cormorant Garamond',serif;color:#d2b375}
-.commerce-shell{background:#050505;color:#f6f4ef;min-height:80vh;padding:35px max(20px,5vw) 80px}.commerce-back{color:#d2b375;font-size:13px}.commerce-kicker{font:11px/1.5 monospace;letter-spacing:.15em;color:#d2b375;margin-top:28px}.commerce-shell h1{font:700 clamp(32px,5vw,66px)/1.1 Syne,sans-serif;margin:14px 0 20px}.commerce-shell h1 em{font-family:'Cormorant Garamond',serif;font-weight:400;color:#d2b375}.commerce-lead{color:#c9c5bb;margin-bottom:32px}
-.commerce-columns{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:30px;max-width:1250px;margin-top:30px}.commerce-panel{border:1px solid #d2b37544;padding:clamp(18px,3vw,34px);background:#0d0d0b;min-width:0}.commerce-panel h2{font:600 24px Syne,sans-serif;margin:0 0 24px}.commerce-panel label{display:block;font-size:13px;color:#ded9cc;margin:12px 0}.commerce-panel label span{color:#8f8b80}.commerce-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.commerce-fields .full{grid-column:1/-1}
-.commerce-panel :is(input,select,textarea),.secure-field{display:block;box-sizing:border-box;width:100%;height:48px;margin-top:7px;border:1px solid #77705e;background:#141411;color:#f6f4ef;border-radius:0;padding:11px;font:16px Arial,sans-serif}.commerce-panel textarea{height:auto;resize:vertical}.secure-field{height:50px;padding:0;min-width:100px}.secure-field iframe{width:100%!important;height:100%!important;display:block}
-.commerce-primary{display:block;box-sizing:border-box;width:100%;margin-top:18px;background:#d2b375;border:1px solid #d2b375;color:#080808;padding:15px 18px;font:700 14px Syne,Arial,sans-serif;text-align:center;text-decoration:none;cursor:pointer}.commerce-primary:disabled{opacity:.45;cursor:not-allowed}.commerce-primary[hidden]{display:none}.commerce-secondary{background:none;border:1px solid #d2b37566;color:#d2b375;padding:10px 14px;margin-top:14px;cursor:pointer}.commerce-fine{font-size:12px;line-height:1.6;color:#b8b2a5;margin-top:18px}.commerce-fine a{color:inherit}.commerce-notice{font-size:14px;line-height:1.6;border-left:3px solid #d2b375;background:#17150e;padding:14px 18px;margin:20px 0}.commerce-error{color:#ffb4a9;font-size:14px}.commerce-totals{border-top:1px solid #d2b37544;margin-top:24px;padding-top:12px}.commerce-totals p{display:flex;justify-content:space-between;gap:15px;padding:7px 0;font-size:14px}.commerce-totals .commerce-grand{font-size:23px;border-top:1px solid #d2b37544;padding-top:18px;color:#d2b375}
-.commerce-line{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #ffffff18}.commerce-line img{width:90px;height:120px;object-fit:contain;background:#ccc}.commerce-line h3{font-size:15px;margin:0 0 8px}.commerce-line p{font-size:13px;color:#b8b2a5;margin:5px 0}.commerce-line-controls{display:flex;align-items:center;gap:12px;margin-top:10px}.commerce-line-controls button{background:none;border:1px solid #d2b37555;color:#f6f4ef;min-width:32px;min-height:32px;cursor:pointer}.commerce-line-controls .remove{border:0;color:#d2b375;font-size:12px}
-.commerce-methods{display:flex;gap:10px;margin-bottom:24px}.commerce-methods button{flex:1;padding:14px 10px;border:1px solid #d2b37555;color:#f6f4ef;background:#111;cursor:pointer}.commerce-methods [aria-pressed=true]{border-color:#d2b375;color:#d2b375;background:#211c11}#pixResult img{display:block;max-width:100%;margin:20px auto;background:white}#pixResult img[hidden]{display:none}.shop-buy{margin-top:16px}.shop-sale-price{font-size:18px;color:#f6f4ef}.shop-buy label{font-size:12px;color:#b8b2a5;display:flex;justify-content:space-between;align-items:center}.shop-buy select{padding:8px 16px;background:#141411;color:#f6f4ef;border:1px solid #d2b37555}.shop-buy .commerce-primary{margin-top:10px}
+.commerce-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 5vw;border-bottom:1px solid color-mix(in srgb,var(--gold) 27%,transparent);background:var(--paper)}
+.commerce-nav a{color:var(--ink);text-decoration:none}.commerce-brand{display:flex;align-items:center;gap:12px;font-family:Syne,Arial,sans-serif}.commerce-brand img{object-fit:contain}.commerce-brand em{font:italic 28px 'Cormorant Garamond',serif;color:var(--gold)}
+.commerce-shell{background:var(--paper);color:var(--ink);min-height:80vh;padding:35px max(20px,5vw) 80px}.commerce-back{color:var(--gold);font-size:13px}.commerce-kicker{font:11px/1.5 monospace;letter-spacing:.15em;color:var(--gold);margin-top:28px}.commerce-shell h1{font:700 clamp(32px,5vw,66px)/1.1 Syne,sans-serif;margin:14px 0 20px}.commerce-shell h1 em{font-family:'Cormorant Garamond',serif;font-weight:400;color:var(--gold)}.commerce-lead{color:#c9c5bb;margin-bottom:32px}
+.commerce-columns{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:30px;max-width:1250px;margin-top:30px}.commerce-panel{border:1px solid color-mix(in srgb,var(--gold) 27%,transparent);padding:clamp(18px,3vw,34px);background:#0d0d0b;min-width:0}.commerce-panel h2{font:600 24px Syne,sans-serif;margin:0 0 24px}.commerce-panel label{display:block;font-size:13px;color:#ded9cc;margin:12px 0}.commerce-panel label span{color:#8f8b80}.commerce-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.commerce-fields .full{grid-column:1/-1}
+.commerce-panel :is(input,select,textarea),.secure-field{display:block;box-sizing:border-box;width:100%;height:48px;margin-top:7px;border:1px solid #77705e;background:#141411;color:var(--ink);border-radius:0;padding:11px;font:16px Arial,sans-serif}.commerce-panel textarea{height:auto;resize:vertical}.secure-field{height:50px;padding:0;min-width:100px}.secure-field iframe{width:100%!important;height:100%!important;display:block}
+.commerce-primary{display:block;box-sizing:border-box;width:100%;margin-top:18px;background:var(--gold);border:1px solid var(--gold);color:#080808;padding:15px 18px;font:700 14px Syne,Arial,sans-serif;text-align:center;text-decoration:none;cursor:pointer}.commerce-primary:disabled{opacity:.45;cursor:not-allowed}.commerce-primary[hidden]{display:none}.commerce-secondary{background:none;border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);color:var(--gold);padding:10px 14px;margin-top:14px;cursor:pointer}.commerce-fine{font-size:12px;line-height:1.6;color:var(--ink-soft);margin-top:18px}.commerce-fine a{color:inherit}.commerce-notice{font-size:14px;line-height:1.6;border-left:3px solid var(--gold);background:#17150e;padding:14px 18px;margin:20px 0}.commerce-error{color:#ffb4a9;font-size:14px}.commerce-totals{border-top:1px solid color-mix(in srgb,var(--gold) 27%,transparent);margin-top:24px;padding-top:12px}.commerce-totals p{display:flex;justify-content:space-between;gap:15px;padding:7px 0;font-size:14px}.commerce-totals .commerce-grand{font-size:23px;border-top:1px solid color-mix(in srgb,var(--gold) 27%,transparent);padding-top:18px;color:var(--gold)}
+.commerce-line{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #ffffff18}.commerce-line img{width:90px;height:120px;object-fit:contain;background:#ccc}.commerce-line h3{font-size:15px;margin:0 0 8px}.commerce-line p{font-size:13px;color:var(--ink-soft);margin:5px 0}.commerce-line-controls{display:flex;align-items:center;gap:12px;margin-top:10px}.commerce-line-controls button{background:none;border:1px solid color-mix(in srgb,var(--gold) 33%,transparent);color:var(--ink);min-width:32px;min-height:32px;cursor:pointer}.commerce-line-controls .remove{border:0;color:var(--gold);font-size:12px}
+.commerce-methods{display:flex;gap:10px;margin-bottom:24px}.commerce-methods button{flex:1;padding:14px 10px;border:1px solid color-mix(in srgb,var(--gold) 33%,transparent);color:var(--ink);background:#111;cursor:pointer}.commerce-methods [aria-pressed=true]{border-color:var(--gold);color:var(--gold);background:#211c11}#pixResult img{display:block;max-width:100%;margin:20px auto;background:white}#pixResult img[hidden]{display:none}.shop-buy{margin-top:16px}.shop-sale-price{font-size:18px;color:var(--ink)}.shop-buy label{font-size:12px;color:var(--ink-soft);display:flex;justify-content:space-between;align-items:center}.shop-buy select{padding:8px 16px;background:#141411;color:var(--ink);border:1px solid color-mix(in srgb,var(--gold) 33%,transparent)}.shop-buy .commerce-primary{margin-top:10px}
 @media(max-width:760px){.commerce-columns{grid-template-columns:1fr}.commerce-nav{padding:16px 20px}.commerce-brand{font-size:12px}.commerce-brand em{font-size:22px}.commerce-shell{padding:25px 18px 60px}.commerce-panel{padding:20px 16px}.commerce-line{grid-template-columns:70px 1fr}.commerce-line img{width:70px;height:94px}.commerce-fields{gap:0 10px}.shop-buy select{padding:8px}.shop-buy .commerce-primary{padding:12px 8px}}
 /* Loja: ajustes da auditoria (âncoras, toque, leitura). */
 .page-loja .outfit-shop{--outfit-nav-h:100px}
@@ -3473,10 +3476,112 @@ body.mm-lock{overflow:hidden}
 .page-loja .outfit-shop .drop-form :is(.pick label,.check){min-height:44px;align-items:center}
 .page-loja .outfit-shop :is(.shop-product-category,.shop-sizes,.shop-kicker){font-size:12px}
 .page-loja .outfit-shop .shop-product-category{letter-spacing:.06em}
-@media(hover:none){.page-loja .outfit-shop .shop-photo-back{display:none}}
 @media(max-width:767px){.page-loja .outfit-shop{--outfit-nav-h:65px}.page-loja .outfit-shop .outfit-editorial a+a{margin-top:4px}}
 .page-loja .outfit-shop .bayle-details{border:0;border-radius:0;box-shadow:none;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--gold) 45%,transparent);text-underline-offset:6px}
 .page-loja .shop-newsletter .drop-form .form-msg.ok{background:rgba(61,220,132,.1);color:#d7ffe8;border-color:#3ddc84}
 .page-loja .shop-newsletter .drop-form .form-msg.err{background:rgba(255,138,128,.1);color:#ffe1de;border-color:#ff8a80}
 .page-loja .shop-newsletter .drop-form{--focus:var(--y)}
 .page-loja .outfit-shop .drop-form .btn{font-size:13px;letter-spacing:.08em}
+
+/* Loja · movimento "frente e costas".
+   1) Cada card mostra a camisa andando, virando e mostrando as costas (vídeo em loop).
+   2) Toque/clique: a foto do card vira o zoom de frente e costas (View Transitions, no app.js). */
+.page-loja .outfit-shop{--ease-turn:cubic-bezier(.16,1,.3,1)}
+.page-loja .outfit-shop .shop-photo:focus-visible .shop-view{opacity:1;transform:none}
+::view-transition-group(bayle-shirt){animation-duration:.5s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+::view-transition-old(bayle-shirt),::view-transition-new(bayle-shirt){width:100%;height:100%;object-fit:contain}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
+/* Sem View Transitions: o modal entra com fade e leve aproximação. */
+.bayle-preview[open]{opacity:1;transform:none;transition:opacity .3s var(--ease-turn,ease-out),transform .4s var(--ease-turn,ease-out)}
+@starting-style{.bayle-preview[open]{opacity:0;transform:scale(.97)}}
+.bayle-preview[open]::backdrop{opacity:1;transition:opacity .3s ease-out}
+@starting-style{.bayle-preview[open]::backdrop{opacity:0}}
+@media(prefers-reduced-motion:reduce){
+ .bayle-preview[open]{transform:none;transition:opacity .15s linear}
+ @starting-style{.bayle-preview[open]{transform:none}}
+}
+/* Loja · camisa andando: vídeo quadrado no lugar da foto. Toca só com o card na tela (app.js);
+   quem pede menos movimento fica com a capa parada, que já mostra as costas. */
+.page-loja .outfit-shop button.shop-photo{aspect-ratio:1;background:#e3e3e3}
+.page-loja .outfit-shop .shop-photo .shop-video{display:block;width:100%;height:100%;object-fit:cover;background:#e3e3e3;transition:transform .65s var(--ease-turn)}
+.page-loja .outfit-shop .shop-photo:is(:hover,:focus-visible) .shop-video{transform:scale(1.03)}
+@media(prefers-reduced-motion:reduce){.page-loja .outfit-shop .shop-photo .shop-video{transform:none!important;transition:none}}
+/* Arrastar para girar: o gesto horizontal é do card, o vertical continua rolando a página. */
+.page-loja .outfit-shop button.shop-photo{touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none}
+.page-loja .outfit-shop button.shop-photo.is-turning{cursor:grabbing}
+.page-loja .outfit-shop .shop-photo.is-turning .shop-video{transform:none}
+.page-loja .outfit-shop .shop-turn-hint{position:absolute;left:50%;top:12px;translate:-50% 0;padding:6px 12px;background:color-mix(in srgb,var(--paper) 72%,transparent);color:var(--ink);font-size:12px;letter-spacing:.04em;white-space:nowrap;pointer-events:none;opacity:.9;transition:opacity .3s ease-out}
+.page-loja .outfit-shop .shop-photo.is-turning .shop-turn-hint{opacity:0}
+@media(hover:hover){.page-loja .outfit-shop .shop-turn-hint{opacity:0}.page-loja .outfit-shop .shop-photo:is(:hover,:focus-visible):not(.is-turning) .shop-turn-hint{opacity:.9}}
+@media(hover:none){.page-loja .outfit-shop .shop-product:not(:first-child) .shop-turn-hint{display:none}.page-loja .outfit-shop .shop-turn-hint{top:auto;bottom:8px;font-size:11px;padding:5px 9px}.page-loja .outfit-shop.has-turned .shop-turn-hint{opacity:0}}
+
+/* Polish · bloco de compra no card: preço, tamanho e Comprar alinhados na mesma grade. */
+.page-loja .outfit-shop .shop-buy{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;margin-top:22px}
+.page-loja .outfit-shop .shop-sale-price{grid-column:1/-1;margin:0;font-size:18px;font-variant-numeric:tabular-nums}
+.page-loja .outfit-shop .shop-buy label{display:grid;gap:6px;justify-content:stretch;font-size:12px;letter-spacing:.06em;color:var(--ink-soft)}
+.page-loja .outfit-shop .shop-buy select{width:100%;height:44px;padding:0 12px;font-size:16px;border-radius:0}
+.page-loja .outfit-shop .shop-buy .btn{min-height:44px;margin:0;white-space:nowrap}
+@media(max-width:767px){.page-loja .outfit-shop .shop-buy{grid-template-columns:1fr}.page-loja .outfit-shop .shop-buy .btn{width:100%;justify-content:center}}
+/* Polish · sacola e checkout: números alinhados nos totais. */
+.commerce-totals strong,.commerce-line p{font-variant-numeric:tabular-nums}
+/* Harden · sacola: nomes longos quebram linha, botão + no limite fica apagado, sacola vazia sem totais. */
+.commerce-line>div{min-width:0;overflow-wrap:anywhere}
+.commerce-line-controls button:disabled{opacity:.35;cursor:not-allowed}
+.commerce-totals[hidden]{display:none}
+.commerce-panel :is(input,select):user-invalid{border-color:#ff8a80}
+.commerce-methods[hidden],#pixPanel[hidden]{display:none}
+/* Funil de compra (2026-11-14): ajuda no topo, sem flutuantes sobre os botões, rodapé enxuto */
+.commerce-nav-links{display:flex;align-items:center;gap:clamp(14px,3vw,32px)}
+.commerce-nav a,.commerce-help{display:inline-flex;align-items:center;min-height:44px}
+.commerce-help{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:none}
+.commerce-nav .commerce-help{color:var(--gold)}
+.commerce-help:hover{text-decoration:underline}
+.commerce-help:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.is-funnel .support-launch{display:none}
+@media(max-width:767px){.page-loja .support-launch,.page-loja .site-snd{display:none}}
+.commerce-back{display:inline-flex;align-items:center;min-height:44px}
+.commerce-kicker{font-size:12px;letter-spacing:.1em}
+.commerce-notice{border-left:0;border:1px solid color-mix(in srgb,var(--gold) 30%,transparent)}
+.commerce-added a{color:var(--gold);margin-left:4px;white-space:nowrap}
+.commerce-line-controls button{min-width:44px;min-height:44px}
+.commerce-line-controls .remove{padding:0 6px}
+.commerce-methods button{min-height:48px;font-weight:600}
+.commerce-methods [aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:#080808}
+.commerce-methods [aria-pressed=true]::before{content:"✓ "}
+fieldset.commerce-fields{border:0;padding:0;margin:0 0 6px;min-width:0}
+fieldset.commerce-fields legend{float:left;width:100%;padding:0;margin:22px 0 2px;font:600 15px Syne,Arial,sans-serif;color:var(--gold);grid-column:1/-1}
+fieldset.commerce-fields legend+*{clear:both}
+#addressStatus{margin:6px 0 0}
+#addressStatus:empty{display:none}
+.shop-buy-error{grid-column:1/-1;margin:2px 0 0;color:#ffb4a9;font-size:13px}
+.shop-buy select[aria-invalid=true]{border-color:#ffb4a9}
+.foot-funnel{padding:28px 0 32px}
+.foot-funnel .foot-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px}
+.foot-funnel nav{display:flex;flex-wrap:wrap;gap:0 20px}
+.foot-funnel nav a{display:inline-flex;align-items:center;min-height:44px;color:inherit}
+#editCep{display:inline-flex;align-items:center;min-height:44px}
+/* Tabela de medidas (medidas da peça, fornecedora) */
+.page-loja .outfit-shop .shop-buy-head{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.page-loja .outfit-shop .shop-buy-head .shop-sale-price{grid-column:auto}
+.shop-size-link{display:inline-flex;align-items:center;min-height:44px;padding:0;background:none;border:0;color:var(--gold);font:inherit;font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.shop-size-link:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.size-guide{--paper:#050505;--ink:#f6f4ef;--ink-soft:#bdb4a2;--gold:#d2b375;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:clamp(20px,4vw,32px);background:var(--paper);color:var(--ink);border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);overflow:auto}
+.size-guide::backdrop{background:rgb(0 0 0/.72)}
+.size-guide-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.size-guide h2{margin:0;font:700 clamp(24px,5vw,32px)/1.15 Syne,Arial,sans-serif}
+.size-guide h2 em{font:italic 400 1.1em 'Cormorant Garamond',serif;color:var(--gold)}
+.size-guide-close{min-height:44px;padding:0 4px;background:none;border:0;color:var(--gold);font:inherit;cursor:pointer}
+.size-guide-lead{margin:8px 0 18px;color:var(--ink-soft);font-size:14px}
+.size-guide-scroll{overflow-x:auto}
+.size-guide table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.size-guide th,.size-guide td{padding:12px 8px;text-align:center;border-bottom:1px solid color-mix(in srgb,var(--gold) 22%,transparent)}
+.size-guide thead th{font:700 15px Syne,Arial,sans-serif;color:var(--gold)}
+.size-guide tbody th{text-align:left;font-weight:600;font-size:14px}
+.size-guide tbody th small{display:block;font-weight:400;font-size:12px;color:var(--ink-soft)}
+.size-guide td{font-size:16px}
+.size-guide .is-picked{background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--ink)}
+.size-guide thead th.is-picked{color:var(--ink)}
+.size-guide-tip{margin:18px 0 6px;font-size:14px;line-height:1.55}
+.size-guide-fine{margin:0;font-size:12px;color:var(--ink-soft)}
+.size-guide{position:fixed;inset:0;margin:auto;height:fit-content}
+.size-guide-close{white-space:nowrap}
