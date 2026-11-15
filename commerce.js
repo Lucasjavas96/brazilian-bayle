@@ -55,8 +55,8 @@
   render();
   configuration.then(()=>{
    render();
-   if(isPublicStore && !config.enabled)notice(config.deliveryAvailable?'Você já pode consultar o frete. O pagamento online será liberado em breve.':'As vendas online e a consulta de frete serão liberadas em breve.');
-   else if(config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');
+   if(isPublicStore && !config.enabled && !config.deliveryAvailable)notice('As vendas online e a consulta de frete serão liberadas em breve.');
+   else if(!isPublicStore && config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');
   }).catch(()=>{});
   el('cartLines').addEventListener('click',event=>{
    const button=event.target.closest('button');
@@ -82,7 +82,7 @@
     )));
     shippingChoices.hidden=!options[0].service;
     selectShipping(result,postalCode);
-    deliveryNext.hidden=!config.enabled;
+    deliveryNext.hidden=false;
    }catch(error){if(currentRevision===revision)el('quoteError').textContent=error.message;}
    finally{quoteButton.disabled=false;}
   });
@@ -97,7 +97,9 @@
   }
   shippingService.addEventListener('change',()=>{if(quoted)selectShipping(quoted,quoted.postalCode);});
   deliveryNext.addEventListener('click',()=>{
-   if(!quoted || !config.enabled)return;
+   if(!quoted)return;
+   checkoutButton.hidden=!config.enabled;
+   el('paymentUnavailable').hidden=config.enabled;
    el('deliveryCep').textContent=quoted.postalCode;quoteForm.hidden=true;deliveryForm.hidden=false;
    el('deliveryHeading').focus();
   });
