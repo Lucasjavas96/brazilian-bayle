@@ -33,22 +33,75 @@
   save(items);location.assign('/sacola');
  }));
  if(el('cartLines')){
-  let quoted=null,customer=null;
-  const resetQuote=()=>{quoted=null;el('checkoutCta').hidden=true;el('quoteButton').hidden=false;el('cartShipping').textContent='A calcular';el('cartTotal').textContent='—';sessionStorage.removeItem(ORDER);};
-  const render=()=>{const items=cart();lines(el('cartLines'),items,true);el('cartEmpty').hidden=items.length>0;el('deliveryForm').hidden=!items.length || (isPublicStore && !config?.enabled && !config?.deliveryAvailable);el('cartSubtotal').textContent=money(items.reduce((v,i)=>v+(products.find(p=>p.id===i.id)?.price_cents||0)*i.quantity,0));resetQuote();};
-  render();configuration.then(()=>{render();if(isPublicStore && !config.enabled){notice('As vendas online serão liberadas em breve. Você já pode montar a sacola e consultar o frete quando disponível.');}else if(!config.deliveryAvailable)notice('A coleção está em preparação. A entrega será liberada em breve.');else if(config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');}).catch(()=>{});
-  el('cartLines').addEventListener('click',event=>{const b=event.target.closest('button');if(!b)return;const items=cart();if(b.dataset.remove!==undefined)items.splice(Number(b.dataset.remove),1);else if(b.dataset.minus!==undefined){const i=items[Number(b.dataset.minus)];i.quantity--;if(i.quantity===0)items.splice(Number(b.dataset.minus),1);}else if(b.dataset.plus!==undefined){const i=items[Number(b.dataset.plus)];i.quantity=Math.min(5,i.quantity+1);}save(items);render();});
-  el('deliveryForm').addEventListener('input',resetQuote);
-  el('deliveryForm').noValidate=true;
-  el('deliveryForm').addEventListener('submit',async event=>{event.preventDefault();const button=el('quoteButton');button.disabled=true;el('deliveryError').textContent='';try{
-   await configuration;customer=Object.fromEntries(new FormData(event.currentTarget));quoted=await request('quote',{items:cart(),postal_code:customer.postal_code});
-   el('cartSubtotal').textContent=money(quoted.subtotal_cents);el('cartShipping').textContent=quoted.service ? money(quoted.shipping_cents)+' · '+quoted.service+' · '+quoted.delivery_business_days+' dia(s) útil(eis) no total' : 'Sem frete no teste';el('cartTotal').textContent=money(quoted.total_cents);el('checkoutCta').hidden=!config.enabled;button.hidden=false;
-  }catch(error){el('deliveryError').textContent=error.message;}finally{button.disabled=false;}});
-  el('checkoutCta').addEventListener('click',async event=>{event.preventDefault();if(!quoted||!customer||!el('deliveryForm').reportValidity())return;const button=event.currentTarget;button.setAttribute('aria-disabled','true');try{
-   const order_secret=Array.from(crypto.getRandomValues(new Uint8Array(32))).map(v=>v.toString(16).padStart(2,'0')).join('');
-   const id=crypto.randomUUID();const result=await request('orders',{items:cart(),customer,request_id:id,order_secret});
-   sessionStorage.setItem(ORDER,JSON.stringify({order_id:result.order_id,order_secret}));location.assign('/checkout');
-  }catch(error){el('deliveryError').textContent=error.message;}finally{button.removeAttribute('aria-disabled');}});
+  const quoteForm=el('quoteForm'),deliveryForm=el('deliveryForm'),cepField=quoteForm.elements.postal_code;
+  const quoteButton=el('quoteButton'),deliveryNext=el('deliveryNext'),checkoutButton=el('checkoutCta');
+  let quoted=null, revision=0, pendingOrder=null;
+  const showFreight=()=>{deliveryForm.hidden=true;quoteForm.hidden=false;};
+  const resetQuote=()=>{
+   revision++;quoted=null;pendingOrder=null;showFreight();deliveryNext.hidden=true;
+   el('quoteError').textContent='';el('deliveryError').textContent='';
+   el('cartShipping').textContent='A calcular';el('cartTotal').textContent='—';
+   sessionStorage.removeItem(ORDER);
+  };
+  const render=()=>{
+   const items=cart();
+   lines(el('cartLines'),items,true);
+   el('cartEmpty').hidden=items.length>0;
+   el('purchaseSteps').hidden=!items.length || !config || (!config.enabled && !config.deliveryAvailable);
+   el('cartSubtotal').textContent=money(items.reduce((sum,item)=>sum+(products.find(product=>product.id===item.id)?.price_cents||0)*item.quantity,0));
+   resetQuote();
+  };
+  render();
+  configuration.then(()=>{
+   render();
+   if(isPublicStore && !config.enabled)notice(config.deliveryAvailable?'Você já pode consultar o frete. O pagamento online será liberado em breve.':'As vendas online e a consulta de frete serão liberadas em breve.');
+   else if(config.mode==='test')notice('Ambiente de teste: não use dados de cartão reais.');
+  }).catch(()=>{});
+  el('cartLines').addEventListener('click',event=>{
+   const button=event.target.closest('button');
+   if(!button || checkoutButton.disabled)return;
+   const items=cart();
+   if(button.dataset.remove!==undefined)items.splice(Number(button.dataset.remove),1);
+   else if(button.dataset.minus!==undefined){const item=items[Number(button.dataset.minus)];if(--item.quantity===0)items.splice(Number(button.dataset.minus),1);}
+   else if(button.dataset.plus!==undefined){const item=items[Number(button.dataset.plus)];item.quantity=Math.min(5,item.quantity+1);}
+   save(items);render();
+  });
+  cepField.addEventListener('input',resetQuote);
+  quoteForm.addEventListener('submit',async event=>{
+   event.preventDefault();
+   if(quoteButton.disabled)return;
+   const currentRevision=revision,postalCode=cepField.value;
+   quoteButton.disabled=true;deliveryNext.hidden=true;el('quoteError').textContent='';
+   try{
+    const result=await request('quote',{items:cart(),postal_code:postalCode});
+    if(currentRevision!==revision)return;
+    quoted={...result,postalCode};
+    el('cartSubtotal').textContent=money(quoted.subtotal_cents);
+    el('cartShipping').textContent=quoted.service?money(quoted.shipping_cents)+' · '+quoted.service+' · '+quoted.delivery_business_days+' dias úteis no total':'Sem frete no teste';
+    el('cartTotal').textContent=money(quoted.total_cents);
+    deliveryNext.hidden=!config.enabled;
+   }catch(error){if(currentRevision===revision)el('quoteError').textContent=error.message;}
+   finally{quoteButton.disabled=false;}
+  });
+  deliveryNext.addEventListener('click',()=>{
+   if(!quoted || !config.enabled)return;
+   el('deliveryCep').textContent=quoted.postalCode;quoteForm.hidden=true;deliveryForm.hidden=false;
+   el('deliveryHeading').focus();
+  });
+  el('editCep').addEventListener('click',()=>{if(!checkoutButton.disabled){showFreight();cepField.focus();}});
+  deliveryForm.addEventListener('input',()=>{if(!checkoutButton.disabled)pendingOrder=null;});
+  deliveryForm.addEventListener('submit',async event=>{
+   event.preventDefault();
+   if(!quoted || !config.enabled || checkoutButton.disabled)return;
+   const customer={...Object.fromEntries(new FormData(deliveryForm)),postal_code:quoted.postalCode};
+   pendingOrder??={request_id:crypto.randomUUID(),order_secret:Array.from(crypto.getRandomValues(new Uint8Array(32))).map(value=>value.toString(16).padStart(2,'0')).join('')};
+   checkoutButton.disabled=true;el('deliveryError').textContent='';
+   try{
+    const result=await request('orders',{items:cart(),customer,...pendingOrder});
+    sessionStorage.setItem(ORDER,JSON.stringify({order_id:result.order_id,order_secret:pendingOrder.order_secret}));
+    location.assign('/checkout');
+   }catch(error){el('deliveryError').textContent=error.message;checkoutButton.disabled=false;}
+  });
  }
  if(el('paymentLines'))initPayment();
  async function initPayment(){
