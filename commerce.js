@@ -111,7 +111,10 @@
   const render=()=>{
    const items=cart();
    const choosing=variantForm&&!variantForm.hidden;
-   lines(el('cartLines'),items,true,!choosing);
+   const cartLines=el('cartLines');
+   cartLines.hidden=choosing;
+   el('cartTotals').hidden=choosing;
+   if(!choosing)lines(cartLines,items,true);
    el('cartEmpty').hidden=items.length>0 || choosing;
    document.querySelector('.commerce-totals').hidden=!items.length;
    el('purchaseSteps').hidden=choosing || !items.length || !config || (!config.enabled && !config.deliveryAvailable);
