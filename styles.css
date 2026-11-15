@@ -3113,8 +3113,8 @@ body.mm-lock{overflow:hidden}
 .outfit-masthead h1.outfit-logo-h1{font-size:0;line-height:0;scale:1;margin:0 0 28px}
 .outfit-masthead .outfit-logo{display:block;width:min(100%,900px);height:auto}
 .outfit-masthead.outfit-hero{padding:0 24px;overflow:hidden}
-.outfit-masthead.outfit-hero h1.outfit-logo-h1{position:relative;height:27vh;min-height:150px;margin:0 0 4px;font-size:0;line-height:0;scale:1}
-.outfit-masthead.outfit-hero .outfit-logo{position:absolute;left:50%;top:43%;width:360px;max-width:94%;height:auto;transform:translateX(-50%);translate:0 -50%}
+.outfit-masthead.outfit-hero h1.outfit-logo-h1{position:relative;height:clamp(96px,15vh,150px);margin:0 0 8px;font-size:0;line-height:0;scale:1}
+.outfit-masthead.outfit-hero .outfit-logo{position:absolute;left:50%;top:50%;width:240px;max-width:70%;height:auto;transform:translateX(-50%);translate:0 -50%}
 :is(.commerce-nav,.commerce-shell){--paper:#050505;--ink:#f6f4ef;--ink-soft:#bdb4a2;--gold:#d2b375}
 :is(.page-sacola,.page-checkout) :is(.side,.mbar,.ticker){display:none}
 :is(.page-sacola,.page-checkout) .content{margin:0;padding:0}
