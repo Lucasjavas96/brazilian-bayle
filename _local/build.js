@@ -91,9 +91,9 @@ ${jsonld}
 <!-- barra do celular -->
 <div class="mbar">
   <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
-  <p class="mbar-tag"><b><img class="mbar-wordmark" src="/assets/logo-menu.png?v=1" alt="Brazilian Bayle" width="77" height="30"></b><span>A pista é brasileira e sempre vai ser</span></p>
+  <p class="mbar-tag"><img class="mbar-parrot" src="/assets/papagaio-logo.png?v=1" alt="" width="79" height="180"><b><img class="mbar-wordmark" src="/assets/logo-menu.png?v=1" alt="Brazilian Bayle" width="77" height="30"></b><span>A pista é brasileira e sempre vai ser</span></p>
   <div class="mbar-access">
-  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-menu.png?v=1" alt="" width="26" height="56"></a>
+  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-logo.png?v=1" alt="" width="79" height="180"></a>
   <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><a href="/moderacao" data-owner-only hidden>👑 Moderação <span class="owner-badge" data-owner-badge hidden></span></a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
   </div>
 </div>
