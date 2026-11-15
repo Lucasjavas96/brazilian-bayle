@@ -48,7 +48,8 @@ export async function quoteMelhorEnvio(
   });
   if (!response.ok) throw new Error('carrier_unavailable');
   const results = await response.json();
-  const quote = Array.isArray(results) && results.find(item => Number(item.id) === config.service && !item.error);
+  const services = Array.isArray(results) ? results : [results];
+  const quote = services.find(item => Number(item?.id) === config.service && !item.error);
   const value = String(quote?.custom_price ?? quote?.price);
   const days = Number(quote?.custom_delivery_range?.max ?? quote?.delivery_range?.max ?? quote?.delivery_time);
   const cents = Math.round(Number(value) * 100);
