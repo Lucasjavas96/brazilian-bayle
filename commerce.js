@@ -35,10 +35,11 @@
  if(el('cartLines')){
   const quoteForm=el('quoteForm'),deliveryForm=el('deliveryForm'),cepField=quoteForm.elements.postal_code;
   const quoteButton=el('quoteButton'),deliveryNext=el('deliveryNext'),checkoutButton=el('checkoutCta');
-  let quoted=null, revision=0, pendingOrder=null;
+  const shippingChoices=el("shippingChoices"),shippingService=el("shippingService");
+  let quoted=null, options=[], revision=0, pendingOrder=null;
   const showFreight=()=>{deliveryForm.hidden=true;quoteForm.hidden=false;};
   const resetQuote=()=>{
-   revision++;quoted=null;pendingOrder=null;showFreight();deliveryNext.hidden=true;
+   revision++;quoted=null;options=[];shippingChoices.hidden=true;pendingOrder=null;showFreight();deliveryNext.hidden=true;
    el('quoteError').textContent='';el('deliveryError').textContent='';
    el('cartShipping').textContent='A calcular';el('cartTotal').textContent='—';
    sessionStorage.removeItem(ORDER);
@@ -75,14 +76,26 @@
    try{
     const result=await request('quote',{items:cart(),postal_code:postalCode});
     if(currentRevision!==revision)return;
-    quoted={...result,postalCode};
-    el('cartSubtotal').textContent=money(quoted.subtotal_cents);
-    el('cartShipping').textContent=quoted.service?money(quoted.shipping_cents)+' · '+quoted.service+' · '+quoted.delivery_business_days+' dias úteis no total':'Sem frete no teste';
-    el('cartTotal').textContent=money(quoted.total_cents);
+    options=result.shipping_options||[result];
+    shippingService.replaceChildren(...options.map((option,index)=>new Option(
+     option.service ? option.service+' · '+money(option.shipping_cents)+' · '+option.delivery_business_days+' dias úteis' : 'Sem frete no teste',String(index)
+    )));
+    shippingChoices.hidden=!options[0].service;
+    selectShipping(result,postalCode);
     deliveryNext.hidden=!config.enabled;
    }catch(error){if(currentRevision===revision)el('quoteError').textContent=error.message;}
    finally{quoteButton.disabled=false;}
   });
+  function selectShipping(result,postalCode){
+   const option=options[Number(shippingService.value)];
+   if(!option)return;
+   quoted={...result,...option,postalCode};
+   pendingOrder=null;
+   el('cartSubtotal').textContent=money(quoted.subtotal_cents);
+   el('cartShipping').textContent=shippingService.selectedOptions[0].textContent;
+   el('cartTotal').textContent=money(quoted.subtotal_cents+option.shipping_cents);
+  }
+  shippingService.addEventListener('change',()=>{if(quoted)selectShipping(quoted,quoted.postalCode);});
   deliveryNext.addEventListener('click',()=>{
    if(!quoted || !config.enabled)return;
    el('deliveryCep').textContent=quoted.postalCode;quoteForm.hidden=true;deliveryForm.hidden=false;
@@ -97,7 +110,7 @@
    pendingOrder??={request_id:crypto.randomUUID(),order_secret:Array.from(crypto.getRandomValues(new Uint8Array(32))).map(value=>value.toString(16).padStart(2,'0')).join('')};
    checkoutButton.disabled=true;el('deliveryError').textContent='';
    try{
-    const result=await request('orders',{items:cart(),customer,...pendingOrder});
+    const result=await request('orders',{items:cart(),customer,shipping_service:quoted.service,shipping_cents:quoted.shipping_cents,...pendingOrder});
     sessionStorage.setItem(ORDER,JSON.stringify({order_id:result.order_id,order_secret:pendingOrder.order_secret}));
     location.assign('/checkout');
    }catch(error){el('deliveryError').textContent=error.message;checkoutButton.disabled=false;}
