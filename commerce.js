@@ -11,7 +11,7 @@
  const sizeGuide=document.querySelector('[data-size-guide]');
  if(sizeGuide){
   const measurements=[['P','56,5','72','21'],['M','60','77','22'],['G','61','77,5','22,5'],['GG','65','84','23,5'],['XG','65,5','88,5','23,5']];
-  sizeGuide.innerHTML=`<details class="commerce-size-guide"><summary>Tabela de medidas</summary><table><caption class="sr-only">Medidas da camiseta em centímetros</caption><thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead><tbody>${measurements.map(([size,width,length,sleeve])=>`<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody></table><p>Medidas da peça em cm. Compare com uma camiseta sua estendida sobre uma mesa. Pode variar até 2 cm.</p></details>`;
+  sizeGuide.innerHTML=`<details class="commerce-size-guide" open><summary>Tabela de medidas</summary><table><caption class="sr-only">Medidas da camiseta em centímetros</caption><thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead><tbody>${measurements.map(([size,width,length,sleeve])=>`<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody></table><p>Medidas da peça em cm. Compare com uma camiseta sua estendida sobre uma mesa. Pode variar até 2 cm.</p></details>`;
  }
  const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}};
