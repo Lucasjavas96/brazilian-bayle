@@ -4,6 +4,7 @@
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
  const CART='brb-cart-v1', ORDER='brb-checkout-order-v1', QUOTE='brb-quote-v1';
  const colors={preta:'Preta','off-white':'Off-white',cinza:'Cinza'};
+ const variantPhoto=(id,color)=>'/assets/shop/bayle/'+id+(color==='cinza'||color==='off-white'?'-'+color:'')+'-costas.webp';
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
  /* Medidas da camiseta oversized (PR #11), exibidas na sacola e no checkout. */
@@ -48,7 +49,7 @@
  configuration.catch(()=>notice('Não foi possível consultar a disponibilidade. Tente novamente em instantes.'));
  function lines(container,items,controls=false){container.replaceChildren();for(const [index,item] of items.entries()){
   const p=products.find(p=>p.id===item.id);if(!p)continue;const div=document.createElement('div');div.className='commerce-line';
-  div.innerHTML=`<img src="/assets/shop/bayle/${escape(item.id)}-costas.webp" alt="${escape(p.name)}"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color]||'Preta')} · ${escape(item.size)} · ${item.quantity} ${item.quantity===1?'unidade':'unidades'}</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}">−</button><span aria-live="polite">${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}"${item.quantity>=5?' disabled title="Máximo de 5 por peça"':''}>+</button><button type="button" class="remove" data-remove="${index}" aria-label="Remover ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}, da sacola">Remover</button></div>`:''}</div>`;
+  div.innerHTML=`<img src="${escape(variantPhoto(item.id,item.color))}" alt="${escape(p.name)} · ${escape(colors[item.color]||'Preta')} · costas"><div><h3>${escape(p.name)}</h3><p>${escape(colors[item.color]||'Preta')} · ${escape(item.size)} · ${item.quantity} ${item.quantity===1?'unidade':'unidades'}</p><p>${money((item.unit_cents||p.price_cents)*item.quantity)}</p>${controls?`<div class="commerce-line-controls"><button type="button" data-minus="${index}" aria-label="Diminuir quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}">−</button><span aria-live="polite">${item.quantity}</span><button type="button" data-plus="${index}" aria-label="Aumentar quantidade de ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}"${item.quantity>=5?' disabled title="Máximo de 5 por peça"':''}>+</button><button type="button" class="remove" data-remove="${index}" aria-label="Remover ${escape(p.name)}, ${escape(colors[item.color]||'Preta').toLowerCase()}, tamanho ${escape(item.size)}, da sacola">Remover</button></div>`:''}</div>`;
   if(controls && p.active){
    const form=document.createElement('form');
    form.className='commerce-fields';
@@ -75,6 +76,14 @@
   const variantForm=el('chooseVariant');
   const productId=new URLSearchParams(location.search).get('peca');
   let selectedProduct=null;
+  const variantImage=el('variantImage');
+  function updateVariantImage(){
+   if(!selectedProduct||!variantImage)return;
+   const color=variantForm.elements.color.value||'preta';
+   variantImage.src=variantPhoto(selectedProduct.id,color);
+   variantImage.alt=selectedProduct.name+' · '+colors[color]+' · costas';
+  }
+  variantForm?.elements.color.addEventListener('change',updateVariantImage);
   const openVariant=()=>{
    const p=products.find(product=>product.id===productId&&product.active!==false);
    if(!variantForm||!p){variantForm&&(variantForm.hidden=true);return;}
@@ -83,6 +92,7 @@
    const sizeSelect=variantForm.elements.size,current=sizeSelect.value;
    sizeSelect.replaceChildren(new Option('Selecione',''),...p.sizes.map(size=>new Option(size,size)));
    if(p.sizes.includes(current))sizeSelect.value=current;
+   updateVariantImage();
    variantForm.hidden=false;
   };
   let quoted=null, options=[], revision=0, pendingOrder=null;

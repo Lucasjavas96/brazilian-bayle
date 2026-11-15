@@ -3218,3 +3218,8 @@ fieldset.commerce-fields legend+*{clear:both}
 .commerce-size-guide :is(th,td){border-bottom-color:color-mix(in srgb,var(--gold) 27%,transparent)}
 .commerce-size-guide p{color:var(--ink-soft)}
 .commerce-line form.commerce-fields{margin-top:8px}.commerce-line form.commerce-fields label{margin:6px 0}
+.commerce-variant-image{display:block;width:min(100%,300px);height:auto;aspect-ratio:3/4;object-fit:cover;margin:12px 0}
+.page-sacola .commerce-line{grid-template-columns:minmax(105px,36%) minmax(0,1fr)}
+.page-sacola .commerce-line img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.page-sacola .commerce-line-controls{flex-wrap:wrap}
+@media(max-width:420px){.page-sacola .commerce-line{grid-template-columns:minmax(90px,33%) minmax(0,1fr);gap:10px}}
