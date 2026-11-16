@@ -8,7 +8,7 @@ create table brb_private.ticket_payments (
  fee_cents integer not null check(fee_cents>=0),
  seller_cents integer not null check(seller_cents>0),
  payer_email text not null,
- fee_payer text not null check(fee_payer in ('buyer','seller')),
+ check(amount_cents - seller_cents = 2 * fee_cents),
  mode text not null check(mode in ('test','production')),
  provider_id text unique,
  status text not null default 'pending',
@@ -81,7 +81,7 @@ declare r brb_private.ticket_requests; ref text:=trim(coalesce(payload->>'refere
    update brb_private.ticket_listings set status='ativo' where id=r.listing_id;
   else raise exception 'Pagamento é confirmado pelo Mercado Pago. Confira a etapa e os comprovantes do pedido.';end if;
  elsif action<>'list' then raise exception 'Ação inválida.';end if;
- return jsonb_build_object('requests',coalesce((select jsonb_agg(item || jsonb_build_object(
+ return jsonb_build_object('requests',coalesce((select jsonb_agg((item - 'fee') || jsonb_build_object(
   'evidence',coalesce((select jsonb_agg(jsonb_build_object('kind',v.kind,'reference',v.reference)) from brb_private.ticket_evidence v where v.request_id=(item->>'id')::uuid),'[]'),
   'payment',coalesce((select jsonb_build_object('status',p.status,'amount_cents',p.amount_cents,'fee_cents',p.fee_cents,'seller_cents',p.seller_cents) from brb_private.ticket_payments p where p.request_id=(item->>'id')::uuid),'{}')
   )) from jsonb_array_elements(public.brb_tickets_admin_legacy('list','{}')->'requests') item),'[]'));
@@ -118,7 +118,7 @@ declare u uuid:=auth.uid(); r brb_private.ticket_requests; l brb_private.ticket_
   'id',q.id,'status',q.status,'event',e.title,'date',e.event_date,'venue',e.venue,'type',t.ticket_type,'price',t.price,
   'role',case when q.buyer_id=u then 'buyer' when t.seller_id=u then 'seller' else 'staff' end,
   'delivery_email',case when u=t.seller_id and q.status in ('pagamento_confirmado','ingresso_transferido','recebimento_confirmado','concluida','em_disputa') then (select email from auth.users where id=q.buyer_id) else null end,
-  'fee_payer',p.fee_payer,'created_at',q.created_at,'payment_status',p.status,'amount_cents',p.amount_cents,'fee_cents',p.fee_cents,'seller_cents',p.seller_cents,
+  'created_at',q.created_at,'payment_status',p.status,'amount_cents',p.amount_cents,'fee_cents',p.fee_cents,'seller_cents',p.seller_cents,
   'evidence',coalesce((select jsonb_agg(jsonb_build_object('id',v.id,'kind',v.kind,'reference',v.reference,'has_file',v.object_path is not null,'created_at',v.created_at) order by v.created_at) from brb_private.ticket_evidence v where v.request_id=q.id),'[]')
  ) order by q.created_at desc)
  from brb_private.ticket_requests q join brb_private.ticket_listings t on t.id=q.listing_id
@@ -144,10 +144,10 @@ declare r brb_private.ticket_requests; l brb_private.ticket_listings; p brb_priv
     perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(r.buyer_id::text,0));
     select count(*) into n from brb_private.ticket_payments x join brb_private.ticket_requests y on y.id=x.request_id where y.buyer_id=r.buyer_id and x.created_at>now()-interval '1 hour';
     if n>=10 then raise exception 'Aguarde antes de gerar outro pagamento.';end if;
-    if payload->>'fee_payer' not in ('buyer','seller') or payload->>'mode' not in ('test','production') then raise exception 'Cobrança não configurada.';end if;
-    amount:=round(l.price*100);fee:=round(amount*0.05);
-    insert into brb_private.ticket_payments(request_id,amount_cents,fee_cents,seller_cents,payer_email,fee_payer,mode)
-    values(r.id,amount+case when payload->>'fee_payer'='buyer' then fee else 0 end,fee,amount-case when payload->>'fee_payer'='seller' then fee else 0 end,(select email from auth.users where id=r.buyer_id),payload->>'fee_payer',payload->>'mode') returning * into p;
+    if payload->>'mode' not in ('test','production') then raise exception 'Cobrança não configurada.';end if;
+    amount:=round(l.price*100);fee:=round(amount*0.10);
+    insert into brb_private.ticket_payments(request_id,amount_cents,fee_cents,seller_cents,payer_email,mode)
+    values(r.id,amount+fee,fee,amount-fee,(select email from auth.users where id=r.buyer_id),payload->>'mode') returning * into p;
    end if;
   elsif action='reconcile' then
    if p.request_id is null then raise exception 'Pagamento não encontrado.';end if;

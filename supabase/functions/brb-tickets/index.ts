@@ -6,7 +6,6 @@ const origins = new Set(['https://brazilianbayle.com.br', 'https://www.brazilian
 const mode = () => env('BRB_TICKETS_MODE') === 'production' ? 'production' : 'test';
 const token = () => env(mode() === 'test' ? 'BRB_MP_TEST_ACCESS_TOKEN' : 'BRB_MP_ACCESS_TOKEN');
 const enabled = () => env('BRB_TICKETS_ENABLED') === 'true' && !!token()
-  && ['buyer', 'seller'].includes(env('BRB_TICKETS_FEE_PAYER'))
   && !!env('BRB_MP_WEBHOOK_SECRET')
   && !!env(mode() === 'test' ? 'BRB_MP_TEST_SELLER_ID' : 'BRB_MP_SELLER_ID');
 const serviceHeaders = () => ({ apikey: env('SUPABASE_SERVICE_ROLE_KEY'), Authorization: 'Bearer ' + env('SUPABASE_SERVICE_ROLE_KEY'), 'Content-Type': 'application/json' });
@@ -104,7 +103,7 @@ Deno.serve(async request => {
     }
     if (!origins.has(origin)) return reply({ error: 'Origem não permitida.' }, 403);
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
-    if (route === 'config' && request.method === 'GET') return reply({ enabled: enabled(), mode: mode(), fee_payer: env('BRB_TICKETS_FEE_PAYER') || null });
+    if (route === 'config' && request.method === 'GET') return reply({ enabled: enabled(), mode: mode() });
     if (request.method !== 'POST') return reply({}, 405);
     const authorization = request.headers.get('authorization') || '';
     const auth = await fetch(env('SUPABASE_URL') + '/auth/v1/user', { headers: { apikey: env('SUPABASE_SERVICE_ROLE_KEY'), Authorization: authorization } });
@@ -119,7 +118,7 @@ Deno.serve(async request => {
     if (route === 'pay') {
       if (body.consent !== true) throw new InputError('Confira o resumo e aceite os termos para gerar o Pix.');
       if (!enabled()) throw new InputError('O Pix da intermediação está em preparação. Seu pedido continua disponível para acompanhamento.', 503);
-      context = await rpc('reserve', { id: body.id, actor: user.id, fee_payer: env('BRB_TICKETS_FEE_PAYER'), mode: mode() });
+      context = await rpc('reserve', { id: body.id, actor: user.id, mode: mode() });
       if (context.payment.mode !== mode()) throw new InputError('O pedido pertence a outro modo de pagamento. Fale com o suporte.', 409);
       if (context.payment.provider_id) {
         const result = await reconcile(await provider('/' + encodeURIComponent(context.payment.provider_id)), context);

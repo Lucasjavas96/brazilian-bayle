@@ -17,7 +17,7 @@ Ocorrências interrompem o avanço do pedido. Reembolsos feitos no Mercado Pago 
 
 ## Configuração antes da ativação
 
-- Definir `BRB_TICKETS_FEE_PAYER=buyer` para acrescentar 5% ao comprador, ou `seller` para descontar 5% do vendedor. Esta decisão está pendente do responsável pela Brazilian.
+- A taxa é de 10% do preço do ingresso para cada lado, arredondada em centavos. Num ingresso de R$ 100, o comprador paga R$ 110 e o vendedor recebe R$ 90.
 - Definir `BRB_TICKETS_MODE=test` ou `production` explicitamente.
 - Conferir `BRB_MP_TEST_ACCESS_TOKEN`, `BRB_MP_TEST_SELLER_ID` ou as versões de produção `BRB_MP_ACCESS_TOKEN` e `BRB_MP_SELLER_ID`.
 - Conferir `BRB_MP_WEBHOOK_SECRET`, `BRB_SMTP_USER` e `BRB_SMTP_PASSWORD`.
@@ -42,4 +42,4 @@ Consultas e webhooks tentam processar a fila. O workflow `Ticket transactional e
 - Testes da Edge Function com provedor simulado para assinatura falsa, autenticação, aceite, valor divergente e tentativa já existente.
 - Testes de navegador em 390 e 1440 pixels com pagamento simulado.
 
-Permanecem pendentes uma transação real no modo de teste do Mercado Pago, a entrega real de e-mail desta nova jornada e a definição de quem paga a taxa. Nenhum resultado simulado representa um pagamento ou e-mail real.
+Permanecem pendentes uma transação real no modo de teste do Mercado Pago, a entrega real de e-mail desta nova jornada. Nenhum resultado simulado representa um pagamento ou e-mail real.

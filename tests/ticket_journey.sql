@@ -16,9 +16,9 @@ begin
  blocked:=false;
  begin perform public.brb_tickets('request',jsonb_build_object('id',lid));exception when others then blocked:=true;end;
  if not blocked then raise exception 'Reserva duplicada permitida';end if;
- a:=public.brb_ticket_service('reserve',jsonb_build_object('id',rid,'actor',buyer,'mode','test','fee_payer','seller'));
- if (a#>>'{payment,amount_cents}')::int<>10000 or (a#>>'{payment,seller_cents}')::int<>9500 then raise exception 'Taxa errada';end if;
- b:=public.brb_ticket_service('reserve',jsonb_build_object('id',rid,'actor',buyer,'mode','test','fee_payer','buyer'));
+ a:=public.brb_ticket_service('reserve',jsonb_build_object('id',rid,'actor',buyer,'mode','test'));
+ if (a#>>'{payment,amount_cents}')::int<>11000 or (a#>>'{payment,seller_cents}')::int<>9000 then raise exception 'Taxa errada';end if;
+ b:=public.brb_ticket_service('reserve',jsonb_build_object('id',rid,'actor',buyer,'mode','test'));
  if a->'payment'<>b->'payment' then raise exception 'Repetição mudou o pagamento';end if;
  blocked:=false;
  begin perform public.brb_ticket_service('context',jsonb_build_object('id',rid,'actor',outsider));exception when others then blocked:=true;end;

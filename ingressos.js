@@ -1,9 +1,9 @@
 /* Intermediação de ingressos: anunciar, comprar e acompanhar. O suporte da Brazilian Bayle conduz cada passo (fila na Moderação).
-   Dados em brb_tickets. Taxa da intermediação: 5% do valor do ingresso. */
+   Dados em brb_tickets. Taxa da intermediação: 10% do valor do ingresso. */
 (() => {
   const box = document.getElementById("tpAgenda");
   if (!box) return;
-  const FEE = 0.05;
+  const FEE = 0.10;
   const TIPOS = ["Masculino", "Feminino", "Meia social", "Backstage", "Pista", "Área VIP"];
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
   const brl = n => "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -30,7 +30,7 @@
       '<p class="p2p-lede">Não vai mais à festa? Anuncie seu ingresso por aqui. O suporte da Brazilian Bayle intermedia a troca entre você e quem compra, com segurança para os dois lados.</p>' +
       '<form class="p2p-sell" novalidate><label class="p2p-field"><span>Tipo do ingresso</span><select name="type" required><option value="" disabled selected>Escolha o tipo</option>' + TIPOS.map(t => "<option>" + t + "</option>").join("") + "</select></label>" +
       '<label class="p2p-field"><span>Valor do ingresso</span><div class="p2p-money"><b>R$</b><input name="price" inputmode="decimal" placeholder="0,00" autocomplete="off" required></div></label>' +
-      '<div class="p2p-fee" aria-live="polite"><span>Intermediação da Brazilian Bayle: <b>5%</b> do valor do ingresso</span><strong data-fee>R$ 0,00</strong></div>' +
+      '<div class="p2p-fee" aria-live="polite"><span>Taxa do vendedor: <b>10%</b> descontados do ingresso</span><strong data-fee>R$ 0,00</strong></div>' +
       '<p class="p2p-err" role="alert" hidden></p><button class="p2p-big" type="submit">Anunciar ingresso</button></form>' +
       '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button><button class="p2p-link" type="button" data-buy>Ver ingressos anunciados</button></div>');
     const form = body.querySelector("form"), fee = body.querySelector("[data-fee]"), err = body.querySelector(".p2p-err");
@@ -72,7 +72,7 @@
 
   function request(f, l, back) {
     open('<button class="p2p-back mono" type="button">← Voltar</button><p class="mono p2p-kick">' + esc(f.name) + " · " + esc(l.type) + " · " + brl(l.price) + '</p><h2 class="display" id="p2pT">Solicitar <em>intermediação</em></h2>' +
-      '<p class="p2p-note big">Reserve este ingresso por ' + brl(l.price) + '. A taxa de intermediação é de 5%. Confira quem paga a taxa e o total no resumo antes de gerar o Pix.</p>' +
+      '<p class="p2p-note big">Reserve este ingresso por ' + brl(l.price) + '. O comprador paga 10% a mais e o vendedor recebe o valor com desconto de 10%. Confira o total antes de gerar o Pix.</p>' +
       '<p class="p2p-err" role="alert" hidden></p><button class="p2p-big" type="button" data-send>Solicitar intermediação</button>' +
       '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button></div>');
     body.querySelector(".p2p-back").addEventListener("click", back);
@@ -148,11 +148,17 @@
     const stage={solicitada:0,pagamento_confirmado:1,ingresso_transferido:2,recebimento_confirmado:3,concluida:4}[order.status];
     let actions='';
     if (order.status==='solicitada' && order.role==='buyer') {
-      const price=Math.round(Number(order.price)*100),fee=Math.round(price*.05);
-      const feePayer=order.fee_payer || config.fee_payer;
-      actions=`<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa de intermediação (5%)</dt><dd>${money(fee)} ${feePayer==='seller'?'descontados do vendedor':feePayer==='buyer'?'pagos pelo comprador':'· configuração pendente'}</dd><dt>Total a pagar</dt><dd>${feePayer?money(price+(feePayer==='buyer'?fee:0)):'A confirmar'}</dd></dl>`;
+      const price = Math.round(Number(order.price) * 100);
+      const fee = order.fee_cents ?? Math.round(price / 10);
+      const total = order.amount_cents ?? price + fee;
+      actions = `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
       actions+=config.enabled ? '<label><input type="checkbox" id="ticketPaymentConsent"> Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</label>'+button('pay','Gerar ou consultar Pix') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
       actions+=button('cancel','Cancelar reserva');
+    }
+    if (order.role === 'seller') {
+      const price = Math.round(Number(order.price) * 100);
+      const fee = order.fee_cents ?? Math.round(price / 10);
+      actions += `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do vendedor (10%)</dt><dd>${money(fee)}</dd><dt>Repasse previsto</dt><dd>${money(order.seller_cents ?? price - fee)}</dd></dl>`;
     }
     if (order.status==='pagamento_confirmado') {
       actions+='<p>'+(order.role==='seller'?'Transfira o ingresso pela plataforma oficial ao comprador. Depois, registre a transferência e anexe o comprovante.':'O pagamento foi confirmado. Aguarde a transferência do vendedor.')+'</p>';

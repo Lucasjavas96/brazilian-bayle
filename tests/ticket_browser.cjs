@@ -20,11 +20,11 @@ async function run() {
         const order={id:'${orderId}',status:'solicitada',event:'Festa de teste',venue:'Casa de teste',type:'Pista',price:100,role:'buyer',evidence:[]};
         window.BRB={auth:{getSession:async()=>({data:{session:{user:{id:'test'},access_token:'test'}}}),getUser:async()=>({data:{user:{id:'test'}}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}})},
           ticketJourney:async()=>[order],tickets:async()=>({listings:[],requests:[]}),content:async()=>({}),points:async()=>({}),interest:async()=>({}),
-          ticketPayment:async(route)=>route==='config'?{enabled:true,fee_payer:'seller'}:{status:'pending',qr_code:'TEST_PIX_COPY_CODE'},
+          ticketPayment:async(route)=>route==='config'?{enabled:true}:{status:'pending',qr_code:'TEST_PIX_COPY_CODE'},
         };` }));
       await page.goto('https://brazilianbayle.com.br/intermediacao?pedido=' + orderId);
       await page.getByRole('heading', { name: 'Festa de teste' }).waitFor();
-      assert(await page.locator('.ticket-totals').innerText().then(text => text.includes('descontados do vendedor')));
+      assert(await page.locator('.ticket-totals').innerText().then(text => text.includes('110,00')));
       await page.getByRole('button', { name: 'Gerar ou consultar Pix' }).click();
       await page.getByRole('alert').filter({hasText:'aceite os termos'}).waitFor();
       await page.locator('#ticketPaymentConsent').check();
