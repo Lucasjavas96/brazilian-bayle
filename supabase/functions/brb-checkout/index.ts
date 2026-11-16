@@ -36,7 +36,21 @@ Deno.serve(async req=>{
    const queryId=url.searchParams.get('data.id');const dataId=String(queryId||event.data?.id||'');
    if(queryId&&event.data?.id&&queryId.toLowerCase()!==String(event.data.id).toLowerCase())return reply({},400);
    if(!/^[A-Za-z0-9_-]{1,100}$/.test(dataId)||!await validSignature(env('BRB_MP_WEBHOOK_SECRET'),req.headers.get('x-signature')||'',req.headers.get('x-request-id')||'',dataId))return reply({},401);
-   const process=async()=>{const result=await mp('/'+encodeURIComponent(dataId));if(!result.ok)return;const [order]=await db('brb_shop_orders?id=eq.'+result.data.external_reference);if(!order)return;const attempts=await db('brb_shop_attempts?order_id=eq.'+order.id+'&order=created_at.desc&limit=1');if(attempts[0])await reconcile(result.data,order,attempts[0]);};
+   const process=async()=>{
+    const result=await mp('/'+encodeURIComponent(dataId));
+    if(!result.ok)return;
+    const [order]=await db('brb_shop_orders?id=eq.'+result.data.external_reference);
+    if(!order){
+     // Shared Mercado Pago application: ticket orders have their own receiver.
+     const forwarded=await fetch(env('SUPABASE_URL')+'/functions/v1/brb-tickets/webhook?data.id='+encodeURIComponent(dataId),{
+      method:'POST',headers:{'Content-Type':'application/json','x-signature':req.headers.get('x-signature')||'','x-request-id':req.headers.get('x-request-id')||''},body:raw,
+     });
+     if(!forwarded.ok)throw new Error('ticket_webhook_forward_failed');
+     return;
+    }
+    const attempts=await db('brb_shop_attempts?order_id=eq.'+order.id+'&order=created_at.desc&limit=1');
+    if(attempts[0])await reconcile(result.data,order,attempts[0]);
+   };
    // Status lookup also reconciles: an interrupted webhook cannot manufacture a paid order.
    EdgeRuntime.waitUntil(process().catch(()=>console.error('brb_checkout_webhook_reconcile_failed')));return reply({received:true});
   }

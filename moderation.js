@@ -11,10 +11,10 @@
 
   const SECS = { posts: ["Posts do Spotted", "Publique, oculte, edite ou exclua as postagens do mural."], apps: ["Candidaturas", "Pedidos para entrar no BB Network."], members: ["Membros", "Contas ativas e Membros do BB Network."], venues: ["Locais do ranking", "Cada DJ vale pelo melhor local onde tem show confirmado."], activity: ["Atividade", "Contas e ações registradas no site."], tickets: ["Intermediação de ingressos", "Fila do suporte: acompanhe cada pedido até o repasse."] };
   const BADGE = { published: ["Publicado", "ok"], review: ["Em análise", "warn"], hidden: ["Oculto", "mute"], pending: ["Em análise", "warn"], approved: ["Aprovada", "ok"], rejected: ["Recusada", "mute"], removed: ["Membro excluído", "mute"],
-    solicitada: ["Aguardando pagamento", "warn"], pagamento_confirmado: ["Dinheiro recebido", "info"], ingresso_transferido: ["Ingresso transferido", "info"], concluida: ["Concluída", "ok"], cancelada: ["Cancelada", "mute"] };
+    recebimento_confirmado: ["Aguardando repasse", "info"], em_disputa: ["Ocorrência em análise", "warn"], reembolsada: ["Reembolsada", "mute"], solicitada: ["Aguardando pagamento", "warn"], pagamento_confirmado: ["Dinheiro recebido", "info"], ingresso_transferido: ["Ingresso transferido", "info"], concluida: ["Concluída", "ok"], cancelada: ["Cancelada", "mute"] };
   const badge = s => { const b = BADGE[s]; return b ? `<span class="mx-b ${b[1]}">${b[0]}</span>` : esc(s); };
   const FIELDS = [["email", "E-mail"], ["telefone", "Celular"], ["instagram", "Instagram"], ["cidade", "De onde vem"]];
-  const TK_NEXT = { solicitada: ["pagamento_confirmado", "Confirmar pagamento"], pagamento_confirmado: ["ingresso_transferido", "Ingresso transferido"], ingresso_transferido: ["concluida", "Concluir e repassar"] };
+  const TK_NEXT = { recebimento_confirmado: ["concluida", "Registrar repasse realizado"] };
 
   let tab = "posts", filter = "todos", q = "", cursor = null, request = 0;
   let posts = [], apps = [], members = [], accounts = [], venues = [], perfs = [], tickets = [], actUsers = [], actEvents = [], actView = "users", actQ = "", actUid = "", actName = "";
@@ -92,8 +92,8 @@
   function renderTickets() {
     const rows = tickets.filter(t => !q || JSON.stringify(t).toLowerCase().includes(q.toLowerCase()));
     if (!rows.length) return empty("Nenhum pedido de intermediação ainda.");
-    return wrap(th("Festa", "Valor", "Comprador", "Vendedor", "Etapa", "Ações"), rows.map(t => `<tr data-tid="${esc(t.id)}"><td><b>${esc(t.event)}</b><small>${esc(t.venue)} · ${esc(String(t.event_date).split("-").reverse().join("/"))} · ${esc(t.type)}</small></td><td>${brl(t.price)}<small>taxa 5%: ${brl(t.fee)}</small></td><td>${t.buyer_nick ? "@" + esc(t.buyer_nick) : "sem @"}<small>${esc(t.buyer_email)}</small></td><td>${t.seller_nick ? "@" + esc(t.seller_nick) : "sem @"}<small>${esc(t.seller_email)}</small></td><td>${badge(t.status)}<small>pedido de ${when(t.created_at)}</small></td>
-      <td class="ac"><div class="mx-acts">${TK_NEXT[t.status] ? btn(`data-tk="${TK_NEXT[t.status][0]}"`, TK_NEXT[t.status][1], "primary") + btn('data-tk="cancelada"', "Cancelar", "danger") : ""}</div></td></tr>`).join(""));
+    return wrap(th("Festa", "Valor", "Comprador", "Vendedor", "Etapa", "Ações"), rows.map(t => `<tr data-tid="${esc(t.id)}"><td><b>${esc(t.event)}</b><small>${esc(t.venue)} · ${esc(String(t.event_date).split("-").reverse().join("/"))} · ${esc(t.type)}</small></td><td>${brl(t.price)}<small>taxa 5%: ${brl(t.fee)}</small>${t.payment?.seller_cents ? `<small>Repasse ao vendedor: ${brl(t.payment.seller_cents / 100)}</small>` : ""}</td><td>${t.buyer_nick ? "@" + esc(t.buyer_nick) : "sem @"}<small>${esc(t.buyer_email)}</small></td><td>${t.seller_nick ? "@" + esc(t.seller_nick) : "sem @"}<small>${esc(t.seller_email)}</small></td><td>${badge(t.status)}<small>pedido de ${when(t.created_at)}</small></td>
+      <td class="ac"><a href="/intermediacao?pedido=${encodeURIComponent(t.id)}">Conferir pedido</a><div class="mx-acts">${TK_NEXT[t.status] ? btn(`data-tk="${TK_NEXT[t.status][0]}"`, TK_NEXT[t.status][1], "primary") : ""}</div></td></tr>`).join(""));
   }
 
   /* ---------- barra de ferramentas e desenho ---------- */
@@ -197,7 +197,9 @@
       } else if (tab === "tickets") {
         const row = b.closest("[data-tid]"); if (!row || !b.dataset.tk) return;
         if (b.dataset.tk === "cancelada" && !(await ask("Cancelar este pedido?", "O ingresso volta a ficar à venda.", "Cancelar pedido"))) return;
-        b.disabled = true; await BRB.ticketsAdmin("advance", { id: row.dataset.tid, status: b.dataset.tk }); toast("Pedido atualizado."); await load();
+        const reference = b.dataset.tk === 'concluida' ? prompt('Informe o identificador ou referência do comprovante do repasse já realizado:') : '';
+        if (b.dataset.tk === 'concluida' && (!reference || reference.trim().length < 8)) return;
+        b.disabled = true; await BRB.ticketsAdmin("advance", { id: row.dataset.tid, status: b.dataset.tk, reference }); toast("Pedido atualizado."); await load();
       }
     } catch (err) { toast(err.message); b.disabled = false; }
   });

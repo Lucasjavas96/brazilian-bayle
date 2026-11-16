@@ -47,6 +47,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node --experimental-transform-types --test tests/ticket_edge.test.mjs
       - run: node _local/build.js
 
   migrate:
@@ -79,6 +80,14 @@ jobs:
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         run: supabase functions deploy brb-approval-mail --project-ref bereyocdqacudfvazdpa --no-verify-jwt --use-api
+      - name: Deploy ticket intermediation endpoint
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: supabase functions deploy brb-tickets --project-ref bereyocdqacudfvazdpa --no-verify-jwt --use-api
+      - name: Deploy checkout webhook router
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: supabase functions deploy brb-checkout --project-ref bereyocdqacudfvazdpa --no-verify-jwt --use-api
       - name: Update branded authentication emails
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
