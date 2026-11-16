@@ -98,6 +98,23 @@
       if (error) throw new Error(error.message || 'Não foi possível carregar os pedidos.');
       return data;
     },
+    async ticketJourney(action = 'list', payload = {}) {
+      const { data, error } = await client.rpc('brb_ticket_journey', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível atualizar o pedido.');
+      return data;
+    },
+    async ticketPayment(route, payload = {}) {
+      const { data: session } = await client.auth.getSession();
+      const response = await fetch(BRB_CONFIG.url + '/functions/v1/brb-tickets/' + route, {
+        method: route === 'config' ? 'GET' : 'POST',
+        headers: { apikey: BRB_CONFIG.publishableKey, 'Content-Type': 'application/json',
+          ...(session.session ? { Authorization: 'Bearer ' + session.session.access_token } : {}) },
+        ...(route === 'config' ? {} : { body: JSON.stringify(payload) }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Não foi possível consultar o pagamento.');
+      return result;
+    },
     async postEdit(id, title, party, date) {
       const { data, error } = await client.rpc('brb_post_edit', { post_id: id, new_title: title, new_party: party, new_date: date });
       if (error) throw new Error(error.message || 'Não foi possível salvar a postagem.');
