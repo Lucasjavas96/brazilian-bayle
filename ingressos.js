@@ -34,17 +34,30 @@
       '<p class="p2p-err" role="alert" hidden></p><button class="p2p-big" type="submit">Anunciar ingresso</button></form>' +
       '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button><button class="p2p-link" type="button" data-buy>Ver ingressos anunciados</button></div>');
     const form = body.querySelector("form"), fee = body.querySelector("[data-fee]"), err = body.querySelector(".p2p-err");
-    const val = () => parseFloat(String(form.price.value).replace(/\./g, "").replace(",", "."));
-    form.price.addEventListener("input", () => { form.price.value = form.price.value.replace(/[^\d.,]/g, ""); const v = val(); fee.textContent = v > 0 ? brl(v * FEE) : "R$ 0,00"; });
+    const price = form.elements.namedItem("price");
+    const type = form.elements.namedItem("type");
+    const val = () => {
+      const raw = price.value.trim();
+      if (/^\d+(?:[.,]\d{1,2})?$/.test(raw)) return Number(raw.replace(",", "."));
+      if (/^\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?$/.test(raw)) return Number(raw.replace(/\./g, "").replace(",", "."));
+      return NaN;
+    };
+    price.addEventListener("input", () => {
+      const value = val();
+      fee.textContent = value > 0 ? brl(value * FEE) : "R$ 0,00";
+    });
     form.addEventListener("submit", async e => {
       e.preventDefault(); const v = val(); const btn = form.querySelector(".p2p-big");
-      if (!form.type.value) { err.textContent = "Escolha o tipo do ingresso."; err.hidden = false; return; }
-      if (!(v > 0)) { err.textContent = "Informe o valor do ingresso."; err.hidden = false; return; }
-      if (await needLogin()) return;
+      if (!type.value) { err.textContent = "Escolha o tipo do ingresso."; err.hidden = false; return; }
+      if (!(v >= 1 && v <= 50000)) { err.textContent = "Informe um valor entre R$ 1 e R$ 50.000, com até duas casas decimais."; err.hidden = false; return; }
+      if (btn.disabled) return;
       btn.disabled = true;
-      try { const r = await BRB.tickets("create", { event: f.id, type: form.type.value, price: v });
+      err.hidden = true;
+      try {
+        if (await needLogin()) return;
+        const r = await BRB.tickets("create", { event: f.id, type: type.value, price: v });
         if (r && r.login === false) { err.textContent = "Confirme seu e-mail para anunciar."; err.hidden = false; btn.disabled = false; return; }
-        data = r; done(f, { type: form.type.value, price: v });
+        data = r; done(f, { type: type.value, price: v });
       } catch (x) { err.textContent = x.message; err.hidden = false; btn.disabled = false; }
     });
     body.querySelector("[data-how]").addEventListener("click", () => how(f, () => sell(f)));
