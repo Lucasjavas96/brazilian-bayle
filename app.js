@@ -625,105 +625,6 @@ $$(".slides").forEach(box => {
       setTimeout(() => { intro.hidden = true; }, INTRO_TOTAL_MS);
     });
   }
-  /* Camisa andando: o vídeo só baixa e toca com o card na tela, e pausa ao sair.
-     Toca sempre: o vídeo é o produto, não enfeite. */
-  const videos = [...grid.querySelectorAll('video.shop-video[data-src]')];
-  const VIDEO_SECONDS = 8;        // duração do loop "andando"
-  const DRAG_SECONDS = 6;         // arrastar a largura inteira do card avança 6 s do giro
-  const DRAG_THRESHOLD = 6;       // px até o gesto contar como arraste, não clique
-  const RESUME_AFTER_MS = 1800;   // depois de soltar, volta a andar sozinho
-  const visibleVideos = new Set();
-  /* Cada camiseta começa num ponto diferente do loop, para não andarem em coro. */
-  /* O vídeo vem inteiro para a memória (blob): assim o arraste pula para qualquer
-     quadro na hora, sem depender de o servidor aceitar pedidos por trecho (Range). */
-  const load = (video, index) => {
-    if (video.dataset.loading) return;
-    video.dataset.loading = '1';
-    video.addEventListener('loadedmetadata', () => {
-      /* razão áurea: pontos de início bem espalhados, sem dois vizinhos parecidos */
-      video.currentTime = ((index * 0.618 + 0.13) % 1) * (video.duration || VIDEO_SECONDS);
-      play(video);
-    }, {once: true});
-    fetch(video.dataset.src)
-      .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.blob(); })
-      .then(blob => { video.src = URL.createObjectURL(blob); })
-      .catch(() => { video.src = video.dataset.src; /* sem blob: toca direto, o arraste fica mais lento */ });
-  };
-  const play = video => {
-    if (video.dataset.dragging || !visibleVideos.has(video)) return;
-    const attempt = video.play();
-    if (attempt) attempt.catch(() => { /* autoplay bloqueado (economia de dados): fica a capa */ });
-  };
-  if (videos.length && 'IntersectionObserver' in window) {
-    const videoObserver = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        const video = entry.target;
-        if (entry.isIntersecting) { visibleVideos.add(video); load(video, videos.indexOf(video)); play(video); }
-        else { visibleVideos.delete(video); if (!video.paused) video.pause(); }
-      }
-    }, {rootMargin: '200px 0px', threshold: 0.01});
-    videos.forEach(video => videoObserver.observe(video));
-  }
-  /* Arrastar para girar: o cliente passa o dedo/mouse de lado e a camiseta gira junto
-     (o vídeo vai para frente ou para trás). Setas do teclado fazem o mesmo no card focado. */
-  const wrapTime = (video, time) => {
-    const duration = video.duration || VIDEO_SECONDS;
-    return ((time % duration) + duration) % duration;
-  };
-  let suppressClick = null;
-  videos.forEach((video, index) => {
-    const card = video.closest('.shop-photo');
-    let startX = 0, startTime = 0, pointerId = null, frame = 0, target = 0, resumeTimer = 0;
-    const seek = () => { frame = 0; video.currentTime = target; };
-    const scheduleResume = () => {
-      clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(() => { delete video.dataset.dragging; card.classList.remove('is-turning'); play(video); }, RESUME_AFTER_MS);
-    };
-    card.addEventListener('pointerdown', event => {
-      if (event.button !== 0) return;
-      load(video, index);
-      pointerId = event.pointerId; startX = event.clientX; startTime = video.currentTime;
-    });
-    card.addEventListener('pointermove', event => {
-      if (event.pointerId !== pointerId) return;
-      const dx = event.clientX - startX;
-      if (!video.dataset.dragging) {
-        if (Math.abs(dx) < DRAG_THRESHOLD) return;
-        video.dataset.dragging = '1';
-        card.classList.add('is-turning');
-        card.closest('.outfit-shop')?.classList.add('has-turned');
-        card.setPointerCapture(pointerId);
-        clearTimeout(resumeTimer);
-        video.pause();
-      }
-      target = wrapTime(video, startTime + dx / card.clientWidth * DRAG_SECONDS);
-      if (!frame) frame = requestAnimationFrame(seek);
-    });
-    const end = event => {
-      if (event.pointerId !== pointerId) return;
-      pointerId = null;
-      if (!video.dataset.dragging) return;
-      suppressClick = card;
-      scheduleResume();
-    };
-    card.addEventListener('pointerup', end);
-    card.addEventListener('pointercancel', end);
-    card.addEventListener('keydown', event => {
-      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-      event.preventDefault();
-      load(video, index);
-      video.dataset.dragging = '1';
-      card.classList.add('is-turning');
-      video.pause();
-      video.currentTime = wrapTime(video, video.currentTime + (event.key === 'ArrowRight' ? .25 : -.25));
-      scheduleResume();
-    });
-  });
-  /* Soltar depois de arrastar não abre o zoom de frente e costas. */
-  document.addEventListener('click', event => {
-    if (suppressClick && suppressClick.contains(event.target)) { event.preventDefault(); event.stopImmediatePropagation(); }
-    suppressClick = null;
-  }, true);
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
@@ -1000,18 +901,28 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   document.addEventListener("keydown", e => { if (e.key === "Escape" && box) close(); });
 })();
 
-/* Ampliação dos mockups de frente e costas. */
+/* Preview da camiseta: abre mostrando a frente, vira sozinha para as costas
+   e, quando há quadros de giro prontos, oferece a visualização em 3D. */
 (() => {
   const dialog = document.querySelector('.bayle-preview');
   if (!dialog) return;
-  const image = dialog.querySelector('img');
+  const stage = dialog.querySelector('.bayle-preview-stage');
+  const image = dialog.querySelector('.bayle-preview-img');
+  const tabs = [...dialog.querySelectorAll('.bayle-tab')];
+  const tab3d = dialog.querySelector('.bayle-tab-3d');
+  const panel3d = dialog.querySelector('.bayle-3d');
+  const canvas = dialog.querySelector('.bayle-3d-canvas');
+  const ctx = canvas.getContext('2d');
+  const hint3d = dialog.querySelector('.bayle-3d-hint');
+  const loading3d = dialog.querySelector('.bayle-3d-loading');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   /* A foto do card "vira" o zoom de frente e costas (View Transitions);
      sem suporte ou com menos movimento, o modal só aparece com um fade curto. */
   const SHIRT = 'bayle-shirt';
   const DECODE_MAX_MS = 400;
-  const canMorph = () => 'startViewTransition' in document && !matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let source = null;
-  let busy = false;
+  const AUTO_FLIP_MS = 1400; // tempo mostrando a frente antes de virar sozinho para as costas
+  const canMorph = () => 'startViewTransition' in document && !reduceMotion;
+  let source = null, busy = false, id = '', title = '', autoFlipTimer = 0;
   const morph = (from, to, change) => {
     if (!canMorph() || !from || !to || busy) { change(); return; }
     busy = true;
@@ -1019,21 +930,96 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     const t = document.startViewTransition(() => { from.style.viewTransitionName = ''; to.style.viewTransitionName = SHIRT; change(); });
     t.finished.finally(() => { to.style.viewTransitionName = ''; busy = false; });
   };
+  const showPhoto = async (view, { animate } = {}) => {
+    clearTimeout(autoFlipTimer);
+    panel3d.hidden = true; stage.classList.remove('is-3d'); image.hidden = false;
+    const next = '/assets/shop/bayle/' + id + '-' + view + '.webp';
+    tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === view)));
+    if (image.src.endsWith(next)) return;
+    image.alt = title + ': ' + (view === 'frente' ? 'vista de frente com o papagaio no peito' : 'vista de costas com a estampa');
+    if (animate && canMorph() && !busy) {
+      busy = true;
+      image.style.viewTransitionName = SHIRT;
+      const t = document.startViewTransition(() => { image.src = next; });
+      t.finished.finally(() => { image.style.viewTransitionName = ''; busy = false; });
+    } else image.src = next;
+  };
+  const threeD = (() => {
+    let frames = [], total = 0, pathTpl = '', ready = false, loadedCount = 0;
+    let pos = 0, shown = -1, dragging = false, startX = 0, startPos = 0, anim = 0;
+    const draw = () => {
+      const i = Math.round(Math.max(0, Math.min(total - 1, pos)));
+      if (i !== shown && frames[i] && frames[i].complete) { ctx.drawImage(frames[i], 0, 0, canvas.width, canvas.height); shown = i; }
+    };
+    const load = (framesCount, pathTemplate) => {
+      total = framesCount; pathTpl = pathTemplate; frames = new Array(total); ready = false; loadedCount = 0; pos = 0; shown = -1;
+      loading3d.hidden = false; loading3d.textContent = 'Carregando 0/' + total;
+      hint3d.classList.remove('off');
+      for (let i = 0; i < total; i++) {
+        const im = new Image(); im.decoding = 'async';
+        im.onload = () => {
+          loadedCount++; loading3d.textContent = 'Carregando ' + loadedCount + '/' + total;
+          if (i === 0) draw();
+          if (loadedCount === total) { loading3d.hidden = true; ready = true; draw(); }
+        };
+        im.src = pathTpl.replace('{n}', String(i + 1).padStart(2, '0'));
+        frames[i] = im;
+      }
+    };
+    const onDown = event => {
+      dragging = true; stage.classList.add('is-turning'); startX = event.clientX; startPos = pos;
+      canvas.setPointerCapture(event.pointerId);
+      hint3d.classList.add('off');
+    };
+    const onMove = event => {
+      if (!dragging || !ready) return;
+      const perPx = (total - 1) / (canvas.clientWidth * 0.9);
+      pos = Math.max(0, Math.min(total - 1, startPos + (startX - event.clientX) * perPx));
+      draw();
+    };
+    const onUp = () => { dragging = false; stage.classList.remove('is-turning'); };
+    canvas.addEventListener('pointerdown', onDown);
+    canvas.addEventListener('pointermove', onMove);
+    canvas.addEventListener('pointerup', onUp);
+    canvas.addEventListener('pointercancel', onUp);
+    return { load, stop: () => cancelAnimationFrame(anim) };
+  })();
+  const showThreeD = () => {
+    clearTimeout(autoFlipTimer);
+    tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === '3d')));
+    image.hidden = true; panel3d.hidden = false; stage.classList.add('is-3d');
+    const frames = Number(stage.dataset.frames || 0), pathTpl = stage.dataset.path || '';
+    if (frames && pathTpl) threeD.load(frames, pathTpl);
+  };
   const open = async button => {
     if (busy || dialog.open) return;
     source = button.closest('.shop-product')?.querySelector('.shop-photo') || button;
-    dialog.querySelector('h2').textContent = button.dataset.bayleTitle;
-    image.alt = button.dataset.bayleTitle + ': frente com logotipo e estampa nas costas';
-    image.src = '/assets/shop/bayle/' + button.dataset.baylePreview + '-completo.webp';
+    id = button.dataset.baylePreview; title = button.dataset.bayleTitle;
+    dialog.querySelector('h2').textContent = title;
+    const frames = Number(button.dataset.bayleGiroFrames || 0), pathTpl = button.dataset.bayleGiroPath || '';
+    stage.dataset.frames = frames; stage.dataset.path = pathTpl;
+    tab3d.hidden = !(frames && pathTpl);
+    image.hidden = false; panel3d.hidden = true; stage.classList.remove('is-3d');
+    image.alt = title + ': vista de frente com o papagaio no peito';
+    image.src = '/assets/shop/bayle/' + id + '-frente.webp';
+    tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === 'frente')));
     await Promise.race([image.decode().catch(() => {}), new Promise(r => setTimeout(r, DECODE_MAX_MS))]);
     morph(source, image, () => dialog.showModal());
+    /* Mostra a frente primeiro e vira sozinha para as costas, como quando se pega a peça na mão. */
+    if (!reduceMotion) autoFlipTimer = setTimeout(() => showPhoto('costas', { animate: true }), AUTO_FLIP_MS);
   };
   const close = () => {
     if (!dialog.open || busy) return;
+    clearTimeout(autoFlipTimer);
     const target = source && source.isConnected ? source : null;
+    image.hidden = false; panel3d.hidden = true;
     morph(image, target, () => dialog.close());
   };
   document.querySelectorAll('[data-bayle-preview]').forEach(button => button.addEventListener('click', () => open(button)));
+  tabs.forEach(button => button.addEventListener('click', () => {
+    const view = button.dataset.bayleView;
+    if (view === '3d') showThreeD(); else showPhoto(view, { animate: true });
+  }));
   dialog.querySelector('.bayle-preview-close').addEventListener('click', close);
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
   dialog.addEventListener('click', event => { if (event.target === dialog) { const r=dialog.getBoundingClientRect(); if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom) close(); } });
