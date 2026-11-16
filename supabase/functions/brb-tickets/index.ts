@@ -80,7 +80,7 @@ Deno.serve(async request => {
   const reply = (body: unknown, status = 200) => Response.json(body, { status, headers });
   try {
     if (route === 'worker') {
-      if (request.method !== 'POST' || request.headers.get('authorization') !== 'Bearer ' + env('SUPABASE_SERVICE_ROLE_KEY')) return reply({}, 401);
+      if (request.method !== 'POST' || !env('BRB_TICKET_WORKER_TOKEN') || request.headers.get('authorization') !== 'Bearer ' + env('BRB_TICKET_WORKER_TOKEN')) return reply({}, 401);
       await sendQueuedMail();
       return reply({ processed: true });
     }
