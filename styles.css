@@ -3484,8 +3484,8 @@ body.mm-lock{overflow:hidden}
 .page-loja .outfit-shop .drop-form .btn{font-size:13px;letter-spacing:.08em}
 
 /* Loja · movimento "frente e costas".
-   1) Cada card mostra a camisa andando, virando e mostrando as costas (vídeo em loop).
-   2) Toque/clique: a foto do card vira o zoom de frente e costas (View Transitions, no app.js). */
+   1) Cada card mostra só a foto parada das costas.
+   2) Toque/clique: a foto do card vira o preview (frente → costas → 3D), por View Transitions (app.js). */
 .page-loja .outfit-shop{--ease-turn:cubic-bezier(.16,1,.3,1)}
 .page-loja .outfit-shop .shop-photo:focus-visible .shop-view{opacity:1;transform:none}
 ::view-transition-group(bayle-shirt){animation-duration:.5s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
@@ -3500,20 +3500,28 @@ body.mm-lock{overflow:hidden}
  .bayle-preview[open]{transform:none;transition:opacity .15s linear}
  @starting-style{.bayle-preview[open]{transform:none}}
 }
-/* Loja · camisa andando: vídeo quadrado no lugar da foto. Toca só com o card na tela (app.js);
-   quem pede menos movimento fica com a capa parada, que já mostra as costas. */
+/* Loja · capa do cartão: foto parada das costas. O giro só aparece depois do clique, dentro do preview (app.js). */
 .page-loja .outfit-shop button.shop-photo{aspect-ratio:1;background:#e3e3e3}
-.page-loja .outfit-shop .shop-photo .shop-video{display:block;width:100%;height:100%;object-fit:cover;background:#e3e3e3;transition:transform .65s var(--ease-turn)}
-.page-loja .outfit-shop .shop-photo:is(:hover,:focus-visible) .shop-video{transform:scale(1.03)}
-@media(prefers-reduced-motion:reduce){.page-loja .outfit-shop .shop-photo .shop-video{transform:none!important;transition:none}}
-/* Arrastar para girar: o gesto horizontal é do card, o vertical continua rolando a página. */
-.page-loja .outfit-shop button.shop-photo{touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none}
-.page-loja .outfit-shop button.shop-photo.is-turning{cursor:grabbing}
-.page-loja .outfit-shop .shop-photo.is-turning .shop-video{transform:none}
-.page-loja .outfit-shop .shop-turn-hint{position:absolute;left:50%;top:12px;translate:-50% 0;padding:6px 12px;background:color-mix(in srgb,var(--paper) 72%,transparent);color:var(--ink);font-size:12px;letter-spacing:.04em;white-space:nowrap;pointer-events:none;opacity:.9;transition:opacity .3s ease-out}
-.page-loja .outfit-shop .shop-photo.is-turning .shop-turn-hint{opacity:0}
-@media(hover:hover){.page-loja .outfit-shop .shop-turn-hint{opacity:0}.page-loja .outfit-shop .shop-photo:is(:hover,:focus-visible):not(.is-turning) .shop-turn-hint{opacity:.9}}
-@media(hover:none){.page-loja .outfit-shop .shop-product:not(:first-child) .shop-turn-hint{display:none}.page-loja .outfit-shop .shop-turn-hint{top:auto;bottom:8px;font-size:11px;padding:5px 9px}.page-loja .outfit-shop.has-turned .shop-turn-hint{opacity:0}}
+.page-loja .outfit-shop .shop-photo .shop-photo-img{display:block;width:100%;height:100%;object-fit:cover;background:#e3e3e3;transition:transform .5s var(--ease-turn)}
+.page-loja .outfit-shop .shop-photo:is(:hover,:focus-visible) .shop-photo-img{transform:scale(1.03)}
+@media(prefers-reduced-motion:reduce){.page-loja .outfit-shop .shop-photo .shop-photo-img{transform:none!important;transition:none}}
+
+/* Preview: abre na frente, vira sozinho para as costas; abas trocam a vista e, quando há, o giro em 3D. */
+.bayle-preview-stage{position:relative;text-align:center}
+.bayle-preview-img{display:block;width:auto;height:auto;max-width:100%;max-height:min(62vh,620px);margin:0 auto}
+.bayle-preview-img[hidden]{display:none}
+.bayle-3d{position:relative;width:min(100%,620px);aspect-ratio:1;background:#e3e3e3;border-radius:4px;overflow:hidden;margin:0 auto}
+.bayle-3d[hidden]{display:none}
+.bayle-3d-canvas{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+.bayle-preview-stage.is-turning .bayle-3d-canvas{cursor:grabbing}
+.bayle-3d-hint{position:absolute;left:50%;bottom:14px;translate:-50% 0;margin:0;padding:6px 12px;background:color-mix(in srgb,var(--paper) 72%,transparent);color:var(--ink);font-size:12px;letter-spacing:.04em;white-space:nowrap;pointer-events:none;opacity:.9;transition:opacity .3s ease-out}
+.bayle-3d-hint.off{opacity:0}
+.bayle-3d-loading{position:absolute;inset:0;display:grid;place-items:center;margin:0;font-family:"JetBrains Mono",monospace;font-size:12px;color:#777;letter-spacing:.06em}
+.bayle-3d-loading:empty{display:none}
+.bayle-preview-tabs{display:flex;gap:10px;padding:14px 0 2px;flex-wrap:wrap}
+.bayle-tab{border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);background:none;color:var(--ink-soft);font:500 12px/1 "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px;cursor:pointer;min-height:40px}
+.bayle-tab[aria-pressed="true"]{color:var(--gold);border-color:var(--gold)}
+.bayle-tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 /* Polish · bloco de compra no card: preço, tamanho e Comprar alinhados na mesma grade. */
 .page-loja .outfit-shop .shop-buy{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;margin-top:22px}
