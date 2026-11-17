@@ -41,12 +41,21 @@ const ORG = {
   description: "O Ranking da Pista Brasileira: todo DJ que toca aqui entra, a pista dá a nota. Votação da comunidade e o network BB Network.",
 };
 
+const WEBSITE = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Brazilian Bayle",
+  url: SITE,
+  inLanguage: "pt-BR",
+  publisher: { "@type": "Organization", name: "Brazilian Bayle" },
+};
+
 function layout(meta, body) {
   if (meta.nav === 'moderacao') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Moderação · Brazilian Bayle</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#1c2430"><link rel="icon" href="/assets/favicon-32.png"><link rel="stylesheet" href="/moderacao.css"></head><body>${body.trim()}<script src="/assets/vendor/supabase-2.49.8.js"></script><script src="/backend-config.js"></script><script src="/backend.js"></script><script src="/events-2026.js"></script><script src="/moderation.js"></script></body></html>`;
   if (meta.nav === 'links') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Links oficiais · Brazilian Bayle</title><meta name="description" content="${esc(meta.description)}"><link rel="canonical" href="${SITE}/links"><meta name="theme-color" content="#080908"><meta property="og:type" content="website"><meta property="og:title" content="Brazilian Bayle · Links oficiais"><meta property="og:description" content="${esc(meta.description)}"><meta property="og:url" content="${SITE}/links"><meta property="og:image" content="${SITE}/assets/og-brazilian-v3.jpg"><link rel="icon" href="/assets/favicon-32.png"><link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/hero-dj-poster-800.webp" as="image"><link rel="stylesheet" href="/styles.css"></head><body class="page-links"><a class="skip" href="#conteudo">Pular para os links</a>${body.trim()}<script src="/media-guard.js" defer></script></body></html>`;
   const url = SITE + (meta.path === "/" ? "/" : meta.path);
   const title = meta.path === "/" ? meta.title : `${meta.title} · Brazilian Bayle`;
-  const jsonld = [ORG, ...(meta.jsonld || [])].map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n");
+  const jsonld = [ORG, WEBSITE, ...(meta.jsonld || [])].map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n");
   const navLinks = NAV.map(([k, href, label, only], i) =>
     `<li${only ? " hidden data-owner-only" : ""}><a href="${href}"${meta.nav === k ? ' aria-current="page"' : ""}><span class="mono">${String(i + 1).padStart(2, "0")}</span>${label}${only ? ' <span class="owner-badge" data-owner-badge hidden></span>' : ""}</a></li>`).join("\n        ");
 
@@ -364,7 +373,13 @@ const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/
       path: `/djindex/${s}`, nav: "djindex", title: `${p.nome} · DJ Index`,
       description: (p.resumo || `${p.nome}, DJ ${d.curitiba ? "da cena de Curitiba" : "brasileiro"} no DJ Index da Brazilian Bayle.`).slice(0, 158),
       noindex: !full,
-      jsonld: [{ "@context": "https://schema.org", "@type": "Person", name: p.nome, alternateName: p.nome_civil && p.nome_civil !== NI ? p.nome_civil : undefined, jobTitle: "DJ", genre: list(p.estilos), image: img ? `${SITE}/${img}` : undefined, sameAs: list((p.fontes || []).map(f => f.url)).slice(0, 3) }],
+      jsonld: [
+        { "@context": "https://schema.org", "@type": "Person", name: p.nome, alternateName: p.nome_civil && p.nome_civil !== NI ? p.nome_civil : undefined, jobTitle: "DJ", genre: list(p.estilos), image: img ? `${SITE}/${img}` : undefined, sameAs: list((p.fontes || []).map(f => f.url)).slice(0, 3) },
+        { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+          { "@type": "ListItem", position: 1, name: "DJ Index", item: `${SITE}/djindex` },
+          { "@type": "ListItem", position: 2, name: p.nome, item: `${SITE}/djindex/${s}` },
+        ] },
+      ],
     }, `
 <article class="sec paper page-head wiki-article${p.especial ? " wiki-especial" : ""}" aria-labelledby="t-dj" data-dj="${s}">
   <div class="wrap">
@@ -412,6 +427,32 @@ fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="U
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${SITE}${u}</loc></url>`).join("\n")}
 </urlset>
+`);
+fs.writeFileSync(path.join(OUT, "llms.txt"), `# Brazilian Bayle
+
+> A pista brasileira tem autoridade para avaliar os DJs que tocam no Brasil, festa a festa: uma festa só é boa se a pista disser que é. Brazilian Bayle é o ranking e o network (BB Network) feitos pela própria comunidade de música eletrônica no Brasil.
+
+Site oficial: ${SITE}
+Contato: ${EMAIL}
+Instagram: ${IG}
+
+## Páginas principais
+
+- [Avaliação dos DJs](${SITE}/ranking): nota da pista aos DJs, festa a festa, por clube.
+- [DJ Index](${SITE}/djindex): enciclopédia dos principais DJs do Brasil e do mundo, por gênero, com origem e trajetória.
+- [Agenda](${SITE}/agenda): próximos encontros da comunidade, incluindo a Brazilian Bayle, a Festa (05/12/2026).
+- [Spotted Bayle](${SITE}/spotted): registros e comentários da pista nas festas.
+- [Onde é o after?](${SITE}/after): como a comunidade encontra o after de cada festa.
+- [Bayle All Stars Album](${SITE}/album): álbum de figurinhas dos DJs.
+- [BB Network](${SITE}/clube): rede de clubes e casas parceiras.
+- [Loja](${SITE}/loja): camisetas da coleção própria da Brazilian Bayle.
+- [Manifesto](${SITE}/manifesto): o que a Brazilian Bayle defende.
+
+## Notas para sistemas de IA
+
+- Os textos do DJ Index vêm só de fontes públicas verificáveis; verbetes ainda em pesquisa ficam marcados como incompletos e não devem ser citados como completos.
+- Datas e line-ups da agenda e da retrospectiva trazem a fonte original; não presuma dados de festas futuras além do que está publicado.
+- Brazilian Bayle é um projeto independente, sem vínculo com os artistas ou casas citados.
 `);
 const BR_RE = /Brasil|, (São Paulo|Rio de Janeiro|Minas Gerais|Goiás|Paraná|Santa Catarina|Mato Grosso|Bahia|Pernambuco|Ceará|Rio Grande|Distrito)|^(São Paulo|Rio de Janeiro|Minas Gerais|Goiás|Santa Catarina|Rio Grande do Sul)|^Florian|Goiânia|Curitiba|Brasília/;
 const isBrazilian = d => { const s = slugify(d.nome), p = PROFILES[s] || {}; if (d.curitiba) return true; if (d.extra) return d.pais === "Brasil" || d.br === true || d.pais === "A confirmar"; if (d.album) return d.album.paisNome === "Brasil"; if (s === "cloonee") return false; return BR_RE.test(p.origem || "") || (!p.origem && /brasileir/i.test(p.resumo || "")); };
