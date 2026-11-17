@@ -216,7 +216,7 @@
     const price = Math.round(Number(order.price) * 100);
     cardController = await mp.bricks().create('cardPayment', 'ticketCardPayment', {
       initialization: { amount: (price + Math.round(price / 10)) / 100 },
-      customization: { paymentMethods: { minInstallments: 1, maxInstallments: 10, types: { included: ['credit_card'] } } },
+      customization: { paymentMethods: { minInstallments: 1, maxInstallments: 10, types: { excluded: ['debit_card'] } } },
       callbacks: {
         onReady: () => {},
         onError: () => { document.getElementById('ticketError').textContent = 'Não foi possível carregar ou validar o cartão.'; },
