@@ -3356,7 +3356,12 @@ fieldset.commerce-fields legend+*{clear:both}
 .ticket-progress{display:flex;flex-wrap:wrap;list-style:none;padding:0;gap:12px;margin:28px 0}
 .ticket-progress li{border-bottom:2px solid #555;padding:8px 12px;font-size:14px;color:#bdb5a6}
 .ticket-progress [aria-current=step]{border-color:#d2b375;color:#d2b375}
-.ticket-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}.ticket-actions>p,.ticket-actions>label,.ticket-actions>details,.ticket-totals{width:100%}
+.ticket-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.ticket-actions>p,.ticket-actions>label,.ticket-actions>details,.ticket-totals{width:100%}
+.ticket-btn{min-height:38px;padding:0 16px;border-radius:6px;font-size:11px;letter-spacing:.08em}
+.ticket-btn-primary{background:#c9a45c;border-color:#c9a45c;color:#0a0b0a}
+.ticket-btn-primary:hover{background:#d2b375}
+.ticket-btn-secondary{background:transparent;border-color:rgba(255,255,255,.3);color:#f6f4ef}
+.ticket-btn-secondary:hover{border-color:#c9a45c;color:#c9a45c}
 .ticket-journey label{display:grid;gap:10px}.ticket-journey textarea{width:100%;min-height:95px;resize:vertical}
 .ticket-journey label.ticket-consent{display:flex;align-items:flex-start;gap:10px}
 .ticket-consent input{flex:none;width:20px;height:20px;margin-top:2px}
@@ -3366,7 +3371,9 @@ fieldset.commerce-fields legend+*{clear:both}
 .ticket-totals{display:grid;grid-template-columns:1fr auto;gap:12px}.ticket-totals dd{margin:0;text-align:right}
 .ticket-evidence{padding-left:20px}.ticket-evidence li{margin:20px 0;overflow-wrap:anywhere}
 #ticketPayment img{display:block;max-width:100%;background:white;margin:20px 0}#ticketPayment textarea{display:block;margin:16px 0}
-#ticketError{color:#ffb4a8;overflow-wrap:anywhere}.ticket-actions summary{cursor:pointer;color:#d2b375;padding:12px 0}
+#ticketError{color:#ffb4a8;overflow-wrap:anywhere}
+#ticketError:not(:empty){display:block;margin:12px 0;padding:10px 14px;border:1px solid #ff6b5e55;border-radius:6px;background:#ff6b5e14;font-size:13px}
+.ticket-actions summary{cursor:pointer;color:#d2b375;padding:12px 0}
 @media(max-width:600px){.ticket-totals{grid-template-columns:1fr}.ticket-totals dd{text-align:left;margin-bottom:10px}.ticket-actions .btn{width:100%}}
 .ticket-detail #tpAgenda,.ticket-detail #tpClubs,.ticket-detail #tpHero{display:none!important}
 .ticket-detail .tp-page{min-height:70vh}

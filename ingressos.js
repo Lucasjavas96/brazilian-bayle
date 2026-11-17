@@ -161,7 +161,7 @@
   });
   if (selected) document.body.classList.add('ticket-detail');
   let orders = [], config = {enabled:false}, busy = false, currentPayment = null;
-  const button = (action, text) => `<button type="button" class="btn btn-y" data-ticket-action="${action}">${text}</button>`;
+  const button = (action, text, kind = 'secondary') => `<button type="button" class="btn ticket-btn ticket-btn-${kind}" data-ticket-action="${action}">${text}</button>`;
   async function load(showLogin = false) {
     if (!(selected || showLogin)) return;
     const session = await BRB.auth.getSession();
@@ -198,8 +198,9 @@
       const fee = order.fee_cents ?? Math.round(price / 10);
       const total = order.amount_cents ?? price + fee;
       actions = `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
-      actions+=config.enabled ? '<label class="ticket-consent"><input type="checkbox" id="ticketPaymentConsent"><span>Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>'+button('pay','Gerar ou consultar Pix') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
-      if (config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x');
+      const payLabel = order.payment_status ? 'Consultar Pix' : 'Pagar com Pix';
+      actions+=config.enabled ? '<label class="ticket-consent"><input type="checkbox" id="ticketPaymentConsent"><span>Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>'+button('pay',payLabel,'primary') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
+      if (config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x','primary');
       actions+=button('cancel','Cancelar reserva');
     }
     if (order.role === 'seller') {
@@ -310,7 +311,7 @@
         await BRB.ticketJourney(action,payload);await load();
         BRB.ticketPayment('status',{id:order.id}).catch(()=>{});
       }
-    } catch(problem) { const current=document.getElementById('ticketError');if(current)current.textContent=problem.message; }
+    } catch(problem) { const current=document.getElementById('ticketError');if(current){current.textContent=problem.message;current.scrollIntoView({block:'center',behavior:'smooth'});} }
     finally {busy=false;target.disabled=false;}
   });
   load();
