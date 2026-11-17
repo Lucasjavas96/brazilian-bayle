@@ -372,8 +372,8 @@
   const killMaps = () => { maps.forEach(m => m.remove()); maps = []; pinLayer = null; mapX = null; };
   function baseMap(el, opt = {}) {
     const m = L.map(el, { zoomControl: true, scrollWheelZoom: !!opt.wheel, attributionControl: true });
-    const T = window.__AF_TILES;
-    if (T?.image) L.imageOverlay(T.image, T.bounds, { attribution: "Mapa © Esri, HERE, Garmin, © OpenStreetMap" }).addTo(m);
+    const T = [].concat(window.__AF_TILES || []);
+    if (T.length) T.forEach((t, i) => L.imageOverlay(t.image, t.bounds, i ? {} : { attribution: "Mapa © Esri, HERE, Garmin, © OpenStreetMap" }).addTo(m));
     else {
       const E = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_";
       L.tileLayer(E + "Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, attribution: 'Mapa © <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a>, HERE, Garmin, © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' }).addTo(m);
@@ -452,7 +452,7 @@
     if ((el = g("[data-open]"))) { e.preventDefault(); openAfter(el.dataset.open); return; }
     if ((el = g("[data-slide]"))) { const a = find(el.dataset.slide); if (!a) return; S.slide[a.id] = Math.max(0, Math.min(a.fotos.length - 1, (S.slide[a.id] || 0) + +el.dataset.d)); render(); return; }
     if ((el = g("[data-filtro]"))) { S.filtro = el.dataset.filtro; S.view = null; render(); return; }
-    if (g("[data-maptoggle]")) { S.showMap = !S.showMap; render(); return; }
+    if (g("[data-maptoggle]")) { S.showMap = !S.showMap; render(); if (S.showMap && !matchMedia("(min-width:1100px)").matches) $(".af-split")?.scrollIntoView({ block: "start" }); return; }
     if (g("[data-anunciar]")) { if (!S.user) { location.href = "/conta?next=" + encodeURIComponent("/after#anunciar"); return; } S.wiz = blank(); render(); return; }
     if (g("[data-close]")) { closeAfter(); return; }
     if (g("[data-flowclose]")) { S.flow = null; S.pay = null; render(); return; }
