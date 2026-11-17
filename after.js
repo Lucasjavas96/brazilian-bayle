@@ -62,45 +62,49 @@
   const avgAll = a => { const v = CRIT.map(([k]) => avg(a, k)).filter(x => x != null); return v.length ? v.reduce((s, x) => s + x, 0) / v.length : null; };
   const starsTxt = n => "★".repeat(Math.round(n)) + "☆".repeat(5 - Math.round(n));
   const mine = a => S.user && a.host === S.user;
-  const canEdit = a => !!S.user && a.status === "aberto" && (mine(a) || S.owner);
+  const canEdit = a => !!S.user && (a.status === "aberto" || a.status === "em_analise") && (mine(a) || S.owner);
   const left = a => a.vagas - a.ocupadas;
   const grad = h => `linear-gradient(135deg,hsl(${h} 60% 38%),hsl(${(h + 50) % 360} 70% 22%))`;
   const photo = (a, i, cls) => a.fotos?.[i] ? `<img class="${cls || ""}" src="${a.fotos[i]}" alt="Foto do after de ${esc(a.host)}">` : `<div class="${cls || ""}" style="background:${grad((a.hue + i * 40) % 360)}" aria-hidden="true"></div>`;
-  const badge = a => a.status === "encerrado" ? '<span class="af-badge fim">Encerrado</span>' : a.modo === "livre" ? '<span class="af-badge livre">Entrada livre</span>' : '<span class="af-badge aprov">Sob aprovação</span>';
+  const brl = n => "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const custo = a => a.pago ? brl(a.preco) : "Grátis";
+  const badge = a => a.status === "em_analise" ? '<span class="af-badge aprov">Em análise</span>' : a.status === "rejeitado" ? '<span class="af-badge fim">Não aprovado</span>' : a.status === "encerrado" ? '<span class="af-badge fim">Encerrado</span>' : a.pago ? '<span class="af-badge pago">Entrada paga</span>' : a.modo === "livre" ? '<span class="af-badge livre">Entrada livre</span>' : '<span class="af-badge aprov">Sob aprovação</span>';
   const login = (txt) => `<div class="af-auth"><p class="mono gold">Sua conta Brazilian Bayle</p><p>${txt}</p><a class="btn account-primary" href="/conta?next=/after">Entrar</a> <a class="btn btn-ghost" href="/conta?mode=signup&next=/after">Criar conta</a></div>`;
   const toast = m => { const t = document.createElement("div"); t.className = "af-toast"; t.setAttribute("role", "status"); t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2600); };
+
+  /* bolinhas: cada bolinha é uma vaga (até 20); acima disso, cada bolinha representa uma fração das vagas */
+  function dotsHTML(a) {
+    const cap = 20, total = Math.min(a.vagas, cap), cheias = Math.min(total, Math.round((a.ocupadas / a.vagas) * total));
+    let out = "";
+    for (let i = 0; i < total; i++) out += `<i class="af-dot${i < cheias ? " on" : ""}"></i>`;
+    return `<div class="af-dots" role="img" aria-label="${a.ocupadas} de ${a.vagas} vagas ocupadas">${out}</div>`;
+  }
 
   function filtered() {
     const q = S.q.trim().toLowerCase();
     return S.afters.filter(a => (S.modo === "todos" || a.modo === S.modo) && (!q || (a.festa + " " + a.bairro).toLowerCase().includes(q)));
   }
 
-  /* ---------- mapa (Google Maps) ---------- */
-  const MAPA = "https://www.google.com/maps?q=Curitiba%2C+PR&hl=pt-BR&z=12&output=embed", MAPA_LINK = "https://www.google.com/maps/search/?api=1&query=Curitiba%2C+PR";
-  function mapHTML() {
-    return `<div class="af-map"><iframe src="${MAPA}" title="Mapa de Curitiba no Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><a class="af-mapnote mono" href="${MAPA_LINK}" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a></div>`;
-  }
-
   function cardHTML(a) {
     const m = avgAll(a);
     return `<button type="button" class="af-card${S.sel === a.id ? " is-sel" : ""}" data-open="${a.id}">
-      ${photo(a, 0, "af-ph")}
-      <div class="af-bd">${badge(a)}
-        <h3>Depois de: ${esc(a.festa)}</h3>
-        <div class="af-meta"><span>${esc(a.bairro)}</span><span>${esc(a.hora)}</span><span>${left(a)} de ${a.vagas} vagas</span></div>
-        <div class="af-meta">${m != null ? `<span><span class="af-star">${starsTxt(m)}</span> ${fmt(m)} (${a.notas.length})</span>` : "<span>Ainda sem avaliações</span>"}<span>por @${esc(a.host)}</span></div>
+      <div class="af-ch"><h3>Depois de: ${esc(a.festa)}</h3>${badge(a)}</div>
+      <div class="af-phwrap">${photo(a, 0, "af-ph")}</div>
+      <div class="af-bd">
+        <div class="af-meta"><span>${esc(a.bairro)}</span><span>${esc(a.hora)}</span></div>
+        <div class="af-vagasrow">${dotsHTML(a)}<span>${left(a)} de ${a.vagas} vagas</span></div>
+        <div class="af-meta"><span class="af-custo">${custo(a)}</span>${m != null ? `<span><span class="af-star">${starsTxt(m)}</span> ${fmt(m)} (${a.notas.length})</span>` : "<span>Ainda sem avaliações</span>"}</div>
       </div></button>`;
   }
 
   /* ---------- abas ---------- */
   function procurarHTML() {
     const l = filtered();
-    if (S.loading || S.loadErr || !S.afters.length) return `<div class="af-grid af-solo"><div class="af-side"><div id="afMap">${mapHTML()}</div></div><div class="af-list" id="afList"><p class="af-empty">${S.loading ? "Carregando os afters…" : S.loadErr || "Ainda não há afters cadastrados. Os afters aparecem aqui assim que forem divulgados."}</p>${!S.loading && !S.loadErr && S.canPost ? '<button type="button" class="btn btn-y af-full" data-tab="oferecer">Cadastrar o primeiro after</button>' : ""}</div></div>`;
+    if (S.loading || S.loadErr || !S.afters.length) return `<div class="af-grid af-solo"><div class="af-side" id="afSide"></div><div class="af-list" id="afList"><p class="af-empty">${S.loading ? "Carregando os afters…" : S.loadErr || "Ainda não há afters cadastrados. Os afters aparecem aqui assim que forem divulgados."}</p>${!S.loading && !S.loadErr && S.canPost ? '<button type="button" class="btn btn-y af-full" data-tab="oferecer">Cadastrar o primeiro after</button>' : ""}</div></div>`;
     return `<div class="af-grid">
-      <div class="af-side">
+      <div class="af-side" id="afSide">
         <label class="af-field"><span class="af-sr">Buscar</span><input type="text" id="afQ" placeholder="Busque por festa ou bairro" value="${esc(S.q)}" autocomplete="off"></label>
-        <div class="af-chips" role="group" aria-label="Filtrar">${[["todos", "Todos"], ["livre", "Entrada livre"], ["aprovacao", "Sob aprovação"]].map(([k, t]) => `<button type="button" class="af-chip" data-modo="${k}" aria-pressed="${S.modo === k}">${t}</button>`).join("")}</div>
-        <div id="afMap">${mapHTML()}</div>
+        <div class="af-chips" role="group" aria-label="Filtrar">${[["todos", "Todos"], ["livre", "Entrada livre"], ["aprovacao", "Sob aprovação"], ["pago", "Pago"]].map(([k, t]) => `<button type="button" class="af-chip" data-modo="${k}" aria-pressed="${S.modo === k}">${t}</button>`).join("")}</div>
       </div>
       <div class="af-list" id="afList">${listHTML(l)}</div></div>`;
   }
@@ -123,10 +127,15 @@
       <label class="af-field"><span>Quantas pessoas cabem?</span><input type="number" id="fVagas" min="1" max="200" value="10" inputmode="numeric"></label>
       <label class="af-field"><span>Descrição</span><textarea id="fDesc" placeholder="Som, bebida, regras da casa" maxlength="400"></textarea></label>
       <label class="af-field"><span>Fotos do espaço</span><input type="file" id="fFotos" accept="image/*" multiple><div class="af-prev" id="afPrev"></div></label>
-      <div class="af-opt" role="radiogroup" aria-label="Como as pessoas entram">
+      <div class="af-opt" role="radiogroup" aria-label="A entrada é paga?">
+        <label><input type="radio" name="cobranca" value="gratis" checked><b>Entrada gratuita</b><span>Você decide quem entra.</span></label>
+        <label><input type="radio" name="cobranca" value="pago"><b>Entrada paga</b><span>A Brazilian Bayle cobra pelo Pix e repassa a você, descontando 25% de taxa de intermediação.</span></label>
+      </div>
+      <div class="af-opt" id="fGratisOpt" role="radiogroup" aria-label="Como as pessoas entram">
         <label><input type="radio" name="modo" value="livre" checked><b>Entrada livre</b><span>Quem pedir entra na hora, até lotar as vagas.</span></label>
         <label><input type="radio" name="modo" value="aprovacao"><b>Sob aprovação</b><span>Você vê o perfil e aprova cada pessoa.</span></label>
       </div>
+      <label class="af-field" id="fPrecoWrap" hidden><span>Valor da entrada (você recebe 75% disso)</span><input type="number" id="fPreco" min="1" max="2000" step="0.01" placeholder="Ex.: 30,00" inputmode="decimal">${e.preco ? `<small class="af-err">${e.preco}</small>` : ""}</label>
       <button type="submit" class="btn btn-y af-full">${S.edit ? "Salvar alterações" : "Publicar after"}</button></form>`;
   }
 
@@ -136,15 +145,17 @@
     const mH = meus.length ? meus.map(a => {
       const rq = S.reqs[a.id] || [];
       return `<div class="af-card af-own"><div class="af-bd">${badge(a)}<h3>Depois de: ${esc(a.festa)}</h3>
-        <div class="af-meta"><span>${esc(a.bairro)}</span><span>${a.ocupadas} de ${a.vagas} vagas ocupadas</span></div>
+        <div class="af-meta"><span>${esc(a.bairro)}</span><span>${a.ocupadas} de ${a.vagas} vagas ocupadas</span><span>${custo(a)}</span></div>
+        ${a.status === "em_analise" ? '<p class="af-aviso">Ainda em análise. Você recebe uma resposta assim que a equipe conferir.</p>' : ""}
+        ${a.status === "rejeitado" ? '<p class="af-aviso">Este after não foi aprovado para publicação.</p>' : ""}
         ${rq.length ? `<h4>Pedidos</h4>` + rq.map((r, i) => `<div class="af-req"><span>@${esc(r.nome)}</span>${r.status === "pendente" ? `<span class="af-btns"><button type="button" class="btn btn-ghost af-sm" data-deny="${a.id}" data-i="${i}">Recusar</button><button type="button" class="btn btn-y af-sm" data-approve="${a.id}" data-i="${i}">Aprovar</button></span>` : `<span class="af-meta">${r.status === "aprovado" ? "Aprovado" : "Recusado"}</span>`}</div>`).join("") : ""}
-        ${a.status === "aberto" ? `<div class="af-end"><button type="button" class="btn btn-ghost af-sm" data-edit="${a.id}">Editar after</button> <button type="button" class="btn btn-ghost af-sm" data-end="${a.id}">Encerrar after</button></div>` : ""}</div></div>`;
+        ${a.status === "aberto" || a.status === "em_analise" ? `<div class="af-end"><button type="button" class="btn btn-ghost af-sm" data-edit="${a.id}">Editar after</button> <button type="button" class="btn btn-ghost af-sm" data-end="${a.id}">${a.status === "em_analise" ? "Desistir do cadastro" : "Encerrar after"}</button></div>` : ""}</div></div>`;
     }).join("") : '<p class="af-empty">Você ainda não ofereceu nenhum after.</p>';
     const iH = indo.length ? `<div class="af-list">${indo.map(cardHTML).join("")}</div>` : '<p class="af-empty">Você ainda não pediu para entrar em nenhum after.</p>';
     return `<h2 class="af-h2">Que eu ofereço</h2><div class="af-list">${mH}</div><h2 class="af-h2">Que eu vou</h2>${iH}`;
   }
 
-  /* botão principal do after (entrar, avaliar, lotado…): usado no pop-up do celular e no balão do computador */
+  /* botão principal do after (entrar, pagar, avaliar, lotado…): usado no pop-up do celular e no balão do computador */
   function ctaFor(a, j) {
     let cta;
     if (!S.user) cta = login(a.status === "encerrado" ? "Entre para ver este after." : "Entre para pedir uma vaga neste after.");
@@ -152,9 +163,11 @@
     else if (j === "confirmado" && a.status === "encerrado") cta = S.rated[a.id] ? '<button type="button" class="btn btn-ghost af-full" disabled>Você já avaliou</button>' : `<button type="button" class="btn btn-y af-full" data-rate="${a.id}">Avaliar este after</button>`;
     else if (j === "confirmado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>Você está dentro</button>';
     else if (j === "recusado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>Pedido não aprovado</button>';
+    else if (j === "pendente_pagamento") cta = `<button type="button" class="btn btn-y af-full" data-pay="${a.id}">Continuar pagamento · ${custo(a)}</button>`;
     else if (j === "pendente") cta = `<button type="button" class="btn btn-ghost af-full" disabled>Pedido enviado, aguardando o anfitrião</button>`;
     else if (a.status === "encerrado") cta = '<button type="button" class="btn btn-ghost af-full" disabled>After encerrado</button>';
     else if (left(a) <= 0) cta = '<button type="button" class="btn btn-ghost af-full" disabled>Lotado</button>';
+    else if (a.modo === "pago") cta = `<button type="button" class="btn btn-y af-full" data-pay="${a.id}">Comprar vaga · ${custo(a)}</button>`;
     else cta = `<button type="button" class="btn btn-y af-full" data-join="${a.id}">${a.modo === "livre" ? "Entrar no after" : "Pedir para entrar"}</button>`;
     return cta;
   }
@@ -168,7 +181,9 @@
     return `<div class="af-sheet" role="dialog" aria-modal="true" aria-label="Detalhes do after">
       <button type="button" class="af-close mono" data-close>Fechar</button>
       ${badge(a)}<h2>Depois de: ${esc(a.festa)}</h2>
-      <div class="af-meta"><span>${esc(a.bairro)}</span><span>${esc(a.hora)}</span><span>${left(a)} de ${a.vagas} vagas livres</span><span>Anfitrião: @${esc(a.host)}</span></div>
+      <div class="af-meta"><span>${esc(a.bairro)}</span><span>${esc(a.hora)}</span><span>Anfitrião: @${esc(a.host)}</span></div>
+      <div class="af-vagasrow">${dotsHTML(a)}<span>${left(a)} de ${a.vagas} vagas livres</span></div>
+      <p class="af-custo-grande">${custo(a)}</p>
       <div class="af-gal">${gal}</div>
       <p>${esc(a.desc || "Sem descrição.")}</p>
       <div class="af-addr">${revealed ? `<b>Endereço</b>${esc(a.endereco)}` : "<b>Endereço protegido</b>Aparece aqui quando você for confirmado."}</div>
@@ -178,8 +193,8 @@
   }
 
 
-  /* computador: o detalhe sai num balão ao lado do card, sobre o mapa; "Ver tudo" abre o resto no próprio balão */
-  const useBalloon = () => matchMedia("(min-width:1024px)").matches && S.tab === "procurar" && !!$("#afMap");
+  /* computador: o detalhe sai num balão ao lado do card, junto da coluna de filtros; "Ver tudo" abre o resto no próprio balão */
+  const useBalloon = () => matchMedia("(min-width:1024px)").matches && S.tab === "procurar" && !!$("#afSide");
   function balloonHTML(a) {
     const j = S.joins[a.id], revealed = mine(a) || j === "confirmado", m = avgAll(a);
     const gal = (a.fotos?.length ? a.fotos : [0, 1, 2]).map((_, i) => photo(a, i, "af-bph")).join("");
@@ -190,13 +205,15 @@
     return `<div class="af-balloon${S.full ? " full" : ""}" role="dialog" aria-label="Detalhes do after"><div class="af-bin">
       <button type="button" class="af-bclose" data-closeb aria-label="Fechar">×</button>
       ${badge(a)}<h2>Depois de: ${esc(a.festa)}</h2>
-      <div class="af-meta"><span>${esc(a.bairro)}</span><span>${esc(a.hora)}</span><span>${left(a)} de ${a.vagas} vagas livres</span><span>@${esc(a.host)}</span></div>
+      <div class="af-meta"><span>${esc(a.bairro)}</span><span>${esc(a.hora)}</span><span>@${esc(a.host)}</span></div>
+      <div class="af-vagasrow">${dotsHTML(a)}<span>${left(a)} de ${a.vagas} vagas livres</span></div>
+      <p class="af-custo-grande">${custo(a)}</p>
       <div class="af-bgal">${S.full ? gal : photo(a, 0, "af-bph")}</div>${resto}
       <div class="af-bact">${ctaFor(a, j)}<button type="button" class="btn btn-ghost" data-full>${S.full ? "Ver menos" : "Ver tudo"}</button></div>
       ${canEdit(a) ? `<button type="button" class="af-link mono" data-edit="${a.id}">Editar este after</button>` : ""}</div></div>`;
   }
   function positionBalloon() {
-    const b = $(".af-balloon"), side = $("#afMap"), card = S.sel && $('.af-card[data-open="' + S.sel + '"]'); if (!b || !side || !card) return;
+    const b = $(".af-balloon"), side = $("#afSide"), card = S.sel && $('.af-card[data-open="' + S.sel + '"]'); if (!b || !side || !card) return;
     const sr = side.getBoundingClientRect(), cr = card.getBoundingClientRect(), h = b.offsetHeight;
     const top = Math.min(Math.max(0, cr.top - sr.top), Math.max(0, sr.height - h));
     b.style.top = top + "px";
@@ -204,7 +221,7 @@
   }
   function placeBalloon() {
     $(".af-balloon")?.remove();
-    const a = S.sel && S.afters.find(x => x.id === S.sel), side = $("#afMap"); if (!a || !side) return;
+    const a = S.sel && S.afters.find(x => x.id === S.sel), side = $("#afSide"); if (!a || !side) return;
     side.insertAdjacentHTML("beforeend", balloonHTML(a)); positionBalloon();
   }
 
@@ -249,12 +266,14 @@
     const h = /(\d{2})h(\d{2})/.exec(a.hora || ""); if (h) $("#fHora").value = h[1] + ":" + h[2];
     $("#fBairro").value = a.bairro; $("#fEnd").value = a.endereco || ""; $("#fVagas").value = a.vagas; $("#fDesc").value = a.desc || "";
     const r = document.querySelector('input[name=modo][value="' + a.modo + '"]'); if (r) r.checked = true;
+    const cob = document.querySelector('input[name=cobranca][value="' + (a.pago ? "pago" : "gratis") + '"]'); if (cob) cob.checked = true;
+    $("#fGratisOpt").hidden = !!a.pago; $("#fPrecoWrap").hidden = !a.pago; if (a.pago) $("#fPreco").value = a.preco;
     const prev = $("#afPrev"); prev.innerHTML = ""; S.fotos.forEach(src => { const p = document.createElement("img"); p.src = src; p.alt = "Foto atual do after"; prev.appendChild(p); });
   }
   function closeForm() { S.edit = null; S.prefill = false; S.err = {}; S.fotos = []; S.outra = false; }
   function refreshList() {
     const l = filtered();
-    $("#afMap").innerHTML = mapHTML(); $("#afList").innerHTML = listHTML(l);
+    $("#afList").innerHTML = listHTML(l);
     if (S.sel && useBalloon()) placeBalloon();
   }
 
@@ -262,23 +281,27 @@
     if (!S.canPost && !S.edit) return toast("Só membros do BB Network podem cadastrar afters.");
     const sel = $("#fFesta").value, outra = sel === "outra";
     const nome = outra ? $("#fNome").value.trim() : "", data = outra ? $("#fData").value.trim() : "", end = $("#fEnd").value.trim();
+    const pago = document.querySelector('input[name=cobranca]:checked').value === "pago", precoStr = pago ? $("#fPreco").value.trim().replace(",", ".") : "";
+    const preco = pago ? parseFloat(precoStr) : null;
     S.err = {};
     if (outra && !nome) S.err.nome = "Diga o nome da festa.";
     if (outra && !/^\d{2}\/\d{2}$/.test(data)) S.err.data = "Use o formato dd/mm.";
     if (!end) S.err.end = "Informe o endereço do after.";
+    if (pago && (!precoStr || isNaN(preco) || preco < 1 || preco > 2000)) S.err.preco = "Informe um valor entre R$ 1 e R$ 2.000.";
     if (Object.keys(S.err).length) {
-      const keep = { sel, nome, data, h: $("#fHora").value, b: $("#fBairro").value, v: $("#fVagas").value, d: $("#fDesc").value, e: end };
+      const keep = { sel, nome, data, h: $("#fHora").value, b: $("#fBairro").value, v: $("#fVagas").value, d: $("#fDesc").value, e: end, pago, p: $("#fPreco").value };
       S.outra = outra; render();
       $("#fFesta").value = keep.sel; $("#fNome") && ($("#fNome").value = keep.nome); $("#fData") && ($("#fData").value = keep.data);
       $("#fHora").value = keep.h; $("#fBairro").value = keep.b; $("#fVagas").value = keep.v; $("#fDesc").value = keep.d; $("#fEnd").value = keep.e;
+      if (keep.pago) { document.querySelector('input[name=cobranca][value="pago"]').checked = true; $("#fGratisOpt").hidden = true; $("#fPrecoWrap").hidden = false; $("#fPreco").value = keep.p; }
       return;
     }
     const f = FESTAS.find(x => x.id === sel), hh = ($("#fHora").value || "04:00").replace(":", "h");
     const btn = $("#afForm [type=submit]"); if (btn) btn.disabled = true;
     const dados = { festa: outra ? nome : f.nome, bairro: $("#fBairro").value, endereco: end, hora: (outra ? "Depois de " + data : f.depois) + " · " + hh,
-      vagas: parseInt($("#fVagas").value) || 10, modo: document.querySelector("input[name=modo]:checked").value, desc: $("#fDesc").value.trim(), fotos: S.fotos.slice() };
+      vagas: parseInt($("#fVagas").value) || 10, modo: document.querySelector("input[name=modo]:checked").value, desc: $("#fDesc").value.trim(), fotos: S.fotos.slice(), pago, preco };
     const editando = S.edit;
-    (editando ? act("edit", { id: editando, ...dados }, "After atualizado") : act("create", dados, "After publicado"))
+    (editando ? act("edit", { id: editando, ...dados }, "After atualizado") : act("create", dados, "After enviado para análise. Você recebe uma resposta assim que a equipe conferir."))
       .then(ok => { if (ok) { closeForm(); S.tab = "meus"; render(); } else if (btn) btn.disabled = false; });
   }
 
@@ -329,6 +352,7 @@
   document.addEventListener("submit", e => { if (e.target.id === "afForm") { e.preventDefault(); publish(); } });
   document.addEventListener("change", e => {
     if (e.target.id === "fFesta") { S.outra = e.target.value === "outra"; $("#fOutra").hidden = !S.outra; }
+    if (e.target.name === "cobranca") { const pago = e.target.value === "pago"; $("#fGratisOpt").hidden = pago; $("#fPrecoWrap").hidden = !pago; }
     if (e.target.id === "fFotos") {
       S.fotos = []; const prev = $("#afPrev"); prev.innerHTML = "";
       [...e.target.files].slice(0, 6).forEach(f => {
