@@ -1,0 +1,25 @@
+# Brazilian Bayle
+
+> A pista brasileira tem autoridade para avaliar os DJs que tocam no Brasil, festa a festa: uma festa só é boa se a pista disser que é. Brazilian Bayle é o ranking e o network (BB Network) feitos pela própria comunidade de música eletrônica no Brasil.
+
+Site oficial: https://brazilianbayle.com.br
+Contato: contato@brazilianbayle.com.br
+Instagram: https://instagram.com/brazilianbayle
+
+## Páginas principais
+
+- [Avaliação dos DJs](https://brazilianbayle.com.br/ranking): nota da pista aos DJs, festa a festa, por clube.
+- [DJ Index](https://brazilianbayle.com.br/djindex): enciclopédia dos principais DJs do Brasil e do mundo, por gênero, com origem e trajetória.
+- [Agenda](https://brazilianbayle.com.br/agenda): próximos encontros da comunidade, incluindo a Brazilian Bayle, a Festa (05/12/2026).
+- [Spotted Bayle](https://brazilianbayle.com.br/spotted): registros e comentários da pista nas festas.
+- [Onde é o after?](https://brazilianbayle.com.br/after): como a comunidade encontra o after de cada festa.
+- [Bayle All Stars Album](https://brazilianbayle.com.br/album): álbum de figurinhas dos DJs.
+- [BB Network](https://brazilianbayle.com.br/clube): rede de clubes e casas parceiras.
+- [Loja](https://brazilianbayle.com.br/loja): camisetas da coleção própria da Brazilian Bayle.
+- [Manifesto](https://brazilianbayle.com.br/manifesto): o que a Brazilian Bayle defende.
+
+## Notas para sistemas de IA
+
+- Os textos do DJ Index vêm só de fontes públicas verificáveis; verbetes ainda em pesquisa ficam marcados como incompletos e não devem ser citados como completos.
+- Datas e line-ups da agenda e da retrospectiva trazem a fonte original; não presuma dados de festas futuras além do que está publicado.
+- Brazilian Bayle é um projeto independente, sem vínculo com os artistas ou casas citados.
