@@ -110,7 +110,7 @@
   }
   function done(f, listing) {
     open(head(f) + '<h2 id="p2pT">Anúncio publicado.</h2><p>' + esc(listing.type) + ' · ' + brl(listing.price) + '</p><p>Quando houver uma reserva, você poderá acompanhar o pedido nesta página. Aguarde a confirmação do pagamento antes de transferir o ingresso.</p><button class="p2p-big" type="button" data-close>Concluir</button>');
-    body.querySelector('[data-close]').addEventListener('click', close);
+    body.querySelector('[data-close]').addEventListener('click', () => { close(); document.getElementById('myTickets')?.click(); });
   }
 
   /* quantos ingressos anunciados em cada festa, abaixo do botão da festa */
@@ -134,25 +134,38 @@
   const money = cents => (Number(cents) / 100).toLocaleString('pt-BR', {style:'currency',currency:'BRL'});
   const labels = {solicitada:'Aguardando pagamento',pagamento_confirmado:'Pagamento confirmado',ingresso_transferido:'Ingresso enviado',recebimento_confirmado:'Recebimento confirmado · aguardando repasse',em_disputa:'Ocorrência em análise',concluida:'Intermediação concluída',cancelada:'Reserva cancelada',reembolsada:'Reembolso confirmado'};
   const selected = new URLSearchParams(location.search).get('pedido');
+  const myTickets = document.getElementById('myTickets');
+  myTickets?.addEventListener('click', async event => {
+    event.preventDefault();
+    await load(true);
+    if (!panel.hidden) panel.scrollIntoView({block:'start'});
+  });
   if (selected) document.body.classList.add('ticket-detail');
   let orders = [], config = {enabled:false}, busy = false, currentPayment = null;
   const button = (action, text) => `<button type="button" class="btn btn-y" data-ticket-action="${action}">${text}</button>`;
-  async function load() {
+  async function load(showLogin = false) {
     const session = await BRB.auth.getSession();
     if (!session.data.session) {
-      if (selected) { panel.hidden=false; panel.innerHTML='<p>Entre na sua conta para acompanhar este pedido.</p><a class="btn btn-y" href="/conta?next='+encodeURIComponent(location.pathname+location.search)+'">Entrar na conta</a>'; }
+      if (selected || showLogin) { panel.hidden=false; panel.innerHTML='<p>Entre na sua conta para acompanhar este pedido.</p><a class="btn btn-y" href="/conta?next='+encodeURIComponent(location.pathname+location.search)+'">Entrar na conta</a>'; }
       return;
     }
     panel.hidden=false;
     try {
       orders = await BRB.ticketJourney(selected ? 'get' : 'list', selected ? {id:selected} : {});
       config = await BRB.ticketPayment('config').catch(() => ({enabled:false}));
-      draw();
+      await draw();
     } catch (error) { panel.innerHTML='<p role="alert">'+esc(error.message)+'</p>'; }
   }
-  function draw() {
+  async function draw() {
     if (!selected) {
-      panel.innerHTML='<h2>Meus pedidos</h2>'+(orders.length ? '<div class="ticket-order-list">'+orders.map(order=>`<a href="/intermediacao?pedido=${encodeURIComponent(order.id)}"><b>${esc(order.event)}</b><span>${order.role==='buyer'?'Compra':'Venda'} · ${esc(labels[order.status])}</span><small>Pedido ${esc(order.id.slice(0,8))}</small></a>`).join('')+'</div>' : '<p>Suas compras e vendas aparecerão aqui.</p>');
+      const { listings = [] } = await BRB.tickets('list');
+      const mine = listings.filter(listing => listing.mine);
+      const announcements = mine.map(listing => {
+        const event = (window.BRB_TEMP?.festas || []).find(item => item.id === listing.event);
+        const price = money(Math.round(Number(listing.price) * 100));
+        return `<article><b>${esc(event?.name || listing.event)}</b><p>${esc(listing.type)} · ${price} · ${listing.status === 'ativo' ? 'À venda' : 'Em intermediação'}</p></article>`;
+      }).join('');
+      panel.innerHTML='<h2>Meus ingressos</h2><h3>Meus anúncios</h3>' + (announcements || '<p>Nenhum anúncio ativo.</p>') + '<h3>Meus pedidos</h3>'+(orders.length ? '<div class="ticket-order-list">'+orders.map(order=>`<a href="/intermediacao?pedido=${encodeURIComponent(order.id)}"><b>${esc(order.event)}</b><span>${order.role==='buyer'?'Compra':'Venda'} · ${esc(labels[order.status])}</span><small>Pedido ${esc(order.id.slice(0,8))}</small></a>`).join('')+'</div>' : '<p>Suas compras e vendas aparecerão aqui.</p>');
       return;
     }
     const order=orders.find(item=>item.id===selected);
