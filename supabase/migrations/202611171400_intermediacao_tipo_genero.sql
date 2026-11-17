@@ -3,7 +3,16 @@
 -- anúncios já cadastrados; os novos anúncios usam "<categoria> <gênero>".
 begin;
 
-alter table brb_private.ticket_listings drop constraint ticket_listings_ticket_type_check;
+do $$
+declare cname text;
+begin
+ select conname into cname from pg_constraint
+  where conrelid='brb_private.ticket_listings'::regclass and contype='c'
+    and pg_get_constraintdef(oid) like '%ticket_type%';
+ if cname is not null then
+  execute format('alter table brb_private.ticket_listings drop constraint %I', cname);
+ end if;
+end $$;
 alter table brb_private.ticket_listings add constraint ticket_listings_ticket_type_check
  check(ticket_type in (
   'Masculino','Feminino','Meia social','Backstage','Pista','Área VIP',
