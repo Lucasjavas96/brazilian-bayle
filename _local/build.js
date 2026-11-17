@@ -82,6 +82,7 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
+${meta.nav === "after" ? '<link rel="stylesheet" href="/assets/vendor/leaflet-1.9.4/leaflet.css">' : ""}
 ${meta.preload || ""}
 ${jsonld}
 </head>
@@ -182,7 +183,7 @@ ${meta.nav === "spotted" ? '<script src="/spotted.js" defer></script>' : ""}
 ${/^\/djindex\/./.test(meta.path) ? '<script src="/djedit.js" defer></script><script src="/djindex.js" defer></script>' : ""}
 ${meta.nav === "moderacao" ? '<script src="/moderation.js" defer></script>' : ""}
 ${meta.path === "/djindex" ? '<script src="/djhero.js" defer></script>' : ""}
-${meta.nav === "after" ? '<script src="/after.js" defer></script>' : ""}
+${meta.nav === "after" ? '<script src="/assets/vendor/leaflet-1.9.4/leaflet.js" defer></script><script src="/after.js" defer></script>' : ""}
 ${meta.nav === "album" ? '<script src="/album.js" defer></script>' : ""}
 ${meta.nav === "manifesto" ? '<script src="/manifesto.js" defer></script>' : ""}
 ${meta.nav === "temperatura" ? '<script src="/temperatura.js" defer></script><script src="/ingressos.js" defer></script>' : ""}

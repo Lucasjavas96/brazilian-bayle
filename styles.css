@@ -2323,6 +2323,42 @@ img,video{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 .af-price>div{display:flex;align-items:center;gap:10px}.af-price b{font-size:28px}.af-price input{font-size:28px!important;font-weight:700}
 .af-review{max-width:340px}
 .af-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:96px;background:var(--y);color:var(--k0);font-weight:600;padding:12px 18px;border-radius:14px;z-index:130;font-size:14px;max-width:90%}
+/* mapa estilo Airbnb */
+.af-split{display:block}
+.af-split.on{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,42%);gap:24px;align-items:start}
+.af-split.on .af-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+.af-mapwrap{position:sticky;top:calc(var(--mbar) + 12px);height:calc(100vh - var(--mbar) - 36px);min-height:420px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.af-map{width:100%;height:100%;background:#1b1d1c;z-index:0}
+.af-map-d{height:320px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.af-map-w{height:260px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);cursor:crosshair;margin:6px 0}
+.af-pin{display:inline-block;transform:translate(-50%,-50%);white-space:nowrap;background:#fff;color:#111;font:800 13px 'Inter Tight',sans-serif;padding:6px 11px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.45);cursor:pointer;transition:transform .15s}
+.af-pin:hover{transform:translate(-50%,-50%) scale(1.08)}
+.af-pin.on{background:#111;color:#fff;outline:2px solid #fff}
+.af-pin.in{background:#0BFB12;color:#06210a}
+.af-dot{display:block;width:22px;height:22px;border-radius:50%;background:#0BFB12;border:3px solid #fff;box-shadow:0 0 0 6px rgba(11,251,18,.25),0 2px 8px rgba(0,0,0,.5)}
+.af-pop .leaflet-popup-content-wrapper{background:#161716;color:#fff;border-radius:16px;padding:0;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.af-pop .leaflet-popup-content{margin:0;width:240px!important}
+.af-pop .leaflet-popup-tip{background:#161716}
+.af-popcard{display:flex;flex-direction:column;gap:2px;color:#fff;text-decoration:none;padding-bottom:12px;font-family:'Inter Tight',sans-serif}
+.af-popcard>b,.af-popcard>span{padding:0 12px}
+.af-popcard>b{margin-top:10px;font-size:15px;color:#fff}
+.af-popcard .af-pr span{padding:0;color:inherit;font-weight:400}
+.af-popcard span{font-size:13px;color:rgba(255,255,255,.7)}
+.af-popcard .af-pr{color:#fff;font-weight:700}
+.af-pop-img{display:block;width:100%;height:140px;object-fit:cover}
+.af-map .leaflet-control-attribution{background:rgba(0,0,0,.6);color:rgba(255,255,255,.65);font-size:10px}
+.af-map .leaflet-control-attribution a{color:rgba(255,255,255,.85)}
+.af-map .leaflet-bar a{background:#161716;color:#fff;border-color:#333}
+.af-map .leaflet-bar a:hover{background:#262726}
+.af-maptoggle{display:none;position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:40;background:#111;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:13px 22px;font:700 14px 'Inter Tight',sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.5);cursor:pointer}
+.af-lock .af-maptoggle{display:none}
+@media (min-width:1100px){.af-maptoggle{display:block;position:static;transform:none;margin:22px auto 0;box-shadow:none}}
+@media (max-width:1099px){
+  .af-maptoggle{display:block}
+  .af-split.on{display:block}
+  .af-split.on .af-split-list{display:none}
+  .af-split.on .af-mapwrap{position:relative;top:0;height:calc(100vh - var(--mbar) - 190px);min-height:380px}
+}
 .af-lock{overflow:hidden}
 .af-lock .support-launch,.af-lock .pt-float,.af-lock #site-snd{display:none!important}
 @media(prefers-reduced-motion:reduce){.af *,.af-scrim *{scroll-behavior:auto!important;transition:none!important}.af-card:hover .af-ph-img{transform:none}}

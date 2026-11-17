@@ -1,7 +1,7 @@
 -- Onde é o after?: anúncio moderado, nome, saída da lista e ingresso pago.
 -- Concatenar depois da migração 202611170076, antes de ROLLBACK. Nenhum dado é mantido.
 do $t$ declare h uuid:=gen_random_uuid(); g uuid:=gen_random_uuid(); m uuid:=gen_random_uuid(); aid uuid; pid uuid; r jsonb; ok boolean;
- base jsonb:='{"nome":"Rooftop","festa":"BB","bairro":"Centro","endereco":"Rua X, 10","hora":"Dom · 04h00","vagas":"1","modo":"livre","comodidades":["som","piscina"]}';
+ base jsonb:='{"nome":"Rooftop","festa":"BB","bairro":"Centro","endereco":"Rua X, 10","hora":"Dom · 04h00","vagas":"1","modo":"livre","comodidades":["som","piscina"],"lat":"-25.4425","lng":"-49.2860"}';
 begin
  insert into auth.users(id,email,email_confirmed_at) values(h,'after-h-'||h||'@example.invalid',now()),(g,'after-g-'||g||'@example.invalid',now()),(m,'after-m-'||m||'@example.invalid',now());
  insert into brb_private.profiles(user_id,nick) values(h,'th'||substr(h::text,1,8)),(g,'tg'||substr(g::text,1,8)),(m,'tm'||substr(m::text,1,8));
@@ -27,10 +27,18 @@ begin
  if (select status from brb_private.afters where id=aid)<>'analise' then raise exception 'correção não voltou à análise';end if;
  perform set_config('request.jwt.claim.sub',m::text,true);
  perform public.brb_after('approve',jsonb_build_object('id',aid));
+ -- mapa: público vê ponto aproximado; fora de Curitiba é recusado
+ perform set_config('request.jwt.claim.sub',g::text,true);
+ r:=(select i->'geo' from jsonb_array_elements(public.brb_after('list','{}')->'items') i where i->>'id'=aid::text);
+ if (r->>'exato')::boolean or (r->>'lat')::numeric=-25.4425 or abs((r->>'lat')::numeric+25.4425)>0.004 then raise exception 'geo público %',r;end if;
+ perform set_config('request.jwt.claim.sub',h::text,true);
+ ok:=false; begin perform public.brb_after_edit(base||jsonb_build_object('id',aid,'lat','-23.55','lng','-46.63'));exception when others then ok:=true;end;
+ if not ok then raise exception 'aceitou ponto fora de Curitiba';end if;
  -- gratuito: entra, endereço liberado, sai e libera vaga
  perform set_config('request.jwt.claim.sub',g::text,true);
  r:=public.brb_after('join',jsonb_build_object('id',aid)); if r->>'status'<>'confirmado' then raise exception 'join livre';end if;
  r:=public.brb_after('list','{}'); if (select i->>'endereco' from jsonb_array_elements(r->'items') i where i->>'id'=aid::text)<>'Rua X, 10' then raise exception 'endereço não liberado';end if;
+ if (select (i#>>'{geo,lat}')::numeric from jsonb_array_elements(r->'items') i where i->>'id'=aid::text)<>-25.4425 then raise exception 'ponto exato não liberado';end if;
  perform public.brb_after('leave',jsonb_build_object('id',aid));
  if brb_private.after_taken(aid)<>0 then raise exception 'vaga não liberada';end if;
  -- pago: vaga segura, Pix pago confirma, não sai sozinho

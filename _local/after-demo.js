@@ -12,7 +12,14 @@
     it({ id: "00000000-0000-4000-8000-000000000002", nome: "Casa do Bigorrilho", bairro: "Bigorrilho", fotos: [F("manifesto/after-amigas.webp"), F("real-after-2-800.webp")], comodidades: ["piscina", "som", "cozinha"], modo: "aprovacao", host: "mari", desc: "Piscina aquecida e set de house até meio-dia." }),
     it({ id: "00000000-0000-4000-8000-000000000003", festa: "Warung Day Festival", bairro: "Batel", hora: "Depois de 12/12 · 05h00", vagas: 6, ocupadas: 6, modo: "aprovacao", host: "johnb" }),
     it({ id: "00000000-0000-4000-8000-000000000004", nome: "Cobertura Juvevê", bairro: "Juvevê", fotos: [F("manifesto/after-irmaos.webp")], status: "analise", host: "pedro", endereco: "Rua Fictícia, 10", comodidades: ["som", "ar"], preco_cents: 2500 }),
+    it({ id: "00000000-0000-4000-8000-000000000005", nome: "Galpão Rebouças", bairro: "Rebouças", fotos: [F("real-after-1-800.webp"), F("real-after-4-800.webp")], comodidades: ["som", "dj", "bebida", "fumodromo"], preco_cents: 3000, vagas: 30, ocupadas: 12, host: "dudu", notas: [N(5, 4, 5)] }),
+    it({ id: "00000000-0000-4000-8000-000000000006", nome: "Chácara Santa Felicidade", bairro: "Santa Felicidade", fotos: [F("real-after-2-800.webp"), F("real-trio-800.webp")], comodidades: ["piscina", "externa", "estacionamento", "pet"], preco_cents: 6000, vagas: 25, ocupadas: 4, modo: "aprovacao", host: "nina" }),
+    it({ id: "00000000-0000-4000-8000-000000000007", nome: "Apê no Água Verde", bairro: "Água Verde", fotos: [F("real-trio-800.webp")], comodidades: ["som", "byob", "ar"], vagas: 8, ocupadas: 2, host: "rafa" }),
   ] };
+  /* ponto exato (só aparece para quem está confirmado ou é o dono); o resto vê a região */
+  const EX = { 1: [-25.4290, -49.2705], 2: [-25.4345, -49.2972], 3: [-25.4431, -49.2851], 4: [-25.4160, -49.2640], 5: [-25.4415, -49.2600], 6: [-25.4060, -49.3330], 7: [-25.4528, -49.2843] };
+  const exOf = a => EX[+a.id.slice(-2)];
+  const geo = a => { const e = exOf(a); if (!e) return; const ex = a.my === "confirmado" || a.host === "gab" || a.status === "analise"; a.geo = ex ? { lat: e[0], lng: e[1], exato: true } : { lat: +(e[0] + .0021).toFixed(4), lng: +(e[1] - .0017).toFixed(4), exato: false }; };
   let pay = 0;
   const B = {
     auth: { getSession: async () => ({ data: { session: { user: { user_metadata: { nick: "gab" } } } } }), mfa: { getAuthenticatorAssuranceLevel: async () => ({ data: {} }) }, onAuthStateChange() {} },
@@ -24,10 +31,10 @@
     },
     after: async (action, p) => {
       await new Promise(r => setTimeout(r, 250));
-      if (action === "list") return JSON.parse(JSON.stringify(st));
-      if (action === "create") { const id = "00000000-0000-4000-8000-0000000000" + (10 + st.items.length); st.items.unshift(it({ id, ...p, vagas: +p.vagas, preco_cents: +p.preco_cents, status: "analise", host: "gab", endereco: p.endereco })); return { id, status: "analise" }; }
+      if (action === "list") { st.items.forEach(geo); return JSON.parse(JSON.stringify(st)); }
+      if (action === "create") { const id = "00000000-0000-4000-8000-0000000000" + (10 + st.items.length); st.items.unshift(it({ id, ...p, vagas: +p.vagas, preco_cents: +p.preco_cents, status: "analise", host: "gab", endereco: p.endereco })); if (p.lat) st.items[0].geo = { lat: +p.lat, lng: +p.lng, exato: true }; return { id, status: "analise" }; }
       const a = st.items.find(x => x.id === p.id);
-      if (action === "edit") { Object.assign(a, p, { vagas: +p.vagas, preco_cents: +p.preco_cents }); if (a.status === "recusado") a.status = "analise"; return { ok: true }; }
+      if (action === "edit") { Object.assign(a, p, { vagas: +p.vagas, preco_cents: +p.preco_cents }); if (p.lat) { EX[+a.id.slice(-2)] = [+p.lat, +p.lng]; a.geo = { lat: +p.lat, lng: +p.lng, exato: true }; } if (a.status === "recusado") a.status = "analise"; return { ok: true }; }
       if (action === "approve") a.status = "aberto";
       if (action === "reject") { a.status = "recusado"; a.motivo = p.motivo; }
       if (action === "join") { const s = a.preco_cents > 0 ? "pagamento" : a.modo === "livre" ? "confirmado" : "pendente"; a.my = s; a.ocupadas++; if (s === "pagamento") a.my_hold = new Date(Date.now() + 35 * 60000).toISOString(); if (s === "confirmado") a.endereco = "Rua XV de Novembro, 1200, ap 1801"; return { status: s }; }

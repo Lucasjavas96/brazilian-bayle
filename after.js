@@ -12,6 +12,13 @@
 
   const BAIRROS = ["Centro", "Batel", "Água Verde", "Bigorrilho", "Mercês", "São Francisco", "Rebouças", "Cabral", "Juvevê", "Alto da XV",
     "Hugo Lange", "Jardim Social", "Bacacheri", "Santa Felicidade", "Mossunguê", "Campo Comprido", "Portão", "Seminário", "Cristo Rei", "Jardim Botânico", "Região metropolitana"];
+  // centro aproximado de cada bairro (para centrar o mapa e para afters antigos sem ponto marcado)
+  const BAIRRO_GEO = { "Centro": [-25.4297, -49.2711], "Batel": [-25.4425, -49.2860], "Água Verde": [-25.4530, -49.2850], "Bigorrilho": [-25.4340, -49.2960], "Mercês": [-25.4190, -49.2930],
+    "São Francisco": [-25.4230, -49.2750], "Rebouças": [-25.4480, -49.2650], "Cabral": [-25.4050, -49.2580], "Juvevê": [-25.4140, -49.2590], "Alto da XV": [-25.4300, -49.2530],
+    "Hugo Lange": [-25.4170, -49.2480], "Jardim Social": [-25.4180, -49.2350], "Bacacheri": [-25.3990, -49.2350], "Santa Felicidade": [-25.4050, -49.3300], "Mossunguê": [-25.4390, -49.3270],
+    "Campo Comprido": [-25.4450, -49.3450], "Portão": [-25.4740, -49.2950], "Seminário": [-25.4530, -49.3070], "Cristo Rei": [-25.4380, -49.2490], "Jardim Botânico": [-25.4430, -49.2390],
+    "Região metropolitana": [-25.4300, -49.2700] };
+  const CWB = [-25.4372, -49.2700];
   const FESTAS = [{ id: "festa", nome: "Brazilian Bayle, a Festa", data: "05/12", depois: "Dom, 06/12" }];
   const COMOD = [["som", "Som de respeito"], ["dj", "DJ tocando"], ["bebida", "Bebida inclusa"], ["byob", "Traga sua bebida"], ["piscina", "Piscina"], ["externa", "Área externa"],
     ["chill", "Área chill"], ["fumodromo", "Fumódromo"], ["cozinha", "Cozinha liberada"], ["ar", "Ar-condicionado"], ["estacionamento", "Estacionamento"], ["pet", "Pet friendly"]];
@@ -22,7 +29,7 @@
 
   let S = { user: null, owner: false, mod: false, loading: true, loadErr: "", ready: false, tab: "explorar", q: "", bairro: "", filtro: "todos",
     afters: [], joins: {}, reqs: {}, rated: {}, sel: null, flow: null, pay: null, payErr: "", rate: null, slide: {}, reject: null,
-    wiz: null, toast: "" };
+    wiz: null, toast: "", showMap: matchMedia("(min-width:1100px)").matches, pin: null, view: null };
 
   /* ---------- sessão ---------- */
   async function loadUser() {
@@ -69,6 +76,13 @@
   const holdOk = a => S.joins[a.id] === "pagamento" && a.my_hold && new Date(a.my_hold) > new Date();
   const status = a => { const j = S.joins[a.id]; return j === "pagamento" && !holdOk(a) ? null : j; };
   const mapsUrl = a => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(`${a.endereco}, ${a.bairro}, Curitiba - PR`);
+  const hash = t => { let h = 0; for (const c of String(t)) h = (h * 31 + c.charCodeAt(0)) | 0; return Math.abs(h); };
+  /* ponto do after: exato só para quem está dentro; aproximado (como no Airbnb) para o resto */
+  const geoOf = a => {
+    if (a.geo && a.geo.lat != null) return { ll: [+a.geo.lat, +a.geo.lng], exato: !!a.geo.exato };
+    const b = BAIRRO_GEO[a.bairro] || CWB; return { ll: [b[0] + (hash(a.id + "a") % 1000 / 1000 - .5) * .008, b[1] + (hash(a.id + "b") % 1000 / 1000 - .5) * .008], exato: false };
+  };
+  const pinTxt = a => pago(a) ? brl(a.preco_cents) : "Grátis";
   const ICON = {
     pin: '<path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>',
     lock: '<path d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Z"/>',
@@ -131,7 +145,11 @@
       <div class="af-chips" role="group" aria-label="Filtrar">${[["todos", "Todos"], ["gratis", "Grátis"], ["pagos", "Com ingresso"], ["livre", "Entrada livre"], ["aprovacao", "Sob aprovação"]].map(([k, t]) => `<button type="button" class="af-chip" data-filtro="${k}" aria-pressed="${S.filtro === k}">${t}</button>`).join("")}</div>`;
     if (S.loading || S.loadErr) return pill + `<p class="af-empty">${S.loading ? "Carregando os afters…" : S.loadErr}</p>`;
     const l = filtered();
-    return pill + (l.length ? `<div class="af-grid">${l.map(cardHTML).join("")}</div>`
+    return pill + `<div class="af-split${S.showMap ? " on" : ""}"><div class="af-split-list">` + listBlock(l) + `</div>${S.showMap ? '<div class="af-mapwrap"><div id="afMapX" class="af-map" role="region" aria-label="Mapa dos afters"></div></div>' : ""}</div>
+      <button type="button" class="af-maptoggle" data-maptoggle>${S.showMap ? "Mostrar lista" : "Mostrar mapa"}</button>`;
+  }
+  function listBlock(l) {
+    return (l.length ? `<div class="af-grid">${l.map(cardHTML).join("")}</div>`
       : `<div class="af-emptybox"><p class="af-empty">${S.afters.some(a => a.status === "aberto") ? "Nada com esse filtro. Tenta outro bairro." : "Nenhum after no ar agora. Quando a galera abrir a casa, aparece aqui."}</p><button type="button" class="btn btn-y" data-anunciar>Anuncie seu after</button></div>`);
   }
 
@@ -218,7 +236,7 @@
         </ul>
         ${a.desc ? `<div class="af-sec"><p class="af-desc">${esc(a.desc)}</p></div>` : ""}
         ${a.comodidades.length ? `<div class="af-sec"><h3>O que esse after oferece</h3><ul class="af-amen">${a.comodidades.filter(c => COMOD_N[c]).map(c => `<li>${ic("check", 20)}${COMOD_N[c]}</li>`).join("")}</ul></div>` : ""}
-        <div class="af-sec"><h3>Onde fica</h3>${revealed(a) ? `<div class="af-place is-open">${ic("pin")}<span><b>${esc(a.endereco)}</b><small>${esc(cidade(a))} · PR</small></span></div><div class="af-btns"><button type="button" class="btn btn-ghost af-sm" data-copy="${a.id}">Copiar endereço</button><a class="btn btn-ghost af-sm" href="${mapsUrl(a)}" target="_blank" rel="noopener noreferrer">Como chegar</a></div>` : `<div class="af-place">${ic("lock")}<span><b>${esc(cidade(a))}</b><small>Rua e número aparecem quando você estiver confirmado.</small></span></div>`}</div>
+        <div class="af-sec"><h3>Onde fica</h3><div id="afMapD" class="af-map af-map-d" role="region" aria-label="Mapa do after"></div><p class="af-note">${geoOf(a).exato ? "Ponto exato do after." : "Localização aproximada. O ponto exato e o endereço aparecem quando você estiver confirmado."}</p>${revealed(a) ? `<div class="af-place is-open">${ic("pin")}<span><b>${esc(a.endereco)}</b><small>${esc(cidade(a))} · PR</small></span></div><div class="af-btns"><button type="button" class="btn btn-ghost af-sm" data-copy="${a.id}">Copiar endereço</button><a class="btn btn-ghost af-sm" href="${mapsUrl(a)}" target="_blank" rel="noopener noreferrer">Como chegar</a></div>` : `<div class="af-place">${ic("lock")}<span><b>${esc(cidade(a))}</b><small>Rua e número aparecem quando você estiver confirmado.</small></span></div>`}</div>
         <div class="af-sec"><h3>Regras da casa</h3><ul class="af-rules">${REGRAS.map(r => `<li>${r}</li>`).join("")}${a.regras ? `<li>${esc(a.regras)}</li>` : ""}</ul></div>
         ${a.notas.length ? `<div class="af-sec"><h3>${ic("star", 16)} ${fmt(m)} · ${a.notas.length} ${a.notas.length === 1 ? "avaliação" : "avaliações"}</h3><div class="af-rates">${CRIT.map(([k, t]) => { const v = avg(a, k); return `<div class="af-rate"><span>${t}</span><div class="af-meter"><i style="width:${v ? v * 20 : 0}%"></i></div><span>${v ? fmt(v) : "-"}</span></div>`; }).join("")}</div></div>` : ""}
         ${S.owner ? `<button type="button" class="af-link mono" data-remove="${a.id}">Remover este after (owner)</button>` : ""}
@@ -269,10 +287,11 @@
   }
 
   /* ---------- anuncie seu after (passo a passo) ---------- */
-  const blank = () => ({ step: 0, id: null, nome: "", festa: "festa", festaNome: "", festaData: "", hora: "04:00", bairro: "Centro", endereco: "", fotos: [], comodidades: [], modo: "livre", vagas: 10, pago: false, preco: "", desc: "", regras: "", err: "", sent: false });
+  const blank = () => ({ lat: null, lng: null, step: 0, id: null, nome: "", festa: "festa", festaNome: "", festaData: "", hora: "04:00", bairro: "Centro", endereco: "", fotos: [], comodidades: [], modo: "livre", vagas: 10, pago: false, preco: "", desc: "", regras: "", err: "", sent: false });
   function wizStepOk(w, s) {
     if (s === 0) { if (w.nome.trim().length < 2) return "Dá um nome para o after."; if (w.festa === "outra" && (w.festaNome.trim().length < 2 || !/^\d{2}\/\d{2}$/.test(w.festaData.trim()))) return "Diz o nome e a data (dd/mm) da festa."; }
     if (s === 1 && w.endereco.trim().length < 5) return "Coloca o endereço completo: rua e número.";
+    if (s === 1 && w.lat == null) return "Toca no mapa para marcar onde fica o after.";
     if (s === 2 && !w.fotos.length) return "Manda pelo menos uma foto do lugar.";
     if (s === 4 && !(w.vagas >= 1 && w.vagas <= 200)) return "As vagas vão de 1 a 200.";
     if (s === 5 && w.pago) { const v = Math.round(parseFloat(String(w.preco).replace(",", ".")) * 100); if (!(v >= 500 && v <= 100000)) return "O ingresso vai de R$ 5 a R$ 1.000."; }
@@ -298,7 +317,8 @@
         <label class="af-field"><span>Abre às</span><input type="time" data-w="hora" value="${esc(w.hora)}"></label>`,
       () => `<h2>Onde <em>fica?</em></h2>
         <label class="af-field"><span>Bairro</span><select data-w="bairro">${BAIRROS.map(b => `<option${w.bairro === b ? " selected" : ""}>${b}</option>`).join("")}</select><small>O bairro aparece para todo mundo.</small></label>
-        <label class="af-field"><span>Endereço completo</span><input type="text" data-w="endereco" value="${esc(w.endereco)}" placeholder="Rua, número, apto ou casa" maxlength="160" autocomplete="street-address"><small>Só a equipe e quem estiver confirmado veem.</small></label>`,
+        <label class="af-field"><span>Endereço completo</span><input type="text" data-w="endereco" value="${esc(w.endereco)}" placeholder="Rua, número, apto ou casa" maxlength="160" autocomplete="street-address"><small>Só a equipe e quem estiver confirmado veem.</small></label>
+        <div class="af-field"><span>Ponto no mapa</span><div id="afMapW" class="af-map af-map-w" role="region" aria-label="Marque o ponto do after"></div><small>${w.lat ? "Ponto marcado. Arraste o pino para ajustar." : "Toque no mapa para marcar onde fica. A galera vê só a região até ser confirmada."}</small></div>`,
       () => `<h2>Mostra o <em>lugar</em></h2><p class="af-sub">Foto do espaço, de dia ou de noite. A primeira vira a capa. Toque numa foto para trocar a capa.</p>
         <label class="af-drop"><input type="file" id="wFotos" accept="image/*" multiple><b>Escolher fotos</b><span>Até 6</span></label>
         <div class="af-prev">${w.fotos.map((src, i) => `<button type="button" class="af-pv${i === 0 ? " is-cover" : ""}" data-cover="${i}" aria-label="${i === 0 ? "Foto de capa" : "Usar como capa"}"><img src="${src}" alt="">${i === 0 ? '<span class="mono">Capa</span>' : ""}</button>`).join("")}</div>`,
@@ -331,7 +351,7 @@
     const w = S.wiz, f = FESTAS.find(x => x.id === w.festa);
     const dados = { nome: w.nome.trim(), festa: w.festa === "outra" ? w.festaNome.trim() : f.nome, bairro: w.bairro, endereco: w.endereco.trim(),
       hora: (w.festa === "outra" ? "Depois de " + w.festaData.trim() : f.depois) + " · " + (w.hora || "04:00").replace(":", "h"),
-      vagas: String(w.vagas), modo: w.modo, preco_cents: String(precoCents(w)), comodidades: w.comodidades, desc: w.desc.trim(), regras: w.regras.trim(), fotos: w.fotos.slice() };
+      lat: w.lat.toFixed(6), lng: w.lng.toFixed(6), vagas: String(w.vagas), modo: w.modo, preco_cents: String(precoCents(w)), comodidades: w.comodidades, desc: w.desc.trim(), regras: w.regras.trim(), fotos: w.fotos.slice() };
     const btn = $("[data-wiznext]"); if (btn) btn.disabled = true;
     try {
       if (w.id) await window.BRB.after("edit", { id: w.id, ...dados }); else await window.BRB.after("create", dados);
@@ -340,15 +360,69 @@
   }
   function editWiz(a) {
     const f = FESTAS.find(x => x.nome === a.festa), h = /(\d{2})h(\d{2})/.exec(a.hora || ""), d = /(\d{2}\/\d{2})/.exec(a.hora || "");
-    S.wiz = { ...blank(), id: a.id, nome: a.nome, festa: f ? f.id : "outra", festaNome: f ? "" : a.festa, festaData: d ? d[1] : "", hora: h ? h[1] + ":" + h[2] : "04:00",
+    const g = a.geo && a.geo.exato ? [+a.geo.lat, +a.geo.lng] : null;
+    S.wiz = { ...blank(), lat: g ? g[0] : null, lng: g ? g[1] : null, id: a.id, nome: a.nome, festa: f ? f.id : "outra", festaNome: f ? "" : a.festa, festaData: d ? d[1] : "", hora: h ? h[1] + ":" + h[2] : "04:00",
       bairro: a.bairro, endereco: a.endereco, fotos: a.fotos.slice(), comodidades: a.comodidades.slice(), modo: a.modo, vagas: a.vagas, pago: pago(a), preco: pago(a) ? String(a.preco_cents / 100).replace(".", ",") : "", desc: a.desc || "", regras: a.regras || "" };
     if (!BAIRROS.includes(a.bairro)) BAIRROS.unshift(a.bairro);
   }
 
   /* ---------- render ---------- */
+  /* ---------- mapas (Leaflet + OpenStreetMap/CARTO, sem Google) ---------- */
+  let maps = [], pinLayer = null, mapX = null;
+  const killMaps = () => { maps.forEach(m => m.remove()); maps = []; pinLayer = null; mapX = null; };
+  function baseMap(el, opt = {}) {
+    const m = L.map(el, { zoomControl: true, scrollWheelZoom: !!opt.wheel, attributionControl: true });
+    const T = window.__AF_TILES;
+    if (T?.image) L.imageOverlay(T.image, T.bounds, { attribution: "Mapa © Esri, HERE, Garmin, © OpenStreetMap" }).addTo(m);
+    else {
+      const E = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_";
+      L.tileLayer(E + "Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, attribution: 'Mapa © <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a>, HERE, Garmin, © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' }).addTo(m);
+      L.tileLayer(E + "Reference/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16 }).addTo(m);
+    }
+    maps.push(m); return m;
+  }
+  const pinIcon = (a, on) => L.divIcon({ className: "", html: `<span class="af-pin${on ? " on" : ""}${S.joins[a.id] === "confirmado" ? " in" : ""}">${pinTxt(a)}</span>`, iconSize: null, iconAnchor: [0, 0] });
+  function drawPins() {
+    if (!mapX) return;
+    pinLayer.clearLayers();
+    const l = filtered(), pts = [];
+    l.forEach(a => {
+      const g = geoOf(a), mk = L.marker(g.ll, { icon: pinIcon(a, S.pin === a.id), keyboard: true, title: nomeDe(a), riseOnHover: true }).addTo(pinLayer); pts.push(g.ll);
+      mk.on("click", () => { S.pin = a.id; drawPins(); L.popup({ closeButton: false, offset: [0, -6], className: "af-pop", maxWidth: 260, minWidth: 240 }).setLatLng(g.ll).setContent(`<a href="#after/${a.id}" class="af-popcard" data-open="${a.id}">${foto(a, 0, "af-pop-img")}<b>${esc(nomeDe(a))}</b><span>${esc(cidade(a))} · ${esc(a.hora)}</span><span class="af-pr">${precoTxt(a)}</span></a>`).openOn(mapX); });
+    });
+    return pts;
+  }
+  function mountMaps() {
+    if (!window.L) return;
+    const x = $("#afMapX");
+    if (x) {
+      mapX = baseMap(x, { wheel: true }); pinLayer = L.layerGroup().addTo(mapX);
+      const pts = drawPins();
+      if (S.view) mapX.setView(S.view.c, S.view.z); else if (pts.length) mapX.fitBounds(pts, { padding: [40, 40], maxZoom: 14 }); else mapX.setView(CWB, 12);
+      mapX.on("moveend", () => { S.view = { c: mapX.getCenter(), z: mapX.getZoom() }; });
+    }
+    const d = $("#afMapD"), a = S.sel && find(S.sel);
+    if (d && a) {
+      const m = baseMap(d), g = geoOf(a);
+      if (g.exato) { m.setView(g.ll, 16); L.marker(g.ll, { icon: L.divIcon({ className: "", html: '<span class="af-dot"></span>', iconSize: [22, 22], iconAnchor: [11, 11] }) }).addTo(m); }
+      else { m.setView(g.ll, 14); L.circle(g.ll, { radius: 450, color: "#0BFB12", weight: 1, fillColor: "#0BFB12", fillOpacity: .18 }).addTo(m); }
+    }
+    const w = $("#afMapW");
+    if (w && S.wiz) {
+      const m = baseMap(w), z = S.wiz;
+      m.setView(z.lat != null ? [z.lat, z.lng] : (BAIRRO_GEO[z.bairro] || CWB), z.lat != null ? 16 : 14);
+      let mk = null;
+      const put = ll => { z.lat = ll.lat; z.lng = ll.lng; if (mk) mk.setLatLng(ll); else { mk = L.marker(ll, { draggable: true, icon: L.divIcon({ className: "", html: '<span class="af-dot"></span>', iconSize: [22, 22], iconAnchor: [11, 11] }) }).addTo(m); mk.on("dragend", () => put(mk.getLatLng())); } const sm = w.nextElementSibling; if (sm) sm.textContent = "Ponto marcado. Arraste o pino para ajustar."; };
+      if (z.lat != null) put(L.latLng(z.lat, z.lng));
+      m.on("click", e => put(e.latlng));
+    }
+    setTimeout(() => maps.forEach(m => m.invalidateSize()), 60);
+  }
+
   let lastFocus = null;
   function render() {
     if (!S.ready) return;
+    killMaps();
     const tabs = [["explorar", "Explorar"], ["reservas", "Minhas reservas"], ["anuncios", "Meus anúncios"]].concat(S.mod ? [["analise", `Análise${S.afters.filter(a => a.status === "analise").length ? " (" + S.afters.filter(a => a.status === "analise").length + ")" : ""}`]] : []);
     $(".af-seg").innerHTML = tabs.map(([k, t]) => `<button type="button" data-tab="${k}" aria-pressed="${S.tab === k}">${t}</button>`).join("");
     const who = $("#afWho"); who.hidden = !S.user; if (S.user) who.textContent = "Logado como @" + S.user;
@@ -356,6 +430,7 @@
     const scrim = $("#afScrim");
     const layer = S.wiz ? wizHTML() : S.sel ? detalheHTML() + (S.rate ? `<div class="af-over">${rateHTML()}</div>` : S.flow ? `<div class="af-over">${flowHTML()}</div>` : "") : S.rate ? `<div class="af-over">${rateHTML()}</div>` : "";
     scrim.hidden = !layer; scrim.innerHTML = layer; document.body.classList.toggle("af-lock", !!layer);
+    mountMaps();
     if (layer) { lastFocus = lastFocus || document.activeElement; ($(".af-over .af-close", scrim) || $("[data-wiznext]", scrim) || $(".af-back", scrim))?.focus({ preventScroll: true }); }
     else if (lastFocus) { lastFocus.focus?.({ preventScroll: true }); lastFocus = null; }
   }
@@ -376,7 +451,8 @@
     if ((el = g("[data-tab]"))) { S.tab = el.dataset.tab; if (el.hasAttribute("data-wizclose")) S.wiz = null; S.sel = null; S.flow = null; if (location.hash) history.pushState(null, "", location.pathname); render(); window.scrollTo({ top: $(".af").offsetTop }); return; }
     if ((el = g("[data-open]"))) { e.preventDefault(); openAfter(el.dataset.open); return; }
     if ((el = g("[data-slide]"))) { const a = find(el.dataset.slide); if (!a) return; S.slide[a.id] = Math.max(0, Math.min(a.fotos.length - 1, (S.slide[a.id] || 0) + +el.dataset.d)); render(); return; }
-    if ((el = g("[data-filtro]"))) { S.filtro = el.dataset.filtro; render(); return; }
+    if ((el = g("[data-filtro]"))) { S.filtro = el.dataset.filtro; S.view = null; render(); return; }
+    if (g("[data-maptoggle]")) { S.showMap = !S.showMap; render(); return; }
     if (g("[data-anunciar]")) { if (!S.user) { location.href = "/conta?next=" + encodeURIComponent("/after#anunciar"); return; } S.wiz = blank(); render(); return; }
     if (g("[data-close]")) { closeAfter(); return; }
     if (g("[data-flowclose]")) { S.flow = null; S.pay = null; render(); return; }
@@ -441,16 +517,16 @@
   });
   document.addEventListener("input", e => {
     const k = e.target.dataset?.w; if (k && S.wiz) { S.wiz[k] = e.target.value; if (k === "preco") { const sum = $(".af-wiz .af-sum"); if (sum) { const p = precoCents(S.wiz), f = feeOf(p); sum.querySelectorAll("div span:last-child")[0].textContent = brl(p + f); sum.querySelectorAll("div span:last-child")[1].textContent = `${brl(f)} + ${brl(f)}`; sum.querySelectorAll("div span:last-child")[2].textContent = brl(Math.max(0, p - f)); } } return; }
-    if (e.target.id === "afQ") { S.q = e.target.value; const grid = app.querySelector(".af-grid, .af-emptybox"); const tmp = document.createElement("div"); tmp.innerHTML = explorarHTML(); const n = tmp.querySelector(".af-grid, .af-emptybox"); if (grid && n) grid.replaceWith(n); }
+    if (e.target.id === "afQ") { S.q = e.target.value; const box = $(".af-split-list"); if (box) box.innerHTML = listBlock(filtered()); drawPins(); }
   });
   document.addEventListener("submit", e => { if (e.target.id === "afSearch") e.preventDefault(); });
   document.addEventListener("change", e => {
     const t = e.target;
     if (t.id === "afOk") { const b = $("[data-dojoin]"); if (b) b.disabled = !t.checked; }
     if (t.id === "afPayOk") { const b = $("[data-genpix]"); if (b) b.disabled = !t.checked; }
-    if (t.id === "afBairro") { S.bairro = t.value; render(); }
+    if (t.id === "afBairro") { S.bairro = t.value; S.view = null; render(); }
     if (!S.wiz) return;
-    if (t.dataset?.w === "festa") { S.wiz.festa = t.value; render(); }
+    if (t.dataset?.w === "festa" || (t.dataset?.w === "bairro" && S.wiz.lat == null)) { S.wiz[t.dataset.w] = t.value; render(); }
     else if (t.dataset?.w) S.wiz[t.dataset.w] = t.value;
     if (t.name === "wModo") S.wiz.modo = t.value;
     if (t.name === "wPago") { S.wiz.pago = t.value === "1"; render(); }

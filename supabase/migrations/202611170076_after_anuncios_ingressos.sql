@@ -2,7 +2,8 @@
 -- * qualquer conta com @ anuncia um after; o anúncio entra em análise e só vai ao ar quando a equipe (owner ou staff) aprova;
 -- * cada after tem nome, preço por pessoa (0 = gratuito), comodidades e regras da casa;
 -- * quem pediu vaga ou está confirmado pode desistir ('leave'), liberando a vaga;
--- * o endereço continua saindo só para anfitrião, equipe e confirmados.
+-- * o endereço continua saindo só para anfitrião, equipe e confirmados. No mapa (estilo Airbnb), o público vê um ponto
+--   aproximado (deslocado até ~350 m, sempre igual para o mesmo after); o ponto exato sai junto com o endereço.
 -- * after pago: o BRB recebe o Pix pelo Mercado Pago (Edge Function brb-tickets, rotas after-pay/after-status) e repassa ao
 --   anfitrião depois do after. Taxa de 10% de cada lado, como na intermediação: ingresso de R$ 40 → comprador paga R$ 44, anfitrião recebe R$ 36.
 --   A vaga fica segura 35 minutos enquanto o Pix não cai ('pagamento'); pago, a pessoa vira 'confirmado'.
@@ -16,7 +17,9 @@ alter table brb_private.afters
  add column if not exists regras text not null default '' check(length(regras)<=400),
  add column if not exists motivo text not null default '' check(length(motivo)<=200),
  add column if not exists revisado_por uuid references auth.users(id) on delete set null,
- add column if not exists revisado_em timestamptz;
+ add column if not exists revisado_em timestamptz,
+ add column if not exists lat numeric(9,6) check(lat is null or lat between -26.2 and -25.0),
+ add column if not exists lng numeric(9,6) check(lng is null or lng between -49.8 and -48.8);
 alter table brb_private.afters drop constraint if exists afters_status_check;
 alter table brb_private.afters add constraint afters_status_check check(status in ('analise','aberto','recusado','encerrado','removido'));
 alter table brb_private.afters alter column status set default 'analise';
@@ -93,7 +96,11 @@ begin
  if ph is not null and (jsonb_typeof(ph)<>'array' or jsonb_array_length(ph)>6) then raise exception 'Envie até 6 fotos.';end if;
  if ph is not null and exists(select 1 from jsonb_array_elements(ph) z where jsonb_typeof(z)<>'string' or length(z#>>'{}')>450000
    or (z#>>'{}') !~ '^data:image/(webp|jpeg|png);base64,[A-Za-z0-9+/=]+$') then raise exception 'Foto inválida ou grande demais.';end if;
- return jsonb_build_object('nome',nm,'festa',f,'bairro',b,'endereco',e,'hora',h,'desc',d,'regras',r,'modo',m,'vagas',v,'preco',p,'comodidades',c,'fotos',ph);
+ if (payload ? 'lat') <> (payload ? 'lng') then raise exception 'Marque o ponto do after no mapa.';end if;
+ if payload ? 'lat' and (coalesce(payload->>'lat','') !~ '^-?[0-9]{1,3}(\.[0-9]{1,8})?$' or coalesce(payload->>'lng','') !~ '^-?[0-9]{1,3}(\.[0-9]{1,8})?$'
+   or (payload->>'lat')::numeric not between -26.2 and -25.0 or (payload->>'lng')::numeric not between -49.8 and -48.8)
+ then raise exception 'O ponto no mapa precisa ficar em Curitiba e região.';end if;
+ return jsonb_build_object('lat',payload->'lat','lng',payload->'lng','nome',nm,'festa',f,'bairro',b,'endereco',e,'hora',h,'desc',d,'regras',r,'modo',m,'vagas',v,'preco',p,'comodidades',c,'fotos',ph);
 end $$;
 revoke all on function brb_private.after_fields(jsonb) from public,anon,authenticated;
 
@@ -112,6 +119,11 @@ begin
     case when u is not null and (a2.host=u or md) then a2.motivo else '' end as motivo,
     (select p.nick from brb_private.profiles p where p.user_id=a2.host) as host,
     brb_private.after_taken(a2.id) as ocupadas,
+    case when a2.lat is null then null when u is not null and (a2.host=u or md
+      or exists(select 1 from brb_private.after_joins jj where jj.after_id=a2.id and jj.user_id=u and jj.status='confirmado'))
+     then jsonb_build_object('lat',a2.lat,'lng',a2.lng,'exato',true)
+     else jsonb_build_object('lat',round(a2.lat+((abs(hashtextextended(a2.id::text||'lat',0))%1000)/1000.0-0.5)*0.006,4),
+                             'lng',round(a2.lng+((abs(hashtextextended(a2.id::text||'lng',0))%1000)/1000.0-0.5)*0.007,4),'exato',false) end as geo,
     case when u is null then null else (select jj.hold_until from brb_private.after_joins jj where jj.after_id=a2.id and jj.user_id=u and jj.status='pagamento') end as my_hold,
     case when u is not null and (a2.host=u or md) and a2.preco_cents>0 then (select jsonb_build_object('pagos',count(*),'total_host_cents',coalesce(sum(pp.host_cents),0),
       'repassado',count(*)>0 and bool_and(pp.payout_ref is not null),'payout_ref',max(pp.payout_ref))
@@ -142,8 +154,8 @@ begin
   if (select count(*) from brb_private.afters y where y.host=u and y.status in ('analise','aberto'))>=5
   then raise exception 'Você já tem 5 afters no ar ou em análise. Encerre um antes de anunciar outro.';end if;
   x:=brb_private.after_fields(payload);
-  insert into brb_private.afters(host,nome,festa,bairro,endereco,hora,vagas,modo,descr,regras,preco_cents,comodidades,fotos,status)
-  values(u,x->>'nome',x->>'festa',x->>'bairro',x->>'endereco',x->>'hora',(x->>'vagas')::int,x->>'modo',x->>'desc',x->>'regras',
+  insert into brb_private.afters(host,lat,lng,nome,festa,bairro,endereco,hora,vagas,modo,descr,regras,preco_cents,comodidades,fotos,status)
+  values(u,(x->>'lat')::numeric,(x->>'lng')::numeric,x->>'nome',x->>'festa',x->>'bairro',x->>'endereco',x->>'hora',(x->>'vagas')::int,x->>'modo',x->>'desc',x->>'regras',
    (x->>'preco')::int,x->'comodidades',coalesce(x->'fotos','[]'::jsonb),'analise') returning id into aid;
   return jsonb_build_object('id',aid,'status','analise');
  end if;
@@ -332,7 +344,8 @@ begin
  select count(*) into n from brb_private.after_joins y where y.after_id=aid and y.status='confirmado';
  if (x->>'vagas')::int<n then raise exception 'Já há % pessoas confirmadas. As vagas não podem ficar abaixo disso.',n;end if;
  if n>0 and (x->>'preco')::int<>a.preco_cents then raise exception 'Já há gente confirmada. O preço não pode mudar.';end if;
- update brb_private.afters set nome=x->>'nome',festa=x->>'festa',bairro=x->>'bairro',endereco=x->>'endereco',hora=x->>'hora',
+ update brb_private.afters set lat=case when x ? 'lat' and x->'lat'<>'null'::jsonb then (x->>'lat')::numeric else a.lat end,
+  lng=case when x ? 'lng' and x->'lng'<>'null'::jsonb then (x->>'lng')::numeric else a.lng end,nome=x->>'nome',festa=x->>'festa',bairro=x->>'bairro',endereco=x->>'endereco',hora=x->>'hora',
   vagas=(x->>'vagas')::int,modo=x->>'modo',descr=x->>'desc',regras=x->>'regras',preco_cents=(x->>'preco')::int,comodidades=x->'comodidades',
   fotos=coalesce(x->'fotos',a.fotos),
   status=case when a.status='recusado' and a.host=u then 'analise' else a.status end,
