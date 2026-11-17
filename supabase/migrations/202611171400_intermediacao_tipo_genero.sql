@@ -14,12 +14,12 @@ begin
  end if;
 end $$;
 alter table brb_private.ticket_listings add constraint ticket_listings_ticket_type_check
- check(ticket_type in (
-  'Masculino','Feminino','Meia social','Backstage','Pista','Área VIP',
-  'Meia social Masculino','Meia social Feminino','Meia social Unissex',
-  'Backstage Masculino','Backstage Feminino','Backstage Unissex',
-  'Pista Masculino','Pista Feminino','Pista Unissex',
-  'Área VIP Masculino','Área VIP Feminino','Área VIP Unissex'
+ check(normalize(ticket_type,nfc) in (
+  normalize('Masculino',nfc),normalize('Feminino',nfc),normalize('Meia social',nfc),normalize('Backstage',nfc),normalize('Pista',nfc),normalize('Área VIP',nfc),
+  normalize('Meia social Masculino',nfc),normalize('Meia social Feminino',nfc),normalize('Meia social Unissex',nfc),
+  normalize('Backstage Masculino',nfc),normalize('Backstage Feminino',nfc),normalize('Backstage Unissex',nfc),
+  normalize('Pista Masculino',nfc),normalize('Pista Feminino',nfc),normalize('Pista Unissex',nfc),
+  normalize('Área VIP Masculino',nfc),normalize('Área VIP Feminino',nfc),normalize('Área VIP Unissex',nfc)
  ));
 
 create or replace function public.brb_tickets(action text,payload jsonb default '{}'::jsonb) returns jsonb
@@ -31,12 +31,12 @@ begin
  if action='create' then
   begin pr:=round((payload->>'price')::numeric,2); exception when others then raise exception 'Informe o valor do ingresso.'; end;
   if pr is null or pr<1 or pr>50000 then raise exception 'O valor do ingresso deve ficar entre R$ 1 e R$ 50.000.';end if;
-  if ty is null or ty not in (
-   'Masculino','Feminino','Meia social','Backstage','Pista','Área VIP',
-   'Meia social Masculino','Meia social Feminino','Meia social Unissex',
-   'Backstage Masculino','Backstage Feminino','Backstage Unissex',
-   'Pista Masculino','Pista Feminino','Pista Unissex',
-   'Área VIP Masculino','Área VIP Feminino','Área VIP Unissex'
+  if ty is null or normalize(ty,nfc) not in (
+   normalize('Masculino',nfc),normalize('Feminino',nfc),normalize('Meia social',nfc),normalize('Backstage',nfc),normalize('Pista',nfc),normalize('Área VIP',nfc),
+   normalize('Meia social Masculino',nfc),normalize('Meia social Feminino',nfc),normalize('Meia social Unissex',nfc),
+   normalize('Backstage Masculino',nfc),normalize('Backstage Feminino',nfc),normalize('Backstage Unissex',nfc),
+   normalize('Pista Masculino',nfc),normalize('Pista Feminino',nfc),normalize('Pista Unissex',nfc),
+   normalize('Área VIP Masculino',nfc),normalize('Área VIP Feminino',nfc),normalize('Área VIP Unissex',nfc)
   ) then raise exception 'Escolha o gênero e a categoria do ingresso.';end if;
   if not exists(select 1 from brb_private.interest_events e where e.id=ev and e.event_date>=current_date) then raise exception 'Essa festa não está disponível.';end if;
   select count(*) into n from brb_private.ticket_listings l where l.seller_id=u and l.event_id=ev and l.status in('ativo','em_intermediacao');
