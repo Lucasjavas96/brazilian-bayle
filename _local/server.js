@@ -10,6 +10,8 @@ const T = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "tex
 http.createServer((q, r) => {
   let p = decodeURIComponent(q.url.split("?")[0]);
   // editor dos botões do Hero: só local, aberto com ?editar
+  // modo demonstração do /after (dados de mentira); /after?real usa o Supabase de verdade
+  if (p === "/__after-demo.js") { r.writeHead(200, { "Content-Type": T[".js"], "Cache-Control": "no-store" }); return r.end(fs.readFileSync(path.join(__dirname, "after-demo.js"))); }
   if (p === "/__editor.js") { r.writeHead(200, { "Content-Type": T[".js"], "Cache-Control": "no-store" }); return r.end(fs.readFileSync(path.join(__dirname, "editor-botoes.js"))); }
   if (p === "/__salvar" && q.method === "POST") { let b = ""; q.on("data", c => b += c); q.on("end", () => { fs.writeFileSync(path.join(__dirname, "botoes-hero.json"), b); r.writeHead(200); r.end("ok"); }); return; }
   if (p === "/podio-opcoes") { r.writeHead(200, { "Content-Type": T[".html"], "Cache-Control": "no-store" }); return r.end(fs.readFileSync(path.join(__dirname, "podio-opcoes.html"))); }
@@ -20,6 +22,7 @@ http.createServer((q, r) => {
   fs.readFile(f, (e, d) => {
     if (e) { r.writeHead(404, { "Content-Type": T[".html"] }); return r.end(fs.existsSync(path.join(DIST, "404.html")) ? fs.readFileSync(path.join(DIST, "404.html")) : "404") }
     if (path.basename(f) === "index.html" && /(^|[?&])editar/.test(q.url.split("?")[1] || "")) d = Buffer.from(String(d).replace("</body>", '<script src="/__editor.js"></script></body>'));
+    if (path.basename(f) === "after.html" && !/(^|[?&])real/.test(q.url.split("?")[1] || "")) d = Buffer.from(String(d).replace("<head>", '<head><script src="/__after-demo.js"></script>'));
     r.writeHead(200, { "Content-Type": T[path.extname(f)] || "application/octet-stream", "Cache-Control": "no-store" }); r.end(d);
   });
 }).listen(process.env.PORT || 5173, () => console.log("http://localhost:" + (process.env.PORT || 5173)));
