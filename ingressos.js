@@ -179,6 +179,7 @@
       const total = order.amount_cents ?? price + fee;
       actions = `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
       actions+=config.enabled ? '<label><input type="checkbox" id="ticketPaymentConsent"> Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</label>'+button('pay','Gerar ou consultar Pix') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
+      if (config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x');
       actions+=button('cancel','Cancelar reserva');
     }
     if (order.role === 'seller') {
@@ -197,6 +198,54 @@
     panel.innerHTML=`<a href="/intermediacao">← Todas as festas e pedidos</a><p class="mono">${order.role==='buyer'?'Sua compra':'Sua venda'} · ${esc(order.id.slice(0,8))}</p><h2>${esc(order.event)}</h2><p>${esc(order.venue)} · ${esc(order.type)}</p><ol class="ticket-progress">${steps.map((text,i)=>`<li${stage===i?' aria-current="step"':''}>${text}</li>`).join('')}</ol><h3>${esc(labels[order.status])}</h3><div class="ticket-actions">${actions}</div><div id="ticketPayment"></div><p id="ticketError" role="alert"></p>${button('refresh','Atualizar pedido')}<ul class="ticket-evidence">${evidence}</ul><p>Precisa de ajuda? <a href="/suporte">Fale com a equipe</a> e informe o número do pedido.</p>`;
     if(currentPayment && order.status==='solicitada') drawPayment();
     if (selected) document.getElementById('tpAgenda').hidden=true;
+  }
+  let cardController;
+  async function showCard(order) {
+    const area = document.getElementById('ticketPayment');
+    area.innerHTML = '<div id="ticketCardPayment"></div>';
+    if (!window.MercadoPago) {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://sdk.mercadopago.com/js/v2';
+        script.onload = resolve;
+        script.onerror = () => reject(new Error('Não foi possível carregar o cartão.'));
+        document.head.appendChild(script);
+      });
+    }
+    const mp = new window.MercadoPago(config.publicKey, { locale: 'pt-BR' });
+    const price = Math.round(Number(order.price) * 100);
+    cardController = await mp.bricks().create('cardPayment', 'ticketCardPayment', {
+      initialization: { amount: (price + Math.round(price / 10)) / 100 },
+      customization: { paymentMethods: { minInstallments: 1, maxInstallments: 10, types: { included: ['credit_card'] } } },
+      callbacks: {
+        onReady: () => {},
+        onError: () => { document.getElementById('ticketError').textContent = 'Não foi possível carregar ou validar o cartão.'; },
+        onSubmit: async form => {
+          const consent = document.getElementById('ticketPaymentConsent');
+          if (!consent.checked) {
+            document.getElementById('ticketError').textContent = 'Aceite os termos para pagar.';
+            throw new Error('Aceite os termos para pagar.');
+          }
+          let payment;
+          try {
+            payment = await BRB.ticketPayment('pay', { id: order.id, consent: true, card: {
+              token: form.token, payment_method_id: form.payment_method_id,
+              installments: Number(form.installments), cpf: String(form.payer?.identification?.number || '').replace(/\D/g, ''),
+            } });
+          } catch (error) {
+            document.getElementById('ticketError').textContent = error.message;
+            throw error;
+          }
+          await cardController?.unmount();
+          cardController = null;
+          await load();
+          const status = document.getElementById('ticketError');
+          if (status) status.textContent = payment.status === 'paid' ? 'Pagamento aprovado.' :
+            payment.status === 'pending' ? 'Pagamento em análise. Consulte o pedido antes de tentar novamente.' :
+            'Pagamento não concluído. Confira o pedido antes de tentar novamente.';
+        },
+      },
+    });
   }
   function drawPayment() {
     const container=document.getElementById('ticketPayment');
@@ -220,6 +269,9 @@
       if(target.dataset.evidence) {
         const result=await BRB.ticketPayment('evidence',{id:order.id,evidence_id:target.dataset.evidence});
         const link=document.createElement('a');link.href=result.url;link.target='_blank';link.rel='noopener';link.textContent='Abrir comprovante privado';error.replaceChildren(link);
+      } else if(action==='card') {
+        if(cardController) await cardController.unmount();
+        await showCard(order);
       } else if(action==='pay') { if(!document.getElementById('ticketPaymentConsent').checked)throw new Error('Confira o resumo e aceite os termos para gerar o Pix.');currentPayment=await BRB.ticketPayment('pay',{id:order.id,consent:true});await load(); }
       else if(action==='refresh') { await BRB.ticketPayment('status',{id:order.id});await load(); }
       else {

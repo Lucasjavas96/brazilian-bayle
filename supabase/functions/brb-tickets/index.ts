@@ -1,5 +1,5 @@
 import nodemailer from 'npm:nodemailer@10.2.1';
-import { InputError, UUID, publicOrder, validSignature } from '../brb-checkout/core.ts';
+import { InputError, UUID, publicOrder, validSignature, sha } from '../brb-checkout/core.ts';
 
 const env = (key: string) => Deno.env.get(key) || '';
 const origins = new Set(['https://brazilianbayle.com.br', 'https://www.brazilianbayle.com.br', 'https://brazilian-bayle.vercel.app']);
@@ -9,9 +9,9 @@ const enabled = () => env('BRB_TICKETS_ENABLED') === 'true' && !!token()
   && !!env('BRB_MP_WEBHOOK_SECRET')
   && !!env(mode() === 'test' ? 'BRB_MP_TEST_SELLER_ID' : 'BRB_MP_SELLER_ID');
 const serviceHeaders = () => ({ apikey: env('SUPABASE_SERVICE_ROLE_KEY'), Authorization: 'Bearer ' + env('SUPABASE_SERVICE_ROLE_KEY'), 'Content-Type': 'application/json' });
-async function rpc(action: string, payload: unknown = {}) {
-  const response = await fetch(env('SUPABASE_URL') + '/rest/v1/rpc/brb_ticket_service', {
-    method: 'POST', headers: serviceHeaders(), body: JSON.stringify({ action, payload }),
+async function rpc(action: string, payload: unknown = {}, endpoint = 'brb_ticket_service') {
+  const response = await fetch(env('SUPABASE_URL') + '/rest/v1/rpc/' + endpoint, {
+    method: 'POST', headers: serviceHeaders(), body: JSON.stringify(endpoint === 'brb_ticket_service' ? { action, payload } : { payload }),
   });
   if (!response.ok) throw new InputError('Não foi possível atualizar este pedido. Confira a etapa e tente novamente.', 409);
   return response.json();
@@ -103,7 +103,7 @@ Deno.serve(async request => {
     }
     if (!origins.has(origin)) return reply({ error: 'Origem não permitida.' }, 403);
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
-    if (route === 'config' && request.method === 'GET') return reply({ enabled: enabled(), mode: mode() });
+    if (route === 'config' && request.method === 'GET') return reply({ enabled: enabled(), mode: mode(), publicKey: env(mode() === 'test' ? 'BRB_MP_TEST_PUBLIC_KEY' : 'BRB_MP_PUBLIC_KEY') });
     if (request.method !== 'POST') return reply({}, 405);
     const authorization = request.headers.get('authorization') || '';
     const auth = await fetch(env('SUPABASE_URL') + '/auth/v1/user', { headers: { apikey: env('SUPABASE_SERVICE_ROLE_KEY'), Authorization: authorization } });
@@ -118,7 +118,21 @@ Deno.serve(async request => {
     if (route === 'pay') {
       if (body.consent !== true) throw new InputError('Confira o resumo e aceite os termos para gerar o Pix.');
       if (!enabled()) throw new InputError('O Pix da intermediação está em preparação. Seu pedido continua disponível para acompanhamento.', 503);
-      context = await rpc('reserve', { id: body.id, actor: user.id, mode: mode() });
+      const card = body.card;
+      const method = card ? 'card' : 'pix';
+      let paymentMethod: Record<string, unknown> = { id: 'pix', type: 'bank_transfer' };
+      let identification;
+      if (card) {
+        if (!/^[a-z0-9_]{2,30}$/i.test(card.payment_method_id || '') ||
+            !/^[a-zA-Z0-9_-]{10,512}$/.test(card.token || '') ||
+            !Number.isInteger(card.installments) || card.installments < 1 || card.installments > 10 ||
+            !/^\d{11}$/.test(card.cpf || '')) throw new InputError('Confira o cartão, o CPF e as parcelas.');
+        paymentMethod = { id: card.payment_method_id, type: 'credit_card', token: card.token, installments: card.installments };
+        identification = { type: 'CPF', number: card.cpf };
+      }
+      const fingerprint = card ? await sha(JSON.stringify({ paymentMethod, identification })) : null;
+      context = await rpc('reserve', { id: body.id, actor: user.id, mode: mode(), method, fingerprint }, 'brb_ticket_reserve_method');
+
       if (context.payment.mode !== mode()) throw new InputError('O pedido pertence a outro modo de pagamento. Fale com o suporte.', 409);
       if (context.payment.provider_id) {
         const result = await reconcile(await provider('/' + encodeURIComponent(context.payment.provider_id)), context);
@@ -127,8 +141,8 @@ Deno.serve(async request => {
       // The same immutable payload and key are retried after a timeout.
       const amount = (context.payment.amount_cents / 100).toFixed(2);
       const result = await provider('', { type: 'online', processing_mode: 'automatic', total_amount: amount,
-        external_reference: body.id, payer: { email: context.email },
-        transactions: { payments: [{ amount, payment_method: { id: 'pix', type: 'bank_transfer' }, expiration_time: 'PT30M' }] },
+        external_reference: body.id, payer: { email: context.email, ...(identification ? { identification } : {}) },
+        transactions: { payments: [{ amount, payment_method: paymentMethod, ...(card ? {} : { expiration_time: 'PT30M' }) }] },
       }, body.id);
       const payment = await reconcile(result, context);
       EdgeRuntime.waitUntil(sendQueuedMail()); return reply(payment);

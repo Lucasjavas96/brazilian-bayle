@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {stripTypeScriptTypes} from 'node:module';
-import {InputError,UUID,publicOrder,validSignature} from '../supabase/functions/brb-checkout/core.ts';
+import {InputError,UUID,publicOrder,validSignature,sha} from '../supabase/functions/brb-checkout/core.ts';
 
 const id='56059065-065e-4198-a463-cd0651cc71cb';
 const actor='14f9e3ad-7692-4ea2-b007-4998fe379b57';
@@ -21,7 +21,7 @@ function endpoint({amount='110.00',existing=false}={}) {
     if(url.startsWith('https://api.mercadopago.com/'))return Response.json(order);
     throw Error('Unexpected network request '+url);
   };
-  vm.runInNewContext(source,{Deno:{env:{get:key=>env[key]},serve:fn=>handler=fn},EdgeRuntime:{waitUntil:()=>{}},fetch,Request,Response,URL,crypto,TextEncoder,TextDecoder,Uint8Array,AbortSignal,InputError,UUID,publicOrder,validSignature,console,atob,nodemailer:{}});
+  vm.runInNewContext(source,{Deno:{env:{get:key=>env[key]},serve:fn=>handler=fn},EdgeRuntime:{waitUntil:()=>{}},fetch,Request,Response,URL,crypto,TextEncoder,TextDecoder,Uint8Array,AbortSignal,InputError,UUID,publicOrder,validSignature,sha,console,atob,nodemailer:{}});
   const call=(route,body={},auth='valid')=>handler(new Request('https://db.test/functions/v1/brb-tickets/'+route,{method:'POST',headers:{origin:'https://brazilianbayle.com.br','content-type':'application/json',authorization:'Bearer '+auth},body:JSON.stringify(body)}));
   return {call,calls};
 }
@@ -49,4 +49,14 @@ test('existing provider order is looked up instead of charging again',async()=>{
 test('payment requires explicit terms acceptance',async()=>{
   const api=endpoint();assert.equal((await api.call('pay',{id})).status,400);
   assert(!api.calls.some(c=>c.url.startsWith('https://api.mercadopago.com/')));
+});
+test('card forwards the selected installments and the trusted total', async () => {
+  const api = endpoint();
+  const card = { token: 'test_token_1234', payment_method_id: 'visa', installments: 10, cpf: '12345678901' };
+  assert.equal((await api.call('pay', { id, consent:true, card })).status, 200);
+  const request = api.calls.find(c => c.url === 'https://api.mercadopago.com/v1/orders');
+  const payload = JSON.parse(request.options.body);
+  assert.equal(payload.total_amount, '110.00');
+  assert.equal(payload.transactions.payments[0].payment_method.installments, 10);
+  assert.equal((await endpoint().call('pay', { id, consent:true, card:{ ...card, installments:11 } })).status, 400);
 });
