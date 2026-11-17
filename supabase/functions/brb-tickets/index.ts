@@ -11,7 +11,7 @@ const enabled = () => env('BRB_TICKETS_ENABLED') === 'true' && !!token()
 const serviceHeaders = () => ({ apikey: env('SUPABASE_SERVICE_ROLE_KEY'), Authorization: 'Bearer ' + env('SUPABASE_SERVICE_ROLE_KEY'), 'Content-Type': 'application/json' });
 async function rpc(action: string, payload: unknown = {}, endpoint = 'brb_ticket_service') {
   const response = await fetch(env('SUPABASE_URL') + '/rest/v1/rpc/' + endpoint, {
-    method: 'POST', headers: serviceHeaders(), body: JSON.stringify(endpoint === 'brb_ticket_service' ? { action, payload } : { payload }),
+    method: 'POST', headers: serviceHeaders(), body: JSON.stringify(endpoint === 'brb_ticket_service' || endpoint === 'brb_after_service' ? { action, payload } : { payload }),
   });
   if (!response.ok) throw new InputError('Não foi possível atualizar este pedido. Confira a etapa e tente novamente.', 409);
   return response.json();
@@ -35,6 +35,19 @@ async function reconcile(order: any, context: any) {
     throw new InputError('Pagamento divergente. Fale com o suporte.', 409);
   const result = publicOrder(order);
   await rpc('reconcile', { id: context.request.id, provider_id: order.id, payment_status: result.status, result });
+  return result;
+}
+// Ingresso de after: mesmo Mercado Pago, snapshot próprio (brb_private.after_payments). external_reference = id do pagamento.
+const afterRpc = (action: string, payload: unknown) => rpc(action, payload, 'brb_after_service');
+async function reconcileAfter(order: any, payment: any) {
+  const seller = env(mode() === 'test' ? 'BRB_MP_TEST_SELLER_ID' : 'BRB_MP_SELLER_ID');
+  if (!payment || payment.mode !== mode() || String(order.user_id) !== seller
+    || order.external_reference !== payment.id || order.currency !== 'BRL'
+    || Math.round(Number(order.total_amount) * 100) !== payment.amount_cents
+    || (typeof order.live_mode === 'boolean' && order.live_mode !== (mode() === 'production')))
+    throw new InputError('Pagamento divergente. Fale com o suporte.', 409);
+  const result = publicOrder(order);
+  await afterRpc('reconcile', { payment_id: payment.id, provider_id: order.id, payment_status: result.status, result });
   return result;
 }
 const escape = (value: string) => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]!));
@@ -96,7 +109,11 @@ Deno.serve(async request => {
       const order = await provider('/' + encodeURIComponent(id));
       if (!UUID.test(order.external_reference || '')) return reply({ received: true });
       const context = await rpc('context', { id: order.external_reference, actor: null, webhook: true }).catch(() => null);
-      if (!context?.payment) return reply({ received: true });
+      if (!context?.payment) {
+        const after = await afterRpc('context', { payment_id: order.external_reference }).catch(() => null);
+        if (after?.payment) await reconcileAfter(order, after.payment);
+        return reply({ received: true });
+      }
       await reconcile(order, context);
       EdgeRuntime.waitUntil(sendQueuedMail());
       return reply({ received: true });
@@ -113,6 +130,28 @@ Deno.serve(async request => {
     const raw = await request.text();
     if (raw.length > 7100000) throw new InputError('Arquivo muito grande.', 413);
     const body = JSON.parse(raw);
+    if (route === 'after-pay' || route === 'after-status') {
+      if (!UUID.test(body.after_id || '')) throw new InputError('After inválido.');
+      if (route === 'after-status') {
+        const context = await afterRpc('context', { after_id: body.after_id, actor: user.id });
+        if (context?.payment?.provider_id && context.payment.mode === mode())
+          return reply(await reconcileAfter(await provider('/' + encodeURIComponent(context.payment.provider_id)), context.payment));
+        return reply({ status: context?.payment?.status || null });
+      }
+      if (body.consent !== true) throw new InputError('Confira o resumo e aceite os termos para gerar o Pix.');
+      if (!enabled()) throw new InputError('A venda de ingressos de after está em preparação. Sua vaga fica segura por 35 minutos.', 503);
+      const context = await afterRpc('reserve', { after_id: body.after_id, actor: user.id, mode: mode() });
+      const payment = context.payment;
+      if (payment.mode !== mode()) throw new InputError('O pagamento pertence a outro modo. Fale com o suporte.', 409);
+      if (payment.provider_id) return reply(await reconcileAfter(await provider('/' + encodeURIComponent(payment.provider_id)), payment));
+      // Mesmo payload e mesma chave de idempotência numa nova tentativa.
+      const amount = (payment.amount_cents / 100).toFixed(2);
+      const order = await provider('', { type: 'online', processing_mode: 'automatic', total_amount: amount,
+        external_reference: payment.id, payer: { email: context.email },
+        transactions: { payments: [{ amount, payment_method: { id: 'pix', type: 'bank_transfer' }, expiration_time: 'PT30M' }] },
+      }, payment.id);
+      return reply(await reconcileAfter(order, payment));
+    }
     if (!UUID.test(body.id || '')) throw new InputError('Pedido inválido.');
     let context = await rpc('context', { id: body.id, actor: user.id });
     if (route === 'pay') {
