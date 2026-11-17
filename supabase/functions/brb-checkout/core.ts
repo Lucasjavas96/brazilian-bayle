@@ -34,7 +34,11 @@ export function mpPayload(order: any, payment: any) {
  let method: any;
  if (payment.method === 'pix') method={id:'pix',type:'bank_transfer'};
  else { if (!/^[a-z0-9_]{2,30}$/i.test(payment.paymentMethodId||'') || !/^[a-zA-Z0-9_-]{10,512}$/.test(payment.token||'')) throw new InputError('Confira os dados do cartão.');
- method={id:payment.paymentMethodId,type:'credit_card',token:payment.token,installments:1}; }
+ const installments = payment.installments ?? 1;
+ if (!Number.isInteger(installments) || installments < 1 || installments > 10) {
+  throw new InputError('Escolha entre 1 e 10 parcelas.');
+ }
+ method={id:payment.paymentMethodId,type:'credit_card',token:payment.token,installments}; }
  return {type:'online',processing_mode:'automatic',total_amount:amount,external_reference:order.id,
   payer:{email:order.customer.email,identification:{type:'CPF',number:order.customer.document}},
   config:{location:{state_id:'BR-'+order.customer.state}},

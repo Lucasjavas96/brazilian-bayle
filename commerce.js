@@ -380,11 +380,19 @@
    if(!config.publicKey)throw new Error('Pagamento com cartão indisponível. Escolha Pix ou tente mais tarde.');
    if(!window.MercadoPago)await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='https://sdk.mercadopago.com/js/v2';script.onload=resolve;script.onerror=()=>reject(new Error('Não foi possível carregar os campos seguros. Confira sua conexão ou bloqueador de anúncios.'));document.head.append(script);});
    const mp=new MercadoPago(config.publicKey,{locale:'pt-BR'});
+   const installmentsSelect = el('form-checkout__installments');
+   const limitInstallments = () => {
+    for (const option of Array.from(installmentsSelect.options)) {
+     if (Number(option.value) > 10) option.remove();
+    }
+   };
+   new MutationObserver(limitInstallments).observe(installmentsSelect, {childList:true});
+
    cardForm=mp.cardForm({amount:(state.total_cents/100).toFixed(2),iframe:true,
     form:{id:'form-checkout',cardNumber:{id:'form-checkout__cardNumber',placeholder:'Número do cartão'},expirationDate:{id:'form-checkout__expirationDate',placeholder:'MM/AA'},securityCode:{id:'form-checkout__securityCode',placeholder:'CVV'},cardholderName:{id:'form-checkout__cardholderName'},issuer:{id:'form-checkout__issuer'},installments:{id:'form-checkout__installments'},identificationType:{id:'form-checkout__identificationType'},identificationNumber:{id:'form-checkout__identificationNumber'},cardholderEmail:{id:'form-checkout__cardholderEmail'}},
     callbacks:{onFormMounted:error=>{if(error){message('Não foi possível iniciar o cartão. Confira sua conexão ou use Pix.');return;}
      requestAnimationFrame(()=>{const ready=['cardNumber','expirationDate','securityCode'].every(key=>el('form-checkout__'+key).querySelectorAll('iframe').length===1);el('cardPay').disabled=!ready;message(ready?'Preencha os campos seguros do cartão.':'Os campos seguros não carregaram. Confira seu bloqueador de anúncios ou escolha Pix.');});},
-     onSubmit:event=>{event.preventDefault();if(busy)return;const data=cardForm.getCardFormData();return pay({method:'card',token:data.token,paymentMethodId:data.paymentMethodId});}}
+     onSubmit:event=>{event.preventDefault();if(busy)return;const data=cardForm.getCardFormData();return pay({method:'card',token:data.token,paymentMethodId:data.paymentMethodId,installments:Number(data.installments)});}}
    });
    setTimeout(()=>{if(!el('form-checkout__expirationDate').querySelector('iframe')){message('Os campos seguros não carregaram. Confira sua conexão ou escolha Pix.');el('cardPay').disabled=true;}},8000);
   }
