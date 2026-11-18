@@ -61,6 +61,11 @@
       if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');
       return data;
     },
+    async afterModerate(action = 'list', payload = {}) {
+      const { data, error } = await client.rpc('brb_after_moderate', { action, payload });
+      if (error) throw new Error(error.message || 'Não foi possível concluir a ação.');
+      return data;
+    },
     async quizCorrect(question) {
       const { data: s } = await client.auth.getSession();
       if (!s?.session) return { login: false };

@@ -4,7 +4,8 @@
   const box = document.getElementById("tpAgenda");
   if (!box) return;
   const FEE = 0.10;
-  const TIPOS = ["Masculino", "Feminino", "Meia social", "Backstage", "Pista", "Área VIP"];
+  const GENEROS = ["Masculino", "Feminino", "Unissex"];
+  const CATEGORIAS = ["Meia social", "Backstage", "Pista", "Área VIP"];
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
   const brl = n => "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const say = m => (typeof toast === "function" ? toast(m) : alert(m));
@@ -28,14 +29,16 @@
   function sell(f) {
     open(head(f) + '<h2 class="display" id="p2pT">Intermediação <em>de ingressos</em></h2><p class="p2p-sub">' + esc(f.name) + '</p>' +
       '<p class="p2p-lede">Não vai mais à festa? Anuncie seu ingresso por aqui. O suporte da Brazilian Bayle intermedia a troca entre você e quem compra, com segurança para os dois lados.</p>' +
-      '<form class="p2p-sell" novalidate><label class="p2p-field"><span>Tipo do ingresso</span><select name="type" required><option value="" disabled selected>Escolha o tipo</option>' + TIPOS.map(t => "<option>" + t + "</option>").join("") + "</select></label>" +
+      '<form class="p2p-sell" novalidate><label class="p2p-field"><span>Gênero</span><select name="gender" required><option value="" disabled selected>Escolha o gênero</option>' + GENEROS.map(t => "<option>" + t + "</option>").join("") + "</select></label>" +
+      '<label class="p2p-field"><span>Categoria</span><select name="category" required><option value="" disabled selected>Escolha a categoria</option>' + CATEGORIAS.map(t => "<option>" + t + "</option>").join("") + "</select></label>" +
       '<label class="p2p-field"><span>Valor do ingresso</span><div class="p2p-money"><b>R$</b><input name="price" inputmode="decimal" placeholder="0,00" autocomplete="off" required></div></label>' +
       '<div class="p2p-fee" aria-live="polite"><span>Taxa do vendedor: <b>10%</b> descontados do ingresso</span><strong data-fee>R$ 0,00</strong></div>' +
       '<p class="p2p-err" role="alert" hidden></p><button class="p2p-big" type="submit">Anunciar ingresso</button></form>' +
       '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button><button class="p2p-link" type="button" data-buy>Ver ingressos anunciados</button></div>');
     const form = body.querySelector("form"), fee = body.querySelector("[data-fee]"), err = body.querySelector(".p2p-err");
     const price = form.elements.namedItem("price");
-    const type = form.elements.namedItem("type");
+    const gender = form.elements.namedItem("gender");
+    const category = form.elements.namedItem("category");
     const val = () => {
       const raw = price.value.trim();
       if (/^\d+(?:[.,]\d{1,2})?$/.test(raw)) return Number(raw.replace(",", "."));
@@ -48,16 +51,17 @@
     });
     form.addEventListener("submit", async e => {
       e.preventDefault(); const v = val(); const btn = form.querySelector(".p2p-big");
-      if (!type.value) { err.textContent = "Escolha o tipo do ingresso."; err.hidden = false; return; }
+      if (!gender.value || !category.value) { err.textContent = "Escolha o gênero e a categoria do ingresso."; err.hidden = false; return; }
       if (!(v >= 1 && v <= 50000)) { err.textContent = "Informe um valor entre R$ 1 e R$ 50.000, com até duas casas decimais."; err.hidden = false; return; }
       if (btn.disabled) return;
       btn.disabled = true;
       err.hidden = true;
+      const tipo = category.value + " " + gender.value;
       try {
         if (await needLogin()) return;
-        const r = await BRB.tickets("create", { event: f.id, type: type.value, price: v });
+        const r = await BRB.tickets("create", { event: f.id, type: tipo, price: v });
         if (r && r.login === false) { err.textContent = "Confirme seu e-mail para anunciar."; err.hidden = false; btn.disabled = false; return; }
-        data = r; done(f, { type: type.value, price: v });
+        data = r; done(f, { type: tipo, price: v });
       } catch (x) { err.textContent = x.message; err.hidden = false; btn.disabled = false; }
     });
     body.querySelector("[data-how]").addEventListener("click", () => how(f, () => sell(f)));
@@ -104,8 +108,17 @@
     });
   }
 
+  const COMO_FUNCIONA = [
+    "O vendedor anuncia e o comprador reserva o ingresso.",
+    "O comprador confere o total e paga o Pix do pedido.",
+    "Após a confirmação do Mercado Pago, o vendedor transfere pela plataforma oficial e anexa o comprovante.",
+    "O comprador confere o ingresso na plataforma oficial e confirma o recebimento.",
+    "A equipe registra o repasse ao vendedor. Em caso de divergência, abra uma ocorrência no pedido.",
+  ];
   function how(f, back) {
-    open(head(f) + '<h2 id="p2pT">Como funciona</h2><ol class="p2p-steps"><li>O vendedor anuncia e o comprador reserva o ingresso.</li><li>O comprador confere o total e paga o Pix do pedido.</li><li>Após a confirmação do Mercado Pago, o vendedor transfere pela plataforma oficial e anexa o comprovante.</li><li>O comprador confere o ingresso na plataforma oficial e confirma o recebimento.</li><li>A equipe registra o repasse ao vendedor. Em caso de divergência, abra uma ocorrência no pedido.</li></ol><p>Comprovantes e acompanhamento ficam disponíveis às partes autenticadas. A transferência depende das regras da plataforma que emitiu o ingresso.</p><button class="p2p-big" type="button" data-back>Voltar</button>');
+    open(head(f) + '<h2 id="p2pT">Como funciona</h2><ol class="p2p-steps">' +
+      COMO_FUNCIONA.map((t, i) => "<li><span>" + (i + 1) + "</span><p>" + esc(t) + "</p></li>").join("") +
+      '</ol><p>Comprovantes e acompanhamento ficam disponíveis às partes autenticadas. A transferência depende das regras da plataforma que emitiu o ingresso.</p><button class="p2p-big" type="button" data-back>Voltar</button>');
     body.querySelector('[data-back]').addEventListener('click', back);
   }
   function done(f, listing) {
@@ -113,8 +126,14 @@
     body.querySelector('[data-close]').addEventListener('click', () => { close(); document.getElementById('myTickets')?.click(); });
   }
 
-  /* quantos ingressos anunciados em cada festa, abaixo do botão da festa */
-  const marcar = () => {}; /* sem contagem nos botões da festa */
+  /* quantos ingressos disponíveis em cada festa, junto ao botão "Comprar ingresso" */
+  const marcar = () => {
+    document.querySelectorAll("[data-ver]").forEach(btn => {
+      const id = btn.dataset.ver;
+      const n = data.listings.filter(l => l.event === id && l.status === "ativo" && !l.mine).length;
+      btn.textContent = n > 0 ? "Comprar ingresso · " + n + (n > 1 ? " disponíveis" : " disponível") : "Comprar ingresso";
+    });
+  };
   refresh().then(marcar);
 
   box.addEventListener("click", async e => {
@@ -142,11 +161,12 @@
   });
   if (selected) document.body.classList.add('ticket-detail');
   let orders = [], config = {enabled:false}, busy = false, currentPayment = null;
-  const button = (action, text) => `<button type="button" class="btn btn-y" data-ticket-action="${action}">${text}</button>`;
+  const button = (action, text, kind = 'secondary') => `<button type="button" class="btn ticket-btn ticket-btn-${kind}" data-ticket-action="${action}">${text}</button>`;
   async function load(showLogin = false) {
+    if (!(selected || showLogin)) return;
     const session = await BRB.auth.getSession();
     if (!session.data.session) {
-      if (selected || showLogin) { panel.hidden=false; panel.innerHTML='<p>Entre na sua conta para acompanhar este pedido.</p><a class="btn btn-y" href="/conta?next='+encodeURIComponent(location.pathname+location.search)+'">Entrar na conta</a>'; }
+      panel.hidden=false; panel.innerHTML='<p>Entre na sua conta para acompanhar este pedido.</p><a class="btn btn-y" href="/conta?next='+encodeURIComponent(location.pathname+location.search)+'">Entrar na conta</a>';
       return;
     }
     panel.hidden=false;
@@ -178,8 +198,9 @@
       const fee = order.fee_cents ?? Math.round(price / 10);
       const total = order.amount_cents ?? price + fee;
       actions = `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
-      actions+=config.enabled ? '<label><input type="checkbox" id="ticketPaymentConsent"> Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</label>'+button('pay','Gerar ou consultar Pix') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
-      if (config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x');
+      const payLabel = order.payment_status ? 'Consultar Pix' : 'Pagar com Pix';
+      actions+=config.enabled ? '<label class="ticket-consent"><input type="checkbox" id="ticketPaymentConsent"><span>Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>'+button('pay',payLabel,'primary') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
+      if (config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x','primary');
       actions+=button('cancel','Cancelar reserva');
     }
     if (order.role === 'seller') {
@@ -192,10 +213,10 @@
       if (order.role==='seller') actions+='<p>Conta de destino da transferência <strong>'+esc(order.delivery_email)+'</strong></p>';
       if (order.role==='seller') actions+='<label>Comprovante de transferência (PDF, PNG ou JPEG, até 5 MB)<input id="ticketEvidence" type="file" accept="application/pdf,image/png,image/jpeg"></label><label>Referência da transferência<textarea id="ticketReference" minlength="8" maxlength="1500" placeholder="Identificador e detalhes da transferência oficial"></textarea></label>'+button('sent','Registrar envio do ingresso');
     }
-    if (order.status==='ingresso_transferido' && order.role==='buyer') actions+='<p>Confira se o ingresso aparece na sua conta na plataforma oficial. Ao confirmar, a equipe poderá prosseguir com o repasse.</p><label><input type="checkbox" id="ticketReceived"> Conferi o ingresso na plataforma oficial e confirmo o recebimento.</label>'+button('received','Confirmar recebimento');
+    if (order.status==='ingresso_transferido' && order.role==='buyer') actions+='<p>Confira se o ingresso aparece na sua conta na plataforma oficial. Ao confirmar, a equipe poderá prosseguir com o repasse.</p><label class="ticket-consent"><input type="checkbox" id="ticketReceived"><span>Conferi o ingresso na plataforma oficial e confirmo o recebimento.</span></label>'+button('received','Confirmar recebimento');
     if (['pagamento_confirmado','ingresso_transferido','recebimento_confirmado'].includes(order.status)) actions+='<details><summary>Tenho um problema com este pedido</summary><label>Descreva o que aconteceu<textarea id="ticketDispute" minlength="8" maxlength="1500"></textarea></label>'+button('disputed','Abrir ocorrência')+'</details>';
     const evidence=(order.evidence||[]).map(item=>`<li><b>${esc({sent:'Envio registrado',received:'Recebimento confirmado',disputed:'Ocorrência aberta',payout:'Repasse registrado'}[item.kind])}</b><p>${esc(item.reference)}</p>${item.has_file?`<button type="button" class="btn" data-evidence="${esc(item.id)}">Abrir comprovante</button>`:''}</li>`).join('');
-    panel.innerHTML=`<a href="/intermediacao">← Todas as festas e pedidos</a><p class="mono">${order.role==='buyer'?'Sua compra':'Sua venda'} · ${esc(order.id.slice(0,8))}</p><h2>${esc(order.event)}</h2><p>${esc(order.venue)} · ${esc(order.type)}</p><ol class="ticket-progress">${steps.map((text,i)=>`<li${stage===i?' aria-current="step"':''}>${text}</li>`).join('')}</ol><h3>${esc(labels[order.status])}</h3><div class="ticket-actions">${actions}</div><div id="ticketPayment"></div><p id="ticketError" role="alert"></p>${button('refresh','Atualizar pedido')}<ul class="ticket-evidence">${evidence}</ul><p>Precisa de ajuda? <a href="/suporte">Fale com a equipe</a> e informe o número do pedido.</p>`;
+    panel.innerHTML=`<a class="btn ticket-back" href="/intermediacao">← Todas as festas e pedidos</a><p class="mono">${order.role==='buyer'?'Sua compra':'Sua venda'} · ${esc(order.id.slice(0,8))}</p><h2>${esc(order.event)}</h2><p>${esc(order.venue)} · ${esc(order.type)}</p><ol class="ticket-progress">${steps.map((text,i)=>`<li${stage===i?' aria-current="step"':''}>${text}</li>`).join('')}</ol><h3>${esc(labels[order.status])}</h3><div class="ticket-actions">${actions}</div><div id="ticketPayment"></div><p id="ticketError" role="alert"></p>${button('refresh','Atualizar pedido')}<ul class="ticket-evidence">${evidence}</ul><p>Precisa de ajuda? <a href="/suporte">Fale com a equipe</a> e informe o número do pedido.</p>`;
     if(currentPayment && order.status==='solicitada') drawPayment();
     if (selected) document.getElementById('tpAgenda').hidden=true;
   }
@@ -216,7 +237,7 @@
     const price = Math.round(Number(order.price) * 100);
     cardController = await mp.bricks().create('cardPayment', 'ticketCardPayment', {
       initialization: { amount: (price + Math.round(price / 10)) / 100 },
-      customization: { paymentMethods: { minInstallments: 1, maxInstallments: 10, types: { included: ['credit_card'] } } },
+      customization: { paymentMethods: { minInstallments: 1, maxInstallments: 10, types: { excluded: ['debit_card'] } } },
       callbacks: {
         onReady: () => {},
         onError: () => { document.getElementById('ticketError').textContent = 'Não foi possível carregar ou validar o cartão.'; },
@@ -290,7 +311,7 @@
         await BRB.ticketJourney(action,payload);await load();
         BRB.ticketPayment('status',{id:order.id}).catch(()=>{});
       }
-    } catch(problem) { const current=document.getElementById('ticketError');if(current)current.textContent=problem.message; }
+    } catch(problem) { const current=document.getElementById('ticketError');if(current){current.textContent=problem.message;current.scrollIntoView({block:'center',behavior:'smooth'});} }
     finally {busy=false;target.disabled=false;}
   });
   load();

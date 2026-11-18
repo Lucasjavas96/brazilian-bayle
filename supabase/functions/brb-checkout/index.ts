@@ -58,7 +58,7 @@ Deno.serve(async req=>{
   if(req.method==='OPTIONS')return new Response(null,{status:204,headers});
   if(route==='config'&&req.method==='GET'){
    const products=await db('brb_shop_products?select=id,name,price_cents,sizes,active&order=id');
-   return reply({mode:mode(),enabled:enabled(),deliveryAvailable:!!melhorEnvioConfig(env),publicKey:publicKey(),products,installments:1});
+   return reply({mode:mode(),enabled:enabled(),deliveryAvailable:!!melhorEnvioConfig(env),publicKey:publicKey(),products,installments:10});
   }
   if(req.method!=='POST')return reply({error:'Método não permitido.'},405);
   const body=await bodyOf(req);
