@@ -801,19 +801,54 @@ refreshOfficialRanking();
   document.addEventListener("keydown", e => { if (e.key === "Escape" && box) close(); });
 })();
 
-/* ---------- Ranking: cards das demais festas do fim de semana ---------- */
+/* ---------- Ranking: festas do último fim de semana (sexta a domingo), montadas sozinhas a partir de BRB_EVENTS ---------- */
 (() => {
-  const box = document.getElementById("wkMore"); if (!box) return;
-  const FEATURED = new Set(["pedreira-2026-10-31", "surreal-park-2026-11-01"]);
-  const PLACE = { "D-EDGE São Paulo": ["D-EDGE", "São Paulo/SP"], "Club Vibe": ["Club Vibe", "Curitiba/PR"], "Ame Club": ["Ame Club", "Valinhos/SP"], "P12": ["P12 Jurerê", "Florianópolis/SC"], "Parque Villa-Lobos": ["Parque Villa-Lobos", "São Paulo/SP"] };
+  const top = document.getElementById("wkTop"), box = document.getElementById("wkMore"); if (!top && !box) return;
+  const PLACE = { "Greenvalley": ["Green Valley", "Camboriú/SC"], "Arena Open": ["Arena Open", "Camboriú/SC"], "Surreal Park": ["Surreal Park", "Camboriú/SC"], "Pedreira": ["Pedreira Paulo Leminski", "Curitiba/PR"], "Laroc": ["Laroc", "Valinhos/SP"], "Ame Club": ["Ame Club", "Valinhos/SP"], "Warung": ["Warung", "Itajaí/SC"], "P12": ["P12 Jurerê", "Florianópolis/SC"], "Club Vibe": ["Club Vibe", "Curitiba/PR"], "D-EDGE São Paulo": ["D-EDGE", "São Paulo/SP"], "D-EDGE Rio": ["D-EDGE Rio", "Rio de Janeiro/RJ"], "Terraza Music Park": ["Terraza Music Park", "Florianópolis/SC"], "CAOS": ["CAOS", "Campinas/SP"], "Matahari": ["Matahari", "Indaial/SC"], "Park Art": ["Park Art", "Pinhais/PR"], "Privilège Búzios": ["Privilège", "Búzios/RJ"], "Parque Villa-Lobos": ["Parque Villa-Lobos", "São Paulo/SP"] };
+  // ordem de prioridade do destaque grande quando nenhuma festa vem marcada com "destaque"
+  const PRIO = ["Pedreira", "Greenvalley", "Arena Open", "Surreal Park", "Laroc", "Warung", "Ame Club", "P12", "Club Vibe", "D-EDGE São Paulo", "D-EDGE Rio", "Terraza Music Park", "CAOS", "Matahari", "Park Art", "Privilège Búzios", "El Fortin"];
   const DOW = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
   const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-  const list = (window.BRB_EVENTS || []).filter(e => e.date >= "2026-10-30" && e.date <= "2026-11-01" && !FEATURED.has(e.id) && e.lineup.length)
-    .sort((a, b) => a.date.localeCompare(b.date) || a.venue.localeCompare(b.venue));
-  box.innerHTML = list.map(e => {
-    const [nome, cidade] = PLACE[e.venue] || [e.venue, ""], d = new Date(e.date + "T12:00:00");
-    return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${hasPedia(n) ? `<a href="/djindex/${slug(n)}">${esc(n)}</a>` : esc(n)}</li>`).join("")}</ul><div class="wk-actions"><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a><a class="btn btn-silver" href="/spotted">Publicar Spotted</a></div></article>`;
-  }).join("");
+  const today = new Date().toLocaleDateString("sv-SE", { timeZone: "America/Sao_Paulo" });
+  const iso = d => d.toISOString().slice(0, 10), at = s => new Date(s + "T12:00:00Z");
+  const all = (window.BRB_EVENTS || []).filter(e => e.lineup && e.lineup.length && e.date <= today);
+  // sexta-feira da semana de hoje (ou a última), depois volta de 7 em 7 dias até achar um fim de semana com festa
+  let fri = at(today); fri.setUTCDate(fri.getUTCDate() - ((fri.getUTCDay() + 2) % 7));
+  let list = [];
+  for (let k = 0; k < 10 && !list.length; k++) {
+    const a = iso(fri), z = new Date(fri); z.setUTCDate(z.getUTCDate() + 2);
+    list = all.filter(e => e.date >= a && e.date <= iso(z));
+    fri.setUTCDate(fri.getUTCDate() - 7);
+  }
+  const rank = e => (e.destaque ? 0 : 1) * 100 + (PRIO.includes(e.venue) ? PRIO.indexOf(e.venue) : 50);
+  list.sort((a, b) => rank(a) - rank(b) || a.date.localeCompare(b.date));
+  const big = list.slice(0, 2), rest = list.slice(2).sort((a, b) => a.date.localeCompare(b.date) || a.venue.localeCompare(b.venue));
+  const where = e => PLACE[e.venue] || [e.venue, ""];
+  const dj = n => hasPedia(n) ? `<a href="/djindex/${slug(n)}">${esc(n)}</a>` : esc(n);
+  const acts = e => `<div class="wk-actions"><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a><a class="btn btn-silver" href="/spotted">Publicar Spotted</a></div>`;
+  const title = n => { const m = String(n).match(/^(.+?)( · | \+ | & )(.+)$/); return m ? `${esc(m[1])}${esc(m[2])}<em>${esc(m[3])}</em>` : esc(n); };
+  const head = document.getElementById("wkHead");
+  if (head && list.length) {
+    const ds = [...new Set(list.map(e => e.date))].sort().map(d => d.slice(8) + "/" + d.slice(5, 7));
+    head.querySelector("p").textContent = "Em destaque · fim de semana de " + (ds.length > 1 ? ds.slice(0, -1).join(", ") + " e " + ds[ds.length - 1] : ds[0]);
+  }
+  if (top) {
+    top.innerHTML = big.map((e, i) => {
+      const [nome, cidade] = where(e), d = at(e.date), first = e.lineup.find(hasPedia);
+      const photo = e.photo || (first ? `/assets/djs/${slug(first)}.webp` : "");
+      const more = e.lineup.length > 8 ? `<li>e mais ${e.lineup.length - 8} atrações</li>` : "";
+      return `<article class="wk-card ${i ? "wk-right" : "wk-left"}">${photo ? `<img class="wk-ph" src="${esc(photo)}" alt="${esc(e.name)}, ${esc(nome)}" loading="lazy" width="800" height="800">` : ""}<div class="wk-body"><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p><p class="wk-date mono">${DOW[d.getUTCDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}/${e.date.slice(0, 4)}</p><h3 class="display">${title(e.name)}</h3>${e.destaque ? `<p class="wk-extra">${esc(e.destaque)}</p>` : ""}<ul class="wk-lineup">${e.lineup.slice(0, 8).map(n => `<li>${dj(n)}</li>`).join("")}${more}</ul>${acts(e)}</div></article>`;
+    }).join("");
+    // foto que não existe some, e o card fica só com o texto
+    top.querySelectorAll("img.wk-ph").forEach(img => img.addEventListener("error", () => img.remove(), { once: true }));
+  }
+  if (box) {
+    box.innerHTML = rest.map(e => {
+      const [nome, cidade] = where(e), d = at(e.date);
+      return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getUTCDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${dj(n)}</li>`).join("")}</ul>${acts(e)}</article>`;
+    }).join("");
+    const h = document.getElementById("festas"); if (h) h.hidden = !rest.length;
+  }
 })();
 
 /* BB Network: vídeos do fundo do topo em rodízio; quem prefere menos movimento não recebe vídeo. */

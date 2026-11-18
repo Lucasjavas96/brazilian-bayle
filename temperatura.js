@@ -4,7 +4,9 @@
   const box = document.getElementById("tpAgenda"), nav = document.getElementById("tpClubs");
   if (!box) return;
   const DATA = window.BRB_TEMP || {}, CLUBS = DATA.clubs || [];
-  const FESTAS = (DATA.festas || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+  const HOJE = new Date().toLocaleDateString("sv-SE", { timeZone: "America/Sao_Paulo" });
+  // festa com data vencida some da agenda sozinha, mesmo antes da atualização semanal tirar do arquivo
+  const FESTAS = (DATA.festas || []).filter(f => f.date >= HOJE).sort((a, b) => a.date.localeCompare(b.date));
   const SECS = CLUBS.map(c => ({ c, list: FESTAS.filter(f => f.club === c.id) })).filter(s => s.list.length);
   const MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
   const MESF = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
