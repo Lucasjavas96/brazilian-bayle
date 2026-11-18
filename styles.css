@@ -3904,3 +3904,21 @@ fieldset.commerce-fields legend+*{clear:both}
 @media(max-width:600px){.ticket-totals{grid-template-columns:1fr}.ticket-totals dd{text-align:left;margin-bottom:10px}.ticket-actions .btn{width:100%}}
 .ticket-detail #tpAgenda,.ticket-detail #tpClubs,.ticket-detail #tpHero{display:none!important}
 .ticket-detail .tp-page{min-height:70vh}
+
+/* ---------- Motion do "Onde é o after?" (after-motion.js, receita bang-motion) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .page-after:not(.motion-on):not(.motion-off) .af :is(.af-head,.af-bar){animation:mx-hold 2.4s step-end both}
+}
+@keyframes mx-hold{from{visibility:hidden}to{visibility:visible}}
+.af{position:relative;isolation:isolate;overflow:hidden}
+.af>.wrap{position:relative;z-index:1}
+.afx-stage{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.afx-sun{position:absolute;left:50%;top:-10%;width:min(900px,120vw);aspect-ratio:1;margin-left:min(-450px,-60vw);border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,rgba(255,212,0,.30),rgba(0,156,59,.22) 38%,rgba(0,39,118,.0) 70%);filter:blur(30px);opacity:0}
+.afx-sun-2{left:85%;top:30%;width:min(620px,90vw);margin-left:min(-310px,-45vw);background:radial-gradient(circle,rgba(0,39,118,.55),rgba(0,156,59,.12) 50%,transparent 72%)}
+.afx-ghost{position:absolute;left:0;top:clamp(90px,14vw,190px);white-space:nowrap;font-family:'Syne','Syne Fallback',sans-serif;font-weight:800;
+  font-size:clamp(120px,22vw,340px);line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(255,212,0,.13);opacity:0}
+.afx-ghost-2{top:auto;bottom:4%;font-size:clamp(60px,9vw,150px);-webkit-text-stroke:1px rgba(0,156,59,.22)}
+.afx-grain{position:absolute;inset:0;background:url(/assets/noise.png);opacity:.06;mix-blend-mode:screen}
+.afx-fader{position:absolute;inset:0;z-index:3;pointer-events:none;transform:translateX(-101%)}
+.motion-on #afApp .af-card{transform-style:preserve-3d;will-change:transform}
