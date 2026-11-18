@@ -5289,7 +5289,370 @@
         "Simas"
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Confirmado. Fonte: https://dropdaily.com.br/agenda/clubs-pistas/beltools-surreal-park-beltran-ben-sterling-1-novembro/",
-      "checked_at": "2026-11-03"
+      "checked_at": "2026-11-03",
+      "photo": "/assets/djs/beltran.webp"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-05",
+      "date": "2026-11-05",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Zibetti",
+        "Waltervelt",
+        "Mila Journée",
+        "Pierg"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/moving051126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "caos-2026-11-06",
+      "date": "2026-11-06",
+      "venue": "CAOS",
+      "name": "Fatsync",
+      "lineup": [
+        "Fatsync",
+        "Tim Baresko",
+        "Hot Bullet",
+        "M4RKZ"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/caos-apresenta-fatsync.html?eventId=15565).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-11-06",
+      "date": "2026-11-06",
+      "venue": "D-EDGE Rio",
+      "name": "Beltran",
+      "lineup": [
+        "Beltran",
+        "Abbud",
+        "Lomike"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/d-edge-rio-3-anos).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/beltran.webp"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-06",
+      "date": "2026-11-06",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Perote",
+        "Emanuel Satie",
+        "Morgana Ferrer"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/freak061126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "club-vibe-2026-11-06",
+      "date": "2026-11-06",
+      "venue": "Club Vibe",
+      "name": "Breaking Beattz",
+      "lineup": [
+        "Breaking Beattz",
+        "Tisci"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41994/breaking-beattz-all-night-long-club-vibe).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/breaking-beattz.webp"
+    },
+    {
+      "id": "caos-2026-11-07",
+      "date": "2026-11-07",
+      "venue": "CAOS",
+      "name": "Ryanosaurus",
+      "lineup": [
+        "Ryanosaurus",
+        "Synthatic",
+        "Backhaze",
+        "Sonic Soul"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/caos-apresenta-ryanosaurus.html?eventId=16162).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-11-07",
+      "date": "2026-11-07",
+      "venue": "D-EDGE Rio",
+      "name": "DJ Marky & Friends",
+      "lineup": [
+        "DJ Marky",
+        "DJ Andy",
+        "Rodrigo S"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/d-edge-rio-3-anos).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/dj-marky.webp"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-07",
+      "date": "2026-11-07",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Teclas",
+        "Mike Rish",
+        "Togni",
+        "Adnan Sharif",
+        "JULA",
+        "Nico Cano"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/nave071126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "laroc-2026-11-07",
+      "date": "2026-11-07",
+      "venue": "Laroc",
+      "name": "Mathame",
+      "lineup": [
+        "Mathame"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/laroc-club-apresenta-mathame/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/mathame.webp"
+    },
+    {
+      "id": "club-vibe-2026-11-07",
+      "date": "2026-11-07",
+      "venue": "Club Vibe",
+      "name": "Murphy",
+      "lineup": [
+        "Murphy",
+        "Baby B.",
+        "Higor",
+        "Luiz German",
+        "Rafitea"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41924/nhot-techno-apr-murphy-club-vibe).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-08",
+      "date": "2026-11-08",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Alaikke",
+        "Romina",
+        "Ricardo Lin",
+        "Villain Mode"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/superafter081126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-12",
+      "date": "2026-11-12",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Sheldon",
+        "Tim Baresko",
+        "M4RKZ"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/moving121126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-11-13",
+      "date": "2026-11-13",
+      "venue": "D-EDGE Rio",
+      "name": "Tulipa & Trommel",
+      "lineup": [
+        "Magda",
+        "tINI",
+        "Vivi Seixas",
+        "Aninha",
+        "Tati Pimont"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/d-edge-rio-3-anos).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/aninha.webp"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-13",
+      "date": "2026-11-13",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Edu Poppo",
+        "Âme",
+        "Hoo",
+        "Ingrid",
+        "Pure Juice"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/freak131126/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/ame.webp"
+    },
+    {
+      "id": "laroc-2026-11-13",
+      "date": "2026-11-13",
+      "venue": "Laroc",
+      "name": "Boris Brejcha",
+      "lineup": [
+        "Boris Brejcha"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/laroc-apresenta-boris-brejcha/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/boris-brejcha.webp"
+    },
+    {
+      "id": "club-vibe-2026-11-13",
+      "date": "2026-11-13",
+      "venue": "Club Vibe",
+      "name": "D-Nox & Beckers",
+      "lineup": [
+        "D-Nox & Beckers",
+        "Rogério Gedrah"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41850/d-nox-beckers-20-anos-club-vibe).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "caos-2026-11-14",
+      "date": "2026-11-14",
+      "venue": "CAOS",
+      "name": "Sotam",
+      "lineup": [
+        "Sotam"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/caos-apresenta-sotam.html?eventId=14970).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-11-14",
+      "date": "2026-11-14",
+      "venue": "D-EDGE Rio",
+      "name": "D-Nox & Beckers",
+      "lineup": [
+        "D-Nox & Beckers",
+        "Melodic Soul Crew"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/d-edge-rio-3-anos).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-14",
+      "date": "2026-11-14",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "KAF3R",
+        "PACS",
+        "DJ Murphy",
+        "Mary Gripa",
+        "Ella Candeu",
+        "Andre Torquato"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/nave141126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "park-art-2026-11-14",
+      "date": "2026-11-14",
+      "venue": "Park Art",
+      "name": "Área 51",
+      "lineup": [
+        "Louie Cut",
+        "Kanio",
+        "Carlinhos de Barros & Flávia Barreto",
+        "Reckzet",
+        "East Brothers",
+        "Sound Cloup"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingressonacional.com.br/evento/34775/area51).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "terraza-2026-11-14",
+      "date": "2026-11-14",
+      "venue": "Terraza Music Park",
+      "name": "BLANCAh",
+      "lineup": [
+        "BLANCAh",
+        "Ricardo Lin"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41628/terraza-music-park-blancah-long-set).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/blancah.webp"
+    },
+    {
+      "id": "club-vibe-2026-11-14",
+      "date": "2026-11-14",
+      "venue": "Club Vibe",
+      "name": "Flux Zone",
+      "lineup": [
+        "Flux Zone",
+        "Lemex",
+        "Holt 88",
+        "Castelani",
+        "Daniel Pellis"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/42028/field-showcase-apr-flux-zone).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-15",
+      "date": "2026-11-15",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Bekka Lopez",
+        "Bervon",
+        "Chiari"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/superafter151126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-11-19",
+      "date": "2026-11-19",
+      "venue": "D-EDGE Rio",
+      "name": "Ratier & Friends",
+      "lineup": [
+        "Renato Ratier",
+        "Supernova",
+        "Benan"
+      ],
+      "source": "Portal Pop Cyber, programação oficial D-EDGE Rio 3 anos (06/11/2026); mudança: entra Benan (https://www.portalpopcyber.com/com-ratier-beltran-dj-marky-gabe-d-nox-beckers-dam-swindle-magda-tini-e-mais-d-edge-rio-celebra-tres-anos/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/renato-ratier.webp"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-19",
+      "date": "2026-11-19",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Dopecupid",
+        "Fran Bortolossi",
+        "Kolombo",
+        "Kevin",
+        "Tunis"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/moving191126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "club-vibe-2026-11-19",
+      "date": "2026-11-19",
+      "venue": "Club Vibe",
+      "name": "Trommel by All Means",
+      "lineup": [
+        "Magda",
+        "Francesco Farfa",
+        "Ber Bonet",
+        "Gromma",
+        "DaniDan"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41803/trommel-by-all-means-club-vibe).",
+      "checked_at": "2026-11-18"
     },
     {
       "id": "surreal-park-2026-11-20",
@@ -5300,7 +5663,75 @@
         "Hernán Cattáneo"
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Futuro — parcial. Fonte:  Obs.: Ainda não realizado em 03/11/2026",
-      "checked_at": "2026-11-03"
+      "checked_at": "2026-11-03",
+      "photo": "/assets/album/fotos/hernan-cattaneo.webp"
+    },
+    {
+      "id": "caos-2026-11-20",
+      "date": "2026-11-20",
+      "venue": "CAOS",
+      "name": "Brisotti, Giu e Ragie Ban",
+      "lineup": [
+        "Brisotti",
+        "GIU",
+        "Ragie Ban"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/caos-apresenta-brisotti-giu-ragie-ban-e-mais.html?eventId=16361).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-11-20",
+      "date": "2026-11-20",
+      "venue": "D-EDGE Rio",
+      "name": "Red Night",
+      "lineup": [
+        "AIKO",
+        "DiskoTekaa",
+        "Julianna",
+        "call_me_rapha",
+        "Isabella Lauermann"
+      ],
+      "source": "Portal Pop Cyber, programação oficial D-EDGE Rio 3 anos (06/11/2026); mudança: entram call_me_rapha e Isabella Lauermann (https://www.portalpopcyber.com/com-ratier-beltran-dj-marky-gabe-d-nox-beckers-dam-swindle-magda-tini-e-mais-d-edge-rio-celebra-tres-anos/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-20",
+      "date": "2026-11-20",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Édel",
+        "CJ Jeff",
+        "Bauhouse",
+        "Onsoul"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/freak201126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "p12-2026-11-20",
+      "date": "2026-11-20",
+      "venue": "P12",
+      "name": "Meduza",
+      "lineup": [
+        "Meduza"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/p12-radio-celebrate-jovem-pan-floripa-com-meduza-p12-jurere).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/meduza.webp"
+    },
+    {
+      "id": "club-vibe-2026-11-20",
+      "date": "2026-11-20",
+      "venue": "Club Vibe",
+      "name": "Roddy Lima",
+      "lineup": [
+        "Roddy Lima",
+        "Cour T.",
+        "Trallez"
+      ],
+      "source": "Blueticket, página do evento (título agora com \"+ convidados\" e flyer com special guests Cour T. e Trallez); link de ingresso mudou de slug (https://www.blueticket.com.br/evento/41470/roddy-lima-all-night-convidados-by-triv-club-vibe).",
+      "checked_at": "2026-11-18"
     },
     {
       "id": "greenvalley-2026-11-21",
@@ -5308,10 +5739,294 @@
       "venue": "Greenvalley",
       "name": "PAWSA",
       "lineup": [
-        "PAWSA"
+        "PAWSA",
+        "Bhaskar",
+        "Jackson",
+        "Carol Seubert"
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Futuro — parcial. Fonte:  Obs.: Evento posterior à data de pesquisa",
-      "checked_at": "2026-11-03"
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/pawsa.webp"
+    },
+    {
+      "id": "caos-2026-11-21",
+      "date": "2026-11-21",
+      "venue": "CAOS",
+      "name": "Becker",
+      "lineup": [
+        "Becker"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/caos-apresenta-becker-all-life-long.html?eventId=15829).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-21",
+      "date": "2026-11-21",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "Ray",
+        "Renato Ratier",
+        "Supernova",
+        "Kenny Larkin",
+        "Anønimat",
+        "Sonore DJs"
+      ],
+      "source": "Ingresse, página do evento (correção de grafia: Kenny Larkin, não Kenny Larking) (https://www.ingresse.com/nave211126/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/renato-ratier.webp"
+    },
+    {
+      "id": "laroc-2026-11-21",
+      "date": "2026-11-21",
+      "venue": "Laroc",
+      "name": "Meduza",
+      "lineup": [
+        "Meduza"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/laroc-club-apresenta-medvza/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/meduza.webp"
+    },
+    {
+      "id": "terraza-2026-11-21",
+      "date": "2026-11-21",
+      "venue": "Terraza Music Park",
+      "name": "Brisotti",
+      "lineup": [
+        "Brisotti",
+        "Alaikke",
+        "Barbara Petik"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/42023/terraza-music-park-brisotti-long-set).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "club-vibe-2026-11-21",
+      "date": "2026-11-21",
+      "venue": "Club Vibe",
+      "name": "Kaká Franco, Renan Mendes e Soundmanpako",
+      "lineup": [
+        "Kaká Franco",
+        "Renan Mendes",
+        "Soundmanpako",
+        "Edu Castilho",
+        "FRL"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/42058/vibe-apr-kaka-franco-renan-mendes-e-soundmanpako).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-11-21",
+      "date": "2026-11-21",
+      "venue": "D-EDGE Rio",
+      "name": "Kasino",
+      "lineup": [
+        "KASINO",
+        "Nazareth",
+        "Sarah Ferreira"
+      ],
+      "source": "Portal Pop Cyber, programação D-EDGE Rio 3 anos; confirmada também na We Go Out (noite D-Cassete Rewind w/ Kasino, Ingresse evento 107273) (https://www.portalpopcyber.com/com-ratier-beltran-dj-marky-gabe-d-nox-beckers-dam-swindle-magda-tini-e-mais-d-edge-rio-celebra-tres-anos/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-22",
+      "date": "2026-11-22",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Mary Mesk",
+        "Jonatas C",
+        "Soulfie",
+        "Noma"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/superafter221126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-26",
+      "date": "2026-11-26",
+      "venue": "D-EDGE São Paulo",
+      "name": "Moving",
+      "lineup": [
+        "Ehlla",
+        "Cesar Nardini",
+        "Jay Mariani",
+        "Beatric",
+        "Melon Blush",
+        "Rick Legnani"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/moving261126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-11-27",
+      "date": "2026-11-27",
+      "venue": "D-EDGE Rio",
+      "name": "Dam Swindle",
+      "lineup": [
+        "Dam Swindle",
+        "Letícia Stempi",
+        "Rara Djs",
+        "Pedro Gariani"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/d-edge-rio-3-anos).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/leticia-stempi.webp"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-27",
+      "date": "2026-11-27",
+      "venue": "D-EDGE São Paulo",
+      "name": "Freak Chic",
+      "lineup": [
+        "Cesare vs Disorder",
+        "Sublee",
+        "Botanic Soundsystem"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/freak271126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "club-vibe-2026-11-27",
+      "date": "2026-11-27",
+      "venue": "Club Vibe",
+      "name": "Gabe",
+      "lineup": [
+        "Gabe",
+        "Mäff",
+        "Óscar"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41492/gabe-club-vibe).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/gabe.webp"
+    },
+    {
+      "id": "d-edge-rio-2026-11-28",
+      "date": "2026-11-28",
+      "venue": "D-EDGE Rio",
+      "name": "Gabe",
+      "lineup": [
+        "Gabe",
+        "Sterium",
+        "Solare"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/d-edge-rio-3-anos).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/gabe.webp"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-28",
+      "date": "2026-11-28",
+      "venue": "D-EDGE São Paulo",
+      "name": "Nave",
+      "lineup": [
+        "BAPP",
+        "Amine Edge",
+        "Ragie Ban",
+        "Cactunes",
+        "Ana Jones",
+        "Dix"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/nave281126/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/bapp.webp"
+    },
+    {
+      "id": "matahari-2026-11-28",
+      "date": "2026-11-28",
+      "venue": "Matahari",
+      "name": "White Party",
+      "lineup": [
+        "Juicce",
+        "Nightfunk",
+        "Pandora",
+        "Fezzo",
+        "Hot Bullet",
+        "Renan Boeing",
+        "Greg 99",
+        "Inndrive",
+        "Rocksted",
+        "Ishimaru",
+        "Gross T",
+        "Jhart"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingressonacional.com.br/evento/35137/whitepartymatahari).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "park-art-2026-11-28",
+      "date": "2026-11-28",
+      "venue": "Park Art",
+      "name": "Night Vision",
+      "lineup": [
+        "Brisotti",
+        "Classmatic",
+        "Duarte",
+        "Victor Lou",
+        "Visage"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingressonacional.com.br/evento/34899/night-vision).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/classmatic.webp"
+    },
+    {
+      "id": "privilege-buzios-2026-11-28",
+      "date": "2026-11-28",
+      "venue": "Privilège Búzios",
+      "name": "Vórtice Weekend",
+      "lineup": [
+        "Liu",
+        "Mau Maioli",
+        "Adria",
+        "Zaro",
+        "JP Valente"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://feverup.com/m/706771).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/liu.webp"
+    },
+    {
+      "id": "club-vibe-2026-11-28",
+      "date": "2026-11-28",
+      "venue": "Club Vibe",
+      "name": "Musafir Showcase",
+      "lineup": [
+        "Teclas",
+        "Raffael Camargo",
+        "Nephesh",
+        "Double",
+        "Pacca",
+        "Ju Frank",
+        "Tete",
+        "Jhessi"
+      ],
+      "source": "Blueticket, página do evento (line-up no flyer oficial) e agenda do site clubvibe.com.br (https://www.blueticket.com.br/evento/42056/musafir-showcase).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-11-29",
+      "date": "2026-11-29",
+      "venue": "D-EDGE São Paulo",
+      "name": "Superafter",
+      "lineup": [
+        "Diogo Accioly",
+        "Stereo",
+        "Luma"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/superafter291126/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "club-vibe-2026-12-04",
+      "date": "2026-12-04",
+      "venue": "Club Vibe",
+      "name": "Blazy",
+      "lineup": [
+        "Blazy"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/42119/blazy-club-vibe).",
+      "checked_at": "2026-11-18"
     },
     {
       "id": "surreal-park-2026-12-05",
@@ -5319,10 +6034,257 @@
       "venue": "Surreal Park",
       "name": "Vini Vici",
       "lineup": [
-        "Vini Vici"
+        "Vini Vici",
+        "Amine Edge",
+        "Avrosse",
+        "Dubdogz",
+        "Fezzo",
+        "Fluxzone",
+        "Gabe",
+        "Juicce",
+        "Kanio",
+        "Korolova",
+        "Louie Cut",
+        "Marco Strous",
+        "Zaark",
+        "Ale Vaz",
+        "Backhaze",
+        "Camacho",
+        "Chapeleiro",
+        "Omiki",
+        "Pandora",
+        "Solist",
+        "Vermont",
+        "Vivaz",
+        "Bruno Furlan",
+        "Duarte",
+        "Inntraw",
+        "Kolombo",
+        "MØK",
+        "PUKA",
+        "Sterium",
+        "Viot",
+        "wAFF",
+        "Anderson Noise",
+        "Baac",
+        "Barja",
+        "BLANCAh",
+        "Bry Ortega",
+        "Lucas Norole",
+        "Murphy",
+        "Pranksters",
+        "Castelani",
+        "D.Ribeiro",
+        "Dayan",
+        "Evvy",
+        "Flávia Souza",
+        "Hot Sync",
+        "Margot",
+        "Nando",
+        "Pytt Gardin",
+        "Quint-Eme",
+        "Tarii",
+        "Trey Mykail",
+        "Zamp"
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Futuro — parcial. Fonte:  Obs.: Ainda não realizado em 03/11/2026",
-      "checked_at": "2026-11-03"
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "caos-2026-12-05",
+      "date": "2026-12-05",
+      "venue": "CAOS",
+      "name": "Len Faki",
+      "lineup": [
+        "Len Faki"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/09-anos-de-caos-com-len-faki.html?eventId=16229).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/len-faki.webp"
+    },
+    {
+      "id": "terraza-2026-12-05",
+      "date": "2026-12-05",
+      "venue": "Terraza Music Park",
+      "name": "ZAC",
+      "lineup": [
+        "ZAC",
+        "Maya Fourteen",
+        "Ricardo Lin"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41630/terraza-music-park-zac-long-set).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/zac.webp"
+    },
+    {
+      "id": "club-vibe-2026-12-11",
+      "date": "2026-12-11",
+      "venue": "Club Vibe",
+      "name": "James Zabiela",
+      "lineup": [
+        "James Zabiela"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41989/james-zabiela-club-vibe).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-12-11",
+      "date": "2026-12-11",
+      "venue": "D-EDGE Rio",
+      "name": "Giu Sounds Cool",
+      "lineup": [
+        "GIU"
+      ],
+      "source": "Tá Sendo, página do evento (link para a Ingresse); divulgação diz \"mais atrações em breve\" (https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-apresenta-giu-sounds-cool).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "terraza-2026-12-12",
+      "date": "2026-12-12",
+      "venue": "Terraza Music Park",
+      "name": "Tangram",
+      "lineup": [
+        "Marian Flow",
+        "Mari-Anna",
+        "Bhhaer",
+        "Bianco Vargas",
+        "Cau Bartholo"
+      ],
+      "source": "Blueticket, página do evento (line-up no flyer oficial: Marian Flow ft. Mari-Anna, Bhhaer, Bianco Vargas, Cau Bartholo) (https://www.blueticket.com.br/evento/42191/terraza-pocket-tangram-marian-flow-ft-mari-anna).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-rio-2026-12-12",
+      "date": "2026-12-12",
+      "venue": "D-EDGE Rio",
+      "name": "Innersounds",
+      "lineup": [
+        "Gadas",
+        "HELOAH",
+        "Tonaco"
+      ],
+      "source": "Resident Advisor, D-Edge Rio apresenta INNERSOUNDS (line-up); data e ingresso confirmados no Tá Sendo (https://ra.co/events/2587759).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "caos-2026-12-13",
+      "date": "2026-12-13",
+      "venue": "CAOS",
+      "name": "Wade",
+      "lineup": [
+        "Wade"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/caos-apresenta-wade.html?eventId=14672).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/wade.webp"
+    },
+    {
+      "id": "park-art-2026-12-13",
+      "date": "2026-12-13",
+      "venue": "Park Art",
+      "name": "Dubdogz",
+      "lineup": [
+        "Dubdogz"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingressonacional.com.br/evento/35219/sunshine-sunset).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/dubdogz.webp"
+    },
+    {
+      "id": "club-vibe-2026-12-17",
+      "date": "2026-12-17",
+      "venue": "Club Vibe",
+      "name": "OSGEMEOS",
+      "lineup": [
+        "OSGEMEOS"
+      ],
+      "source": "Agenda do site clubvibe.com.br e Blueticket (flyer \"save the date\", sem outros nomes) (https://clubvibe.com.br/).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "club-vibe-2026-12-18",
+      "date": "2026-12-18",
+      "venue": "Club Vibe",
+      "name": "Fezzo",
+      "lineup": [
+        "Fezzo"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/42129/fezzo-by-triv-a-ultima-do-ano-club-vibe).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "terraza-2026-12-19",
+      "date": "2026-12-19",
+      "venue": "Terraza Music Park",
+      "name": "Leo Janeiro + Vivi Seixas + Kaká Franco",
+      "lineup": [
+        "Leo Janeiro",
+        "Vivi Seixas",
+        "Kaká Franco",
+        "Caio Castilho",
+        "Joaum"
+      ],
+      "source": "Blueticket, flyer oficial atualizado (entraram Caio Castilho e Joaum; Leo Janeiro 30 anos de carreira) (https://www.blueticket.com.br/evento/42113/terraza-music-park-leo-janeiro-vivi-seixas-kaka-franco).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/leo-janeiro.webp"
+    },
+    {
+      "id": "club-vibe-2026-12-19",
+      "date": "2026-12-19",
+      "venue": "Club Vibe",
+      "name": "Eli Iwasa",
+      "lineup": [
+        "Eli Iwasa"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41708/eli-iwasa-club-vibe).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/eli-iwasa.webp"
+    },
+    {
+      "id": "ame-club-2026-12-19",
+      "date": "2026-12-19",
+      "venue": "Ame Club",
+      "name": "Beltran",
+      "lineup": [
+        "Beltran",
+        "Yamagucci",
+        "Solare",
+        "Simas",
+        "Abbud"
+      ],
+      "source": "Ingresse, página do evento (Ame Club apresenta: Beltran) (https://www.ingresse.com/ame-club-apresenta-beltran/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/beltran.webp"
+    },
+    {
+      "id": "caos-2026-12-19",
+      "date": "2026-12-19",
+      "venue": "CAOS",
+      "name": "ANNA",
+      "lineup": [
+        "ANNA"
+      ],
+      "source": "Ticket Imediato, página do evento (CAOS apresenta ANNA) (https://ticketimediato.com/product/details/caos-apresenta-anna.html?eventId=16592).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/anna.webp"
+    },
+    {
+      "id": "park-art-2026-12-24",
+      "date": "2026-12-24",
+      "venue": "Park Art",
+      "name": "Natal Mágico",
+      "lineup": [
+        "Ishimaru",
+        "GIU",
+        "MØK",
+        "Zaark",
+        "Jho Roscioli",
+        "Nicolau Marinho",
+        "Vinter",
+        "BRN"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingressonacional.com.br/evento/35114/natal-magico).",
+      "checked_at": "2026-11-18"
     },
     {
       "id": "surreal-park-2026-12-27",
@@ -5334,6 +6296,112 @@
       "checked_at": "2026-10-27"
     },
     {
+      "id": "p12-2026-12-27",
+      "date": "2026-12-27",
+      "venue": "P12",
+      "name": "Dubdogz",
+      "lineup": [
+        "Dubdogz",
+        "ETTA"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/dubdogz-p12-jurere).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/dubdogz.webp"
+    },
+    {
+      "id": "privilege-buzios-2026-12-27",
+      "date": "2026-12-27",
+      "venue": "Privilège Búzios",
+      "name": "Mochakk",
+      "lineup": [
+        "Mochakk"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/semana-reveillon-privilege-2027).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/mochakk.webp"
+    },
+    {
+      "id": "terraza-2026-12-27",
+      "date": "2026-12-27",
+      "venue": "Terraza Music Park",
+      "name": "Beltran",
+      "lineup": [
+        "Beltran",
+        "Aninha",
+        "Simas",
+        "Alaikke"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41629/terraza-music-park-beltran).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/beltran.webp"
+    },
+    {
+      "id": "greenvalley-2026-12-28",
+      "date": "2026-12-28",
+      "venue": "Greenvalley",
+      "name": "Miss Monique",
+      "lineup": [
+        "Miss Monique",
+        "Victor Ruiz",
+        "Tao Andra",
+        "Luch"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/miss-monique.webp"
+    },
+    {
+      "id": "privilege-buzios-2026-12-28",
+      "date": "2026-12-28",
+      "venue": "Privilège Búzios",
+      "name": "Illusionize",
+      "lineup": [
+        "Illusionize"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/semana-reveillon-privilege-2027).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/illusionize.webp"
+    },
+    {
+      "id": "greenvalley-2026-12-29",
+      "date": "2026-12-29",
+      "venue": "Greenvalley",
+      "name": "Monolink",
+      "lineup": [
+        "Monolink",
+        "Deep Dish",
+        "Rafael",
+        "Volkoder"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/monolink.webp"
+    },
+    {
+      "id": "p12-2026-12-29",
+      "date": "2026-12-29",
+      "venue": "P12",
+      "name": "Vintage Culture",
+      "lineup": [
+        "Vintage Culture"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/vintage-culture-p12).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/vintage-culture.webp"
+    },
+    {
+      "id": "privilege-buzios-2026-12-29",
+      "date": "2026-12-29",
+      "venue": "Privilège Búzios",
+      "name": "Cat Dealers",
+      "lineup": [
+        "Cat Dealers"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/semana-reveillon-privilege-2027).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/cat-dealers.webp"
+    },
+    {
       "id": "greenvalley-2026-12-30",
       "date": "2026-12-30",
       "venue": "Greenvalley",
@@ -5342,7 +6410,20 @@
         "Vintage Culture"
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Futuro — parcial. Fonte:  Obs.: Evento posterior à data de pesquisa",
-      "checked_at": "2026-11-03"
+      "checked_at": "2026-11-03",
+      "photo": "/assets/djs/vintage-culture.webp"
+    },
+    {
+      "id": "privilege-buzios-2026-12-30",
+      "date": "2026-12-30",
+      "venue": "Privilège Búzios",
+      "name": "Adam Ten & Malive",
+      "lineup": [
+        "Adam Ten",
+        "Malive"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/semana-reveillon-privilege-2027).",
+      "checked_at": "2026-11-18"
     },
     {
       "id": "surreal-park-2026-12-31",
@@ -5352,6 +6433,463 @@
       "lineup": [],
       "source": "Agenda informada pela Brazilian Bayle; participantes brasileiros pendentes de confirmação.",
       "checked_at": "2026-10-27"
+    },
+    {
+      "id": "greenvalley-2026-12-31",
+      "date": "2026-12-31",
+      "venue": "Greenvalley",
+      "name": "Réveillon Greenvalley",
+      "lineup": [
+        "Jean Claude Ades",
+        "MBalla",
+        "South Birds",
+        "Tiago Kuhnen"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "laroc-2026-12-31",
+      "date": "2026-12-31",
+      "venue": "Laroc",
+      "name": "Réveillon Laroc 2027",
+      "lineup": [
+        "ARTBAT"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/laroc-reveillon-2027-feat-artbat/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/artbat.webp"
+    },
+    {
+      "id": "p12-2026-12-31",
+      "date": "2026-12-31",
+      "venue": "P12",
+      "name": "Réveillon Spettacolo 2027",
+      "lineup": [
+        "Mochakk"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/reveillon-spettacolo-2027-p12-jurere).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/mochakk.webp"
+    },
+    {
+      "id": "privilege-buzios-2026-12-31",
+      "date": "2026-12-31",
+      "venue": "Privilège Búzios",
+      "name": "Réveillon Privilège + Go Fish",
+      "lineup": [
+        "Maz"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/semana-reveillon-privilege-2027).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/maz.webp"
+    },
+    {
+      "id": "club-vibe-2026-12-31",
+      "date": "2026-12-31",
+      "venue": "Club Vibe",
+      "name": "Almanac",
+      "lineup": [
+        "Almanac"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/42001/almanac-reveillon-2027-club-vibe).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "terraza-2027-01-01",
+      "date": "2027-01-01",
+      "venue": "Terraza Music Park",
+      "name": "Terraza Sunrise 2027",
+      "lineup": [
+        "Fabrício Peçanha",
+        "Alaikke",
+        "Cris Hoefling",
+        "Ricardo Lin"
+      ],
+      "source": "Blueticket, flyer oficial atualizado (Alaikke b2b Cris Hoefling e Ricardo Lin) (https://www.blueticket.com.br/evento/42107/terraza-sunrise-2027-after-reveillon-fabricio-pecanha).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "greenvalley-2027-01-02",
+      "date": "2027-01-02",
+      "venue": "Greenvalley",
+      "name": "ARTBAT",
+      "lineup": [
+        "ARTBAT",
+        "Departamento",
+        "Adam Sellouk",
+        "Plastik Funk",
+        "Röket"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/artbat.webp"
+    },
+    {
+      "id": "p12-2027-01-02",
+      "date": "2027-01-02",
+      "venue": "P12",
+      "name": "Monolink",
+      "lineup": [
+        "Monolink"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/monolink-p12-jurere-19-years).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/monolink.webp"
+    },
+    {
+      "id": "privilege-buzios-2027-01-02",
+      "date": "2027-01-02",
+      "venue": "Privilège Búzios",
+      "name": "Dubdogz",
+      "lineup": [
+        "Dubdogz"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/semana-reveillon-privilege-2027).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/dubdogz.webp"
+    },
+    {
+      "id": "p12-2027-01-04",
+      "date": "2027-01-04",
+      "venue": "P12",
+      "name": "GoodTimes by Illusionize",
+      "lineup": [
+        "Illusionize"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/goodtimes-by-illusionize-p12-jurere-04-01).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/illusionize.webp"
+    },
+    {
+      "id": "greenvalley-2027-01-06",
+      "date": "2027-01-06",
+      "venue": "Greenvalley",
+      "name": "Marco Carola + Franky Rizardo",
+      "lineup": [
+        "Marco Carola",
+        "Franky Rizardo"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/marco-carola.webp"
+    },
+    {
+      "id": "greenvalley-2027-01-09",
+      "date": "2027-01-09",
+      "venue": "Greenvalley",
+      "name": "Black Coffee",
+      "lineup": [
+        "Black Coffee"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/black-coffee.webp"
+    },
+    {
+      "id": "p12-2027-01-09",
+      "date": "2027-01-09",
+      "venue": "P12",
+      "name": "Alok",
+      "lineup": [
+        "Alok"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/alok-rave-the-world-p12-jurere).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/alok.webp"
+    },
+    {
+      "id": "terraza-2027-01-09",
+      "date": "2027-01-09",
+      "venue": "Terraza Music Park",
+      "name": "INFNTY Festival",
+      "lineup": [
+        "Ricardo Lin"
+      ],
+      "source": "Blueticket, página do evento (vendas abertas; line-up ainda não divulgado na página, mantido o que já estava no site) (https://www.blueticket.com.br/evento/42115/infnty-festival).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "p12-2027-01-15",
+      "date": "2027-01-15",
+      "venue": "P12",
+      "name": "Joris Voorn, Chapa & Castelo e Bob Tosh",
+      "lineup": [
+        "Joris Voorn",
+        "Chapa & Castelo",
+        "Bob Tosh"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-joris-voorn-p12-jurere).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/joris-voorn.webp"
+    },
+    {
+      "id": "p12-2027-01-22",
+      "date": "2027-01-22",
+      "venue": "P12",
+      "name": "Hernán Cattáneo",
+      "lineup": [
+        "Hernán Cattáneo"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/hernan-cattaneo-p12-jurere-22-01).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/hernan-cattaneo.webp"
+    },
+    {
+      "id": "p12-2027-01-23",
+      "date": "2027-01-23",
+      "venue": "P12",
+      "name": "Sébastien Léger, Juan Hansen e Temple Gate",
+      "lineup": [
+        "Sébastien Léger",
+        "Juan Hansen",
+        "Temple Gate"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-sebastien-leger-p12-jurere).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "p12-2027-01-29",
+      "date": "2027-01-29",
+      "venue": "P12",
+      "name": "Kolombo",
+      "lineup": [
+        "Kolombo"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-com-kolombo-p12-jurere-29-01).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "p12-2027-02-05",
+      "date": "2027-02-05",
+      "venue": "P12",
+      "name": "Festa à Fantasia",
+      "lineup": [
+        "Cat Dealers",
+        "Petroski"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/festa-a-fantasia-p12-jurere).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/cat-dealers.webp"
+    },
+    {
+      "id": "ame-club-2027-02-06",
+      "date": "2027-02-06",
+      "venue": "Ame Club",
+      "name": "Ame Laroc Festival · Dia 1",
+      "lineup": [
+        "Chris Stassy",
+        "Mochakk",
+        "GORDO",
+        "Illusionize",
+        "Max Styler",
+        "Camila Jun",
+        "Carol Fávero",
+        "Viot"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/ame-laroc-festival-2027/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/mochakk.webp"
+    },
+    {
+      "id": "greenvalley-2027-02-06",
+      "date": "2027-02-06",
+      "venue": "Greenvalley",
+      "name": "Adriatique",
+      "lineup": [
+        "Adriatique",
+        "Ben Sterling",
+        "Jessica Brankka"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/adriatique.webp"
+    },
+    {
+      "id": "laroc-2027-02-06",
+      "date": "2027-02-06",
+      "venue": "Laroc",
+      "name": "Ame Laroc Festival · Dia 1",
+      "lineup": [
+        "Alesso",
+        "Bob Sinclar",
+        "Gryffin",
+        "Kungs",
+        "Omiki",
+        "Öwnboss",
+        "Schillist"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/ame-laroc-festival-2027/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/alesso.webp"
+    },
+    {
+      "id": "p12-2027-02-06",
+      "date": "2027-02-06",
+      "venue": "P12",
+      "name": "Alesso",
+      "lineup": [
+        "Alesso"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/alesso-p12-jurere).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/alesso.webp"
+    },
+    {
+      "id": "greenvalley-2027-02-07",
+      "date": "2027-02-07",
+      "venue": "Greenvalley",
+      "name": "Vintage Culture",
+      "lineup": [
+        "Vintage Culture",
+        "Doozie",
+        "Miss Natalia"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/vintage-culture.webp"
+    },
+    {
+      "id": "p12-2027-02-07",
+      "date": "2027-02-07",
+      "venue": "P12",
+      "name": "Bob Sinclar",
+      "lineup": [
+        "Bob Sinclar"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/bob-sinclar-p12-jurere).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "ame-club-2027-02-08",
+      "date": "2027-02-08",
+      "venue": "Ame Club",
+      "name": "Ame Laroc Festival · Dia 2",
+      "lineup": [
+        "Innellea",
+        "Kream",
+        "Massano",
+        "Binaryh",
+        "Departamento",
+        "Silvio Soul"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/ame-laroc-festival-2027/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/innellea.webp"
+    },
+    {
+      "id": "greenvalley-2027-02-08",
+      "date": "2027-02-08",
+      "venue": "Greenvalley",
+      "name": "Fisher",
+      "lineup": [
+        "Fisher",
+        "Little Fritter",
+        "NoCapz",
+        "Bruna Strait"
+      ],
+      "source": "Site oficial do Greenvalley (agenda) e Guichê Web. Mudança: link de ingresso novo (https://greenvalleybr.com).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/fisher.webp"
+    },
+    {
+      "id": "laroc-2027-02-08",
+      "date": "2027-02-08",
+      "venue": "Laroc",
+      "name": "Ame Laroc Festival · Dia 2",
+      "lineup": [
+        "Armin van Buuren",
+        "Volkoder",
+        "Analu",
+        "ETTA",
+        "Morgana Ferrer"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/ame-laroc-festival-2027/).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/armin-van-buuren.webp"
+    },
+    {
+      "id": "p12-2027-02-12",
+      "date": "2027-02-12",
+      "venue": "P12",
+      "name": "Fran Bortolossi",
+      "lineup": [
+        "Fran Bortolossi"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-fran-bortolossi-p12-jurere-12-02).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "p12-2027-02-19",
+      "date": "2027-02-19",
+      "venue": "P12",
+      "name": "LouLou Players",
+      "lineup": [
+        "LouLou Players"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-loulou-players-p12-jurere-19-02).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "p12-2027-02-26",
+      "date": "2027-02-26",
+      "venue": "P12",
+      "name": "Mila Journée",
+      "lineup": [
+        "Mila Journée"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-mila-p12-jurere).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/album/fotos/mila-journee.webp"
+    },
+    {
+      "id": "p12-2027-03-05",
+      "date": "2027-03-05",
+      "venue": "P12",
+      "name": "BLANCAh",
+      "lineup": [
+        "BLANCAh"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-blancah-p12-jurere-05-03).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/blancah.webp"
+    },
+    {
+      "id": "p12-2027-03-12",
+      "date": "2027-03-12",
+      "venue": "P12",
+      "name": "TPE Agency Showcase",
+      "lineup": [
+        "Ubbah",
+        "Teclas",
+        "Nahs"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-ubbah-e-teclas-p12-jurere).",
+      "checked_at": "2026-11-18"
+    },
+    {
+      "id": "p12-2027-03-19",
+      "date": "2027-03-19",
+      "venue": "P12",
+      "name": "Albuquerque",
+      "lineup": [
+        "Albuquerque",
+        "Ibarra"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-albuquerque-p12-jurere-19-03).",
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/albuquerque.webp"
+    },
+    {
+      "id": "p12-2027-03-26",
+      "date": "2027-03-26",
+      "venue": "P12",
+      "name": "Sharam Jey",
+      "lineup": [
+        "Sharam Jey"
+      ],
+      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-sharam-jey-p12-jurere).",
+      "checked_at": "2026-11-18"
     }
   ]
 }

@@ -65,9 +65,54 @@
           "evento": "greenvalley-2026-11-21"
         },
         {
+          "data": "28/12",
+          "nome": "Miss Monique",
+          "evento": "greenvalley-2026-12-28"
+        },
+        {
+          "data": "29/12",
+          "nome": "Monolink",
+          "evento": "greenvalley-2026-12-29"
+        },
+        {
           "data": "30/12",
           "nome": "Vintage Culture (Arena Open)",
           "evento": "greenvalley-2026-12-30"
+        },
+        {
+          "data": "31/12",
+          "nome": "Réveillon Greenvalley",
+          "evento": "greenvalley-2026-12-31"
+        },
+        {
+          "data": "02/01/2027",
+          "nome": "ARTBAT",
+          "evento": "greenvalley-2027-01-02"
+        },
+        {
+          "data": "06/01/2027",
+          "nome": "Marco Carola + Franky Rizardo",
+          "evento": "greenvalley-2027-01-06"
+        },
+        {
+          "data": "09/01/2027",
+          "nome": "Black Coffee",
+          "evento": "greenvalley-2027-01-09"
+        },
+        {
+          "data": "06/02/2027",
+          "nome": "Adriatique",
+          "evento": "greenvalley-2027-02-06"
+        },
+        {
+          "data": "07/02/2027",
+          "nome": "Vintage Culture",
+          "evento": "greenvalley-2027-02-07"
+        },
+        {
+          "data": "08/02/2027",
+          "nome": "Fisher",
+          "evento": "greenvalley-2027-02-08"
         }
       ]
     },
@@ -456,6 +501,81 @@
           "data": "31/10",
           "nome": "After Hours",
           "evento": "club-vibe-2026-10-31"
+        },
+        {
+          "data": "06/11",
+          "nome": "Breaking Beattz",
+          "evento": "club-vibe-2026-11-06"
+        },
+        {
+          "data": "07/11",
+          "nome": "Murphy",
+          "evento": "club-vibe-2026-11-07"
+        },
+        {
+          "data": "13/11",
+          "nome": "D-Nox & Beckers",
+          "evento": "club-vibe-2026-11-13"
+        },
+        {
+          "data": "14/11",
+          "nome": "Flux Zone",
+          "evento": "club-vibe-2026-11-14"
+        },
+        {
+          "data": "19/11",
+          "nome": "Trommel by All Means",
+          "evento": "club-vibe-2026-11-19"
+        },
+        {
+          "data": "20/11",
+          "nome": "Roddy Lima",
+          "evento": "club-vibe-2026-11-20"
+        },
+        {
+          "data": "21/11",
+          "nome": "Kaká Franco, Renan Mendes e Soundmanpako",
+          "evento": "club-vibe-2026-11-21"
+        },
+        {
+          "data": "27/11",
+          "nome": "Gabe",
+          "evento": "club-vibe-2026-11-27"
+        },
+        {
+          "data": "28/11",
+          "nome": "Musafir Showcase",
+          "evento": "club-vibe-2026-11-28"
+        },
+        {
+          "data": "04/12",
+          "nome": "Blazy",
+          "evento": "club-vibe-2026-12-04"
+        },
+        {
+          "data": "11/12",
+          "nome": "James Zabiela",
+          "evento": "club-vibe-2026-12-11"
+        },
+        {
+          "data": "17/12",
+          "nome": "OSGEMEOS",
+          "evento": "club-vibe-2026-12-17"
+        },
+        {
+          "data": "18/12",
+          "nome": "Fezzo",
+          "evento": "club-vibe-2026-12-18"
+        },
+        {
+          "data": "19/12",
+          "nome": "Eli Iwasa",
+          "evento": "club-vibe-2026-12-19"
+        },
+        {
+          "data": "31/12",
+          "nome": "Almanac",
+          "evento": "club-vibe-2026-12-31"
         }
       ]
     },
@@ -517,6 +637,36 @@
           "data": "17/10",
           "nome": "Rave The World by Alok",
           "evento": "laroc-2026-10-17"
+        },
+        {
+          "data": "07/11",
+          "nome": "Mathame",
+          "evento": "laroc-2026-11-07"
+        },
+        {
+          "data": "13/11",
+          "nome": "Boris Brejcha",
+          "evento": "laroc-2026-11-13"
+        },
+        {
+          "data": "21/11",
+          "nome": "Meduza",
+          "evento": "laroc-2026-11-21"
+        },
+        {
+          "data": "31/12",
+          "nome": "Réveillon Laroc 2027",
+          "evento": "laroc-2026-12-31"
+        },
+        {
+          "data": "06/02/2027",
+          "nome": "Ame Laroc Festival · Dia 1",
+          "evento": "laroc-2027-02-06"
+        },
+        {
+          "data": "08/02/2027",
+          "nome": "Ame Laroc Festival · Dia 2",
+          "evento": "laroc-2027-02-08"
         }
       ]
     },
