@@ -51,14 +51,42 @@ async function reconcileAfter(order: any, payment: any) {
   return result;
 }
 const escape = (value: string) => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]!));
-const stages: Record<string, string> = {
-  solicitada: 'Pedido reservado. O comprador pode consultar o resumo e gerar o Pix no site.',
-  pagamento_confirmado: 'Pagamento confirmado pelo Mercado Pago. O vendedor já pode realizar a transferência oficial do ingresso e anexar o comprovante.',
-  ingresso_transferido: 'O vendedor registrou a transferência. O comprador deve conferir o ingresso na plataforma oficial e confirmar o recebimento no site.',
-  recebimento_confirmado: 'O comprador confirmou o recebimento. O pedido aguarda o registro do repasse pela equipe.',
-  em_disputa: 'Uma ocorrência foi aberta. A equipe precisa analisar o pedido antes de prosseguir com o repasse.',
-  concluida: 'A equipe registrou o repasse ao vendedor e concluiu a intermediação.',
-  cancelada: 'A reserva foi cancelada.', reembolsada: 'O Mercado Pago confirmou o reembolso deste pedido.',
+// Texto específico por papel: quem compra e quem vende recebem o mesmo e-mail (mesma etapa),
+// mas com instruções diferentes. No pagamento confirmado, o vendedor recebe o e-mail de
+// destino da transferência direto no corpo da mensagem, via o placeholder {email}.
+const stages: Record<string, { buyer: string; seller: string }> = {
+  solicitada: {
+    buyer: 'Reserva feita. Confira o resumo e pague o Pix no site para garantir o ingresso.',
+    seller: 'Alguém reservou seu ingresso. Aguarde a confirmação do pagamento antes de transferir.',
+  },
+  pagamento_confirmado: {
+    buyer: 'Pagamento confirmado. Aguarde o vendedor transferir o ingresso — você será avisado.',
+    seller: 'Recebemos o pagamento. Pode transferir o ingresso com segurança para {email}. Depois, acesse o site e anexe o comprovante da transferência.',
+  },
+  ingresso_transferido: {
+    buyer: 'O vendedor registrou a transferência. Confira o ingresso na plataforma oficial e confirme o recebimento no site.',
+    seller: 'Registramos a sua transferência. Aguarde o comprador confirmar o recebimento.',
+  },
+  recebimento_confirmado: {
+    buyer: 'Você confirmou o recebimento. A equipe vai registrar o repasse ao vendedor.',
+    seller: 'O comprador confirmou o recebimento do ingresso. A equipe vai registrar o repasse em breve.',
+  },
+  em_disputa: {
+    buyer: 'Uma ocorrência foi aberta neste pedido. A equipe vai analisar antes de prosseguir.',
+    seller: 'Uma ocorrência foi aberta neste pedido. A equipe vai analisar antes do repasse.',
+  },
+  concluida: {
+    buyer: 'Intermediação concluída. Obrigado por usar a Brazilian Bayle.',
+    seller: 'Registramos o repasse do seu ingresso. Intermediação concluída.',
+  },
+  cancelada: {
+    buyer: 'Sua reserva foi cancelada.',
+    seller: 'A reserva do seu ingresso foi cancelada. Ele volta a ficar disponível.',
+  },
+  reembolsada: {
+    buyer: 'O Mercado Pago confirmou o reembolso deste pedido.',
+    seller: 'O pagamento deste pedido foi reembolsado ao comprador.',
+  },
 };
 const afterStages: Record<string, string> = {
   pedido_novo: 'Alguém pediu uma vaga no seu after. Entre no site e aprove ou recuse o pedido.',
@@ -103,7 +131,9 @@ async function sendQueuedMail() {
     auth: { user: env('BRB_SMTP_USER'), pass: env('BRB_SMTP_PASSWORD') } });
   for (const message of messages) {
     const link = 'https://brazilianbayle.com.br/intermediacao?pedido=' + message.request_id;
-    const text = stages[message.stage] || 'Seu pedido de intermediação foi atualizado.';
+    const stage = stages[message.stage];
+    const text = (stage ? stage[message.role as 'buyer' | 'seller'] : null)?.replace('{email}', message.delivery_email || '')
+      || 'Seu pedido de intermediação foi atualizado.';
     try {
       await transport.sendMail({
         from: { name: 'Brazilian Bayle', address: env('BRB_SMTP_USER') }, to: message.email,
