@@ -19,6 +19,10 @@
     "Campo Comprido": [-25.4450, -49.3450], "Portão": [-25.4740, -49.2950], "Seminário": [-25.4530, -49.3070], "Cristo Rei": [-25.4380, -49.2490], "Jardim Botânico": [-25.4430, -49.2390],
     "Região metropolitana": [-25.4300, -49.2700] };
   const CWB = [-25.4372, -49.2700];
+  const FESTA_PRIVADA = "Festa privada";
+  const ehPrivada = a => a.festa === FESTA_PRIVADA;
+  const linhaFesta = a => ehPrivada(a) ? "Festa privada" : "Depois de " + esc(a.festa);
+  const linhaFestaMin = a => ehPrivada(a) ? "festa privada" : "depois de " + esc(a.festa);
   const UFS = ["PR", "SC", "SP", "RS", "RJ", "MG", "ES", "BA", "GO", "DF", "MT", "MS", "PE", "CE", "PA", "AM", "MA", "PB", "RN", "AL", "SE", "PI", "TO", "RO", "AC", "RR", "AP"];
   const COMOD = [["som", "Som de respeito"], ["dj", "DJ tocando"], ["bebida", "Bebida inclusa"], ["byob", "Traga sua bebida"], ["piscina", "Piscina"], ["externa", "Área externa"],
     ["chill", "Área chill"], ["fumodromo", "Fumódromo"], ["cozinha", "Cozinha liberada"], ["ar", "Ar-condicionado"], ["estacionamento", "Estacionamento"], ["pet", "Pet friendly"]];
@@ -131,7 +135,7 @@
       <a href="#after/${a.id}" class="af-info" data-open="${a.id}">
         <div class="af-l1"><h3>${esc(nomeDe(a))}</h3>${m != null ? `<span class="af-rt">${ic("star", 13)} ${fmt(m)}</span>` : '<span class="af-rt new">Novo</span>'}</div>
         <p>${esc(cidade(a))} · ${a.modo === "livre" ? "Entrada livre" : "Sob aprovação"}</p>
-        <p>Depois de ${esc(a.festa)} · ${esc(String(a.hora).replace(/^Depois de /, ""))}</p>
+        <p>${linhaFesta(a)} · ${esc(String(a.hora).replace(/^Depois de /, ""))}</p>
         <p class="af-pr">${precoTxt(a)}${a.status === "aberto" ? ` <span>· ${left(a) ? `${left(a)} ${left(a) === 1 ? "vaga" : "vagas"}` : "lotado"}</span>` : ""}</p>
       </a></article>`;
   }
@@ -185,7 +189,7 @@
     if (!S.mod) return '<p class="af-empty">Só a equipe vê esta aba.</p>';
     const fila = S.afters.filter(a => a.status === "analise"), repasses = S.owner ? S.afters.filter(a => a.status === "encerrado" && a.vendas && a.vendas.pagos > 0 && !a.vendas.repassado) : [];
     const item = a => `<div class="af-own af-mod">
-      <div class="af-own-top">${foto(a, 0, "af-own-img")}<div><h3>${esc(nomeDe(a))}</h3><p class="af-sub">@${esc(a.host)} · ${esc(a.hora)} · depois de ${esc(a.festa)}</p></div></div>
+      <div class="af-own-top">${foto(a, 0, "af-own-img")}<div><h3>${esc(nomeDe(a))}</h3><p class="af-sub">@${esc(a.host)} · ${esc(a.hora)} · ${linhaFestaMin(a)}</p></div></div>
       <div class="af-modgal">${a.fotos.map((_, i) => foto(a, i, "af-modimg")).join("") || '<p class="af-note">Sem fotos.</p>'}</div>
       <dl class="af-dl"><dt>Endereço</dt><dd>${esc(a.endereco)} · ${esc(cidade(a))}</dd><dt>Vagas</dt><dd>${a.vagas} · ${a.modo === "livre" ? "entrada livre" : "sob aprovação"}</dd><dt>Ingresso</dt><dd>${pago(a) ? `${brl(a.preco_cents)} (galera paga ${brl(a.preco_cents + feeOf(a.preco_cents))}, anfitrião recebe ${brl(a.preco_cents - feeOf(a.preco_cents))})` : "Grátis"}</dd>
         <dt>Comodidades</dt><dd>${a.comodidades.map(c => COMOD_N[c]).filter(Boolean).join(", ") || "-"}</dd><dt>Descrição</dt><dd>${esc(a.desc || "-")}</dd><dt>Regras</dt><dd>${esc(a.regras || "-")}</dd></dl>
@@ -210,7 +214,7 @@
     else { cta = `<button type="button" class="btn btn-y af-full" data-reservar="${a.id}">${a.modo === "livre" ? "Reservar" : "Pedir para entrar"}</button>`; note = `<p class="af-fine">${pago(a) ? a.modo === "livre" ? "Você paga o Pix no próximo passo." : "Você só paga se o anfitrião aprovar." : "Não custa nada."}</p>`; }
     if (compact) return `<div class="af-bar-m"><div>${precoTxt(a)}<small>${esc(a.hora)}</small></div>${cta}</div>`;
     return `<aside class="af-box"><p class="af-box-pr">${pago(a) ? `<b>${brl(a.preco_cents)}</b> por pessoa` : "<b>Grátis</b>"}</p>
-      <div class="af-box-grid"><div><span>Depois de</span><b>${esc(a.festa)}</b></div><div><span>Abre</span><b>${esc(a.hora)}</b></div><div class="w"><span>Vagas</span><b>${a.status === "aberto" ? `${left(a)} de ${a.vagas} livres` : `${a.ocupadas} foram`} · ${a.modo === "livre" ? "entrada livre" : "sob aprovação"}</b></div></div>
+      <div class="af-box-grid"><div><span>${ehPrivada(a) ? "Tipo" : "Depois de"}</span><b>${ehPrivada(a) ? "Festa privada" : esc(a.festa)}</b></div><div><span>Abre</span><b>${esc(a.hora)}</b></div><div class="w"><span>Vagas</span><b>${a.status === "aberto" ? `${left(a)} de ${a.vagas} livres` : `${a.ocupadas} foram`} · ${a.modo === "livre" ? "entrada livre" : "sob aprovação"}</b></div></div>
       ${cta}${note}
       ${pago(a) && !mine(a) ? `<div class="af-sum"><div><span>Ingresso</span><span>${brl(a.preco_cents)}</span></div><div><span>Taxa Brazilian Bayle</span><span>${brl(fee)}</span></div><div class="t"><span>Total no Pix</span><span>${brl(a.preco_cents + fee)}</span></div></div>` : ""}</aside>`;
   }
@@ -228,7 +232,7 @@
       <div class="af-swipe">${fotos.map((_, k) => foto(a, k, "af-sw-img")).join("")}</div>${fotos.length > 1 ? `<p class="af-count mono">${fotos.length} fotos · arraste</p>` : ""}
       <div class="af-gal-d">${gal}</div>
       <div class="af-cols"><div class="af-main">
-        <div class="af-host-row"><div><h2>After de @${esc(a.host)}</h2><p class="af-sub">${a.vagas} pessoas · ${a.modo === "livre" ? "entrada livre" : "sob aprovação"} · depois de ${esc(a.festa)}</p></div><span class="af-avatar" aria-hidden="true">${esc(a.host.slice(0, 1).toUpperCase())}</span></div>
+        <div class="af-host-row"><div><h2>After de @${esc(a.host)}</h2><p class="af-sub">${a.vagas} pessoas · ${a.modo === "livre" ? "entrada livre" : "sob aprovação"} · ${linhaFestaMin(a)}</p></div><span class="af-avatar" aria-hidden="true">${esc(a.host.slice(0, 1).toUpperCase())}</span></div>
         <ul class="af-high">
           <li>${ic("shield", 22)}<div><b>Anúncio verificado pela equipe</b><span>Todo after passa pela análise da Brazilian Bayle antes de ir ao ar.</span></div></li>
           <li>${ic("door", 22)}<div><b>${a.modo === "livre" ? "Confirmou, entrou" : "O anfitrião aprova cada pessoa"}</b><span>${a.modo === "livre" ? "Até lotar as vagas. Sem espera." : "Ele vê seu @ antes de liberar a vaga."}</span></div></li>
@@ -287,9 +291,9 @@
   }
 
   /* ---------- anuncie seu after (passo a passo) ---------- */
-  const blank = () => ({ lat: null, lng: null, step: 0, id: null, nome: "", festaNome: "", festaData: "", hora: "04:00", cep: "", estado: "PR", bairro: "Centro", endereco: "", fotos: [], comodidades: [], modo: "livre", vagas: 10, pago: false, preco: "", desc: "", regras: "", err: "", sent: false });
+  const blank = () => ({ lat: null, lng: null, step: 0, id: null, nome: "", tipo: "after", festaNome: "", festaData: "", hora: "04:00", cep: "", estado: "PR", bairro: "Centro", endereco: "", fotos: [], comodidades: [], modo: "livre", vagas: 10, pago: false, preco: "", desc: "", regras: "", err: "", sent: false });
   function wizStepOk(w, s) {
-    if (s === 0) { if (w.nome.trim().length < 2) return "Dá um nome para o after."; if (w.festaNome.trim().length < 2) return "Diz de qual festa é o after."; if (!/^\d{2}\/\d{2}$/.test(w.festaData.trim())) return "Informe a data da festa (dd/mm)."; }
+    if (s === 0) { if (w.nome.trim().length < 2) return "Dá um nome para o after."; if (w.tipo === "after" && w.festaNome.trim().length < 2) return "Diz de qual festa é o after."; if (!/^\d{2}\/\d{2}$/.test(w.festaData.trim())) return "Informe a data (dd/mm)."; }
     if (s === 1 && w.endereco.trim().length < 5) return "Coloca o endereço completo: rua e número.";
     if (s === 1 && w.lat == null) return "Toca no mapa para marcar onde fica o after.";
     if (s === 2 && !w.fotos.length) return "Manda pelo menos uma foto do lugar.";
@@ -299,7 +303,8 @@
   }
   const precoCents = w => w.pago ? Math.round(parseFloat(String(w.preco).replace(",", ".")) * 100) || 0 : 0;
   function wizPreview(w) {
-    return { id: "preview", nome: w.nome, festa: w.festaNome, bairro: w.bairro, hora: "Depois de " + w.festaData + " · " + w.hora.replace(":", "h"),
+    return { id: "preview", nome: w.nome, festa: w.tipo === "privada" ? FESTA_PRIVADA : w.festaNome, bairro: w.bairro,
+      hora: (w.tipo === "privada" ? "" : "Depois de ") + w.festaData + " · " + w.hora.replace(":", "h"),
       vagas: w.vagas, ocupadas: 0, modo: w.modo, preco_cents: precoCents(w), fotos: w.fotos, comodidades: w.comodidades, notas: [], status: "aberto", host: S.user || "voce", desc: w.desc, regras: w.regras, endereco: "" };
   }
   let cepFor = "";
@@ -328,7 +333,11 @@
     const body = [
       () => `<h2>Conta pra gente sobre o seu <em>after</em></h2>
         <label class="af-field"><span>Nome do after</span><input type="text" data-w="nome" value="${esc(w.nome)}" placeholder="Ex.: Rooftop do Batel" maxlength="60"><small>É o que aparece em destaque na vitrine.</small></label>
-        <div class="af-2"><label class="af-field"><span>Depois de qual festa?</span><input type="text" data-w="festaNome" value="${esc(w.festaNome)}" maxlength="60" placeholder="Ex.: Brazilian Bayle, a Festa"></label><label class="af-field"><span>Data da festa</span><input type="text" data-w="festaData" value="${esc(w.festaData)}" maxlength="5" inputmode="numeric" placeholder="dd/mm"></label></div>
+        <div class="af-opt" role="radiogroup" aria-label="Tipo de evento">
+          <label><input type="radio" name="wTipo" value="after"${w.tipo === "after" ? " checked" : ""}><b>After</b><span>Acontece depois de uma festa específica.</span></label>
+          <label><input type="radio" name="wTipo" value="privada"${w.tipo === "privada" ? " checked" : ""}><b>Festa privada</b><span>Evento próprio, sem festa de origem.</span></label></div>
+        ${w.tipo === "after" ? `<div class="af-2"><label class="af-field"><span>Depois de qual festa?</span><input type="text" data-w="festaNome" value="${esc(w.festaNome)}" maxlength="60" placeholder="Ex.: Brazilian Bayle, a Festa"></label><label class="af-field"><span>Data da festa</span><input type="text" data-w="festaData" value="${esc(w.festaData)}" maxlength="5" inputmode="numeric" placeholder="dd/mm"></label></div>`
+          : `<label class="af-field"><span>Data do evento</span><input type="text" data-w="festaData" value="${esc(w.festaData)}" maxlength="5" inputmode="numeric" placeholder="dd/mm"></label>`}
         <label class="af-field"><span>Abre às</span><input type="time" data-w="hora" value="${esc(w.hora)}"></label>`,
       () => `<h2>Onde <em>fica?</em></h2>
         <label class="af-field"><span>CEP</span><input type="text" data-w="cep" value="${esc(w.cep)}" placeholder="00000-000" maxlength="9" inputmode="numeric"><small id="afCepMsg">Preenchemos estado e bairro pelo CEP, se achar.</small></label>
@@ -366,8 +375,8 @@
   }
   async function wizSubmit() {
     const w = S.wiz;
-    const dados = { nome: w.nome.trim(), festa: w.festaNome.trim(), bairro: w.bairro, endereco: w.endereco.trim(),
-      hora: "Depois de " + w.festaData.trim() + " · " + (w.hora || "04:00").replace(":", "h"),
+    const dados = { nome: w.nome.trim(), festa: w.tipo === "privada" ? FESTA_PRIVADA : w.festaNome.trim(), bairro: w.bairro, endereco: w.endereco.trim(),
+      hora: (w.tipo === "privada" ? "" : "Depois de ") + w.festaData.trim() + " · " + (w.hora || "04:00").replace(":", "h"),
       lat: w.lat.toFixed(6), lng: w.lng.toFixed(6), vagas: String(w.vagas), modo: w.modo, preco_cents: String(precoCents(w)), comodidades: w.comodidades, desc: w.desc.trim(), regras: w.regras.trim(), fotos: w.fotos.slice() };
     const btn = $("[data-wiznext]"); if (btn) btn.disabled = true;
     try {
@@ -378,7 +387,7 @@
   function editWiz(a) {
     const h = /(\d{2})h(\d{2})/.exec(a.hora || ""), d = /(\d{2}\/\d{2})/.exec(a.hora || "");
     const g = a.geo && a.geo.exato ? [+a.geo.lat, +a.geo.lng] : null;
-    S.wiz = { ...blank(), lat: g ? g[0] : null, lng: g ? g[1] : null, id: a.id, nome: a.nome, festaNome: a.festa, festaData: d ? d[1] : "", hora: h ? h[1] + ":" + h[2] : "04:00",
+    S.wiz = { ...blank(), lat: g ? g[0] : null, lng: g ? g[1] : null, id: a.id, nome: a.nome, tipo: ehPrivada(a) ? "privada" : "after", festaNome: ehPrivada(a) ? "" : a.festa, festaData: d ? d[1] : "", hora: h ? h[1] + ":" + h[2] : "04:00",
       bairro: a.bairro, endereco: a.endereco, fotos: a.fotos.slice(), comodidades: a.comodidades.slice(), modo: a.modo, vagas: a.vagas, pago: pago(a), preco: pago(a) ? String(a.preco_cents / 100).replace(".", ",") : "", desc: a.desc || "", regras: a.regras || "" };
     if (!BAIRROS.includes(a.bairro)) BAIRROS.unshift(a.bairro);
   }
@@ -545,6 +554,7 @@
     if (!S.wiz) return;
     if (t.dataset?.w === "bairro" && S.wiz.lat == null) { S.wiz[t.dataset.w] = t.value; render(); }
     else if (t.dataset?.w) S.wiz[t.dataset.w] = t.value;
+    if (t.name === "wTipo") { S.wiz.tipo = t.value; render(); }
     if (t.name === "wModo") S.wiz.modo = t.value;
     if (t.name === "wPago") { S.wiz.pago = t.value === "1"; render(); }
     if (t.id === "wFotos") {
