@@ -90,15 +90,21 @@
   function request(f, l, back) {
     open('<button class="p2p-back mono" type="button">← Voltar</button><p class="mono p2p-kick">' + esc(f.name) + " · " + esc(l.type) + " · " + brl(l.price) + '</p><h2 class="display" id="p2pT">Solicitar <em>intermediação</em></h2>' +
       '<p class="p2p-note big">Reserve este ingresso por ' + brl(l.price) + '. O comprador paga 10% a mais e o vendedor recebe o valor com desconto de 10%. Confira o total antes de gerar o Pix.</p>' +
+      '<label class="p2p-field"><span>E-mail para receber o ingresso</span><input name="delivery_email" type="email" autocomplete="email" placeholder="seu@email.com"></label>' +
       '<p class="p2p-err" role="alert" hidden></p><button class="p2p-big" type="button" data-send>Solicitar intermediação</button>' +
       '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button></div>');
     body.querySelector(".p2p-back").addEventListener("click", back);
     body.querySelector("[data-how]").addEventListener("click", () => how(f, () => request(f, l, back), l));
     const send = body.querySelector("[data-send]"), err = body.querySelector(".p2p-err");
+    const deliveryEmail = body.querySelector('input[name="delivery_email"]');
+    BRB.auth.getSession().then(({ data: s }) => { if (s.session && !deliveryEmail.value) deliveryEmail.value = s.session.user.email || ""; });
     send.addEventListener("click", async () => {
       if (await needLogin()) return;
+      const email = deliveryEmail.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = "Informe um e-mail válido para receber o ingresso."; err.hidden = false; return; }
       send.disabled = true;
-      try { const r = await BRB.tickets("request", { id: l.id });
+      err.hidden = true;
+      try { const r = await BRB.tickets("request", { id: l.id, delivery_email: email });
         if (r && r.login === false) { err.textContent = "Confirme seu e-mail para solicitar."; err.hidden = false; send.disabled = false; return; }
         data = r;
         const order = (r.requests || []).find(item => item.listing === l.id && item.status !== 'cancelada');
