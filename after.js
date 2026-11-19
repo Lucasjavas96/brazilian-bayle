@@ -77,6 +77,7 @@
   const pago = a => a.preco_cents > 0;
   const revealed = a => !!a.endereco;
   const cidade = a => `${a.bairro}, Curitiba`;
+  const prazoTxt = iso => new Date(iso).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   const holdOk = a => S.joins[a.id] === "pagamento" && a.my_hold && new Date(a.my_hold) > new Date();
   const status = a => { const j = S.joins[a.id]; return j === "pagamento" && !holdOk(a) ? null : j; };
   const mapsUrl = a => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(`${a.endereco}, ${a.bairro}, Curitiba - PR`);
@@ -207,7 +208,7 @@
     else if (mine(a)) { cta = `<button type="button" class="btn btn-ghost af-full" data-tab="anuncios">Ver pedidos do seu after</button>`; }
     else if (a.status === "encerrado") cta = j === "confirmado" && !S.rated[a.id] ? `<button type="button" class="btn btn-y af-full" data-rate="${a.id}">Avaliar este after</button>` : '<button type="button" class="btn btn-ghost af-full" disabled>After encerrado</button>';
     else if (j === "confirmado") { cta = '<button type="button" class="btn btn-ghost af-full" disabled>Você está dentro</button>'; note = '<button type="button" class="af-link mono" data-leave>Não vou mais</button>'; }
-    else if (j === "pagamento") { cta = `<button type="button" class="btn btn-y af-full" data-paynow="${a.id}">Pagar e garantir a vaga</button>`; note = '<button type="button" class="af-link mono" data-leave>Desistir da vaga</button>'; }
+    else if (j === "pagamento") { cta = `<button type="button" class="btn btn-y af-full" data-paynow="${a.id}">Pagar e garantir a vaga</button>`; note = `${a.my_hold ? `<p class="af-fine">Você tem até ${prazoTxt(a.my_hold)} para pagar. Depois disso a vaga libera.</p>` : ""}<button type="button" class="af-link mono" data-leave>Desistir da vaga</button>`; }
     else if (j === "pendente") { cta = '<button type="button" class="btn btn-ghost af-full" disabled>Pedido enviado</button>'; note = '<p class="af-fine">O anfitrião vê seu @ e decide.</p><button type="button" class="af-link mono" data-leave>Cancelar pedido</button>'; }
     else if (j === "recusado" || j === "reembolsado") cta = `<button type="button" class="btn btn-ghost af-full" disabled>${j === "recusado" ? "Dessa vez não rolou" : "Ingresso reembolsado"}</button>`;
     else if (left(a) <= 0) cta = '<button type="button" class="btn btn-ghost af-full" disabled>Lotado</button>';
@@ -259,7 +260,7 @@
       <h3>O combinado</h3><ul class="af-rules">${REGRAS.map(r => `<li>${r}</li>`).join("")}${a.regras ? `<li>${esc(a.regras)}</li>` : ""}</ul>
       <label class="af-check"><input type="checkbox" id="afOk"><span>Combinado. Vou como <b>@${esc(S.user)}</b>.</span></label>
       ${pago(a) ? `<div class="af-sum"><div><span>Ingresso</span><span>${brl(a.preco_cents)}</span></div><div><span>Taxa Brazilian Bayle</span><span>${brl(fee)}</span></div><div class="t"><span>Total no Pix</span><span>${brl(a.preco_cents + fee)}</span></div></div>` : ""}
-      <p class="af-note">${a.modo === "livre" ? pago(a) ? "Sua vaga fica segura por 35 minutos enquanto você paga o Pix." : "Confirmou, o endereço aparece na hora." : pago(a) ? "Se o anfitrião aprovar, você tem 12 horas para pagar o Pix." : "O anfitrião vê seu @ e decide. Aprovado, o endereço aparece."}</p>
+      <p class="af-note">${a.modo === "livre" ? pago(a) ? "Sua vaga fica segura por 35 minutos enquanto você paga o Pix." : "Confirmou, o endereço aparece na hora." : pago(a) ? "Se o anfitrião aprovar, você tem 24 horas para pagar o Pix." : "O anfitrião vê seu @ e decide. Aprovado, o endereço aparece."}</p>
       <button type="button" class="btn btn-y af-full" data-dojoin="${a.id}" disabled>${a.modo === "livre" ? pago(a) ? "Continuar para o pagamento" : "Confirmar reserva" : "Enviar pedido"}</button></div>`;
     if (S.flow === "pay") {
       const p = S.pay;
@@ -269,7 +270,7 @@
       return head("Pagamento") + `<h2>Pagar com <em>Pix</em></h2>
         <ol class="af-steps"><li class="done"><span class="mono">01</span>Combinado</li><li class="now"><span class="mono">02</span>Pix</li><li><span class="mono">03</span>Endereço liberado</li></ol>
         <div class="af-sum"><div><span>Ingresso</span><span>${brl(a.preco_cents)}</span></div><div><span>Taxa Brazilian Bayle</span><span>${brl(fee)}</span></div><div class="t"><span>Total</span><span>${brl(a.preco_cents + fee)}</span></div></div>
-        <p class="af-note">Você paga ao Brazilian Bayle pelo Mercado Pago. O anfitrião só recebe depois do after.${a.my_hold ? ` Sua vaga está segura até ${new Date(a.my_hold).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}.` : ""}</p>
+        <p class="af-note">Você paga ao Brazilian Bayle pelo Mercado Pago. O anfitrião só recebe depois do after.${a.my_hold ? ` Sua vaga está segura até ${prazoTxt(a.my_hold)}.` : ""}</p>
         ${pix || `<label class="af-check"><input type="checkbox" id="afPayOk"><span>Conferi o valor. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>
         <button type="button" class="btn btn-y af-full" data-genpix="${a.id}" disabled>Gerar Pix de ${brl(a.preco_cents + fee)}</button>`}
         ${S.payErr ? `<p class="af-err" role="alert">${esc(S.payErr)}</p>` : ""}</div>`;
