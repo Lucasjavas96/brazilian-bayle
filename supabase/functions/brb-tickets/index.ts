@@ -60,6 +60,41 @@ const stages: Record<string, string> = {
   concluida: 'A equipe registrou o repasse ao vendedor e concluiu a intermediação.',
   cancelada: 'A reserva foi cancelada.', reembolsada: 'O Mercado Pago confirmou o reembolso deste pedido.',
 };
+const afterStages: Record<string, string> = {
+  pedido_novo: 'Alguém pediu uma vaga no seu after. Entre no site e aprove ou recuse o pedido.',
+  confirmado: 'Sua vaga foi aprovada. Você está dentro, sem precisar pagar nada.',
+  pagamento: 'Sua vaga foi aprovada! Você tem 24 horas para pagar e garantir a vaga. Depois disso ela libera para outra pessoa.',
+  recusado: 'Seu pedido de vaga não foi aprovado desta vez.',
+};
+const afterSubjects: Record<string, string> = {
+  pedido_novo: 'Novo pedido de vaga no seu after',
+  confirmado: 'Sua vaga foi aprovada',
+  pagamento: 'Sua vaga foi aprovada · falta pagar',
+  recusado: 'Seu pedido de vaga',
+};
+async function sendQueuedAfterMail() {
+  if (!env('BRB_SMTP_USER') || !env('BRB_SMTP_PASSWORD')) return;
+  const messages = await afterRpc('claim_mail', {});
+  const transport = nodemailer.createTransport({ host: 'smtp.hostinger.com', port: 465, secure: true,
+    connectionTimeout: 10000, socketTimeout: 15000,
+    auth: { user: env('BRB_SMTP_USER'), pass: env('BRB_SMTP_PASSWORD') } });
+  for (const message of messages) {
+    const link = 'https://brazilianbayle.com.br/after#after/' + message.after_id;
+    const text = afterStages[message.stage] || 'Seu after teve uma atualização.';
+    const subject = afterSubjects[message.stage] || 'Atualização do seu after';
+    try {
+      await transport.sendMail({
+        from: { name: 'Brazilian Bayle', address: env('BRB_SMTP_USER') }, to: message.email,
+        messageId: '<after-' + message.id + '@brazilianbayle.com.br>',
+        subject: subject + ' · ' + message.after_nome,
+        text: `${message.after_nome}${message.solicitante ? ' · @' + message.solicitante : ''}\n\n${text}\n\n${link}\n\nSuporte: contato@brazilianbayle.com.br`,
+        html: `<div style="background:#050505;color:#f6f4ef;padding:36px;font:16px/1.6 Arial,sans-serif"><img src="https://brazilianbayle.com.br/assets/logo-email.png" alt="Brazilian Bayle" width="160"><h1 style="color:#d2b375;font-size:28px">${escape(subject)}</h1><h2>${escape(message.after_nome)}</h2>${message.solicitante ? `<p>Quem pediu: @${escape(message.solicitante)}</p>` : ''}<p>${escape(text)}</p><a href="${link}" style="display:inline-block;background:#d2b375;color:#050505;padding:14px 24px;border-radius:28px;text-decoration:none">Ver o after</a><p style="font-size:13px;color:#c4bdaf">A equipe nunca solicita sua senha ou código de acesso.</p></div>`,
+      });
+      await afterRpc('finish_mail', { mail_id: message.id });
+    } catch { console.error('after_mail_delivery_failed', message.id); }
+  }
+  transport.close();
+}
 async function sendQueuedMail() {
   if (!env('BRB_SMTP_USER') || !env('BRB_SMTP_PASSWORD')) return;
   const messages = await rpc('claim_mail');
@@ -95,6 +130,7 @@ Deno.serve(async request => {
     if (route === 'worker') {
       if (request.method !== 'POST' || !env('BRB_TICKET_WORKER_TOKEN') || request.headers.get('authorization') !== 'Bearer ' + env('BRB_TICKET_WORKER_TOKEN')) return reply({}, 401);
       await sendQueuedMail();
+      await sendQueuedAfterMail();
       return reply({ processed: true });
     }
     if (route === 'webhook') {
@@ -112,6 +148,7 @@ Deno.serve(async request => {
       if (!context?.payment) {
         const after = await afterRpc('context', { payment_id: order.external_reference }).catch(() => null);
         if (after?.payment) await reconcileAfter(order, after.payment);
+        EdgeRuntime.waitUntil(sendQueuedAfterMail());
         return reply({ received: true });
       }
       await reconcile(order, context);
@@ -134,8 +171,10 @@ Deno.serve(async request => {
       if (!UUID.test(body.after_id || '')) throw new InputError('After inválido.');
       if (route === 'after-status') {
         const context = await afterRpc('context', { after_id: body.after_id, actor: user.id });
-        if (context?.payment?.provider_id && context.payment.mode === mode())
-          return reply(await reconcileAfter(await provider('/' + encodeURIComponent(context.payment.provider_id)), context.payment));
+        if (context?.payment?.provider_id && context.payment.mode === mode()) {
+          const result = await reconcileAfter(await provider('/' + encodeURIComponent(context.payment.provider_id)), context.payment);
+          EdgeRuntime.waitUntil(sendQueuedAfterMail()); return reply(result);
+        }
         return reply({ status: context?.payment?.status || null });
       }
       if (body.consent !== true) throw new InputError('Confira o resumo e aceite os termos para gerar o Pix.');
@@ -143,14 +182,18 @@ Deno.serve(async request => {
       const context = await afterRpc('reserve', { after_id: body.after_id, actor: user.id, mode: mode() });
       const payment = context.payment;
       if (payment.mode !== mode()) throw new InputError('O pagamento pertence a outro modo. Fale com o suporte.', 409);
-      if (payment.provider_id) return reply(await reconcileAfter(await provider('/' + encodeURIComponent(payment.provider_id)), payment));
+      if (payment.provider_id) {
+        const result = await reconcileAfter(await provider('/' + encodeURIComponent(payment.provider_id)), payment);
+        EdgeRuntime.waitUntil(sendQueuedAfterMail()); return reply(result);
+      }
       // Mesmo payload e mesma chave de idempotência numa nova tentativa.
       const amount = (payment.amount_cents / 100).toFixed(2);
       const order = await provider('', { type: 'online', processing_mode: 'automatic', total_amount: amount,
         external_reference: payment.id, payer: { email: context.email },
         transactions: { payments: [{ amount, payment_method: { id: 'pix', type: 'bank_transfer' }, expiration_time: 'PT30M' }] },
       }, payment.id);
-      return reply(await reconcileAfter(order, payment));
+      const result = await reconcileAfter(order, payment);
+      EdgeRuntime.waitUntil(sendQueuedAfterMail()); return reply(result);
     }
     if (!UUID.test(body.id || '')) throw new InputError('Pedido inválido.');
     let context = await rpc('context', { id: body.id, actor: user.id });
