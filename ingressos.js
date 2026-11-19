@@ -76,42 +76,29 @@
         (mine ? "Seu anúncio" : asked ? "Você já solicitou" : l.status !== "ativo" ? "Em intermediação" : "Disponível") + "</small></span><strong>" + brl(l.price) + "</strong></label>" +
         (mine && l.status === "ativo" ? '<button class="p2p-btn ghost" type="button" data-cancel="' + esc(l.id) + '">Cancelar anúncio</button>' : "") + "</li>"; };
     open('<button class="p2p-back mono" type="button">← Voltar</button>' + head(f) + '<h2 class="display" id="p2pT">Ingressos <em>anunciados</em></h2><p class="p2p-sub">' + esc(f.name) + "</p>" +
-      (list.length ? '<ul class="p2p-pick">' + list.map(item).join("") + '</ul><button class="p2p-big" type="button" data-go disabled>Solicitar intermediação</button>' : '<p class="p2p-empty">Ninguém anunciou ingresso para esta festa ainda.</p>') +
+      (list.length ? '<ul class="p2p-pick">' + list.map(item).join("") + '</ul><button class="p2p-big" type="button" data-go disabled>Comprar via intermediação</button>' : '<p class="p2p-empty">Ninguém anunciou ingresso para esta festa ainda.</p>') +
       '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button></div>');
     body.querySelector(".p2p-back").addEventListener("click", () => sell(f));
     body.querySelector("[data-how]").addEventListener("click", () => how(f, () => buy(f)));
     const go = body.querySelector("[data-go]");
     let sel = null;
     body.querySelectorAll('input[name="tk"]').forEach(r => r.addEventListener("change", () => { sel = r.value; if (go) go.disabled = false; }));
-    if (go) go.addEventListener("click", () => { const l = list.find(x => x.id === sel); if (l) request(f, l, () => buy(f)); });
-    body.querySelectorAll("[data-cancel]").forEach(b => b.addEventListener("click", async () => { b.disabled = true; try { data = await BRB.tickets("cancel", { id: b.dataset.cancel }); say("Anúncio cancelado."); marcar(); buy(f); } catch (e) { say(e.message); b.disabled = false; } }));
-  }
-
-  function request(f, l, back) {
-    open('<button class="p2p-back mono" type="button">← Voltar</button><p class="mono p2p-kick">' + esc(f.name) + " · " + esc(l.type) + " · " + brl(l.price) + '</p><h2 class="display" id="p2pT">Solicitar <em>intermediação</em></h2>' +
-      '<p class="p2p-note big">Reserve este ingresso por ' + brl(l.price) + '. O comprador paga 10% a mais e o vendedor recebe o valor com desconto de 10%. Confira o total antes de gerar o Pix.</p>' +
-      '<label class="p2p-field"><span>E-mail para receber o ingresso</span><input name="delivery_email" type="email" autocomplete="email" placeholder="seu@email.com"></label>' +
-      '<p class="p2p-err" role="alert" hidden></p><button class="p2p-big" type="button" data-send>Solicitar intermediação</button>' +
-      '<div class="p2p-links"><button class="p2p-link" type="button" data-how>Como funciona o processo</button></div>');
-    body.querySelector(".p2p-back").addEventListener("click", back);
-    body.querySelector("[data-how]").addEventListener("click", () => how(f, () => request(f, l, back), l));
-    const send = body.querySelector("[data-send]"), err = body.querySelector(".p2p-err");
-    const deliveryEmail = body.querySelector('input[name="delivery_email"]');
-    BRB.auth.getSession().then(({ data: s }) => { if (s.session && !deliveryEmail.value) deliveryEmail.value = s.session.user.email || ""; });
-    send.addEventListener("click", async () => {
+    /* um clique só: reserva na hora (e-mail de entrega = e-mail da conta, editável depois no checkout) e manda direto pro pedido, sem tela intermediária */
+    if (go) go.addEventListener("click", async () => {
+      const l = list.find(x => x.id === sel); if (!l || go.disabled) return;
       if (await needLogin()) return;
-      const email = deliveryEmail.value.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = "Informe um e-mail válido para receber o ingresso."; err.hidden = false; return; }
-      send.disabled = true;
-      err.hidden = true;
-      try { const r = await BRB.tickets("request", { id: l.id, delivery_email: email });
-        if (r && r.login === false) { err.textContent = "Confirme seu e-mail para solicitar."; err.hidden = false; send.disabled = false; return; }
+      go.disabled = true;
+      try {
+        const { data: s } = await BRB.auth.getSession();
+        const r = await BRB.tickets("request", { id: l.id, delivery_email: s.session?.user?.email || "" });
+        if (r && r.login === false) { say("Confirme seu e-mail para solicitar."); go.disabled = false; return; }
         data = r;
         const order = (r.requests || []).find(item => item.listing === l.id && item.status !== 'cancelada');
         if (!order) throw new Error('Reserva criada. Consulte seus pedidos para continuar.');
         location.assign('/intermediacao?pedido=' + encodeURIComponent(order.id));
-      } catch (e) { err.textContent = e.message; err.hidden = false; send.disabled = false; }
+      } catch (e) { say(e.message); go.disabled = false; }
     });
+    body.querySelectorAll("[data-cancel]").forEach(b => b.addEventListener("click", async () => { b.disabled = true; try { data = await BRB.tickets("cancel", { id: b.dataset.cancel }); say("Anúncio cancelado."); marcar(); buy(f); } catch (e) { say(e.message); b.disabled = false; } }));
   }
 
   const COMO_FUNCIONA = [
@@ -158,6 +145,8 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const money = cents => (Number(cents) / 100).toLocaleString('pt-BR', {style:'currency',currency:'BRL'});
   const labels = {solicitada:'Aguardando pagamento',pagamento_confirmado:'Pagamento confirmado',ingresso_transferido:'Ingresso enviado',recebimento_confirmado:'Recebimento confirmado · aguardando repasse',em_disputa:'Ocorrência em análise',concluida:'Intermediação concluída',cancelada:'Reserva cancelada',reembolsada:'Reembolso confirmado'};
+  const BADGE = {ativo:['À venda','warn'],em_intermediacao:['Em intermediação','info'],solicitada:['Aguardando pagamento','warn'],pagamento_confirmado:['Pagamento recebido','info'],ingresso_transferido:['Ingresso enviado','info'],recebimento_confirmado:['Aguardando repasse','info'],em_disputa:['Em análise','bad'],concluida:['Concluída','ok'],cancelada:['Cancelada','mute'],reembolsada:['Reembolsada','mute']};
+  const badge = key => { const b = BADGE[key]; return b ? `<span class="ticket-b ${b[1]}">${esc(b[0])}</span>` : ''; };
   const selected = new URLSearchParams(location.search).get('pedido');
   const myTickets = document.getElementById('myTickets');
   myTickets?.addEventListener('click', async event => {
@@ -186,12 +175,27 @@
     if (!selected) {
       const { listings = [] } = await BRB.tickets('list');
       const mine = listings.filter(listing => listing.mine);
-      const announcements = mine.map(listing => {
-        const event = (window.BRB_TEMP?.festas || []).find(item => item.id === listing.event);
-        const price = money(Math.round(Number(listing.price) * 100));
-        return `<article><b>${esc(event?.name || listing.event)}</b><p>${esc(listing.type)} · ${price} · ${listing.status === 'ativo' ? 'À venda' : 'Em intermediação'}</p></article>`;
-      }).join('');
-      panel.innerHTML='<h2>Meus ingressos</h2><h3>Meus anúncios</h3>' + (announcements || '<p>Nenhum anúncio ativo.</p>') + '<h3>Meus pedidos</h3>'+(orders.length ? '<div class="ticket-order-list">'+orders.map(order=>`<a href="/intermediacao?pedido=${encodeURIComponent(order.id)}"><b>${esc(order.event)}</b><span>${order.role==='buyer'?'Compra':'Venda'} · ${esc(labels[order.status])}</span><small>Pedido ${esc(order.id.slice(0,8))}</small></a>`).join('')+'</div>' : '<p>Suas compras e vendas aparecerão aqui.</p>');
+      const eventName = id => (window.BRB_TEMP?.festas || []).find(item => item.id === id)?.name || id;
+      const sellerOrders = orders.filter(order => order.role === 'seller');
+      const buyerOrders = orders.filter(order => order.role === 'buyer');
+      const activeListings = mine.filter(listing => listing.status === 'ativo');
+      const card = (title, sub, badgeKey, href) => {
+        const inner = `<div><b>${esc(title)}</b><span>${esc(sub)}</span></div>${badge(badgeKey)}`;
+        return href ? `<a class="ticket-card" href="${href}">${inner}</a>` : `<div class="ticket-card">${inner}</div>`;
+      };
+      const sellingCards = [
+        ...activeListings.map(listing => card(eventName(listing.event), listing.type + ' · ' + money(Math.round(Number(listing.price) * 100)), 'ativo')),
+        ...sellerOrders.map(order => card(order.event, order.type + ' · ' + money(Math.round(Number(order.price) * 100)), order.status, '/intermediacao?pedido=' + encodeURIComponent(order.id))),
+      ].join('') || '<p class="ticket-empty">Nenhum ingresso anunciado ainda.</p>';
+      const buyingCards = buyerOrders.map(order => card(order.event, order.type + ' · ' + money(Math.round(Number(order.price) * 100)), order.status, '/intermediacao?pedido=' + encodeURIComponent(order.id))).join('') || '<p class="ticket-empty">Você ainda não comprou nenhum ingresso.</p>';
+      panel.innerHTML = '<h2>Meus ingressos</h2>' +
+        '<div class="account-tabs ticket-tabs"><button type="button" data-tab="sell" aria-pressed="true">Anunciados</button><button type="button" data-tab="buy" aria-pressed="false">Comprados</button></div>' +
+        '<div class="ticket-tab-panel" data-panel="sell">' + sellingCards + '</div>' +
+        '<div class="ticket-tab-panel" data-panel="buy" hidden>' + buyingCards + '</div>';
+      panel.querySelectorAll('[data-tab]').forEach(btn => btn.addEventListener('click', () => {
+        panel.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+        panel.querySelectorAll('[data-panel]').forEach(p => { p.hidden = p.dataset.panel !== btn.dataset.tab; });
+      }));
       return;
     }
     const order=orders.find(item=>item.id===selected);
@@ -204,6 +208,7 @@
       const fee = order.fee_cents ?? Math.round(price / 10);
       const total = order.amount_cents ?? price + fee;
       actions = `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
+      actions += `<label class="ticket-field"><span>E-mail para receber o ingresso</span><div class="ticket-field-row"><input id="ticketDeliveryEmail" type="email" value="${esc(order.delivery_email || '')}"><button type="button" class="btn ticket-btn ticket-btn-secondary" data-ticket-action="delivery_email">Salvar</button></div></label>`;
       const payLabel = order.payment_status ? 'Consultar Pix' : 'Pagar com Pix';
       actions+=config.enabled ? '<label class="ticket-consent"><input type="checkbox" id="ticketPaymentConsent"><span>Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>'+button('pay',payLabel,'primary') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
       if (config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x','primary');
@@ -314,6 +319,7 @@
           if(!document.getElementById('ticketReceived').checked)throw new Error('Confira o ingresso e marque a confirmação.');
           payload.reference='Comprador confirmou o recebimento e conferiu o ingresso na plataforma oficial.';
         } else if(action==='disputed') payload.reference=document.getElementById('ticketDispute').value;
+        else if(action==='delivery_email') payload.delivery_email=document.getElementById('ticketDeliveryEmail').value.trim();
         await BRB.ticketJourney(action,payload);await load();
         BRB.ticketPayment('status',{id:order.id}).catch(()=>{});
       }
