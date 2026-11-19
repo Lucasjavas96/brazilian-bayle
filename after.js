@@ -19,7 +19,7 @@
     "Campo Comprido": [-25.4450, -49.3450], "Portão": [-25.4740, -49.2950], "Seminário": [-25.4530, -49.3070], "Cristo Rei": [-25.4380, -49.2490], "Jardim Botânico": [-25.4430, -49.2390],
     "Região metropolitana": [-25.4300, -49.2700] };
   const CWB = [-25.4372, -49.2700];
-  const FESTAS = [{ id: "festa", nome: "Brazilian Bayle, a Festa", data: "05/12", depois: "Dom, 06/12" }];
+  const UFS = ["PR", "SC", "SP", "RS", "RJ", "MG", "ES", "BA", "GO", "DF", "MT", "MS", "PE", "CE", "PA", "AM", "MA", "PB", "RN", "AL", "SE", "PI", "TO", "RO", "AC", "RR", "AP"];
   const COMOD = [["som", "Som de respeito"], ["dj", "DJ tocando"], ["bebida", "Bebida inclusa"], ["byob", "Traga sua bebida"], ["piscina", "Piscina"], ["externa", "Área externa"],
     ["chill", "Área chill"], ["fumodromo", "Fumódromo"], ["cozinha", "Cozinha liberada"], ["ar", "Ar-condicionado"], ["estacionamento", "Estacionamento"], ["pet", "Pet friendly"]];
   const COMOD_N = Object.fromEntries(COMOD);
@@ -287,9 +287,9 @@
   }
 
   /* ---------- anuncie seu after (passo a passo) ---------- */
-  const blank = () => ({ lat: null, lng: null, step: 0, id: null, nome: "", festa: "festa", festaNome: "", festaData: "", hora: "04:00", bairro: "Centro", endereco: "", fotos: [], comodidades: [], modo: "livre", vagas: 10, pago: false, preco: "", desc: "", regras: "", err: "", sent: false });
+  const blank = () => ({ lat: null, lng: null, step: 0, id: null, nome: "", festaNome: "", festaData: "", hora: "04:00", cep: "", estado: "PR", bairro: "Centro", endereco: "", fotos: [], comodidades: [], modo: "livre", vagas: 10, pago: false, preco: "", desc: "", regras: "", err: "", sent: false });
   function wizStepOk(w, s) {
-    if (s === 0) { if (w.nome.trim().length < 2) return "Dá um nome para o after."; if (w.festa === "outra" && (w.festaNome.trim().length < 2 || !/^\d{2}\/\d{2}$/.test(w.festaData.trim()))) return "Diz o nome e a data (dd/mm) da festa."; }
+    if (s === 0) { if (w.nome.trim().length < 2) return "Dá um nome para o after."; if (w.festaNome.trim().length < 2) return "Diz de qual festa é o after."; if (!/^\d{2}\/\d{2}$/.test(w.festaData.trim())) return "Informe a data da festa (dd/mm)."; }
     if (s === 1 && w.endereco.trim().length < 5) return "Coloca o endereço completo: rua e número.";
     if (s === 1 && w.lat == null) return "Toca no mapa para marcar onde fica o after.";
     if (s === 2 && !w.fotos.length) return "Manda pelo menos uma foto do lugar.";
@@ -299,9 +299,25 @@
   }
   const precoCents = w => w.pago ? Math.round(parseFloat(String(w.preco).replace(",", ".")) * 100) || 0 : 0;
   function wizPreview(w) {
-    const f = FESTAS.find(x => x.id === w.festa);
-    return { id: "preview", nome: w.nome, festa: w.festa === "outra" ? w.festaNome : f.nome, bairro: w.bairro, hora: (w.festa === "outra" ? "Depois de " + w.festaData : f.depois) + " · " + w.hora.replace(":", "h"),
+    return { id: "preview", nome: w.nome, festa: w.festaNome, bairro: w.bairro, hora: "Depois de " + w.festaData + " · " + w.hora.replace(":", "h"),
       vagas: w.vagas, ocupadas: 0, modo: w.modo, preco_cents: precoCents(w), fotos: w.fotos, comodidades: w.comodidades, notas: [], status: "aberto", host: S.user || "voce", desc: w.desc, regras: w.regras, endereco: "" };
+  }
+  let cepFor = "";
+  async function lookupCep(raw) {
+    const cep = String(raw).replace(/\D/g, ""); if (cep.length !== 8 || cep === cepFor || !S.wiz) return; cepFor = cep;
+    const msg = $("#afCepMsg"); if (msg) msg.textContent = "Buscando o CEP…";
+    try {
+      const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 6000);
+      const r = await fetch("https://viacep.com.br/ws/" + cep + "/json/", { signal: ctrl.signal }); clearTimeout(timer);
+      const d = await r.json();
+      if (!S.wiz) return;
+      if (!r.ok || d.erro) { if ($("#afCepMsg")) $("#afCepMsg").textContent = "Não achamos esse CEP. Preenche o endereço à mão."; return; }
+      if (d.uf && UFS.includes(d.uf)) S.wiz.estado = d.uf;
+      if (d.bairro) { if (!BAIRROS.includes(d.bairro)) BAIRROS.unshift(d.bairro); S.wiz.bairro = d.bairro; }
+      if (d.logradouro && !S.wiz.endereco.trim()) S.wiz.endereco = d.logradouro;
+      render();
+      if ($("#afCepMsg")) $("#afCepMsg").textContent = d.logradouro ? "Endereço preenchido pelo CEP. Falta o número." : "Preenchemos estado e bairro pelo CEP.";
+    } catch { cepFor = ""; if ($("#afCepMsg")) $("#afCepMsg").textContent = "Não deu para buscar o CEP agora. Preenche à mão."; }
   }
   function wizHTML() {
     const w = S.wiz;
@@ -312,11 +328,12 @@
     const body = [
       () => `<h2>Conta pra gente sobre o seu <em>after</em></h2>
         <label class="af-field"><span>Nome do after</span><input type="text" data-w="nome" value="${esc(w.nome)}" placeholder="Ex.: Rooftop do Batel" maxlength="60"><small>É o que aparece em destaque na vitrine.</small></label>
-        <label class="af-field"><span>Depois de qual festa?</span><select data-w="festa">${FESTAS.map(f => `<option value="${f.id}"${w.festa === f.id ? " selected" : ""}>${f.nome} · ${f.data}</option>`).join("")}<option value="outra"${w.festa === "outra" ? " selected" : ""}>Outra festa</option></select></label>
-        ${w.festa === "outra" ? `<div class="af-2"><label class="af-field"><span>Nome da festa</span><input type="text" data-w="festaNome" value="${esc(w.festaNome)}" maxlength="60" placeholder="Ex.: Warung Day"></label><label class="af-field"><span>Data da festa</span><input type="text" data-w="festaData" value="${esc(w.festaData)}" maxlength="5" inputmode="numeric" placeholder="dd/mm"></label></div>` : ""}
+        <div class="af-2"><label class="af-field"><span>Depois de qual festa?</span><input type="text" data-w="festaNome" value="${esc(w.festaNome)}" maxlength="60" placeholder="Ex.: Brazilian Bayle, a Festa"></label><label class="af-field"><span>Data da festa</span><input type="text" data-w="festaData" value="${esc(w.festaData)}" maxlength="5" inputmode="numeric" placeholder="dd/mm"></label></div>
         <label class="af-field"><span>Abre às</span><input type="time" data-w="hora" value="${esc(w.hora)}"></label>`,
       () => `<h2>Onde <em>fica?</em></h2>
-        <label class="af-field"><span>Bairro</span><select data-w="bairro">${BAIRROS.map(b => `<option${w.bairro === b ? " selected" : ""}>${b}</option>`).join("")}</select><small>O bairro aparece para todo mundo.</small></label>
+        <label class="af-field"><span>CEP</span><input type="text" data-w="cep" value="${esc(w.cep)}" placeholder="00000-000" maxlength="9" inputmode="numeric"><small id="afCepMsg">Preenchemos estado e bairro pelo CEP, se achar.</small></label>
+        <div class="af-2"><label class="af-field"><span>Estado</span><select data-w="estado">${UFS.map(u => `<option${w.estado === u ? " selected" : ""}>${u}</option>`).join("")}</select></label>
+        <label class="af-field"><span>Bairro</span><select data-w="bairro">${BAIRROS.map(b => `<option${w.bairro === b ? " selected" : ""}>${b}</option>`).join("")}</select></label></div><small>O bairro aparece para todo mundo.</small>
         <label class="af-field"><span>Endereço completo</span><input type="text" data-w="endereco" value="${esc(w.endereco)}" placeholder="Rua, número, apto ou casa" maxlength="160" autocomplete="street-address"><small>Só a equipe e quem estiver confirmado veem.</small></label>
         <div class="af-field"><span>Ponto no mapa</span><div id="afMapW" class="af-map af-map-w" role="region" aria-label="Marque o ponto do after"></div><small>${w.lat ? "Ponto marcado. Arraste o pino para ajustar." : "Toque no mapa para marcar onde fica. A galera vê só a região até ser confirmada."}</small></div>`,
       () => `<h2>Mostra o <em>lugar</em></h2><p class="af-sub">Foto do espaço, de dia ou de noite. A primeira vira a capa. Toque numa foto para trocar a capa.</p>
@@ -348,9 +365,9 @@
         <button type="button" class="btn btn-y" data-wiznext>${s === STEPS.length - 1 ? w.id ? "Salvar alterações" : "Enviar para análise" : "Avançar"}</button></div></div></div>`;
   }
   async function wizSubmit() {
-    const w = S.wiz, f = FESTAS.find(x => x.id === w.festa);
-    const dados = { nome: w.nome.trim(), festa: w.festa === "outra" ? w.festaNome.trim() : f.nome, bairro: w.bairro, endereco: w.endereco.trim(),
-      hora: (w.festa === "outra" ? "Depois de " + w.festaData.trim() : f.depois) + " · " + (w.hora || "04:00").replace(":", "h"),
+    const w = S.wiz;
+    const dados = { nome: w.nome.trim(), festa: w.festaNome.trim(), bairro: w.bairro, endereco: w.endereco.trim(),
+      hora: "Depois de " + w.festaData.trim() + " · " + (w.hora || "04:00").replace(":", "h"),
       lat: w.lat.toFixed(6), lng: w.lng.toFixed(6), vagas: String(w.vagas), modo: w.modo, preco_cents: String(precoCents(w)), comodidades: w.comodidades, desc: w.desc.trim(), regras: w.regras.trim(), fotos: w.fotos.slice() };
     const btn = $("[data-wiznext]"); if (btn) btn.disabled = true;
     try {
@@ -359,9 +376,9 @@
     } catch (e) { w.err = e.message || "Não deu para enviar. Tenta de novo."; render(); }
   }
   function editWiz(a) {
-    const f = FESTAS.find(x => x.nome === a.festa), h = /(\d{2})h(\d{2})/.exec(a.hora || ""), d = /(\d{2}\/\d{2})/.exec(a.hora || "");
+    const h = /(\d{2})h(\d{2})/.exec(a.hora || ""), d = /(\d{2}\/\d{2})/.exec(a.hora || "");
     const g = a.geo && a.geo.exato ? [+a.geo.lat, +a.geo.lng] : null;
-    S.wiz = { ...blank(), lat: g ? g[0] : null, lng: g ? g[1] : null, id: a.id, nome: a.nome, festa: f ? f.id : "outra", festaNome: f ? "" : a.festa, festaData: d ? d[1] : "", hora: h ? h[1] + ":" + h[2] : "04:00",
+    S.wiz = { ...blank(), lat: g ? g[0] : null, lng: g ? g[1] : null, id: a.id, nome: a.nome, festaNome: a.festa, festaData: d ? d[1] : "", hora: h ? h[1] + ":" + h[2] : "04:00",
       bairro: a.bairro, endereco: a.endereco, fotos: a.fotos.slice(), comodidades: a.comodidades.slice(), modo: a.modo, vagas: a.vagas, pago: pago(a), preco: pago(a) ? String(a.preco_cents / 100).replace(".", ",") : "", desc: a.desc || "", regras: a.regras || "" };
     if (!BAIRROS.includes(a.bairro)) BAIRROS.unshift(a.bairro);
   }
@@ -516,7 +533,7 @@
     render();
   });
   document.addEventListener("input", e => {
-    const k = e.target.dataset?.w; if (k && S.wiz) { S.wiz[k] = e.target.value; if (k === "preco") { const sum = $(".af-wiz .af-sum"); if (sum) { const p = precoCents(S.wiz), f = feeOf(p); sum.querySelectorAll("div span:last-child")[0].textContent = brl(p + f); sum.querySelectorAll("div span:last-child")[1].textContent = `${brl(f)} + ${brl(f)}`; sum.querySelectorAll("div span:last-child")[2].textContent = brl(Math.max(0, p - f)); } } return; }
+    const k = e.target.dataset?.w; if (k && S.wiz) { S.wiz[k] = e.target.value; if (k === "preco") { const sum = $(".af-wiz .af-sum"); if (sum) { const p = precoCents(S.wiz), f = feeOf(p); sum.querySelectorAll("div span:last-child")[0].textContent = brl(p + f); sum.querySelectorAll("div span:last-child")[1].textContent = `${brl(f)} + ${brl(f)}`; sum.querySelectorAll("div span:last-child")[2].textContent = brl(Math.max(0, p - f)); } } if (k === "cep") lookupCep(e.target.value); return; }
     if (e.target.id === "afQ") { S.q = e.target.value; const box = $(".af-split-list"); if (box) box.innerHTML = listBlock(filtered()); drawPins(); }
   });
   document.addEventListener("submit", e => { if (e.target.id === "afSearch") e.preventDefault(); });
@@ -526,7 +543,7 @@
     if (t.id === "afPayOk") { const b = $("[data-genpix]"); if (b) b.disabled = !t.checked; }
     if (t.id === "afBairro") { S.bairro = t.value; S.view = null; render(); }
     if (!S.wiz) return;
-    if (t.dataset?.w === "festa" || (t.dataset?.w === "bairro" && S.wiz.lat == null)) { S.wiz[t.dataset.w] = t.value; render(); }
+    if (t.dataset?.w === "bairro" && S.wiz.lat == null) { S.wiz[t.dataset.w] = t.value; render(); }
     else if (t.dataset?.w) S.wiz[t.dataset.w] = t.value;
     if (t.name === "wModo") S.wiz.modo = t.value;
     if (t.name === "wPago") { S.wiz.pago = t.value === "1"; render(); }

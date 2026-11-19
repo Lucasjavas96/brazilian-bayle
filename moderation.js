@@ -9,15 +9,18 @@
   const brl = n => "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const toast = m => { const t = $("#mdToast"); t.textContent = m; t.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("on"), 2800); };
 
-  const SECS = { posts: ["Posts do Spotted", "Publique, oculte, edite ou exclua as postagens do mural."], apps: ["Candidaturas", "Pedidos para entrar no BB Network."], members: ["Membros", "Contas ativas e Membros do BB Network."], venues: ["Locais do ranking", "Cada DJ vale pelo melhor local onde tem show confirmado."], activity: ["Atividade", "Contas e ações registradas no site."], tickets: ["Intermediação de ingressos", "Fila do suporte: acompanhe cada pedido até o repasse."] };
+  const SECS = { posts: ["Posts do Spotted", "Publique, oculte, edite ou exclua as postagens do mural."], apps: ["Candidaturas", "Pedidos para entrar no BB Network."], afters: ["Onde é o after", "Aprove ou recuse os anúncios de after antes de irem ao ar."], members: ["Membros", "Contas ativas e Membros do BB Network."], venues: ["Locais do ranking", "Cada DJ vale pelo melhor local onde tem show confirmado."], activity: ["Atividade", "Contas e ações registradas no site."], tickets: ["Intermediação de ingressos", "Fila do suporte: acompanhe cada pedido até o repasse."] };
   const BADGE = { published: ["Publicado", "ok"], review: ["Em análise", "warn"], hidden: ["Oculto", "mute"], pending: ["Em análise", "warn"], approved: ["Aprovada", "ok"], rejected: ["Recusada", "mute"], removed: ["Membro excluído", "mute"],
-    recebimento_confirmado: ["Aguardando repasse", "info"], em_disputa: ["Ocorrência em análise", "warn"], reembolsada: ["Reembolsada", "mute"], solicitada: ["Aguardando pagamento", "warn"], pagamento_confirmado: ["Dinheiro recebido", "info"], ingresso_transferido: ["Ingresso transferido", "info"], concluida: ["Concluída", "ok"], cancelada: ["Cancelada", "mute"] };
+    recebimento_confirmado: ["Aguardando repasse", "info"], em_disputa: ["Ocorrência em análise", "warn"], reembolsada: ["Reembolsada", "mute"], solicitada: ["Aguardando pagamento", "warn"], pagamento_confirmado: ["Dinheiro recebido", "info"], ingresso_transferido: ["Ingresso transferido", "info"], concluida: ["Concluída", "ok"], cancelada: ["Cancelada", "mute"],
+    analise: ["Em análise", "warn"], aberto: ["Publicado", "ok"], recusado: ["Recusado", "mute"], encerrado: ["Encerrado", "mute"] };
   const badge = s => { const b = BADGE[s]; return b ? `<span class="mx-b ${b[1]}">${b[0]}</span>` : esc(s); };
   const FIELDS = [["email", "E-mail"], ["telefone", "Celular"], ["instagram", "Instagram"], ["cidade", "De onde vem"]];
   const TK_NEXT = { recebimento_confirmado: ["concluida", "Registrar repasse realizado"] };
+  const COMOD_N = { som: "Som de respeito", dj: "DJ tocando", bebida: "Bebida inclusa", byob: "Traga sua bebida", piscina: "Piscina", externa: "Área externa",
+    chill: "Área chill", fumodromo: "Fumódromo", cozinha: "Cozinha liberada", ar: "Ar-condicionado", estacionamento: "Estacionamento", pet: "Pet friendly" };
 
   let tab = "posts", filter = "todos", q = "", cursor = null, request = 0;
-  let posts = [], apps = [], members = [], accounts = [], venues = [], perfs = [], tickets = [], actUsers = [], actEvents = [], actView = "users", actQ = "", actUid = "", actName = "";
+  let posts = [], apps = [], afters = [], members = [], accounts = [], venues = [], perfs = [], tickets = [], actUsers = [], actEvents = [], actView = "users", actQ = "", actUid = "", actName = "";
 
   /* ---------- janelas ---------- */
   const openM = html => { modal.innerHTML = `<div class="mx-modal" role="dialog" aria-modal="true">${html}</div>`; modal.hidden = false; };
@@ -61,6 +64,13 @@
     }).join(""));
   }
 
+  function renderAfters() {
+    const rows = afters.filter(a => (filter === "todos" || a.status === filter) && (!q || [a.nome, a.festa, a.bairro, a.host].join(" ").toLowerCase().includes(q.toLowerCase())));
+    if (!rows.length) return empty("Nada para moderar neste filtro.");
+    return wrap(th("After", "Anfitrião", "Vagas", "Entrada", "Status", "Ações"), rows.map(a => `<tr data-after="${esc(a.id)}"><td><b>${esc(a.nome || "After de @" + a.host)}</b><small>${esc(a.bairro)} · depois de ${esc(a.festa)}</small></td><td>@${esc(a.host)}</td><td>${a.vagas}</td><td>${a.preco_cents > 0 ? brl(a.preco_cents / 100) : "Grátis"}</td><td>${badge(a.status)}</td>
+      <td class="ac"><div class="mx-acts">${btn('data-act="afview"', "Ver")}${a.status === "analise" ? btn('data-aft="approve"', "Aprovar", "primary") + btn('data-aft="reject"', "Recusar", "danger") : ""}</div></td></tr>`).join(""));
+  }
+
   function renderMembers() {
     const ok = x => !q || JSON.stringify(x).toLowerCase().includes(q.toLowerCase());
     const acc = accounts.filter(ok), mem = members.filter(ok);
@@ -98,7 +108,8 @@
 
   /* ---------- barra de ferramentas e desenho ---------- */
   function toolbar() {
-    const f = { posts: [["todos", "Todos os status"], ["published", "Publicados"], ["denunciado", "Denunciados"], ["review", "Em análise"], ["hidden", "Ocultos"]], apps: [["todos", "Todos os status"], ["pending", "Em análise"], ["approved", "Aprovadas"], ["rejected", "Recusadas"]] }[tab];
+    const f = { posts: [["todos", "Todos os status"], ["published", "Publicados"], ["denunciado", "Denunciados"], ["review", "Em análise"], ["hidden", "Ocultos"]], apps: [["todos", "Todos os status"], ["pending", "Em análise"], ["approved", "Aprovadas"], ["rejected", "Recusadas"]],
+      afters: [["todos", "Todos os status"], ["analise", "Em análise"], ["aberto", "Publicados"], ["encerrado", "Encerrados"]] }[tab];
     if (tab === "activity") { tb.hidden = true; return; }
     tb.hidden = false;
     tb.innerHTML = `<input class="mx-in" type="search" id="mdQ" placeholder="Buscar nesta seção" value="${esc(q)}">${f ? `<select class="mx-in" id="mdF">${f.map(([v, l]) => `<option value="${v}"${filter === v ? " selected" : ""}>${l}</option>`).join("")}</select>` : ""}${btn('id="mdRefresh"', "Atualizar")}`;
@@ -107,7 +118,7 @@
     title.textContent = SECS[tab][0]; sub.textContent = SECS[tab][1];
     tabsEl.querySelectorAll("[data-tab]").forEach(b => b.toggleAttribute("aria-current", b.dataset.tab === tab));
     if (tab !== "activity") toolbar(); else tb.hidden = true;
-    list.innerHTML = ({ posts: renderPosts, apps: renderApps, members: renderMembers, venues: renderVenues, activity: renderActivity, tickets: renderTickets })[tab]();
+    list.innerHTML = ({ posts: renderPosts, apps: renderApps, afters: renderAfters, members: renderMembers, venues: renderVenues, activity: renderActivity, tickets: renderTickets })[tab]();
   }
   const setCount = (k, n) => { const e = document.querySelector(`[data-count="${k}"]`); if (e) { e.textContent = n; e.hidden = !n; } };
 
@@ -118,6 +129,7 @@
       if (section === "members") { const [d, a] = await Promise.all([BRB.members(), BRB.activity("members", { limit: 500 })]); if (rev !== request) return; accounts = a.accounts || []; members = d.members || []; status.textContent = `${accounts.length} conta(s) com e-mail confirmado, ${members.length} membro(s) do BB Network aprovado(s).`; }
       else if (section === "activity") { const d = await BRB.activity(actView, { q: actQ, user_id: actUid || undefined, limit: 300 }); if (rev !== request) return; if (actView === "users") actUsers = d.users || []; else actEvents = d.events || []; status.textContent = actView === "users" ? `${actUsers.length} conta(s), as mais novas primeiro.` : `${actEvents.length} ação(ões) registrada(s), as mais recentes primeiro.`; }
       else if (section === "venues") { const d = await BRB.rankingAdmin("list"); if (rev !== request) return; venues = d.venues || []; perfs = d.performances || []; status.textContent = ""; }
+      else if (section === "afters") { const d = await BRB.after("list"); if (rev !== request) return; afters = d.items || []; status.textContent = `${afters.length} after(s), ${afters.filter(a => a.status === "analise").length} em análise.`; setCount("afters", afters.filter(a => a.status === "analise").length); }
       else if (section === "tickets") { const d = await BRB.ticketsAdmin("list"); if (rev !== request) return; tickets = d.requests || []; const open = tickets.filter(t => t.status !== "concluida" && t.status !== "cancelada").length; status.textContent = tickets.length ? `${tickets.length} pedido(s), ${open} em andamento.` : ""; }
       else {
         const d = await BRB.moderation(section, section === "posts" ? "todos" : "todos", append ? cursor : null); if (rev !== request) return;
@@ -145,6 +157,22 @@
   }
   function showComments(p) {
     openM(`<h3>Comentários · ${esc(p.title)}</h3><ul class="mx-coms">${(p.comments || []).map(c => `<li><div><b>${c.anon ? "Anônimo" : "@" + esc(c.nick || "?")}</b><br>${esc(c.body)}</div>${btn(`data-cdel="${esc(c.id)}"`, "Apagar", "danger")}</li>`).join("")}</ul><div class="mx-fa"><button type="button" class="mx-btn" data-close>Fechar</button></div>`);
+  }
+  function showAfter(a) {
+    openM(`<h3>${esc(a.nome || "After de @" + a.host)}</h3><p class="mx-sub">${badge(a.status)} · cadastrado em ${when(a.created_at)}</p>${info(
+      ["Anfitrião", "@" + esc(a.host)], ["Bairro", esc(a.bairro)], ["Depois de", esc(a.festa)], ["Horário", esc(a.hora)],
+      ["Endereço completo", esc(a.endereco || "")], ["Vagas", String(a.vagas)], ["Como entra", a.modo === "livre" ? "Entrada livre" : "Sob aprovação"],
+      ["Ingresso", a.preco_cents > 0 ? brl(a.preco_cents / 100) + " por pessoa (taxa de 10% de cada lado)" : "Grátis"],
+      ["Comodidades", (a.comodidades || []).map(k => COMOD_N[k] || k).join(", ") || "-"],
+      ["Descrição", esc(a.desc || "")], ["Regras da casa", esc(a.regras || "")]
+    )}${(a.fotos || []).length ? `<div class="mx-cell" style="flex-wrap:wrap;gap:6px">${a.fotos.map(f => `<img src="${esc(f)}" alt="" style="width:72px;height:72px;object-fit:cover;border-radius:10px">`).join("")}</div>` : ""}
+      <div class="mx-fa">${a.status === "analise" ? `<button type="button" class="mx-btn danger" data-aft="reject">Recusar</button><button type="button" class="mx-btn primary" data-aft="approve">Aprovar</button>` : ""}<button type="button" class="mx-btn" data-close>Fechar</button></div>`);
+    if (a.status === "analise") modal.querySelectorAll("[data-aft]").forEach(bt => bt.addEventListener("click", async () => {
+      if (bt.dataset.aft === "reject") {
+        const motivo = prompt("Motivo da recusa (o anfitrião vê, 3 a 200 caracteres):"); if (!motivo || motivo.trim().length < 3) return;
+        bt.disabled = true; try { await BRB.after("reject", { id: a.id, motivo: motivo.trim() }); closeM(); toast("After recusado."); await load(); } catch (err) { toast(err.message); bt.disabled = false; }
+      } else { bt.disabled = true; try { await BRB.after("approve", { id: a.id }); closeM(); toast("After aprovado e publicado."); await load(); } catch (err) { toast(err.message); bt.disabled = false; } }
+    }, { once: true }));
   }
   function showApp(a) {
     const d = a.data || {}, quero = [].concat(d.quero || []).filter(Boolean);
@@ -183,6 +211,14 @@
         const row = b.closest("[data-member]"); if (!row) return;
         if (b.hasAttribute("data-remove")) { if (await ask("Excluir este membro?", "Ele perde o selo do BB Network e não poderá mais comentar no Spotted.", "Excluir membro")) { b.disabled = true; await BRB.removeMember(row.dataset.member); toast("Membro excluído."); await load(); } }
         else if (b.hasAttribute("data-mail")) { if (await ask("Enviar o e-mail de aprovação?", "A pessoa recebe o e-mail de parabéns do BB Network.", "Enviar e-mail", false)) { b.disabled = true; await BRB.sendApprovalMail(row.dataset.member); toast("E-mail enviado."); await load(); } }
+      } else if (tab === "afters") {
+        const row = b.closest("[data-after]"); if (!row) return; const a = afters.find(x => x.id === row.dataset.after); if (!a) return;
+        if (b.dataset.act === "afview") return showAfter(a);
+        if (b.dataset.aft === "approve") { b.disabled = true; await BRB.after("approve", { id: a.id }); toast("After aprovado e publicado."); await load(); }
+        else if (b.dataset.aft === "reject") {
+          const motivo = prompt("Motivo da recusa (o anfitrião vê, 3 a 200 caracteres):"); if (!motivo || motivo.trim().length < 3) return;
+          b.disabled = true; await BRB.after("reject", { id: a.id, motivo: motivo.trim() }); toast("After recusado."); await load();
+        }
       } else if (tab === "venues") {
         if (b.id === "vnAdd") { const dj = $("#vnDj").value.trim(), rank = Number($("#vnRank").value), date = $("#vnDate").value, source = $("#vnSrc").value.trim(); if (!dj || !date) return toast("Informe o DJ e a data do show."); b.disabled = true; await BRB.rankingAdmin("confirm", { dj, rank, date, source }); toast("Show confirmado."); await load(); }
         else if (b.hasAttribute("data-perf-del")) { if (await ask("Remover este show confirmado?", "A nota do DJ é recalculada.", "Remover")) { b.disabled = true; await BRB.rankingAdmin("remove", { id: b.closest("[data-perf]").dataset.perf }); toast("Show removido."); await load(); } }
