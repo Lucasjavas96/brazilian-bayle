@@ -67,7 +67,7 @@
   function renderAfters() {
     const rows = afters.filter(a => (filter === "todos" || a.status === filter) && (!q || [a.nome, a.festa, a.bairro, a.host].join(" ").toLowerCase().includes(q.toLowerCase())));
     if (!rows.length) return empty("Nada para moderar neste filtro.");
-    return wrap(th("After", "Anfitrião", "Vagas", "Entrada", "Status", "Ações"), rows.map(a => `<tr data-after="${esc(a.id)}"><td><b>${esc(a.nome || "After de @" + a.host)}</b><small>${esc(a.bairro)} · depois de ${esc(a.festa)}</small></td><td>@${esc(a.host)}</td><td>${a.vagas}</td><td>${a.preco_cents > 0 ? brl(a.preco_cents / 100) : "Grátis"}</td><td>${badge(a.status)}</td>
+    return wrap(th("After", "Anfitrião", "Vagas", "Entrada", "Status", "Ações"), rows.map(a => `<tr data-after="${esc(a.id)}"><td><b>${esc(a.nome || "After de @" + a.host)}</b><small>${esc(a.bairro)} · ${a.festa === "Festa privada" ? "festa privada" : "depois de " + esc(a.festa)}</small></td><td>@${esc(a.host)}</td><td>${a.vagas}</td><td>${a.preco_cents > 0 ? brl(a.preco_cents / 100) : "Grátis"}</td><td>${badge(a.status)}</td>
       <td class="ac"><div class="mx-acts">${btn('data-act="afview"', "Ver")}${a.status === "analise" ? btn('data-aft="approve"', "Aprovar", "primary") + btn('data-aft="reject"', "Recusar", "danger") : ""}</div></td></tr>`).join(""));
   }
 
@@ -160,7 +160,7 @@
   }
   function showAfter(a) {
     openM(`<h3>${esc(a.nome || "After de @" + a.host)}</h3><p class="mx-sub">${badge(a.status)} · cadastrado em ${when(a.created_at)}</p>${info(
-      ["Anfitrião", "@" + esc(a.host)], ["Bairro", esc(a.bairro)], ["Depois de", esc(a.festa)], ["Horário", esc(a.hora)],
+      ["Anfitrião", "@" + esc(a.host)], ["Bairro", esc(a.bairro)], [a.festa === "Festa privada" ? "Tipo" : "Depois de", esc(a.festa)], ["Horário", esc(a.hora)],
       ["Endereço completo", esc(a.endereco || "")], ["Vagas", String(a.vagas)], ["Como entra", a.modo === "livre" ? "Entrada livre" : "Sob aprovação"],
       ["Ingresso", a.preco_cents > 0 ? brl(a.preco_cents / 100) + " por pessoa (taxa de 10% de cada lado)" : "Grátis"],
       ["Comodidades", (a.comodidades || []).map(k => COMOD_N[k] || k).join(", ") || "-"],
