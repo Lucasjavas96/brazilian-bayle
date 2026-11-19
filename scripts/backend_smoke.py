@@ -7,13 +7,18 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 config = json.loads((ROOT/'backend-config.js').read_text('utf8').split('=',1)[1].strip().rstrip(';'))
 
-def rpc(name, data):
+def rpc(name, data, attempt=0):
     req=urllib.request.Request(config['url']+'/rest/v1/rpc/'+name,
         data=json.dumps(data).encode(),headers={'apikey':config['publishableKey'],'Content-Type':'application/json'})
     try:
         with urllib.request.urlopen(req,timeout=40) as res:return res.status,json.loads(res.read())
     except urllib.error.HTTPError as error:
-        return error.code,json.loads(error.read())
+        body=error.read()
+        try: return error.code,json.loads(body) if body else {}
+        except json.JSONDecodeError:
+            # PostgREST pode responder vazio por um instante logo depois do deploy recarregar o schema.
+            if attempt<2: return rpc(name,data,attempt+1)
+            raise
 
 def main():
     status,health=rpc('brb_backend_health',{})
