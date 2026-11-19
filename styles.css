@@ -3524,7 +3524,25 @@ fieldset.commerce-fields legend+*{clear:both}
 .ticket-consent input{flex:none;width:20px;height:20px;margin-top:2px}
 .ticket-consent span{font-size:14px;line-height:1.5}
 .ticket-back{margin-bottom:22px;color:inherit;text-decoration:none}
-.ticket-journey :is(textarea,input[type=file]){background:#111;color:#f6f4ef;border:1px solid #c9a45c80;border-radius:8px;padding:14px;font:inherit}
+.ticket-journey :is(textarea,input[type=file],input[type=email]){background:#111;color:#f6f4ef;border:1px solid #c9a45c80;border-radius:8px;padding:14px;font:inherit}
+.ticket-field{margin:14px 0}
+.ticket-field-row{display:flex;gap:10px}
+.ticket-field-row input{flex:1;min-width:0}
+.ticket-tabs{margin:20px 0}
+.ticket-tab-panel{display:grid;gap:12px}
+.ticket-tab-panel[hidden]{display:none}
+.ticket-card{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border:1px solid #c9a45c40;border-radius:14px;color:inherit;text-decoration:none;background:#0d0d0d}
+a.ticket-card:hover{border-color:#c9a45c88}
+.ticket-card>div{display:grid;gap:4px;min-width:0}
+.ticket-card b{font-size:15px;overflow-wrap:anywhere}
+.ticket-card span{font-size:13px;color:#bdb5a6}
+.ticket-empty{color:#bdb5a6;padding:4px 0}
+.ticket-b{display:inline-block;flex:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.ticket-b.ok{background:rgba(99,153,34,.2);color:#9ecb5a}
+.ticket-b.warn{background:rgba(201,164,92,.22);color:#d2b375}
+.ticket-b.bad{background:rgba(226,75,74,.2);color:#ff8d82}
+.ticket-b.info{background:rgba(55,138,221,.22);color:#7fb4ef}
+.ticket-b.mute{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
 .ticket-totals{display:grid;grid-template-columns:1fr auto;gap:12px}.ticket-totals dd{margin:0;text-align:right}
 .ticket-evidence{padding-left:20px}.ticket-evidence li{margin:20px 0;overflow-wrap:anywhere}
 #ticketPayment img{display:block;max-width:100%;background:white;margin:20px 0}#ticketPayment textarea{display:block;margin:16px 0}
