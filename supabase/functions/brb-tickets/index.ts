@@ -167,6 +167,11 @@ Deno.serve(async request => {
     const raw = await request.text();
     if (raw.length > 7100000) throw new InputError('Arquivo muito grande.', 413);
     const body = JSON.parse(raw);
+    if (route === 'after-notify') {
+      // Qualquer conta autenticada pode pedir pra drenar a fila agora; só processa o que já está pronto para envio.
+      await sendQueuedAfterMail();
+      return reply({ processed: true });
+    }
     if (route === 'after-pay' || route === 'after-status') {
       if (!UUID.test(body.after_id || '')) throw new InputError('After inválido.');
       if (route === 'after-status') {

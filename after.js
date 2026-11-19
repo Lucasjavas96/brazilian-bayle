@@ -62,6 +62,7 @@
     } catch (e) { S.loadErr = "Não deu para carregar os afters agora. Tenta de novo em instantes."; }
     S.loading = false;
   }
+  const kickMail = () => { window.BRB.ticketPayment("after-notify", {}).catch(() => { }); };
   async function act(action, payload, okMsg) {
     try { const r = await window.BRB.after(action, payload); await load(); render(); if (okMsg) toast(okMsg); return r || true; }
     catch (e) { toast(e.message || "Não foi possível concluir."); return null; }
@@ -487,7 +488,7 @@
     if ((el = g("[data-reservar]"))) { if (!S.user) return; S.flow = "rules"; render(); return; }
     if ((el = g("[data-dojoin]"))) {
       const a = find(el.dataset.dojoin); if (!a || !$("#afOk")?.checked) return; el.disabled = true;
-      try { const r = await window.BRB.after("join", { id: a.id }); await load(); if (r.status === "pagamento") return startPay(find(a.id)); S.flow = "done"; render(); }
+      try { const r = await window.BRB.after("join", { id: a.id }); await load(); if (r.status === "pendente") kickMail(); if (r.status === "pagamento") return startPay(find(a.id)); S.flow = "done"; render(); }
       catch (x) { toast(x.message || "Não deu para reservar."); el.disabled = false; }
       return;
     }
@@ -515,7 +516,7 @@
     if ((el = g("[data-copy]"))) { const a = find(el.dataset.copy); if (!a) return; try { await navigator.clipboard.writeText(`${a.endereco}, ${a.bairro}, Curitiba - PR`); toast("Endereço copiado"); } catch (x) { toast(`${a.endereco}, ${a.bairro}`); } return; }
     if ((el = g("[data-approve]")) || (el = g("[data-deny]"))) {
       const ok = !!el.dataset.approve, a = find(el.dataset.approve || el.dataset.deny), r = a && (S.reqs[a.id] || [])[+el.dataset.i]; if (!r) return; el.disabled = true;
-      await act("decide", { id: a.id, uid: r.uid, status: ok ? "aprovado" : "recusado" }, ok ? `@${r.nome} aprovado` : "Pedido recusado"); return;
+      await act("decide", { id: a.id, uid: r.uid, status: ok ? "aprovado" : "recusado" }, ok ? `@${r.nome} aprovado` : "Pedido recusado"); kickMail(); return;
     }
     if ((el = g("[data-end]"))) { if (!confirm("Encerrar este after? Quem foi já pode avaliar.")) return; await act("end", { id: el.dataset.end }, "After encerrado."); return; }
     if ((el = g("[data-edit]"))) { const a = find(el.dataset.edit); if (!a) return; editWiz(a); S.sel = null; render(); return; }
