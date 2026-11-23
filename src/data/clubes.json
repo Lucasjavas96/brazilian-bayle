@@ -199,6 +199,11 @@
           "data": "31/12",
           "nome": "Réveillon Surreal",
           "evento": "surreal-park-2026-12-31"
+        },
+        {
+          "data": "08/01/2027",
+          "nome": "Indira Paganotto",
+          "evento": "surreal-park-2027-01-08"
         }
       ]
     },
@@ -553,9 +558,19 @@
           "evento": "club-vibe-2026-12-04"
         },
         {
+          "data": "05/12",
+          "nome": "T.B.G",
+          "evento": "club-vibe-2026-12-05"
+        },
+        {
           "data": "11/12",
           "nome": "James Zabiela",
           "evento": "club-vibe-2026-12-11"
+        },
+        {
+          "data": "12/12",
+          "nome": "Summer Eletrovibe",
+          "evento": "club-vibe-2026-12-12"
         },
         {
           "data": "17/12",

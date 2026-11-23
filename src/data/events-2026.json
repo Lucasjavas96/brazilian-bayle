@@ -5193,10 +5193,11 @@
         "Anton",
         "Doguez",
         "Elle",
-        "Kafer"
+        "Kafer",
+        "KAF3R"
       ],
       "source": "Resident Advisor, agenda do D-EDGE Rio (https://ra.co/events/2568100).",
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-23"
     },
     {
       "id": "d-edge-sao-paulo-2026-10-31",
@@ -5515,17 +5516,6 @@
       "checked_at": "2026-11-18"
     },
     {
-      "id": "caos-2026-11-14",
-      "date": "2026-11-14",
-      "venue": "CAOS",
-      "name": "Sotam",
-      "lineup": [
-        "Sotam"
-      ],
-      "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/caos-apresenta-sotam.html?eventId=14970).",
-      "checked_at": "2026-11-18"
-    },
-    {
       "id": "d-edge-rio-2026-11-14",
       "date": "2026-11-14",
       "venue": "D-EDGE Rio",
@@ -5660,10 +5650,13 @@
       "venue": "Surreal Park",
       "name": "Hernán Cattáneo",
       "lineup": [
-        "Hernán Cattáneo"
+        "Hernán Cattáneo",
+        "BLANCAh",
+        "Teclas",
+        "Pedro Del Buono"
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Futuro — parcial. Fonte:  Obs.: Ainda não realizado em 03/11/2026",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-23",
       "photo": "/assets/album/fotos/hernan-cattaneo.webp"
     },
     {
@@ -5742,10 +5735,11 @@
         "PAWSA",
         "Bhaskar",
         "Jackson",
-        "Carol Seubert"
+        "Carol Seubert",
+        "Marian"
       ],
       "source": "Planilha de line-ups enviada pela Brazilian Bayle (03/11/2026). Situação: Futuro — parcial. Fonte:  Obs.: Evento posterior à data de pesquisa",
-      "checked_at": "2026-11-18",
+      "checked_at": "2026-11-23",
       "photo": "/assets/album/fotos/pawsa.webp"
     },
     {
@@ -5754,10 +5748,12 @@
       "venue": "CAOS",
       "name": "Becker",
       "lineup": [
-        "Becker"
+        "Becker",
+        "Nagaz",
+        "Lui Sera"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://ticketimediato.com/product/details/caos-apresenta-becker-all-life-long.html?eventId=15829).",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-23"
     },
     {
       "id": "d-edge-sao-paulo-2026-11-21",
@@ -5782,10 +5778,15 @@
       "venue": "Laroc",
       "name": "Meduza",
       "lineup": [
-        "Meduza"
+        "Meduza",
+        "Adam Sellouk",
+        "Dre Guazzelli",
+        "Scorz",
+        "Ricky Paes",
+        "TAWWA"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/laroc-club-apresenta-medvza/).",
-      "checked_at": "2026-11-18",
+      "checked_at": "2026-11-23",
       "photo": "/assets/album/fotos/meduza.webp"
     },
     {
@@ -6117,15 +6118,30 @@
       "photo": "/assets/album/fotos/zac.webp"
     },
     {
+      "id": "club-vibe-2026-12-05",
+      "date": "2026-12-05",
+      "venue": "Club Vibe",
+      "name": "T.B.G",
+      "lineup": [
+        "Sonju",
+        "Gggguerra"
+      ],
+      "source": "Instagram oficial @clubvibe, agenda de dezembro (arte: T.B.G, Sonju | Gggguerra; legenda marca @art.tbg @gggguerra @sonju.music); flyer da Blueticket com os mesmos nomes (https://www.instagram.com/clubvibe/p/Df3HasJoBT_/).",
+      "checked_at": "2026-11-23",
+      "photo": "/assets/djs/gggguerra.webp"
+    },
+    {
       "id": "club-vibe-2026-12-11",
       "date": "2026-12-11",
       "venue": "Club Vibe",
       "name": "James Zabiela",
       "lineup": [
-        "James Zabiela"
+        "James Zabiela",
+        "Agrabah",
+        "Scure"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/41989/james-zabiela-club-vibe).",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-23"
     },
     {
       "id": "d-edge-rio-2026-12-11",
@@ -6133,10 +6149,12 @@
       "venue": "D-EDGE Rio",
       "name": "Giu Sounds Cool",
       "lineup": [
-        "GIU"
+        "GIU",
+        "BRN",
+        "Pricila Diaz"
       ],
       "source": "Tá Sendo, página do evento (link para a Ingresse); divulgação diz \"mais atrações em breve\" (https://tasendo.com.br/rio-de-janeiro/festas/d-edge-rio-apresenta-giu-sounds-cool).",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-23"
     },
     {
       "id": "terraza-2026-12-12",
@@ -6161,10 +6179,25 @@
       "lineup": [
         "Gadas",
         "HELOAH",
+        "Mary Mesk",
+        "Rafz",
         "Tonaco"
       ],
       "source": "Resident Advisor, D-Edge Rio apresenta INNERSOUNDS (line-up); data e ingresso confirmados no Tá Sendo (https://ra.co/events/2587759).",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-23"
+    },
+    {
+      "id": "club-vibe-2026-12-12",
+      "date": "2026-12-12",
+      "venue": "Club Vibe",
+      "name": "Summer Eletrovibe",
+      "lineup": [
+        "Hot Bullet",
+        "Jayboo",
+        "Redd"
+      ],
+      "source": "Instagram oficial @clubvibe, agenda de dezembro (arte: Summer Eletrovibe, special sets 2000's, Hot Bullet | Jayboo, Redd); Blueticket e site oficial com a data (https://www.instagram.com/clubvibe/p/Df3HasJoBT_/).",
+      "checked_at": "2026-11-23"
     },
     {
       "id": "caos-2026-12-13",
@@ -6184,10 +6217,15 @@
       "venue": "Park Art",
       "name": "Dubdogz",
       "lineup": [
-        "Dubdogz"
+        "Dubdogz",
+        "Dafthill",
+        "East Brothers",
+        "Gaddi",
+        "João Vitor",
+        "Schurtz"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingressonacional.com.br/evento/35219/sunshine-sunset).",
-      "checked_at": "2026-11-18",
+      "checked_at": "2026-11-23",
       "photo": "/assets/djs/dubdogz.webp"
     },
     {
@@ -6196,10 +6234,13 @@
       "venue": "Club Vibe",
       "name": "OSGEMEOS",
       "lineup": [
-        "OSGEMEOS"
+        "OSGEMEOS",
+        "Chaouiche",
+        "Júlia Cruvinel",
+        "FAB House"
       ],
       "source": "Agenda do site clubvibe.com.br e Blueticket (flyer \"save the date\", sem outros nomes) (https://clubvibe.com.br/).",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-23"
     },
     {
       "id": "club-vibe-2026-12-18",
@@ -6207,10 +6248,13 @@
       "venue": "Club Vibe",
       "name": "Fezzo",
       "lineup": [
-        "Fezzo"
+        "Fezzo",
+        "ShalomTeck",
+        "Marco Franco",
+        "Bacco"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/42129/fezzo-by-triv-a-ultima-do-ano-club-vibe).",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-23"
     },
     {
       "id": "terraza-2026-12-19",
@@ -6262,10 +6306,14 @@
       "venue": "CAOS",
       "name": "ANNA",
       "lineup": [
-        "ANNA"
+        "ANNA",
+        "Curol",
+        "Mila Journée",
+        "Toma",
+        "Nuun"
       ],
       "source": "Ticket Imediato, página do evento (CAOS apresenta ANNA) (https://ticketimediato.com/product/details/caos-apresenta-anna.html?eventId=16592).",
-      "checked_at": "2026-11-18",
+      "checked_at": "2026-11-23",
       "photo": "/assets/djs/anna.webp"
     },
     {
@@ -6291,9 +6339,27 @@
       "date": "2026-12-27",
       "venue": "Surreal Park",
       "name": "Surreal 5 Anos",
-      "lineup": [],
+      "lineup": [
+        "Adam Ten",
+        "Mita Gami",
+        "CamelPhat",
+        "PACS",
+        "Perote",
+        "Sarah Stenzel",
+        "Diogo Accioly",
+        "Sheldon",
+        "Letícia Stempi",
+        "Ranger Trucco",
+        "Ratier",
+        "Toman",
+        "Anonimat",
+        "James Zabiela",
+        "Patrice Bäumel",
+        "Tonaco"
+      ],
       "source": "Agenda informada pela Brazilian Bayle; participantes brasileiros pendentes de confirmação.",
-      "checked_at": "2026-10-27"
+      "checked_at": "2026-11-23",
+      "photo": "/assets/djs/camelphat.webp"
     },
     {
       "id": "p12-2026-12-27",
@@ -6430,9 +6496,16 @@
       "date": "2026-12-31",
       "venue": "Surreal Park",
       "name": "Réveillon Surreal",
-      "lineup": [],
+      "lineup": [
+        "CJ Jeff",
+        "Philou",
+        "Sweely",
+        "Yamagucci",
+        "Zac"
+      ],
       "source": "Agenda informada pela Brazilian Bayle; participantes brasileiros pendentes de confirmação.",
-      "checked_at": "2026-10-27"
+      "checked_at": "2026-11-23",
+      "photo": "/assets/djs/zac.webp"
     },
     {
       "id": "greenvalley-2026-12-31",
@@ -6494,6 +6567,30 @@
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.blueticket.com.br/evento/42001/almanac-reveillon-2027-club-vibe).",
       "checked_at": "2026-11-18"
+    },
+    {
+      "id": "d-edge-sao-paulo-2026-12-31",
+      "date": "2026-12-31",
+      "venue": "D-EDGE São Paulo",
+      "name": "Réveillon D-EDGE SP",
+      "lineup": [
+        "Indira Paganotto",
+        "Adnan Sharif",
+        "Anas.tacia",
+        "Anderson Noise",
+        "BAPP",
+        "Bllack Rose",
+        "Betriza",
+        "Murphy",
+        "Lu.cian",
+        "Mary Gripa",
+        "Miracle",
+        "Miss Belini",
+        "Vinter"
+      ],
+      "source": "Ingresse, página do evento: flyer oficial \"NYE 31/12\" com Indira Paganotto + 12 nomes (A-Z), das 22h às 12h; Bllack Rose b2b Betriza separados (https://www.ingresse.com/d-edge-sp-reveillon-2026-2027/).",
+      "checked_at": "2026-11-23",
+      "photo": "/assets/djs/bapp.webp"
     },
     {
       "id": "terraza-2027-01-01",
@@ -6575,6 +6672,18 @@
       "photo": "/assets/album/fotos/marco-carola.webp"
     },
     {
+      "id": "surreal-park-2027-01-08",
+      "date": "2027-01-08",
+      "venue": "Surreal Park",
+      "name": "Indira Paganotto",
+      "lineup": [
+        "Indira Paganotto",
+        "HNGT"
+      ],
+      "source": "Ingresse, página 08.JAN SURREAL PARK RITUAL (Indira Paganotto, HNGT +++); posts do @surreal.park de 21 e 22/11 (https://www.ingresse.com/08-jan-surreal-park-ritual/).",
+      "checked_at": "2026-11-23"
+    },
+    {
       "id": "greenvalley-2027-01-09",
       "date": "2027-01-09",
       "venue": "Greenvalley",
@@ -6604,10 +6713,13 @@
       "venue": "Terraza Music Park",
       "name": "INFNTY Festival",
       "lineup": [
+        "Bob Moses",
+        "Clüb De Combat",
+        "Philou",
         "Ricardo Lin"
       ],
       "source": "Blueticket, página do evento (vendas abertas; line-up ainda não divulgado na página, mantido o que já estava no site) (https://www.blueticket.com.br/evento/42115/infnty-festival).",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-23"
     },
     {
       "id": "p12-2027-01-15",
@@ -6636,6 +6748,20 @@
       "photo": "/assets/album/fotos/hernan-cattaneo.webp"
     },
     {
+      "id": "terraza-2027-01-22",
+      "date": "2027-01-22",
+      "venue": "Terraza Music Park",
+      "name": "Sasha",
+      "lineup": [
+        "Sasha",
+        "Ricardo Lin",
+        "Nihanna"
+      ],
+      "source": "Instagram oficial @terrazamusicpark (post do anúncio com os 3 DJs) e flyer da Blueticket com os mesmos nomes (https://www.instagram.com/terrazamusicpark/p/Df5OGJZvXma/).",
+      "checked_at": "2026-11-23",
+      "photo": "/assets/djs/sasha.webp"
+    },
+    {
       "id": "p12-2027-01-23",
       "date": "2027-01-23",
       "venue": "P12",
@@ -6647,6 +6773,29 @@
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/meet-day-sebastien-leger-p12-jurere).",
       "checked_at": "2026-11-18"
+    },
+    {
+      "id": "park-art-2027-01-23",
+      "date": "2027-01-23",
+      "venue": "Park Art",
+      "name": "Summer Festival",
+      "lineup": [
+        "Balanka",
+        "Devochka",
+        "Groove Delight",
+        "Gustavo Mota",
+        "Holt 88",
+        "Inndrive",
+        "InntRaw",
+        "Lemex",
+        "Rocksted",
+        "Sharam Jey",
+        "Tim Baresko",
+        "Visage"
+      ],
+      "source": "Instagram oficial @summerfestival.art (flyer 'line A-Z' em resolução legível, 12 nomes) e posts de confirmação de Sharam Jey, Devochka, Gustavo Mota, Tim Baresko e Groove Delight; ingresso no Ingresso Nacional (https://www.instagram.com/summerfestival.art/p/DfATNP2nK4N/).",
+      "checked_at": "2026-11-23",
+      "photo": "/assets/djs/devochka.webp"
     },
     {
       "id": "p12-2027-01-29",
