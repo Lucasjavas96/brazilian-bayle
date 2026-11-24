@@ -950,8 +950,9 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   const ctx = canvas.getContext('2d');
   const hint3d = dialog.querySelector('.bayle-3d-hint');
   const loading3d = dialog.querySelector('.bayle-3d-loading');
-  let id = '', title = '';
+  let id = '', title = '', flipTimer;
   const showPhoto = view => {
+    clearTimeout(flipTimer);
     threeD.stop();
     panel3d.hidden = true; stage.classList.remove('is-3d'); image.hidden = false;
     const next = '/assets/shop/bayle/' + id + '-' + view + '.webp' + (view === 'costas' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
@@ -1001,6 +1002,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     return { load, stop: () => cancelAnimationFrame(anim) };
   })();
   const showThreeD = () => {
+    clearTimeout(flipTimer);
     clearTimeout(autoFlipTimer);
     tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === '3d')));
     image.hidden = true; panel3d.hidden = false; stage.classList.add('is-3d');
@@ -1016,9 +1018,12 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     tab3d.hidden = !(stage.dataset.frames && stage.dataset.path);
     showPhoto('frente');
     dialog.showModal();
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      flipTimer = setTimeout(() => { if (dialog.open) showPhoto('costas'); }, 1300);
+    }
   };
   const close = () => dialog.close();
-  dialog.addEventListener('close', () => threeD.stop());
+  dialog.addEventListener('close', () => { clearTimeout(flipTimer); threeD.stop(); });
   document.querySelectorAll('[data-bayle-preview]').forEach(button => button.addEventListener('click', () => open(button)));
   tabs.forEach(button => button.addEventListener('click', () => {
     const view = button.dataset.bayleView;
