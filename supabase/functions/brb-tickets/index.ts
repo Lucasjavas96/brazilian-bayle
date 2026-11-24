@@ -131,16 +131,17 @@ async function sendQueuedMail() {
     auth: { user: env('BRB_SMTP_USER'), pass: env('BRB_SMTP_PASSWORD') } });
   for (const message of messages) {
     const link = 'https://brazilianbayle.com.br/intermediacao?pedido=' + message.request_id;
+    const overdue = message.stage === 'transferencia_atrasada';
     const stage = stages[message.stage];
     const buttonLabel = message.stage === "pagamento_confirmado" && message.role === "seller"
       ? "Anexar comprovante e informar Pix" : "Acompanhar pedido";
-    const text = (stage ? stage[message.role as 'buyer' | 'seller'] : null)?.replace('{email}', message.delivery_email || '')
+    const text = overdue ? 'Intermediação não realizada: passaram 24 horas desde o pagamento e o vendedor ainda não registrou o envio.' : (stage ? stage[message.role as 'buyer' | 'seller'] : null)?.replace('{email}', message.delivery_email || '')
       || 'Seu pedido de intermediação foi atualizado.';
     try {
       await transport.sendMail({
         from: { name: 'Brazilian Bayle', address: env('BRB_SMTP_USER') }, to: message.email,
         messageId: '<ticket-' + message.id + '@brazilianbayle.com.br>',
-        subject: 'Seu ingresso · ' + message.event,
+        subject: (overdue ? 'Alerta de intermediação · ' : 'Seu ingresso · ') + message.event,
         text: `${message.event}\n\n${text}\n\nPedido ${message.request_id}\n${link}\n\nSuporte: contato@brazilianbayle.com.br`,
         html: `<div style="background:#050505;color:#f6f4ef;padding:36px;font:16px/1.6 Arial,sans-serif"><img src="https://brazilianbayle.com.br/assets/logo-email.png" alt="Brazilian Bayle" width="160"><h1 style="color:#d2b375;font-size:28px">Seu ingresso. Cada etapa por aqui.</h1><h2>${escape(message.event)}</h2><p>${escape(text)}</p><p>Pedido ${escape(message.request_id.slice(0, 8))}</p><a href="${link}" style="display:inline-block;background:#d2b375;color:#050505;padding:14px 24px;border-radius:28px;text-decoration:none">${buttonLabel}</a><p style="font-size:13px;color:#c4bdaf">Confirme pagamentos e etapas dentro do site. A equipe nunca solicita sua senha ou código de acesso.</p></div>`,
       });
@@ -161,6 +162,16 @@ Deno.serve(async request => {
   try {
     if (route === 'worker') {
       if (request.method !== 'POST' || !env('BRB_TICKET_WORKER_TOKEN') || request.headers.get('authorization') !== 'Bearer ' + env('BRB_TICKET_WORKER_TOKEN')) return reply({}, 401);
+      const pending = await rpc('ticket_maintenance');
+      for (const payment of pending) {
+        if (payment.mode !== mode()) continue;
+        try {
+          const order = await provider('/' + encodeURIComponent(payment.provider_id));
+          const context = await rpc('context', { id: payment.request_id, actor: null, webhook: true });
+          await reconcile(order, context);
+        } catch { console.error('ticket_reconcile_failed', payment.request_id); }
+      }
+      await rpc('ticket_maintenance');
       await sendQueuedMail();
       await sendQueuedAfterMail();
       return reply({ processed: true });
