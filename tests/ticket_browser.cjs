@@ -19,15 +19,17 @@ async function run() {
       await page.route('**/backend.js*', route => route.fulfill({ contentType: 'text/javascript', body: `
         const order={id:'${orderId}',status:'solicitada',event:'Festa de teste',venue:'Casa de teste',type:'Pista',price:100,role:'buyer',evidence:[]};
         window.BRB={auth:{getSession:async()=>({data:{session:{user:{id:'test'},access_token:'test'}}}),getUser:async()=>({data:{user:{id:'test'}}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}})},
-          ticketJourney:async(action,payload)=>{if(action==="contact")order.buyer_phone=payload.phone;return [order]},tickets:async()=>({listings:[],requests:[]}),content:async()=>({}),points:async()=>({}),interest:async()=>({}),
+          ticketJourney:async(action,payload)=>{if(action==="contact")order.buyer_phone=payload.phone;if(action==="delivery_email")order.delivery_email=payload.delivery_email;return [order]},tickets:async()=>({listings:[],requests:[]}),content:async()=>({}),points:async()=>({}),interest:async()=>({}),
           ticketPayment:async(route)=>route==='config'?{enabled:true}:{status:'pending',qr_code:'TEST_PIX_COPY_CODE'},
         };` }));
       await page.goto('https://brazilianbayle.com.br/intermediacao?pedido=' + orderId);
       await page.getByRole('heading', { name: 'Festa de teste' }).waitFor();
       assert(await page.locator('.ticket-totals').innerText().then(text => text.includes('110,00')));
       assert.equal(await page.getByRole('button', { name: 'Pagar com Pix' }).count(), 0);
+      await page.locator('#ticketDeliveryEmail').fill('teste@example.com');
+      assert(await page.locator('#ticketDeliveryEmail').evaluate(e=>e.getBoundingClientRect().width>250));
       await page.locator('#ticketPhone').fill('(11) 99999-9999');
-      await page.getByRole('button', { name: 'Salvar celular' }).click();
+      await page.getByRole('button', { name: 'Continuar', exact: true }).click();
       await page.getByRole('button', { name: 'Pagar com Pix' }).click();
       await page.getByRole('alert').filter({hasText:'aceite os termos'}).waitFor();
       await page.locator('#ticketPaymentConsent').check();

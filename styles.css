@@ -3941,3 +3941,8 @@ a.ticket-card:hover{border-color:#c9a45c88}
 .afx-fader{position:absolute;inset:0;z-index:3;pointer-events:none;transform:translateX(-101%)}
 .motion-on #afApp .af-card{transform-style:preserve-3d;will-change:transform}
 #pdp[data-gallery-color]:not([data-gallery-color="preta"]) :is(.pdp-slide:not(.pdp-slide-main), .pdp-dots){display:none}
+/* Campos de compra ocupam a largura disponível no celular. */
+.ticket-actions .ticket-field{display:grid;width:100%;min-width:0}
+.ticket-actions .ticket-field :is(input[type=email],input[type=tel]){box-sizing:border-box;width:100%;min-width:0;min-height:54px;font-size:16px;padding:15px;border:1px solid #c9a45c80;border-radius:8px;background:#111;color:#f6f4ef}
+.ticket-checkout-step{color:#d2b375;font-weight:600}
+@media(max-width:600px){.ticket-field-row{flex-direction:column}.ticket-field-row input{width:100%;min-height:54px;font-size:16px}.ticket-actions{align-items:stretch}}
