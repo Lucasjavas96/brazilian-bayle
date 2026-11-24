@@ -968,7 +968,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   const showPhoto = async (view, { animate } = {}) => {
     clearTimeout(autoFlipTimer);
     panel3d.hidden = true; stage.classList.remove('is-3d'); image.hidden = false;
-    const next = '/assets/shop/bayle/' + id + '-' + view + '.webp';
+    const next = '/assets/shop/bayle/' + id + '-' + view + '.webp' + (view === 'costas' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
     tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === view)));
     if (image.src.endsWith(next)) return;
     image.alt = title + ': ' + (view === 'frente' ? 'vista de frente com o papagaio no peito' : 'vista de costas com a estampa');

@@ -461,7 +461,7 @@ const DJNAMES = (() => { const m = fs.readFileSync(path.join(ROOT, "app.js"), "u
 fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_DJNAMES="+JSON.stringify(DJNAMES)+";window.BRB_BR="+JSON.stringify([...new Set(DJLIST.filter(isBrazilian).map(d=>slugify(d.nome)))])+";window.BRB_PEDIA="+JSON.stringify([...new Set(DJLIST.filter(d=>!d.curitiba).map(d=>slugify(d.nome)))])+";window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";window.BRB_CLUBS="+JSON.stringify(readJson("clubes.json").clubes)+";window.BRB_TEMP="+JSON.stringify((({ clubs, festas }) => ({ clubs, festas }))(readJson("temperatura.json")))+";");
 // Content hashes prevent old CSS and card scripts being mixed after a deploy.
 const crypto = require('crypto');
-const versioned = ['styles.css','card-effects.js','app.js','support.js','session-menu.js','points-badge.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','djindex.js','moderation.js','temperatura.js','ingressos.js','events-2026.js','after-motion.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
+const versioned = ['styles.css','commerce.js','card-effects.js','app.js','support.js','session-menu.js','points-badge.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','djindex.js','moderation.js','temperatura.js','ingressos.js','events-2026.js','after-motion.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
 function versionHtml(dir) {
   for (const entry of fs.readdirSync(dir,{withFileTypes:true})) {
     const file = path.join(dir,entry.name);
@@ -469,6 +469,7 @@ function versionHtml(dir) {
     else if (entry.name.endsWith('.html')) {
       let html = fs.readFileSync(file,'utf8');
       for (const [asset,hash] of versioned) html = html.replaceAll(`/${asset}"`,`/${asset}?v=${hash}"`);
+      html = html.replace(/\/assets\/shop\/bayle\/(?:03-vintage-culture|08-grafite|09-nem-bateu)(?:-off-white)?-(?:costas|completo)\.webp(?=")/g, url => url + "?v=mockups-v2");
       fs.writeFileSync(file,html);
     }
   }
