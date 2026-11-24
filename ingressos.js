@@ -203,6 +203,17 @@
     const steps=['Reserva','Pagamento','Envio','Recebimento','Repasse'];
     const stage={solicitada:0,pagamento_confirmado:1,ingresso_transferido:2,recebimento_confirmado:3,concluida:4}[order.status];
     let actions='';
+    if (order.role === 'staff') {
+      actions += `<p>Celular do comprador: ${esc(order.buyer_phone || 'Não informado')}<br>Celular do vendedor: ${esc(order.seller_phone || 'Não informado')}<br>Chave Pix: ${esc(order.payout_pix_key ? order.payout_pix_type + ' · ' + order.payout_pix_key : 'Não informada')}</p>`;
+    }
+    if (order.role !== 'staff' && ['solicitada','pagamento_confirmado','ingresso_transferido','recebimento_confirmado','em_disputa'].includes(order.status)) {
+      const phone = order.role === 'buyer' ? order.buyer_phone : order.seller_phone;
+      actions += `<label class="ticket-field">Seu celular com DDD (para contato da equipe)<input id="ticketPhone" type="tel" autocomplete="tel" maxlength="22" value="${esc(phone || '')}"></label>` + button('contact','Salvar celular');
+    }
+    if (order.transfer_deadline && order.status === 'pagamento_confirmado') {
+      const deadline = new Date(order.transfer_deadline).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+      actions += `<p>Prazo para transferir o ingresso: <strong>${esc(deadline)}</strong> (horário de Brasília).</p>`;
+    }
     if (order.status==='solicitada' && order.role==='buyer') {
       const price = Math.round(Number(order.price) * 100);
       const fee = order.fee_cents ?? Math.round(price / 10);
@@ -210,8 +221,9 @@
       actions = `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
       actions += `<label class="ticket-field"><span>E-mail para receber o ingresso</span><div class="ticket-field-row"><input id="ticketDeliveryEmail" type="email" value="${esc(order.delivery_email || '')}"><button type="button" class="btn ticket-btn ticket-btn-secondary" data-ticket-action="delivery_email">Salvar</button></div></label>`;
       const payLabel = order.payment_status ? 'Consultar Pix' : 'Pagar com Pix';
-      actions+=config.enabled ? '<label class="ticket-consent"><input type="checkbox" id="ticketPaymentConsent"><span>Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>'+button('pay',payLabel,'primary') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
-      if (config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x','primary');
+      if (!order.buyer_phone) actions += '<p>Salve seu celular para continuar com o pagamento.</p>';
+      else actions+=config.enabled ? '<label class="ticket-consent"><input type="checkbox" id="ticketPaymentConsent"><span>Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>'+button('pay',payLabel,'primary') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
+      if (order.buyer_phone && config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x','primary');
       actions+=button('cancel','Cancelar reserva');
     }
     if (order.role === 'seller') {
@@ -222,7 +234,7 @@
     if (order.status==='pagamento_confirmado') {
       actions+='<p>'+(order.role==='seller'?'Transfira o ingresso pela plataforma oficial ao comprador. Depois, registre a transferência e anexe o comprovante.':'O pagamento foi confirmado. Aguarde a transferência do vendedor.')+'</p>';
       if (order.role==='seller') actions+='<p>Conta de destino da transferência <strong>'+esc(order.delivery_email)+'</strong></p>';
-      if (order.role==='seller') actions+='<label>Comprovante de transferência (PDF, PNG ou JPEG, até 5 MB)<input id="ticketEvidence" type="file" accept="application/pdf,image/png,image/jpeg"></label><label>Referência da transferência<textarea id="ticketReference" minlength="8" maxlength="1500" placeholder="Identificador e detalhes da transferência oficial"></textarea></label>'+button('sent','Registrar envio do ingresso');
+      if (order.role==='seller') actions+='<label>Tipo de chave Pix<select id="ticketPixType"><option value="">Selecione</option><option value="cpf">CPF</option><option value="cnpj">CNPJ</option><option value="telefone">Celular com +55</option><option value="email">E-mail</option><option value="aleatoria">Chave aleatória</option></select></label><label>Chave Pix para repasse<input id="ticketPixKey" type="text" maxlength="77"></label><label>Comprovante de transferência (PDF, PNG ou JPEG, até 5 MB)<input id="ticketEvidence" type="file" accept="application/pdf,image/png,image/jpeg"></label><label>Referência da transferência<textarea id="ticketReference" minlength="8" maxlength="1500" placeholder="Identificador e detalhes da transferência oficial"></textarea></label>'+button('sent','Registrar envio do ingresso');
     }
     if (order.status==='ingresso_transferido' && order.role==='buyer') actions+='<p>Confira se o ingresso aparece na sua conta na plataforma oficial. Ao confirmar, a equipe poderá prosseguir com o repasse.</p><label class="ticket-consent"><input type="checkbox" id="ticketReceived"><span>Conferi o ingresso na plataforma oficial e confirmo o recebimento.</span></label>'+button('received','Confirmar recebimento');
     if (['pagamento_confirmado','ingresso_transferido','recebimento_confirmado'].includes(order.status)) actions+='<details><summary>Tenho um problema com este pedido</summary><label>Descreva o que aconteceu<textarea id="ticketDispute" minlength="8" maxlength="1500"></textarea></label>'+button('disputed','Abrir ocorrência')+'</details>';
@@ -308,7 +320,14 @@
       else if(action==='refresh') { await BRB.ticketPayment('status',{id:order.id});await load(); }
       else {
         const payload={id:order.id};
+        if (action === 'contact' || action === 'sent') {
+          payload.phone = document.getElementById('ticketPhone').value.trim().replace(/[\s().-]/g, '');
+          if (!/^\+?[0-9]{10,15}$/.test(payload.phone)) throw new Error('Informe seu celular com DDD.');
+        }
         if(action==='sent') {
+          payload.pix_type = document.getElementById('ticketPixType').value;
+          payload.pix_key = document.getElementById('ticketPixKey').value.trim();
+          if (!payload.pix_type || !payload.pix_key) throw new Error('Informe o tipo e a chave Pix para o repasse.');
           const file=document.getElementById('ticketEvidence').files[0];
           if(!file||file.size>5242880)throw new Error('Anexe um comprovante de até 5 MB.');
           payload.reference=document.getElementById('ticketReference').value.trim();
