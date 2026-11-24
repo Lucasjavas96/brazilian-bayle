@@ -80,7 +80,15 @@
   const buyButtons=[...form.querySelectorAll('button[type=submit]'),el('pdpBarBuy')];
   const selected=()=>({color:form.elements.color.value||'preta',size:form.elements.size.value||''});
   const syncUrl=()=>{const {color,size}=selected(),url=new URL(location.href);url.searchParams.set('cor',color);size?url.searchParams.set('tamanho',size):url.searchParams.delete('tamanho');history.replaceState(history.state,'',url);};
-  const showColor=()=>{const {color}=selected();el('pdpColorName').value=colors[color];back.src=variantPhoto(id,color);back.alt='Camiseta '+name+' '+colors[color].toLowerCase()+', vista de costas';};
+  const showColor=()=>{
+   const {color}=selected();
+   el('pdpColorName').value=colors[color];
+   back.src=variantPhoto(id,color);
+   back.alt='Camiseta '+name+' '+colors[color].toLowerCase()+', vista de costas';
+   pdp.dataset.galleryColor=color;
+   const video=pdp.querySelector('.pdp-slides video');
+   if(color!=='preta') video?.pause();
+  };
   const params=new URLSearchParams(location.search);
   if(Object.hasOwn(colors,params.get('cor')))form.elements.color.value=params.get('cor');
   if(['P','M','G','GG','XG'].includes(params.get('tamanho')))form.elements.size.value=params.get('tamanho');

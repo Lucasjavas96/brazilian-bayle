@@ -55,7 +55,7 @@ function body(p, all) {
 <li class="pdp-slide pdp-slide-wide"><img src="${shot(p.id, "completo")}" alt="Camiseta ${esc(p.name)} preta, frente e costas lado a lado" width="1536" height="1024" loading="lazy"></li>
 </ul>
 <p class="pdp-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></p>
-<p class="pdp-mock">Imagens ilustrativas. Frente e vídeo mostram a cor preta.</p>
+<p class="pdp-mock">Mockup ilustrativo da cor selecionada.</p>
 </section>
 <section class="pdp-buy" aria-labelledby="pdpTitle">
 <p class="pdp-kicker">Camiseta oversized · Coleção própria</p>
