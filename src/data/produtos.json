@@ -54,5 +54,23 @@
     "lede": "Uma frase em loop, como o set que não acaba.",
     "story": "KEEP FOLLOWING repetido cinco vezes, como um loop, até cair em THE Bayle em dourado. Na frente, só o papagaio verde no peito.",
     "art": "Keep Following repetido em loop e Bayle em dourado"
+  },
+  {
+    "id": "08-grafite",
+    "slug": "camiseta-grafite",
+    "name": "Grafite",
+    "art": "Composição de letras sobrepostas com assinatura dourada.",
+    "lede": "Camiseta oversized com estampa nas costas.",
+    "story": "Composição de letras sobrepostas com assinatura dourada.",
+    "noVideo": true
+  },
+  {
+    "id": "09-nem-bateu",
+    "slug": "camiseta-nem-bateu",
+    "name": "Nem Bateu",
+    "art": "Cachorro ilustrado em degradê verde e azul.",
+    "lede": "Camiseta oversized com estampa nas costas.",
+    "story": "Cachorro ilustrado em degradê verde e azul.",
+    "noVideo": true
   }
 ]
