@@ -19,16 +19,19 @@ async function run() {
       await page.route('**/backend.js*', route => route.fulfill({ contentType: 'text/javascript', body: `
         const order={id:'${orderId}',status:'solicitada',event:'Festa de teste',venue:'Casa de teste',type:'Pista',price:100,role:'buyer',evidence:[]};
         window.BRB={auth:{getSession:async()=>({data:{session:{user:{id:'test'},access_token:'test'}}}),getUser:async()=>({data:{user:{id:'test'}}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}})},
-          ticketJourney:async()=>[order],tickets:async()=>({listings:[],requests:[]}),content:async()=>({}),points:async()=>({}),interest:async()=>({}),
+          ticketJourney:async(action,payload)=>{if(action==="contact")order.buyer_phone=payload.phone;return [order]},tickets:async()=>({listings:[],requests:[]}),content:async()=>({}),points:async()=>({}),interest:async()=>({}),
           ticketPayment:async(route)=>route==='config'?{enabled:true}:{status:'pending',qr_code:'TEST_PIX_COPY_CODE'},
         };` }));
       await page.goto('https://brazilianbayle.com.br/intermediacao?pedido=' + orderId);
       await page.getByRole('heading', { name: 'Festa de teste' }).waitFor();
       assert(await page.locator('.ticket-totals').innerText().then(text => text.includes('110,00')));
-      await page.getByRole('button', { name: 'Gerar ou consultar Pix' }).click();
+      assert.equal(await page.getByRole('button', { name: 'Pagar com Pix' }).count(), 0);
+      await page.locator('#ticketPhone').fill('(11) 99999-9999');
+      await page.getByRole('button', { name: 'Salvar celular' }).click();
+      await page.getByRole('button', { name: 'Pagar com Pix' }).click();
       await page.getByRole('alert').filter({hasText:'aceite os termos'}).waitFor();
       await page.locator('#ticketPaymentConsent').check();
-      await page.getByRole('button', { name: 'Gerar ou consultar Pix' }).click();
+      await page.getByRole('button', { name: 'Pagar com Pix' }).click();
       await page.getByLabel('Pix copia e cola').waitFor();
       assert.equal(await page.getByLabel('Pix copia e cola').inputValue(), 'TEST_PIX_COPY_CODE');
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Horizontal overflow');

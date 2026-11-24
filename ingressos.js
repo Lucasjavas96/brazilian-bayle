@@ -218,7 +218,7 @@
       const price = Math.round(Number(order.price) * 100);
       const fee = order.fee_cents ?? Math.round(price / 10);
       const total = order.amount_cents ?? price + fee;
-      actions = `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
+      actions += `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
       actions += `<label class="ticket-field"><span>E-mail para receber o ingresso</span><div class="ticket-field-row"><input id="ticketDeliveryEmail" type="email" value="${esc(order.delivery_email || '')}"><button type="button" class="btn ticket-btn ticket-btn-secondary" data-ticket-action="delivery_email">Salvar</button></div></label>`;
       const payLabel = order.payment_status ? 'Consultar Pix' : 'Pagar com Pix';
       if (!order.buyer_phone) actions += '<p>Salve seu celular para continuar com o pagamento.</p>';
