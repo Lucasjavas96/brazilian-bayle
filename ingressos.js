@@ -184,7 +184,7 @@
         return href ? `<a class="ticket-card" href="${href}">${inner}</a>` : `<div class="ticket-card">${inner}</div>`;
       };
       const sellingCards = [
-        ...activeListings.map(listing => card(eventName(listing.event), listing.type + ' · ' + money(Math.round(Number(listing.price) * 100)), 'ativo')),
+        ...activeListings.map(listing => card(eventName(listing.event), listing.type + ' · ' + money(Math.round(Number(listing.price) * 100)), 'ativo').replace(/<\/div>$/, '<button type="button" class="btn" data-cancel-listing="' + esc(listing.id) + '">Cancelar anúncio</button></div>')),
         ...sellerOrders.map(order => card(order.event, order.type + ' · ' + money(Math.round(Number(order.price) * 100)), order.status, '/intermediacao?pedido=' + encodeURIComponent(order.id))),
       ].join('') || '<p class="ticket-empty">Nenhum ingresso anunciado ainda.</p>';
       const buyingCards = buyerOrders.map(order => card(order.event, order.type + ' · ' + money(Math.round(Number(order.price) * 100)), order.status, '/intermediacao?pedido=' + encodeURIComponent(order.id))).join('') || '<p class="ticket-empty">Você ainda não comprou nenhum ingresso.</p>';
@@ -192,6 +192,17 @@
         '<div class="account-tabs ticket-tabs"><button type="button" data-tab="sell" aria-pressed="true">Anunciados</button><button type="button" data-tab="buy" aria-pressed="false">Comprados</button></div>' +
         '<div class="ticket-tab-panel" data-panel="sell">' + sellingCards + '</div>' +
         '<div class="ticket-tab-panel" data-panel="buy" hidden>' + buyingCards + '</div>';
+      panel.querySelectorAll('[data-cancel-listing]').forEach(button => button.addEventListener('click', async () => {
+        if (!window.confirm('Cancelar este anúncio de ingresso?')) return;
+        button.disabled = true;
+        try {
+          await BRB.tickets('cancel', {id: button.dataset.cancelListing});
+          await load();
+        } catch (error) {
+          button.disabled = false;
+          window.alert(error.message);
+        }
+      }));
       panel.querySelectorAll('[data-tab]').forEach(btn => btn.addEventListener('click', () => {
         panel.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
         panel.querySelectorAll('[data-panel]').forEach(p => { p.hidden = p.dataset.panel !== btn.dataset.tab; });
