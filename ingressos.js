@@ -155,6 +155,7 @@
     if (!panel.hidden) panel.scrollIntoView({block:'start'});
   });
   if (selected) document.body.classList.add('ticket-detail');
+  let checkoutStep = 0;
   let orders = [], config = {enabled:false}, busy = false, currentPayment = null;
   const button = (action, text, kind = 'secondary') => `<button type="button" class="btn ticket-btn ticket-btn-${kind}" data-ticket-action="${action}">${text}</button>`;
   async function load(showLogin = false) {
@@ -217,7 +218,7 @@
     if (order.role === 'staff') {
       actions += `<p>Celular do comprador: ${esc(order.buyer_phone || 'Não informado')}<br>Celular do vendedor: ${esc(order.seller_phone || 'Não informado')}<br>Chave Pix: ${esc(order.payout_pix_key ? order.payout_pix_type + ' · ' + order.payout_pix_key : 'Não informada')}</p>`;
     }
-    if (order.role !== 'staff' && ['solicitada','pagamento_confirmado','ingresso_transferido','recebimento_confirmado','em_disputa'].includes(order.status)) {
+    if (!(order.role === 'buyer' && order.status === 'solicitada') && order.role !== 'staff' && ['solicitada','pagamento_confirmado','ingresso_transferido','recebimento_confirmado','em_disputa'].includes(order.status)) {
       const phone = order.role === 'buyer' ? order.buyer_phone : order.seller_phone;
       actions += `<label class="ticket-field">Seu celular com DDD (para contato da equipe)<input id="ticketPhone" type="tel" autocomplete="tel" maxlength="22" value="${esc(phone || '')}"></label>` + button('contact','Salvar celular');
     }
@@ -230,11 +231,22 @@
       const fee = order.fee_cents ?? Math.round(price / 10);
       const total = order.amount_cents ?? price + fee;
       actions += `<dl class="ticket-totals"><dt>Ingresso</dt><dd>${money(price)}</dd><dt>Taxa do comprador (10%)</dt><dd>${money(fee)}</dd><dt>Total a pagar</dt><dd>${money(total)}</dd></dl>`;
-      actions += `<label class="ticket-field"><span>E-mail para receber o ingresso</span><div class="ticket-field-row"><input id="ticketDeliveryEmail" type="email" value="${esc(order.delivery_email || '')}"><button type="button" class="btn ticket-btn ticket-btn-secondary" data-ticket-action="delivery_email">Salvar</button></div></label>`;
-      const payLabel = order.payment_status ? 'Consultar Pix' : 'Pagar com Pix';
-      if (!order.buyer_phone) actions += '<p>Salve seu celular para continuar com o pagamento.</p>';
-      else actions+=config.enabled ? '<label class="ticket-consent"><input type="checkbox" id="ticketPaymentConsent"><span>Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>'+button('pay',payLabel,'primary') : '<p>O Pix da intermediação está em preparação. Você pode acompanhar sua reserva por aqui.</p>';
-      if (order.buyer_phone && config.enabled && config.publicKey && !order.payment_status) actions += button('card','Cartão de crédito em até 10x','primary');
+      const step = order.payment_status ? 2 : checkoutStep;
+      actions += `<p class="ticket-checkout-step">Etapa ${step + 1} de 3 · ${['Seus dados','Forma de pagamento','Pagamento'][step]}</p>`;
+      if (step === 0) {
+        actions += `<label class="ticket-field" for="ticketDeliveryEmail">E-mail para receber o ingresso<input id="ticketDeliveryEmail" type="email" autocomplete="email" inputmode="email" required value="${esc(order.delivery_email || '')}"></label>
+          <label class="ticket-field" for="ticketPhone">Celular com DDD<input id="ticketPhone" type="tel" autocomplete="tel" inputmode="tel" maxlength="22" value="${esc(order.buyer_phone || '')}"></label>` + button('checkout_details','Continuar','primary');
+      } else {
+        actions += '<label class="ticket-consent"><input type="checkbox" id="ticketPaymentConsent"><span>Conferi o valor e a taxa. Aceito os <a href="/termos" target="_blank" rel="noopener">termos de uso</a> e a <a href="/privacidade" target="_blank" rel="noopener">política de privacidade</a>.</span></label>';
+        if (step === 1) {
+          actions += button('checkout_back','Voltar aos dados');
+          if (config.enabled) {
+            actions += button('pay','Pagar com Pix','primary');
+            if (config.publicKey) actions += button('card','Cartão de crédito em até 10x','primary');
+          } else actions += '<p>Pagamento em preparação. Sua reserva pode ser acompanhada por aqui.</p>';
+        } else if (!order.payment_status) actions += button('checkout_method','Trocar forma de pagamento');
+        else actions += button('pay','Consultar Pix','primary');
+      }
       actions+=button('cancel','Cancelar reserva');
     }
     if (order.role === 'seller') {
@@ -324,10 +336,27 @@
       if(target.dataset.evidence) {
         const result=await BRB.ticketPayment('evidence',{id:order.id,evidence_id:target.dataset.evidence});
         const link=document.createElement('a');link.href=result.url;link.target='_blank';link.rel='noopener';link.textContent='Abrir comprovante privado';error.replaceChildren(link);
+      } else if (action === 'checkout_details') {
+        const email = document.getElementById('ticketDeliveryEmail');
+        if (!email.reportValidity()) return;
+        const phone = document.getElementById('ticketPhone').value.trim().replace(/[\s().-]/g, '');
+        if (!/^\+?[0-9]{10,15}$/.test(phone)) throw new Error('Informe seu celular com DDD.');
+        await BRB.ticketJourney('delivery_email', {id: order.id, delivery_email: email.value.trim()});
+        await BRB.ticketJourney('contact', {id: order.id, phone});
+        checkoutStep = 1;
+        await load();
+      } else if (action === 'checkout_back' || action === 'checkout_method') {
+        if (cardController) { await cardController.unmount(); cardController = null; }
+        checkoutStep = action === 'checkout_back' ? 0 : 1;
+        await draw();
       } else if(action==='card') {
+        if (!document.getElementById('ticketPaymentConsent').checked) throw new Error('Confira o resumo e aceite os termos para continuar.');
+        checkoutStep = 2;
+        await draw();
+        document.getElementById('ticketPaymentConsent').checked = true;
         if(cardController) await cardController.unmount();
         await showCard(order);
-      } else if(action==='pay') { if(!document.getElementById('ticketPaymentConsent').checked)throw new Error('Confira o resumo e aceite os termos para gerar o Pix.');currentPayment=await BRB.ticketPayment('pay',{id:order.id,consent:true});await load(); }
+      } else if(action==='pay') { if(!document.getElementById('ticketPaymentConsent').checked)throw new Error('Confira o resumo e aceite os termos para gerar o Pix.');currentPayment=await BRB.ticketPayment('pay',{id:order.id,consent:true});checkoutStep=2;await load(); }
       else if(action==='refresh') { await BRB.ticketPayment('status',{id:order.id});await load(); }
       else {
         const payload={id:order.id};
