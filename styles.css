@@ -3577,3 +3577,5 @@ font-size:clamp(120px,22vw,340px);line-height:.8;letter-spacing:-.04em;color:tra
 .bayle-preview-stage:not(.is-3d){height:min(62dvh,620px);display:grid;place-items:center}
 .bayle-preview .bayle-preview-img{width:100%;height:100%;object-fit:contain}
 .bayle-preview .bayle-preview-close{color:inherit;border-color:#c9a45c}
+.bayle-preview{--gold:#c9a45c;--ink-soft:#f6f4ef}
+.bayle-preview-tabs{position:sticky;bottom:0;background:#151515;justify-content:center;z-index:1}
