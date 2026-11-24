@@ -4,7 +4,7 @@
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
  const CART='brb-cart-v1', ORDER='brb-checkout-order-v1', QUOTE='brb-quote-v1';
  const colors={preta:'Preta','off-white':'Off-white',cinza:'Cinza'};
- const variantPhoto=(id,color)=>'/assets/shop/bayle/'+id+(color==='cinza'||color==='off-white'?'-'+color:'')+'-costas.webp'+(color!=='cinza' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
+ const variantPhoto=(id,color)=>'/assets/shop/bayle/'+id+(color==='cinza'||color==='off-white'?'-'+color:'')+'-costas.webp'+(id==='08-grafite' && color==='off-white' ? '?v=grafite-ink-v3' : color!=='cinza' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
  /* Medidas da camiseta oversized (PR #11), exibidas na sacola e no checkout. */

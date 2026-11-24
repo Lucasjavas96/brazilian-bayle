@@ -950,34 +950,15 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   const ctx = canvas.getContext('2d');
   const hint3d = dialog.querySelector('.bayle-3d-hint');
   const loading3d = dialog.querySelector('.bayle-3d-loading');
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  /* A foto do card "vira" o zoom de frente e costas (View Transitions);
-     sem suporte ou com menos movimento, o modal só aparece com um fade curto. */
-  const SHIRT = 'bayle-shirt';
-  const DECODE_MAX_MS = 400;
-  const AUTO_FLIP_MS = 1400; // tempo mostrando a frente antes de virar sozinho para as costas
-  const canMorph = () => 'startViewTransition' in document && !reduceMotion;
-  let source = null, busy = false, id = '', title = '', autoFlipTimer = 0;
-  const morph = (from, to, change) => {
-    if (!canMorph() || !from || !to || busy) { change(); return; }
-    busy = true;
-    from.style.viewTransitionName = SHIRT;
-    const t = document.startViewTransition(() => { from.style.viewTransitionName = ''; to.style.viewTransitionName = SHIRT; change(); });
-    t.finished.finally(() => { to.style.viewTransitionName = ''; busy = false; });
-  };
-  const showPhoto = async (view, { animate } = {}) => {
-    clearTimeout(autoFlipTimer);
+  let id = '', title = '';
+  const showPhoto = view => {
+    threeD.stop();
     panel3d.hidden = true; stage.classList.remove('is-3d'); image.hidden = false;
     const next = '/assets/shop/bayle/' + id + '-' + view + '.webp' + (view === 'costas' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
     tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === view)));
     if (image.src.endsWith(next)) return;
     image.alt = title + ': ' + (view === 'frente' ? 'vista de frente com o papagaio no peito' : 'vista de costas com a estampa');
-    if (animate && canMorph() && !busy) {
-      busy = true;
-      image.style.viewTransitionName = SHIRT;
-      const t = document.startViewTransition(() => { image.src = next; });
-      t.finished.finally(() => { image.style.viewTransitionName = ''; busy = false; });
-    } else image.src = next;
+    image.src = next;
   };
   const threeD = (() => {
     let frames = [], total = 0, pathTpl = '', ready = false, loadedCount = 0;
@@ -1026,34 +1007,22 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     const frames = Number(stage.dataset.frames || 0), pathTpl = stage.dataset.path || '';
     if (frames && pathTpl) threeD.load(frames, pathTpl);
   };
-  const open = async button => {
-    if (busy || dialog.open) return;
-    source = button.closest('.shop-product')?.querySelector('.shop-photo') || button;
+  const open = button => {
+    if (dialog.open) return;
     id = button.dataset.baylePreview; title = button.dataset.bayleTitle;
     dialog.querySelector('h2').textContent = title;
-    const frames = Number(button.dataset.bayleGiroFrames || 0), pathTpl = button.dataset.bayleGiroPath || '';
-    stage.dataset.frames = frames; stage.dataset.path = pathTpl;
-    tab3d.hidden = !(frames && pathTpl);
-    image.hidden = false; panel3d.hidden = true; stage.classList.remove('is-3d');
-    image.alt = title + ': vista de frente com o papagaio no peito';
-    image.src = '/assets/shop/bayle/' + id + '-frente.webp';
-    tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === 'frente')));
-    await Promise.race([image.decode().catch(() => {}), new Promise(r => setTimeout(r, DECODE_MAX_MS))]);
-    morph(source, image, () => dialog.showModal());
-    /* Mostra a frente primeiro e vira sozinha para as costas, como quando se pega a peça na mão. */
-    if (!reduceMotion) autoFlipTimer = setTimeout(() => showPhoto('costas', { animate: true }), AUTO_FLIP_MS);
+    stage.dataset.frames = button.dataset.bayleGiroFrames || '';
+    stage.dataset.path = button.dataset.bayleGiroPath || '';
+    tab3d.hidden = !(stage.dataset.frames && stage.dataset.path);
+    showPhoto('frente');
+    dialog.showModal();
   };
-  const close = () => {
-    if (!dialog.open || busy) return;
-    clearTimeout(autoFlipTimer);
-    const target = source && source.isConnected ? source : null;
-    image.hidden = false; panel3d.hidden = true;
-    morph(image, target, () => dialog.close());
-  };
+  const close = () => dialog.close();
+  dialog.addEventListener('close', () => threeD.stop());
   document.querySelectorAll('[data-bayle-preview]').forEach(button => button.addEventListener('click', () => open(button)));
   tabs.forEach(button => button.addEventListener('click', () => {
     const view = button.dataset.bayleView;
-    if (view === '3d') showThreeD(); else showPhoto(view, { animate: true });
+    if (view === '3d') showThreeD(); else showPhoto(view);
   }));
   dialog.querySelector('.bayle-preview-close').addEventListener('click', close);
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
