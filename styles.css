@@ -3568,3 +3568,4 @@ font-size:clamp(120px,22vw,340px);line-height:.8;letter-spacing:-.04em;color:tra
 .afx-grain{position:absolute;inset:0;background:url(/assets/noise.png);opacity:.06;mix-blend-mode:screen}
 .afx-fader{position:absolute;inset:0;z-index:3;pointer-events:none;transform:translateX(-101%)}
 .motion-on #afApp .af-card{transform-style:preserve-3d;will-change:transform}
+#pdp[data-gallery-color]:not([data-gallery-color="preta"]) :is(.pdp-slide:not(.pdp-slide-main), .pdp-dots){display:none}
