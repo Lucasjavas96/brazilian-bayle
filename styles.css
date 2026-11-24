@@ -3311,7 +3311,7 @@ img.af-bph{object-fit:contain}
 .bayle-preview[open]{transform:none;transition:opacity .15s linear}
 @starting-style{.bayle-preview[open]{transform:none}}
 }
-.page-loja .outfit-shop button.shop-photo{aspect-ratio:1;background:#e3e3e3}
+.page-loja .outfit-shop button.shop-photo{aspect-ratio:4/5;background:#e3e3e3}
 .page-loja .outfit-shop .shop-photo .shop-photo-img{display:block;width:100%;height:100%;object-fit:contain;background:#e3e3e3;transition:transform .5s var(--ease-turn)}
 .page-loja .outfit-shop .shop-photo:is(:hover,:focus-visible) .shop-photo-img{transform:none}
 @media(prefers-reduced-motion:reduce){.page-loja .outfit-shop .shop-photo .shop-photo-img{transform:none!important;transition:none}}
