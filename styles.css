@@ -3312,8 +3312,8 @@ img.af-bph{object-fit:contain}
 @starting-style{.bayle-preview[open]{transform:none}}
 }
 .page-loja .outfit-shop button.shop-photo{aspect-ratio:1;background:#e3e3e3}
-.page-loja .outfit-shop .shop-photo .shop-photo-img{display:block;width:100%;height:100%;object-fit:cover;background:#e3e3e3;transition:transform .5s var(--ease-turn)}
-.page-loja .outfit-shop .shop-photo:is(:hover,:focus-visible) .shop-photo-img{transform:scale(1.03)}
+.page-loja .outfit-shop .shop-photo .shop-photo-img{display:block;width:100%;height:100%;object-fit:contain;background:#e3e3e3;transition:transform .5s var(--ease-turn)}
+.page-loja .outfit-shop .shop-photo:is(:hover,:focus-visible) .shop-photo-img{transform:none}
 @media(prefers-reduced-motion:reduce){.page-loja .outfit-shop .shop-photo .shop-photo-img{transform:none!important;transition:none}}
 .bayle-preview-stage{position:relative;text-align:center}
 .bayle-preview-img{display:block;width:auto;height:auto;max-width:100%;max-height:min(62vh,620px);margin:0 auto}
@@ -3399,7 +3399,7 @@ fieldset.commerce-fields legend+*{clear:both}
 .pdp-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(340px,.8fr);gap:clamp(28px,4vw,64px);align-items:start}
 .pdp-slides{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pdp-slide{background:var(--mock);aspect-ratio:3/4;overflow:hidden}
-.pdp-slide :is(img,video){display:block;width:100%;height:100%;object-fit:cover}
+.pdp-slide :is(img,video){display:block;width:100%;height:100%;object-fit:contain}
 .pdp-slide-wide{grid-column:span 2;aspect-ratio:3/2}
 .pdp-slide:has(video){grid-column:span 2;aspect-ratio:16/9}
 .pdp-slide video{object-fit:contain}
@@ -3468,7 +3468,7 @@ fieldset.commerce-fields legend+*{clear:both}
 .pdp-more{margin-top:72px}
 .pdp-more ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .pdp-more a{display:block;color:var(--ink);text-decoration:none}
-.pdp-more img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;background:var(--mock);transition:opacity .2s}
+.pdp-more img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:var(--mock);transition:opacity .2s}
 .pdp-more a:hover img{opacity:.85}
 .pdp-more span{display:block;margin-top:10px;font-size:14px;font-weight:600}
 .pdp-more small{display:block;margin-top:2px;font-size:13px;color:var(--ink-soft)}
