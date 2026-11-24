@@ -61,7 +61,7 @@ const stages: Record<string, { buyer: string; seller: string }> = {
   },
   pagamento_confirmado: {
     buyer: 'Pagamento confirmado. Aguarde o vendedor transferir o ingresso — você será avisado.',
-    seller: 'Recebemos o pagamento. Pode transferir o ingresso com segurança para {email}. Depois, acesse o site e anexe o comprovante da transferência.',
+    seller: 'Pagamento confirmado. Transfira o ingresso pela plataforma oficial para {email} em até 24 horas após a confirmação do pagamento. Depois, anexe o comprovante e informe sua chave Pix no pedido.',
   },
   ingresso_transferido: {
     buyer: 'O vendedor registrou a transferência. Confira o ingresso na plataforma oficial e confirme o recebimento no site.',
@@ -132,6 +132,8 @@ async function sendQueuedMail() {
   for (const message of messages) {
     const link = 'https://brazilianbayle.com.br/intermediacao?pedido=' + message.request_id;
     const stage = stages[message.stage];
+    const buttonLabel = message.stage === "pagamento_confirmado" && message.role === "seller"
+      ? "Anexar comprovante e informar Pix" : "Acompanhar pedido";
     const text = (stage ? stage[message.role as 'buyer' | 'seller'] : null)?.replace('{email}', message.delivery_email || '')
       || 'Seu pedido de intermediação foi atualizado.';
     try {
@@ -140,7 +142,7 @@ async function sendQueuedMail() {
         messageId: '<ticket-' + message.id + '@brazilianbayle.com.br>',
         subject: 'Seu ingresso · ' + message.event,
         text: `${message.event}\n\n${text}\n\nPedido ${message.request_id}\n${link}\n\nSuporte: contato@brazilianbayle.com.br`,
-        html: `<div style="background:#050505;color:#f6f4ef;padding:36px;font:16px/1.6 Arial,sans-serif"><img src="https://brazilianbayle.com.br/assets/logo-email.png" alt="Brazilian Bayle" width="160"><h1 style="color:#d2b375;font-size:28px">Seu ingresso. Cada etapa por aqui.</h1><h2>${escape(message.event)}</h2><p>${escape(text)}</p><p>Pedido ${escape(message.request_id.slice(0, 8))}</p><a href="${link}" style="display:inline-block;background:#d2b375;color:#050505;padding:14px 24px;border-radius:28px;text-decoration:none">Acompanhar pedido</a><p style="font-size:13px;color:#c4bdaf">Confirme pagamentos e etapas dentro do site. A equipe nunca solicita sua senha ou código de acesso.</p></div>`,
+        html: `<div style="background:#050505;color:#f6f4ef;padding:36px;font:16px/1.6 Arial,sans-serif"><img src="https://brazilianbayle.com.br/assets/logo-email.png" alt="Brazilian Bayle" width="160"><h1 style="color:#d2b375;font-size:28px">Seu ingresso. Cada etapa por aqui.</h1><h2>${escape(message.event)}</h2><p>${escape(text)}</p><p>Pedido ${escape(message.request_id.slice(0, 8))}</p><a href="${link}" style="display:inline-block;background:#d2b375;color:#050505;padding:14px 24px;border-radius:28px;text-decoration:none">${buttonLabel}</a><p style="font-size:13px;color:#c4bdaf">Confirme pagamentos e etapas dentro do site. A equipe nunca solicita sua senha ou código de acesso.</p></div>`,
       });
       await rpc('finish_mail', { mail_id: message.id });
     } catch { console.error('ticket_mail_delivery_failed', message.id); }

@@ -39,7 +39,7 @@ begin
  if (select status from brb_private.ticket_requests where id=rid)<>'pagamento_confirmado' then raise exception 'Webhook antigo reverteu pagamento';end if;
  perform set_config('request.jwt.claim.sub',seller::text,true);
  insert into storage.objects(bucket_id,name) values('brb-ticket-evidence',rid||'/'||seller||'/qa');
- perform public.brb_ticket_journey('sent',jsonb_build_object('id',rid,'reference','Transferência QA na plataforma oficial','object_path',rid||'/'||seller||'/qa'));
+ perform public.brb_ticket_journey('sent',jsonb_build_object('id',rid,'phone','11999999999','pix_type','email','pix_key','seller@example.test','reference','Transferência QA na plataforma oficial','object_path',rid||'/'||seller||'/qa'));
  perform set_config('request.jwt.claim.sub',buyer::text,true);
  perform public.brb_ticket_journey('received',jsonb_build_object('id',rid,'reference','Ingresso conferido na plataforma oficial'));
  select id into owner_id from auth.users where brb_private.is_owner(id) limit 1;
