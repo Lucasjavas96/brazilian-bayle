@@ -3608,7 +3608,7 @@ img.af-bph{object-fit:contain}
 @media(max-width:440px){.mbar .mbar-wordmark{height:30px}}
 
 /* Logo oficial na loja (prévia) */
-.hero-date .hero-date-logo{display:block;height:30px;width:auto;margin-top:4px}
+.hero-date .hero-date-logo{display:block;height:32px;width:auto;margin-top:2px}
 .outfit-brand .outfit-wordmark{width:auto;height:clamp(26px,3.2vw,38px);object-fit:contain}
 
 /* Logo oficial no topo da loja (no lugar do BR BAYLE em texto) */
