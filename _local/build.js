@@ -180,7 +180,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <script src="/backend.js" defer></script>
 <script src="/events-2026.js" defer></script>
 <script src="/app.js" defer></script>
-${["/loja","/sacola","/checkout"].includes(meta.path) || meta.nav === "produto" ? '<script src="/commerce.js" defer></script>' : ""}
+${["/loja","/loja-feminina","/sacola","/checkout"].includes(meta.path) || meta.nav === "produto" ? '<script src="/commerce.js" defer></script>' : ""}
 <script src="/media-guard.js" defer></script>
 <script src="/music.js" defer></script>
 <script src="/card-effects.js" defer></script>
