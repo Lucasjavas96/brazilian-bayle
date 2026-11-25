@@ -3553,8 +3553,8 @@ body.mm-lock{overflow:hidden}
 .outfit-intro-stack img:nth-child(1){--turn:-13deg}
 .outfit-intro-stack img:nth-child(2){--turn:2deg;animation-delay:.1s}
 .outfit-intro-stack img:nth-child(3){--turn:15deg;animation-delay:.2s}
-.outfit-intro .outfit-intro-logo{position:relative;width:min(78vw,620px);height:auto;filter:drop-shadow(0 2px 18px #000)}
-.outfit-intro span{position:absolute;left:calc(50% + min(37vw,310px));top:calc(50% - 83px);font:18px monospace}
+.outfit-intro .outfit-intro-logo{position:relative;width:min(66vw,520px);height:auto;filter:drop-shadow(0 2px 18px #000)}
+.outfit-intro span{position:absolute;left:calc(50% + min(33vw,260px));top:calc(50% - 83px);font:18px monospace}
 @keyframes outfit-intro-card{from{opacity:0;transform:translateY(45vh) rotate(-28deg) scale(.68)}to{opacity:1;transform:rotate(var(--turn))}}
 @keyframes outfit-intro-exit{from{clip-path:inset(0)}to{clip-path:inset(0 0 100%)}}
 .outfit-nav div{flex-wrap:wrap;justify-content:flex-end}
@@ -3618,7 +3618,7 @@ img.af-bph{object-fit:contain}
 /* Topo da loja: faixa compacta com o logo, para a vitrine aparecer logo de cara */
 .outfit-masthead.outfit-hero{padding:0 24px;overflow:hidden}
 .outfit-masthead.outfit-hero h1.outfit-logo-h1{position:relative;height:clamp(96px,15vh,150px);margin:0 0 8px;font-size:0;line-height:0;scale:1}
-.outfit-masthead.outfit-hero .outfit-logo{position:absolute;left:50%;top:50%;width:240px;max-width:70%;height:auto;transform:translateX(-50%);translate:0 -50%}
+.outfit-masthead.outfit-hero .outfit-logo{position:absolute;left:50%;top:50%;width:auto;height:min(110px,calc(100% - 14px));max-width:70%;object-fit:contain;transform:translateX(-50%);translate:0 -50%}
 /* Sacola e checkout Brazilian Bayle. */
 :is(.commerce-nav,.commerce-shell){--paper:#050505;--ink:#f6f4ef;--ink-soft:#bdb4a2;--gold:#d2b375}
 :is(.page-sacola,.page-checkout) :is(.side,.mbar,.ticker){display:none}
