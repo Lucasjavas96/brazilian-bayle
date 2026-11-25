@@ -1033,3 +1033,19 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
   dialog.addEventListener('click', event => { if (event.target === dialog) { const r=dialog.getBoundingClientRect(); if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom) close(); } });
 })();
+
+(() => {
+  const dialog = document.querySelector('.feminina-preview');
+  if (!dialog) return;
+  document.querySelectorAll('[data-feminina-image]').forEach(button => {
+    button.addEventListener('click', () => {
+      dialog.querySelector('h2').textContent = button.dataset.femininaTitle;
+      const image = dialog.querySelector('img');
+      image.src = button.dataset.femininaImage;
+      image.alt = 'Estampa ' + button.dataset.femininaTitle + ' nas costas da camiseta feminina';
+      dialog.showModal();
+    });
+  });
+  dialog.querySelector('.feminina-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+})();
