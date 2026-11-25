@@ -3599,3 +3599,9 @@ font-size:clamp(120px,22vw,340px);line-height:.8;letter-spacing:-.04em;color:tra
 .feminina-card button{aspect-ratio:4/5;background:#e3e3e3}
 .feminina-card img{width:100%;height:100%;object-fit:contain}
 @media(max-width:767px){.page-loja .feminina-catalog{padding-inline:14px}.feminina-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 12px}.shop-collection-tabs{padding:16px 14px}.shop-collection-tabs a{min-width:0;flex:1;max-width:200px}}
+.page-loja .feminina-card>button{border-radius:0!important;aspect-ratio:4/5;width:100%;padding:0;box-shadow:none;transform:none}
+.page-loja .feminina-card>button img{border-radius:0;width:100%;height:100%;object-fit:contain}
+.page-loja .feminina-card>button span{left:14px;right:14px;text-align:center}
+.page-loja .feminina-card .shop-buy button{width:100%;min-height:44px;cursor:pointer;aspect-ratio:auto;background:#c9a45c;color:#050505;border-radius:30px}
+.page-loja .feminina-card .shop-product-category{color:#d2b375;font-size:12px;text-transform:uppercase;margin:5px 0 20px}
+.page-loja .feminina-card .shop-sizes{font-size:13px;margin:0 0 26px}
