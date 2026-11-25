@@ -70,9 +70,10 @@ ${meta.path === "/" ? '<meta name="facebook-domain-verification" content="a76rwo
 <link rel="canonical" href="${url}">
 ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <meta name="theme-color" content="#FFD400">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png?v=2">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
 <meta property="og:type" content="${meta.ogType || "website"}">
 <meta property="og:site_name" content="Brazilian Bayle">
 <meta property="og:locale" content="pt_BR">
@@ -423,6 +424,7 @@ fs.copyFileSync(path.join(ROOT, "moderacao.css"), path.join(OUT, "moderacao.css"
 // Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
 fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
 for (const f of ["index.html", "quiz.css", "quiz.js", "trilha1.json", "extra.css", "extra.js"]) fs.copyFileSync(path.join(ROOT, "quiz-src", f), path.join(OUT, "quiz", f));
+fs.copyFileSync(path.join(ROOT, "assets", "favicon.ico"), path.join(OUT, "favicon.ico"));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
