@@ -1,3 +1,4 @@
+import {reportPurchase} from './meta.ts';
 import {melhorEnvioConfig,quoteMelhorEnvio} from './melhor-envio.ts';
 import {InputError,UUID,priceCart,customerData,mpPayload,publicOrder,sha,validSignature} from './core.ts';
 const env=(key:string)=>Deno.env.get(key)||'';
@@ -16,11 +17,17 @@ async function verifiedProvider(provider:any,order:any){
  if(!seller || String(provider.user_id)!==seller || provider.external_reference!==order.id || provider.currency!=='BRL' || Math.round(Number(provider.total_amount)*100)!==order.total_cents || order.mode!==mode() || typeof provider.live_mode==='boolean' && provider.live_mode!==(mode()==='production'))throw new InputError('Não foi possível confirmar este pagamento.',409);
  return publicOrder(provider);
 }
-async function reconcile(provider:any,order:any,attempt:any){
+async function reconcile(provider:any,order:any,attempt:any,webhook=false){
  const result=await verifiedProvider(provider,order);
  await db('brb_shop_attempts?id=eq.'+attempt.id,'PATCH',{provider_id:provider.id,status:result.status,result,updated_at:new Date().toISOString()});
  // Payment is confirmed only from a verified provider response, never the return URL.
- if(result.status==='paid')await db('brb_shop_orders?id=eq.'+order.id,'PATCH',{status:'paid'});
+ if(result.status==='paid'){
+  await db('brb_shop_orders?id=eq.'+order.id,'PATCH',{status:'paid'});
+  const deliver=async()=>{
+   if(await reportPurchase(order,env('BRB_META_CAPI_TOKEN')))await db('brb_shop_orders?id=eq.'+order.id,'PATCH',{meta_purchase_sent_at:new Date().toISOString()});
+  };
+  if(webhook)await deliver();else EdgeRuntime.waitUntil(deliver().catch(()=>console.error('brb_meta_purchase_pending')));
+ }
  return result;
 }
 async function bodyOf(req:Request){if(!req.headers.get('content-type')?.includes('application/json'))throw new InputError('Formato inválido.',415);const raw=await req.text();if(raw.length>16000)throw new InputError('Pedido muito grande.',413);try{return JSON.parse(raw)}catch{throw new InputError('Pedido inválido.')}}
@@ -38,7 +45,7 @@ Deno.serve(async req=>{
    if(!/^[A-Za-z0-9_-]{1,100}$/.test(dataId)||!await validSignature(env('BRB_MP_WEBHOOK_SECRET'),req.headers.get('x-signature')||'',req.headers.get('x-request-id')||'',dataId))return reply({},401);
    const process=async()=>{
     const result=await mp('/'+encodeURIComponent(dataId));
-    if(!result.ok)return;
+    if(!result.ok)throw new Error('provider_lookup_failed');
     const [order]=await db('brb_shop_orders?id=eq.'+result.data.external_reference);
     if(!order){
      // Shared Mercado Pago application: ticket orders have their own receiver.
@@ -49,10 +56,10 @@ Deno.serve(async req=>{
      return;
     }
     const attempts=await db('brb_shop_attempts?order_id=eq.'+order.id+'&order=created_at.desc&limit=1');
-    if(attempts[0])await reconcile(result.data,order,attempts[0]);
+    if(attempts[0])await reconcile(result.data,order,attempts[0],true);
    };
    // Status lookup also reconciles: an interrupted webhook cannot manufacture a paid order.
-   EdgeRuntime.waitUntil(process().catch(()=>console.error('brb_checkout_webhook_reconcile_failed')));return reply({received:true});
+   await process();return reply({received:true});
   }
   if(!origins.has(origin))return reply({error:'Origem não permitida.'},403);
   if(req.method==='OPTIONS')return new Response(null,{status:204,headers});
@@ -88,7 +95,7 @@ Deno.serve(async req=>{
    if(existing[0]){if(existing[0].secret_hash!==secret_hash)throw new InputError('Pedido inválido.',409);return reply({order_id:existing[0].id,total_cents:existing[0].total_cents,status:existing[0].status});}
    const ip=req.headers.get('x-forwarded-for')?.split(',')[0].trim()||'unknown';const ip_hash=await sha(ip+env('BRB_CHECKOUT_IP_SALT'));
    const recent=await db('brb_shop_orders?select=id&ip_hash=eq.'+ip_hash+'&created_at=gt.'+new Date(Date.now()-3600000).toISOString());if(recent.length>=10)throw new InputError('Aguarde antes de criar outro pedido.',429);
-   const [order]=await db('brb_shop_orders','POST',{id:body.request_id,secret_hash,customer,items:priced.lines,subtotal_cents:priced.subtotal_cents,shipping_cents:priced.shipping_cents,shipping_service:shipping.service,total_cents:priced.total_cents,mode:mode(),ip_hash});
+   const [order]=await db('brb_shop_orders','POST',{id:body.request_id,secret_hash,customer,meta_browser_agent:body.meta_consent===true ? req.headers.get('user-agent')?.slice(0,500) : null,items:priced.lines,subtotal_cents:priced.subtotal_cents,shipping_cents:priced.shipping_cents,shipping_service:shipping.service,total_cents:priced.total_cents,mode:mode(),ip_hash});
    return reply({order_id:order.id,total_cents:order.total_cents,status:order.status},201);
   }
   if(route==='pay'){

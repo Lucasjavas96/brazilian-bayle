@@ -50,9 +50,11 @@ const WEBSITE = {
   publisher: { "@type": "Organization", name: "Brazilian Bayle" },
 };
 
+const CLARITY_TAG = "<script type=\"text/javascript\">(function(c,l,a,r,i,t,y){\n    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n    t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\n})(window, document, \"clarity\", \"script\", \"zjw9clb29l\");</script>";
+
 function layout(meta, body) {
-  if (meta.nav === 'moderacao') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Moderação · Brazilian Bayle</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#1c2430"><link rel="icon" href="/assets/favicon-32.png"><link rel="stylesheet" href="/moderacao.css"></head><body>${body.trim()}<script src="/assets/vendor/supabase-2.49.8.js"></script><script src="/backend-config.js"></script><script src="/backend.js"></script><script src="/events-2026.js"></script><script src="/moderation.js"></script></body></html>`;
-  if (meta.nav === 'links') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Links oficiais · Brazilian Bayle</title><meta name="description" content="${esc(meta.description)}"><link rel="canonical" href="${SITE}/links"><meta name="theme-color" content="#080908"><meta property="og:type" content="website"><meta property="og:title" content="Brazilian Bayle · Links oficiais"><meta property="og:description" content="${esc(meta.description)}"><meta property="og:url" content="${SITE}/links"><meta property="og:image" content="${SITE}/assets/og-brazilian-v3.jpg"><link rel="icon" href="/assets/favicon-32.png"><link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/hero-dj-poster-800.webp" as="image"><link rel="stylesheet" href="/styles.css"></head><body class="page-links"><a class="skip" href="#conteudo">Pular para os links</a>${body.trim()}<script src="/media-guard.js" defer></script></body></html>`;
+  if (meta.nav === 'moderacao') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Moderação · Brazilian Bayle</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#1c2430"><link rel="icon" href="/assets/favicon-32.png"><link rel="stylesheet" href="/moderacao.css">${CLARITY_TAG}</head><body>${body.trim()}<script src="/assets/vendor/supabase-2.49.8.js"></script><script src="/backend-config.js"></script><script src="/backend.js"></script><script src="/events-2026.js"></script><script src="/moderation.js"></script></body></html>`;
+  if (meta.nav === 'links') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Links oficiais · Brazilian Bayle</title><meta name="description" content="${esc(meta.description)}"><link rel="canonical" href="${SITE}/links"><meta name="theme-color" content="#080908"><meta property="og:type" content="website"><meta property="og:title" content="Brazilian Bayle · Links oficiais"><meta property="og:description" content="${esc(meta.description)}"><meta property="og:url" content="${SITE}/links"><meta property="og:image" content="${SITE}/assets/og-brazilian-v3.jpg"><link rel="icon" href="/assets/favicon-32.png"><link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/hero-dj-poster-800.webp" as="image"><link rel="stylesheet" href="/styles.css">${CLARITY_TAG}</head><body class="page-links"><a class="skip" href="#conteudo">Pular para os links</a>${body.trim()}<script src="/media-guard.js" defer></script></body></html>`;
   const url = SITE + (meta.path === "/" ? "/" : meta.path);
   const title = meta.path === "/" ? meta.title : `${meta.title} · Brazilian Bayle`;
   const jsonld = [ORG, WEBSITE, ...(meta.jsonld || [])].map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n");
@@ -95,7 +97,7 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 ${meta.nav === "after" ? '<link rel="stylesheet" href="/assets/vendor/leaflet-1.9.4/leaflet.css">' : ""}
 ${meta.preload || ""}
 ${jsonld}
-</head>
+${CLARITY_TAG}</head>
 <body class="page-${meta.nav || "x"}${meta.funnel ? " is-funnel" : ""}">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
@@ -180,6 +182,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <script src="/backend.js" defer></script>
 <script src="/events-2026.js" defer></script>
 <script src="/app.js" defer></script>
+${(["/loja","/loja-feminina","/sacola","/checkout"].includes(meta.path) || meta.nav === "produto") ? '<button type="button" id="meta-settings" hidden>Cookies de publicidade</button><section id="meta-consent" aria-label="Cookies de publicidade" hidden style="position:fixed;z-index:9999;bottom:1rem;left:1rem;max-width:min(25rem,90vw);padding:1rem;background:#111;color:#fff;border:1px solid #ae945b"><p>Permitir que a Brazilian Bayle compartilhe visitas e compras com a Meta para medir anúncios? Para compras, enviamos o valor e uma versão protegida do seu e-mail (hash).</p><button type="button" data-choice="no">Recusar</button> <button type="button" data-choice="yes">Permitir</button></section><script src="/meta-shop.js" defer></script>' : ""}
 ${["/loja","/loja-feminina","/sacola","/checkout"].includes(meta.path) || meta.nav === "produto" ? '<script src="/commerce.js" defer></script>' : ""}
 <script src="/media-guard.js" defer></script>
 <script src="/music.js" defer></script>
@@ -455,7 +458,7 @@ copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
 const css = fs.readFileSync(path.join(ROOT, "assets/fonts/fonts.css"), "utf8") + fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
 // CSS enxuto: fontes embutidas, sem comentários nem espaços sobrando
 fs.writeFileSync(path.join(OUT, "styles.css"), css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "\n"));
-for (const js of ["backend-config.js", "backend.js", "app.js", "commerce.js", "spotted.js", "account.js", "media-guard.js", "music.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "ingressos.js", "djhero.js", "manifesto.js", "after-motion.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
+for (const js of ["backend-config.js", "backend.js", "app.js", "meta-shop.js", "commerce.js", "spotted.js", "account.js", "media-guard.js", "music.js", "card-effects.js", "support.js", "session-menu.js", "points-badge.js", "management.js", "album.js", "after.js", "djedit.js", "djindex.js", "moderation.js", "temperatura.js", "ingressos.js", "djhero.js", "manifesto.js", "after-motion.js"]) fs.copyFileSync(path.join(ROOT, js), path.join(OUT, js));
 fs.copyFileSync(path.join(ROOT, "moderacao.css"), path.join(OUT, "moderacao.css"));
 // Quiz Bailinho: página própria (sem o menu do site), gerada por _local/port-quiz.js
 fs.mkdirSync(path.join(OUT, "quiz"), { recursive: true });
@@ -499,7 +502,7 @@ const DJNAMES = (() => { const m = fs.readFileSync(path.join(ROOT, "app.js"), "u
 fs.writeFileSync(path.join(OUT,"events-2026.js"),"window.BRB_DJNAMES="+JSON.stringify(DJNAMES)+";window.BRB_BR="+JSON.stringify([...new Set(DJLIST.filter(isBrazilian).map(d=>slugify(d.nome)))])+";window.BRB_PEDIA="+JSON.stringify([...new Set(DJLIST.filter(d=>!d.curitiba).map(d=>slugify(d.nome)))])+";window.BRB_EVENTS="+JSON.stringify(readJson("events-2026.json").events)+";window.BRB_CLUBS="+JSON.stringify(readJson("clubes.json").clubes)+";window.BRB_TEMP="+JSON.stringify((({ clubs, festas }) => ({ clubs, festas }))(readJson("temperatura.json")))+";");
 // Content hashes prevent old CSS and card scripts being mixed after a deploy.
 const crypto = require('crypto');
-const versioned = ['styles.css','commerce.js','card-effects.js','app.js','support.js','session-menu.js','points-badge.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','djindex.js','moderation.js','temperatura.js','ingressos.js','events-2026.js','after-motion.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
+const versioned = ['styles.css','meta-shop.js','commerce.js','card-effects.js','app.js','support.js','session-menu.js','points-badge.js','account.js','management.js','backend.js','spotted.js','album.js','after.js','djedit.js','djindex.js','moderation.js','temperatura.js','ingressos.js','events-2026.js','after-motion.js'].map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT,file))).digest('hex').slice(0,12)]);
 function versionHtml(dir) {
   for (const entry of fs.readdirSync(dir,{withFileTypes:true})) {
     const file = path.join(dir,entry.name);

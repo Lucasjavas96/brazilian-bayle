@@ -142,7 +142,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' https://sdk.mercadopago.com https://http2.mlstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://secure-fields.mercadopago.com https://api.mercadopago.com https://api-static.mercadopago.com https://api.mercadolibre.com https://sdk.mercadopago.com https://http2.mlstatic.com https://viacep.com.br https://bereyocdqacudfvazdpa.supabase.co wss://bereyocdqacudfvazdpa.supabase.co; font-src 'self'; frame-src https://www.google.com https://secure-fields.mercadopago.com https://www.mercadopago.com.br; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+          "value": "default-src 'self'; script-src 'self' https://connect.facebook.net 'sha256-OGq9iyZ+l9PgUtU+8amu9vwcxeZk2EKbT+0VHwahr68=' https://*.clarity.ms https://sdk.mercadopago.com https://http2.mlstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://www.facebook.com https://connect.facebook.net https://*.clarity.ms https://c.bing.com https://secure-fields.mercadopago.com https://api.mercadopago.com https://api-static.mercadopago.com https://api.mercadolibre.com https://sdk.mercadopago.com https://http2.mlstatic.com https://viacep.com.br https://bereyocdqacudfvazdpa.supabase.co wss://bereyocdqacudfvazdpa.supabase.co; font-src 'self'; frame-src https://www.google.com https://secure-fields.mercadopago.com https://www.mercadopago.com.br; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
         }
       ]
     }

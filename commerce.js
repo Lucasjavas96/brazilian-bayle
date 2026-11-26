@@ -106,8 +106,10 @@
    const {color,size}=selected();
    if(!size)return askSize();
    const items=cart(),line=items.find(item=>item.id===id&&item.size===size&&item.color===color);
+   const increased=!line || line.quantity<5;
    if(line)line.quantity=Math.min(5,line.quantity+1);else items.push({id,size,color,quantity:1});
    if(!save(items)){error.textContent='Seu navegador bloqueou o armazenamento desta página. Libere os cookies para comprar.';return;}
+   if(increased)window.brbShopMetric?.('AddToCart',{content_ids:[id],content_type:'product'});
    if(event.submitter?.value!=='add'){location.href='/sacola';return;}
    const n=el('pdpAdded');n.replaceChildren(document.createTextNode(name+' · '+colors[color]+' · '+size+' entrou na sacola. '));
    const go=document.createElement('a');go.href='/sacola';go.textContent='Ver sacola e finalizar →';n.append(go);n.hidden=false;
@@ -208,6 +210,7 @@
    if(!items.some(item=>item.id===id && item.size===size && item.color===color)){
     items.push({id,size,color,quantity:1});
     if(!save(items)){el('variantError').textContent='Seu navegador bloqueou o armazenamento desta página. Libere os cookies para comprar.';return;}
+    window.brbShopMetric?.('AddToCart',{content_ids:[id],content_type:'product'});
    }
    variantForm.hidden=true;
    const url=new URL(location.href);url.searchParams.delete('peca');history.replaceState(history.state,'',url);
@@ -351,8 +354,8 @@
    pendingOrder??={request_id:uuid(),order_secret:Array.from(crypto.getRandomValues(new Uint8Array(32))).map(value=>value.toString(16).padStart(2,'0')).join('')};
    checkoutButton.disabled=true;el('deliveryError').textContent='';
    try{
-    const result=await request('orders',{items:cart(),customer,shipping_service:quoted.service,shipping_cents:quoted.shipping_cents,...pendingOrder});
-    if(!storage.set(sessionStorage,ORDER,JSON.stringify({order_id:result.order_id,order_secret:pendingOrder.order_secret}))){el('deliveryError').textContent='Seu navegador bloqueou o armazenamento desta página (modo privado ou bloqueio de cookies). Libere e tente de novo para seguir ao pagamento.';checkoutButton.disabled=false;return;}
+    const result=await request('orders',{items:cart(),customer,meta_consent:storage.get(localStorage,'brb-meta-consent-v1')==='yes',shipping_service:quoted.service,shipping_cents:quoted.shipping_cents,...pendingOrder});
+    if(!storage.set(sessionStorage,ORDER,JSON.stringify({order_id:result.order_id,order_secret:pendingOrder.order_secret,total_cents:result.total_cents}))){el('deliveryError').textContent='Seu navegador bloqueou o armazenamento desta página (modo privado ou bloqueio de cookies). Libere e tente de novo para seguir ao pagamento.';checkoutButton.disabled=false;return;}
     location.assign('/checkout');
    }catch(error){el('deliveryError').textContent=error.message;checkoutButton.disabled=false;}
   });
@@ -367,7 +370,9 @@
   const setBusy=value=>{busy=value;el('pixPay').disabled=value;el('cardPay').disabled=value||!cardForm;document.querySelectorAll('[data-method]').forEach(b=>b.disabled=value);};
   const show=result=>{
    state=result;el('refreshPayment').hidden=false;
-   if(result.status==='paid'){clearTimeout(pollTimer);message('Pagamento aprovado! Pedido '+order.order_id.slice(0,8).toUpperCase()+'. Você receberá a confirmação do pedido.');storage.remove(localStorage,CART);count();el('pixPay').disabled=true;el('cardPay').disabled=true;document.querySelectorAll('[data-method]').forEach(b=>b.disabled=true);el('refreshPayment').hidden=true;return;}
+   if(result.status==='paid'){
+    if(config?.mode==='production' && Number.isInteger(order.total_cents) && order.total_cents>0)window.brbShopMetric?.('Purchase',{value:order.total_cents/100,currency:'BRL'},'purchase-'+order.order_id);
+    clearTimeout(pollTimer);message('Pagamento aprovado! Pedido '+order.order_id.slice(0,8).toUpperCase()+'. Você receberá a confirmação do pedido.');storage.remove(localStorage,CART);count();el('pixPay').disabled=true;el('cardPay').disabled=true;document.querySelectorAll('[data-method]').forEach(b=>b.disabled=true);el('refreshPayment').hidden=true;return;}
    if(['failed','canceled','expired'].includes(result.status)){attempt=null;retryPayment=null;message('O pagamento não foi concluído. Confira os dados e tente novamente.');setBusy(false);return;}
    if(result.qr_code){el('pixCode').value=result.qr_code;el('pixResult').hidden=false;if(result.qr_code_base64&&/^[A-Za-z0-9+/=]+$/.test(result.qr_code_base64)){el('pixQr').src='data:image/png;base64,'+result.qr_code_base64;el('pixQr').hidden=false;}}
    if(result.status==='pending'){message('Aguardando confirmação do pagamento. Não pague novamente.');setBusy(true);poll();}
@@ -375,6 +380,7 @@
   const refresh=async()=>{const result=await request('status',order);show(result);return result;};
   try{
    await configuration;const result=await request('status',order);state=result;
+   if(config.mode==='production' && result.status!=='paid')window.brbShopMetric?.('InitiateCheckout',{},'checkout-'+order.order_id);
    lines(el('paymentLines'),result.items||[]);el('paymentSubtotal').textContent=money(result.subtotal_cents);el('paymentShipping').textContent=money(result.shipping_cents);el('paymentTotal').textContent=money(result.total_cents);
    if(config.mode==='test')notice('Ambiente de teste Mercado Pago. Utilize somente cartões e compradores de teste.');
    if(!config.enabled){message('O pagamento está temporariamente indisponível.');return;}
