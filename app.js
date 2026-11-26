@@ -1064,3 +1064,16 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   dialog.querySelector('.feminina-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 })();
+
+/* Variação de cor dos croppeds femininos. */
+(() => {
+  document.querySelectorAll('[data-cropped]').forEach(card => {
+    card.querySelector('select').addEventListener('change', event => {
+      const src = '/assets/shop/cropped/' + card.dataset.cropped + '-' + event.target.value + '.webp';
+      const image = card.querySelector('img');
+      image.src = src;
+      image.alt = card.querySelector('h3').textContent + ' · ' + event.target.selectedOptions[0].textContent + ' · costas';
+      card.querySelector('[data-feminina-image]').dataset.femininaImage = src;
+    });
+  });
+})();

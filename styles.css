@@ -3986,3 +3986,4 @@ a.ticket-card:hover{border-color:#c9a45c88}
 .page-loja .feminina-card .shop-sizes{font-size:13px;margin:0 0 26px}
 
 [data-bayle-colors-panel][hidden], .bayle-tab[hidden]{display:none}
+.cropped-color{display:grid;gap:8px;margin-top:18px;color:#d2b375;font-size:14px}.cropped-color select{width:100%;padding:12px;background:#111;color:#f6f4ef;border:1px solid #c9a45c80;border-radius:8px;font-size:16px}.cropped-spec{margin-top:40px;max-width:720px;line-height:1.6}.cropped-spec summary{cursor:pointer;color:#d2b375}
