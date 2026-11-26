@@ -1,0 +1,27 @@
+[
+  {
+    "id": "20-cropped-sorry",
+    "slug": "cropped-sorry-i-only-date-djs",
+    "name": "Sorry, I only date DJs",
+    "artwork": "sorry-i-only-date-djs",
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ]
+  },
+  {
+    "id": "21-cropped-techno",
+    "slug": "cropped-girls-just-wanna-have-techno",
+    "name": "Girls just wanna have techno",
+    "artwork": "girls-just-wanna-have-techno",
+    "version": "-v2",
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ]
+  }
+]

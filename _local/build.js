@@ -288,6 +288,7 @@ const writePage = (rel, meta, body) => {
 /* ---------- Loja: uma página por camiseta (/loja/<slug>) ---------- */
 fs.rmSync(path.join(OUT, "loja"), { recursive: true, force: true });
 for (const pg of require("./produto.js")(readJson("produtos.json"), SITE)) writePage(pg.rel, pg.meta, pg.body);
+for (const pg of require("./cropped.js")(readJson("croppeds.json"), SITE)) writePage(pg.rel, pg.meta, pg.body);
 const djPhoto = s => DJ_PHOTOS[s]?.path || ["webp", "jpg"].map(x => `assets/djs/${s}.${x}`).find(f => fs.existsSync(path.join(ROOT, f)));
 {
   fs.rmSync(path.join(OUT, "djindex"), { recursive: true, force: true });

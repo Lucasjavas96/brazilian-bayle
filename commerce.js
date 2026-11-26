@@ -4,12 +4,14 @@
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
  const CART='brb-cart-v1', ORDER='brb-checkout-order-v1', QUOTE='brb-quote-v1';
  const colors={preta:'Preta','off-white':'Off-white',cinza:'Cinza'};
- const variantPhoto=(id,color)=>'/assets/shop/bayle/'+id+(color==='cinza'||color==='off-white'?'-'+color:(["11-thay5","12-thay8","14-thay3","15-thay6","16-thay9","17-thay1","18-thay2"].includes(id)?'-alpha-v2':''))+'-costas.webp'+(id==='08-grafite' && color==='off-white' ? '?v=grafite-ink-v3' : color!=='cinza' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
+ const croppedPhotos={'20-cropped-sorry':'sorry-i-only-date-djs','21-cropped-techno':'girls-just-wanna-have-techno'};
+ const variantPhoto=(id,color)=>croppedPhotos[id]?'/assets/shop/cropped/'+croppedPhotos[id]+'-'+color+(id==='21-cropped-techno'?'-v2':'')+'.webp':'/assets/shop/bayle/'+id+(color==='cinza'||color==='off-white'?'-'+color:(["11-thay5","12-thay8","14-thay3","15-thay6","16-thay9","17-thay1","18-thay2"].includes(id)?'-alpha-v2':''))+'-costas.webp'+(id==='08-grafite' && color==='off-white' ? '?v=grafite-ink-v3' : color!=='cinza' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
  /* Medidas da camiseta oversized (PR #11), exibidas na sacola e no checkout. */
+ function cartHasCropped(){try{return JSON.parse(localStorage.getItem(CART)||'[]').some(i=>i.id in croppedPhotos)}catch{return false}}
  const sizeGuide=document.querySelector('[data-size-guide]');
- if(sizeGuide){
+ if(sizeGuide && !cartHasCropped()){
   const measurements=[['P','56,5','72','21'],['M','60','77','22'],['G','61','77,5','22,5'],['GG','65','84','23,5'],['XG','65,5','88,5','23,5']];
   sizeGuide.innerHTML=`<details class="commerce-size-guide" open><summary>Tabela de medidas</summary><table><caption class="sr-only">Medidas da camiseta em centímetros</caption><thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead><tbody>${measurements.map(([size,width,length,sleeve])=>`<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody></table><p>Medidas da peça em cm. Compare com uma camiseta sua estendida sobre uma mesa. Pode variar até 2 cm.</p></details>`;
  }
@@ -192,7 +194,7 @@
   const showAdded=(p,size,color)=>{
    const n=el('commerceAdded');if(!n)return;
    n.replaceChildren(document.createTextNode(p.name+' · '+colors[color]+' · '+size+' entrou na sacola. '));
-   const back=document.createElement('a');back.href='/loja#catalogo';back.textContent='Continuar vendo a coleção';n.append(back);n.hidden=false;
+   const back=document.createElement('a');back.href=pdp?.dataset.collection==='feminina'||p.id in croppedPhotos?'/loja-feminina#feminina':'/loja#catalogo';back.textContent='Continuar vendo a coleção';n.append(back);n.hidden=false;
   };
   variantForm?.addEventListener('submit',event=>{
    event.preventDefault();
