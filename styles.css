@@ -3607,3 +3607,4 @@ font-size:clamp(120px,22vw,340px);line-height:.8;letter-spacing:-.04em;color:tra
 .page-loja .feminina-card .shop-sizes{font-size:13px;margin:0 0 26px}
 [data-bayle-colors-panel][hidden], .bayle-tab[hidden]{display:none}
 .cropped-color{display:grid;gap:8px;margin-top:18px;color:#d2b375;font-size:14px}.cropped-color select{width:100%;padding:12px;background:#111;color:#f6f4ef;border:1px solid #c9a45c80;border-radius:8px;font-size:16px}.cropped-spec{margin-top:40px;max-width:720px;line-height:1.6}.cropped-spec summary{cursor:pointer;color:#d2b375}
+.page-loja .cropped-card .shop-buy{margin-top:24px;display:grid;gap:14px}.page-loja .cropped-card .shop-sale-price{font-size:20px;color:#f6f4ef;margin:0}.page-loja .cropped-card .shop-buy .btn{display:flex;justify-content:center;align-items:center;min-height:44px;width:100%}.page-loja .cropped-card .shop-product-name a{color:inherit;text-decoration:none}
