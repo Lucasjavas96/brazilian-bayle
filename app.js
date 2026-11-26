@@ -959,7 +959,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     clearTimeout(flipTimer);
     threeD.stop();
     panel3d.hidden = true; stage.classList.remove('is-3d'); image.hidden = false;
-    const suffix = color === 'preto' ? '' : '-' + color;
+    const corrected = ["11-thay5","12-thay8","14-thay3","15-thay6","16-thay9","17-thay1","18-thay2"]; const suffix = color === 'preto' ? (corrected.includes(id) ? '-alpha-v2' : '') : '-' + color;
     const next = '/assets/shop/bayle/' + id + suffix + '-' + view + '.webp' + (view === 'costas' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
     tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === view)));
     if (image.src.endsWith(next)) return;
