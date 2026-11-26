@@ -48,7 +48,7 @@ function start() {
   function setFoot(html, cls) { footIn.innerHTML = html; foot.className = 'foot' + (cls ? ' ' + cls : ''); foot.hidden = false; }
   function hud() {
     $('hearts').textContent = S.hearts; $('xp').textContent = S.xp;
-    $('lvl').innerHTML = '<img src="/assets/quiz/papagaio.webp" alt="">Nível ' + Math.min(levelOf(S.done.size) + 1, STATIONS.length);
+    $('lvl').innerHTML = '<img src="/assets/quiz/papagaio.webp?v=3" alt="">Nível ' + Math.min(levelOf(S.done.size) + 1, STATIONS.length);
     const pct = Math.round(S.done.size / Q.length * 100);
     $('barFill').style.width = pct + '%';
     document.querySelector('.bar').setAttribute('aria-valuenow', pct);
@@ -442,7 +442,7 @@ function start() {
   const best = () => { try { return +localStorage.getItem(STORE) || 0; } catch (e) { return 0; } };
   const saveBest = n => { try { if (n > best()) localStorage.setItem(STORE, String(n)); } catch (e) {} };
   const levelOf = n => STATIONS.filter(s => n >= s.to).length; // estações completas
-  const PARROT = '/assets/quiz/papagaio.webp';
+  const PARROT = '/assets/quiz/papagaio.webp?v=3';
 
   function intro() {
     $('top').hidden = true;

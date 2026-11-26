@@ -43,7 +43,7 @@ function body(p, all) {
   const colorInputs = COLORS.map(([value, label, hex], i) =>
     `<label class="pdp-swatch"><input type="radio" name="color" value="${value}"${i ? "" : " checked"}><span style="--swatch:${hex}" aria-hidden="true"></span><b>${label}</b></label>`).join("");
   const sizeInputs = SIZES.map(s => `<label class="pdp-size"><input type="radio" name="size" value="${s}" required><span>${s}</span></label>`).join("");
-  return `<header class="commerce-nav"><a href="/loja" class="commerce-brand"><img src="/assets/shop/bayle/papagaio-oficial.svg" alt="Brazilian Bayle" width="28" height="48"><span>BRAZILIAN <em>Bayle</em></span></a><div class="commerce-nav-links"><a href="/loja#catalogo">Coleção</a><button type="button" class="commerce-help" data-support-open aria-haspopup="dialog" aria-controls="supportDialog">Ajuda</button><a href="/sacola">Sacola (<span data-cart-count>0</span>)</a></div></header>
+  return `<header class="commerce-nav"><a href="/loja" class="commerce-brand"><img src="/assets/shop/bayle/papagaio-oficial.svg?v=3" alt="Brazilian Bayle" width="28" height="48"><span>BRAZILIAN <em>Bayle</em></span></a><div class="commerce-nav-links"><a href="/loja#catalogo">Coleção</a><button type="button" class="commerce-help" data-support-open aria-haspopup="dialog" aria-controls="supportDialog">Ajuda</button><a href="/sacola">Sacola (<span data-cart-count>0</span>)</a></div></header>
 <div class="pdp" id="pdp" data-product="${p.id}" data-name="${esc(p.name)}" data-price="${PRICE_CENTS}">
 <nav class="pdp-crumbs" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li><a href="/loja">Loja</a></li><li aria-current="page">${esc(p.name)}</li></ol></nav>
 <div class="pdp-top">

@@ -14,11 +14,11 @@ JSON.parse(data);
 const jsM = h.match(/<\/script>\s*<script>([\s\S]*?)<\/script>/);
 let js = jsM[1].replace("JSON.parse(document.getElementById('data').textContent)", "window.__BAILINHO_DATA__");
 if (js.includes("document.getElementById('data')")) throw new Error("referência a #data sobrou");
-js = js.replace(/assets\/papagaio\.webp/g, "/assets/quiz/papagaio.webp").replace(/assets\/logo\.webp/g, "/assets/quiz/logo.webp");
+js = js.replace(/assets\/papagaio\.webp/g, "/assets/quiz/papagaio.webp?v=3").replace(/assets\/logo\.webp/g, "/assets/quiz/logo.webp");
 fs.mkdirSync(OUT, { recursive: true });
 
 // markup do corpo (entre </style> e o primeiro <script>)
-const bodyHtml = h.slice(cssB + "</style>".length, h.indexOf("<script", cssB)).replace(/assets\/papagaio\.webp/g, "/assets/quiz/papagaio.webp").replace(/assets\/logo\.webp/g, "/assets/quiz/logo.webp");
+const bodyHtml = h.slice(cssB + "</style>".length, h.indexOf("<script", cssB)).replace(/assets\/papagaio\.webp/g, "/assets/quiz/papagaio.webp?v=3").replace(/assets\/logo\.webp/g, "/assets/quiz/logo.webp");
 
 // o JS carrega os dados por fetch antes de rodar
 const boot = `/* Bailinho · Trilha 1. Carrega /quiz/trilha1.json e inicia o jogo. */
@@ -36,7 +36,7 @@ const page = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bailinho · Quiz da Brazilian Bayle</title>
 <meta name="description" content="Bailinho: o quiz de música eletrônica da Brazilian Bayle. Trilha 1, entre na pista e mostre que é bayle fino.">
-<link rel="icon" href="/assets/favicon-32.png">
+<link rel="icon" href="/assets/favicon-32.png?v=3">
 <link rel="stylesheet" href="/quiz/quiz.css">
 <link rel="stylesheet" href="/quiz/extra.css">
 </head>

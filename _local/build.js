@@ -34,7 +34,7 @@ const ORG = {
   "@type": "Organization",
   name: "Brazilian Bayle",
   url: SITE,
-  logo: `${SITE}/assets/icon-512.png`,
+  logo: `${SITE}/assets/icon-512.png?v=3`,
   email: EMAIL,
   sameAs: [IG],
   areaServed: "BR",
@@ -53,8 +53,8 @@ const WEBSITE = {
 const CLARITY_TAG = "<script type=\"text/javascript\">(function(c,l,a,r,i,t,y){\n    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n    t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\n})(window, document, \"clarity\", \"script\", \"zjw9clb29l\");</script>";
 
 function layout(meta, body) {
-  if (meta.nav === 'moderacao') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Moderação · Brazilian Bayle</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#1c2430"><link rel="icon" href="/assets/favicon-32.png"><link rel="stylesheet" href="/moderacao.css">${CLARITY_TAG}</head><body>${body.trim()}<script src="/assets/vendor/supabase-2.49.8.js"></script><script src="/backend-config.js"></script><script src="/backend.js"></script><script src="/events-2026.js"></script><script src="/moderation.js"></script></body></html>`;
-  if (meta.nav === 'links') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Links oficiais · Brazilian Bayle</title><meta name="description" content="${esc(meta.description)}"><link rel="canonical" href="${SITE}/links"><meta name="theme-color" content="#080908"><meta property="og:type" content="website"><meta property="og:title" content="Brazilian Bayle · Links oficiais"><meta property="og:description" content="${esc(meta.description)}"><meta property="og:url" content="${SITE}/links"><meta property="og:image" content="${SITE}/assets/og-brazilian-v3.jpg"><link rel="icon" href="/assets/favicon-32.png"><link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/hero-dj-poster-800.webp" as="image"><link rel="stylesheet" href="/styles.css">${CLARITY_TAG}</head><body class="page-links"><a class="skip" href="#conteudo">Pular para os links</a>${body.trim()}<script src="/media-guard.js" defer></script></body></html>`;
+  if (meta.nav === 'moderacao') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Moderação · Brazilian Bayle</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#1c2430"><link rel="icon" href="/assets/favicon-32.png?v=3"><link rel="stylesheet" href="/moderacao.css">${CLARITY_TAG}</head><body>${body.trim()}<script src="/assets/vendor/supabase-2.49.8.js"></script><script src="/backend-config.js"></script><script src="/backend.js"></script><script src="/events-2026.js"></script><script src="/moderation.js"></script></body></html>`;
+  if (meta.nav === 'links') return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Links oficiais · Brazilian Bayle</title><meta name="description" content="${esc(meta.description)}"><link rel="canonical" href="${SITE}/links"><meta name="theme-color" content="#080908"><meta property="og:type" content="website"><meta property="og:title" content="Brazilian Bayle · Links oficiais"><meta property="og:description" content="${esc(meta.description)}"><meta property="og:url" content="${SITE}/links"><meta property="og:image" content="${SITE}/assets/og-brazilian-v3.jpg"><link rel="icon" href="/assets/favicon-32.png?v=3"><link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/hero-dj-poster-800.webp" as="image"><link rel="stylesheet" href="/styles.css">${CLARITY_TAG}</head><body class="page-links"><a class="skip" href="#conteudo">Pular para os links</a>${body.trim()}<script src="/media-guard.js" defer></script></body></html>`;
   const url = SITE + (meta.path === "/" ? "/" : meta.path);
   const title = meta.path === "/" ? meta.title : `${meta.title} · Brazilian Bayle`;
   const jsonld = [ORG, WEBSITE, ...(meta.jsonld || [])].map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n");
@@ -73,9 +73,9 @@ ${meta.path === "/" ? '<meta name="facebook-domain-verification" content="a76rwo
 ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <meta name="theme-color" content="#FFD400">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png?v=2">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png?v=3">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png?v=3">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=3">
 <meta property="og:type" content="${meta.ogType || "website"}">
 <meta property="og:site_name" content="Brazilian Bayle">
 <meta property="og:locale" content="pt_BR">
@@ -106,7 +106,7 @@ ${CLARITY_TAG}</head>
   <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="side"><i></i><i></i></button>
   <p class="mbar-tag"><b><img class="mbar-wordmark" src="/assets/logo-menu-b6.png?v=1" alt="Brazilian Bayle" width="115" height="54"></b></p>
   <div class="mbar-access">
-  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-logo.png?v=2" alt="" width="79" height="180"></a>
+  <a href="/" class="mbar-logo" aria-label="Brazilian Bayle, início"><img src="/assets/papagaio-logo.png?v=3" alt="" width="79" height="180"></a>
   <div class="account-nav"><a class="mbar-account" id="headerLogin" href="/conta">Entrar/Cadastrar</a><button type="button" class="header-user" id="headerUser" aria-expanded="false" aria-controls="headerAccountMenu" hidden><span id="headerNickname"></span><span aria-hidden="true">⌄</span></button><div class="header-account-menu" id="headerAccountMenu" hidden><a href="/conta">Configurações da conta</a><a href="/album">Meu álbum</a><a href="/spotted">Spotted</a><a href="/moderacao" data-owner-only hidden>👑 Moderação <span class="owner-badge" data-owner-badge hidden></span></a><button type="button" id="headerSignOut">Sair da conta</button><p id="headerAccountStatus" role="status"></p></div></div>
   </div>
 </div>

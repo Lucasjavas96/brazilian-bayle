@@ -103,7 +103,7 @@
   const ic = (n, s = 18) => `<svg viewBox="0 0 24 24" width="${s}" height="${s}" aria-hidden="true" fill="currentColor">${ICON[n]}</svg>`;
   const foto = (a, i, cls) => a.fotos?.[i]
     ? `<img class="${cls}" src="${a.fotos[i]}" alt="Foto ${i + 1} do after ${esc(nomeDe(a))}" loading="lazy" decoding="async">`
-    : `<div class="${cls} af-noimg" aria-hidden="true"><img src="/assets/brand-icon-192.png" alt=""></div>`;
+    : `<div class="${cls} af-noimg" aria-hidden="true"><img src="/assets/brand-icon-192.png?v=3" alt=""></div>`;
   const statusChip = a => {
     if (mine(a)) return { analise: '<span class="af-me wait">Em análise</span>', recusado: '<span class="af-me no">Recusado</span>', encerrado: '<span class="af-me">Encerrado</span>' }[a.status] || '<span class="af-me host">Seu after</span>';
     if (a.status === "analise") return '<span class="af-me wait">Em análise</span>';
@@ -329,7 +329,7 @@
   function wizHTML() {
     const w = S.wiz;
     if (w.sent) return `<div class="af-wiz" role="dialog" aria-modal="true" aria-label="Anúncio enviado"><div class="af-wiz-in af-wiz-done">
-      <img src="/assets/brand-icon-192.png" alt="" width="72" height="72"><h2>Anúncio <em>enviado.</em></h2><p>A equipe Brazilian Bayle vai olhar seu after. Aprovado, ele vai ao ar e você acompanha tudo em Meus anúncios.</p>
+      <img src="/assets/brand-icon-192.png?v=3" alt="" width="72" height="72"><h2>Anúncio <em>enviado.</em></h2><p>A equipe Brazilian Bayle vai olhar seu after. Aprovado, ele vai ao ar e você acompanha tudo em Meus anúncios.</p>
       <button type="button" class="btn btn-y" data-wizclose data-tab="anuncios">Ver meus anúncios</button><p class="af-sign mono">Keep following the Bayle.</p></div></div>`;
     const s = w.step, fee = feeOf(precoCents(w));
     const body = [
