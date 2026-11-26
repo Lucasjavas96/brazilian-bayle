@@ -34,7 +34,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Texto branco para preto; regiÃµes neutras escuras do capacete para prata clara, preservando traÃ§os e pixels alfa; cores douradas mantidas. Ajuste evita letras pretas desaparecerem sobre capacete escuro.",
+        "metodo": "Texto branco para preto; regiÃƒÆ’Ã‚Âµes neutras escuras do capacete para prata clara, preservando traÃƒÆ’Ã‚Â§os e pixels alfa; cores douradas mantidas. Ajuste evita letras pretas desaparecerem sobre capacete escuro.",
         "pixels_alterados": 9170006,
         "canal_alpha_preservado": true
       }
@@ -82,7 +82,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÂ§ÃƒÂ£o e canal alfa preservados.",
+        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o e canal alfa preservados.",
         "pixels_alterados": 3108681,
         "canal_alpha_preservado": true
       }
@@ -142,7 +142,7 @@
   },
   {
     "id": "04-546-im-yours",
-    "nome": "5:46 Ãƒâ€šÃ‚Â· IÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢m Yours",
+    "nome": "5:46 ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· IÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢m Yours",
     "colecao": "masculino",
     "pagina": "https://brazilianbayle.com.br/loja/camiseta-546-im-yours",
     "arquivos": [
@@ -175,7 +175,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÂ§ÃƒÂ£o e canal alfa preservados.",
+        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o e canal alfa preservados.",
         "pixels_alterados": 1651152,
         "canal_alpha_preservado": true
       }
@@ -223,7 +223,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÂ§ÃƒÂ£o e canal alfa preservados.",
+        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o e canal alfa preservados.",
         "pixels_alterados": 541369,
         "canal_alpha_preservado": true
       }
@@ -260,7 +260,7 @@
       {
         "tipo": "negativa-construida",
         "arquivo": "masculino/06-techno-addict/negativa-construida.png",
-        "sha256": "0bcc8db38f705bf79d1d4f2b941e997be1f0022ef255e9453e4d600bdfb48d3b",
+        "sha256": "83e89f5521d96fda0063d1e2b8e5e29a067e67db9a4ef639b48a46fab9067cd2",
         "pixels": [
           3543,
           5906
@@ -271,9 +271,10 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "metodo": "Contorno preto de 12 pixels ao redor da tinta amarela do lettering; ilustração superior, amarelo e verde preservados.",
         "pixels_alterados": 0,
-        "canal_alpha_preservado": true
+        "canal_alpha_preservado": true,
+        "pixels_alterados_nesta_revisao": 4071
       }
     ],
     "mockups_referencia": {
@@ -319,7 +320,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÂ§ÃƒÂ£o e canal alfa preservados.",
+        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o e canal alfa preservados.",
         "pixels_alterados": 1241793,
         "canal_alpha_preservado": true
       }
@@ -355,9 +356,9 @@
       },
       {
         "tipo": "negativa-existente",
-        "arquivo": "masculino/08-grafite/negativa-existente.png",
+        "arquivo": "masculino/08-grafite/negativa-preto-puro.png",
         "fonte": "01-grafite-negativa.png",
-        "sha256": "21ef808ce4535254715dd43e20d13f1a42a3e967ddf950b04e5ca15b26ceda0a",
+        "sha256": "10029601cb5fc3cdd249b612a9a6b38a422aaa9b89c9649a72b648eea319b764",
         "pixels": [
           941,
           1672
@@ -366,7 +367,15 @@
           0,
           255
         ],
-        "fundo_opaco": false
+        "fundo_opaco": false,
+        "metodo": "Letras neutras para RGB 0,0,0; assinatura dourada e canal alfa preservados.",
+        "pixels_alterados_nesta_revisao": 382030
+      },
+      {
+        "tipo": "negativa-anterior-substituida",
+        "arquivo": "masculino/08-grafite/negativa-existente.png",
+        "sha256": "21ef808ce4535254715dd43e20d13f1a42a3e967ddf950b04e5ca15b26ceda0a",
+        "uso": "NÃ£o usar: substituÃ­da pela versÃ£o preto puro."
       }
     ],
     "mockups_referencia": {
@@ -424,7 +433,7 @@
   },
   {
     "id": "10-a-pista-e-brasileira",
-    "nome": "A pista ÃƒÆ’Ã‚Â© brasileira",
+    "nome": "A pista ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â© brasileira",
     "colecao": "masculino",
     "pagina": "https://brazilianbayle.com.br/loja/camiseta-a-pista-e-brasileira",
     "arquivos": [
@@ -502,7 +511,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o global.",
         "pixels_alterados": 0,
         "canal_alpha_preservado": true
       }
@@ -550,7 +559,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o global.",
         "pixels_alterados": 0,
         "canal_alpha_preservado": true
       }
@@ -565,7 +574,7 @@
   },
   {
     "id": "13-papagaio-neon",
-    "nome": "Papagaio Neon Ãƒâ€šÃ‚Â· Techno Addict",
+    "nome": "Papagaio Neon ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Techno Addict",
     "colecao": "masculino",
     "pagina": "https://brazilianbayle.com.br/loja/camiseta-papagaio-neon",
     "arquivos": [
@@ -598,7 +607,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o global.",
         "pixels_alterados": 0,
         "canal_alpha_preservado": true
       }
@@ -646,7 +655,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o global.",
         "pixels_alterados": 0,
         "canal_alpha_preservado": true
       }
@@ -694,7 +703,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o global.",
         "pixels_alterados": 0,
         "canal_alpha_preservado": true
       }
@@ -742,7 +751,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o global.",
         "pixels_alterados": 0,
         "canal_alpha_preservado": true
       }
@@ -790,7 +799,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o global.",
         "pixels_alterados": 0,
         "canal_alpha_preservado": true
       }
@@ -928,7 +937,7 @@
         ],
         "fundo_opaco": false,
         "uso": "branca/off-white e cinza",
-        "metodo": "Marfim e verde preservados como no mockup off-white: contornos verdes jÃ¡ dÃ£o contraste nas letras. Sem inversÃ£o global.",
+        "metodo": "Marfim e verde preservados como no mockup off-white: contornos verdes jÃƒÆ’Ã‚Â¡ dÃƒÆ’Ã‚Â£o contraste nas letras. Sem inversÃƒÆ’Ã‚Â£o global.",
         "pixels_alterados": 0,
         "canal_alpha_preservado": true
       }
@@ -976,7 +985,7 @@
         ],
         "fundo_opaco": false,
         "uso": "preta",
-        "metodo": "Negativa para tecido preto: vinil e texto neutro escuros convertidos para marfim; verde e assinatura amarela preservados. Fundo branco removido por mÃƒÂ¡scara de branco puro.",
+        "metodo": "Negativa para tecido preto: vinil e texto neutro escuros convertidos para marfim; verde e assinatura amarela preservados. Fundo branco removido por mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡scara de branco puro.",
         "pixels_alterados": 1863405,
         "canal_alpha_preservado": false
       },

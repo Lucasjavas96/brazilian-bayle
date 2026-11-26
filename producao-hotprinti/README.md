@@ -2,6 +2,12 @@
 
 19 camisetas masculinas e 2 croppeds femininos. Originais preservados; variantes existentes mantidas; negativas faltantes agora exportadas como PNG avulso.
 
+## Correções de contraste
+
+- Grafite: usar `negativa-preto-puro.png`; a versão cinza anterior está substituída.
+- Techno Addict 06: contorno preto reforçado no lettering amarelo. A versão 13 mantém seu desenho próprio.
+- Comparações antes/depois em `revisao-visual/`; são provas de visualização, não matrizes de impressão.
+
 ## Uso por cor
 
 - Negativa não significa inverter todas as cores. Nas artes verdes e nos papagaios, as cores existentes já contrastam no tecido claro e foram preservadas; nesses casos o arquivo pode ter os mesmos pixels do original.
@@ -28,7 +34,7 @@ Papagaio oficial em `frente-papagaio/` (SVG, PNG e PDF existentes).
 | Que Festa Boa | [Original](masculino/05-que-festa-boa/original.png) | [Negativa](masculino/05-que-festa-boa/negativa-construida.png) | [preta](../assets/shop/bayle/05-que-festa-boa-costas.webp) · [off-white](../assets/shop/bayle/05-que-festa-boa-off-white-costas.webp) · [cinza](../assets/shop/bayle/05-que-festa-boa-cinza-costas.webp) |
 | Techno Addict | [Original](masculino/06-techno-addict/original.png) | [Negativa](masculino/06-techno-addict/negativa-construida.png) | [preta](../assets/shop/bayle/06-techno-addict-costas.webp) · [off-white](../assets/shop/bayle/06-techno-addict-off-white-costas.webp) · [cinza](../assets/shop/bayle/06-techno-addict-cinza-costas.webp) |
 | Keep Following the Bayle | [Original](masculino/07-keep-following/original.png) | [Negativa](masculino/07-keep-following/negativa-construida.png) | [preta](../assets/shop/bayle/07-keep-following-costas.webp) · [off-white](../assets/shop/bayle/07-keep-following-off-white-costas.webp) · [cinza](../assets/shop/bayle/07-keep-following-cinza-costas.webp) |
-| Grafite | [Original](masculino/08-grafite/original.png) | [Negativa](masculino/08-grafite/negativa-existente.png) | [preta](../assets/shop/bayle/08-grafite-costas.webp) · [off-white](../assets/shop/bayle/08-grafite-off-white-costas.webp) · [cinza](../assets/shop/bayle/08-grafite-cinza-costas.webp) |
+| Grafite | [Original](masculino/08-grafite/original.png) | [Negativa](masculino/08-grafite/negativa-preto-puro.png) | [preta](../assets/shop/bayle/08-grafite-costas.webp) · [off-white](../assets/shop/bayle/08-grafite-off-white-costas.webp) · [cinza](../assets/shop/bayle/08-grafite-cinza-costas.webp) |
 | Nem Bateu | [Original](masculino/09-nem-bateu/original.png) | [Negativa](masculino/09-nem-bateu/negativa-existente.png) | [preta](../assets/shop/bayle/09-nem-bateu-costas.webp) · [off-white](../assets/shop/bayle/09-nem-bateu-off-white-costas.webp) · [cinza](../assets/shop/bayle/09-nem-bateu-cinza-costas.webp) |
 | A pista Ã© brasileira | [Original](masculino/10-a-pista-e-brasileira/original.png) | [Negativa](masculino/10-a-pista-e-brasileira/negativa-existente.png) | [preta](../assets/shop/bayle/10-a-pista-e-brasileira-costas.webp) · [off-white](../assets/shop/bayle/10-a-pista-e-brasileira-off-white-costas.webp) · [cinza](../assets/shop/bayle/10-a-pista-e-brasileira-cinza-costas.webp) |
 | Thay 05 | [Original](masculino/11-thay5/original.webp) | [Negativa](masculino/11-thay5/negativa-construida.png) | [preta](../assets/shop/bayle/11-thay5-alpha-v2-costas.webp) · [off-white](../assets/shop/bayle/11-thay5-off-white-costas.webp) · [cinza](../assets/shop/bayle/11-thay5-cinza-costas.webp) |
