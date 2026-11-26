@@ -1,0 +1,701 @@
+[
+  {
+    "id": "01-work-it",
+    "nome": "Work It Harder",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-work-it-harder",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/01-work-it/original.png",
+        "fonte": "01-work-it.png",
+        "sha256": "5e43a01b9b897cea65fe69c32a0f0a7bfce8f7095aba8dcab2aacf2c13001633",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/01-work-it-costas.webp",
+      "off-white": "assets/shop/bayle/01-work-it-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/01-work-it-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "02-make-djs-mix-again",
+    "nome": "Make DJs Mix Again",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-make-djs-mix-again",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/02-make-djs-mix-again/original.png",
+        "fonte": "02-make-djs-mix-again.png",
+        "sha256": "309c21a75ac2a15f6e7c8273685c38c725c5af77ff6b600a18227e86e452d8d5",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/02-make-djs-mix-again-costas.webp",
+      "off-white": "assets/shop/bayle/02-make-djs-mix-again-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/02-make-djs-mix-again-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "03-vintage-culture",
+    "nome": "Vintage Culture",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-vintage-culture",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/03-vintage-culture/original.png",
+        "fonte": "Design sem nome.png",
+        "sha256": "4b7efab1ab87a3702cd74eace73c1983df5588da8be35cd3f17d95d361fb3986",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          255,
+          255
+        ],
+        "fundo_opaco": true
+      },
+      {
+        "tipo": "negativa-existente",
+        "arquivo": "masculino/03-vintage-culture/negativa-existente.png",
+        "fonte": "03-vintage-culture-negativa.png",
+        "sha256": "9eb6168d6ff0826b0a9b1ae14c25b4d303a6b06108e0c808048a720b32736387",
+        "pixels": [
+          1063,
+          1479
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/03-vintage-culture-costas.webp",
+      "off-white": "assets/shop/bayle/03-vintage-culture-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/03-vintage-culture-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": true
+  },
+  {
+    "id": "04-546-im-yours",
+    "nome": "5:46 · I’m Yours",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-546-im-yours",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/04-546-im-yours/original.png",
+        "fonte": "04-546-im-yours.png",
+        "sha256": "36b089ef8150d25821262faede6d817dd34d1c85154a90b8cf8a0851f2ca9143",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/04-546-im-yours-costas.webp",
+      "off-white": "assets/shop/bayle/04-546-im-yours-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/04-546-im-yours-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "05-que-festa-boa",
+    "nome": "Que Festa Boa",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-que-festa-boa",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/05-que-festa-boa/original.png",
+        "fonte": "05-que-festa-boa.png",
+        "sha256": "e69de95637e6b0b0114e47aea9f58801f1f6b8b6961709dd7ee62e1c342c879f",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/05-que-festa-boa-costas.webp",
+      "off-white": "assets/shop/bayle/05-que-festa-boa-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/05-que-festa-boa-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "06-techno-addict",
+    "nome": "Techno Addict",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-techno-addict",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/06-techno-addict/original.png",
+        "fonte": "06-techno-addict.png",
+        "sha256": "da4d4ab61ffbf0d76a24764281e50e2ddc85f1a286df7e3bf4a500433010c1f8",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/06-techno-addict-costas.webp",
+      "off-white": "assets/shop/bayle/06-techno-addict-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/06-techno-addict-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "07-keep-following",
+    "nome": "Keep Following the Bayle",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-keep-following-the-bayle",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/07-keep-following/original.png",
+        "fonte": "07-keep-following.png",
+        "sha256": "40ef685a3f6aa9a36ee9b639560a19adb5b46a86869ec7e7de7337811a7c2a10",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/07-keep-following-costas.webp",
+      "off-white": "assets/shop/bayle/07-keep-following-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/07-keep-following-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "08-grafite",
+    "nome": "Grafite",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-grafite",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/08-grafite/original.png",
+        "fonte": "story-1080x1920 (18).png",
+        "sha256": "59794f8b3fe934c8483e35bc4f93ad46479a2da35e93afc123209e50808727eb",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          255,
+          255
+        ],
+        "fundo_opaco": true
+      },
+      {
+        "tipo": "negativa-existente",
+        "arquivo": "masculino/08-grafite/negativa-existente.png",
+        "fonte": "01-grafite-negativa.png",
+        "sha256": "21ef808ce4535254715dd43e20d13f1a42a3e967ddf950b04e5ca15b26ceda0a",
+        "pixels": [
+          941,
+          1672
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/08-grafite-costas.webp",
+      "off-white": "assets/shop/bayle/08-grafite-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/08-grafite-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": true
+  },
+  {
+    "id": "09-nem-bateu",
+    "nome": "Nem Bateu",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-nem-bateu",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/09-nem-bateu/original.png",
+        "fonte": "story-1080x1920 (27).png",
+        "sha256": "cfc155bec708aba29250a34c20cf601769b8c937eae8c2606f7312d809123811",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          255,
+          255
+        ],
+        "fundo_opaco": true
+      },
+      {
+        "tipo": "negativa-existente",
+        "arquivo": "masculino/09-nem-bateu/negativa-existente.png",
+        "fonte": "02-nem-bateu-negativa.png",
+        "sha256": "2a86ac33bc9299a27077c896eed3d6369311e580e09843ac37c72454a11b9eb7",
+        "pixels": [
+          1075,
+          1463
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/09-nem-bateu-costas.webp",
+      "off-white": "assets/shop/bayle/09-nem-bateu-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/09-nem-bateu-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": true
+  },
+  {
+    "id": "10-a-pista-e-brasileira",
+    "nome": "A pista é brasileira",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-a-pista-e-brasileira",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/10-a-pista-e-brasileira/original.png",
+        "fonte": "estampa-F7.3-a.png",
+        "sha256": "f0255972364d56f0d229606e8c24d4d363c38f6333e99f70e13511b04a51eebf",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          255,
+          255
+        ],
+        "fundo_opaco": true
+      },
+      {
+        "tipo": "negativa-existente",
+        "arquivo": "masculino/10-a-pista-e-brasileira/negativa-existente.png",
+        "fonte": "10-a-pista-e-brasileira-negativa.png",
+        "sha256": "33bf1733c458debad29456bdc83d4ed73ca49a4bfef0ae122ae02908b2c5cb7e",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/10-a-pista-e-brasileira-costas.webp",
+      "off-white": "assets/shop/bayle/10-a-pista-e-brasileira-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/10-a-pista-e-brasileira-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": true
+  },
+  {
+    "id": "11-thay5",
+    "nome": "Thay 05",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-thay5",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/11-thay5/original.webp",
+        "fonte": "thay5.webp",
+        "sha256": "3a3f372ab30a9124bfc3d68a840805102ab0f04d9f21da3a686bf18d73d0c67d",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/11-thay5-alpha-v2-costas.webp",
+      "off-white": "assets/shop/bayle/11-thay5-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/11-thay5-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "12-thay8",
+    "nome": "Thay 08",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-thay8",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/12-thay8/original.png",
+        "fonte": "thay8.png",
+        "sha256": "1c85fd7640cda3324e88606d2787329a06c6511ec5cb692e7443b3f335f36a55",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/12-thay8-alpha-v2-costas.webp",
+      "off-white": "assets/shop/bayle/12-thay8-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/12-thay8-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "13-papagaio-neon",
+    "nome": "Papagaio Neon · Techno Addict",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-papagaio-neon",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/13-papagaio-neon/original.png",
+        "fonte": "Papagaio Neon Techno Addict.png",
+        "sha256": "c8791a729b76762ac61ded1a761a25c0f5b6add8aaef4643328722ab2a348359",
+        "pixels": [
+          941,
+          1671
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/13-papagaio-neon-costas.webp",
+      "off-white": "assets/shop/bayle/13-papagaio-neon-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/13-papagaio-neon-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "14-thay3",
+    "nome": "Thay 03",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-thay3",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/14-thay3/original.png",
+        "fonte": "thay3.png",
+        "sha256": "e931017d9ab4d1b1d4798ceee406583c20d4866d0057a817b3f4205c62c9d4a4",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/14-thay3-alpha-v2-costas.webp",
+      "off-white": "assets/shop/bayle/14-thay3-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/14-thay3-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "15-thay6",
+    "nome": "Thay 06",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-thay6",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/15-thay6/original.png",
+        "fonte": "thay6.png",
+        "sha256": "666df0a8fbdd1b060978318caf85803879090a2fac30bf29d28ab511df82ae80",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/15-thay6-alpha-v2-costas.webp",
+      "off-white": "assets/shop/bayle/15-thay6-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/15-thay6-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "16-thay9",
+    "nome": "Thay 09",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-thay9",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/16-thay9/original.png",
+        "fonte": "thay9.png",
+        "sha256": "3bc1b82ec220a37f89986943be8a6765300a4c06b420bf4de460fbba6e1d0a4f",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/16-thay9-alpha-v2-costas.webp",
+      "off-white": "assets/shop/bayle/16-thay9-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/16-thay9-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "17-thay1",
+    "nome": "Thay 01",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-thay1",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/17-thay1/original.png",
+        "fonte": "thay1.png",
+        "sha256": "9fa0025bf62a318eef99a096cceef637ab7e4b752aeac4999e7030875f1a106a",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/17-thay1-alpha-v2-costas.webp",
+      "off-white": "assets/shop/bayle/17-thay1-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/17-thay1-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "18-thay2",
+    "nome": "Thay 02",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-thay2",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/18-thay2/original.png",
+        "fonte": "thay2.png",
+        "sha256": "b2b24e50d4f68bb0ef5bf01095d8962aee9d6465b7b5651b394cf8342d34ed46",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-existente",
+        "arquivo": "masculino/18-thay2/negativa-existente.png",
+        "fonte": "18-thay2-contraste.png",
+        "sha256": "130ee6e2e9070b33e1fcec60132f272b2be9d30f0d6d06f460398b2d954afc78",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/18-thay2-alpha-v2-costas.webp",
+      "off-white": "assets/shop/bayle/18-thay2-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/18-thay2-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": true
+  },
+  {
+    "id": "19-pica-pantera",
+    "nome": "Pica cor de rosa & Pantera cor de pau",
+    "colecao": "masculino",
+    "pagina": "https://brazilianbayle.com.br/loja/camiseta-pica-pantera",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "masculino/19-pica-pantera/original.png",
+        "fonte": "arte-transparente.png",
+        "sha256": "c79292d68b951fd0adc8d3e56d876b0e49e95c3155d4214f79501682bc621e58",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-existente",
+        "arquivo": "masculino/19-pica-pantera/negativa-existente.png",
+        "fonte": "arte-negativa.png",
+        "sha256": "b0320dbf6c38caac58899969f396e88f990b1544b9cfe744caf2ed21ce454524",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/bayle/19-pica-pantera-costas.webp",
+      "off-white": "assets/shop/bayle/19-pica-pantera-off-white-costas.webp",
+      "cinza": "assets/shop/bayle/19-pica-pantera-cinza-costas.webp"
+    },
+    "negativa_avulsa_localizada": true
+  },
+  {
+    "id": "20-cropped-sorry",
+    "nome": "Sorry, I only date DJs",
+    "colecao": "feminino",
+    "pagina": "https://brazilianbayle.com.br/loja/cropped-sorry-i-only-date-djs",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "feminino/20-cropped-sorry/original.png",
+        "fonte": "sorry-i-only-date-djs-verde-escuro (1).png",
+        "sha256": "d615f152e9221e3af301b53562b96d1014f1a8caac23e0bb5c3ad0448918f790",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/cropped/sorry-i-only-date-djs-preta.webp",
+      "off-white": "assets/shop/cropped/sorry-i-only-date-djs-off-white.webp",
+      "cinza": "assets/shop/cropped/sorry-i-only-date-djs-cinza.webp"
+    },
+    "negativa_avulsa_localizada": false
+  },
+  {
+    "id": "21-cropped-techno",
+    "nome": "Girls just wanna have techno",
+    "colecao": "feminino",
+    "pagina": "https://brazilianbayle.com.br/loja/cropped-girls-just-wanna-have-techno",
+    "arquivos": [
+      {
+        "tipo": "original",
+        "arquivo": "feminino/21-cropped-techno/original.png",
+        "fonte": "story-1080x1920 (2) (1).png",
+        "sha256": "466dd9fb5b904846ca8ef1dca50e10521e7a5cabcf2d3e68a198af5c30a9f2c8",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          255,
+          255
+        ],
+        "fundo_opaco": true
+      }
+    ],
+    "mockups_referencia": {
+      "preta": "assets/shop/cropped/girls-just-wanna-have-techno-preta-v2.webp",
+      "off-white": "assets/shop/cropped/girls-just-wanna-have-techno-off-white-v2.webp",
+      "cinza": "assets/shop/cropped/girls-just-wanna-have-techno-cinza-v2.webp"
+    },
+    "negativa_avulsa_localizada": false
+  }
+]
