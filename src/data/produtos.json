@@ -73,5 +73,86 @@
     "lede": "Camiseta oversized com estampa nas costas.",
     "story": "Cachorro ilustrado em degradê verde e azul.",
     "noVideo": true
+  },
+  {
+    "id": "10-a-pista-e-brasileira",
+    "slug": "camiseta-a-pista-e-brasileira",
+    "name": "A pista é brasileira",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "A pista é brasileira"
+  },
+  {
+    "id": "11-thay5",
+    "slug": "camiseta-thay5",
+    "name": "Thay 05",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Thay 05"
+  },
+  {
+    "id": "12-thay8",
+    "slug": "camiseta-thay8",
+    "name": "Thay 08",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Thay 08"
+  },
+  {
+    "id": "13-papagaio-neon",
+    "slug": "camiseta-papagaio-neon",
+    "name": "Papagaio Neon · Techno Addict",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Papagaio Neon · Techno Addict"
+  },
+  {
+    "id": "14-thay3",
+    "slug": "camiseta-thay3",
+    "name": "Thay 03",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Thay 03"
+  },
+  {
+    "id": "15-thay6",
+    "slug": "camiseta-thay6",
+    "name": "Thay 06",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Thay 06"
+  },
+  {
+    "id": "16-thay9",
+    "slug": "camiseta-thay9",
+    "name": "Thay 09",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Thay 09"
+  },
+  {
+    "id": "17-thay1",
+    "slug": "camiseta-thay1",
+    "name": "Thay 01",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Thay 01"
+  },
+  {
+    "id": "18-thay2",
+    "slug": "camiseta-thay2",
+    "name": "Thay 02",
+    "noVideo": true,
+    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Thay 02"
   }
 ]
