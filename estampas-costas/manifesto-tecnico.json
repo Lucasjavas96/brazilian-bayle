@@ -238,5 +238,155 @@
     ],
     "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta preta; Brazilian Bayle em amarelo. Para camiseta clara.",
     "sha256": "233c7e9772ddc1505dd6186e1bd3757aeee4dfc16c6603da730c7789352a519e"
+  },
+  {
+    "arquivo": "17-sorry-i-only-date-djs-verde/17-sorry-i-only-date-djs-verde.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1024,
+      1024
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta verde escura com as letras em creme.",
+    "sha256": "06744b30e03b9ff28d3d5e56492df4c426ce6c830c6f0a4790a245641db3b567"
+  },
+  {
+    "arquivo": "18-sorry-i-only-date-djs-branco/18-sorry-i-only-date-djs-branco.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1024,
+      1024
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta branca; so aparece em camiseta escura. Letras vazadas (creme transparente).",
+    "sha256": "839bab00764cf80a8cf12f21da5021a24817f0c7cf1188308ebbbe7d36755b04"
+  },
+  {
+    "arquivo": "19-sorry-i-only-date-djs-preto/19-sorry-i-only-date-djs-preto.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1024,
+      1024
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta preta; para camiseta clara. Letras vazadas (creme transparente).",
+    "sha256": "e48183cf106b0e17bac81457f9f877f7c8e3b8f5c21bf148098826d8ef79c11e"
+  },
+  {
+    "arquivo": "20-girls-just-wanna-have-techno-verde/20-girls-just-wanna-have-techno-verde.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1024,
+      1024
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta verde escura.",
+    "sha256": "7da0a8991476c584facecc7286202cbe57b6ab2a766ff6452b9741045284bf2c"
+  },
+  {
+    "arquivo": "21-girls-just-wanna-have-techno-branco/21-girls-just-wanna-have-techno-branco.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1024,
+      1024
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta branca; so aparece em camiseta escura.",
+    "sha256": "22f2db1b6f2d59705eff986a9f513afb929893f271e2424a52a20454b90f25f6"
+  },
+  {
+    "arquivo": "22-girls-just-wanna-have-techno-preto/22-girls-just-wanna-have-techno-preto.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1024,
+      1024
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta preta; para camiseta clara.",
+    "sha256": "540829b147cabdf14cf0190954176090ec531508067a828d5e20da6d8e8df90c"
+  },
+  {
+    "arquivo": "23-posso-dancar-so-mais-essa-branco/23-posso-dancar-so-mais-essa-branco.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      874,
+      1352
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta branca; so aparece em camiseta escura. Brazilian Bayle em amarelo. Fonte ja recortada (874 x 1352).",
+    "sha256": "b9e02912e4b9a81be5d56936a74134bba9580589a84d560d1a510eea09a20a50"
+  },
+  {
+    "arquivo": "24-posso-dancar-so-mais-essa-preto/24-posso-dancar-so-mais-essa-preto.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      874,
+      1352
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta preta; para camiseta clara. Brazilian Bayle em amarelo. Fonte ja recortada (874 x 1352).",
+    "sha256": "9cfc4513ef797f1c03d5499be206e3f97fe688475e663c4928ff4fcfdbc70fad"
+  },
+  {
+    "arquivo": "25-the-last-romantic-branco/25-the-last-romantic-branco.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta branca; so aparece em camiseta escura. Brazilian Bayle em amarelo.",
+    "sha256": "a4bcead3c0cf18c2b979a4579b02f37ddcd0ace21be8f4fd8f863e950f4cb050"
+  },
+  {
+    "arquivo": "26-the-last-romantic-preto/26-the-last-romantic-preto.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta preta; para camiseta clara. Brazilian Bayle em amarelo.",
+    "sha256": "7fe5c2d3a32af89d8af2e4cbd17e2de39820926980dc93bb45b6d3148037316e"
   }
 ]
