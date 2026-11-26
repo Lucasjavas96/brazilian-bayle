@@ -943,7 +943,11 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
   if (!dialog) return;
   const stage = dialog.querySelector('.bayle-preview-stage');
   const image = dialog.querySelector('.bayle-preview-img');
-  const tabs = [...dialog.querySelectorAll('.bayle-tab')];
+  const tabs = [...dialog.querySelectorAll('[data-bayle-view]')];
+  const colorsPanel = dialog.querySelector('[data-bayle-colors-panel]');
+  const colors = [...dialog.querySelectorAll('[data-bayle-color]')];
+  const frontTab = tabs.find(button => button.dataset.bayleView === 'frente');
+  let color = 'preto';
   const tab3d = dialog.querySelector('.bayle-tab-3d');
   const panel3d = dialog.querySelector('.bayle-3d');
   const canvas = dialog.querySelector('.bayle-3d-canvas');
@@ -955,7 +959,8 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     clearTimeout(flipTimer);
     threeD.stop();
     panel3d.hidden = true; stage.classList.remove('is-3d'); image.hidden = false;
-    const next = '/assets/shop/bayle/' + id + '-' + view + '.webp' + (view === 'costas' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
+    const suffix = color === 'preto' ? '' : '-' + color;
+    const next = '/assets/shop/bayle/' + id + suffix + '-' + view + '.webp' + (view === 'costas' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
     tabs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bayleView === view)));
     if (image.src.endsWith(next)) return;
     image.alt = title + ': ' + (view === 'frente' ? 'vista de frente com o papagaio no peito' : 'vista de costas com a estampa');
@@ -1016,12 +1021,22 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
     stage.dataset.frames = button.dataset.bayleGiroFrames || '';
     stage.dataset.path = button.dataset.bayleGiroPath || '';
     tab3d.hidden = !(stage.dataset.frames && stage.dataset.path);
+    color = 'preto';
+    frontTab.hidden = false;
+    if (colorsPanel) colorsPanel.hidden = !button.hasAttribute('data-bayle-colors');
+    colors.forEach(item => item.setAttribute('aria-pressed', String(item.dataset.bayleColor === color)));
     showPhoto('frente');
     dialog.showModal();
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       flipTimer = setTimeout(() => { if (dialog.open) showPhoto('costas'); }, 1300);
     }
   };
+  colors.forEach(button => button.addEventListener('click', () => {
+    color = button.dataset.bayleColor;
+    frontTab.hidden = color !== 'preto';
+    colors.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    showPhoto('costas');
+  }));
   const close = () => dialog.close();
   dialog.addEventListener('close', () => { clearTimeout(flipTimer); threeD.stop(); });
   document.querySelectorAll('[data-bayle-preview]').forEach(button => button.addEventListener('click', () => open(button)));

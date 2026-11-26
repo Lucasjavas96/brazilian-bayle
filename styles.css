@@ -3984,3 +3984,5 @@ a.ticket-card:hover{border-color:#c9a45c88}
 .page-loja .feminina-card .shop-buy button{width:100%;min-height:44px;cursor:pointer;aspect-ratio:auto;background:#c9a45c;color:#050505;border-radius:30px}
 .page-loja .feminina-card .shop-product-category{color:#d2b375;font-size:12px;text-transform:uppercase;margin:5px 0 20px}
 .page-loja .feminina-card .shop-sizes{font-size:13px;margin:0 0 26px}
+
+[data-bayle-colors-panel][hidden], .bayle-tab[hidden]{display:none}
