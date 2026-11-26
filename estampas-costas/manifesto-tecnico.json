@@ -208,5 +208,35 @@
     ],
     "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta verde escura; Brazilian Bayle em amarelo.",
     "sha256": "9fc51668c6f3df0a10959021934600b86f2715d51ea0159027b9dc3ce453f937"
+  },
+  {
+    "arquivo": "15-sorry-im-nonverbal-right-now-branco/15-sorry-im-nonverbal-right-now-branco.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta branca; Brazilian Bayle em amarelo. So aparece em camiseta escura.",
+    "sha256": "04ff6667f97c831d3ea09ba0907a398a26fda852a39321f568d8e24782afd9e0"
+  },
+  {
+    "arquivo": "16-sorry-im-nonverbal-right-now-preto/16-sorry-im-nonverbal-right-now-preto.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta preta; Brazilian Bayle em amarelo. Para camiseta clara.",
+    "sha256": "233c7e9772ddc1505dd6186e1bd3757aeee4dfc16c6603da730c7789352a519e"
   }
 ]
