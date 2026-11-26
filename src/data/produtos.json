@@ -154,5 +154,14 @@
     "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
     "story": "Disponível em preto, cinza e off-white, do P ao XG.",
     "art": "Thay 02"
+  },
+  {
+    "id": "19-pica-pantera",
+    "slug": "camiseta-pica-pantera",
+    "name": "Pica cor de rosa & Pantera cor de pau",
+    "noVideo": true,
+    "lede": "Camiseta oversized Brazilian Bayle com estampa nas costas.",
+    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
+    "art": "Personagens rosa e vermelho com óculos escuros e assinatura Bayle"
   }
 ]

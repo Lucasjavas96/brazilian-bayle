@@ -1,0 +1,1 @@
+insert into public.brb_shop_products(id,name,price_cents,sizes,active) select '19-pica-pantera','Pica cor de rosa & Pantera cor de pau',price_cents,sizes,active from public.brb_shop_products where id='01-work-it' on conflict(id) do nothing;
