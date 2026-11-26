@@ -148,5 +148,50 @@
     ],
     "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
     "sha256": "5cb34d6e4f3f0fc158ffe4394bde95b20c6f423eed9073b74f5975f3120cc73b"
+  },
+  {
+    "arquivo": "11-afterparty-princess-verde/11-afterparty-princess-verde.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta verde #009C3B; Brazilian Bayle em amarelo.",
+    "sha256": "06cb90a5c11b5651945ea2d6524543907d643ddaebb912086745cbce31e785da"
+  },
+  {
+    "arquivo": "12-afterparty-princess-branco/12-afterparty-princess-branco.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta branca; Brazilian Bayle em amarelo. So aparece em camiseta escura.",
+    "sha256": "aa8f812c71bc60caffc198fc91b1114d2873f505b0107f64eab04ee9082b28b1"
+  },
+  {
+    "arquivo": "13-afterparty-princess-preto/13-afterparty-princess-preto.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta preta; Brazilian Bayle em amarelo. Para camiseta clara.",
+    "sha256": "3dc523d20957a92edce0272d07d35e9a6e36c5d66b7596252647d69571af9148"
   }
 ]
