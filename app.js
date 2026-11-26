@@ -1069,7 +1069,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelect
 (() => {
   document.querySelectorAll('[data-cropped]').forEach(card => {
     card.querySelector('select').addEventListener('change', event => {
-      const src = '/assets/shop/cropped/' + card.dataset.cropped + '-' + event.target.value + '.webp';
+      const src = '/assets/shop/cropped/' + card.dataset.cropped + '-' + event.target.value + (card.dataset.cropped === 'girls-just-wanna-have-techno' ? '-v2' : '') + '.webp';
       const image = card.querySelector('img');
       image.src = src;
       image.alt = card.querySelector('h3').textContent + ' · ' + event.target.selectedOptions[0].textContent + ' · costas';
