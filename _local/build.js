@@ -229,6 +229,40 @@ function copyDir(src, dst, skip = () => false) {
 fs.mkdirSync(OUT, { recursive: true });
 for (const f of fs.readdirSync(OUT)) if (f.endsWith(".html")) fs.rmSync(path.join(OUT, f), { force: true });
 
+/* ---------- Loja: categorias (src/data/categorias.json) ----------
+   Todo produto declara "categoria": "<categoria>/<subcategoria>" e toda pasta de arte fica em
+   produtos/<categoria>/<subcategoria>/<estampa>/. O build para se algo usar uma categoria que não existe,
+   ou se um produto cair no modelo de página errado (cropped com página de camiseta e vice-versa). */
+const LOJA = (() => {
+  const load = f => JSON.parse(fs.readFileSync(path.join(ROOT, "src/data", f), "utf8"));
+  const cats = load("categorias.json").categorias;
+  const subs = new Set(cats.flatMap(c => c.subcategorias.map(s => `${c.id}/${s.id}`)));
+  // cada arquivo de dados gera um modelo de página; só aceita as subcategorias que esse modelo sabe mostrar
+  const fontes = { "produtos.json": /^(masculino|feminino)\/oversized$/, "croppeds.json": /^feminino\/cropped$/ };
+  const itens = Object.entries(fontes).flatMap(([f, ok]) => load(f).map(p => {
+    if (!subs.has(p.categoria)) throw new Error(`${f}: "${p.id}" tem categoria "${p.categoria}", que não existe em categorias.json`);
+    if (!ok.test(p.categoria)) throw new Error(`${f}: "${p.id}" é ${p.categoria}, mas este arquivo só gera páginas de ${ok.source}`);
+    return p;
+  }));
+  const pastas = path.join(ROOT, "produtos");
+  for (const c of fs.readdirSync(pastas, { withFileTypes: true })) {
+    if (!c.isDirectory() || c.name.startsWith("_")) continue;
+    for (const s of fs.readdirSync(path.join(pastas, c.name), { withFileTypes: true }))
+      if (s.isDirectory() && !subs.has(`${c.name}/${s.name}`)) throw new Error(`produtos/${c.name}/${s.name}: pasta fora das categorias de src/data/categorias.json`);
+  }
+  const usadas = new Set(itens.map(p => p.categoria));
+  // abas da loja: só categorias com produto; subcategorias só aparecem quando a categoria tem mais de uma em uso
+  const tabs = atual => {
+    const vis = cats.filter(c => c.subcategorias.some(s => usadas.has(`${c.id}/${s.id}`)));
+    const cur = vis.find(c => c.pagina === atual);
+    let html = `<nav class="shop-collection-tabs" aria-label="Coleções">${vis.map(c => `<a href="${c.pagina}"${c === cur ? ' aria-current="page"' : ""}>${c.nome}</a>`).join("")}</nav>`;
+    const subVis = cur ? cur.subcategorias.filter(s => usadas.has(`${cur.id}/${s.id}`)) : [];
+    if (subVis.length > 1) html += `<nav class="shop-subcategory-tabs" aria-label="Tipos de peça">${subVis.map(s => `<a href="#${s.id}">${s.nome}</a>`).join("")}</nav>`;
+    return html;
+  };
+  return { tabs };
+})();
+
 const pages = fs.readdirSync(path.join(ROOT, "src/pages")).filter(f => f.endsWith(".html"));
 const urls = [];
 for (const f of pages) {
@@ -237,6 +271,7 @@ for (const f of pages) {
   if (!m) throw new Error(`${f}: falta o comentário <!--meta {...} -->`);
   const meta = JSON.parse(m[1]);
   let body = raw.slice(m[0].length);
+  if (body.includes("<!--CATEGORIAS_LOJA-->")) body = body.replace("<!--CATEGORIAS_LOJA-->", () => LOJA.tabs(meta.path));
   // álbum: dados montados no build (países, numeração e notas pela régua), sem script inline
   if (body.includes("<!--ALBUM_DATA-->")) body = body.replace("<!--ALBUM_DATA-->", () => JSON.stringify(require("./album.js")(ROOT)).replace(/</g, "\\u003c"));
   const html = optimize(layout(meta, body));

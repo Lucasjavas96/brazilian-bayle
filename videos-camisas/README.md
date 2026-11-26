@@ -1,6 +1,6 @@
 # Vídeos das camisas (loja)
 
-Camisa "fantasma" (manequim invisível) em estúdio cinza claro, feita com IA a partir dos mockups da pasta `../mockups` e das artes de `../estampas-costas`. Sem Blender.
+Camisa "fantasma" (manequim invisível) em estúdio cinza claro, feita com IA a partir dos mockups da pasta `../produtos/<categoria>/<tipo>/<estampa>/mockups` e das artes de `../produtos/<categoria>/<tipo>/<estampa>/estampa-costas`. Sem Blender.
 
 ## `andando/` (estilo aprovado pelo Gab)
 A camisa vem andando até a câmera, vira e mostra as costas. 8 s, em loop, 1080×1080, sem áudio.
