@@ -1,0 +1,34 @@
+{
+  "_como_usar": "Categorias da loja. Cada produto em produtos.json/croppeds.json tem \"categoria\": \"<categoria>/<subcategoria>\" usando os ids daqui. A arte de impressão fica em produtos/<categoria>/<subcategoria>/<estampa>/. Para criar uma subcategoria nova, adicione uma linha aqui e crie a pasta. A aba só aparece na loja quando tem produto.",
+  "categorias": [
+    {
+      "id": "masculino",
+      "nome": "Masculino",
+      "pagina": "/loja",
+      "subcategorias": [
+        { "id": "oversized", "nome": "Oversized", "rotulo": "Camiseta oversized" },
+        { "id": "regata", "nome": "Regata", "rotulo": "Regata" }
+      ]
+    },
+    {
+      "id": "feminino",
+      "nome": "Feminino",
+      "pagina": "/loja-feminina",
+      "subcategorias": [
+        { "id": "oversized", "nome": "Oversized", "rotulo": "Camiseta oversized feminina" },
+        { "id": "cropped", "nome": "Cropped", "rotulo": "Cropped Basic Streetwear" },
+        { "id": "biquini", "nome": "Biquíni", "rotulo": "Biquíni" }
+      ]
+    },
+    {
+      "id": "acessorios",
+      "nome": "Acessórios",
+      "pagina": "/loja-acessorios",
+      "subcategorias": [
+        { "id": "bone", "nome": "Boné", "rotulo": "Boné" },
+        { "id": "leque", "nome": "Leque", "rotulo": "Leque" },
+        { "id": "chinelo", "nome": "Chinelo", "rotulo": "Chinelo" }
+      ]
+    }
+  ]
+}
