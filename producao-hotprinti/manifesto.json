@@ -487,13 +487,13 @@
   },
   {
     "id": "10-a-pista-e-brasileira",
-    "nome": "A pista ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â© brasileira",
+    "nome": "A pista e brasileira",
     "colecao": "masculino",
     "pagina": "https://brazilianbayle.com.br/loja/camiseta-a-pista-e-brasileira",
     "arquivos": [
       {
         "tipo": "original",
-        "arquivo": "masculino/10-a-pista-aaatmaa-aaaaaaaaasaa-brasileira/01-original/original.png",
+        "arquivo": "masculino/10-a-pista-e-brasileira/01-original/original.png",
         "fonte": "estampa-F7.3-a.png",
         "sha256": "f0255972364d56f0d229606e8c24d4d363c38f6333e99f70e13511b04a51eebf",
         "pixels": [
@@ -508,7 +508,7 @@
       },
       {
         "tipo": "negativa-existente",
-        "arquivo": "masculino/10-a-pista-aaatmaa-aaaaaaaaasaa-brasileira/02-variantes/arte-para-branca-off-white-cinza.png",
+        "arquivo": "masculino/10-a-pista-e-brasileira/02-variantes/arte-para-branca-off-white-cinza.png",
         "fonte": "10-a-pista-e-brasileira-negativa.png",
         "sha256": "33bf1733c458debad29456bdc83d4ed73ca49a4bfef0ae122ae02908b2c5cb7e",
         "pixels": [
@@ -530,11 +530,11 @@
     "negativa_avulsa_localizada": true,
     "negativa_disponivel": true,
     "uso_por_cor": {
-      "preta": "masculino/10-a-pista-aaatmaa-aaaaaaaaasaa-brasileira/01-original/original.png",
-      "branca/off-white": "masculino/10-a-pista-aaatmaa-aaaaaaaaasaa-brasileira/02-variantes/arte-para-branca-off-white-cinza.png",
-      "cinza": "masculino/10-a-pista-aaatmaa-aaaaaaaaasaa-brasileira/02-variantes/arte-para-branca-off-white-cinza.png"
+      "preta": "masculino/10-a-pista-e-brasileira/01-original/original.png",
+      "branca/off-white": "masculino/10-a-pista-e-brasileira/02-variantes/arte-para-branca-off-white-cinza.png",
+      "cinza": "masculino/10-a-pista-e-brasileira/02-variantes/arte-para-branca-off-white-cinza.png"
     },
-    "pasta": "masculino/10-a-pista-aaatmaa-aaaaaaaaasaa-brasileira"
+    "pasta": "masculino/10-a-pista-e-brasileira"
   },
   {
     "id": "11-thay5",

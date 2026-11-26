@@ -30,7 +30,7 @@ Os IDs antigos (Thay etc.) estao no README de cada produto e no manifesto.
 | Keep Following the Bayle | [Abrir](masculino/07-keep-following-the-bayle/README.md) | Com transparencia |
 | Nao quero amor de puta nem amizade de safado | [Abrir](masculino/08-amor-e-amizade/README.md) | PREPARAR FUNDO |
 | Nem Bateu | [Abrir](masculino/09-nem-bateu/README.md) | PREPARAR FUNDO |
-| A pista ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â© brasileira | [Abrir](masculino/10-a-pista-aaatmaa-aaaaaaaaasaa-brasileira/README.md) | PREPARAR FUNDO |
+| A pista e brasileira | [Abrir](masculino/10-a-pista-e-brasileira/README.md) | PREPARAR FUNDO |
 | Track ID Unknown - Resound System | [Abrir](masculino/11-track-id-unknown-resound-system/README.md) | Com transparencia |
 | See U on the Dance Floor | [Abrir](masculino/12-see-u-on-the-dance-floor/README.md) | Com transparencia |
 | Techno Addict - Papagaio Neon | [Abrir](masculino/13-techno-addict-papagaio-neon/README.md) | Com transparencia |

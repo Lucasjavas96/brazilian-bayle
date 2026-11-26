@@ -1,4 +1,4 @@
-# A pista ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â© brasileira
+# A pista e brasileira
 
 ID no site: `10-a-pista-e-brasileira`
 
