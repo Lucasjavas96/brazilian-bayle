@@ -103,5 +103,50 @@
     ],
     "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
     "sha256": "40ef685a3f6aa9a36ee9b639560a19adb5b46a86869ec7e7de7337811a7c2a10"
+  },
+  {
+    "arquivo": "08-posso-dancar-so-mais-essa/08-posso-dancar-so-mais-essa.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      874,
+      1352
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "1fc861b8799acb6342694ec21e712042a4168ba9b5ea9c8b6d96e6ae23dba472"
+  },
+  {
+    "arquivo": "09-vintage-clube-john/09-vintage-clube-john.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      941,
+      1672
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "ae6637c8f17e07ccffa01aa17f97fbe5f6757db61fca59aa2e1a9cf57779e370"
+  },
+  {
+    "arquivo": "10-the-last-romantic/10-the-last-romantic.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica.",
+    "sha256": "5cb34d6e4f3f0fc158ffe4394bde95b20c6f423eed9073b74f5975f3120cc73b"
   }
 ]
