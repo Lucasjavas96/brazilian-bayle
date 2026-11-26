@@ -9,11 +9,15 @@
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
  /* Medidas da camiseta oversized (PR #11), exibidas na sacola e no checkout. */
+ function cartHasShirt(){try{return JSON.parse(localStorage.getItem(CART)||'[]').some(i=>!(i.id in croppedPhotos))}catch{return false}}
  function cartHasCropped(){try{return JSON.parse(localStorage.getItem(CART)||'[]').some(i=>i.id in croppedPhotos)}catch{return false}}
  const sizeGuide=document.querySelector('[data-size-guide]');
- if(sizeGuide && !cartHasCropped()){
+ if(sizeGuide && cartHasCropped()){
+  const guide=document.createElement("details");guide.className="commerce-size-guide";guide.open=true;guide.innerHTML="<summary>Tabela de medidas · Cropped</summary><table class=\"pdp-table\"><caption>Medidas do Cropped Streetwear em centímetros</caption><thead><tr><th scope=\"col\">Tamanho</th><th scope=\"col\">Largura</th><th scope=\"col\">Comprimento</th><th scope=\"col\">Manga</th></tr></thead><tbody><tr><th scope=\"row\">P</th><td>55</td><td>36,5</td><td>15,5</td></tr><tr><th scope=\"row\">M</th><td>59</td><td>38,5</td><td>16</td></tr><tr><th scope=\"row\">G</th><td>61,5</td><td>42,5</td><td>17</td></tr><tr><th scope=\"row\">GG</th><td>62</td><td>44,5</td><td>18</td></tr></tbody></table><p class=\"pdp-note\">Compare com uma peça sua estendida sobre uma mesa. A largura é medida de um lado ao outro, não a circunferência.</p><p class=\"pdp-note\">Fonte: <a href=\"https://hotprinti.com.br/produtos/\" target=\"_blank\" rel=\"noopener\">HotPrinti · Cropped Streetwear</a>.</p>";sizeGuide.append(guide);
+ }
+ if(sizeGuide && (!cartHasCropped() || cartHasShirt())){
   const measurements=[['P','56,5','72','21'],['M','60','77','22'],['G','61','77,5','22,5'],['GG','65','84','23,5'],['XG','65,5','88,5','23,5']];
-  sizeGuide.innerHTML=`<details class="commerce-size-guide" open><summary>Tabela de medidas</summary><table><caption class="sr-only">Medidas da camiseta em centímetros</caption><thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead><tbody>${measurements.map(([size,width,length,sleeve])=>`<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody></table><p>Medidas da peça em cm. Compare com uma camiseta sua estendida sobre uma mesa. Pode variar até 2 cm.</p></details>`;
+  sizeGuide.insertAdjacentHTML('beforeend',`<details class="commerce-size-guide" open><summary>Tabela de medidas</summary><table><caption class="sr-only">Medidas da camiseta em centímetros</caption><thead><tr><th scope="col">Tamanho</th><th scope="col">Largura</th><th scope="col">Comprimento</th><th scope="col">Manga</th></tr></thead><tbody>${measurements.map(([size,width,length,sleeve])=>`<tr><th scope="row">${size}</th><td>${width}</td><td>${length}</td><td>${sleeve}</td></tr>`).join('')}</tbody></table><p>Medidas da peça em cm. Compare com uma camiseta sua estendida sobre uma mesa. Pode variar até 2 cm.</p></details>`);
  }
  const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}};
