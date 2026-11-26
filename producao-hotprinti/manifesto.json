@@ -19,6 +19,24 @@
           255
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/01-work-it/negativa-construida.png",
+        "sha256": "c10aec60df0496506fd1b8ea3fc6abeb119ad3f5b53ae0daa43741da4e2e078f",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Texto branco para preto; regiÃµes neutras escuras do capacete para prata clara, preservando traÃ§os e pixels alfa; cores douradas mantidas. Ajuste evita letras pretas desaparecerem sobre capacete escuro.",
+        "pixels_alterados": 9170006,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -26,7 +44,8 @@
       "off-white": "assets/shop/bayle/01-work-it-off-white-costas.webp",
       "cinza": "assets/shop/bayle/01-work-it-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "02-make-djs-mix-again",
@@ -48,6 +67,24 @@
           255
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/02-make-djs-mix-again/negativa-construida.png",
+        "sha256": "e906a69d4f698989a96d02a2c1d5de208bb2a05f0fc42b799faca66e4f6451e8",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÂ§ÃƒÂ£o e canal alfa preservados.",
+        "pixels_alterados": 3108681,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -55,7 +92,8 @@
       "off-white": "assets/shop/bayle/02-make-djs-mix-again-off-white-costas.webp",
       "cinza": "assets/shop/bayle/02-make-djs-mix-again-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "03-vintage-culture",
@@ -99,11 +137,12 @@
       "off-white": "assets/shop/bayle/03-vintage-culture-off-white-costas.webp",
       "cinza": "assets/shop/bayle/03-vintage-culture-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": true
+    "negativa_avulsa_localizada": true,
+    "negativa_disponivel": true
   },
   {
     "id": "04-546-im-yours",
-    "nome": "5:46 · I’m Yours",
+    "nome": "5:46 Ãƒâ€šÃ‚Â· IÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢m Yours",
     "colecao": "masculino",
     "pagina": "https://brazilianbayle.com.br/loja/camiseta-546-im-yours",
     "arquivos": [
@@ -121,6 +160,24 @@
           255
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/04-546-im-yours/negativa-construida.png",
+        "sha256": "c5bc54aa9f0acadc09dd2bdf51457b30174d89bf0a8ee7c56f788f856052c4f3",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÂ§ÃƒÂ£o e canal alfa preservados.",
+        "pixels_alterados": 1651152,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -128,7 +185,8 @@
       "off-white": "assets/shop/bayle/04-546-im-yours-off-white-costas.webp",
       "cinza": "assets/shop/bayle/04-546-im-yours-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "05-que-festa-boa",
@@ -150,6 +208,24 @@
           255
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/05-que-festa-boa/negativa-construida.png",
+        "sha256": "f70a35c3a20c22064fec8e96188e8b550491568b44ddeab26d5b59f2bb572a9f",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÂ§ÃƒÂ£o e canal alfa preservados.",
+        "pixels_alterados": 541369,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -157,7 +233,8 @@
       "off-white": "assets/shop/bayle/05-que-festa-boa-off-white-costas.webp",
       "cinza": "assets/shop/bayle/05-que-festa-boa-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "06-techno-addict",
@@ -179,6 +256,24 @@
           255
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/06-techno-addict/negativa-construida.png",
+        "sha256": "0bcc8db38f705bf79d1d4f2b941e997be1f0022ef255e9453e4d600bdfb48d3b",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -186,7 +281,8 @@
       "off-white": "assets/shop/bayle/06-techno-addict-off-white-costas.webp",
       "cinza": "assets/shop/bayle/06-techno-addict-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "07-keep-following",
@@ -208,6 +304,24 @@
           255
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/07-keep-following/negativa-construida.png",
+        "sha256": "794aeb4ce60e986e7c06cbfadfff3f31ea1426756a3a01b0492d72b989b31a82",
+        "pixels": [
+          3543,
+          5906
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Brancos/cremes neutros convertidos para tinta escura; cores da ilustraÃƒÂ§ÃƒÂ£o e canal alfa preservados.",
+        "pixels_alterados": 1241793,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -215,7 +329,8 @@
       "off-white": "assets/shop/bayle/07-keep-following-off-white-costas.webp",
       "cinza": "assets/shop/bayle/07-keep-following-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "08-grafite",
@@ -259,7 +374,8 @@
       "off-white": "assets/shop/bayle/08-grafite-off-white-costas.webp",
       "cinza": "assets/shop/bayle/08-grafite-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": true
+    "negativa_avulsa_localizada": true,
+    "negativa_disponivel": true
   },
   {
     "id": "09-nem-bateu",
@@ -303,11 +419,12 @@
       "off-white": "assets/shop/bayle/09-nem-bateu-off-white-costas.webp",
       "cinza": "assets/shop/bayle/09-nem-bateu-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": true
+    "negativa_avulsa_localizada": true,
+    "negativa_disponivel": true
   },
   {
     "id": "10-a-pista-e-brasileira",
-    "nome": "A pista é brasileira",
+    "nome": "A pista ÃƒÆ’Ã‚Â© brasileira",
     "colecao": "masculino",
     "pagina": "https://brazilianbayle.com.br/loja/camiseta-a-pista-e-brasileira",
     "arquivos": [
@@ -347,7 +464,8 @@
       "off-white": "assets/shop/bayle/10-a-pista-e-brasileira-off-white-costas.webp",
       "cinza": "assets/shop/bayle/10-a-pista-e-brasileira-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": true
+    "negativa_avulsa_localizada": true,
+    "negativa_disponivel": true
   },
   {
     "id": "11-thay5",
@@ -369,6 +487,24 @@
           254
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/11-thay5/negativa-construida.png",
+        "sha256": "111a7913ecd45e7d363729ca2c8902644320bd3a199fcd3fe11830643d54c46f",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -376,7 +512,8 @@
       "off-white": "assets/shop/bayle/11-thay5-off-white-costas.webp",
       "cinza": "assets/shop/bayle/11-thay5-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "12-thay8",
@@ -398,6 +535,24 @@
           254
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/12-thay8/negativa-construida.png",
+        "sha256": "fcb674a7857ce5eb4481f16941be6f288ff61eca4b9feecc84670c08225356e1",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -405,11 +560,12 @@
       "off-white": "assets/shop/bayle/12-thay8-off-white-costas.webp",
       "cinza": "assets/shop/bayle/12-thay8-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "13-papagaio-neon",
-    "nome": "Papagaio Neon · Techno Addict",
+    "nome": "Papagaio Neon Ãƒâ€šÃ‚Â· Techno Addict",
     "colecao": "masculino",
     "pagina": "https://brazilianbayle.com.br/loja/camiseta-papagaio-neon",
     "arquivos": [
@@ -427,6 +583,24 @@
           255
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/13-papagaio-neon/negativa-construida.png",
+        "sha256": "a40c52222b35e5d78714830384e6f723bc45236da9a8114a6e05f97e7b52f517",
+        "pixels": [
+          941,
+          1671
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -434,7 +608,8 @@
       "off-white": "assets/shop/bayle/13-papagaio-neon-off-white-costas.webp",
       "cinza": "assets/shop/bayle/13-papagaio-neon-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "14-thay3",
@@ -456,6 +631,24 @@
           254
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/14-thay3/negativa-construida.png",
+        "sha256": "d7e7eeff5715dbe0ac7e7df33fce3b1b5ef47b5914a396d95adea4dacd3996c0",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -463,7 +656,8 @@
       "off-white": "assets/shop/bayle/14-thay3-off-white-costas.webp",
       "cinza": "assets/shop/bayle/14-thay3-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "15-thay6",
@@ -485,6 +679,24 @@
           254
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/15-thay6/negativa-construida.png",
+        "sha256": "2a043e7ff902494feda71902145072a8a6f99e374f7967456df3d39952b92f53",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -492,7 +704,8 @@
       "off-white": "assets/shop/bayle/15-thay6-off-white-costas.webp",
       "cinza": "assets/shop/bayle/15-thay6-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "16-thay9",
@@ -514,6 +727,24 @@
           254
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/16-thay9/negativa-construida.png",
+        "sha256": "d7c7a74430199610096d081995a30126c136fa4a69e76884e6883e6254faf54d",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -521,7 +752,8 @@
       "off-white": "assets/shop/bayle/16-thay9-off-white-costas.webp",
       "cinza": "assets/shop/bayle/16-thay9-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "17-thay1",
@@ -543,6 +775,24 @@
           254
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "masculino/17-thay1/negativa-construida.png",
+        "sha256": "8dadd2063fd1a34053522263b1da9f9a7c4ddd0ec7b17b340a01b2c84bb81bae",
+        "pixels": [
+          1536,
+          2048
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Tinta colorida preservada: mesma arte atende aos tecidos claros; sem inversÃƒÂ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -550,7 +800,8 @@
       "off-white": "assets/shop/bayle/17-thay1-off-white-costas.webp",
       "cinza": "assets/shop/bayle/17-thay1-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "18-thay2",
@@ -594,7 +845,8 @@
       "off-white": "assets/shop/bayle/18-thay2-off-white-costas.webp",
       "cinza": "assets/shop/bayle/18-thay2-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": true
+    "negativa_avulsa_localizada": true,
+    "negativa_disponivel": true
   },
   {
     "id": "19-pica-pantera",
@@ -638,7 +890,8 @@
       "off-white": "assets/shop/bayle/19-pica-pantera-off-white-costas.webp",
       "cinza": "assets/shop/bayle/19-pica-pantera-cinza-costas.webp"
     },
-    "negativa_avulsa_localizada": true
+    "negativa_avulsa_localizada": true,
+    "negativa_disponivel": true
   },
   {
     "id": "20-cropped-sorry",
@@ -660,6 +913,24 @@
           254
         ],
         "fundo_opaco": false
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "feminino/20-cropped-sorry/negativa-construida.png",
+        "sha256": "b57188e1020d3cac32064a55346026eea4cf403324c55e90fb29b206f954c875",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "alpha": [
+          0,
+          254
+        ],
+        "fundo_opaco": false,
+        "uso": "branca/off-white e cinza",
+        "metodo": "Marfim e verde preservados como no mockup off-white: contornos verdes jÃ¡ dÃ£o contraste nas letras. Sem inversÃ£o global.",
+        "pixels_alterados": 0,
+        "canal_alpha_preservado": true
       }
     ],
     "mockups_referencia": {
@@ -667,7 +938,8 @@
       "off-white": "assets/shop/cropped/sorry-i-only-date-djs-off-white.webp",
       "cinza": "assets/shop/cropped/sorry-i-only-date-djs-cinza.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   },
   {
     "id": "21-cropped-techno",
@@ -689,6 +961,30 @@
           255
         ],
         "fundo_opaco": true
+      },
+      {
+        "tipo": "negativa-construida",
+        "arquivo": "feminino/21-cropped-techno/negativa-construida.png",
+        "sha256": "b288f1e242cbb782d1f07cafee7497f727318f6475e86e1aecd0018ae74ee8ef",
+        "pixels": [
+          1080,
+          1920
+        ],
+        "alpha": [
+          0,
+          255
+        ],
+        "fundo_opaco": false,
+        "uso": "preta",
+        "metodo": "Negativa para tecido preto: vinil e texto neutro escuros convertidos para marfim; verde e assinatura amarela preservados. Fundo branco removido por mÃƒÂ¡scara de branco puro.",
+        "pixels_alterados": 1863405,
+        "canal_alpha_preservado": false
+      },
+      {
+        "tipo": "arte-sem-fundo-para-clara",
+        "arquivo": "feminino/21-cropped-techno/arte-sem-fundo-para-branca-e-cinza.png",
+        "sha256": "9e8acbff2f034eab52d20a091dbe080200822ede40563fbebf547bd5b90c2f1f",
+        "uso": "branca/off-white e cinza"
       }
     ],
     "mockups_referencia": {
@@ -696,6 +992,7 @@
       "off-white": "assets/shop/cropped/girls-just-wanna-have-techno-off-white-v2.webp",
       "cinza": "assets/shop/cropped/girls-just-wanna-have-techno-cinza-v2.webp"
     },
-    "negativa_avulsa_localizada": false
+    "negativa_avulsa_localizada": false,
+    "negativa_disponivel": true
   }
 ]
