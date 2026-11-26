@@ -10,6 +10,8 @@ Fotos de produto com **2 modelos fixos** (um homem e uma mulher) em estúdio, de
 4. Monte o prompt com o molde abaixo, trocando os 4 campos entre colchetes pelos da tabela. No texto, `图片1` é a Imagem 1 e `图片2` é a Imagem 2.
 5. Salve o resultado em `geradas/` com o nome da estampa.
 
+> **Atenção: pastas mudando (PR #20).** O PR de categorias move `estampas-costas/` e `mockups/` para `produtos/<categoria>/<tipo>/<estampa>/estampa-costas/`. Depois que ele entrar, pegue a estampa nessa pasta nova (ela já diz se é oversized ou cropped) e mova esta pasta `estudio-kling/` para junto dele. As estampas de **cropped** (17–19 Sorry I only date DJs, 20–22 Girls just wanna have techno) devem ser feitas na mulher com **cropped**, não oversized: troque [CAMISA] por `a [cor] fitted cropped cotton t-shirt ending above the navel`.
+
 Regra de cor: estampa branca em camisa **preta**; estampa preta e as verdes em camisa **off-white** (exceto a 08, verde neon, na preta).
 
 ## Molde do prompt
