@@ -193,5 +193,20 @@
     ],
     "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta preta; Brazilian Bayle em amarelo. Para camiseta clara.",
     "sha256": "3dc523d20957a92edce0272d07d35e9a6e36c5d66b7596252647d69571af9148"
+  },
+  {
+    "arquivo": "14-sorry-im-nonverbal-right-now/14-sorry-im-nonverbal-right-now.png",
+    "pixels": [
+      3543,
+      5906
+    ],
+    "formato": "PNG RGBA",
+    "fundo_externo": "transparente",
+    "fonte_pixels": [
+      1080,
+      1920
+    ],
+    "observacao": "Ampliacao proporcional; nao recupera detalhes. Necessaria prova da grafica. Tinta verde escura; Brazilian Bayle em amarelo.",
+    "sha256": "9fc51668c6f3df0a10959021934600b86f2715d51ea0159027b9dc3ce453f937"
   }
 ]
