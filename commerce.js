@@ -354,7 +354,7 @@
    pendingOrder??={request_id:uuid(),order_secret:Array.from(crypto.getRandomValues(new Uint8Array(32))).map(value=>value.toString(16).padStart(2,'0')).join('')};
    checkoutButton.disabled=true;el('deliveryError').textContent='';
    try{
-    const result=await request('orders',{items:cart(),customer,shipping_service:quoted.service,shipping_cents:quoted.shipping_cents,...pendingOrder});
+    const result=await request('orders',{items:cart(),customer,meta_consent:storage.get(localStorage,'brb-meta-consent-v1')==='yes',shipping_service:quoted.service,shipping_cents:quoted.shipping_cents,...pendingOrder});
     if(!storage.set(sessionStorage,ORDER,JSON.stringify({order_id:result.order_id,order_secret:pendingOrder.order_secret,total_cents:result.total_cents}))){el('deliveryError').textContent='Seu navegador bloqueou o armazenamento desta página (modo privado ou bloqueio de cookies). Libere e tente de novo para seguir ao pagamento.';checkoutButton.disabled=false;return;}
     location.assign('/checkout');
    }catch(error){el('deliveryError').textContent=error.message;checkoutButton.disabled=false;}
