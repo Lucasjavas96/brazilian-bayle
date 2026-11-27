@@ -50,11 +50,11 @@ function body(p, all) {
 <section class="pdp-gallery" aria-label="Fotos da camiseta ${esc(p.name)}">
 <ul class="pdp-slides" id="pdpSlides">
 <li class="pdp-slide pdp-slide-main"><img id="pdpBack" src="${shot(p.id, "costas")}" alt="Camiseta ${esc(p.name)} preta, vista de costas: ${esc(p.art)}" width="768" height="1024" fetchpriority="high"></li>
-<li class="pdp-slide"><img src="${shot(p.id, "frente")}" alt="Camiseta ${esc(p.name)} preta, vista de frente com o papagaio verde no peito" width="768" height="1024" loading="lazy"></li>
+${p.studioOnly ? "" : `<li class="pdp-slide"><img src="${shot(p.id, "frente")}" alt="Camiseta ${esc(p.name)} preta, vista de frente com o papagaio verde no peito" width="768" height="1024" loading="lazy"></li>`}
 ${p.noVideo ? "" : `<li class="pdp-slide"><video src="/assets/shop/bayle/andando/${p.id}-andando.mp4" poster="/assets/shop/bayle/andando/${p.id}-andando.webp" width="720" height="720" muted loop playsinline autoplay preload="none" aria-label="Vídeo da camiseta ${esc(p.name)} no corpo, girando"></video></li>`}
-<li class="pdp-slide pdp-slide-wide"><img src="${shot(p.id, "completo")}" alt="Camiseta ${esc(p.name)} preta, frente e costas lado a lado" width="1536" height="1024" loading="lazy"></li>
+${p.studioOnly ? "" : `<li class="pdp-slide pdp-slide-wide"><img src="${shot(p.id, "completo")}" alt="Camiseta ${esc(p.name)} preta, frente e costas lado a lado" width="1536" height="1024" loading="lazy"></li>`}
 </ul>
-<p class="pdp-dots" aria-hidden="true"><i></i><i></i><i></i>${p.noVideo ? "" : "<i></i>"}</p>
+<p class="pdp-dots" aria-hidden="true"><i></i>${p.studioOnly ? "" : "<i></i><i></i>"}${p.noVideo ? "" : "<i></i>"}</p>
 <p class="pdp-mock">Mockup ilustrativo da cor selecionada.</p>
 </section>
 <section class="pdp-buy" aria-labelledby="pdpTitle">

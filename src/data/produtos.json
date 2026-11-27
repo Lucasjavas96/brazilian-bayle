@@ -1,11 +1,29 @@
 [
   {
+    "id": "01-work-it",
+    "slug": "camiseta-work-it-harder",
+    "name": "Work It Harder",
+    "art": "Estampa Work It Harder",
+    "lede": "Camiseta oversized com estampa nas costas.",
+    "noVideo": true,
+    "studioOnly": false
+  },
+  {
     "id": "02-make-djs-mix-again",
     "slug": "camiseta-make-djs-mix-again",
     "name": "Make DJs Mix Again",
     "lede": "Um pedido em letras grandes, para quem sente falta de mixagem de verdade.",
     "story": "MAKE DJS MIX AGAIN ocupa as costas em letras grandes, com as iniciais em amarelo e um sorriso no fim. A assinatura Brazilian Bayle aparece de lado, em letra cursiva. Na frente, só o papagaio verde no peito.",
     "art": "frase em letras grandes com iniciais amarelas"
+  },
+  {
+    "id": "03-vintage-culture",
+    "slug": "camiseta-vintage-culture",
+    "name": "Vintage Culture",
+    "art": "Estampa Vintage Culture",
+    "lede": "Camiseta oversized com estampa nas costas.",
+    "noVideo": true,
+    "studioOnly": false
   },
   {
     "id": "04-546-im-yours",
@@ -22,6 +40,15 @@
     "lede": "A frase que todo mundo diz na saída.",
     "story": "Monograma M.D em dourado e, logo abaixo, que festa boa. escrito em letra cursiva branca. Discreta de longe, reconhecível de perto. Na frente, só o papagaio verde no peito.",
     "art": "monograma dourado e a frase que festa boa"
+  },
+  {
+    "id": "06-techno-addict",
+    "slug": "camiseta-techno-addict",
+    "name": "Techno Addict · Papagaio clássico",
+    "art": "Estampa Techno Addict · Papagaio clássico",
+    "lede": "Camiseta oversized com estampa nas costas.",
+    "noVideo": true,
+    "studioOnly": false
   },
   {
     "id": "07-keep-following",
@@ -48,15 +75,6 @@
     "lede": "Camiseta oversized com estampa nas costas.",
     "story": "Cachorro ilustrado em degradê verde e azul.",
     "noVideo": true
-  },
-  {
-    "id": "10-a-pista-e-brasileira",
-    "slug": "camiseta-a-pista-e-brasileira",
-    "name": "A pista é brasileira",
-    "noVideo": true,
-    "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
-    "story": "Disponível em preto, cinza e off-white, do P ao XG.",
-    "art": "A pista é brasileira"
   },
   {
     "id": "11-thay5",
@@ -86,6 +104,15 @@
     "art": "Techno Addict"
   },
   {
+    "id": "14-thay3",
+    "slug": "camiseta-thay3",
+    "name": "Posso dançar só mais essa?",
+    "art": "Estampa Posso dançar só mais essa?",
+    "lede": "Camiseta oversized com estampa nas costas.",
+    "noVideo": true,
+    "studioOnly": false
+  },
+  {
     "id": "15-thay6",
     "slug": "camiseta-thay6",
     "name": "Thay 06",
@@ -93,6 +120,15 @@
     "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
     "story": "Disponível em preto, cinza e off-white, do P ao XG.",
     "art": "Thay 06"
+  },
+  {
+    "id": "16-thay9",
+    "slug": "camiseta-thay9",
+    "name": "I Want Your Soul",
+    "art": "Estampa I Want Your Soul",
+    "lede": "Camiseta oversized com estampa nas costas.",
+    "noVideo": true,
+    "studioOnly": false
   },
   {
     "id": "17-thay1",
@@ -120,5 +156,14 @@
     "lede": "Camiseta oversized Brazilian Bayle com estampa nas costas.",
     "story": "Disponível em preto, cinza e off-white, do P ao XG.",
     "art": "Personagens rosa e vermelho com óculos escuros e assinatura Bayle"
+  },
+  {
+    "id": "22-vintage-clube-john",
+    "slug": "camiseta-vintage-clube-john",
+    "name": "Vintage Clube John",
+    "art": "Estampa Vintage Clube John",
+    "lede": "Camiseta oversized com estampa nas costas.",
+    "noVideo": true,
+    "studioOnly": true
   }
 ]

@@ -23,5 +23,17 @@
       "G",
       "GG"
     ]
+  },
+  {
+    "id": "23-cropped-afterparty",
+    "slug": "cropped-professional-afterparty-princess",
+    "name": "Professional Afterparty Princess",
+    "artwork": "professional-afterparty-princess",
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ]
   }
 ]
