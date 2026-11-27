@@ -1,0 +1,671 @@
+{
+  "photos": [
+    {
+      "number": "08",
+      "photo": "fotos\\08-estudio-composicao.png",
+      "artwork": "artes/08-original-com-icone-oficial.png",
+      "base": "bases/08-sem-estampa.png",
+      "pilotUnchanged": true,
+      "pilotSha256": "a6b6a9c76b5144b292bd26dd23592fd7f410b972d715cb7aad90540a4e0772ec",
+      "quad": [
+        [
+          398,
+          324
+        ],
+        [
+          650,
+          338
+        ],
+        [
+          664,
+          761
+        ],
+        [
+          380,
+          770
+        ]
+      ],
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": "09",
+      "photo": "fotos\\09-estudio-composicao.png",
+      "artwork": "artes\\09-vintage-clube-john-original.png",
+      "base": "bases\\09-sem-estampa.png",
+      "model": "homem",
+      "fit": "oversized",
+      "shirtColor": "BLACK",
+      "pose": "twisting torso during a quick turn, shoulders rotating and one foot pivoting; back still fully visible",
+      "sourceArtwork": "produtos\\masculino\\oversized\\vintage-clube-john\\estampa-costas\\09-vintage-clube-john.png",
+      "sourceSha256": "ae6637c8f17e07ccffa01aa17f97fbe5f6757db61fca59aa2e1a9cf57779e370",
+      "composedArtworkSha256": "ae6637c8f17e07ccffa01aa17f97fbe5f6757db61fca59aa2e1a9cf57779e370",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          400,
+          335
+        ],
+        [
+          660,
+          347
+        ],
+        [
+          665,
+          757
+        ],
+        [
+          395,
+          745
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "10",
+      "photo": "fotos\\10-estudio-composicao.png",
+      "artwork": "artes\\10-the-last-romantic-verde-original.png",
+      "base": "bases\\10-sem-estampa.png",
+      "model": "mulher",
+      "fit": "oversized",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "mid-spin with hair flying, arms slightly out, feet turning",
+      "sourceArtwork": "produtos\\masculino\\oversized\\the-last-romantic\\estampa-costas\\10-the-last-romantic-verde.png",
+      "sourceSha256": "5cb34d6e4f3f0fc158ffe4394bde95b20c6f423eed9073b74f5975f3120cc73b",
+      "composedArtworkSha256": "5cb34d6e4f3f0fc158ffe4394bde95b20c6f423eed9073b74f5975f3120cc73b",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          407,
+          397
+        ],
+        [
+          689,
+          394
+        ],
+        [
+          695,
+          739
+        ],
+        [
+          401,
+          742
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "11",
+      "photo": "fotos\\11-estudio-composicao.png",
+      "artwork": "artes\\11-afterparty-princess-verde-original.png",
+      "base": "bases\\11-sem-estampa.png",
+      "model": "mulher",
+      "fit": "cropped",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "small jump in air, BOTH shoes clearly off floor, arms naturally open",
+      "sourceArtwork": "produtos\\feminino\\cropped\\professional-afterparty-princess\\estampa-costas\\11-afterparty-princess-verde.png",
+      "sourceSha256": "06cb90a5c11b5651945ea2d6524543907d643ddaebb912086745cbce31e785da",
+      "composedArtworkSha256": "06cb90a5c11b5651945ea2d6524543907d643ddaebb912086745cbce31e785da",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          435,
+          345
+        ],
+        [
+          645,
+          346
+        ],
+        [
+          639,
+          552
+        ],
+        [
+          441,
+          551
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "12",
+      "photo": "fotos\\12-estudio-composicao.png",
+      "artwork": "artes\\12-afterparty-princess-branco-original.png",
+      "base": "bases\\12-sem-estampa.png",
+      "model": "mulher",
+      "fit": "cropped",
+      "shirtColor": "BLACK",
+      "pose": "walking away with a bounce, one foot lifted, arms swinging down; NOT arms-out spin",
+      "sourceArtwork": "produtos\\feminino\\cropped\\professional-afterparty-princess\\estampa-costas\\12-afterparty-princess-branco.png",
+      "sourceSha256": "aa8f812c71bc60caffc198fc91b1114d2873f505b0107f64eab04ee9082b28b1",
+      "composedArtworkSha256": "aa8f812c71bc60caffc198fc91b1114d2873f505b0107f64eab04ee9082b28b1",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          458,
+          340
+        ],
+        [
+          658,
+          331
+        ],
+        [
+          647,
+          527
+        ],
+        [
+          459,
+          536
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "13",
+      "photo": "fotos\\13-estudio-composicao.png",
+      "artwork": "artes\\13-afterparty-princess-preto-original.png",
+      "base": "bases\\13-sem-estampa.png",
+      "model": "mulher",
+      "fit": "cropped",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "turning away mid-step, one foot pivoting, shoulders angled; back visible",
+      "sourceArtwork": "produtos\\feminino\\cropped\\professional-afterparty-princess\\estampa-costas\\13-afterparty-princess-preto.png",
+      "sourceSha256": "3dc523d20957a92edce0272d07d35e9a6e36c5d66b7596252647d69571af9148",
+      "composedArtworkSha256": "3dc523d20957a92edce0272d07d35e9a6e36c5d66b7596252647d69571af9148",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          445,
+          357
+        ],
+        [
+          655,
+          359
+        ],
+        [
+          649,
+          565
+        ],
+        [
+          451,
+          563
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "14",
+      "photo": "fotos\\14-estudio-composicao.png",
+      "artwork": "artes\\14-sorry-im-nonverbal-right-now-verde-original.png",
+      "base": "bases\\14-sem-estampa.png",
+      "model": "mulher",
+      "fit": "oversized",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "dancing with both arms raised above shoulders, natural back motion",
+      "sourceArtwork": "produtos\\masculino\\oversized\\sorry-im-nonverbal-right-now\\estampa-costas\\14-sorry-im-nonverbal-right-now-verde.png",
+      "sourceSha256": "9fc51668c6f3df0a10959021934600b86f2715d51ea0159027b9dc3ce453f937",
+      "composedArtworkSha256": "9fc51668c6f3df0a10959021934600b86f2715d51ea0159027b9dc3ce453f937",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          411,
+          407
+        ],
+        [
+          653,
+          400
+        ],
+        [
+          658,
+          764
+        ],
+        [
+          406,
+          771
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "15",
+      "photo": "fotos\\15-estudio-composicao.png",
+      "artwork": "artes\\15-sorry-im-nonverbal-right-now-branco-original.png",
+      "base": "bases\\15-sem-estampa.png",
+      "model": "homem",
+      "fit": "oversized",
+      "shirtColor": "BLACK",
+      "pose": "dancing, shoulders moving, elbows bent, slight torso twist",
+      "sourceArtwork": "produtos\\masculino\\oversized\\sorry-im-nonverbal-right-now\\estampa-costas\\15-sorry-im-nonverbal-right-now-branco.png",
+      "sourceSha256": "04ff6667f97c831d3ea09ba0907a398a26fda852a39321f568d8e24782afd9e0",
+      "composedArtworkSha256": "04ff6667f97c831d3ea09ba0907a398a26fda852a39321f568d8e24782afd9e0",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          403,
+          333
+        ],
+        [
+          667,
+          340
+        ],
+        [
+          672,
+          737
+        ],
+        [
+          398,
+          730
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "16",
+      "photo": "fotos\\16-estudio-composicao.png",
+      "artwork": "artes\\16-sorry-im-nonverbal-right-now-preto-original.png",
+      "base": "bases\\16-sem-estampa.png",
+      "model": "mulher",
+      "fit": "oversized",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "spinning with hair flying and arms slightly open",
+      "sourceArtwork": "produtos\\masculino\\oversized\\sorry-im-nonverbal-right-now\\estampa-costas\\16-sorry-im-nonverbal-right-now-preto.png",
+      "sourceSha256": "233c7e9772ddc1505dd6186e1bd3757aeee4dfc16c6603da730c7789352a519e",
+      "composedArtworkSha256": "233c7e9772ddc1505dd6186e1bd3757aeee4dfc16c6603da730c7789352a519e",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          421,
+          397
+        ],
+        [
+          669,
+          394
+        ],
+        [
+          674,
+          767
+        ],
+        [
+          416,
+          770
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "17",
+      "photo": "fotos\\17-estudio-composicao.png",
+      "artwork": "artes\\17-sorry-i-only-date-djs-verde-original.png",
+      "base": "bases\\17-sem-estampa.png",
+      "model": "mulher",
+      "fit": "cropped",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "walking away with natural hip sway, arms relaxed DOWN beside hips, one shoe lifted; NOT arms-out spin",
+      "sourceArtwork": "produtos\\feminino\\cropped\\sorry-i-only-date-djs\\estampa-costas\\17-sorry-i-only-date-djs-verde.png",
+      "sourceSha256": "06744b30e03b9ff28d3d5e56492df4c426ce6c830c6f0a4790a245641db3b567",
+      "composedArtworkSha256": "06744b30e03b9ff28d3d5e56492df4c426ce6c830c6f0a4790a245641db3b567",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          448,
+          346
+        ],
+        [
+          652,
+          347
+        ],
+        [
+          646,
+          556
+        ],
+        [
+          454,
+          555
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "18",
+      "photo": "fotos\\18-estudio-composicao.png",
+      "artwork": "artes\\18-sorry-i-only-date-djs-branco-original.png",
+      "base": "bases\\18-sem-estampa.png",
+      "model": "mulher",
+      "fit": "cropped",
+      "shirtColor": "BLACK",
+      "pose": "mid-spin with hair flying and arms slightly out",
+      "sourceArtwork": "produtos\\feminino\\cropped\\sorry-i-only-date-djs\\estampa-costas\\18-sorry-i-only-date-djs-branco.png",
+      "sourceSha256": "839bab00764cf80a8cf12f21da5021a24817f0c7cf1188308ebbbe7d36755b04",
+      "composedArtworkSha256": "839bab00764cf80a8cf12f21da5021a24817f0c7cf1188308ebbbe7d36755b04",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          438,
+          370
+        ],
+        [
+          654,
+          372
+        ],
+        [
+          647,
+          592
+        ],
+        [
+          445,
+          590
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "19",
+      "photo": "fotos\\19-estudio-composicao.png",
+      "artwork": "artes\\19-sorry-i-only-date-djs-preto-original.png",
+      "base": "bases\\19-sem-estampa.png",
+      "model": "mulher",
+      "fit": "cropped",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "walking away mid-stride, one leg advancing, arms swinging DOWN naturally; NOT arms-out spin",
+      "sourceArtwork": "produtos\\feminino\\cropped\\sorry-i-only-date-djs\\estampa-costas\\19-sorry-i-only-date-djs-preto.png",
+      "sourceSha256": "e48183cf106b0e17bac81457f9f877f7c8e3b8f5c21bf148098826d8ef79c11e",
+      "composedArtworkSha256": "e48183cf106b0e17bac81457f9f877f7c8e3b8f5c21bf148098826d8ef79c11e",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          446,
+          345
+        ],
+        [
+          650,
+          345
+        ],
+        [
+          640,
+          555
+        ],
+        [
+          448,
+          555
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "20",
+      "photo": "fotos\\20-estudio-composicao.png",
+      "artwork": "artes\\20-girls-just-wanna-have-techno-verde-original.png",
+      "base": "bases\\20-sem-estampa.png",
+      "model": "mulher",
+      "fit": "cropped",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "dancing with ONE arm raised over head and other arm relaxed out",
+      "sourceArtwork": "produtos\\feminino\\cropped\\girls-just-wanna-have-techno\\estampa-costas\\20-girls-just-wanna-have-techno-verde.png",
+      "sourceSha256": "7da0a8991476c584facecc7286202cbe57b6ab2a766ff6452b9741045284bf2c",
+      "composedArtworkSha256": "7da0a8991476c584facecc7286202cbe57b6ab2a766ff6452b9741045284bf2c",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          445,
+          360
+        ],
+        [
+          655,
+          350
+        ],
+        [
+          637,
+          545
+        ],
+        [
+          439,
+          555
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "21",
+      "photo": "fotos\\21-estudio-composicao.png",
+      "artwork": "artes/21-original-sem-redesenho.png",
+      "base": "bases/21-sem-estampa.png",
+      "pilotUnchanged": true,
+      "pilotSha256": "4a6e5604afeb4ecc9d991d0a8aec69ac9ef60ea3d94ca3aab090fe95f6f71f8f",
+      "quad": [
+        [
+          423,
+          373
+        ],
+        [
+          661,
+          370
+        ],
+        [
+          655,
+          584
+        ],
+        [
+          433,
+          588
+        ]
+      ],
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": "22",
+      "photo": "fotos\\22-estudio-composicao.png",
+      "artwork": "artes\\22-girls-just-wanna-have-techno-preto-original.png",
+      "base": "bases\\22-sem-estampa.png",
+      "model": "mulher",
+      "fit": "cropped",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "turning away with a quick twist, shoulders rotating, one foot pivoting",
+      "sourceArtwork": "produtos\\feminino\\cropped\\girls-just-wanna-have-techno\\estampa-costas\\22-girls-just-wanna-have-techno-preto.png",
+      "sourceSha256": "540829b147cabdf14cf0190954176090ec531508067a828d5e20da6d8e8df90c",
+      "composedArtworkSha256": "540829b147cabdf14cf0190954176090ec531508067a828d5e20da6d8e8df90c",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          436,
+          371
+        ],
+        [
+          656,
+          373
+        ],
+        [
+          649,
+          577
+        ],
+        [
+          443,
+          575
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "23",
+      "photo": "fotos\\23-estudio-composicao.png",
+      "artwork": "artes\\23-original-com-icone-oficial.png",
+      "base": "bases\\23-sem-estampa.png",
+      "model": "homem",
+      "fit": "oversized",
+      "shirtColor": "BLACK",
+      "pose": "walking away and turning; approved08 base reused for white color variant",
+      "sourceArtwork": "produtos\\masculino\\oversized\\posso-dancar-so-mais-essa\\estampa-costas\\23-posso-dancar-so-mais-essa-branco.png",
+      "sourceSha256": "b9e02912e4b9a81be5d56936a74134bba9580589a84d560d1a510eea09a20a50",
+      "composedArtworkSha256": "44ae4d44d8db579c5e81319d4fafdf7a64ba144839f424e5cd088fb6e487c70c",
+      "originalArtworkByteIdentical": false,
+      "quad": [
+        [
+          398,
+          324
+        ],
+        [
+          650,
+          338
+        ],
+        [
+          664,
+          761
+        ],
+        [
+          380,
+          770
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false,
+      "officialIconCheck": {
+        "source": "produtos\\masculino\\oversized\\posso-dancar-so-mais-essa\\estampa-costas\\23-posso-dancar-so-mais-essa-branco.png",
+        "sourceSha256": "b9e02912e4b9a81be5d56936a74134bba9580589a84d560d1a510eea09a20a50",
+        "officialIconSha256": "4ed798c98bbe20ab5f03261fde9177ef25efd560ef7fe153b2f252a7a15220b8",
+        "canvas": [
+          3543,
+          5906
+        ],
+        "typographyPixelIdentical": true,
+        "wavesAndSignaturePixelIdentical": true,
+        "method": "replace old bird only; official PNG green-channel one-ink separation",
+        "iconPosition": [
+          1034,
+          4000
+        ],
+        "iconSize": [
+          732,
+          1660
+        ]
+      }
+    },
+    {
+      "number": "24",
+      "photo": "fotos\\24-estudio-composicao.png",
+      "artwork": "artes/24-original-com-icone-oficial.png",
+      "base": "bases/24-sem-estampa.png",
+      "pilotUnchanged": true,
+      "pilotSha256": "45e44e399c3157e73e7b9a7d2322291111ed7ed430178bc327cbfdc0f1f773a1",
+      "quad": [
+        [
+          420,
+          405
+        ],
+        [
+          672,
+          400
+        ],
+        [
+          688,
+          800
+        ],
+        [
+          408,
+          806
+        ]
+      ],
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": "25",
+      "photo": "fotos\\25-estudio-composicao.png",
+      "artwork": "artes\\25-the-last-romantic-branco-original.png",
+      "base": "bases\\25-sem-estampa.png",
+      "model": "homem",
+      "fit": "oversized",
+      "shirtColor": "BLACK",
+      "pose": "mid-stride walking away, one arm swinging forward, back square to camera",
+      "sourceArtwork": "produtos\\masculino\\oversized\\the-last-romantic\\estampa-costas\\25-the-last-romantic-branco.png",
+      "sourceSha256": "a4bcead3c0cf18c2b979a4579b02f37ddcd0ace21be8f4fd8f863e950f4cb050",
+      "composedArtworkSha256": "a4bcead3c0cf18c2b979a4579b02f37ddcd0ace21be8f4fd8f863e950f4cb050",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          396,
+          335
+        ],
+        [
+          670,
+          342
+        ],
+        [
+          675,
+          676
+        ],
+        [
+          391,
+          669
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    },
+    {
+      "number": "26",
+      "photo": "fotos\\26-estudio-composicao.png",
+      "artwork": "artes\\26-the-last-romantic-preto-original.png",
+      "base": "bases\\26-sem-estampa.png",
+      "model": "mulher",
+      "fit": "oversized",
+      "shirtColor": "OFF-WHITE cream",
+      "pose": "turning away mid-step, hair moving and one heel raised",
+      "sourceArtwork": "produtos\\masculino\\oversized\\the-last-romantic\\estampa-costas\\26-the-last-romantic-preto.png",
+      "sourceSha256": "7fe5c2d3a32af89d8af2e4cbd17e2de39820926980dc93bb45b6d3148037316e",
+      "composedArtworkSha256": "7fe5c2d3a32af89d8af2e4cbd17e2de39820926980dc93bb45b6d3148037316e",
+      "originalArtworkByteIdentical": true,
+      "quad": [
+        [
+          407,
+          398
+        ],
+        [
+          687,
+          396
+        ],
+        [
+          693,
+          739
+        ],
+        [
+          401,
+          741
+        ]
+      ],
+      "width": 1086,
+      "height": 1448,
+      "generatedPrint": false
+    }
+  ],
+  "method": "original source artwork composed on blank AI bases; perspective + photographed cloth texture",
+  "nativePhotoResolution": "1086x1448; NOT native2K",
+  "sitePublished": false
+}
