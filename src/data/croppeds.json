@@ -9,11 +9,7 @@
       "M",
       "G",
       "GG"
-    ],
-    "studioPhotos": {
-      "preta": "/assets/shop/estudio/18.webp",
-      "off-white": "/assets/shop/estudio/19.webp"
-    }
+    ]
   },
   {
     "id": "21-cropped-techno",
@@ -26,10 +22,6 @@
       "M",
       "G",
       "GG"
-    ],
-    "studioPhotos": {
-      "preta": "/assets/shop/estudio/21.webp",
-      "off-white": "/assets/shop/estudio/22.webp"
-    }
+    ]
   }
 ]

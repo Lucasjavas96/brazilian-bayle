@@ -94,7 +94,6 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="preload" href="/assets/fonts/syne-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/intertight-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
-${["/loja","/loja-feminina"].includes(meta.path) ? '<link rel="stylesheet" href="/assets/shop/estudio/catalog.css"><script src="/assets/shop/estudio/catalog.js" defer></script>' : ""}
 ${meta.nav === "after" ? '<link rel="stylesheet" href="/assets/vendor/leaflet-1.9.4/leaflet.css">' : ""}
 ${meta.preload || ""}
 ${jsonld}
@@ -184,7 +183,7 @@ ${fs.readFileSync(path.join(ROOT,"src/partials/support.html"),"utf8")}
 <script src="/events-2026.js" defer></script>
 <script src="/app.js" defer></script>
 ${(["/loja","/loja-feminina","/sacola","/checkout"].includes(meta.path) || meta.nav === "produto") ? '<button type="button" id="meta-settings" hidden>Cookies de publicidade</button><section id="meta-consent" aria-label="Cookies de publicidade" hidden style="position:fixed;z-index:9999;bottom:1rem;left:1rem;max-width:min(25rem,90vw);padding:1rem;background:#111;color:#fff;border:1px solid #ae945b"><p>Permitir que a Brazilian Bayle compartilhe visitas e compras com a Meta para medir anúncios? Para compras, enviamos o valor e uma versão protegida do seu e-mail (hash).</p><button type="button" data-choice="no">Recusar</button> <button type="button" data-choice="yes">Permitir</button></section><script src="/meta-shop.js" defer></script>' : ""}
-${["/loja","/loja-feminina","/sacola","/checkout"].includes(meta.path) || meta.nav === "produto" ? '<script src="/commerce.js?v=studio-20261127" defer></script>' : ""}
+${["/loja","/loja-feminina","/sacola","/checkout"].includes(meta.path) || meta.nav === "produto" ? '<script src="/commerce.js" defer></script>' : ""}
 <script src="/media-guard.js" defer></script>
 <script src="/music.js" defer></script>
 <script src="/card-effects.js" defer></script>
@@ -241,7 +240,6 @@ for (const f of pages) {
   if (!m) throw new Error(`${f}: falta o comentário <!--meta {...} -->`);
   const meta = JSON.parse(m[1]);
   let body = raw.slice(m[0].length);
-  body = body.replace(/<!--SHOP_STUDIO:(masculino|feminino)-->/g, (_, collection) => require("./shop-studio.js")(ROOT, collection));
   // álbum: dados montados no build (países, numeração e notas pela régua), sem script inline
   if (body.includes("<!--ALBUM_DATA-->")) body = body.replace("<!--ALBUM_DATA-->", () => JSON.stringify(require("./album.js")(ROOT)).replace(/</g, "\\u003c"));
   const html = optimize(layout(meta, body));
