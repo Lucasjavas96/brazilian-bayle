@@ -4,7 +4,7 @@
  const API='https://bereyocdqacudfvazdpa.supabase.co/functions/v1/brb-checkout';
  const CART='brb-cart-v1', ORDER='brb-checkout-order-v1', QUOTE='brb-quote-v1';
  const colors={preta:'Preta','off-white':'Off-white',cinza:'Cinza'};
- const croppedPhotos={'20-cropped-sorry':'sorry-i-only-date-djs','21-cropped-techno':'girls-just-wanna-have-techno'};
+ const croppedPhotos={'20-cropped-sorry':'sorry-i-only-date-djs','21-cropped-techno':'girls-just-wanna-have-techno','23-cropped-afterparty':'professional-afterparty-princess'};
  const variantPhoto=(id,color)=>croppedPhotos[id]?'/assets/shop/cropped/'+croppedPhotos[id]+'-'+color+(id==='21-cropped-techno'?'-v2':'')+'.webp':'/assets/shop/bayle/'+id+(color==='cinza'||color==='off-white'?'-'+color:(["11-thay5","12-thay8","14-thay3","15-thay6","16-thay9","17-thay1","18-thay2"].includes(id)?'-alpha-v2':''))+'-costas.webp'+(id==='08-grafite' && color==='off-white' ? '?v=grafite-ink-v3' : color!=='cinza' && ['03-vintage-culture','08-grafite','09-nem-bateu'].includes(id) ? '?v=mockups-v2' : '');
  const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value/100);
  const el=id=>document.getElementById(id);
