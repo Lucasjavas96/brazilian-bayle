@@ -3608,3 +3608,11 @@ font-size:clamp(120px,22vw,340px);line-height:.8;letter-spacing:-.04em;color:tra
 [data-bayle-colors-panel][hidden], .bayle-tab[hidden]{display:none}
 .cropped-color{display:grid;gap:8px;margin-top:18px;color:#d2b375;font-size:14px}.cropped-color select{width:100%;padding:12px;background:#111;color:#f6f4ef;border:1px solid #c9a45c80;border-radius:8px;font-size:16px}.cropped-spec{margin-top:40px;max-width:720px;line-height:1.6}.cropped-spec summary{cursor:pointer;color:#d2b375}
 .page-loja .cropped-card .shop-buy{margin-top:24px;display:grid;gap:14px}.page-loja .cropped-card .shop-sale-price{font-size:20px;color:#f6f4ef;margin:0}.page-loja .cropped-card .shop-buy .btn{display:flex;justify-content:center;align-items:center;min-height:44px;width:100%}.page-loja .cropped-card .shop-product-name a{color:inherit;text-decoration:none}
+.final-after.hb>.final-in{position:relative;z-index:2}
+.final-after .fa-bg{left:0;right:auto;width:62%;-webkit-mask-image:linear-gradient(270deg,transparent 0,rgba(0,0,0,.6) 30%,#000 70%);mask-image:linear-gradient(270deg,transparent 0,rgba(0,0,0,.6) 30%,#000 70%)}
+.final-after .fa-bg::after{background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.25));mix-blend-mode:normal}
+.final-after .fa-bg figure.on{opacity:.8}
+.final-after .fa-bg img{object-position:50% 22%}
+@media(max-width:820px){
+.final-after .fa-bg{width:100%;-webkit-mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.55) 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.55) 55%,transparent 100%)}
+}
