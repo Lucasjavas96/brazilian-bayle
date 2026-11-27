@@ -1,0 +1,160 @@
+{
+  "generator": "OpenAI built-in image_gen",
+  "photos": [
+    {
+      "number": 8,
+      "file": "geradas/v2/08-posso-dancar-so-mais-essa-verde-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/posso-dancar-so-mais-essa/estampa-costas/08-posso-dancar-so-mais-essa-verde.png",
+      "prompt": "Use case: product-mockup. ONE photorealistic studio clothing photo, vertical 3:4, 1536x2048. Image1 is revised approved BACK PRINT with OFFICIAL NEW PARROT, image2 fixed reference man identity and studio. Use SAME adult person, identical hair, skin, build and jeans/shoes as image2. Curly-haired man, light-blue baggy jeans, white sneakers. FULL BODY head to shoes, seamless warm light-grey backdrop, soft studio lighting as image2, no lighting gear in frame. Back facing camera, mid-stride walking away with one arm swinging forward. BLACK heavyweight OVERSIZED BOXY cotton T-shirt, long loose fit NOT cropped. Reproduce EXACT Image1 print on back in bright neon green ink and small yellow signature: 'POSSO' / 'DANÃ‡AR' / 'SÃ“ MAIS' / 'ESSA?' with same bold wavy typography, soundwaves and exact official parrot BELOW lettering, small yellow Brazilian Bayle signature. Preserve diacritics DANÃ‡AR and SÃ“. Ignore artwork transparent margins; center actual artwork on shirt upper back, fully visible. Do not use OLD CARTOON DANCING PARROT from model reference; Image1 updated perched long-tailed parrot must be exact. No glow, no blurry ink, no extra lettering, no watermark. Real fabric folds, crisp print, natural motion only at hem. Product 8.",
+      "width": 1086,
+      "height": 1448,
+      "revisedArtwork": "estampas-v2/08-icone-oficial-v2.png"
+    },
+    {
+      "number": 9,
+      "file": "geradas/v2/09-vintage-clube-john-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/vintage-clube-john/estampa-costas/09-vintage-clube-john.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult man with same face, curly hair, skin tone, build, light-blue baggy jeans and white sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, twisting his torso in a quick turn, back print readable and unobstructed, natural motion in hem and hair. Garment: BLACK heavyweight oversized boxy cotton t-shirt. EXACTLY reproduce complete Image1 artwork, full color photo print with metallic lettering, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'Vintage Culture', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 9.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 10,
+      "file": "geradas/v2/10-the-last-romantic-verde-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/the-last-romantic/estampa-costas/10-the-last-romantic-verde.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult woman with same long dark wavy hair, skin tone, body, black baggy jeans and black sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, mid-spin with hair flying, back print readable and unobstructed, natural motion in hem and hair. Garment: OFF-WHITE cream heavyweight oversized boxy cotton t-shirt. EXACTLY reproduce complete Image1 artwork, dark bottle-green ink with yellow signature, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'THE LAST ROMANTIC', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 10.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 11,
+      "file": "geradas/v2/11-afterparty-princess-verde-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/professional-afterparty-princess/estampa-costas/11-afterparty-princess-verde.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult woman with same long dark wavy hair, skin tone, body, black baggy jeans and black sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, caught in a small jump in the air, back print readable and unobstructed, natural motion in hem and hair. Garment: OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, clearly cropped not oversized. EXACTLY reproduce complete Image1 artwork, green circular badge with yellow script, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'PROFESSIONAL AFTERPARTY PRINCESS', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 11.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 12,
+      "file": "geradas/v2/12-afterparty-princess-branco-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/professional-afterparty-princess/estampa-costas/12-afterparty-princess-branco.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult woman with same long dark wavy hair, skin tone, body, black baggy jeans and black sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, walking with a bounce in the step, back print readable and unobstructed, natural motion in hem and hair. Garment: BLACK fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, clearly cropped not oversized. EXACTLY reproduce complete Image1 artwork, white circular badge with yellow script, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'PROFESSIONAL AFTERPARTY PRINCESS', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 12.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 13,
+      "file": "geradas/v2/13-afterparty-princess-preto-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/professional-afterparty-princess/estampa-costas/13-afterparty-princess-preto.png",
+      "prompt": "Use case: precise-object-edit. Edit Image1 approved studio photo to produce color variant. Change ONLY the shirt color to OFF-WHITE cream and the WHITE badge ink to BLACK. Keep yellow script and exact circular PROFESSIONAL / AFTERPARTY / PRINCESS badge, including circles, stars and typography. Do NOT replace badge with filled black disk or alternate layout. Same cropped shape, same woman, jeans, shoes, studio, pose and lighting. Full body head to shoes, vertical3:4. No extra text, no watermark. Image2 is artwork reference confirming exact drawing.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 14,
+      "file": "geradas/v2/14-sorry-im-nonverbal-right-now-verde-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/sorry-im-nonverbal-right-now/estampa-costas/14-sorry-im-nonverbal-right-now-verde.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult woman with same long dark wavy hair, skin tone, body, black baggy jeans and black sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, dancing with both arms raised naturally, back print readable and unobstructed, natural motion in hem and hair. Garment: OFF-WHITE cream heavyweight oversized boxy cotton t-shirt. EXACTLY reproduce complete Image1 artwork, dark green and yellow signature, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'Sorry, I'm nonverbal right now', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 14.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 15,
+      "file": "geradas/v2/15-sorry-im-nonverbal-right-now-branco-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/sorry-im-nonverbal-right-now/estampa-costas/15-sorry-im-nonverbal-right-now-branco.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult man with same face, curly hair, skin tone, build, light-blue baggy jeans and white sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, dancing with shoulders turning, back print readable and unobstructed, natural motion in hem and hair. Garment: BLACK heavyweight oversized boxy cotton t-shirt. EXACTLY reproduce complete Image1 artwork, white with yellow signature, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'Sorry, I'm nonverbal right now', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 15.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 16,
+      "file": "geradas/v2/16-sorry-im-nonverbal-right-now-preto-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/sorry-im-nonverbal-right-now/estampa-costas/16-sorry-im-nonverbal-right-now-preto.png",
+      "prompt": "Use case: precise-object-edit. Edit Image1 approved studio photo to produce color variant. Change ONLY the DARK GREEN back print ink to BLACK. Keep tiny yellow Brazilian Bayle script. Preserve EXACT sunflower with headphones illustration and 'Sorry, I'm' above and 'nonverbal' / 'right now' below. Do NOT replace flower with a vinyl record or any other layout. Same OFF-WHITE oversized shirt, woman, jeans, shoes, studio, pose, lighting. Full body head to shoes, vertical3:4. No extra text, no watermark. Image2 is artwork reference confirming exact drawing.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 17,
+      "file": "geradas/v2/17-sorry-i-only-date-djs-verde-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/sorry-i-only-date-djs/estampa-costas/17-sorry-i-only-date-djs-verde.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult woman with same long dark wavy hair, skin tone, body, black baggy jeans and black sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, walking away with a natural hip sway, back print readable and unobstructed, natural motion in hem and hair. Garment: OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, clearly cropped not oversized. EXACTLY reproduce complete Image1 artwork, green and cream, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'sorry I only date djs', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 17.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 18,
+      "file": "geradas/v2/18-sorry-i-only-date-djs-branco-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/sorry-i-only-date-djs/estampa-costas/18-sorry-i-only-date-djs-branco.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult woman with same long dark wavy hair, skin tone, body, black baggy jeans and black sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, mid-spin with hair flying, back print readable and unobstructed, natural motion in hem and hair. Garment: BLACK fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, clearly cropped not oversized. EXACTLY reproduce complete Image1 artwork, white, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'sorry I only date djs', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 18.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 19,
+      "file": "geradas/v2/19-sorry-i-only-date-djs-preto-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/sorry-i-only-date-djs/estampa-costas/19-sorry-i-only-date-djs-preto.png",
+      "prompt": "Precise-object-edit product photo variant. Image1 is approved photo. Change ONLY BLACK shirt fabric to OFF-WHITE cream, and WHITE print ink to BLACK. Preserve exact bold 'sorry' / 'I only date' / 'djs' type, heart-with-headphones, planet ring, sparkles and arrows. Do not change into a vinyl record design or script. Keep same cropped shape ending above navel and same woman/pose. Vertical3:4, no equipment, no extra text or watermark.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 20,
+      "file": "geradas/v2/20-girls-just-wanna-have-techno-verde-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/girls-just-wanna-have-techno/estampa-costas/20-girls-just-wanna-have-techno-verde.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult woman with same long dark wavy hair, skin tone, body, black baggy jeans and black sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, dancing with one arm up, back print readable and unobstructed, natural motion in hem and hair. Garment: OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, clearly cropped not oversized. EXACTLY reproduce complete Image1 artwork, green, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'Girls just wanna have techno', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 20.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 21,
+      "file": "geradas/v2/21-girls-just-wanna-have-techno-branco-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/girls-just-wanna-have-techno/estampa-costas/21-girls-just-wanna-have-techno-branco.png",
+      "prompt": "Use case: product-mockup. Make ONE photorealistic e-commerce studio photograph, vertical 3:4, 1536x2048. Image1 is exact back print, image2 is reference woman identity and studio. Same adult woman, long wavy dark hair, same skin, slim build, black baggy jeans and black sneakers. Back to camera mid-spin with hair and arms moving naturally, shirt back visible. BLACK CROPPED cotton T-shirt ending ABOVE NAVEL, NOT oversized, NOT long shirt. Place exact WHITE print Image1 centered on back, fully visible and scaled to cropped shirt: 'Girls' / 'just wanna have' / 'techno', preserve script, record, stars and typography precisely. Real fabric folds, print follows fabric. Full body head to shoes, seamless warm light-grey backdrop and soft lighting same as reference. No studio equipment, no additional text, no watermark. This is cropped garment product21.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 22,
+      "file": "geradas/v2/22-girls-just-wanna-have-techno-preto-estudio-v2.png",
+      "sourceArtwork": "produtos/feminino/cropped/girls-just-wanna-have-techno/estampa-costas/22-girls-just-wanna-have-techno-preto.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult woman with same long dark wavy hair, skin tone, body, black baggy jeans and black sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, turning quickly with a natural torso twist, back print readable and unobstructed, natural motion in hem and hair. Garment: OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, clearly cropped not oversized. EXACTLY reproduce complete Image1 artwork, black, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'Girls just wanna have techno', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 22.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 23,
+      "file": "geradas/v2/23-posso-dancar-so-mais-essa-branco-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/posso-dancar-so-mais-essa/estampa-costas/23-posso-dancar-so-mais-essa-branco.png",
+      "prompt": "Use case: product-mockup. ONE photorealistic studio clothing photo, vertical 3:4, 1536x2048. Image1 is revised approved BACK PRINT with OFFICIAL NEW PARROT, image2 fixed reference man identity and studio. Use SAME adult person, identical hair, skin, build and jeans/shoes as image2. Curly-haired man, light-blue baggy jeans, white sneakers. FULL BODY head to shoes, seamless warm light-grey backdrop, soft studio lighting as image2, no lighting gear in frame. Back facing camera, walking away while turning, one arm swinging. BLACK heavyweight OVERSIZED BOXY cotton T-shirt, long loose fit NOT cropped. Reproduce EXACT Image1 print on back in WHITE ink and small yellow signature: 'POSSO' / 'DANÃ‡AR' / 'SÃ“ MAIS' / 'ESSA?' with same bold wavy typography, soundwaves and exact official parrot BELOW lettering, small yellow Brazilian Bayle signature. Preserve diacritics DANÃ‡AR and SÃ“. Ignore artwork transparent margins; center actual artwork on shirt upper back, fully visible. Do not use OLD CARTOON DANCING PARROT from model reference; Image1 updated perched long-tailed parrot must be exact. No glow, no blurry ink, no extra lettering, no watermark. Real fabric folds, crisp print, natural motion only at hem. Product 23.",
+      "width": 1086,
+      "height": 1448,
+      "revisedArtwork": "estampas-v2/23-icone-oficial-v2.png"
+    },
+    {
+      "number": 24,
+      "file": "geradas/v2/24-posso-dancar-so-mais-essa-preto-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/posso-dancar-so-mais-essa/estampa-costas/24-posso-dancar-so-mais-essa-preto.png",
+      "prompt": "Precise-object-edit product photo variant. Image1 is approved photo. Make WOMAN color variant of this exact product photo. Use Image2 as female model identity: same long wavy dark hair, skin/build, black baggy jeans and black sneakers. Same studio lighting, full body head to shoes, walking with one arm moving. Change BLACK oversized shirt fabric to OFF-WHITE cream and WHITE print ink to BLACK, keep yellow signature. Preserve exact print layout 'POSSO' / 'DANÃ‡AR' / 'SÃ“ MAIS' / 'ESSA?' and soundwaves, official sunglasses parrot with long tail beneath letters. Absolutely NO extra stars, lightning, branch, realistic bird, cartoon dancing bird. Same exact bold wavy print as Image1. Vertical3:4, no equipment, no extra text or watermark.",
+      "width": 1086,
+      "height": 1448,
+      "revisedArtwork": "estampas-v2/24-icone-oficial-v2.png"
+    },
+    {
+      "number": 25,
+      "file": "geradas/v2/25-the-last-romantic-branco-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/the-last-romantic/estampa-costas/25-the-last-romantic-branco.png",
+      "prompt": "Use case: product-mockup. Generate ONE real premium e-commerce fashion studio photograph, vertical 3:4, 1536x2048 requested. Image1 is exact shirt BACK PRINT artwork, Image2 is fixed MODEL identity and studio reference. Same adult man with same face, curly hair, skin tone, build, light-blue baggy jeans and white sneakers as Image2. Seamless warm light-grey backdrop, soft lighting and camera as Image2. No lighting equipment in frame. Full body from head to shoes, clean framing. Back facing camera, walking away mid-stride, back print readable and unobstructed, natural motion in hem and hair. Garment: BLACK heavyweight oversized boxy cotton t-shirt. EXACTLY reproduce complete Image1 artwork, white with small yellow signature, centered back, scaled to garment, all drawings and typography intact. Text verbatim: 'THE LAST ROMANTIC', also preserve any small Brazilian Bayle lettering visible in Image1. Do not invent any extra designs or text. Ignore large transparent margins of print file, use actual ink artwork only. Real cotton and ink following folds, crisp focus on print, real skin. No watermark, no collage, no additional text. Product 25.",
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "number": 26,
+      "file": "geradas/v2/26-the-last-romantic-preto-estudio-v2.png",
+      "sourceArtwork": "produtos/masculino/oversized/the-last-romantic/estampa-costas/26-the-last-romantic-preto.png",
+      "prompt": "Precise-object-edit product photo variant. Image1 is approved photo. Change ONLY DARK GREEN print ink to BLACK. Keep tiny yellow Brazilian Bayle lettering. Preserve exact 'THE LAST ROMANTIC' typography, faceted HEART planet and elliptical rings/stars, exact same positions. Do NOT switch design to Girls/techno. Keep same off-white oversized shirt and same woman/pose/studio. Vertical3:4, no equipment, no extra text or watermark.",
+      "width": 1086,
+      "height": 1448
+    }
+  ]
+}
