@@ -17,15 +17,6 @@
     "art": "frase em letras grandes com iniciais amarelas"
   },
   {
-    "id": "03-vintage-culture",
-    "slug": "camiseta-vintage-culture",
-    "name": "Vintage Culture",
-    "art": "Estampa Vintage Culture",
-    "lede": "Camiseta oversized com estampa nas costas.",
-    "noVideo": true,
-    "studioOnly": false
-  },
-  {
     "id": "04-546-im-yours",
     "slug": "camiseta-546-im-yours",
     "name": "5:46 · I’m Yours",
@@ -40,15 +31,6 @@
     "lede": "A frase que todo mundo diz na saída.",
     "story": "Monograma M.D em dourado e, logo abaixo, que festa boa. escrito em letra cursiva branca. Discreta de longe, reconhecível de perto. Na frente, só o papagaio verde no peito.",
     "art": "monograma dourado e a frase que festa boa"
-  },
-  {
-    "id": "06-techno-addict",
-    "slug": "camiseta-techno-addict",
-    "name": "Techno Addict · Papagaio clássico",
-    "art": "Estampa Techno Addict · Papagaio clássico",
-    "lede": "Camiseta oversized com estampa nas costas.",
-    "noVideo": true,
-    "studioOnly": false
   },
   {
     "id": "07-keep-following",
@@ -102,15 +84,6 @@
     "lede": "Camiseta oversized da Brazilian Bayle, com estampa nas costas.",
     "story": "Disponível em preto, cinza e off-white, do P ao XG.",
     "art": "Techno Addict"
-  },
-  {
-    "id": "14-thay3",
-    "slug": "camiseta-thay3",
-    "name": "Posso dançar só mais essa?",
-    "art": "Estampa Posso dançar só mais essa?",
-    "lede": "Camiseta oversized com estampa nas costas.",
-    "noVideo": true,
-    "studioOnly": false
   },
   {
     "id": "15-thay6",

@@ -494,6 +494,7 @@ RewriteRule ^ https://brazilianbayle.com.br%{REQUEST_URI} [R=301,L]
 RewriteRule ^temperatura/?$ /intermediacao [R=301,L]
 RewriteRule ^djpedia/?$ /djindex [R=301,L]
 RewriteRule ^djpedia/(.+)$ /djindex/$1 [R=301,L]
+RewriteRule ^loja/camiseta-(?:vintage-culture|techno-addict|thay3)/?$ /loja [R=301,L]
 RewriteRule ^loja/camiseta-a-pista-e-brasileira/?$ /loja [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
