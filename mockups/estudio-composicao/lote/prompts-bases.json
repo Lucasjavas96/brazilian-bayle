@@ -1,0 +1,122 @@
+[
+  {
+    "number": "09",
+    "model": "homem",
+    "color": "BLACK",
+    "fit": "oversized",
+    "pose": "twisting torso during a quick turn, shoulders rotating and one foot pivoting; back still fully visible",
+    "prompt": "Use case: identity-preserve product-mockup. Generate ONE fashion e-commerce studio photograph, vertical3:4. Reference is ONLY fixed model identity and studio: use exactly same adult Brazilian man, curly hair low fade, medium-brown skin, slim athletic build, light-blue baggy jeans and white sneakers. Clothing: COMPLETELY BLANK UNPRINTED BLACK heavyweight OVERSIZED BOXY cotton T-shirt with long loose hem. NO text, NO letters, NO symbols, NO logo, remove all reference print. Back panel should be clean and fully visible for later graphic composition, natural subtle cotton folds but not deep scrunching. Pose MUST follow this: twisting torso during a quick turn, shoulders rotating and one foot pivoting; back still fully visible. Distinguish walking from spinning. Hair must stay clear of central upper-back print area. Full body head to both shoes with margins, centered camera/framing as reference, seamless warm light-grey background, soft studio lighting, shadow on floor. NO studio equipment, no softbox, no watermark. Crisp fabric with true skin texture, natural anatomy and hands. No jewelry on shirt. Blank garment ONLY. Requested1536x2048px native portrait. Product09."
+  },
+  {
+    "number": "10",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "oversized",
+    "pose": "mid-spin with hair flying, arms slightly out, feet turning",
+    "prompt": "Use case: identity-preserve product-mockup. Generate ONE fashion e-commerce studio photograph, vertical3:4. Reference is ONLY fixed model identity and studio: use exactly same adult Brazilian woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. Clothing: COMPLETELY BLANK UNPRINTED OFF-WHITE cream heavyweight OVERSIZED BOXY cotton T-shirt with long loose hem. NO text, NO letters, NO symbols, NO logo, remove all reference print. Back panel should be clean and fully visible for later graphic composition, natural subtle cotton folds but not deep scrunching. Pose MUST follow this: mid-spin with hair flying, arms slightly out, feet turning. Distinguish walking from spinning. Hair must stay clear of central upper-back print area. Full body head to both shoes with margins, centered camera/framing as reference, seamless warm light-grey background, soft studio lighting, shadow on floor. NO studio equipment, no softbox, no watermark. Crisp fabric with true skin texture, natural anatomy and hands. No jewelry on shirt. Blank garment ONLY. Requested1536x2048px native portrait. Product10."
+  },
+  {
+    "number": "11",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "cropped",
+    "pose": "small jump in air, BOTH shoes clearly off floor, arms naturally open",
+    "prompt": "Use case: identity-preserve product-mockup. Generate ONE fashion e-commerce studio photograph, vertical3:4. Reference is ONLY fixed model identity and studio: use exactly same adult Brazilian woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. Clothing: COMPLETELY BLANK UNPRINTED OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL with exposed lower-back strip above jeans. NO text, NO letters, NO symbols, NO logo, remove all reference print. Back panel should be clean and fully visible for later graphic composition, natural subtle cotton folds but not deep scrunching. Pose MUST follow this: small jump in air, BOTH shoes clearly off floor, arms naturally open. Distinguish walking from spinning. Hair must stay clear of central upper-back print area. Full body head to both shoes with margins, centered camera/framing as reference, seamless warm light-grey background, soft studio lighting, shadow on floor. NO studio equipment, no softbox, no watermark. Crisp fabric with true skin texture, natural anatomy and hands. No jewelry on shirt. Blank garment ONLY. Requested1536x2048px native portrait. Product11."
+  },
+  {
+    "number": "12",
+    "model": "mulher",
+    "color": "BLACK",
+    "fit": "cropped",
+    "pose": "walking away with a bounce, one foot lifted, arms swinging down; NOT arms-out spin",
+    "prompt": "Use case: identity-preserve product-mockup. Generate ONE fashion e-commerce studio photograph, vertical3:4. Reference is ONLY fixed model identity and studio: use exactly same adult Brazilian woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. Clothing: COMPLETELY BLANK UNPRINTED BLACK fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL with exposed lower-back strip above jeans. NO text, NO letters, NO symbols, NO logo, remove all reference print. Back panel should be clean and fully visible for later graphic composition, natural subtle cotton folds but not deep scrunching. Pose MUST follow this: walking away with a bounce, one foot lifted, arms swinging down; NOT arms-out spin. Distinguish walking from spinning. Hair must stay clear of central upper-back print area. Full body head to both shoes with margins, centered camera/framing as reference, seamless warm light-grey background, soft studio lighting, shadow on floor. NO studio equipment, no softbox, no watermark. Crisp fabric with true skin texture, natural anatomy and hands. No jewelry on shirt. Blank garment ONLY. Requested1536x2048px native portrait. Product12."
+  },
+  {
+    "number": "13",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "cropped",
+    "pose": "turning away mid-step, one foot pivoting, shoulders angled; back visible",
+    "prompt": "Use case: identity-preserve product-mockup. Generate ONE fashion e-commerce studio photograph, vertical3:4. Reference is ONLY fixed model identity and studio: use exactly same adult Brazilian woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. Clothing: COMPLETELY BLANK UNPRINTED OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL with exposed lower-back strip above jeans. NO text, NO letters, NO symbols, NO logo, remove all reference print. Back panel should be clean and fully visible for later graphic composition, natural subtle cotton folds but not deep scrunching. Pose MUST follow this: turning away mid-step, one foot pivoting, shoulders angled; back visible. Distinguish walking from spinning. Hair must stay clear of central upper-back print area. Full body head to both shoes with margins, centered camera/framing as reference, seamless warm light-grey background, soft studio lighting, shadow on floor. NO studio equipment, no softbox, no watermark. Crisp fabric with true skin texture, natural anatomy and hands. No jewelry on shirt. Blank garment ONLY. Requested1536x2048px native portrait. Product13."
+  },
+  {
+    "number": "14",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "oversized",
+    "pose": "dancing with both arms raised above shoulders, natural back motion",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. COMPLETELY BLANK UNPRINTED OFF-WHITE cream heavyweight OVERSIZED BOXY cotton T-shirt with long loose hem. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: dancing with both arms raised above shoulders, natural back motion. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product14."
+  },
+  {
+    "number": "15",
+    "model": "homem",
+    "color": "BLACK",
+    "fit": "oversized",
+    "pose": "dancing, shoulders moving, elbows bent, slight torso twist",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult man, curly hair low fade, medium-brown skin, slim athletic build, light-blue baggy jeans and white sneakers. COMPLETELY BLANK UNPRINTED BLACK heavyweight OVERSIZED BOXY cotton T-shirt with long loose hem. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: dancing, shoulders moving, elbows bent, slight torso twist. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product15."
+  },
+  {
+    "number": "16",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "oversized",
+    "pose": "spinning with hair flying and arms slightly open",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. COMPLETELY BLANK UNPRINTED OFF-WHITE cream heavyweight OVERSIZED BOXY cotton T-shirt with long loose hem. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: spinning with hair flying and arms slightly open. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product16."
+  },
+  {
+    "number": "17",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "cropped",
+    "pose": "walking away with natural hip sway, arms relaxed DOWN beside hips, one shoe lifted; NOT arms-out spin",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. COMPLETELY BLANK UNPRINTED OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, exposed lower-back strip. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: walking away with natural hip sway, arms relaxed DOWN beside hips, one shoe lifted; NOT arms-out spin. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product17."
+  },
+  {
+    "number": "18",
+    "model": "mulher",
+    "color": "BLACK",
+    "fit": "cropped",
+    "pose": "mid-spin with hair flying and arms slightly out",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. COMPLETELY BLANK UNPRINTED BLACK fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, exposed lower-back strip. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: mid-spin with hair flying and arms slightly out. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product18."
+  },
+  {
+    "number": "19",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "cropped",
+    "pose": "walking away mid-stride, one leg advancing, arms swinging DOWN naturally; NOT arms-out spin",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. COMPLETELY BLANK UNPRINTED OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, exposed lower-back strip. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: walking away mid-stride, one leg advancing, arms swinging DOWN naturally; NOT arms-out spin. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product19."
+  },
+  {
+    "number": "20",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "cropped",
+    "pose": "dancing with ONE arm raised over head and other arm relaxed out",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. COMPLETELY BLANK UNPRINTED OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, exposed lower-back strip. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: dancing with ONE arm raised over head and other arm relaxed out. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product20."
+  },
+  {
+    "number": "22",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "cropped",
+    "pose": "turning away with a quick twist, shoulders rotating, one foot pivoting",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. COMPLETELY BLANK UNPRINTED OFF-WHITE cream fitted cotton CROPPED T-SHIRT ending ABOVE NAVEL, exposed lower-back strip. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: turning away with a quick twist, shoulders rotating, one foot pivoting. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product22."
+  },
+  {
+    "number": "25",
+    "model": "homem",
+    "color": "BLACK",
+    "fit": "oversized",
+    "pose": "mid-stride walking away, one arm swinging forward, back square to camera",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult man, curly hair low fade, medium-brown skin, slim athletic build, light-blue baggy jeans and white sneakers. COMPLETELY BLANK UNPRINTED BLACK heavyweight OVERSIZED BOXY cotton T-shirt with long loose hem. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: mid-stride walking away, one arm swinging forward, back square to camera. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product25."
+  },
+  {
+    "number": "26",
+    "model": "mulher",
+    "color": "OFF-WHITE cream",
+    "fit": "oversized",
+    "pose": "turning away mid-step, hair moving and one heel raised",
+    "prompt": "Use case: identity-preserve product-mockup. ONE realistic premium fashion studio photo, vertical3:4. Image1 fixed identity reference. SAME adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. COMPLETELY BLANK UNPRINTED OFF-WHITE cream heavyweight OVERSIZED BOXY cotton T-shirt with long loose hem. NO text, NO symbols, NO logo, remove old print. Back panel fully visible and clean for later graphic composition, subtle cotton folds, no deep scrunching. Exact pose: turning away mid-step, hair moving and one heel raised. Body back-facing, central back unobstructed by hair. Full body head to both shoes with margins, centered framing as reference, seamless warm light-grey backdrop, soft studio light, natural shadow on floor, no equipment, no softbox, no watermark. Crisp fabric, real skin, natural anatomy. Blank shirt ONLY. Requested1536x2048px native portrait. Product26."
+  }
+]

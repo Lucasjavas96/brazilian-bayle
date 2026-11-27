@@ -1,5 +1,7 @@
 # Três pilotos por composição gráfica
 
+**Atualização:** as16 composições restantes foram produzidas e reunidas com os3 pilotos, sem modificá-los. [Abrir a coleção de19 fotos](lote/galeria.html) · [Método e verificações do lote](lote/README.md). Nada foi publicado na vitrine.
+
 Pilotos para validação visual antes de refazer o restante do lote. Nada foi publicado no site.
 
 ## Arquivos
