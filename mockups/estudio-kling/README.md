@@ -1,5 +1,7 @@
 # Fotos de estúdio — Brazilian Bayle
 
+> **Auditoria posterior:** esta série contém divergências de pose/fidelidade e não deve ser tratada como lote final aprovado. Os três pilotos corrigidos por composição estão em [estudio-composicao](../estudio-composicao/README.md).
+
 ## Série v2 — 26/11/2026
 
 Gerada com **OpenAI image_gen**, conforme autorização para substituir o Kling. São **19 fotos novas (08–26)** em `geradas/v2/`, incluindo a21 refeita como cropped e08/23 refeitas com o papagaio v2. Fotos anteriores e referências foram preservadas.
@@ -43,25 +45,25 @@ Real fashion e-commerce studio photograph, same studio, seamless warm light-grey
 
 | Estampa | Modelo | Camisa | [POSE] | [TINTA] | Status |
 |---|---|---|---|---|---|
-| 08-posso-dancar-so-mais-essa | homem | preta | mid-stride walking away with one arm swinging forward | bright green ink with small yellow signature | gerada e revisada v2 |
-| 09-vintage-clube-john | homem | preta | twisting his torso in a quick turn | full color photo print with metallic lettering | gerada e revisada v2 |
-| 10-the-last-romantic | mulher | off-white | mid-spin with hair flying | dark bottle-green ink with small yellow signature | gerada e revisada v2 |
-| 11-afterparty-princess-verde | mulher | off-white · cropped | caught in a small jump in the air | green ink circular badge with yellow script | gerada e revisada v2 |
-| 12-afterparty-princess-branco | mulher | preta · cropped | walking away with a bounce | white ink circular badge with yellow script | gerada e revisada v2 |
-| 13-afterparty-princess-preto | mulher | off-white · cropped | turning away mid-step | black ink circular badge with yellow script | gerada e revisada v2 |
-| 14-sorry-im-nonverbal-right-now | mulher | off-white | dancing with arms up | dark green ink with yellow signature | gerada e revisada v2 |
-| 15-sorry-im-nonverbal-right-now-branco | homem | preta | dancing, shoulders moving | white ink with yellow signature | gerada e revisada v2 |
-| 16-sorry-im-nonverbal-right-now-preto | mulher | off-white | spinning with hair flying | black ink with yellow signature | gerada e revisada v2 |
-| 17-sorry-i-only-date-djs-verde | mulher | off-white · cropped | walking away with a hip sway | green and cream ink | gerada e revisada v2 |
-| 18-sorry-i-only-date-djs-branco | mulher | preta · cropped | mid-spin with hair flying | white ink | gerada e revisada v2 |
-| 19-sorry-i-only-date-djs-preto | mulher | off-white · cropped | walking away mid-stride | black ink | gerada e revisada v2 |
-| 20-girls-just-wanna-have-techno-verde | mulher | off-white · cropped | dancing with one arm up | green ink | gerada e revisada v2 |
-| 21-girls-just-wanna-have-techno-branco | mulher | preta · cropped | mid-spin, hair flying, arms slightly out | white ink | gerada e revisada v2 |
-| 22-girls-just-wanna-have-techno-preto | mulher | off-white · cropped | turning away with a quick twist | black ink | gerada e revisada v2 |
-| 23-posso-dancar-so-mais-essa-branco | homem | preta | walking away and turning, one arm swinging | white ink with the small yellow Brazilian Bayle signature | gerada e revisada v2 |
-| 24-posso-dancar-so-mais-essa-preto | mulher | off-white | caught in a small jump in the air | black ink with yellow signature | gerada e revisada v2 |
-| 25-the-last-romantic-branco | homem | preta | mid-stride walking away | white ink with yellow signature | gerada e revisada v2 |
-| 26-the-last-romantic-preto | mulher | off-white | turning away mid-step, hair moving | black ink with yellow signature | gerada e revisada v2 |
+| 08-posso-dancar-so-mais-essa | homem | preta | mid-stride walking away with one arm swinging forward | bright green ink with small yellow signature | prévia anterior · requer revisão |
+| 09-vintage-clube-john | homem | preta | twisting his torso in a quick turn | full color photo print with metallic lettering | prévia anterior · requer revisão |
+| 10-the-last-romantic | mulher | off-white | mid-spin with hair flying | dark bottle-green ink with small yellow signature | prévia anterior · requer revisão |
+| 11-afterparty-princess-verde | mulher | off-white · cropped | caught in a small jump in the air | green ink circular badge with yellow script | prévia anterior · requer revisão |
+| 12-afterparty-princess-branco | mulher | preta · cropped | walking away with a bounce | white ink circular badge with yellow script | prévia anterior · requer revisão |
+| 13-afterparty-princess-preto | mulher | off-white · cropped | turning away mid-step | black ink circular badge with yellow script | prévia anterior · requer revisão |
+| 14-sorry-im-nonverbal-right-now | mulher | off-white | dancing with arms up | dark green ink with yellow signature | prévia anterior · requer revisão |
+| 15-sorry-im-nonverbal-right-now-branco | homem | preta | dancing, shoulders moving | white ink with yellow signature | prévia anterior · requer revisão |
+| 16-sorry-im-nonverbal-right-now-preto | mulher | off-white | spinning with hair flying | black ink with yellow signature | prévia anterior · requer revisão |
+| 17-sorry-i-only-date-djs-verde | mulher | off-white · cropped | walking away with a hip sway | green and cream ink | prévia anterior · requer revisão |
+| 18-sorry-i-only-date-djs-branco | mulher | preta · cropped | mid-spin with hair flying | white ink | prévia anterior · requer revisão |
+| 19-sorry-i-only-date-djs-preto | mulher | off-white · cropped | walking away mid-stride | black ink | prévia anterior · requer revisão |
+| 20-girls-just-wanna-have-techno-verde | mulher | off-white · cropped | dancing with one arm up | green ink | prévia anterior · requer revisão |
+| 21-girls-just-wanna-have-techno-branco | mulher | preta · cropped | mid-spin, hair flying, arms slightly out | white ink | prévia anterior · requer revisão |
+| 22-girls-just-wanna-have-techno-preto | mulher | off-white · cropped | turning away with a quick twist | black ink | prévia anterior · requer revisão |
+| 23-posso-dancar-so-mais-essa-branco | homem | preta | walking away and turning, one arm swinging | white ink with the small yellow Brazilian Bayle signature | prévia anterior · requer revisão |
+| 24-posso-dancar-so-mais-essa-preto | mulher | off-white | caught in a small jump in the air | black ink with yellow signature | prévia anterior · requer revisão |
+| 25-the-last-romantic-branco | homem | preta | mid-stride walking away | white ink with yellow signature | prévia anterior · requer revisão |
+| 26-the-last-romantic-preto | mulher | off-white | turning away mid-step, hair moving | black ink with yellow signature | prévia anterior · requer revisão |
 
 ## Prompts usados para criar os 2 modelos
 

@@ -1,0 +1,184 @@
+{
+  "method": "AI blank garment photo + deterministic original-artwork composition",
+  "checks": {
+    "08": {
+      "source": "produtos\\masculino\\oversized\\posso-dancar-so-mais-essa\\estampa-costas\\08-posso-dancar-so-mais-essa-verde.png",
+      "sourceSha256": "1fc861b8799acb6342694ec21e712042a4168ba9b5ea9c8b6d96e6ae23dba472",
+      "officialIconSha256": "4ed798c98bbe20ab5f03261fde9177ef25efd560ef7fe153b2f252a7a15220b8",
+      "canvas": [
+        3543,
+        5906
+      ],
+      "typographyPixelIdentical": true,
+      "wavesAndSignaturePixelIdentical": true,
+      "method": "replace old bird only; official PNG green-channel one-ink separation",
+      "iconPosition": [
+        1034,
+        4000
+      ],
+      "iconSize": [
+        732,
+        1660
+      ]
+    },
+    "24": {
+      "source": "produtos\\masculino\\oversized\\posso-dancar-so-mais-essa\\estampa-costas\\24-posso-dancar-so-mais-essa-preto.png",
+      "sourceSha256": "9cfc4513ef797f1c03d5499be206e3f97fe688475e663c4928ff4fcfdbc70fad",
+      "officialIconSha256": "4ed798c98bbe20ab5f03261fde9177ef25efd560ef7fe153b2f252a7a15220b8",
+      "canvas": [
+        3543,
+        5906
+      ],
+      "typographyPixelIdentical": true,
+      "wavesAndSignaturePixelIdentical": true,
+      "method": "replace old bird only; official PNG green-channel one-ink separation",
+      "iconPosition": [
+        1034,
+        4000
+      ],
+      "iconSize": [
+        732,
+        1660
+      ]
+    },
+    "23": {
+      "source": "produtos\\masculino\\oversized\\posso-dancar-so-mais-essa\\estampa-costas\\23-posso-dancar-so-mais-essa-branco.png",
+      "sourceSha256": "b9e02912e4b9a81be5d56936a74134bba9580589a84d560d1a510eea09a20a50",
+      "officialIconSha256": "4ed798c98bbe20ab5f03261fde9177ef25efd560ef7fe153b2f252a7a15220b8",
+      "canvas": [
+        3543,
+        5906
+      ],
+      "typographyPixelIdentical": true,
+      "wavesAndSignaturePixelIdentical": true,
+      "method": "replace old bird only; official PNG green-channel one-ink separation",
+      "iconPosition": [
+        1034,
+        4000
+      ],
+      "iconSize": [
+        732,
+        1660
+      ]
+    },
+    "21": {
+      "sourceSha256": "22f2db1b6f2d59705eff986a9f513afb929893f271e2424a52a20454b90f25f6",
+      "outputSha256": "22f2db1b6f2d59705eff986a9f513afb929893f271e2424a52a20454b90f25f6",
+      "identicalFile": true
+    }
+  },
+  "pilots": [
+    {
+      "number": "08",
+      "file": "pilotos\\08-piloto-composicao.png",
+      "base": "bases\\08-sem-estampa.png",
+      "artwork": "artes\\08-original-com-icone-oficial.png",
+      "quad": [
+        [
+          398,
+          324
+        ],
+        [
+          650,
+          338
+        ],
+        [
+          664,
+          761
+        ],
+        [
+          380,
+          770
+        ]
+      ],
+      "photoSize": [
+        1086,
+        1448
+      ],
+      "nativePhotoSize": [
+        1086,
+        1448
+      ],
+      "generatedPrint": false,
+      "maxDisplacementPx": [
+        1.8,
+        1.2
+      ]
+    },
+    {
+      "number": "24",
+      "file": "pilotos\\24-piloto-composicao.png",
+      "base": "bases\\24-sem-estampa.png",
+      "artwork": "artes\\24-original-com-icone-oficial.png",
+      "quad": [
+        [
+          420,
+          405
+        ],
+        [
+          672,
+          400
+        ],
+        [
+          688,
+          800
+        ],
+        [
+          408,
+          806
+        ]
+      ],
+      "photoSize": [
+        1086,
+        1448
+      ],
+      "nativePhotoSize": [
+        1086,
+        1448
+      ],
+      "generatedPrint": false,
+      "maxDisplacementPx": [
+        1.8,
+        1.2
+      ]
+    },
+    {
+      "number": "21",
+      "file": "pilotos\\21-piloto-composicao.png",
+      "base": "bases\\21-sem-estampa.png",
+      "artwork": "artes\\21-original-sem-redesenho.png",
+      "quad": [
+        [
+          423,
+          373
+        ],
+        [
+          661,
+          370
+        ],
+        [
+          655,
+          584
+        ],
+        [
+          433,
+          588
+        ]
+      ],
+      "photoSize": [
+        1086,
+        1448
+      ],
+      "nativePhotoSize": [
+        1086,
+        1448
+      ],
+      "generatedPrint": false,
+      "maxDisplacementPx": [
+        1.8,
+        1.2
+      ]
+    }
+  ],
+  "publication": "none; pilots awaiting visual validation"
+}

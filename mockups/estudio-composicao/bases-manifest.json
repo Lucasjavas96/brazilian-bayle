@@ -1,0 +1,28 @@
+{
+  "jobs": [
+    {
+      "number": "08",
+      "model": "homem",
+      "shirt": "BLACK heavyweight oversized boxy cotton T-shirt, loose long hem",
+      "pose": "walking away mid-stride, one arm swinging, torso mostly back-facing, calm natural movement",
+      "baseSource": "bases/08-sem-estampa.png",
+      "basePrompt": "Use case: identity-preserve product-mockup. One realistic premium e-commerce studio photograph, vertical3:4. Image1 is MODEL IDENTITY reference only, same exact adult man, curly hair, medium-brown skin, slim athletic build, light-blue baggy jeans and white sneakers. Change garment to COMPLETELY BLANK UNPRINTED BLACK heavyweight oversized boxy cotton T-shirt, loose long hem. NO letters, NO symbols, NO logo, NO existing shirt graphics anywhere. Large clean unobstructed back panel for later graphic compositing, natural cotton weave and subtle broad wrinkles, no deep creases through central back. Pose: walking away mid-stride, one arm swinging, torso mostly back-facing, calm natural movement. Seamless warm light-grey paper backdrop, soft large studio light, full body from head to shoes with margin, no visible equipment/softbox. Same studio as reference. Sharp garment, realistic hands and anatomy. Do not recreate the old printed shirt. BLANK shirt only. Requested native resolution1536x2048px or greater portrait. No watermark, no text."
+    },
+    {
+      "number": "24",
+      "model": "mulher",
+      "shirt": "OFF-WHITE cream heavyweight oversized boxy cotton T-shirt, loose long hem",
+      "pose": "caught in a small jump, BOTH shoes visibly off floor with clear short air gap beneath both soles, arms relaxed out, hair moving, back facing camera",
+      "baseSource": "bases/24-sem-estampa.png",
+      "basePrompt": "Use case: identity-preserve product-mockup. One realistic premium e-commerce studio photograph, vertical3:4. Image1 is MODEL IDENTITY reference only, same exact adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. Change garment to COMPLETELY BLANK UNPRINTED OFF-WHITE cream heavyweight oversized boxy cotton T-shirt, loose long hem. NO letters, NO symbols, NO logo, NO existing shirt graphics anywhere. Large clean unobstructed back panel for later graphic compositing, natural cotton weave and subtle broad wrinkles, no deep creases through central back. Pose: caught in a small jump, BOTH shoes visibly off floor with clear short air gap beneath both soles, arms relaxed out, hair moving, back facing camera. Seamless warm light-grey paper backdrop, soft large studio light, full body from head to shoes with margin, no visible equipment/softbox. Same studio as reference. Sharp garment, realistic hands and anatomy. Do not recreate the old printed shirt. BLANK shirt only. Requested native resolution1536x2048px or greater portrait. No watermark, no text."
+    },
+    {
+      "number": "21",
+      "model": "mulher",
+      "shirt": "BLACK fitted cotton CROPPED T-shirt ending above navel, visible strip of lower back above jeans",
+      "pose": "mid-spin, hair flying to side and NOT obscuring upper back, arms slightly out, back facing camera",
+      "baseSource": "bases/21-sem-estampa.png",
+      "basePrompt": "Use case: identity-preserve product-mockup. One realistic premium e-commerce studio photograph, vertical3:4. Image1 is MODEL IDENTITY reference only, same exact adult woman, long dark wavy hair, light-brown skin, slim build, black baggy jeans and black sneakers. Change garment to COMPLETELY BLANK UNPRINTED BLACK fitted cotton CROPPED T-shirt ending above navel, visible strip of lower back above jeans. NO letters, NO symbols, NO logo, NO existing shirt graphics anywhere. Large clean unobstructed back panel for later graphic compositing, natural cotton weave and subtle broad wrinkles, no deep creases through central back. Pose: mid-spin, hair flying to side and NOT obscuring upper back, arms slightly out, back facing camera. Seamless warm light-grey paper backdrop, soft large studio light, full body from head to shoes with margin, no visible equipment/softbox. Same studio as reference. Sharp garment, realistic hands and anatomy. Do not recreate the old printed shirt. BLANK shirt only. Requested native resolution1536x2048px or greater portrait. No watermark, no text."
+    }
+  ]
+}
