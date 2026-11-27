@@ -5858,7 +5858,8 @@
         "Rick Legnani"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/moving261126/).",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-18",
+      "photo": "/assets/djs/beatric.webp"
     },
     {
       "id": "d-edge-rio-2026-11-27",
@@ -5923,14 +5924,18 @@
       "name": "Nave",
       "lineup": [
         "BAPP",
+        "Na7an",
+        "Dking",
         "Amine Edge",
         "Ragie Ban",
+        "Deeft",
+        "Samarone",
         "Cactunes",
         "Ana Jones",
-        "Dix"
+        "Dix Sounds"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingresse.com/nave281126/).",
-      "checked_at": "2026-11-18",
+      "checked_at": "2026-11-27",
       "photo": "/assets/djs/bapp.webp"
     },
     {
@@ -5961,14 +5966,17 @@
       "venue": "Park Art",
       "name": "Night Vision",
       "lineup": [
+        "Tuco",
+        "Cynical Hills",
+        "Visage",
         "Brisotti",
+        "Victor Lou",
         "Classmatic",
         "Duarte",
-        "Victor Lou",
-        "Visage"
+        "Varchaki"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingressonacional.com.br/evento/34899/night-vision).",
-      "checked_at": "2026-11-18",
+      "checked_at": "2026-11-27",
       "photo": "/assets/djs/classmatic.webp"
     },
     {
@@ -5978,13 +5986,12 @@
       "name": "Vórtice Weekend",
       "lineup": [
         "Liu",
-        "Mau Maioli",
         "Adria",
         "Zaro",
         "JP Valente"
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://feverup.com/m/706771).",
-      "checked_at": "2026-11-18",
+      "checked_at": "2026-11-27",
       "photo": "/assets/djs/liu.webp"
     },
     {
@@ -6333,6 +6340,17 @@
       ],
       "source": "Agenda da intermediação da Brazilian Bayle (ingresso: https://www.ingressonacional.com.br/evento/35114/natal-magico).",
       "checked_at": "2026-11-18"
+    },
+    {
+      "id": "greenvalley-2026-12-26",
+      "date": "2026-12-26",
+      "venue": "Greenvalley",
+      "name": "Charlotte de Witte",
+      "lineup": [
+        "Charlotte de Witte"
+      ],
+      "source": "Site oficial do Green Valley (26 de dezembro, 22h, data extra) e Guichê Web (https://www.guicheweb.com.br/charlotte-de-witte-no-greenvalley-summer_57141).",
+      "checked_at": "2026-11-27"
     },
     {
       "id": "surreal-park-2026-12-27",
