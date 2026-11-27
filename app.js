@@ -801,53 +801,79 @@ refreshOfficialRanking();
   document.addEventListener("keydown", e => { if (e.key === "Escape" && box) close(); });
 })();
 
-/* ---------- Ranking: festas do último fim de semana (sexta a domingo), montadas sozinhas a partir de BRB_EVENTS ---------- */
+/* ---------- Festas para avaliar, montadas sozinhas a partir de BRB_EVENTS (home e /ranking) ----------
+   Home: a última festa do Green Valley e do Surreal, e a da Laroc se foi nos últimos 14 dias.
+   Ranking: card grande para a última festa de cada clube principal (Green Valley, Surreal, Laroc, D-EDGE, Club Vibe),
+   na ordem; cards menores para as demais festas do último fim de semana. */
 (() => {
-  const top = document.getElementById("wkTop"), box = document.getElementById("wkMore"); if (!top && !box) return;
-  const PLACE = { "Greenvalley": ["Green Valley", "Camboriú/SC"], "Arena Open": ["Arena Open", "Camboriú/SC"], "Surreal Park": ["Surreal Park", "Camboriú/SC"], "Pedreira": ["Pedreira Paulo Leminski", "Curitiba/PR"], "Laroc": ["Laroc", "Valinhos/SP"], "Ame Club": ["Ame Club", "Valinhos/SP"], "Warung": ["Warung", "Itajaí/SC"], "P12": ["P12 Jurerê", "Florianópolis/SC"], "Club Vibe": ["Club Vibe", "Curitiba/PR"], "D-EDGE São Paulo": ["D-EDGE", "São Paulo/SP"], "D-EDGE Rio": ["D-EDGE Rio", "Rio de Janeiro/RJ"], "Terraza Music Park": ["Terraza Music Park", "Florianópolis/SC"], "CAOS": ["CAOS", "Campinas/SP"], "Matahari": ["Matahari", "Indaial/SC"], "Park Art": ["Park Art", "Pinhais/PR"], "Privilège Búzios": ["Privilège", "Búzios/RJ"], "Parque Villa-Lobos": ["Parque Villa-Lobos", "São Paulo/SP"] };
-  // ordem de prioridade do destaque grande quando nenhuma festa vem marcada com "destaque"
-  const PRIO = ["Pedreira", "Greenvalley", "Arena Open", "Surreal Park", "Laroc", "Warung", "Ame Club", "P12", "Club Vibe", "D-EDGE São Paulo", "D-EDGE Rio", "Terraza Music Park", "CAOS", "Matahari", "Park Art", "Privilège Búzios", "El Fortin"];
+  const home = document.getElementById("wkHome"), top = document.getElementById("wkTop"), box = document.getElementById("wkMore");
+  if (!home && !top && !box) return;
+  const PLACE = { "Greenvalley": ["Green Valley", "Camboriú/SC"], "Arena Open": ["Arena Open", "Camboriú/SC"], "Surreal Park": ["Surreal Park", "Camboriú/SC"], "Pedreira": ["Pedreira Paulo Leminski", "Curitiba/PR"], "Laroc": ["Laroc", "Valinhos/SP"], "Ame Club": ["Ame Club", "Valinhos/SP"], "Warung": ["Warung", "Itajaí/SC"], "P12": ["P12 Jurerê", "Florianópolis/SC"], "Club Vibe": ["Club Vibe", "Curitiba/PR"], "D-EDGE São Paulo": ["D-EDGE", "São Paulo/SP"], "D-EDGE Rio": ["D-EDGE Rio", "Rio de Janeiro/RJ"], "Terraza Music Park": ["Terraza Music Park", "Florianópolis/SC"], "CAOS": ["CAOS", "Campinas/SP"], "Matahari": ["Matahari", "Indaial/SC"], "Park Art": ["Park Art", "Pinhais/PR"], "Privilège Búzios": ["Privilège", "Búzios/RJ"], "El Fortin": ["El Fortin", "Porto Belo/SC"], "Parque Villa-Lobos": ["Parque Villa-Lobos", "São Paulo/SP"] };
+  // clubes principais, na ordem dos cards grandes; [clube, quantos dias para trás ainda vale mostrar]
+  const MAIN = [["Greenvalley", 60], ["Surreal Park", 60], ["Laroc", 14], ["D-EDGE São Paulo", 14], ["D-EDGE Rio", 14], ["Club Vibe", 14]];
+  const HOME = MAIN.slice(0, 3);
+  const OTHERS = ["Pedreira", "Warung", "Ame Club", "P12", "Terraza Music Park", "CAOS", "Matahari", "Park Art", "Privilège Búzios", "El Fortin"];
+  const PRIO = [...MAIN.map(m => m[0]), ...OTHERS];
   const DOW = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
   const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const today = new Date().toLocaleDateString("sv-SE", { timeZone: "America/Sao_Paulo" });
   const iso = d => d.toISOString().slice(0, 10), at = s => new Date(s + "T12:00:00Z");
-  const all = (window.BRB_EVENTS || []).filter(e => e.lineup && e.lineup.length && e.date <= today);
-  // sexta-feira da semana de hoje (ou a última), depois volta de 7 em 7 dias até achar um fim de semana com festa
-  let fri = at(today); fri.setUTCDate(fri.getUTCDate() - ((fri.getUTCDay() + 2) % 7));
-  let list = [];
-  for (let k = 0; k < 10 && !list.length; k++) {
-    const a = iso(fri), z = new Date(fri); z.setUTCDate(z.getUTCDate() + 2);
-    list = all.filter(e => e.date >= a && e.date <= iso(z));
-    fri.setUTCDate(fri.getUTCDate() - 7);
-  }
-  const rank = e => (e.destaque ? 0 : 1) * 100 + (PRIO.includes(e.venue) ? PRIO.indexOf(e.venue) : 50);
-  list.sort((a, b) => rank(a) - rank(b) || a.date.localeCompare(b.date));
-  const big = list.slice(0, 2), rest = list.slice(2).sort((a, b) => a.date.localeCompare(b.date) || a.venue.localeCompare(b.venue));
+  const ago = n => { const d = at(today); d.setUTCDate(d.getUTCDate() - n); return iso(d); };
+  // só festas que já terminaram (até ontem): a de hoje à noite ainda não aconteceu
+  const all = (window.BRB_EVENTS || []).filter(e => e.lineup && e.lineup.length && e.date < today);
+  const ord = e => (PRIO.includes(e.venue) ? PRIO.indexOf(e.venue) : 99);
+  // a última festa de cada clube (se houver mais de uma no mesmo dia, a de line-up maior)
+  const latest = ([venue, days]) => all.filter(e => e.venue === venue && e.date >= ago(days)).sort((a, b) => b.date.localeCompare(a.date) || b.lineup.length - a.lineup.length)[0];
   const where = e => PLACE[e.venue] || [e.venue, ""];
   const dj = n => hasPedia(n) ? `<a href="/djindex/${slug(n)}">${esc(n)}</a>` : esc(n);
   const acts = e => `<div class="wk-actions"><a class="btn btn-y" href="/ranking?festa=${esc(e.id)}#votar">Avaliar o line-up</a><a class="btn btn-silver" href="/spotted">Publicar Spotted</a></div>`;
   const title = n => { const m = String(n).match(/^(.+?)( · | \+ | & )(.+)$/); return m ? `${esc(m[1])}${esc(m[2])}<em>${esc(m[3])}</em>` : esc(n); };
-  const head = document.getElementById("wkHead");
-  if (head && list.length) {
-    const ds = [...new Set(list.map(e => e.date))].sort().map(d => d.slice(8) + "/" + d.slice(5, 7));
-    head.querySelector("p").textContent = "Em destaque · fim de semana de " + (ds.length > 1 ? ds.slice(0, -1).join(", ") + " e " + ds[ds.length - 1] : ds[0]);
+  const fmt = d => `${d.slice(8)}/${d.slice(5, 7)}`;
+  const dates = list => { const ds = [...new Set(list.map(e => e.date))].sort().map(fmt); return ds.length > 1 ? ds.slice(0, -1).join(", ") + " e " + ds[ds.length - 1] : ds[0] || ""; };
+  // foto: a da festa, senão a figurinha ou a foto do DJ Index dos primeiros nomes do line-up; se nenhuma abrir, o card fica só com texto
+  const photos = e => [e.photo, ...e.lineup.slice(0, 4).flatMap(n => [`/assets/album/fotos/${slug(n)}.webp`, `/assets/djs/${slug(n)}.webp`])].filter(Boolean);
+  const bigCard = (e, i) => {
+    const [nome, cidade] = where(e), d = at(e.date), ph = photos(e);
+    const more = e.lineup.length > 8 ? `<li>e mais ${e.lineup.length - 8} atrações</li>` : "";
+    return `<article class="wk-card ${i % 2 ? "wk-right" : "wk-left"}"><img class="wk-ph" src="${esc(ph[0])}" data-alt="${esc(ph.slice(1).join("|"))}" alt="${esc(e.name)}, ${esc(nome)}" loading="lazy" width="800" height="800"><div class="wk-body"><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p><p class="wk-date mono">${DOW[d.getUTCDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}/${e.date.slice(0, 4)}</p><h3 class="display">${title(e.name)}</h3>${e.destaque ? `<p class="wk-extra">${esc(e.destaque)}</p>` : ""}<ul class="wk-lineup">${e.lineup.slice(0, 8).map(n => `<li>${dj(n)}</li>`).join("")}${more}</ul>${acts(e)}</div></article>`;
+  };
+  const fill = (el, list) => {
+    el.innerHTML = list.map(bigCard).join("");
+    el.classList.toggle("wk-n3", list.length >= 3);
+    el.querySelectorAll("img.wk-ph").forEach(img => img.addEventListener("error", () => {
+      const alt = (img.dataset.alt || "").split("|").filter(Boolean);
+      if (alt.length) { img.dataset.alt = alt.slice(1).join("|"); img.src = alt[0]; } else img.remove();
+    }));
+  };
+
+  if (home) {
+    const list = HOME.map(latest).filter(Boolean);
+    fill(home, list);
+    const p = document.getElementById("wkHomeHead"); if (p && list.length) p.textContent = "Últimas festas · " + dates(list);
   }
-  if (top) {
-    top.innerHTML = big.map((e, i) => {
-      const [nome, cidade] = where(e), d = at(e.date), first = e.lineup.find(hasPedia);
-      const photo = e.photo || (first ? `/assets/djs/${slug(first)}.webp` : "");
-      const more = e.lineup.length > 8 ? `<li>e mais ${e.lineup.length - 8} atrações</li>` : "";
-      return `<article class="wk-card ${i ? "wk-right" : "wk-left"}">${photo ? `<img class="wk-ph" src="${esc(photo)}" alt="${esc(e.name)}, ${esc(nome)}" loading="lazy" width="800" height="800">` : ""}<div class="wk-body"><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p><p class="wk-date mono">${DOW[d.getUTCDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}/${e.date.slice(0, 4)}</p><h3 class="display">${title(e.name)}</h3>${e.destaque ? `<p class="wk-extra">${esc(e.destaque)}</p>` : ""}<ul class="wk-lineup">${e.lineup.slice(0, 8).map(n => `<li>${dj(n)}</li>`).join("")}${more}</ul>${acts(e)}</div></article>`;
-    }).join("");
-    // foto que não existe some, e o card fica só com o texto
-    top.querySelectorAll("img.wk-ph").forEach(img => img.addEventListener("error", () => img.remove(), { once: true }));
-  }
-  if (box) {
-    box.innerHTML = rest.map(e => {
-      const [nome, cidade] = where(e), d = at(e.date);
-      return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getUTCDay()]}, ${e.date.slice(8)}/${e.date.slice(5, 7)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${dj(n)}</li>`).join("")}</ul>${acts(e)}</article>`;
-    }).join("");
-    const h = document.getElementById("festas"); if (h) h.hidden = !rest.length;
+
+  if (top || box) {
+    const big = MAIN.map(latest).filter(Boolean), ids = new Set(big.map(e => e.id));
+    // fim de semana mais recente (sexta a domingo) com festa
+    let fri = at(today); fri.setUTCDate(fri.getUTCDate() - ((fri.getUTCDay() + 2) % 7));
+    let wk = [];
+    for (let k = 0; k < 10 && !wk.length; k++) {
+      const a = iso(fri), z = new Date(fri); z.setUTCDate(z.getUTCDate() + 2);
+      wk = all.filter(e => e.date >= a && e.date <= iso(z));
+      fri.setUTCDate(fri.getUTCDate() - 7);
+    }
+    const rest = wk.filter(e => !ids.has(e.id)).sort((a, b) => ord(a) - ord(b) || a.date.localeCompare(b.date));
+    if (top) fill(top, big);
+    const head = document.getElementById("wkHead");
+    if (head && big.length) head.querySelector("p").textContent = "Em destaque · últimas festas dos clubes principais";
+    if (box) {
+      box.innerHTML = rest.map(e => {
+        const [nome, cidade] = where(e), d = at(e.date);
+        return `<article class="wk-mini"><div class="wk-mini-top"><span class="wk-badge mono">${DOW[d.getUTCDay()]}, ${fmt(e.date)}</span><p class="mono y">${esc(nome)}${cidade ? " · " + esc(cidade) : ""}</p></div><h3 class="display">${esc(e.name)}</h3><ul class="wk-mini-lineup">${e.lineup.map(n => `<li>${dj(n)}</li>`).join("")}</ul>${acts(e)}</article>`;
+      }).join("");
+      const h = document.getElementById("festas");
+      if (h) { h.hidden = !rest.length; const p = h.querySelector("p"); if (p && wk.length) p.textContent = "Mais festas do fim de semana · " + dates(wk); }
+    }
   }
 })();
 
